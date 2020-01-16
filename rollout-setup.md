@@ -1,3 +1,4 @@
+![Rollout.io](img/rollout/rollout-logo.svg)
 # Rollout Set-Up
 
 In this lab, we will introduce CloudBees Rollout for feature flag management. We first need to connection to the Rollout Dashboard by leveraging the appropriate SDK. This will allow us to control newly created feature flags in later lags.
