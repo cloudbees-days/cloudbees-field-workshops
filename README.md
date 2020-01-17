@@ -1,4 +1,4 @@
-Need to modify picture<img src="https://mms.businesswire.com/media/20191204005250/en/760213/23/Logo_-_Stacked_-_Full_Color%402x.jpg" width="400" align="middle">
+<img src="https://mms.businesswire.com/media/20191204005250/en/760213/23/Logo_-_Stacked_-_Full_Color%402x.jpg" width="400" align="middle">
 
 # CloudBees Core-Rollout-Flow Integration Workshop
 This workshop serves to demonstrate how to  effectively use CI/CD practices, manage feature flags, and orchestrating releaes through a close integration of CloudBees' Core, Rollout, and Flow products, respectively.
