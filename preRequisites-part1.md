@@ -53,7 +53,9 @@ Create a Github organization to use for this workshop:
 ## Fork the Workshop Repository
 
 The workshop utilizes 2 repositories for our microblog sample application:
+
 [Microblog-Frontend](https://github.com/cloudbees-days/microblog-frontend)
+
 [Microblog-Backend](https://github.com/cloudbees-days/microblog-frontend)
 
 For both repositories into the GitHub Organization that you created above (if you are not sure how to fork a repository - see this [GitHub Guide on forking](https://guides.github.com/activities/forking/)):
