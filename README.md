@@ -9,7 +9,7 @@ The workshop is divided into 2 parts. The first will focus on the use of Core an
 
 # Workshop Labs
 Part I:
- * Lab 1.1 - Fork the repo and create master
+ * [Lab 1.1 - Fork the repo and create master](preRequisites-part1.md)
  * Lab 1.2 - Add credentials and create job from catalog
  * Lab 1.3 - Unit tet fail and fix, re-run, and preview environment
  * [Lab 1.4 - Rollout API Key and adding code to app](rollout-setup.md)
