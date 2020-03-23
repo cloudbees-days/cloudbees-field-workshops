@@ -14,7 +14,7 @@ Part I:
  * Lab 1.3 - Unit tet fail and fix, re-run, and preview environment
  * [Lab 1.4 - Setting Up CloudBees Rollout](rollout-setup.md)
  * [Lab 1.5 - Adding a Sidebar to the Microblog](rolloutFeature.md)
- * [Lab 1.6 - Control the Value of a Feature Flag](rolloutExperiment.md)f
+ * [Lab 1.6 - Control the Value of a Feature Flag](rolloutExperiment.md)
 
 Part II:
  * Lab 2.1 - Create release pipeline from service catalog
