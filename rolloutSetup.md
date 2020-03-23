@@ -32,3 +32,7 @@ Rox.setup("<ROLLOUT_ENV_KEY>");
 ```
 10. Create a commit message (Create flag.js) and select "Commit directly to the `initRollout` branch" radio button. The file and its directory path should look similar to the picture below. Complete this lab by clicking "Commit new file."
 <p><img src="img/rollout/flagJSCommit.png" />
+
+* TODO:
+11. MAKE SURE PIPELINE RUNS WITH NEW ROLLOUT SET-UP
+12. GO TO ROLLOUT DASHBOARD TO ENSURE 
