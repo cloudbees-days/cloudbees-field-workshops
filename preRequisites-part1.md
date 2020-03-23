@@ -58,11 +58,11 @@ The workshop utilizes 2 repositories for our microblog sample application:
 
 [Microblog-Backend](https://github.com/cloudbees-days/microblog-frontend)
 
-For both repositories into the GitHub Organization that you created above (if you are not sure how to fork a repository - see this [GitHub Guide on forking](https://guides.github.com/activities/forking/)):
+Fork both repositories into the GitHub Organization that you created above (if you are not sure how to fork a repository - see this [GitHub Guide on forking](https://guides.github.com/activities/forking/)):
 
 
 ## Finished Setup
 You should see the following **Create a new Pipeline** screen for your Team:
 <p><img src="img/setup/setup-success.png" width=600/>
 
-You may proceed to the first lab.
+You may proceed to the second lab.
