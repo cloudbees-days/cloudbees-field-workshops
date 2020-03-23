@@ -14,6 +14,7 @@ Need to know what their initial view will look like. Aka, what is the outcome of
 5. Open a terminal at the root directory of your frontend forked repository and add the Rollout library to your application with the following command:
 ```
 $ npm install rox-browser --save
+NEED TO USE YARN INSTEAD
 ```
 6. Add a new directory called **utils** directly beneath src directory.
 ```
@@ -32,8 +33,8 @@ Rox.register('default', Flags);
 
 Rox.setup(process.env.VUE_APP_ROLLOUT_KEY);
 ```
-7. Run the application using:
+7. Compile the application using:
 ```
 $ yarn serve
 ```
-and navigate to [localhost:8080](https://localhost:8080).
+and navigate to [localhost:8080](https://localhost:8080) to view for local development.
