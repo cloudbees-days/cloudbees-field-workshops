@@ -3,10 +3,15 @@
 2. On the left-hand side of the screen, click Production, and then Experiments from the expanded list. Then, click "Create a New Experiment" button.
 <p><img src="img/rollout/ProdCreateNewExp.png" />
 
-4. In the pop-up, ensure the "default.sidebar" flag is selected from the drop-down menu before clicking "Set Audience."
+3. In the pop-up, ensure the "default.sidebar" flag is selected from the drop-down menu before clicking "Set Audience."
 <p><img src="img/rollout/CreateNewSidebarExp.png" />
 
-5. Right now, the sidebar is not shown because the value of the feature flag is set to `False` by default. We can now change the value to true. Click on the drop-down menu next to then and select True.
-6. Click Update Audience.
-7. Navigate back to the micro-blog and see that the sidebar is now visible.
-8. Next lab link.
+4. Right now, the sidebar is not shown because the value of the feature flag is set to `False` by default. Click on the drop-down menu next to then and select `True`. Finally, to update the `sidebar` flag's boolean value, click "Update Audience" button.
+<p><img src="img/rollout/UpdateAudience.gif" />
+	
+5. Navigate back to the micro-blog and verify that the sidebar is now visible.
+6. Congratulations! You have completed this lab and are ready.
+
+TODO:
+* Add next lab link for step 6
+* Add image for micro-blog with sidebar shown to step 5
