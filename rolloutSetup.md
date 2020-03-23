@@ -2,7 +2,7 @@
 1. Navigate to the CloudBees Rollout [sign-up](https://app.rollout.io/signup).
 2. Fill out the form, agree to the Terms of Service, and click Sign Up.
 3. In order to control feature flags from the Rollout dashboard, we have to connect it to our code. On the far left side of the dashobard, click the App Settings option. From the resulting App Settings page, navigate to the "Environments" tab, and copy your unique key associated with the Production environment. This will be the <ROLLOUT_ENV_KEY> used in our set-up later on.
-<p><img src="img/rollout/RolloutEnvKey1.gif" align="middle" />
+<p><img src="img/rollout/RolloutEnvKey1.gif" width="400" align="middle" />
 
 4. In Github, navigate to the microblog-frontend repository previously forked to the organization.
 5. Click Branch: master
