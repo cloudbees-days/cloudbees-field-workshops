@@ -6,8 +6,10 @@
 <p><img src="img/rollout/RolloutEnvKey.png" />
 
 4. In Github, navigate to the microblog-frontend repository previously forked to the organization.
-5. Click Branch: master
+5. Click `Branch: master`
 6. Type "initRollout" to create a new branch.
+<p><img src="img/rollout/initRolloutBranch.gif" />
+	
 7. Click "Create a new file"
 8. Type "utils/flag.js"
 9. Within the Github code editor, enter the following code:
