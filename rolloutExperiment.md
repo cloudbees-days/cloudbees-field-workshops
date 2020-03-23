@@ -1,4 +1,4 @@
-##Creating a Rollout Experiment
+## Control the Value of a Feature Flag
 1. Navigate to the Rollout Dashboard
 2. On the left-hand side of the screen, click Production, and then Experiments from the expanded list.
 3. Click Create a New Experiment.

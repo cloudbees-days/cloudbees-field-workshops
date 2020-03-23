@@ -1,4 +1,4 @@
-##Gating a Component Behind a Feature Flag
+## Adding a Sidebar to the Microblog
 1. In Github, navigate to the microblog-frontend root directory within the initRollout branch.
 2. Type "sidebar" to create a new branch.
 3. Navigate to src/views/Posts.vue
