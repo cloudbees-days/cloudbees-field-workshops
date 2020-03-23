@@ -34,5 +34,6 @@ Rox.setup("<ROLLOUT_ENV_KEY>");
 <p><img src="img/rollout/flagJSCommit.png" />
 
 * TODO:
+9. Add Configuration fetch handler so automatic refresh?
 11. MAKE SURE PIPELINE RUNS WITH NEW ROLLOUT SET-UP
 12. GO TO ROLLOUT DASHBOARD TO ENSURE CONNECTION BETWEEN CODE AND DASHBOARD
