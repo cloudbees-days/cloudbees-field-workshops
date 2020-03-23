@@ -1,14 +1,18 @@
 ## Adding a Sidebar to the Microblog
-1. In Github, navigate to the microblog-frontend root directory within the initRollout branch.
-2. Type "sidebar" to create a new branch.
-3. Navigate to src/views/Posts.vue
-4. Click the pencil icon to edit the file.
+1. In Github, navigate to the root directory of the microblog-frontend repository.
+2. Click `Branch: initRollout`
+3. Type `newSidebar` then click "Create branch: newSidebar from initRollout" to finish creating a new branch.
+4. Ensure you are within the newSidebar branch, then navigate to the `src/views/Posts.vue` file by clicking the `src`, `views`, and `Posts.vue` links, consecutively.
+<p><img src="img/rollout/srcViewsPost.gif" />
+
+5. Click the pencil icon to edit the file.
+<p><img src="img/rollout/PostsVuePencil.png" />
+
 5. First let's import the Rollout library. On line 28, add the following statement:
 ```javascript
 import { Flags } from '../utils/flags'
 ```
-6. We're going to use a "show_sidebar" function to gate our Sidebar component. To have a value returned from this function, we have to relate it to the value of the sidebar feature flag declared in the flag.js file. Add this in the data function block (beginning on line 58) such that the finished block looks like the following (DON'T FORGET TO ADD A COMMA AFTER THE errors function):
-The purpose of the show_sidebar function is to check whether or not the sidebar feature flag is enabled or not, and it will return the corresonding boolean value.
+6. We are going to create a function called `show_sidebar` whose return value is defined by the boolean value associated with our `sidebar` feature flag. To declare the `show_sidebar` function and relate it to the value of our previously created feature flag, add it to the end of the `data: function ()` block starting at line 34 (DON'T FORGET TO ADD A COMMA AFTER THE `errors` function):
 ```javascript
 data: function () {
   return {
