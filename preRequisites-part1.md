@@ -65,4 +65,4 @@ Fork both repositories into the GitHub Organization that you created above (if y
 You should see the following **Create a new Pipeline** screen for your Team:
 <p><img src="img/setup/setup-success.png" width=600/>
 
-You may proceed to the second lab [*Add credentials and create job from catalog*]((./TemplateCatalogJob.md).
+You may proceed to the second lab [*Add credentials and create job from catalog*](./TemplateCatalogJob.md).
