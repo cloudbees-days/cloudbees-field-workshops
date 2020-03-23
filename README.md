@@ -12,7 +12,7 @@ Part I:
  * Lab 1.1 - Fork the repo and create master
  * Lab 1.2 - Add credentials and create job from catalog
  * Lab 1.3 - Unit tet fail and fix, re-run, and preview environment
- * [Lab 1.4 - Setting Up CloudBees Rollout](rollout-setup.md)
+ * [Lab 1.4 - Setting Up CloudBees Rollout](rolloutSetup.md)
  * [Lab 1.5 - Adding a Sidebar to the Microblog](rolloutFeature.md)
  * [Lab 1.6 - Control the Value of a Feature Flag](rolloutExperiment.md)
 
