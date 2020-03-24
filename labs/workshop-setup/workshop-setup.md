@@ -57,19 +57,19 @@ Create a Github organization to use for this workshop:
 
 We must exit the Blue Ocean UI to the Jenkins classic UI to complete the steps in this exercise.
 
-1. Click the ***Go to classic*** button at the top of common section of Blue Ocean’s navigation bar. <p><img src="img/intro/go_to_classic.png" width=850/>
+1. Click the ***Go to classic*** button at the top of common section of Blue Ocean’s navigation bar. <p><img src="images/go_to_classic.png" width=850/>
 
 Now, we will create a **Username and password** credential using you GitHub username and personal access token. This credential will be used to configure the *GitHub Organization* project we will create and will allow the auto-setup of a GitHub Organization level webhook:
 
 1. Navigate to the top-level of your Team Master - this should be one level-up from where you exit the Blue Ocean UI. You should see a **Manage Jenkins** link in the left navigation menu.
-2. Click on the **Credentials** link in the left navigation menu. <p><img src="img/intro/credentials_breadcrumbs_left_nav2.png" width=850/>
-3. Click on the **github.com** link under **Stores scoped to Jenkins** <p><img src="img/intro/credential_scope_github.png" width=850/>
-4. Click on **Add Credentials** in the left menu <p><img src="img/intro/credential_add_link2.png" width=850/> 
+2. Click on the **Credentials** link in the left navigation menu. <p><img src="images/credentials_breadcrumbs_left_nav2.png" width=850/>
+3. Click on the **github.com** link under **Stores scoped to Jenkins** <p><img src="images/credential_scope_github.png" width=850/>
+4. Click on **Add Credentials** in the left menu <p><img src="images/credential_add_link2.png" width=850/> 
 5. Fill out the form (**Username with password**)
   - **Username**: Your GitHub user name
   - **Password**: Your GitHub personal access token [created in setup](../Setup.md#create-a-github-personal-access-token) OR [here is the GitHub link to automatically select the required **Personal access token settings** if you haven't alreaedy done it](https://github.com/settings/tokens/new?scopes=repo,read:user,user:email,admin:org_hook,delete_repo)
   - **ID**: Create an ID for your credentials (something like **github-[Your GitHub Usename]**)
-  - **Description**: Can be left blank if you want <p><img src="img/intro/credential_github_token_save2.png" width=850/>
+  - **Description**: Can be left blank if you want <p><img src="images/credential_github_token_save2.png" width=850/>
 6. Click on **OK**
     
 ## Create and Run Workshop Setup Jenkins Pipeline Job
