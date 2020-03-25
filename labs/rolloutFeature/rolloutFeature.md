@@ -3,11 +3,11 @@
 2. Click `Branch: initRollout`
 3. Type `newSidebar` then click "Create branch: newSidebar from initRollout" to finish creating a new branch.
 4. Ensure you are within the newSidebar branch, then navigate to the `src/views/Posts.vue` file by clicking the `src`, `views`, and `Posts.vue` links, consecutively.
-<p><img src="img/rollout/srcViewsPost.gif" />
+<p><img src="images/srcViewsPost.gif" />
 
 5. Click the pencil icon to edit the file.
 TODO: ADD RED CALLOUT BOX TO BELOW PNG
-<p><img src="img/rollout/PostsVuePencil.png" />
+<p><img src="images/PostsVuePencil.png" />
 
 6. In order to reference our previously created feature flag, we must import the `Flags` constant from the `flags.js` file. On line 28, add the following statement:
 ```javascript
