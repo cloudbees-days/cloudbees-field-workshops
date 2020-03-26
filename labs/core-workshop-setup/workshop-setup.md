@@ -1,12 +1,10 @@
 # <img src="images/cloudbeescore_logo.png" alt="CloudBees Core Logo" width="40" align="top"> CloudBees Core Workshop Setup 
 
 
-## CloudBees Core Team Master Set-up
-Setup a work environment for the labs provided in this workshop.  Ask the instructor for the URL of the server you will be using during the workshop.
+## CloudBees Core Workshop Set-up
+Setup a work environment for the labs provided in the Core Workshop.  Ask the instructor for the URL of the server you will be using for the Core Workshop.
 
-Today's URL for the CloudBees Core environment is https://workshop.cb-sa.io/cjoc/
-
-The URL for the GitHub Repository with these instructions and the labs is **https://github.com/cloudbees-days/core-rollout-flow-workshop**
+Today's URL for the CloudBees Core Workshop environment is https://workshop.cb-sa.io/cjoc/
 
 ### Create a Jenkins Account
 
