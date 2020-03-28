@@ -54,7 +54,7 @@ Create a Github organization to use for this workshop:
 You should see the following Blue Ocean **Pipelines** screen with one Pipeline named **workshop-setup** for your Team:
 <p><img src="images/setup-success.png" width=600/>
 
-1. Click on the **workshop-setup** Pipeline job.
+1. Click on the `workshop-setup` Pipeline job.
 2. On the next screen, click on the **Run** button in the middle of the screen. <p><img src="images/workshop-setup-run.png" width=600/>
 3. Fill in the required parameters: <p><img src="images/workshop-setup-input-form.png" width=400/>
    1. ***githubPat*** - the GitHub Personal Access Token you created above.
@@ -62,8 +62,8 @@ You should see the following Blue Ocean **Pipelines** screen with one Pipeline n
    3. The name of the GitHub Organization you created above specifically for this workshop
    4. The Kubernetes Namespace where your Team Master has been deployed - only change the default value if you are instructed to do so.
 4. Once you have provided the above required input parameters click the **Run** button at the bottom of the form.
-5. Blue Ocean will automatically switch to the Pipeline **Activity** screen, click anywhere on the Pipeline run row to see to view the Pipeline logs.<p><img src="images/workshop-setup-activity.png" width=600/>
-6. Once the **workshop-setup** Pipeline job completes successfully your Team Master will be restarted so you should see that a **Connect lost: waiting** alert in the bottom right of your Blue Ocean screen.<p><img src="images/workshop-setup-connection-lost.png" width=600/>
+5. Blue Ocean will automatically switch to the Pipeline **Activity** screen, click anywhere on the Pipeline run row to see the Pipeline run and view the logs.<p><img src="images/workshop-setup-activity.png" width=600/>
+6. Once the **workshop-setup** Pipeline job completes successfully your Team Master will be restarted so you should see a **Connect lost: waiting** alert in the bottom right of your Blue Ocean screen.<p><img src="images/workshop-setup-connection-lost.png" width=600/>
 
 While your Team Master is restarting, lets explore what the `workshop-setup` Pipeline job did:
 1. In the GitHub Organization that you created for this workshop you will notice that you now have 5 repositories:
