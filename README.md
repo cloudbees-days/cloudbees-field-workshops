@@ -10,11 +10,13 @@ The workshop is divided into 2 parts. The first will focus on the use of Core an
 # Workshop Labs
 Part I - Core & Rollout:
  * [Lab 1.1 - Core Setup](labs/core-workshop-setup/workshop-setup.md)
- * Lab 1.2 - Add credentials and create job from catalog
- * Lab 1.3 - Unit tet fail and fix, re-run, and preview environment
- * [Lab 1.4 - Setting Up CloudBees Rollout](labs/rolloutSetup/rolloutSetup.md)
- * [Lab 1.5 - Adding a Sidebar to the Microblog](labs/rolloutFeature/rolloutFeature.md)
- * [Lab 1.6 - Control the Value of a Feature Flag](labs/rolloutExperiment/rolloutExperiment.md)
+ * [Lab 1.2 - Configuration as Code (CasC) for CloudBees Core](labs/core-casc/core-casc.md)
+ * Lab 1.3 - Pipeline Template Catalogs
+ * Lab 1.4 - Unit test fail and fix, re-run, and preview environment
+ * [Lab 1.5 - Setting Up CloudBees Rollout](labs/rolloutSetup/rolloutSetup.md)
+ * [Lab 1.6 - Adding a Sidebar to the Microblog](labs/rolloutFeature/rolloutFeature.md)
+ * [Lab 1.7 - Control the Value of a Feature Flag](labs/rolloutExperiment/rolloutExperiment.md)
+ * [Lab 1.8 - Hibernating Masters](labs/hibernating-masters/hibernating-masters.md)
 
 Part II Flow & Rollout:
  * Lab 2.1 - Create release pipeline from service catalog

@@ -2,16 +2,15 @@
 
 
 ## CloudBees Core Workshop Set-up
-Setup a work environment for the labs provided in the Core Workshop.  Ask the instructor for the URL of the server you will be using for the Core Workshop.
+In this lab you will setup a work environment for the CloudBees Core labs.  Ask the instructor for the URL of the server you will be using for the Core Workshop.
 
 Today's URL for the CloudBees Core Workshop environment is https://workshop.cb-sa.io/cjoc/
 
-### Create a Jenkins Account
+### Login to CloudBees Core
 
-1. Goto to the Workshop URL provided by the instructor;
-2. Click on the **create an account** link in the middle above the **Username** input.<p><img src="images/setup-create-an-account.png" width=350/>
-3. Complete the **Create an account!** form (all fields are required) and click the **Create account** button;<p><img src="images/setup-create-account.png" width=350/>
-4. You should see a **Success** page - click on **the top page** link;<p><img src="images/setup-create-account-success.png" width=550/>
+1. Goto to the Workshop URL provided by the instructor.
+2. Enter the username and password you created earlier.
+3. 
 
 ### Create a Team Master
 
@@ -50,46 +49,20 @@ Create a Github organization to use for this workshop:
 4. On the **Invite organization members** - just click the **Continue** button. On the next page **Enter Organization Details** either click **Submit** button or **skip this step** to finish creating the organization.
 
 >NOTE: Even though you have to provide an email for billing, you will not be charged anything as long as you choose the free option.
-
-## Add GitHub Credentials to Your Team Master
-
-We must exit the Blue Ocean UI to the Jenkins classic UI to complete the steps in this exercise.
-
-1. Click the ***Go to classic*** button at the top of common section of Blue Ocean’s navigation bar. <p><img src="images/go_to_classic.png" width=850/>
-
-Now, we will create a **Username and password** credential using you GitHub username and personal access token. This credential will be used to configure the *GitHub Organization* project we will create and will allow the auto-setup of a GitHub Organization level webhook:
-
-1. Navigate to the top-level of your Team Master - this should be one level-up from where you exit the Blue Ocean UI. You should see a **Manage Jenkins** link in the left navigation menu.
-2. Click on the **Credentials** link in the left navigation menu. <p><img src="images/credentials_breadcrumbs_left_nav2.png" width=850/>
-3. Click on the **github.com** link under **Stores scoped to Jenkins** <p><img src="images/credential_scope_github.png" width=850/>
-4. Click on **Add Credentials** in the left menu <p><img src="images/credential_add_link2.png" width=850/> 
-5. Fill out the form (**Username with password**)
-  - **Username**: Your GitHub user name
-  - **Password**: Your GitHub personal access token [created in setup](../Setup.md#create-a-github-personal-access-token) OR [here is the GitHub link to automatically select the required **Personal access token settings** if you haven't alreaedy done it](https://github.com/settings/tokens/new?scopes=repo,read:user,user:email,admin:org_hook,delete_repo)
-  - **ID**: Create an ID for your credentials (something like **github-[Your GitHub Usename]**)
-  - **Description**: Can be left blank if you want <p><img src="images/credential_github_token_save2.png" width=850/>
-6. Click on **OK**
     
-## Create and Run Workshop Setup Jenkins Pipeline Job
-
-The following instructions will cover the creation of a [CloudBees Core Pipeline Template Catalog](https://docs.cloudbees.com/docs/admin-resources/latest/defining-pipeline-template-catalogs/) based Pipeline job on the Team Master you created earlier.
-
-1. In your browser, navigate to the Team Master you created above. 
-2. If in the Blue Ocean UI, click the ***Go to classic*** button at the top of common section of Blue Ocean’s navigation bar.
-
-## Fork the Workshop Repository
-
-The workshop utilizes 2 repositories for our microblog sample application:
-
-[Microblog-Frontend](https://github.com/cloudbees-days/microblog-frontend)
-
-[Microblog-Backend](https://github.com/cloudbees-days/microblog-frontend)
-
-Fork both repositories into the GitHub Organization that you created above (if you are not sure how to fork a repository - see this [GitHub Guide on forking](https://guides.github.com/activities/forking/)):
-
-
-## Finished Setup
-You should see the following **Create a new Pipeline** screen for your Team:
+## Run Workshop Setup Pipeline
+You should see the following Blue Ocean **Pipelines** screen with one Pipeline named **workshop-setup** for your Team:
 <p><img src="images/setup-success.png" width=600/>
 
-You may proceed to the second lab: [*Add credentials and create job from catalog*](./TemplateCatalogJob.md).
+1. Click on the **workshop-setup** Pipeline job.
+2. On the next screen, click on the **Run** button in the middle of the screen. <p><img src="images/workshop-setup-run.png" width=600/>
+3. Fill in the required parameters: <p><img src="images/workshop-setup-input-form.png" width=400/>
+   1. ***githubPat** - the GitHub Personal Access Token you created above.
+   2. The GitHub username/account id you used to create the above GitHub Personal Access Token.
+   3. The name of the GitHub Organization you created above specifically for this workshop
+   4. The Kubernetes Namespace where your Team Master has been deployed - only change the default value if you are instructed to do so.
+4. Once you have provided the above required input parameters click the **Run** button at the bottom of the form.
+5. Blue Ocean will automatically switch to the Pipeline **Activity** screen, click anywhere on the Pipeline run row to see to view the Pipeline logs.<p><img src="images/workshop-setup-activity.png" width=600/>
+6. Once the **workshop-setup** Pipeline job completes successfully your Team Master will be restarted.
+
+You may proceed to the second lab: [*Pipeline Template Catalogs*](./TemplateCatalogJob.md).
