@@ -57,7 +57,7 @@ You should see the following Blue Ocean **Pipelines** screen with one Pipeline n
 1. Click on the **workshop-setup** Pipeline job.
 2. On the next screen, click on the **Run** button in the middle of the screen. <p><img src="images/workshop-setup-run.png" width=600/>
 3. Fill in the required parameters: <p><img src="images/workshop-setup-input-form.png" width=400/>
-   1. ***githubPat** - the GitHub Personal Access Token you created above.
+   1. ***githubPat*** - the GitHub Personal Access Token you created above.
    2. The GitHub username/account id you used to create the above GitHub Personal Access Token.
    3. The name of the GitHub Organization you created above specifically for this workshop
    4. The Kubernetes Namespace where your Team Master has been deployed - only change the default value if you are instructed to do so.
