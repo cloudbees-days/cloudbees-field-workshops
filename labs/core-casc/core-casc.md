@@ -17,7 +17,8 @@ Secrets for credentials can be managed in a few different ways:
 ### Master Level Kubernetes Agent Templates
 The CloudBees Kube Management plugin provides...
 
-## Automating CasC Updates
+## GitOps for Core CasC
+One of the main reasons to manage configurations as code is to allow it to be managed in source control like GitHub.
 * Create a Jenkins Pipeline job on your Team Master to automatically update the Core configuration bundle for your Team Master.
 * Add some configuration to the `jenkins.yaml` JCasC configuration in your **core-config-bundle** repository and commit the changes to tigger an update.
 
