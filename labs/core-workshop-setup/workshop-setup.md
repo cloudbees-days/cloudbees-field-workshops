@@ -66,12 +66,11 @@ You should see the following Blue Ocean **Pipelines** screen with one Pipeline n
 6. Once the **workshop-setup** Pipeline job completes successfully your Team Master will be restarted so you should see a **Connect lost: waiting** alert in the bottom right of your Blue Ocean screen.<p><img src="images/workshop-setup-connection-lost.png" width=600/>
 
 While your Team Master is restarting, lets explore what the `workshop-setup` Pipeline job did:
-1. In the GitHub Organization that you created for this workshop you will notice that you now have 5 repositories:
+1. In the GitHub Organization that you created for this workshop you will notice that you now have 5 repositories. The following repositories were [forked](https://guides.github.com/activities/forking/) from the CloudBees Days GitHub Organization by the `workshop-setup` job:
    1. **core-config-bundle** - this repository provides a base CasC configuration for everyones' Team Master.
    2. **pipeline-library** - a Jenkins Pipeline Shared Library that will be used by the Pipelines you create during this workshop.
    3. **pipeline-template-catalog** - a set of templated Pipelines that you will use to create Pipeline jobs for this workshop.
    4. **microblog-frontend** - a vue.js application to be used for this workshop.
    5. **microblog-backend** - a Python appliaction to be used in conjunction with the **microblog-frontend** application to be used with this workshop.
 
-
-You may proceed to the next lab: [*Configuration as Code (CasC) for CloudBees Core*](../core-casc/core-casc.md) or choose another lob on the [main page](../../README.md#workshop-labs).
+You may proceed to the next lab: [*Configuration as Code (CasC) for CloudBees Core*](../core-casc/core-casc.md) where we will explore your individual fork of the **core-config-bundle** repository or choose another lab on the [main page](../../README.md#workshop-labs).

@@ -2,4 +2,4 @@
 
 Pipeline Template Catalogs help ensure that Pipeline jobs conform to organizational standards.
 
-You may proceed to the next lab: [*Pipeline Policies*](../pipeline-policies/pipeline-policies.md) or choose another lob on the [main page](../../README.md#workshop-labs).
+You may proceed to the next lab: [*Pipeline Policies*](../pipeline-policies/pipeline-policies.md) or choose another lab on the [main page](../../README.md#workshop-labs).
