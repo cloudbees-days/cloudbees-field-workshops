@@ -2,4 +2,4 @@
 
 [Pipeline Policies for CloudBees Core](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines-user-guide/pipeline-policies) allow organizations to enforce standards across Pipeline jobs.
 
-You may proceed to the next lab: *Unit test fail and fix, re-run, and preview environment* or choose another lob on the [main page](../../README.md).
+You may proceed to the next lab: *Unit test fail and fix, re-run, and preview environment* or choose another lob on the [main page](../../README.md#workshop-labs).
