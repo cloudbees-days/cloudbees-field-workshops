@@ -22,6 +22,8 @@ One of the main reasons to manage configurations as code is to allow it to be ma
 * Create a Jenkins Pipeline job on your Team Master to automatically update the Core configuration bundle for your Team Master.
 * Add some configuration to the `jenkins.yaml` JCasC configuration in your **core-config-bundle** repository and commit the changes to tigger an update.
 
+You may proceed to the next lab: [*Pipeline Template Catalogs*](../pipeline-template-catalog/pipeline-template-catalog.md) or choose another lob on the [main page](../../README.md).
+
 
 
 
