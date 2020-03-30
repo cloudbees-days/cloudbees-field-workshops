@@ -74,4 +74,4 @@ While your Team Master is restarting, lets explore what the `workshop-setup` Pip
    5. **microblog-backend** - a Python appliaction to be used in conjunction with the **microblog-frontend** application to be used with this workshop.
 
 
-You may proceed to the next lab: [*Pipeline Template Catalogs*](./TemplateCatalogJob.md).
+You may proceed to the next lab: [*Configuration as Code (CasC) for CloudBees Core*](../core-casc/core-casc.md).
