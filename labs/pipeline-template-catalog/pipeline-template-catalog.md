@@ -18,4 +18,6 @@ Pipeline Template Catalogs help ensure that Pipeline jobs conform to organizatio
 8. We will now create a new folder called "**Template Jobs**"<p><img src="images/new-folder-click.png" width=800/>
 9. Inside of the folder configuration click on "**Restrict the kind of children in this folder**" and then select "**VueJS**" only and then hit save<p><img src="images/restricted-items-check.png" width=800/>
 
+Congratulations! You have imported a pipeline template catalog into your team master and then created a folder where only the job from that template can be created.
+
 You may proceed to the next lab: [*Pipeline Policies*](../pipeline-policies/pipeline-policies.md) or choose another lab on the [main page](../../README.md#workshop-labs).
