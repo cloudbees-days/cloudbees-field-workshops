@@ -1,12 +1,12 @@
 # <img src="images/cloudbeescore_logo.png" alt="CloudBees Core Logo" width="40" align="top"> CloudBees Core - Configuration as Code
 
-In this lab we are going to explore [Configuration as Code (CasC) for CloudBees Core](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-admin-guide/core-casc-modern) and then we will setup GitOps for Core CasC so that any changes you make in source control will automatically be updated in your Team Master. 
+In this lab we are going to explore [Configuration as Code (CasC) for CloudBees Core](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-admin-guide/core-casc-modern) and then we will setup GitOps for Core CasC so that any configuration changes you make in source control will automatically be updated in your Team Master. 
 
-CasC for CloudBees Core consists of a colletion of YAML files referred to as a configuration bundle (or CasC bundle) that includes four files:
+CasC for CloudBees Core consists of a collection of YAML files referred to as a configuration bundle (or CasC bundle) that includes four files:
 
 1. bundle.yaml - This file is an index file that describes the bundle, and references the other files in the bundle.
 2. jenkins.yaml - This file contains the Jenkins configuration as defined by the [Jenkins CasC plugin](https://github.com/jenkinsci/configuration-as-code-plugin).
-3. plugin-catalog.yaml - This file provides a list of plugins that are not already part of the Core plugin envelope and makes those plugins availalbe to be installed on a Managed Master.
+3. plugin-catalog.yaml - This file provides a list of plugins that are not already part of the Core plugin envelope and makes those plugins available to be installed on a Managed Master.
 4. plugins.yaml - This file contains a list of all plugin to be installed on a Managed Master by the Core CasC capability.
 
 ## Enabling CasC for a Core Managed/Team Master
