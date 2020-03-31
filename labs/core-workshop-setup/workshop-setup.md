@@ -9,12 +9,12 @@ Today's URL for the CloudBees Core Workshop environment is https://workshop.cb-s
 ### Login to CloudBees Core
 
 1. Goto to the Workshop URL provided by the instructor.
-2. Enter the username and password you created earlier.
+2. Enter the username and password you created earlier into the login screen.<p><img src="images/setup-login.png" width=400/>
 3. 
 
 ### Create a Team Master
 
-Next, everyone will get their own Jenkins masters referred to as a Team Master.
+Next, everyone will get their own Jenkins masters referred to as a [Team Master](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-admin-guide/cje-ux) in CloudBees Core.
 
 1. If not in CloudBees Team UI, click on the **Teams** link in the left menu; <p><img src="images/setup-classic-ui-Teams-link.png" width=400/>
 2. Click on the **Create team** button in the center of your screen;<p><img src="images/setup-create-a-team.png" width=400/>
