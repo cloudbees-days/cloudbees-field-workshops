@@ -14,17 +14,19 @@ The `workshop-setup` job copied the YAML configuration files from your forked **
 
 ## Configuration Components
 
-### Credentials
+### jenkins.yaml
+The `jenkins.yaml` is 
+#### Credentials
 Secrets for credentials can be managed in a few different ways:
   1. As properties files in the Jenkins Master file system.
   2. As Jenkins encrypted values used directly in the JCasC yaml configuration.
 
 The `workshop-setup` job encrypted the GitHub Personal Access Token that you provided so it can only be decrypted by your Team Master and then replaced placeholders in your copy of the `jenkins.yaml` file. Other placeholders that were replaced were: `REPLACE_GITHUB_ORG` and `REPLACE_WITH_YOUR_GITHUB_USERNAME`. 
 
-### Pipeline Shared Library
+#### Pipeline Shared Library
 CasC allows auto-configuring Pipeline Shared Libraries so it is very easy to provide shared libraries across many teams.
 
-### Master Level Kubernetes Agent Templates
+#### Master Level Kubernetes Agent Templates
 The CloudBees Kube Management plugin provides...
 
 ## GitOps for Core CasC
@@ -40,7 +42,28 @@ One of the main reasons to manage configurations as code is to allow it to be ma
 5. Select the **Credentials** with the ***GitHub PAT from JCasC - username/password*** description created for you with Core CasC, note the value of the **Owner** field is already filled in and matched the **Item Name** you entered above - ensure that it matches the name of the GitHub Organization you created for this workshop. Then click the **Build strategies** **Add** button and select ***Skip initial build on first branch indexing*** from the drop-down. Finally, click the **Save** button.<p><img src="images/organization-folder-save.png" width=600/>
 6. After you click the **Save** button the Organization Folder Pipeline project will scan every branch of every repository of your GitHub Organization creating a Pipeline job for each branch where there is a `Jenkinsfile` and creating a [Pipeline Multibranch project](https://jenkins.io/doc/book/pipeline/multibranch/#creating-a-multibranch-pipeline) for each repository where there is at least one branch containing a `Jenkinsfile`. Once the scan is complete, click on the breadcrumb link that matches your GitHub Organization name - just to the left of **Scan Organization**.
 7. Click on the link of the Jenkins Multibranch Pipeline project for your fork of the **core-config-bundle** repository.<p><img src="images/core-config-bundle-multibranch.png" width=600/>
-8. 
+8. Now we will use the GitHub file editor to add some configuration to the `jenkins.yaml` file in your forked **core-config-bundle** repository. Navigate to the `jenkins.yaml` file of your forked repository and then click on the pencil icon in the upper right to edit that file. <p><img src="images/edit-jenkins-yaml.png" width=600/>
+9. Add the following notification configuration - that enables Cross Team Collaboration - above the `jenkins` entry - **NOTE** that indentation is very important for YAML:
+```yaml
+notificationConfiguration:
+  enabled: true
+  router: "operationsCenter"
+jenkins:
+...
+```
+10. Next add the following hibernating master configuration just above the `kube` entry:
+```yaml
+  hibernationConfiguration:
+    activities:
+    - "build"
+    - "web"
+    enabled: true
+    gracePeriod: 600
+kube:
+...
+```
+11. Scroll to the bottom of the page, enter a commit message and click the **Commit changes** button to commit the configuration updates to the **master** branch of your fork of the **core-config-bundle** repository.
+
 
 >NOTE: The **Build strategies** configuration for Pipeline Organization Folder and Multibranch projects is provided by the [Basic Branch Build Strategies plugin](https://github.com/jenkinsci/basic-branch-build-strategies-plugin/blob/master/docs/user.adoc) and by selecting the *Skip initial build on first branch indexing* strategy we avoid an unnecessary build when we first create the Organization Folder project above.
 
