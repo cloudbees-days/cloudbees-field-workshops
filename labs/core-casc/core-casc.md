@@ -62,11 +62,11 @@ jenkins:
 kube:
 ...
 ```
-1.  Next, update the `systemMessage` entry under the `jenkins` category so it starts with **v2** instead of **v1**.<p><img src="images/update-system-message.png" width=600/>
-2.  Scroll to the bottom of the page, enter a commit message and click the **Commit changes** button to commit the configuration updates to the **master** branch of your fork of the **core-config-bundle** repository.
-3.  Next, open the `bundle.yaml` with the GitHub file editor and update the `version` entry to **2** and then commit the changes to the **master** branch of your fork of the **core-config-bundle** repository.
-4.  Now navigate to the **master** branch Pipeline job on your Team Master.
-
+11.  Next, update the `systemMessage` entry under the `jenkins` category so it starts with **v2** instead of **v1**.<p><img src="images/update-system-message.png" width=600/>
+12.  Scroll to the bottom of the page, enter a commit message and click the **Commit changes** button to commit the configuration updates to the **master** branch of your fork of the **core-config-bundle** repository.
+13.  Next, open the `bundle.yaml` with the GitHub file editor and update the `version` entry to **2** and then commit the changes to the **master** branch of your fork of the **core-config-bundle** repository.
+14.  Now navigate to the **master** branch Pipeline job on your Team Master.
+15.  After a couple of minutes you will see an addition **monitors** warning. Click on the **monitors** link and you will see that a new version of the configuration bundle is available - click on the **Reload Configuration** button and on the next screen click the **Yes** button to apply the updated configuration bundle.
 
 >NOTE: The **Build strategies** configuration for Pipeline Organization Folder and Multibranch projects is provided by the [Basic Branch Build Strategies plugin](https://github.com/jenkinsci/basic-branch-build-strategies-plugin/blob/master/docs/user.adoc) and by selecting the *Skip initial build on first branch indexing* strategy we avoid an unnecessary build when we first create the Organization Folder project above.
 
