@@ -18,17 +18,17 @@ The workshop is divided into 2 parts. The first will focus on the use of Core an
  * [Lab 1.1 - Core Setup](labs/core-workshop-setup/workshop-setup.md)
  * [Lab 1.2 - Configuration as Code (CasC) for CloudBees Core](labs/core-casc/core-casc.md)
  * [Lab 1.3 - Pipeline Template Catalogs and Pipeline Policies](labs/pipeline-template-catalog/pipeline-template-catalog.md)
- * [Lab 1.4 - Pipeline Policies](labs/pipeline-policies/pipeline-policies.md)
+ * [Lab 1.4 - Hibernating Masters](labs/hibernating-masters/hibernating-masters.md) 
  * Lab 1.5 - Cross Team Collaboration
- * [Lab 1.6 - Hibernating Masters](labs/hibernating-masters/hibernating-masters.md)
- * Lab 1.7 - Preview Environment
+ * Lab 1.6 - Preview Environment
 
 
 ## Rollout: 
  * [Lab 1.1 - Setting Up CloudBees Rollout](labs/rolloutSetup/rolloutSetup.md)
  * [Lab 1.2 - Adding a Sidebar to the Microblog](labs/rolloutFeature/rolloutFeature.md)
  * [Lab 1.3 - Control the Value of a Feature Flag](labs/rolloutExperiment/rolloutExperiment.md)
- * Lab 1.4 - Feature Flag GitOps
+ * Lab 1.4 - User Targeting
+ * Lab 1.5 - Feature Flag GitOps
 
 
 
