@@ -43,15 +43,7 @@ One of the main reasons to manage configurations as code is to allow it to be ma
 6. After you click the **Save** button the Organization Folder Pipeline project will scan every branch of every repository of your GitHub Organization creating a Pipeline job for each branch where there is a `Jenkinsfile` and creating a [Pipeline Multibranch project](https://jenkins.io/doc/book/pipeline/multibranch/#creating-a-multibranch-pipeline) for each repository where there is at least one branch containing a `Jenkinsfile`. Once the scan is complete, click on the breadcrumb link that matches your GitHub Organization name - just to the left of **Scan Organization**.
 7. Click on the link of the Jenkins Multibranch Pipeline project for your fork of the **core-config-bundle** repository.<p><img src="images/core-config-bundle-multibranch.png" width=600/>
 8. Now we will use the GitHub file editor to add some configuration to the `jenkins.yaml` file in your forked **core-config-bundle** repository. Navigate to the `jenkins.yaml` file of your forked repository and then click on the pencil icon in the upper right to edit that file. <p><img src="images/edit-jenkins-yaml.png" width=600/>
-9. Add the following notification configuration - that enables Cross Team Collaboration - above the `jenkins` entry - **NOTE** that indentation is very important for YAML:
-```yaml
-notificationConfiguration:
-  enabled: true
-  router: "operationsCenter"
-jenkins:
-...
-```
-10. Next add the following hibernating master configuration just above the `kube` entry:
+9.  Next add the following hibernating master configuration just above the `kube` entry:
 ```yaml
   hibernationConfiguration:
     activities:
@@ -62,11 +54,12 @@ jenkins:
 kube:
 ...
 ```
-11.  Next, update the `systemMessage` entry under the `jenkins` category so it starts with **v2** instead of **v1**.<p><img src="images/update-system-message.png" width=600/>
-12.  Scroll to the bottom of the page, enter a commit message and click the **Commit changes** button to commit the configuration updates to the **master** branch of your fork of the **core-config-bundle** repository.
-13.  Next, open the `bundle.yaml` with the GitHub file editor and update the `version` entry to **2** and then commit the changes to the **master** branch of your fork of the **core-config-bundle** repository.
-14.  Now navigate to the **master** branch Pipeline job on your Team Master.
-15.  After a couple of minutes you will see an addition **monitors** warning. Click on the **monitors** link and you will see that a new version of the configuration bundle is available - click on the **Reload Configuration** button and on the next screen click the **Yes** button to apply the updated configuration bundle.
+10.  Next, update the `systemMessage` entry under the `jenkins` category so it starts with **v2** instead of **v1**.<p><img src="images/update-system-message.png" width=600/>
+11.  Scroll to the bottom of the page, enter a commit message and click the **Commit changes** button to commit the configuration updates to the **master** branch of your fork of the **core-config-bundle** repository.
+12.  Next, open the `bundle.yaml` with the GitHub file editor and update the `version` entry to **2** and then commit the changes to the **master** branch of your fork of the **core-config-bundle** repository.
+13.  Now navigate to the **master** branch Pipeline job on your Team Master.
+14.  After a couple of minutes you will see an addition **monitors** warning. Click on the **monitors** link and you will see that a new version of the configuration bundle is available - click on the **Reload Configuration** button and on the next screen click the **Yes** button to apply the updated configuration bundle.
+15.  
 
 >NOTE: The **Build strategies** configuration for Pipeline Organization Folder and Multibranch projects is provided by the [Basic Branch Build Strategies plugin](https://github.com/jenkinsci/basic-branch-build-strategies-plugin/blob/master/docs/user.adoc) and by selecting the *Skip initial build on first branch indexing* strategy we avoid an unnecessary build when we first create the Organization Folder project above.
 
