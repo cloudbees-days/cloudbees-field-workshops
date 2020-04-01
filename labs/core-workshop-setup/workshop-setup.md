@@ -23,14 +23,14 @@ Next, everyone will get their own Jenkins masters referred to as a [Team Master]
 6. **Select the cluster endpoint to create the team in** - just stick with the default value `kubernetes` and click **Next**.
 7. **Select team master creation recipe** - click on the drop-down to see the options, but just stick with the **Basic** recipe.
 8. Finally, click the **Create team** button. <p><img src="images/setup-create-team.png" width=450/>
-9. While your master is being  created (**it takes anywhere from 2-3 minutes to provision your Team Master**), move onto the next section.
+9. While your Core Team Master is being created (**it takes anywhere from 2-3 minutes to provision your Team Master**), move onto the next section.
 
 ## Create a GitHub.com Account
-Setup a GitHub.com user account that will be used later in this workshop. If you have an existing GitHub.com account you will be able to use it if you are comfortable using that account to create a GitHub Organization and a GitHub Personal Access Token for use later in the workshop.
+Setup a GitHub.com user account that will be used later in this workshop. If you have an existing GitHub.com account you will be able to use it if you are comfortable using that account to create a GitHub Organization and a GitHub Personal Access Token for use in this workshop.
 
 1. Visit https://github.com/join and fill in the required fields to create a user account.
 2. Select "Unlimited public repositories for free" when choosing your plan.
-3. Verify your email account to ensure you account is activated.  An activated account will be **required** in the next few exercises.
+3. Verify your email account to ensure you account is activated.  An activated account will be **required** for the rest of this workshop.
 
 ## Create a GitHub Personal Access Token
 The following instructions cover how to create a Github Personal Access Token that you will use within Jenkins to connect Pipelines, Multibranch Pipelines, and Github Organization Projects to your Github repositories.
@@ -41,14 +41,14 @@ The following instructions cover how to create a Github Personal Access Token th
 
 ## Create a GitHub Organization
 
-Create a Github organization to use for this workshop:
+Create a GitHub organization to use for this workshop:
 
-1. On Github navigate to **Organizations**: https://github.com/settings/organizations (after logging in) 
+1. On GitHub navigate to **Organizations**: https://github.com/settings/organizations (after logging in) 
 2. Click on **New Organization** <p><img src="images/setup-github-new-org.png" width=550/>
 3. Fill in the **Organization Name**, **Billing Email**, and click on **Create Organization**<p><img src="images/setup-create-org.png" width=550/>
-4. On the **Invite organization members** - just click the **Continue** button. On the next page **Enter Organization Details** either click **Submit** button or **skip this step** to finish creating the organization.
+4. On the **Invite organization members** - just click the **Continue** button. On the next page, **Enter Organization Details**, either click **Submit** button or **skip this step** to finish creating the GitHub Organization.
 
->NOTE: Even though you have to provide an email for billing, you will not be charged anything as long as you choose the free option.
+>NOTE: Even though you have to provide an email for billing, you will NOT be charged anything as long as you choose the free option.
     
 ## Run Workshop Setup Pipeline
 You should see the following Blue Ocean **Pipelines** screen with one Pipeline named **workshop-setup** for your Team:
@@ -65,12 +65,12 @@ You should see the following Blue Ocean **Pipelines** screen with one Pipeline n
 5. Blue Ocean will automatically switch to the Pipeline **Activity** screen, click anywhere on the Pipeline run row to see the Pipeline run and view the logs.<p><img src="images/workshop-setup-activity.png" width=600/>
 6. Once the **workshop-setup** Pipeline job completes successfully your Team Master will be restarted so you should see a **Connect lost: waiting** alert in the bottom right of your Blue Ocean screen.<p><img src="images/workshop-setup-connection-lost.png" width=600/>
 
-While your Team Master is restarting, lets explore what the `workshop-setup` Pipeline job did:
-1. In the GitHub Organization that you created for this workshop you will notice that you now have 5 repositories. The following repositories were [forked](https://guides.github.com/activities/forking/) from the CloudBees Days GitHub Organization by the `workshop-setup` job:
+While your Team Master is restarting, let's explore what the `workshop-setup` Pipeline job did:
+7. In the GitHub Organization that you created for this workshop you will notice that you now have 5 repositories. The following repositories were [forked](https://guides.github.com/activities/forking/) from the [CloudBees Days GitHub Organization](https://github.com/cloudbees-days) by the `workshop-setup` job:
    1. **core-config-bundle** - this repository provides a base CasC configuration for everyones' Team Master.
    2. **pipeline-library** - a Jenkins Pipeline Shared Library that will be used by the Pipelines you create during this workshop.
    3. **pipeline-template-catalog** - a set of templated Pipelines that you will use to create Pipeline jobs for this workshop.
    4. **microblog-frontend** - a vue.js application to be used for this workshop.
-   5. **microblog-backend** - a Python appliaction to be used in conjunction with the **microblog-frontend** application to be used with this workshop.
+   5. **microblog-backend** - a Python application to be used in conjunction with the **microblog-frontend** application to be used with this workshop.
 
 You may proceed to the next lab: [*Configuration as Code (CasC) for CloudBees Core*](../core-casc/core-casc.md) where we will explore your individual fork of the **core-config-bundle** repository or choose another lab on the [main page](../../README.md#workshop-labs).
