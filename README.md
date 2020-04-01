@@ -28,7 +28,8 @@ The workshop is divided into 2 parts. The first will focus on the use of Core an
  * [Lab 1.2 - Adding a Sidebar to the Microblog](labs/rolloutFeature/rolloutFeature.md)
  * [Lab 1.3 - Control the Value of a Feature Flag](labs/rolloutExperiment/rolloutExperiment.md)
  * Lab 1.4 - User Targeting
- * Lab 1.5 - Feature Flag GitOps
+ * Lab 1.5 - Analytics and A/B testing
+ * Lab 1.6 - Feature Flag GitOps
 
 
 
