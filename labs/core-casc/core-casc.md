@@ -1,33 +1,34 @@
 # <img src="images/cloudbeescore_logo.png" alt="CloudBees Core Logo" width="40" align="top"> CloudBees Core - Configuration as Code
 
-In this lab we are going to explore [Configuration as Code (CasC) for CloudBees Core](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-admin-guide/core-casc-modern) and then we will setup GitOps for Core CasC so that any configuration changes you make in source control will automatically be updated in your Team Master. 
+In this lab we are going to explore [Configuration as Code (CasC) for CloudBees Core](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-admin-guide/core-casc-modern) and then we will setup GitOps for Core CasC so that any Jenkins configuration changes you make in source control will automatically be updated in your Core Team Master. 
 
 CasC for CloudBees Core consists of a collection of YAML files referred to as a configuration bundle (or CasC bundle) that includes four files:
 
-1. bundle.yaml - This file is an index file that describes the bundle, and references the other files in the bundle.
-2. jenkins.yaml - This file contains the Jenkins configuration as defined by the [Jenkins CasC plugin](https://github.com/jenkinsci/configuration-as-code-plugin).
-3. plugin-catalog.yaml - This file provides a list of plugins that are not already part of the Core plugin envelope and makes those plugins available to be installed on a Managed Master.
-4. plugins.yaml - This file contains a list of all plugin to be installed on a Managed Master by the Core CasC capability.
+1. `bundle.yaml` - This file is an index file that describes the bundle, and references the other files in the bundle.
+2. `jenkins.yaml` - This file contains the Jenkins configuration as defined by the [Jenkins CasC plugin](https://github.com/jenkinsci/configuration-as-code-plugin).
+3. `plugin-catalog.yaml` - This file provides a list of plugins that are not already part of the Core plugin envelope and makes those plugins available to be installed on a Managed Master.
+4. `plugins.yaml` - This file contains a list of all plugin to be installed on a Managed Master by the Core CasC capability.
 
 ## Enabling CasC for a Core Managed/Team Master
-The `workshop-setup` job copied the YAML configuration files from your forked **core-config-bundle** repository to a sub-directory with the same name as your Team Master inside a special directory in the Jenkins home of the Core Operations Center from which you created your Team Master. When the Core Operations Center is provisioning a Team/Managed Master it will check to see if there is a matching configuration for the name of the Team/Managed Master being provisioned.
+The `workshop-setup` job copied the YAML configuration files from your forked **core-config-bundle** repository to a sub-directory with the same name as your Team Master inside a special directory in the Jenkins home of the Core Operations Center from which you created your Team Master. When the Core Operations Center is provisioning a Team/Managed Master it will check to see if there is a matching configuration for the name of the Team/Managed Master being provisioned and copy that Core configuration bundle to the Master's Jenkins home directory and set the XYZ environment variable.
 
-## Configuration Components
+## Configuration Bundle Components
 
 ### jenkins.yaml
-The `jenkins.yaml` is 
-#### Credentials
-Secrets for credentials can be managed in a few different ways:
-  1. As properties files in the Jenkins Master file system.
-  2. As Jenkins encrypted values used directly in the JCasC yaml configuration.
+The `jenkins.yaml` provides all of the Jenkins system and plugin configuration - that is currently supported and primarily relies on the [OSS Jenkins Configuration as Code (JCasC) plugin](https://github.com/jenkinsci/configuration-as-code-plugin) for the OSS system and plugin configuration that is supported.
 
-The `workshop-setup` job encrypted the GitHub Personal Access Token that you provided so it can only be decrypted by your Team Master and then replaced placeholders in your copy of the `jenkins.yaml` file. Other placeholders that were replaced were: `REPLACE_GITHUB_ORG` and `REPLACE_WITH_YOUR_GITHUB_USERNAME`. 
+#### Credentials
+[JCasC Secrets](https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/features/secrets.adoc) for credentials can be managed in a few different ways:
+  1. As properties files in the Jenkins Master file system. For secrets that you want to share across Team Masters you can mount the same [Kubernetes Secret](https://kubernetes.io/docs/concepts/configuration/secret/) to every Master.
+  2. As Jenkins encrypted values using the Jenkins-internal secret key allowing the encrypted strings to be used directly in the  `jenkins.yaml` configuration as we are doing in this workshop. The Jenkins-internal secret key used for encryption is unique for to Jenkins instance and means that the credentials are not portable between Team Masters.
+
+The `workshop-setup` job encrypted the GitHub Personal Access Token that you provided so it can only be decrypted by your Team Master and then replaced placeholders in your copy of the `jenkins.yaml` file. Other placeholders that were replaced were: `REPLACE_GITHUB_ORG` with the GitHub Organization your created for the workshop and `REPLACE_WITH_YOUR_GITHUB_USERNAME` with the GitHub username you are using for this workshop. 
 
 #### Pipeline Shared Library
-CasC allows auto-configuring Pipeline Shared Libraries so it is very easy to provide shared libraries across many teams.
+CasC allows auto-configuring Pipeline Shared Libraries so it is very easy to provide the same Pipeline Shared Libraries across multiple teams.
 
 #### Master Level Kubernetes Agent Templates
-The CloudBees Kube Management plugin provides...
+The CloudBees Kube Management plugin allows you to [configure Kubernetes Pod Templates for agents at the Team/Master level](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-admin-guide/agents#_editing_pod_templates_per_team_using_masters) but still managed the Kubernetes cluster configuration for Kuberentes based agents at the Core Operations Center level.
 
 ## GitOps for Core CasC
 One of the main reasons to manage configurations as code is to allow it to be managed in source control. In this exercise we will setup a Jenkins Pipeline job - a [Pipeline Organization Folder](https://jenkins.io/doc/book/pipeline/multibranch/#organization-folders) - on your Team Master that will be triggered whenever you commit any changes to the **master** branch of that repository.
