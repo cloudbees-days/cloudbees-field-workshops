@@ -1,6 +1,6 @@
 # <img src="images/cloudbeescore_logo.png" alt="CloudBees Core Logo" width="40" align="top"> CloudBees Core - Configuration as Code
 
-In this lab we are going to explore [Configuration as Code (CasC) for CloudBees Core](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-admin-guide/core-casc-modern) and then we will setup GitOps for Core CasC so that any Jenkins configuration changes you make in source control will automatically be updated in your Core Team Master. 
+In this lab we are going to explore [Configuration as Code (CasC) for CloudBees Core](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-admin-guide/core-casc-modern) and then we will setup [GitOps](https://www.gitops.tech/) for Core CasC so that any Jenkins configuration changes you make in source control will automatically be updated in your Core Team Master. 
 
 CasC for CloudBees Core consists of a collection of YAML files referred to as a configuration bundle (or CasC bundle) that includes four files:
 
