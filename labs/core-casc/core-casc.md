@@ -58,7 +58,7 @@ One of the main reasons to manage configurations as code is to allow it to be ma
     - "build"
     - "web"
     enabled: true
-    gracePeriod: 600
+    gracePeriod: 240
 kube:
 ...
 ```
