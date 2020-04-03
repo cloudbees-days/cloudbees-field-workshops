@@ -5,12 +5,13 @@ In this lab we are going to explore [Configuration as Code (CasC) for CloudBees 
 CasC for CloudBees Core consists of a collection of YAML files referred to as a configuration bundle (or CasC bundle) that includes four files:
 
 1. `bundle.yaml` - This file is an index file that describes the bundle, and references the other files in the bundle.
-2. `jenkins.yaml` - This file contains the Jenkins configuration as defined by the [Jenkins CasC plugin](https://github.com/jenkinsci/configuration-as-code-plugin).
+2. `jenkins.yaml` - This file contains the Jenkins configuration as defined by the OSS [Jenkins CasC plugin](https://github.com/jenkinsci/configuration-as-code-plugin).
 3. `plugin-catalog.yaml` - This file provides a list of plugins that are not already part of the Core plugin envelope and makes those plugins available to be installed on a Managed Master.
 4. `plugins.yaml` - This file contains a list of all plugin to be installed on a Managed Master by the Core CasC capability.
 
 ## Enabling CasC for a Core Managed/Team Master
-The `workshop-setup` job copied the YAML configuration files from your forked **core-config-bundle** repository to a sub-directory with the same name as your Team Master inside a special directory in the Jenkins home of the Core Operations Center from which you created your Team Master. When the Core Operations Center is provisioning a Team/Managed Master it will check to see if there is a matching configuration for the name of the Team/Managed Master being provisioned and copy that Core configuration bundle to the Master's Jenkins home directory and set the XYZ environment variable.
+
+The `workshop-setup` job modified the `jenkins.yaml` file with `sed` and then copied the Core configuration bundle YAML files from your forked **core-config-bundle** repository to a sub-directory with the same name as your Team Master inside a special directory - the `jcasc-bundles-store` directory - in the Jenkins home of the Core Operations Center from which you created your Team Master. When the Core Operations Center is provisioning a Team/Managed Master it will check to see if there is a matching configuration for the name of the Team/Managed Master being provisioned and copy that Core configuration bundle link YAML file to the `/var/casc-bundle/bundle-link.yaml` on your Team Master and set the value `core.casc.config.bundle` system property to match that file path. Your Team Master will then use that protected link to download the Core configuration bundle to your Team Master.
 
 ## Configuration Bundle Components
 
