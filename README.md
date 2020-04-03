@@ -20,7 +20,7 @@ The workshop is divided into 2 parts. The first will focus on the use of Core an
  * [Lab 1.3 - Pipeline Template Catalogs & Pipeline Policies](labs/pipeline-template-catalog/pipeline-template-catalog.md)
  * [Lab 1.4 - Hibernating Masters](labs/hibernating-masters/hibernating-masters.md) 
  * [Lab 1.5 - Cross Team Collaboration](labs/cross-team-collaboration/cross-team-collaboration.md)
- * Lab 1.6 - Preview Environment
+ * [Lab 1.6 - Preview Environment](labs/core-preview-environment/catalog-templates.md)
 
 
 ## Rollout: 
