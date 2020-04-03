@@ -13,7 +13,13 @@ The Master Hibernation is managed at the global Jenkins configuration level.
 ## Hibernation Proxy for Webhooks
 The hibernating monitor service provides a post proxy for things like GitHub webhooks.
 
+Navigate to the GitHub Organization you created for this workshop and click on the **Settings** link. 
+
+In the **Organization settings** menu click on the **Webhooks** link. 
+
+Click on the **Edit** button next to the webhook that was created for your Team Master.
+
 ## Waking Your Master
 Just click on it silly :) But seriously, it will take a few minutes to wake-up as Jenkins is a heavy sleeper. So, while your Team Master is waking from its gentle slumber, let's find something to divert our attention from how long it actually takes a Core Managed Master to un-hibernate.
 
-You may proceed to the next lab: [*Cross Team Collaboration*](../cross-team-collaboration/cross-team-collaboration.md) or choose another lab on the [main page](../../README.md#workshop-labs).
+You may proceed to the next lab: [*Pipeline Template Catalogs & Pipeline Policies*](../pipeline-template-catalog/pipeline-template-catalog.md) or choose another lab on the [main page](../../README.md#workshop-labs).

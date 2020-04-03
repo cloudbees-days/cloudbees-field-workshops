@@ -17,8 +17,8 @@ The workshop is divided into 2 parts. The first will focus on the use of Core an
 ## Core:
  * [Lab 1 - Core Setup](labs/core-workshop-setup/workshop-setup.md)
  * [Lab 2 - Configuration as Code (CasC) for CloudBees Core](labs/core-casc/core-casc.md)
- * [Lab 3 - Pipeline Template Catalogs & Pipeline Policies](labs/pipeline-template-catalog/pipeline-template-catalog.md)
- * [Lab 4 - Hibernating Masters](labs/hibernating-masters/hibernating-masters.md) 
+ * [Lab 3 - Hibernating Masters](labs/hibernating-masters/hibernating-masters.md) 
+ * [Lab 4 - Pipeline Template Catalogs & Pipeline Policies](labs/pipeline-template-catalog/pipeline-template-catalog.md)
  * [Lab 5 - Cross Team Collaboration](labs/cross-team-collaboration/cross-team-collaboration.md)
  * [Lab 6 - Preview Environment](labs/core-preview-environment/catalog-templates.md)
 
