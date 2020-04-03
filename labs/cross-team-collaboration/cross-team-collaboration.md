@@ -1,6 +1,6 @@
 # <img src="images/cloudbeescore_logo.png" alt="CloudBees Core Logo" width="40" align="top"> CloudBees Core - Cross Team Collaboration
 
-The [Cross Team Collaboration](https://docs.cloudbees.com/docs/cloudbees-core/2.204.2.2/cloud-admin-guide/cross-team-collaboration) functionality in CloudBees Core allows you to create events and listeners to trigger jobs across the cluster. It gives you effectively a pub/sub relationship where jobs can send an event with data, and the jobs listening for it can trigger and process the data.
+The [Cross Team Collaboration](https://docs.cloudbees.com/docs/cloudbees-core/2.204.2.2/cloud-admin-guide/cross-team-collaboration) functionality in CloudBees Core allows you to create events and listeners to trigger jobs across Core Masters. It gives you effectively a pub/sub relationship where jobs can send an event with data, and the jobs listening for it can trigger and process the data.
 
 ![Cross Team Collaboration diagram](https://docs.cloudbees.com/docs/cloudbees-common/latest/_images/cross-team-collaboration-screenshots/cross-team-diagram.abf4b33.png)
 
@@ -87,7 +87,7 @@ EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 ```
 
-We can see in the build stage, by default, it is using this `node:lts-alpine` image. This lts-alpine image is great, but we actually want to use our own internal version of the image since it goes through our rigorous security scanning process.
+We can see in the build stage, by default, it is using this `node:lts-alpine` image. This `lts-alpine` image is great, but we actually want to use our own internal version of the image since it goes through our rigorous security scanning process.
 
 If you were to build this locally with Docker, you could run something like `docker build -t microblog-frontend NODE_IMAGE=internal-node:tag .` to use a specific `NODE_IMAGE`.
 

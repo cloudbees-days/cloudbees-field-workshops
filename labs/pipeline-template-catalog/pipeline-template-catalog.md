@@ -1,4 +1,4 @@
-# <img src="images/cloudbeescore_logo.png" alt="CloudBees Core Logo" width="40" align="top"> CloudBees Core - Pipeline Template Catalogs
+# <img src="images/cloudbeescore_logo.png" alt="CloudBees Core Logo" width="40" align="top"> CloudBees Core - Pipeline Template Catalogs & Pipeline Policies
 
 Pipeline Template Catalogs help ensure that Pipeline jobs conform to organizational standards.
 
@@ -17,6 +17,12 @@ Pipeline Template Catalogs help ensure that Pipeline jobs conform to organizatio
 7. Click on the **New Item** link in the left menu<p><img src="images/new-item-click.png" width=800/>
 8. We will now create a new folder called "**Template Jobs**"<p><img src="images/new-folder-click.png" width=800/>
 9. Inside of the folder configuration click on "**Restrict the kind of children in this folder**" and then select "**VueJS**" only and then hit save<p><img src="images/restricted-items-check.png" width=800/>
+
+## Create a Pipeline Policy
+In this exercise you will create a Pipeline Policy to ensure that all Pipeline jobs that run on your Team Master have a `timeout` set.
+
+## Create vue.js Job from Pipeline Template Catalog
+In this exercise you will create a new Multibranch Pipeline job from the Pipeline Template Catalog you added above.
 
 Congratulations! You have imported a pipeline template catalog into your team master and then created a folder where only the job from that template can be created.
 
