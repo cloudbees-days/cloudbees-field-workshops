@@ -140,4 +140,4 @@ triggers {
 
 ---
 
-You may proceed to the next lab: [*Preview Environments with Core*](../hibernating-masters/hibernating-masters.md) or choose another lab on the [main page](../../README.md#workshop-labs).
+You may proceed to the next lab: [*Preview Environments with Core*](../core-preview-environment/catalog-templates.md) or choose another lab on the [main page](../../README.md#workshop-labs).
