@@ -15,27 +15,27 @@ The workshop is divided into 2 parts. The first will focus on the use of Core an
 
 # Workshop Labs
 ## Core:
- * [Lab 1.1 - Core Setup](labs/core-workshop-setup/workshop-setup.md)
- * [Lab 1.2 - Configuration as Code (CasC) for CloudBees Core](labs/core-casc/core-casc.md)
- * [Lab 1.3 - Pipeline Template Catalogs & Pipeline Policies](labs/pipeline-template-catalog/pipeline-template-catalog.md)
- * [Lab 1.4 - Hibernating Masters](labs/hibernating-masters/hibernating-masters.md) 
- * [Lab 1.5 - Cross Team Collaboration](labs/cross-team-collaboration/cross-team-collaboration.md)
- * [Lab 1.6 - Preview Environment](labs/core-preview-environment/catalog-templates.md)
+ * [Lab 1 - Core Setup](labs/core-workshop-setup/workshop-setup.md)
+ * [Lab 2 - Configuration as Code (CasC) for CloudBees Core](labs/core-casc/core-casc.md)
+ * [Lab 3 - Pipeline Template Catalogs & Pipeline Policies](labs/pipeline-template-catalog/pipeline-template-catalog.md)
+ * [Lab 4 - Hibernating Masters](labs/hibernating-masters/hibernating-masters.md) 
+ * [Lab 5 - Cross Team Collaboration](labs/cross-team-collaboration/cross-team-collaboration.md)
+ * [Lab 6 - Preview Environment](labs/core-preview-environment/catalog-templates.md)
 
 
 ## Rollout: 
- * [Lab 1.1 - Setting Up CloudBees Rollout](labs/rolloutSetup/rolloutSetup.md)
- * [Lab 1.2 - Adding a Sidebar to the Microblog](labs/rolloutFeature/rolloutFeature.md)
- * [Lab 1.3 - Control the Value of a Feature Flag](labs/rolloutExperiment/rolloutExperiment.md)
- * Lab 1.4 - User Targeting
- * Lab 1.5 - Analytics and A/B testing
- * Lab 1.6 - Feature Flag GitOps
+ * [Lab 1 - Setting Up CloudBees Rollout](labs/rolloutSetup/rolloutSetup.md)
+ * [Lab 2 - Adding a Sidebar to the Microblog](labs/rolloutFeature/rolloutFeature.md)
+ * [Lab 3 - Control the Value of a Feature Flag](labs/rolloutExperiment/rolloutExperiment.md)
+ * Lab 4 - User Targeting
+ * Lab 5 - Analytics and A/B testing
+ * Lab 6 - Feature Flag GitOps
 
 
 
 ## Flow:
 Coming soon...
- * Lab 1.1 - Create release pipeline from service catalog
- * Lab 1.2 - Add gates to the release pipeline
- * Lab 1.3 - Merge into master and run through release pipeline
- * Lab 1.4 - Check out the live app, close the ticket, observe flow Dashboard
+ * Lab 1 - Create release pipeline from service catalog
+ * Lab 2 - Add gates to the release pipeline
+ * Lab 3 - Merge into master and run through release pipeline
+ * Lab 4 - Check out the live app, close the ticket, observe flow Dashboard
