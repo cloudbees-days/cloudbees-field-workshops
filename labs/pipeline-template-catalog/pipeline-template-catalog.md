@@ -19,6 +19,8 @@ Pipeline Template Catalogs help ensure that Pipeline jobs conform to organizatio
 9. Inside of the folder configuration click on "**Restrict the kind of children in this folder**" and then select "**VueJS**" only and then hit save<p><img src="images/restricted-items-check.png" width=800/>
 
 ## Create a Pipeline Policy
+[Pipeline Policies for CloudBees Core](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines-user-guide/pipeline-policies) allow organizations to enforce standards across Pipeline jobs.
+
 In this exercise you will create a Pipeline Policy to ensure that all Pipeline jobs that run on your Team Master have a `timeout` set.
 
 ## Create vue.js Job from Pipeline Template Catalog
