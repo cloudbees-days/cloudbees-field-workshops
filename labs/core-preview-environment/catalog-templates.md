@@ -1,23 +1,21 @@
 # CloudBees Pipeline Template Catalogs
 
-Pipeline Template Catalogs provide version controlled paramaterized templates for Multibranch and stand-alone Pipeline jobs. In this exercise we will use a [Pipeline Template Catalogs](https://github.com/cloudbees-days/pipeline-template-catalog/tree/master/templates/nodejs-app) to create another Multibranch Pipeline project for your forked **helloworld-nodejs** repository. All you will need to do is fill in a few simple parameters and you will end up with a complete end-to-end CI/CD Pipeline for the **helloworld-nodejs** application - and it won't be using the `Jenkinsfile` from your repository.
+Pipeline Template Catalogs provide version controlled paramaterized templates for Multibranch and stand-alone Pipeline jobs. In this exercise we will use a [Pipeline Template Catalogs](https://github.com/cloudbees-days/pipeline-template-catalog/tree/master/templates/nodejs-app) to create another Multibranch Pipeline project for your forked **microblog-frontend** repository. All you will need to do is fill in a few simple parameters and you will end up with a complete end-to-end CI/CD Pipeline for the **microblog-frontend** application - and it won't be using the `Jenkinsfile` from your repository.
 
 ## Create a Multibranch Project from a Pipeline Template Catalogs
-[Jenkins Configurations as Code](https://wiki.jenkins.io/display/JENKINS/Configuration+as+Code+Plugin) (JCasC) was used to [pre-configure a Pipeline Template Catalog on everyone's Team Masters](https://github.com/kypseli/cb-core-mm/blob/kube-workshop/quickstart/init_07_pipeline_template_global_catalog.groovy) and there is a **template-jobs** folder in your Team Master named folder that has been configured (using the [CloudBees Folders Plus folder item filtering](https://go.cloudbees.com/docs/plugins/folders-plus/#folders-plus-sect-restrict)) to only allow the creation of jobs from that Catalog of templates. Now we will create a templatized end-to-end CI/CD Pipeline Multibranch project for your forked copy of the **helloworld-nodejs** repository.
+[Jenkins Configurations as Code](https://wiki.jenkins.io/display/JENKINS/Configuration+as+Code+Plugin) (JCasC) was used to [pre-configure a Pipeline Template Catalog on everyone's Team Masters](https://github.com/kypseli/cb-core-mm/blob/kube-workshop/quickstart/init_07_pipeline_template_global_catalog.groovy) and there is a **template-jobs** folder in your Team Master named folder that has been configured (using the [CloudBees Folders Plus folder item filtering](https://go.cloudbees.com/docs/plugins/folders-plus/#folders-plus-sect-restrict)) to only allow the creation of jobs from that Catalog of templates. Now we will create a templatized end-to-end CI/CD Pipeline Multibranch project for your forked copy of the **microblog-frontend** repository.
 
 1. On your Team Master navigate to the **template-jobs** folder
-2. Click on the ***New Node.js App Multibranch Pipeline*** link in the left menu <p><img src="images/template_link.png" width=800/>
-3. Enter an item name of your **[GitHub username]-hello**, select **Node.js App Multibranch Pipeline**  and click the **OK** button<p><img src="images/item_form.png" width=800/>
+2. Click on the ***New VueJS*** link in the left menu <p><img src="images/template_link.png" width=800/>
+3. Enter an item name of your **[GitHub username]-hello**, select **VueJS**  and click the **OK** button<p><img src="images/item_form.png" width=800/>
 4. Fill out the template parameters:
    1. **Repository Owner**: the GitHub Organization your created for the CloudBees Core workshop
-   2. **GitHub Credential ID**: select the *username/password* credential you created for the the CloudBees Core workshop - it will show up as - [GitHub username]/******
-   3. Click the **Save** button<p><img src="images/template_parameters.png" width=800/>
-5. The initial scan won't find any branches because you have to add the [custom markerfile](https://go.cloudbees.com/docs/cloudbees-core/cloud-admin-guide/pipeline/#_multibranch_pipeline_options_in_template_yaml) `.nodejs-app` to any branch that you want a job to be created. The [template we are using has a `markerFile` parameter set to `.nodejs-app`](https://github.com/cloudbees-days/pipeline-template-catalog/blob/master/templates/nodejs-app/template.yaml#L29), so we need to add that file to any repo we want to build. Start by adding it to the **development** branch of your forked copy of the **helloworld-nodejs** repository.
-6. Make sure you are on the **development** branch and click on the **Create new  file** button towards the top right of the screen. 
-7. Name the file `.nodejs-app` and commit the empty file to your **development** branch.
-8. You may need to refresh the Multibranch job screen, but you should have only **one** job - for the **development** branch. <p><img src="images/one_job.png" width=800/>
+   2. **Repository**: The name of your forked repository, "microblog-frontend"
+   3. **GitHub Credential ID**: select the *username/password* credential you created for the the CloudBees Core workshop - it will show up as - [GitHub username]/******
+   4. Click the **Save** button<p><img src="images/template_parameters.png" width=800/>
+5. After the initial scan you should see two jobs, for the two branches in your forked repository<p><img src="images/one_job.png" width=800/>
 
-## Deploy to Staging
+## Deploy to Staging -- How do we want to handle this?
 Now we will create a Pull Request and merge the change to the **master** branch of your forked copy of the **helloworld-nodejs** repository.
 
 1. Navigate to your forked **helloworld-nodejs** repository in GitHub - click on the **New pull request** button <p><img src="images/conditional_new_pull_request.png" width=800/>
