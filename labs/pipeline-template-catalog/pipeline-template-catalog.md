@@ -28,4 +28,4 @@ In this exercise you will create a new Multibranch Pipeline job from the Pipelin
 
 Congratulations! You have imported a pipeline template catalog into your team master and then created a folder where only the job from that template can be created.
 
-You may proceed to the next lab: [*Hibernating Masters*](../hibernating-masters/hibernating-masters.md) or choose another lab on the [main page](../../README.md#workshop-labs).
+You may proceed to the next lab: [*Cross Team Collaboration*](../cross-team-collaboration/cross-team-collaboration.md) or choose another lab on the [main page](../../README.md#workshop-labs).
