@@ -19,6 +19,10 @@ In the **Organization settings** menu click on the **Webhooks** link.
 
 Click on the **Edit** button next to the webhook that was created for your Team Master.
 
+Update the **Payload URL** by inserting `/hibernation/queue` in front of `/github-webhook/`.
+
+Scroll down and click on the **Update webhook** button.
+
 ## Waking Your Master
 Just click on it silly :) But seriously, it will take a few minutes to wake-up as Jenkins is a heavy sleeper. So, while your Team Master is waking from its gentle slumber, let's find something to divert our attention from how long it actually takes a Core Managed Master to un-hibernate.
 
