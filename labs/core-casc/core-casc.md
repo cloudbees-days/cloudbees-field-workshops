@@ -20,26 +20,28 @@ Your Team Master will then use that protected link to download the Core configur
 ## Configuration Bundle Components
 
 ### jenkins.yaml
-The `jenkins.yaml` provides all of the Jenkins system and plugin configuration - that is currently supported and primarily relies on the [OSS Jenkins Configuration as Code (JCasC) plugin](https://github.com/jenkinsci/configuration-as-code-plugin) for the OSS system and plugin configuration that is supported.
+The `jenkins.yaml` provides all of the Jenkins system and plugin configuration - that is currently supported and primarily relies on the [OSS Jenkins Configuration as Code (JCasC) plugin](https://github.com/jenkinsci/configuration-as-code-plugin) for the OSS system and plugin configuration that is supported. Also note that some, but not all, CloudBees Core plugins support JCasC based configuration.
 
 #### Credentials
+Core CasC was used to create two user specific Jenkins credentials for use in the rest of this workshop.
+
 [JCasC Secrets](https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/features/secrets.adoc) for credentials can be managed in a few different ways:
   1. As properties files in the Jenkins Master file system. For secrets that you want to share across Team Masters you can mount the same [Kubernetes Secret](https://kubernetes.io/docs/concepts/configuration/secret/) to every Master.
   2. As Jenkins encrypted values using the Jenkins-internal secret key allowing the encrypted strings to be used directly in the  `jenkins.yaml` configuration as we are doing in this workshop. The Jenkins-internal secret key used for encryption is unique for to Jenkins instance and means that the credentials are not portable between Team Masters.
 
-The `workshop-setup` job encrypted the GitHub Personal Access Token that you provided so it can only be decrypted by your Team Master and then replaced placeholders in your copy of the `jenkins.yaml` file. Other placeholders that were replaced were: `REPLACE_GITHUB_ORG` with the GitHub Organization your created for the workshop and `REPLACE_WITH_YOUR_GITHUB_USERNAME` with the GitHub username you are using for this workshop. 
+The `workshop-setup` job used Jenkins to encrypt the GitHub Personal Access Token that you provided so it can only be decrypted by your Team Master and then replaced placeholders in your copy of the `jenkins.yaml` file. Other placeholders that were replaced were: `REPLACE_GITHUB_ORG` with the GitHub Organization your created for the workshop and `REPLACE_WITH_YOUR_GITHUB_USERNAME` with the GitHub username you are using for this workshop. 
 
 #### Pipeline Shared Library
-CasC allows auto-configuring Pipeline Shared Libraries so it is very easy to provide the same Pipeline Shared Libraries across multiple teams.
+CasC allows auto-configuring Pipeline Shared Libraries so it is very easy to provide the same Pipeline Shared Libraries across multiple teams as we have done in this workshop. The Core Pipeline Shared Library was configured at the global level so that it will be available to all the Jenkins Pipeline that you run on your Team Master.
 
 #### Master Level Kubernetes Agent Templates
 The CloudBees Kube Management plugin allows you to [configure Kubernetes Pod Templates for agents at the Team/Master level](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-admin-guide/agents#_editing_pod_templates_per_team_using_masters) but still managed the Kubernetes cluster configuration for Kuberentes based agents at the Core Operations Center level.
 
 ## GitOps for Core CasC
-One of the main reasons to manage configurations as code is to allow it to be managed in source control. In this exercise we will setup a Jenkins Pipeline job - a [Pipeline Organization Folder](https://jenkins.io/doc/book/pipeline/multibranch/#organization-folders) - on your Team Master that will be triggered whenever you commit any changes to the **master** branch of that repository.
+One of the main reasons to manage configurations as code is to allow it to be managed in source control. But you still don't want to have to execute any manual steps when you make approved changes to your configuration. In this exercise we will setup a Jenkins Pipeline job - a [Pipeline Organization Folder](https://jenkins.io/doc/book/pipeline/multibranch/#organization-folders) - on your Team Master that will be triggered whenever you commit any approved changes to the **master** branch of the Core configuration bundle repository.
 
-* Create a Jenkins Pipeline job on your Team Master to automatically update the Core configuration bundle for your Team Master.
-* Add some configuration to the `jenkins.yaml` JCasC configuration in your **core-config-bundle** repository and commit the changes to tigger an update.
+* You will create a Jenkins Pipeline job on your Team Master to automatically update the Core configuration bundle for your Team Master.
+* You will add some new configuration to the `jenkins.yaml` JCasC configuration in your **core-config-bundle** repository and commit the changes to the **master** branch of your **core-config-bundle** repository that will then tigger the Jenkins Pipeline to update your Core configuration bundle.
 
 1. If you are in the Blue Ocean UI then switch to the classic UI by clicking on the ***Go to classic*** button next to the ***Logout*** button in Blue Ocean navigation bar.<p><img src="images/go-to-classic.png" width=600/>
 2. Once in the classic UI on your Team Master, ensure that you are in the folder with the same name as your Team Master - you should see the `workshop-setup` Pipeline job. This is important if you want to use Blue Ocean to visualize the Pipeline runs, because only jobs under this folder will show up in Blue Ocean.<p><img src="images/blue-steel-folder.png" width=600/>
