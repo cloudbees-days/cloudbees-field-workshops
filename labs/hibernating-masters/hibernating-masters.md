@@ -14,6 +14,6 @@ The Master Hibernation is managed at the global Jenkins configuration level.
 The hibernating monitor service provides a post proxy for things like GitHub webhooks.
 
 ## Waking Your Master
+Just click on it silly :) But seriously, it will take a few minutes to wake-up as Jenkins is a heavy sleeper. So, while your Team Master is waking from its gentle slumber, let's find something to divert our attention from how long it actually takes a Core Managed Master to un-hibernate.
 
-
-That completes this lab, please choose another lab on the [main page](../../README.md#workshop-labs).
+You may proceed to the next lab: [*Cross Team Collaboration*](../cross-team-collaboration/cross-team-collaboration.md) or choose another lab on the [main page](../../README.md#workshop-labs).

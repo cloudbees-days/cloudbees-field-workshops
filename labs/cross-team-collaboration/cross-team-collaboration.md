@@ -140,4 +140,4 @@ triggers {
 
 ---
 
-That completes this lab, please choose another lab on the [main page](../../README.md#workshop-labs).
+You may proceed to the next lab: [*Preview Environments with Core*](../hibernating-masters/hibernating-masters.md) or choose another lab on the [main page](../../README.md#workshop-labs).
