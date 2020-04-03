@@ -57,12 +57,23 @@ kube:
 ```
 10.  Next, update the `systemMessage` entry under the `jenkins` category so it starts with **v2** instead of **v1**.<p><img src="images/update-system-message.png" width=600/>
 11.  Scroll to the bottom of the page, enter a commit message and click the **Commit changes** button to commit the configuration updates to the **master** branch of your fork of the **core-config-bundle** repository.
-12.  Update `plugin.yaml` by adding the CloudBees Pipeline Policy plugin.
-13.  ...
-14.  Next, open the `bundle.yaml` with the GitHub file editor and update the `version` entry to **2** and then commit the changes to the **master** branch of your fork of the **core-config-bundle** repository.
-15.  Now navigate to the **master** branch Pipeline job on your Team Master.
-16.  After a couple of minutes you will see an addition **monitors** warning. Click on the **monitors** link and you will see that a new version of the configuration bundle is available - click on the **Reload Configuration** button and on the next screen click the **Yes** button to apply the updated configuration bundle.
-17.  
+12.  Add the following YAML snippet to the bottom of the `plugin-catalog.yaml` configuration file:
+```yaml
+    cloudbees-pipeline-policies:
+      version: "0.8"
+    managed-master-hibernation:
+      version: "0.3-alpha"
+```
+13.  Update `plugin.yaml` by adding the CloudBees Pipeline Policy plugin and the CloudBees Managed Master Hibernation plugin by adding the following YAML snippet:
+```yaml
+- id: "cloudbees-pipeline-policies"
+- id: "managed-master-hibernation"
+```
+14.  ...
+15.  Next, open the `bundle.yaml` with the GitHub file editor and update the `version` entry to **2** and then commit the changes to the **master** branch of your fork of the **core-config-bundle** repository.
+16.  Now navigate to the **master** branch Pipeline job on your Team Master.
+17.  After a couple of minutes you will see an addition **monitors** warning. Click on the **monitors** link and you will see that a new version of the configuration bundle is available - click on the **Reload Configuration** button and on the next screen click the **Yes** button to apply the updated configuration bundle.
+18.  
 
 >NOTE: The **Build strategies** configuration for Pipeline Organization Folder and Multibranch projects is provided by the [Basic Branch Build Strategies plugin](https://github.com/jenkinsci/basic-branch-build-strategies-plugin/blob/master/docs/user.adoc) and by selecting the *Skip initial build on first branch indexing* strategy we avoid an unnecessary build when we first create the Organization Folder project above.
 
