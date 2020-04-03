@@ -80,9 +80,9 @@ kube:
 15.   Scroll to the bottom of the page, enter a commit message and click the **Commit changes** button to commit the configuration updates to the same branch you committed to above.
 16.   Next, open the `bundle.yaml` with the GitHub file editor and update the `version` entry to **2** and then commit the changes to the **master** branch of your fork of the **core-config-bundle** repository.
 17.   Create a Pull Request between the new branch and the **master** branch of your fork of the **core-config-bundle** repository and then merge those changes to your **master** branch.
-18.   Now navigate to the **master** branch Pipeline job on your Team Master.
-19.   After a couple of minutes you will see an addition **monitors** warning. Click on the **monitors** link and you will see that a new version of the configuration bundle is available - click on the **Reload Configuration** button and on the next screen click the **Yes** button to apply the updated configuration bundle.
-20.   
+18.   Now navigate to the **master** branch Pipeline job of the **core-config-bundle** Multibranch Pipeline project on your Team Master.
+19.   After a couple of minutes you will see an addition **monitors** warning. Click on the **monitor** link of your Team Master and you will see that a new version of the configuration bundle is available - click on the **Reload Configuration** button and on the next screen click the **Yes** button to apply the updated configuration bundle.
+20.   You will now see a link for **Pipeline Polices** and Hibernation has been configured for your Team Master.
 
 >NOTE: The **Build strategies** configuration for Pipeline Organization Folder and Multibranch projects is provided by the [Basic Branch Build Strategies plugin](https://github.com/jenkinsci/basic-branch-build-strategies-plugin/blob/master/docs/user.adoc) and by selecting the *Skip initial build on first branch indexing* strategy we avoid an unnecessary build when we first create the Organization Folder project above.
 
