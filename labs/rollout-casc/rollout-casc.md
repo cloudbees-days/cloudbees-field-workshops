@@ -21,3 +21,4 @@ Boom. Done.
 
 TODO:
 * add pictures
+* add content
