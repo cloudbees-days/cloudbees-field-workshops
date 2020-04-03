@@ -11,7 +11,11 @@ CasC for CloudBees Core consists of a collection of YAML files referred to as a 
 
 ## Enabling CasC for a Core Managed/Team Master
 
-The `workshop-setup` job modified the `jenkins.yaml` file with `sed` and then copied the Core configuration bundle YAML files from your forked **core-config-bundle** repository to a sub-directory with the same name as your Team Master inside a special directory - the `jcasc-bundles-store` directory - in the Jenkins home of the Core Operations Center from which you created your Team Master. When the Core Operations Center is provisioning a Team/Managed Master it will check to see if there is a matching configuration for the name of the Team/Managed Master being provisioned and copy that Core configuration bundle link YAML file to the `/var/casc-bundle/bundle-link.yaml` on your Team Master and set the value `core.casc.config.bundle` system property to match that file path. Your Team Master will then use that protected link to download the Core configuration bundle to your Team Master.
+The `workshop-setup` job modified the `jenkins.yaml` file with `sed` and then copied the Core configuration bundle YAML files from your forked **core-config-bundle** repository to a sub-directory with the same name as your Team Master inside a special directory - the `jcasc-bundles-store` directory - in the Jenkins home of the Core Operations Center from which you created your Team Master. 
+
+When the Core Operations Center is provisioning a Team/Managed Master it will check to see if there is a matching configuration for the name of the Team/Managed Master being provisioned and copy that Core configuration bundle link YAML file to the `/var/casc-bundle/bundle-link.yaml` on your Team Master and set the value `core.casc.config.bundle` system property to match that file path. 
+
+Your Team Master will then use that protected link to download the Core configuration bundle to your Team Master. The `jenkins.yaml` file will be downloaded from the OC to `/var/jenkins_home/core-casc-bundle/jenkins.yaml` and the `casc.jenkins.config` system property will be set to that file path.
 
 ## Configuration Bundle Components
 
