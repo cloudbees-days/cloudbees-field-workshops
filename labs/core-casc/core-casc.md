@@ -63,7 +63,7 @@ kube:
 ...
 ```
 10.  Next, update the `systemMessage` entry under the `jenkins` category so it starts with **v2** instead of **v1**.<p><img src="images/update-system-message.png" width=600/>
-11.  Scroll to the bottom of the page, enter a commit message and click the **Commit changes** button to commit the configuration updates to a new branch of your fork of the **core-config-bundle** repository.
+11.  Scroll to the bottom of the page, enter a commit message and click the **Commit changes** button to commit the configuration updates to a new branch of your fork of the **core-config-bundle** repository.<p><img src="images/commit-to-new-branch.png" width=600/>
 12.  Open the `plugin-catalog.yaml` file with the GitHub file editor and add the following YAML snippet to the bottom of that configuration file:
 ```yaml
     cloudbees-pipeline-policies:
@@ -79,7 +79,7 @@ kube:
 ```
 15.   Scroll to the bottom of the page, enter a commit message and click the **Commit changes** button to commit the configuration updates to the same branch you committed to above.
 16.   Next, open the `bundle.yaml` with the GitHub file editor and update the `version` entry to **2** and then commit the changes to the **master** branch of your fork of the **core-config-bundle** repository.
-17.   Create a Pull Request between the new branch and the **master** branch of your fork of the **core-config-bundle** repository and then merge those changes to your **master** branch.
+17.   Create a **Pull Request** between the new branch and the **master** branch of your fork of the **core-config-bundle** repository and then merge those changes to your **master** branch.
 18.   Now navigate to the **master** branch Pipeline job of the **core-config-bundle** Multibranch Pipeline project on your Team Master.
 19.   After a couple of minutes you will see an addition **monitors** warning. Click on the **monitor** link of your Team Master and you will see that a new version of the configuration bundle is available - click on the **Reload Configuration** button and on the next screen click the **Yes** button to apply the updated configuration bundle.
 20.   You will now see a link for **Pipeline Polices** and Hibernation has been configured for your Team Master.
