@@ -61,16 +61,19 @@ You should see the following Blue Ocean **Pipelines** screen with one Pipeline n
    2. The GitHub username/account id you used to create the above GitHub Personal Access Token.
    3. The name of the GitHub Organization you created above specifically for this workshop
    4. The Kubernetes Namespace where your Team Master has been deployed - only change the default value if you are instructed to do so.
-4. Once you have provided the above required input parameters click the **Run** button at the bottom of the form.
-5. Blue Ocean will automatically switch to the Pipeline **Activity** screen, click anywhere on the Pipeline run row to see the Pipeline run and view the logs.<p><img src="images/workshop-setup-activity.png" width=600/>
+4. Once you have provided the above required input parameters click the **Run** button at the bottom of the parameters input form.
+5. Blue Ocean will automatically switch to the Pipeline **Activity** screen, click anywhere on the Pipeline run row to see the Pipeline run and view the logs. But make sure you don't click on the **Stop** button to the right of the red box in the screenshot below.<p><img src="images/workshop-setup-activity.png" width=600/>
 6. Once the **workshop-setup** Pipeline job completes successfully your Team Master will be restarted so you should see a **Connect lost: waiting** alert in the bottom right of your Blue Ocean screen.<p><img src="images/workshop-setup-connection-lost.png" width=600/>
 
 While your Team Master is restarting, let's explore what the `workshop-setup` Pipeline job did:
-7. In the GitHub Organization that you created for this workshop you will notice that you now have 5 repositories. The following repositories were [forked](https://guides.github.com/activities/forking/) from the [CloudBees Days GitHub Organization](https://github.com/cloudbees-days) by the `workshop-setup` job:
+
+* In the GitHub Organization that you created for this workshop you will notice that you now have 5 repositories. The following repositories were [forked](https://guides.github.com/activities/forking/) from the [CloudBees Days GitHub Organization](https://github.com/cloudbees-days) by the `workshop-setup` job:
    1. **core-config-bundle** - this repository provides a base CasC configuration for everyones' Team Master.
-   2. **pipeline-library** - a Jenkins Pipeline Shared Library that will be used by the Pipelines you create during this workshop.
-   3. **pipeline-template-catalog** - a set of templated Pipelines that you will use to create Pipeline jobs for this workshop.
+   2. **pipeline-library** - a Jenkins Pipeline Shared Library that will be used by the Jenkins Pipelines you create during this workshop.
+   3. **pipeline-template-catalog** - a set of templated Pipelines that you will use to create Jenkins Pipeline jobs for this workshop.
    4. **microblog-frontend** - a vue.js application to be used for this workshop.
    5. **microblog-backend** - a Python application to be used in conjunction with the **microblog-frontend** application to be used with this workshop.
+
+* Core Configuration as Code was setup for your Team Master and we will take a more detailed look at this in the next lab.
 
 You may proceed to the next lab: [*Configuration as Code (CasC) for CloudBees Core*](../core-casc/core-casc.md) where we will explore your individual fork of the **core-config-bundle** repository or choose another lab on the [main page](../../README.md#workshop-labs).
