@@ -2,12 +2,11 @@
 
 The goal of this lab is to use a property from our code, and allow users in the Rollout dashboard to create a ruleset such that the `sidebar` element is only visible to users that have successfully logged in.
 
-1. First we need to make sure the `isLoggedIn` function from the `store` available to the `flag.js` file. Navigate to the microblog-frontend repository in Github. In the `src\utils\flags.js` file, add the following import line:
+1. First we need to make sure the `isLoggedIn` function is available to the `flag.js` file. Navigate to the microblog-frontend repository in Github. In the `src\utils\flags.js` file, add the following import line:
 ```javascript
 import { store } from '../store'
 ```
-
-2. In order to allow the Rollout dashboard to use the `isLoggedIn` function to target specific users in a configuration, we need pass the property to the dashboard in a similar manner that we used `Rox.register` for the sidebar flag. Before the `Rox.register` line, add the following line:
+2. To allow the Rollout dashboard to target specific users using the `isLoggedIn` property, we need pass the property from the code to the dashboard. This is a similar process to using `Rox.register` to make the flags visible to the dashboard. Before the `Rox.register` line, add the following line:
 ```javascript
 Rox.setCustomBooleanProperty('isLoggedIn', store.getters.isLoggedIn)
 ```
