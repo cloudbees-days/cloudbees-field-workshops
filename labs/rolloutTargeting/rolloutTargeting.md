@@ -1,6 +1,6 @@
 ## User Targeting in CloudBees Rollout
 
-# The goal of this lab is to use a property from our code, and allow users in the Rollout dashboard to create a ruleset such that the `sidebar` element is only visible to users that have successfully logged in.
+The goal of this lab is to use a property from our code, and allow users in the Rollout dashboard to create a ruleset such that the `sidebar` element is only visible to users that have successfully logged in.
 
 1. First we need to make sure the `isLoggedIn` function from the `store` available to the `flag.js` file. Navigate to the microblog-frontend repository in Github. In the `src\utils\flags.js` file, add the following import line:
 ```javascript
