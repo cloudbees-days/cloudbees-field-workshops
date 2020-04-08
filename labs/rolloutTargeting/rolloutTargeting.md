@@ -11,7 +11,11 @@ import { store } from '../store'
 Rox.setCustomBooleanProperty('isLoggedIn', store.getters.isLoggedIn)
 ```
 
-3. The final `flags.js` should be <details><summary>this:</summary>
+3. The final `flags.js` should be this.
+
+4. Your entire ```/frontend-spring-boot-react-crud-full-stack-with-maven/src/flags.js``` file should now look like 
+<details><summary>this:</summary>
+	
 ```
 import Rox from 'rox-browser';
 
@@ -27,6 +31,8 @@ Rox.setup('INSERT ROLLOUT KEY HERE', {
 export default Flags;
 ```
 </details>
+
+Now we will wrap the existing front-end admin functionality in this new flag and then create regular user functionality as well.
 
 ** ADD FINAL FLAGS.JS 
 
