@@ -11,7 +11,23 @@ import { store } from '../store'
 Rox.setCustomBooleanProperty('isLoggedIn', store.getters.isLoggedIn)
 ```
 
-3. The final `flags.js` should be:
+3. The final `flags.js` should be <details><summary>this:</summary>
+	
+```
+import Rox from 'rox-browser';
+
+const Flags = {
+	addFlag: new Rox.Flag(),
+	adminControl: new Rox.Flag()
+}
+
+Rox.register('default', Flags);
+Rox.setup('INSERT ROLLOUT KEY HERE', {
+  debugLevel: 'verbose'
+});
+export default Flags;
+```
+</details>:
 
 ** ADD FINAL FLAGS.JS 
 
