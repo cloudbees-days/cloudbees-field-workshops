@@ -27,7 +27,7 @@ Rox.setup('INSERT ROLLOUT KEY HERE', {
 });
 export default Flags;
 ```
-</details>:
+</details>
 
 ** ADD FINAL FLAGS.JS 
 
