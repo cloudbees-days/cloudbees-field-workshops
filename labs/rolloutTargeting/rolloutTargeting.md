@@ -12,7 +12,6 @@ Rox.setCustomBooleanProperty('isLoggedIn', store.getters.isLoggedIn)
 ```
 
 3. The final `flags.js` should be <details><summary>this:</summary>
-	
 ```
 import Rox from 'rox-browser';
 
