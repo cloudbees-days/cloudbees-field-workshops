@@ -26,6 +26,28 @@ In this exercise you will create a Pipeline Policy to ensure that all Pipeline j
 ## Create vue.js Job from Pipeline Template Catalog
 In this exercise you will create a new Multibranch Pipeline job from the Pipeline Template Catalog you added above.
 
+1. On your Team Master navigate to the **template-jobs** folder
+2. Click on the ***New VueJS*** link in the left menu <p><img src="images/template_link.png" width=800/>
+3. Enter an item name of your **[GitHub username]-hello**, select **VueJS**  and click the **OK** button<p><img src="images/item_form.png" width=800/>
+4. Fill out the template parameters:
+   1. **Repository Owner**: the GitHub Organization your created for the CloudBees Core workshop
+   2. **Repository**: The name of your forked repository, "microblog-frontend"
+   3. **GitHub Credential ID**: select the *username/password* credential you created for the the CloudBees Core workshop - it will show up as - [GitHub username]/******
+   4. Click the **Save** button<p><img src="images/template_parameters.png" width=800/>
+5. After the initial scan you should see two jobs, for the two branches in your forked repository<p><img src="images/one_job.png" width=800/>
+
+## Deploy to Staging -- How do we want to handle this?
+Now we will create a Pull Request and merge the change to the **master** branch of your forked copy of the **helloworld-nodejs** repository.
+
+1. Navigate to your forked **helloworld-nodejs** repository in GitHub - click on the **New pull request** button <p><img src="images/conditional_new_pull_request.png" width=800/>
+2. Change the **base repository** to the **master** branch of your forked **helloworld-nodejs** repository (not the **cloudbees-days** repository), add a comment and then click the **Create pull request** button
+3. A job will be created for the pull request and once it has completed successfully your pull request will show that **All checks have passed**. Go ahead and click the **Merge pull request** button and then click the **Confirm merge** button but **DO NOT DELETE** the **development** branch
+4. Navigate to the **helloworld-nodejs** Pipeline Template Catalog job in Blue Ocean on your Team Master and the job for the **master** branch should be running or queued to run
+5. The templated job will build a Docker image for your **helloworld-nodejs** application, push the image to the Google Container Registry (GCR), and then deploy your containerized application to a staging environment in Kubernetes - a link to your application will be available in the logs of your job. 
+
+### GitOps with Core v2
+As part of the deployment to *staging* the Pipeline Template Catalog job will create a new **environment-staging** repository in your workshop GitHub Organization with the generated Kubernetes deployment yaml used for the deployment to the K8s *staging* environment.
+
 Congratulations! You have imported a pipeline template catalog into your team master and then created a folder where only the job from that template can be created.
 
 You may proceed to the next lab: [*Cross Team Collaboration*](../cross-team-collaboration/cross-team-collaboration.md) or choose another lab on the [main page](../../README.md#workshop-labs).
