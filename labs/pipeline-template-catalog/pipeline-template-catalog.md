@@ -46,13 +46,14 @@ In this exercise you will create a Pipeline Policy to ensure that all Pipeline j
 
 1. Navigate to team master level and click on "Pipeline Policies"<p><img src="images/policies_click.png" width=800/>
 2. Click on "New Policy"<p><img src="images/newpolicy_click.png" width=800/>
-3. Fill out the catalog import parameters:
-   1. **Branch or tag for this template catalog**: master
-   2. Check off **Git**
-   3. **Project Repository**: The Git URL for the forked pipeline template catalog repo created in step 1.
-   4. **Credentials**: select the *username/password* credential you created for the the CloudBees Core workshop - it will show up as - [GitHub username]/******
-   5. Click the **Save** button<p><img src="images/Add-catalog-info.png" width=800/>
-4. You should see the following once your catalog has been succesfully imported<p><img src="images/Succesful-template-import.png" width=800/>
+3. Fill out the Pipeline Policy parameters:
+   1. **Name**: Timeout policy
+   2. **Action**: Fail
+   3. Click on **Add Rule** and select **Pipeline Timeout**
+   4. **Timeout**: 30 MINUTES
+4. Hit save on the Pipeline Policy
+5. Navigate back to your master branch job inside of the **Template Jobs** folder and hit **Build Now**
+6. In the logs of the last run master branch job you should see the following error:<p><img src="images/pipeline_policy_error.png" width=800/>
 
 Congratulations! You have imported a pipeline template catalog into your team master and then created a folder where only the job from that template can be created.
 
