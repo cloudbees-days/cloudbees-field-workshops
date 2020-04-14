@@ -17,12 +17,7 @@ Pipeline Template Catalogs help ensure that Pipeline jobs conform to organizatio
 7. Click on the **New Item** link in the left menu<p><img src="images/new-item-click.png" width=800/>
 8. We will now create a new folder called "**Template Jobs**"<p><img src="images/new-folder-click.png" width=800/>
 9. Inside of the folder configuration click on "**Restrict the kind of children in this folder**" and then select "**VueJS**" only and then hit save<p><img src="images/restricted-items-check.png" width=800/>
-
-## Create a Pipeline Policy
-[Pipeline Policies for CloudBees Core](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines-user-guide/pipeline-policies) allow organizations to enforce standards across Pipeline jobs.
-
-In this exercise you will create a Pipeline Policy to ensure that all Pipeline jobs that run on your Team Master have a `timeout` set.
-
+   
 ## Create vue.js Job from Pipeline Template Catalog
 In this exercise you will create a new Multibranch Pipeline job from the Pipeline Template Catalog you added above.
 
@@ -36,17 +31,18 @@ In this exercise you will create a new Multibranch Pipeline job from the Pipelin
    4. Click the **Save** button<p><img src="images/template_parameters.png" width=800/>
 5. After the initial scan you should see two jobs, for the two branches in your forked repository<p><img src="images/one_job.png" width=800/>
 
-## Deploy to Staging -- How do we want to handle this?
-Now we will create a Pull Request and merge the change to the **master** branch of your forked copy of the **helloworld-nodejs** repository.
+## Deploy to Staging
+Both jobs should automatically start running for both branches, however only the master branch job will deploy because of the way the pipeline was written.
 
-1. Navigate to your forked **helloworld-nodejs** repository in GitHub - click on the **New pull request** button <p><img src="images/conditional_new_pull_request.png" width=800/>
-2. Change the **base repository** to the **master** branch of your forked **helloworld-nodejs** repository (not the **cloudbees-days** repository), add a comment and then click the **Create pull request** button
-3. A job will be created for the pull request and once it has completed successfully your pull request will show that **All checks have passed**. Go ahead and click the **Merge pull request** button and then click the **Confirm merge** button but **DO NOT DELETE** the **development** branch
-4. Navigate to the **helloworld-nodejs** Pipeline Template Catalog job in Blue Ocean on your Team Master and the job for the **master** branch should be running or queued to run
-5. The templated job will build a Docker image for your **helloworld-nodejs** application, push the image to the Google Container Registry (GCR), and then deploy your containerized application to a staging environment in Kubernetes - a link to your application will be available in the logs of your job. 
+The templated job will build a Docker image for your **microblog-frontend** application, push the image to the Google Container Registry (GCR), and then deploy your containerized application to a staging environment in Kubernetes - a link to your application will be available in the logs of your job. 
 
 ### GitOps with Core v2
 As part of the deployment to *staging* the Pipeline Template Catalog job will create a new **environment-staging** repository in your workshop GitHub Organization with the generated Kubernetes deployment yaml used for the deployment to the K8s *staging* environment.
+
+## Create a Pipeline Policy
+[Pipeline Policies for CloudBees Core](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines-user-guide/pipeline-policies) allow organizations to enforce standards across Pipeline jobs.
+
+In this exercise you will create a Pipeline Policy to ensure that all Pipeline jobs that run on your Team Master have a `timeout` set.
 
 Congratulations! You have imported a pipeline template catalog into your team master and then created a folder where only the job from that template can be created.
 
