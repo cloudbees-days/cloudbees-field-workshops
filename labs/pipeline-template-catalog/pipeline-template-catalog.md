@@ -51,9 +51,9 @@ In this exercise you will create a Pipeline Policy to ensure that all Pipeline j
    2. **Action**: Fail
    3. Click on **Add Rule** and select **Pipeline Timeout**
    4. **Timeout**: 30 MINUTES
-4. Hit save on the Pipeline Policy
-5. Navigate back to your master branch job inside of the **Template Jobs** folder and hit **Build Now**
-6. In the logs of the last run master branch job you should see the following error:<p><img src="images/pipeline_policy_error.png" width=800/>
+   5. Click the **Save** button<p><img src="images/pipe_timout_fail.png" width=800/>
+4. Navigate back to your master branch job inside of the **Template Jobs** folder and hit **Build Now**
+5. In the logs of the last run master branch job you should see the following error:<p><img src="images/pipeline_policy_error.png" width=800/>
 
 Congratulations! You have imported a pipeline template catalog into your team master and then created a folder where only the job from that template can be created.
 
