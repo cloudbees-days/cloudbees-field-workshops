@@ -2,6 +2,6 @@ class: center, middle
 
 # CloudBees Field Workshops
 
-![CloudBees Core](core/)
+[CloudBees Core](core/)
 
-![CloudBees Rollout](rollout/)
+[CloudBees Rollout](rollout/)
