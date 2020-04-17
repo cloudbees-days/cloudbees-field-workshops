@@ -23,6 +23,7 @@ The workshop is divided into 3 parts. The first is focused on CloudBees Core, th
  * [Lab 6 - Hibernating Masters](labs/hibernating-masters/hibernating-masters.md)
 
 
+
 ## Rollout:
  * [Lab 1 - Setting Up CloudBees Rollout](labs/rolloutSetup/rolloutSetup.md)
  * [Lab 2 - Adding a Sidebar to the Microblog](labs/rolloutFeature/rolloutFeature.md)
