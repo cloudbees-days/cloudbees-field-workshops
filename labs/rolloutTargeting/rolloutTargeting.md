@@ -11,7 +11,11 @@ import { store } from '../store'
 Rox.setCustomBooleanProperty('isLoggedIn', store.getters.isLoggedIn)
 ```
 
-3. The final `flags.js` should be this.
+3. The final `flags.js` should be
+<details><summary>this:</summary>
+
+```
+import Rox from 'rox-browser'
 
 4. Your entire ```/frontend-spring-boot-react-crud-full-stack-with-maven/src/flags.js``` file should now look like 
 <details><summary>this:</summary>
