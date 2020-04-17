@@ -136,6 +136,11 @@ html {
   text-align: center;
   background-size: cover;
 }
+
+.remark-slide-content.title .remark-slide-number {
+  display: none;
+}
+
 .remark-slide-content.title h1,
 .remark-slide-content.title h2,
 .remark-slide-content.title h3 {
@@ -145,6 +150,8 @@ html {
   margin: 0;
   padding: 1em 0;
   font-weight: normal;
+  color: #ffffff;
+
 }
 .remark-slide-content.title h1 {
   top: calc(50% - 2.5em);
