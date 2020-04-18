@@ -9,8 +9,7 @@ count: false
 layout: true
 
 .footer[
-- Copyright © 2019 HashiCorp
-- ![:scale 100%](https://hashicorp.github.io/field-workshops-assets/assets/logos/HashiCorp_Icon_Black.svg)
+- Copyright © 2020 CloudBees
 
 ---
 name: agenda
