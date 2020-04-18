@@ -46,12 +46,15 @@ name: core-overview-content
 class: compact, col-3
 # .center[CloudBees Core]
 
+
 ## Manageability
 From Cloud to on-prem CloudBees helps teams manage build and deploy resources at enterprise scale.  Resources are now able to be connected, reused  and managed as a cluster of connected assets.
 
 
 ## Flexibility
 Whatever you are delivering - from microservices, Java, .NET to mainframe -  CloudBees Core is the one CI/CD solution for all your applications.
+
+
 
 ## Scalability
 Go beyond physical scaling by driving collaboration across teams to easily propagate best practices, offer CD as a Service across your organization and reduce your administrative and IT burden.
