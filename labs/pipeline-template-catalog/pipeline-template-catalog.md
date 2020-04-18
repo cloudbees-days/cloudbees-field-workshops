@@ -37,21 +37,6 @@ The templated job will build a Docker image for your **microblog-frontend** appl
 ### GitOps with Core v2
 As part of the deployment to *staging* the Pipeline Template Catalog job will create a new **environment-staging** repository in your workshop GitHub Organization with the generated Kubernetes deployment yaml used for the deployment to the K8s *staging* environment.
 
-## Create a Pipeline Policy
-
-In this lab you will create a [Pipeline Policy](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines-user-guide/pipeline-policies) to ensure that all Pipeline jobs that run on your Team Master have a `timeout` set.
-
-1. Navigate to team master level and click on "Pipeline Policies"<p><img src="images/policies_click.png" width=800/>
-2. Click on "New Policy"<p><img src="images/newpolicy_click.png" width=800/>
-3. Fill out the Pipeline Policy parameters:
-   1. **Name**: Timeout policy
-   2. **Action**: Fail
-   3. Click on **Add Rule** and select **Pipeline Timeout**
-   4. **Timeout**: 30 MINUTES
-   5. Click the **Save** button<p><img src="images/pipe_timeout_fail.png" width=800/>
-4. Navigate back to your master branch job inside of the **Template Jobs** folder and hit **Build Now**
-5. In the logs of the last run master branch job you should see the following error:<p><img src="images/pipeline_policy_error.png" width=800/>
-
 Congratulations! You have imported a Pipeline Template Catalog into your Team Master and then created a folder where only the job from that template can be created.
 
-You may proceed to the next lab: [*Cross Team Collaboration*](../cross-team-collaboration/cross-team-collaboration.md) or choose another lab on the [main page](../../README.md#workshop-labs).
+You may proceed to the next lab: [*CloudBees Pipeline Policies*](../pipeline-policies/pipeline-policies.md) or choose another lab on the [main page](../../README.md#workshop-labs).
