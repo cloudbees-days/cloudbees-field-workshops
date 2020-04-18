@@ -10,12 +10,15 @@ name: pipeline-template-catalog
 
 # Pipeline Template Catalogs
 
-Pipeline Template Catalogs help ensure that Pipeline jobs conform to organizational standards and in combination with Shared Libraries are an easy way to make their Pipelines reusable — boosting cross-team collaborations, saving time and reducing errors.
+Pipeline Template Catalogs help ensure that Pipeline jobs conform to organizational standards.
 
-Some of the benefits of using Pipeline Template Catalogs include:
+Benefits of using Pipeline Template Catalogs include:
 
-* They provide developers with a simplified and directed experience for configuring Pipeline in “domain specific” terms that make sense for an organization. Thus, developers can focus on shipping products.
-* They categorize Pipelines per projects and teams. Similar-looking jobs that only differ in a few aspects. When you change a template, all the jobs created from that template get updated automatically.
+* Providing developers with a simplified and directed experience for configuring Pipeline in “domain specific” terms that make sense for an organization. Thus, developers can focus on shipping products.
+* Organizing Pipelines per projects and/or teams. Similar-looking jobs that only differ in a few aspects can be parameterized per project. When you change a template, all the jobs created from that template get updated automatically.
+
+???
+Pipeline Template Catalogs help ensure that Pipeline jobs conform to organizational standards and when used in combination with Shared Libraries provide reusable Pipelines — boosting cross-team collaborations, saving time and reducing errors.
 
 ---
 name: lab-link
