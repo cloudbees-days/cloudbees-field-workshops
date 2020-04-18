@@ -72,4 +72,6 @@ Reduce risk
 name: core-overview-cap
 
 # CloudBees Assurance Program for Core
-The CloudBees Assurance Program specifies the set of plugins, plugin versions, and plugin dependencies that are verified and trusted through integrated testing. This provides greater stability and security for Core based Jenkins environments. Not only are these plugins verired to be independently stable, they are tested as a whole to ensure compatibility with each other and the Core Jenkins LTS version.
+* The CloudBees Assurance Program specifies the set of plugins, plugin versions, and plugin dependencies that are verified and trusted through integrated testing. 
+* This provides greater stability and security for Core based Jenkins environments. 
+* These plugins verified to be independently stable and they are tested in aggregate to ensure compatibility with each other and the Jenkins LTS version of the Core release.
