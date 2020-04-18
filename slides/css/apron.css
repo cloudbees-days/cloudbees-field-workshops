@@ -1,6 +1,6 @@
 html {
   font-size: 14px;
-  font-weight: 300;
+  font-weight: 400;
 }
 .remark-slide {
   display: block;
@@ -61,6 +61,8 @@ html {
 }
 .remark-slide-content li {
   padding-top: 1rem;
+  font-size: 12px;
+  font-weight: 300;
 }
 .remark-slide-content pre,
 .remark-slide-content code,
