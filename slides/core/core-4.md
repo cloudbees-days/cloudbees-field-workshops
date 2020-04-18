@@ -9,7 +9,7 @@ count: false
 name: pipeline-policies
 class: compact
 
-# CloudBees Pipeline Policies .badge[PREVIEW Feature]
+# CloudBees Pipeline Policies .badge-preview[PREVIEW]
 
 [Pipeline Policies for CloudBees Core](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines-user-guide/pipeline-policies) allow organizations to enforce standards across Pipeline jobs.
 
