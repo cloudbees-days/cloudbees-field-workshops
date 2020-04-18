@@ -44,6 +44,7 @@ count: false
 Notes
 ---
 name: core-overview-content
+class: compact
 
 # CloudBees Core
 
