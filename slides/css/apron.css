@@ -375,3 +375,6 @@ html {
 .remark-slide-content .remark-slide-number, .remark-slide-content .footer li {
   font-size: 1rem;
 }
+.remark-code, .remark-inline-code {
+  font-family: 'Robot Mono';
+}
