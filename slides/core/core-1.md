@@ -26,6 +26,7 @@ Today's URL for the CloudBees Core Workshop cluster is https://workshop.cb-sa.io
 
 ---
 name: core-setup-review
+class: compact
 
 #Core Workshop Setup Review
 While your Team Master is restarting, let's explore what the `workshop-setup` Pipeline job did:
