@@ -13,8 +13,6 @@ Today's URL for the CloudBees Core Workshop environment is https://workshop.cb-s
 
 ### Create a Team Master
 
-Next, everyone will get their own Jenkins masters referred to as a [Team Master](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-admin-guide/cje-ux) in CloudBees Core.
-
 1. If not in CloudBees Team UI, click on the **Teams** link in the left menu. <p><img src="images/setup-classic-ui-Teams-link.png" width=400/>
 2. Click on the **Create team** button in the center of your screen.<p><img src="images/setup-create-a-team.png" width=400/>
 3. **Name this team** - enter a name for your team - **IMPORTANT: to ensure uniqueness, use your GitHub username** and then click **Next**.<p><img src="images/setup-name-this-team.png" width=450/>
@@ -26,22 +24,18 @@ Next, everyone will get their own Jenkins masters referred to as a [Team Master]
 9. While your Core Team Master is being created (**it takes anywhere from 2-3 minutes to provision your Team Master**), move onto the next section.
 
 ## Create a GitHub.com Account
-Setup a GitHub.com user account that will be used later in this workshop. If you have an existing GitHub.com account you will be able to use it if you are comfortable using that account to create a GitHub Organization and a GitHub Personal Access Token for use in this workshop.
 
 1. Visit https://github.com/join and fill in the required fields to create a user account.
 2. Select "Unlimited public repositories for free" when choosing your plan.
 3. Verify your email account to ensure you account is activated.  An activated account will be **required** for the rest of this workshop.
 
 ## Create a GitHub Personal Access Token
-The following instructions cover how to create a Github Personal Access Token that you will use within Jenkins to connect Pipelines, Multibranch Pipelines, and Github Organization Projects to your Github repositories.
 
 1. Click on [this link to automatically select the required **Personal access token settings**](https://github.com/settings/tokens/new?scopes=repo,read:user,user:email,admin:repo_hook,admin:org_hook)
 2. Click on **Generate Token**
 3. As the success message says: **Make sure to copy your new personal access token now. You won’t be able to see it again!**  
 
 ## Create a GitHub Organization
-
-Create a GitHub organization to use for this workshop:
 
 1. On GitHub navigate to **Organizations**: https://github.com/settings/organizations (after logging in) 
 2. Click on **New Organization** <p><img src="images/setup-github-new-org.png" width=550/>
