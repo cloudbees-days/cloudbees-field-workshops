@@ -50,19 +50,19 @@ name: core-overview-content
 class: compact
 
 # CloudBees Core
-Manage the Volume, Variety and Complexity of Pipelines
+*### Manage the Volume, Variety and Complexity of Pipelines*
 
-### Faster innovation
+Faster innovation
 .no-bullet[
 * Free developers to innovate more using toolchain automation
 ]
 
-### Optimize delivery
+Optimize delivery
 .no-bullet[
 * Reduce administration overhead and optimize software delivery
 ]
 
-### Reduce risk
+Reduce risk
 .no-bullet[
 * Ensure compliance through global policy enforcement
 ]
