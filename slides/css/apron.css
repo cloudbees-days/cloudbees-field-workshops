@@ -361,3 +361,7 @@ html {
 .remark-slide-content.no-footer .footer {
   display: none;
 }
+
+.one-third-up {
+  margin-top: 30%;
+}
