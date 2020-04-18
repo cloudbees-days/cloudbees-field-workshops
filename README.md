@@ -35,7 +35,7 @@ These workshop labs demonstrate how to  effectively use CI/CD practices, manage 
 
 ## Flow:
 Coming soon...
- * Lab 1 - Create release pipeline from service catalog
+ * Lab 1 - Create release pipeline from a service catalog
  * Lab 2 - Add gates to the release pipeline
  * Lab 3 - Merge into master and run through release pipeline
  * Lab 4 - Check out the live app, close the ticket, observe flow Dashboard

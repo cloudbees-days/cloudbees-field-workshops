@@ -21,10 +21,11 @@ Benefits of using Pipeline Template Catalogs include:
 Pipeline Template Catalogs help ensure that Pipeline jobs conform to organizational standards and when used in combination with Shared Libraries provide reusable Pipelines — boosting cross-team collaborations, saving time and reducing errors.
 
 ---
-name: lab-link-pipeline-template-catalog
+name: pipeline-template-catalog-lab-link
 
 # Lab - Import Pipeline Template Catalog
 
 [https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/pipeline-template-catalog/pipeline-template-catalog.md](https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/pipeline-template-catalog/pipeline-template-catalog.md)
 
-
+---
+name: 
