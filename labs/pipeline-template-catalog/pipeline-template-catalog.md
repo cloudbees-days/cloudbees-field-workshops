@@ -1,7 +1,5 @@
 # <img src="images/cloudbeescore_logo.png" alt="CloudBees Core Logo" width="40" align="top"> CloudBees Core - Pipeline Template Catalogs & Pipeline Policies
 
-Pipeline Template Catalogs help ensure that Pipeline jobs conform to organizational standards.
-
 ## Import Pipeline Template Catalog
 1. The pipeline template catalog repository: https://github.com/cloudbees-days/pipeline-template-catalog should have been forked for you automatically at the start of this workshop.
 2. Navigate to team master level and click on "Pipeline Template Catalogs"<p><img src="images/Initial-template-click.png" width=800/>
