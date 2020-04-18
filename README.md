@@ -1,7 +1,5 @@
 # <img src="https://mms.businesswire.com/media/20191204005250/en/760213/23/Logo_-_Stacked_-_Full_Color%402x.jpg" width="100" align="top"> CloudBees Core-Rollout-Flow Integration Workshop
-This workshop serves to demonstrate how to  effectively use CI/CD practices, manage feature flags, and orchestrating releases through a close integration of CloudBees' Core, Rollout, and Flow products, respectively.
-
-The workshop is divided into 3 parts. The first is focused on CloudBees Core, the second focused on Rollout, and the third on CloudBees Flow.
+These workshop labs demonstrate how to  effectively use CI/CD practices, manage feature flags, and orchestrating releases with CloudBees' Core, Rollout, and Flow products.
 
 # Workshop Prerequisites
 
