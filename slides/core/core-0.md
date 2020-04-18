@@ -43,7 +43,7 @@ count: false
 Notes
 ---
 name: core-overview-content
-class: roomy
+class: 
 # CloudBees Core
 
 ### Manageability
