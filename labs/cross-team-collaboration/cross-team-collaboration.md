@@ -1,9 +1,5 @@
 # <img src="images/cloudbeescore_logo.png" alt="CloudBees Core Logo" width="40" align="top"> CloudBees Core - Cross Team Collaboration
 
-The [Cross Team Collaboration](https://docs.cloudbees.com/docs/cloudbees-core/2.204.2.2/cloud-admin-guide/cross-team-collaboration) functionality in CloudBees Core allows you to create events and listeners to trigger jobs across Core Masters. It gives you effectively a pub/sub relationship where jobs can send an event with data, and the jobs listening for it can trigger and process the data.
-
-![Cross Team Collaboration diagram](https://docs.cloudbees.com/docs/cloudbees-common/latest/_images/cross-team-collaboration-screenshots/cross-team-diagram.abf4b33.png)
-
 In this lab we're going to take advantage of cross team collaboration by adding an event trigger listener so that when the job for our base image is complete, it will kick off our frontend application job. This is a common real world scenario where your container base image may receive security patches or minor updates and you want all applications using that base image to be updated. 
 
 Rather than asking everyone to make sure their application containers are rebuilt with the new base image version, we can trigger this automatically. For this workshop, the instructor will kick off a job which sends an event which will kick off your frontend job. 

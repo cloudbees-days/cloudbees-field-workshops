@@ -1,4 +1,4 @@
-name: core-setup-title
+name: pipeline-policies-title
 class: title, shelf, no-footer, fullbleed
 background-image: linear-gradient(135deg,#279be0,#036eb4)
 count: false
@@ -20,3 +20,4 @@ class: compact
   * PausedActionTimeoutRule - validates that pipeline steps that require an external condition must be defined within a timeout.
   * PausedActionInAgentRule - validates that a paused action step isn’t executed on an agent.
   * EntirePipelineTimeoutRule - validates that a timeout period was set for the entire Pipeline execution.
+
