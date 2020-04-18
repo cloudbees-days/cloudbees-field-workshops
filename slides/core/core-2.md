@@ -13,7 +13,7 @@ name: core-casc-overview
 
 CasC for CloudBees Core consists of a collection of YAML files referred to as a configuration bundle (or CasC bundle) that includes four files:
 
-1. `bundle.yaml` - This file is an index file that describes the bundle, and references the other files in the bundle.
+1. `bundle.yaml` - This file describes the bundle, and references the other files in the bundle.
 2. `jenkins.yaml` - This file contains the Jenkins configuration as defined by the OSS [Jenkins CasC plugin](https://github.com/jenkinsci/configuration-as-code-plugin).
 3. `plugin-catalog.yaml` - This file provides a list of plugins that are **ALLOWED** to be installed on your Managed Master that are not already part of the allowed CAP Core plugins.
 4. `plugins.yaml` - This file contains a list of all plugins that will be **INSTALLED** on the configured Managed Master - but they can only be installed if allowed via the `plugin-catalog.yaml` or they are allowed CAP plugins.
@@ -37,7 +37,9 @@ name: config-bundle-details
 ## Configuration Bundle Details
 
 ### jenkins.yaml
-The `jenkins.yaml` provides all of the Jenkins system and plugin configuration - that is currently supported and primarily relies on the [OSS Jenkins Configuration as Code (JCasC) plugin](https://github.com/jenkinsci/configuration-as-code-plugin) for the OSS system and plugin configuration that is supported. Also note that some, but not all, CloudBees Core plugins support JCasC based configuration.
+.no-bullet[
+* The `jenkins.yaml` provides all of the Jenkins system and plugin configuration - that is currently supported and primarily relies on the [OSS Jenkins Configuration as Code (JCasC) plugin](https://github.com/jenkinsci/configuration-as-code-plugin) for the OSS system and plugin configuration that is supported. Also note that some, but not all, CloudBees Core plugins support JCasC based configuration.
+]
 
 #### Credentials
 Core CasC was used to create two user specific Jenkins credentials for use in the rest of this workshop.
