@@ -40,7 +40,7 @@ h2, h3 {
   line-height: 1.25;
   padding: 20px 80px 0 80px;
   font-size: 1.9rem;
-  font-family: 'Lato';
+  font-family: 'Lato', sans-serif;;
 }
 .remark-slide-content * {
   box-sizing: border-box;
