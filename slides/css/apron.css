@@ -75,16 +75,16 @@ h2, h3 {
   font-size: 2.25rem;
 }
 .remark-slide-content li {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 300;
 }
 .remark-slide-content li:not(:first-child) {
   padding-top: 1rem;
 }
 .remark-slide-content li li {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
 }
-.remark-slide-content li li:not(:first-child) {
+.remark-slide-content li li {
   padding-top: 0.75rem;
 }
 .remark-slide-content pre,
