@@ -27,7 +27,7 @@ class: compact
 
 ## Enabling CasC for a Core Managed/Team Master
 
-* The `workshop-setup` job that you ran in the *Core Workshop Setup* lab modified the `jenkins.yaml` file with `sed` and then copied the Core configuration bundle YAML files from your forked **core-config-bundle** repository to a sub-directory with the same name as your Team Master inside a special directory - the `jcasc-bundles-store` directory - in the Jenkins home of the Core Operations Center from which you created your Team Master. 
+* The `workshop-setup` job that you ran in the *Core Workshop Setup* lab modified the `jenkins.yaml` file and then copied the Core configuration bundle YAML files from your forked **core-config-bundle** repository to a sub-directory with the same name as your Team Master inside a special directory - the `jcasc-bundles-store` directory - in the Jenkins home of the Core Operations Center from which you created your Team Master. 
 * Your Team Master was then *re-provisioned* in order for the Core configuration bundle to take effect.
 * When the Core Operations Center is provisioning a Team/Managed Master it will check to see if there is a matching configuration for the name of the Team/Managed Master being provisioned and copy that Core configuration bundle link YAML file to `/var/casc-bundle/bundle-link.yaml` on your Team Master and set the value of the `core.casc.config.bundle` system property to match that file path.
 * Your Team Master will then use that protected link to download the Core configuration bundle to your Team Master. The `jenkins.yaml` file will be downloaded from the OC to `/var/jenkins_home/core-casc-bundle/jenkins.yaml` and the `casc.jenkins.config` system property will be set to that file path.
@@ -57,10 +57,10 @@ The CloudBees Kube Management plugin allows you to [configure Kubernetes Pod Tem
 name: gitops-for-casc
 
 ## GitOps for Core CasC
-One of the main reasons to manage configurations as code is to allow it to be managed in source control. But you still don't want to have to execute any manual steps when you make approved changes to your configuration. In this exercise we will setup a Jenkins Pipeline job - a [Pipeline Organization Folder](https://jenkins.io/doc/book/pipeline/multibranch/#organization-folders) - on your Team Master that will be triggered whenever you commit any approved changes to the **master** branch of the Core configuration bundle repository.
+One of the main reasons to manage configurations as code is to allow it to be managed in source control. But you still don't want to have to execute any manual steps when you make approved changes to your configuration. In the following we will setup a Jenkins Pipeline job - or more specifically, a [Pipeline Organization Folder](https://jenkins.io/doc/book/pipeline/multibranch/#organization-folders) - on your Team Master that will be triggered whenever you commit any approved changes to the `**master**` branch of your Core configuration bundle repository.
 
 ---
-name: lab-link
+name: core-casc-lab-link
 ## Lab - CloudBees Core - Configuration as Code
 
 [https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/core-casc/core-casc.md](https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/core-casc/core-casc.md)
