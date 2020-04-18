@@ -64,23 +64,26 @@ class: compact
 #### Pipeline Shared Library
 
 .no-bullet[
-* JCasC allows auto-configuring Pipeline Shared Libraries so it is very easy to provide the same Pipeline Shared Libraries across multiple teams as we have done in this workshop. The Core Pipeline Shared Library was configured at the global level so that it will be available to all the Jenkins Pipeline that you run on your Team Master.
+* JCasC allows auto-configuring Pipeline Shared Libraries so it is very easy to provide the same Pipeline Shared Libraries across multiple teams - as we have done for this workshop. The Core Pipeline Shared Library was configured at the Jenkins global configuration level so that it will be available for all the Jenkins Pipeline that you run on your Team Master.
 ]
 
 #### Master Level Kubernetes Agent Templates
 
 .no-bullet[
-* The CloudBees Kube Management plugin allows you to [configure Kubernetes Pod Templates for agents at the Team/Master level](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-admin-guide/agents#_editing_pod_templates_per_team_using_masters) but still managed the Kubernetes cluster configuration for Kuberentes based agents at the Core Operations Center level. Several Kubernetes Pod Templates were added to your Team Master via your Core configuration bundle.
+* The CloudBees Kube Management plugin allows you to [configure Kubernetes Pod Templates for agents at the Team/Master level](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-admin-guide/agents#_editing_pod_templates_per_team_using_masters) but still manage the Kubernetes cluster configuration for Kuberentes based agents at the Core Operations Center level.
 ]
 
 ---
 name: gitops-for-casc
 
-## GitOps for Core CasC
-One of the main reasons to manage configurations as code is to allow it to be managed in source control. But you still don't want to have to execute any manual steps when you make approved changes to your configuration. In the following we will setup a Jenkins Pipeline job - or more specifically, a [Pipeline Organization Folder](https://jenkins.io/doc/book/pipeline/multibranch/#organization-folders) - on your Team Master that will be triggered whenever you commit any approved changes to the `**master**` branch of your Core configuration bundle repository.
+# GitOps for Core CasC
+
+.no-bullet[
+One of the main reasons to manage configurations as code is to allow it to be managed in source control. But you still don't want to have to execute any manual steps when you make approved changes to your configuration. In the following lab we will setup a Jenkins Pipeline job - or more specifically, a [Pipeline Organization Folder](https://jenkins.io/doc/book/pipeline/multibranch/#organization-folders) - on your Team Master that will be triggered whenever you commit any approved changes to the `**master**` branch of your Core configuration bundle repository.
+]
 
 ---
 name: core-casc-lab-link
-## Lab - CloudBees Core - Configuration as Code
+# Lab - CloudBees Core - Configuration as Code
 
 [https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/core-casc/core-casc.md](https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/core-casc/core-casc.md)
