@@ -50,18 +50,19 @@ name: core-overview-content
 class: compact
 
 # CloudBees Core
+Manage the Volume, Variety and Complexity of Pipelines
 
-### Manageability
+### Faster innovation
 .no-bullet[
-* From Cloud to on-prem CloudBees helps teams manage build and deploy resources at enterprise scale.  Resources are now able to be connected, reused  and managed as a cluster of connected assets.
+* Free developers to innovate more using toolchain automation
 ]
 
-### Flexibility
+### Optimize delivery
 .no-bullet[
-* Whatever you are delivering - from microservices, Java, .NET to mainframe -  CloudBees Core is the one CI/CD solution for all your applications.
+* Reduce administration overhead and optimize software delivery
 ]
 
-### Scalability
+### Reduce risk
 .no-bullet[
-* Go beyond physical scaling by driving collaboration across teams to easily propagate best practices, offer CD as a Service across your organization and reduce your administrative and IT burden.
+* Ensure compliance through global policy enforcement
 ]
