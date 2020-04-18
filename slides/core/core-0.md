@@ -42,6 +42,6 @@ count: false
 ???
 Notes
 ---
-
+name: core-overview-content
 # .center[CloudBees Core]
 .center[***Flexible, governed continuous delivery for all your applications***]
