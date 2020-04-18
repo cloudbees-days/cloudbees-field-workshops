@@ -61,7 +61,7 @@ html {
 }
 .remark-slide-content li {
   padding-top: 1rem;
-  font-size: 12px;
+  font-size: 0.9rem;
   font-weight: 300;
 }
 .remark-slide-content pre,
@@ -373,7 +373,7 @@ html {
   margin-top: 30%;
 }
 .remark-slide-content .remark-slide-number, .remark-slide-content .footer li {
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 .remark-code, .remark-inline-code {
   font-family: 'Robot Mono';
