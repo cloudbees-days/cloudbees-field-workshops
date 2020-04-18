@@ -3,7 +3,7 @@ class: title, shelf, no-footer, fullbleed
 background-image: linear-gradient(135deg,#279be0,#036eb4)
 count: false
 
-# CloudBees Pipeline Policies
+# CloudBees Pipeline Policies .badge[PREVIEW Feature]
 
 ---
 name: pipeline-policies
