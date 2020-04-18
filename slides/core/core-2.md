@@ -15,8 +15,12 @@ CasC for CloudBees Core consists of a collection of YAML files referred to as a 
 
 1. `bundle.yaml` - This file is an index file that describes the bundle, and references the other files in the bundle.
 2. `jenkins.yaml` - This file contains the Jenkins configuration as defined by the OSS [Jenkins CasC plugin](https://github.com/jenkinsci/configuration-as-code-plugin).
-3. `plugin-catalog.yaml` - This file provides a list of plugins that are not already part of the Core plugin envelope and makes those plugins available to be installed on a Managed Master.
-4. `plugins.yaml` - This file contains a list of all plugin to be installed on a Managed Master by the Core CasC capability.
+3. `plugin-catalog.yaml` - This file provides a list of plugins that are **ALLOWED** to be installed on your Managed Master that are not already part of the allowed CAP Core plugins.
+4. `plugins.yaml` - This file contains a list of all plugins that will be **INSTALLED** on the configured Managed Master - but they can only be installed if allowed via the `plugin-catalog.yaml` or they are allowed CAP plugins.
+
+???
+* The `bundle.yaml` basically defines the configuration bundle.
+* It is kind of hard to explain the difference between the `plugin-catalog.yaml` and the `plugins.yaml` - basically the `plugin-catalog` is a required component of CAP.
 ---
 name: enable-casc
 

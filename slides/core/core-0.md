@@ -45,6 +45,7 @@ count: false
 
 ???
 Notes
+
 ---
 name: core-overview-content
 class: compact
@@ -66,3 +67,9 @@ Reduce risk
 .no-bullet[
 * Ensure compliance through global policy enforcement
 ]
+
+---
+name: core-overview-cap
+
+# CloudBees Assurance Program for Core
+The CloudBees Assurance Program specifies the set of plugins, plugin versions, and plugin dependencies that are verified and trusted through integrated testing. This provides greater stability and security for Core based Jenkins environments. Not only are these plugins verired to be independently stable, they are tested as a whole to ensure compatibility with each other and the Core Jenkins LTS version.
