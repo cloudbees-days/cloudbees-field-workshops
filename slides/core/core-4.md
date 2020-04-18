@@ -3,13 +3,13 @@ class: title, shelf, no-footer, fullbleed
 background-image: linear-gradient(135deg,#279be0,#036eb4)
 count: false
 
-# CloudBees Pipeline Policies .badge[PREVIEW Feature]
+# CloudBees Pipeline Policies
 
 ---
 name: pipeline-policies
 class: compact
 
-# CloudBees Pipeline Policies
+# CloudBees Pipeline Policies .badge[PREVIEW Feature]
 
 [Pipeline Policies for CloudBees Core](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines-user-guide/pipeline-policies) allow organizations to enforce standards across Pipeline jobs.
 
