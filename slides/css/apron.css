@@ -9,7 +9,9 @@ html {
 body { font-family: 'Lato'; }
 h1, h2, h3 {
   font-family: 'Lato';
-  font-weight: normal;
+}
+h1 {
+  font-weight: 700;
 }
 
 .remark-slide {
