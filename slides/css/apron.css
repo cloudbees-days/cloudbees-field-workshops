@@ -10,7 +10,7 @@ body { font-family: 'Lato'; }
 h1, h2, h3 {
   font-family: 'Lato';
 }
-h1 {
+h1, strong {
   font-weight: 700;
 }
 h2, h3 {
