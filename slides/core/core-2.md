@@ -1,4 +1,14 @@
+name: core-setup-title
+class: title, shelf, no-footer, fullbleed
+background-image: linear-gradient(135deg,#279be0,#036eb4)
+count: false
+
 # Configuration as Code (CasC) for CloudBees Core
+
+---
+name: core-casc-overview
+
+# CasC for Core Overview
 
 CasC for CloudBees Core consists of a collection of YAML files referred to as a configuration bundle (or CasC bundle) that includes four files:
 
@@ -7,15 +17,18 @@ CasC for CloudBees Core consists of a collection of YAML files referred to as a 
 3. `plugin-catalog.yaml` - This file provides a list of plugins that are not already part of the Core plugin envelope and makes those plugins available to be installed on a Managed Master.
 4. `plugins.yaml` - This file contains a list of all plugin to be installed on a Managed Master by the Core CasC capability.
 ---
+name: enable-casc
+
 ## Enabling CasC for a Core Managed/Team Master
 
-The `workshop-setup` job modified the `jenkins.yaml` file with `sed` and then copied the Core configuration bundle YAML files from your forked **core-config-bundle** repository to a sub-directory with the same name as your Team Master inside a special directory - the `jcasc-bundles-store` directory - in the Jenkins home of the Core Operations Center from which you created your Team Master. Your Team Master then had to be re-provisioned for the Core configuration bundle to take effect.
+The `workshop-setup` job that you ran in the *Core Workshop Setup* lab modified the `jenkins.yaml` file with `sed` and then copied the Core configuration bundle YAML files from your forked **core-config-bundle** repository to a sub-directory with the same name as your Team Master inside a special directory - the `jcasc-bundles-store` directory - in the Jenkins home of the Core Operations Center from which you created your Team Master. Your Team Master then had to be re-provisioned for the Core configuration bundle to take effect.
 
 When the Core Operations Center is provisioning a Team/Managed Master it will check to see if there is a matching configuration for the name of the Team/Managed Master being provisioned and copy that Core configuration bundle link YAML file to `/var/casc-bundle/bundle-link.yaml` on your Team Master and set the value of the `core.casc.config.bundle` system property to match that file path. 
 
 Your Team Master will then use that protected link to download the Core configuration bundle to your Team Master. The `jenkins.yaml` file will be downloaded from the OC to `/var/jenkins_home/core-casc-bundle/jenkins.yaml` and the `casc.jenkins.config` system property will be set to that file path.
 ---
-## Configuration Bundle Components
+name: config-bundle-details
+## Configuration Bundle Details
 
 ### jenkins.yaml
 The `jenkins.yaml` provides all of the Jenkins system and plugin configuration - that is currently supported and primarily relies on the [OSS Jenkins Configuration as Code (JCasC) plugin](https://github.com/jenkinsci/configuration-as-code-plugin) for the OSS system and plugin configuration that is supported. Also note that some, but not all, CloudBees Core plugins support JCasC based configuration.
@@ -35,9 +48,13 @@ CasC allows auto-configuring Pipeline Shared Libraries so it is very easy to pro
 #### Master Level Kubernetes Agent Templates
 The CloudBees Kube Management plugin allows you to [configure Kubernetes Pod Templates for agents at the Team/Master level](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-admin-guide/agents#_editing_pod_templates_per_team_using_masters) but still managed the Kubernetes cluster configuration for Kuberentes based agents at the Core Operations Center level. Several Kubernetes Pod Templates were added to your Team Master via your Core configuration bundle.
 ---
+name: gitops-for-casc
+
 ## GitOps for Core CasC
 One of the main reasons to manage configurations as code is to allow it to be managed in source control. But you still don't want to have to execute any manual steps when you make approved changes to your configuration. In this exercise we will setup a Jenkins Pipeline job - a [Pipeline Organization Folder](https://jenkins.io/doc/book/pipeline/multibranch/#organization-folders) - on your Team Master that will be triggered whenever you commit any approved changes to the **master** branch of the Core configuration bundle repository.
 
-## Lab
+---
+name: lab-link
+## Lab - CloudBees Core - Configuration as Code
 
 [https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/core-casc/core-casc.md](https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/core-casc/core-casc.md)

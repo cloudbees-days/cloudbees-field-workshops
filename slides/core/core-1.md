@@ -17,8 +17,9 @@ In this lab, everyone will:
 * Create a GitHub organization to use for this workshop.
 
 ---
+name: link-to-lab
 ## Lab - Core Setup
 
 Today's URL for the CloudBees Core Workshop cluster is https://workshop.cb-sa.io/cjoc/
 
-[https://github.com/cloudbees-days/core-rollout-flow-workshop](https://github.com/cloudbees-days/core-rollout-flow-workshop)
+[https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/core-workshop-setup/workshop-setup.md](https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/core-workshop-setup/workshop-setup.md)

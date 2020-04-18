@@ -59,10 +59,6 @@ html {
 .remark-slide-content h3 {
   font-size: 2.5rem;
 }
-
-.remark-slide-content li {
-  padding-top: 10px;
-}
 .remark-slide-content pre,
 .remark-slide-content code,
 .remark-slide-content kbd,
@@ -371,7 +367,6 @@ html {
 .one-third-up img {
   margin-top: 30%;
 }
-
 .remark-slide-content .remark-slide-number, .remark-slide-content .footer li {
   font-size: 1rem;
 }

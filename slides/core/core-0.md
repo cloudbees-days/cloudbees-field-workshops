@@ -21,8 +21,9 @@ name: agenda
 # Agenda
 
 1. CloudBees Core Overview
-2. Configuration as Code (CasC) with CloudBees Core
-3. T
+2. Setup for Labs
+3. Configuration as Code (CasC) with CloudBees Core
+4. 
 
 ---
 name: lab-environment
