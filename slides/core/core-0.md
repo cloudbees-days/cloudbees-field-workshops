@@ -10,7 +10,7 @@ layout: true
 
 .footer[
 - ![:scale 100%](../img/CloudBees-Submark-Full-Color.svg)
-- - © 2020 CloudBees, Inc.
+- © 2020 CloudBees, Inc.
 ]
 ---
 name: agenda
