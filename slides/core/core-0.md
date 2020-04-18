@@ -9,8 +9,8 @@ count: false
 layout: true
 
 .footer[
-- Copyright © 2020 CloudBees, Inc.
 - ![:scale 100%](../img/CloudBees-Submark-Full-Color.svg)
+- - © 2020 CloudBees, Inc.
 ]
 ---
 name: agenda
