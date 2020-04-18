@@ -1,4 +1,4 @@
-# <img src="images/cloudbeescore_logo.png" alt="CloudBees Core Logo" width="40" align="top"> CloudBees Core - Pipeline Template Catalogs & Pipeline Policies
+# <img src="images/cloudbeescore_logo.png" alt="CloudBees Core Logo" width="40" align="top"> CloudBees Core - Pipeline Template Catalogs
 
 ## Import Pipeline Template Catalog
 1. The pipeline template catalog repository: https://github.com/cloudbees-days/pipeline-template-catalog should have been forked for you automatically at the start of this workshop.
