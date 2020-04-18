@@ -50,7 +50,7 @@ name: core-overview-content
 class: compact
 
 # CloudBees Core
-*### Manage the Volume, Variety and Complexity of Pipelines*
+### *Manage the Volume, Variety and Complexity of Pipelines*
 
 Faster innovation
 .no-bullet[
