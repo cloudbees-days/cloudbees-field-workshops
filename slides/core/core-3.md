@@ -21,8 +21,23 @@ Benefits of using Pipeline Template Catalogs include:
 Pipeline Template Catalogs help ensure that Pipeline jobs conform to organizational standards and when used in combination with Shared Libraries provide reusable Pipelines — boosting cross-team collaborations, saving time and reducing errors.
 
 ---
-name: lab-link
+name: lab-link-pipeline-template-catalog
 
-# Lab
+# Lab - Import Pipeline Template Catalog
 
 [https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/pipeline-template-catalog/pipeline-template-catalog.md](https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/pipeline-template-catalog/pipeline-template-catalog.md)
+
+---
+name: pipeline-policies
+
+# Pipeline Policies
+
+[Pipeline Policies for CloudBees Core](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines-user-guide/pipeline-policies) allow organizations to enforce standards across Pipeline jobs.
+
+* Pipeline Policies are runtime validations that support both scripted and declarative pipelines.
+* Pipeline Policies provide administrators a way to include warnings for or block the execution of pipelines that do not comply with certain regulatory requirements rules or best practice guidelines captured as policies.
+* There are currently 4 supported policy rules:
+  * AgentTimeoutRule - validates that a timeout period was set for tasks executed on agents.
+  * PausedActionTimeoutRule - validates that pipeline steps that require an external condition must be defined within a timeout.
+  * PausedActionInAgentRule
+  * EntirePipelineTimeoutRule
