@@ -421,8 +421,9 @@ h2, h3 {
   background-color: #d32f2f;
   border-radius: .45rem;
   color: #fff;
-  padding: 2px 8px 2px 8px;
-  font-size: 1.4rem;
+  padding: 3px 8px 3px 8px;
+  font-size: 1.3rem;
+  font-weight: 300;
   position: absolute;
   margin-left: 10px;
  }
