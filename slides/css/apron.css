@@ -6,6 +6,7 @@ html {
   box-sizing: border-box;
   margin: 0px;
   padding: 0px;
+  color: #4D545D;
 }
 @media print {
   .remark-slide-scaler {
