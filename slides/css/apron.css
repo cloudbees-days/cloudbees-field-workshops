@@ -394,7 +394,7 @@ h2, h3 {
   font-size: 0.9rem;
 }
 .remark-code, .remark-inline-code {
-  font-family: 'Robot Mono';
+  font-family: 'Robot Mono', monospace;
 }
 
 .no-bullet  ul {
