@@ -9,7 +9,7 @@ count: false
 layout: true
 
 .footer[
-- Copyright © 2020 CloudBees
+- Copyright © 2020 CloudBees, Inc.
 
 ---
 name: agenda
