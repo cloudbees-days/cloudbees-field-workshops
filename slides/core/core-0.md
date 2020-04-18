@@ -32,7 +32,7 @@ name: lab-environment
 * Attendees will be using their own GitHub accounts 
 
 ---
-name: core-title-slide
+name: core-overview-title
 class: title, shelf, no-footer, fullbleed
 background-image: linear-gradient(135deg,#279be0,#036eb4)
 count: false
@@ -42,5 +42,6 @@ count: false
 ???
 Notes
 ---
-# CloudBees Core
-### .center[*Flexible, governed continuous delivery for all your applications*]
+
+# .center[CloudBees Core]
+.center[***Flexible, governed continuous delivery for all your applications***]
