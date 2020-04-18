@@ -23,6 +23,7 @@ CasC for CloudBees Core consists of a collection of YAML files referred to as a 
 * It is kind of hard to explain the difference between the `plugin-catalog.yaml` and the `plugins.yaml` - basically the `plugin-catalog` is a required component of CAP.
 ---
 name: enable-casc
+class: compact
 
 ## Enabling CasC for a Core Managed/Team Master
 
