@@ -12,6 +12,9 @@ This workshop introduces attendees to the features for CloudBees Core.
 ---
 layout: true
 
+.header[
+]
+
 .footer[
 - © 2020 CloudBees, Inc.
 - ![:scale 100%](../img/CloudBees-Submark-Full-Color.svg)

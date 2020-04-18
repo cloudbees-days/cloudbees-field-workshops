@@ -392,6 +392,16 @@ h2, h3 {
   display: none;
 }
 
+.remark-slide-content .header {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  height: 20px;
+  margin: 0px;
+  padding: 0px;
+  background-image: linear-gradient(135deg,#279be0,#036eb4)
+}
 .one-third-up img {
   margin-top: 30%;
 }
