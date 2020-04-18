@@ -44,7 +44,6 @@ count: false
 Notes
 ---
 name: core-overview-content
-class: 
 # CloudBees Core
 
 ### Manageability
