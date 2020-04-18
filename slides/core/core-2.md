@@ -38,8 +38,6 @@ name: config-bundle-details-yaml
 # Configuration Bundle Details
 ## JCasC YAML
 
-### jenkins.yaml
-
 .no-bullet[
 * The `jenkins.yaml` provides all of the Jenkins system and plugin configuration - that is currently supported and primarily relies on the [OSS Jenkins Configuration as Code (JCasC) plugin](https://github.com/jenkinsci/configuration-as-code-plugin) for the OSS system and plugin configuration that is supported. Also note that some, but not all, CloudBees Core plugins support JCasC based configuration.
 ]
