@@ -3,7 +3,8 @@ class: title, shelf, no-footer, fullbleed
 background-image: linear-gradient(135deg,#279be0,#036eb4)
 count: false
 
-# Configuration as Code (CasC) for CloudBees Core
+# Configuration as Code (CasC) 
+## for CloudBees Core
 
 ---
 name: core-casc-overview
