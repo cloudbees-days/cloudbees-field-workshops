@@ -419,5 +419,9 @@ h2, h3 {
  .badge-preview {
   background-color: #d32f2f;
   border-radius: .45rem;
-  color: #fff
+  color: #fff;
+  padding: 0 8px 0 8px;
+  font-size: 1.4rem;
+  position: absolute;
+  margin-left: 10px;
  }
