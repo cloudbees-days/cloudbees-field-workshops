@@ -15,7 +15,7 @@ The workshop is divided into 3 parts. The first is focused on CloudBees Core, th
 
 # Workshop Labs
 ## Core:
- * [Lab 1 - Core Setup](labs/core-workshop-setup/workshop-setup.md)
+ * [Lab 1 - Core Workshop Setup](labs/core-workshop-setup/workshop-setup.md)
  * [Lab 2 - Configuration as Code (CasC) for CloudBees Core](labs/core-casc/core-casc.md)
  * [Lab 3 - Pipeline Template Catalogs](labs/pipeline-template-catalog/pipeline-template-catalog.md)
  * [Lab 4 - Pipeline Policies](labs/pipeline-policies/pipeline-policies.md)
