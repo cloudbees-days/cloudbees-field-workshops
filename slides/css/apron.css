@@ -34,7 +34,7 @@ h1, h2, h3 {
   height: 100%;
   line-height: 1.25;
   padding: 20px 80px 0 80px;
-  font-size: 2rem;
+  font-size: 1.9rem;
 }
 .remark-slide-content * {
   box-sizing: border-box;
@@ -64,10 +64,10 @@ h1, h2, h3 {
   font-size: 3rem;
 }
 .remark-slide-content h2 {
-  font-size: 2.75rem;
+  font-size: 2.5rem;
 }
 .remark-slide-content h3 {
-  font-size: 2.5rem;
+  font-size: 2.25rem;
 }
 .remark-slide-content li {
   font-size: 1.6rem;
@@ -93,10 +93,10 @@ h1, h2, h3 {
   font-size: 2.75rem;
 }
 .remark-slide-content.compact h2 {
-  font-size: 2.5rem;
+  font-size: 2.25rem;
 }
 .remark-slide-content.compact h3 {
-  font-size: 2.25rem;
+  font-size: 2rem;
 }
 .remark-slide-content.compact pre,
 .remark-slide-content.compact code,
@@ -113,10 +113,10 @@ h1, h2, h3 {
   font-size: 4rem;
 }
 .remark-slide-content.roomy h2 {
-  font-size: 3rem;
+  font-size: 2.75rem;
 }
 .remark-slide-content.roomy h3 {
-  font-size: 2.75rem;
+  font-size: 2.5rem;
 }
 .remark-slide-content.roomy pre,
 .remark-slide-content.roomy code,
