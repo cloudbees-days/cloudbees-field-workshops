@@ -13,8 +13,6 @@ Today's URL for the CloudBees Core Workshop environment is https://workshop.cb-s
 
 ### Create a Team Master
 
-Next, everyone will get their own Jenkins masters referred to as a [Team Master](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-admin-guide/cje-ux) in CloudBees Core.
-
 1. If not in CloudBees Team UI, click on the **Teams** link in the left menu. <p><img src="images/setup-classic-ui-Teams-link.png" width=400/>
 2. Click on the **Create team** button in the center of your screen.<p><img src="images/setup-create-a-team.png" width=400/>
 3. **Name this team** - enter a name for your team - **IMPORTANT: to ensure uniqueness, use your GitHub username** and then click **Next**.<p><img src="images/setup-name-this-team.png" width=450/>
@@ -26,22 +24,18 @@ Next, everyone will get their own Jenkins masters referred to as a [Team Master]
 9. While your Core Team Master is being created (**it takes anywhere from 2-3 minutes to provision your Team Master**), move onto the next section.
 
 ## Create a GitHub.com Account
-Setup a GitHub.com user account that will be used later in this workshop. If you have an existing GitHub.com account you will be able to use it if you are comfortable using that account to create a GitHub Organization and a GitHub Personal Access Token for use in this workshop.
 
 1. Visit https://github.com/join and fill in the required fields to create a user account.
 2. Select "Unlimited public repositories for free" when choosing your plan.
 3. Verify your email account to ensure you account is activated.  An activated account will be **required** for the rest of this workshop.
 
 ## Create a GitHub Personal Access Token
-The following instructions cover how to create a Github Personal Access Token that you will use within Jenkins to connect Pipelines, Multibranch Pipelines, and Github Organization Projects to your Github repositories.
 
 1. Click on [this link to automatically select the required **Personal access token settings**](https://github.com/settings/tokens/new?scopes=repo,read:user,user:email,admin:repo_hook,admin:org_hook)
 2. Click on **Generate Token**
 3. As the success message says: **Make sure to copy your new personal access token now. You won’t be able to see it again!**  
 
 ## Create a GitHub Organization
-
-Create a GitHub organization to use for this workshop:
 
 1. On GitHub navigate to **Organizations**: https://github.com/settings/organizations (after logging in) 
 2. Click on **New Organization** <p><img src="images/setup-github-new-org.png" width=550/>
@@ -65,15 +59,5 @@ You should see the following Blue Ocean **Pipelines** screen with one Pipeline n
 5. Blue Ocean will automatically switch to the Pipeline **Activity** screen, click anywhere on the Pipeline run row to see the Pipeline run and view the logs. But make sure you don't click on the **Stop** button to the right of the red box in the screenshot below.<p><img src="images/workshop-setup-activity.png" width=600/>
 6. Once the **workshop-setup** Pipeline job completes successfully your Team Master will be restarted so you should see a **Connect lost: waiting** alert in the bottom right of your Blue Ocean screen.<p><img src="images/workshop-setup-connection-lost.png" width=600/>
 
-While your Team Master is restarting, let's explore what the `workshop-setup` Pipeline job did:
-
-* In the GitHub Organization that you created for this workshop you will notice that you now have 5 repositories. The following repositories were [forked](https://guides.github.com/activities/forking/) from the [CloudBees Days GitHub Organization](https://github.com/cloudbees-days) by the `workshop-setup` job:
-   1. **core-config-bundle** - this repository provides a base CasC configuration for everyones' Team Master.
-   2. **pipeline-library** - a Jenkins Pipeline Shared Library that will be used by the Jenkins Pipelines you create during this workshop.
-   3. **pipeline-template-catalog** - a set of templated Pipelines that you will use to create Jenkins Pipeline jobs for this workshop.
-   4. **microblog-frontend** - a vue.js application to be used for this workshop.
-   5. **microblog-backend** - a Python application to be used in conjunction with the **microblog-frontend** application to be used with this workshop.
-
-* Core Configuration as Code was setup for your Team Master and we will take a more detailed look at this in the next lab.
 
 You may proceed to the next lab: [*Configuration as Code (CasC) for CloudBees Core*](../core-casc/core-casc.md) where we will explore your individual fork of the **core-config-bundle** repository or choose another lab on the [main page](../../README.md#workshop-labs).

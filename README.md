@@ -1,7 +1,5 @@
 # <img src="https://mms.businesswire.com/media/20191204005250/en/760213/23/Logo_-_Stacked_-_Full_Color%402x.jpg" width="100" align="top"> CloudBees Core-Rollout-Flow Integration Workshop
-This workshop serves to demonstrate how to  effectively use CI/CD practices, manage feature flags, and orchestrating releases through a close integration of CloudBees' Core, Rollout, and Flow products, respectively.
-
-The workshop is divided into 3 parts. The first is focused on CloudBees Core, the second focused on Rollout, and the third on CloudBees Flow.
+These workshop labs demonstrate how to  effectively use CI/CD practices, manage feature flags, and orchestrating releases with CloudBees' Core, Rollout, and Flow products.
 
 # Workshop Prerequisites
 
@@ -15,27 +13,38 @@ The workshop is divided into 3 parts. The first is focused on CloudBees Core, th
 
 # Workshop Labs
 ## Core:
- * [Lab 1.1 - Core Setup](labs/core-workshop-setup/workshop-setup.md)
- * [Lab 1.2 - Configuration as Code (CasC) for CloudBees Core](labs/core-casc/core-casc.md)
- * [Lab 1.3 - Pipeline Template Catalogs & Pipeline Policies](labs/pipeline-template-catalog/pipeline-template-catalog.md)
- * [Lab 1.4 - Hibernating Masters](labs/hibernating-masters/hibernating-masters.md)
- * [Lab 1.5 - Cross Team Collaboration](labs/cross-team-collaboration/cross-team-collaboration.md)
- * [Lab 1.6 - Preview Environment](labs/core-preview-environment/catalog-templates.md)
+ * [Lab 1 - Core Workshop Setup](labs/core-workshop-setup/workshop-setup.md)
+ * [Lab 2 - Configuration as Code (CasC) for CloudBees Core](labs/core-casc/core-casc.md)
+ * [Lab 3 - Pipeline Template Catalogs](labs/pipeline-template-catalog/pipeline-template-catalog.md)
+ * [Lab 4 - Pipeline Policies](labs/pipeline-policies/pipeline-policies.md)
+ * [Lab 5 - Cross Team Collaboration](labs/cross-team-collaboration/cross-team-collaboration.md)
+ * [Lab 6 - Preview Environment](labs/core-preview-environment/preview-environment.md)
+ * [Lab 7 - Hibernating Masters](labs/hibernating-masters/hibernating-masters.md)
+
 
 
 ## Rollout:
+<<<<<<< HEAD
  * [Lab 1.1 - Setting Up CloudBees Rollout](labs/rolloutSetup/rolloutSetup.md)
  * [Lab 1.2 - Adding a Sidebar to the Microblog](labs/rolloutFeature/rolloutFeature.md)
  * [Lab 1.3 - Control the Value of a Feature Flag](labs/rolloutExperiment/rolloutExperiment.md)
  * [Lab 1.4 - User Targeting](labs/rolloutTargeting/rolloutTargeting.md)
  * Lab 1.5 - Analytics and A/B testing
  * [Lab 1.6 - Feature Flag GitOps](labs/rollout-casc/rollout-casc.md)
+=======
+ * [Lab 1 - Setting Up CloudBees Rollout](labs/rolloutSetup/rolloutSetup.md)
+ * [Lab 2 - Adding a Sidebar to the Microblog](labs/rolloutFeature/rolloutFeature.md)
+ * [Lab 3 - Control the Value of a Feature Flag](labs/rolloutExperiment/rolloutExperiment.md)
+ * Lab 4 - User Targeting
+ * Lab 5 - Analytics and A/B testing
+ * [Lab 6 - Feature Flag GitOps](labs/rollout-casc/rollout-casc.md)
+>>>>>>> ff2c2b9311af0f7d650d6f34d141e1149d573280
 
 
 
 ## Flow:
 Coming soon...
- * Lab 1 - Create release pipeline from service catalog
+ * Lab 1 - Create release pipeline from a service catalog
  * Lab 2 - Add gates to the release pipeline
  * Lab 3 - Merge into master and run through release pipeline
  * Lab 4 - Check out the live app, close the ticket, observe flow Dashboard
