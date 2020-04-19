@@ -28,4 +28,8 @@ name: pipeline-template-catalog-lab-link
 [https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/pipeline-template-catalog/pipeline-template-catalog.md](https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/pipeline-template-catalog/pipeline-template-catalog.md)
 
 ---
-name: 
+name: gith-reporting
+
+# CloudBees GitHub Reporting .badge-red[PRE-RELEASE]
+
+Whereas OSS github-branch-source displays only build-level statuses, this plugin should follow more detailed events inside a Pipeline build and emit corresponding GitHub statuses.
