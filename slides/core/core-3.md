@@ -28,7 +28,7 @@ name: pipeline-template-catalog-lab-link
 [https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/pipeline-template-catalog/pipeline-template-catalog.md](https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/pipeline-template-catalog/pipeline-template-catalog.md)
 
 ---
-name: gith-reporting
+name: github-reporting
 
 # CloudBees GitHub Reporting .badge-red[PRE-RELEASE]
 
