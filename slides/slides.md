@@ -5,7 +5,7 @@ count: false
 
 
 # CloudBees Field Workshops
-.one-third-up[![:scale 40%](../img/CloudBees-Logo-White+Tag.png)]
+.one-third-up[![:scale 40%](img/CloudBees-Logo-White+Tag.png)]
 ???
 Provides links to product specific workshops.
 
@@ -17,7 +17,7 @@ layout: true
 
 .footer[
 - © 2020 CloudBees, Inc.
-- ![:scale 100%](../img/CloudBees-Submark-Full-Color.svg)
+- ![:scale 100%](img/CloudBees-Submark-Full-Color.svg)
 ]
 ---
 name: workshop-links-slide
