@@ -1,3 +1,15 @@
+name: main-title-slide
+class: title, shelf, no-footer, fullbleed
+background-image: linear-gradient(135deg,#279be0,#036eb4)
+count: false
+
+
+# CloudBees Field Workshops
+.one-third-up[![:scale 40%](../img/CloudBees-Logo-White+Tag.png)]
+???
+Provides links to product specific workshops.
+
+---
 layout: true
 
 .header[
@@ -8,7 +20,7 @@ layout: true
 - ![:scale 100%](../img/CloudBees-Submark-Full-Color.svg)
 ]
 ---
-name: main-title-slide
+name: workshop-links-slide
 count: false
 
 # CloudBees Field Workshops
