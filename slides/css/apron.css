@@ -427,3 +427,10 @@ h2, h3 {
   position: absolute;
   margin-left: 10px;
  }
+
+ ol {
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+ }
