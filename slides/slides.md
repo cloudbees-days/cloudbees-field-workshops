@@ -1,6 +1,14 @@
+layout: true
+
+.header[
+]
+
+.footer[
+- © 2020 CloudBees, Inc.
+- ![:scale 100%](../img/CloudBees-Submark-Full-Color.svg)
+]
+---
 name: main-title-slide
-class: title, shelf, no-footer, fullbleed
-background-image: linear-gradient(135deg,#279be0,#036eb4)
 count: false
 
 # CloudBees Field Workshops
