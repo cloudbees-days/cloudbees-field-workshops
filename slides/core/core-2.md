@@ -91,7 +91,7 @@ name: gitops-for-casc
 
 ---
 name: core-casc-lab-link
-# Lab - CloudBees Core - Configuration as Code
+# Lab - CloudBees Core - GitOps for Core CasC
 
 The lab is available at the following URL: 
 [https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/core-casc/core-casc.md](https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/core-casc/core-casc.md)

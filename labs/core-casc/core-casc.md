@@ -1,4 +1,4 @@
-# <img src="images/cloudbeescore_logo.png" alt="CloudBees Core Logo" width="40" align="top"> CloudBees Core - Configuration as Code
+# <img src="images/cloudbeescore_logo.png" alt="CloudBees Core Logo" width="40" align="top"> CloudBees Core - GitOps for Core CasC
 
 In this lab we are going to explore [Configuration as Code (CasC) for CloudBees Core](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-admin-guide/core-casc-modern) and then we will setup [GitOps](https://www.gitops.tech/) for Core CasC so that any Jenkins configuration changes you make in source control will automatically be updated in your Core Team Master. 
 
@@ -44,8 +44,8 @@ kube:
 17.   Create a **Pull Request** between the new branch and the **master** branch of your fork of the **core-config-bundle** repository and then merge those changes to your **master** branch.
 18.   Now navigate to the **master** branch Pipeline job of the **core-config-bundle** Multibranch Pipeline project on your Team Master.
 19.   After a couple of minutes you will see an addition **monitors** warning. Click on the **monitor** link of your Team Master and you will see that a new version of the configuration bundle is available - click on the **Reload Configuration** button and on the next screen click the **Yes** button to apply the updated configuration bundle.
-20.   You will now see a link for **Pipeline Polices** and Hibernation has been configured for your Team Master.
+20.   You will now see a link for **Pipeline Polices** and Core Master Hibernation has been configured for your Team Master.
 
->NOTE: The **Build strategies** configuration for Pipeline Organization Folder and Multibranch projects is provided by the [Basic Branch Build Strategies plugin](https://github.com/jenkinsci/basic-branch-build-strategies-plugin/blob/master/docs/user.adoc) and by selecting the *Skip initial build on first branch indexing* strategy we avoid an unnecessary build when we first create the Organization Folder project above.
+>NOTE: The **Build strategies** configuration for Pipeline Organization Folder and Multibranch projects are provided by the [Basic Branch Build Strategies plugin](https://github.com/jenkinsci/basic-branch-build-strategies-plugin/blob/master/docs/user.adoc) and by selecting the *Skip initial build on first branch indexing* strategy we avoid an unnecessary build when we first create the Organization Folder project above.
 
 You may proceed to the next lab: [*Hibernating Masters*](../hibernating-masters/hibernating-masters.md) or choose another lab on the [main page](../../README.md#workshop-labs).
