@@ -24,7 +24,7 @@ name: core-casc-overview
 CasC for CloudBees Core consists of a collection of YAML files referred to as a configuration bundle (or CasC bundle) that includes four files:
 
 1. `bundle.yaml` - This file describes the bundle, and references the other files in the bundle.
-2. `jenkins.yaml` - This file contains the Jenkins configuration as defined by the OSS [Jenkins CasC plugin](https://github.com/jenkinsci/configuration-as-code-plugin).
+2. `jenkins.yaml` - This file contains the Jenkins configuration as defined by the OSS [Jenkins CasC plugin](https://github.com/jenkinsci/configuration-as-code-plugin) and supported CloudBees plugins.
 3. `plugin-catalog.yaml` - This file provides a list of plugins that are **ALLOWED** to be installed on your Managed Master that are not already part of the allowed CAP Core plugins.
 4. `plugins.yaml` - This file contains a list of all plugins that will be **INSTALLED** on the configured Managed Master - but they can only be installed if allowed via the `plugin-catalog.yaml` or they are allowed CAP plugins.
 
@@ -48,9 +48,21 @@ name: config-bundle-details-yaml
 # JCasC YAML
 
 .no-bullet[
-* The `jenkins.yaml` provides all of the Jenkins system and plugin configuration - that is currently supported and primarily relies on the [OSS Jenkins Configuration as Code (JCasC) plugin](https://github.com/jenkinsci/configuration-as-code-plugin) for the OSS system and plugin configuration that is supported. Also note that some, but not all, CloudBees Core plugins support JCasC based configuration.
+* The `jenkins.yaml` provides all of the Jenkins system and plugin configuration - that is currently supported and primarily relies on the [OSS Jenkins Configuration as Code (JCasC) plugin](https://github.com/jenkinsci/configuration-as-code-plugin) for the OSS system and plugin configuration that is supported. Also note that some, but not all, CloudBees Core plugins support JCasC based configuration. The following is an example of Jenkins credentials configuration via JCasC:
 ]
 
+```yaml
+credentials:
+  system:
+    - credentials:
+      - string:
+          description: "GitHub PAT from JCasC - secret text"
+          id: "cbdays-github-token-secret"
+          scope: GLOBAL
+          secret: "{AQAAABAAAAAwhY0iqxnrlWCCLvk+2TLChLxlT/NtzpQcIzEK5dFYqXxLa61+z6B9o9C2QG+IS7JFty/52Xw3vVr0S/NYUTJAdA==}"
+```
+???
+NOTE: It is completely safe to include the actual secret here as it has been encrypted by the Jenkins instance this particular credentials is targeted for and we will discuss JCasC credentials in further detail in the next slide.
 ---
 name: config-bundle-details-credentials
 
