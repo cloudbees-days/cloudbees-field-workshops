@@ -85,7 +85,7 @@ h2, h3 {
 .remark-slide-content li li {
   font-size: 1.3rem;
 }
-.remark-slide-content li li {
+.remark-slide-content li:not(:first-child)  li:not(:first-child)  {
   padding-top: 0.5rem;
 }
 .remark-slide-content pre,
