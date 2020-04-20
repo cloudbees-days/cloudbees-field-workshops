@@ -11,6 +11,7 @@ name: core-casc-overview
 
 # CasC for Core Overview
 
+Configuration as Code (CasC) for CloudBees Core simplifies the management of a CloudBees Core cluster by capturing the configuration of Core Masters in human-readable declarative configuration files which can then be applied in a reproducible way. By capturing the configuration in files, it can be treated as a first class revision-controlled artifact - versioned, tested, validated, and then applied to Masters while being centrally managed from CloudBees Core Operations Center.
 
 ---
 name: core-casc-overview
