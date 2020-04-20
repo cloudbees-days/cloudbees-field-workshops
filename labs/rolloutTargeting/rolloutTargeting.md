@@ -8,37 +8,35 @@ import { store } from '../store'
 ```
 2. To allow the Rollout dashboard to target specific users using the `isLoggedIn` property, we need pass the property from the code to the dashboard. This is a similar process to using `Rox.register` to make the flags visible to the dashboard. Before the `Rox.register` line, add the following line:
 ```javascript
-Rox.setCustomBooleanProperty('isLoggedIn', store.getters.isLoggedIn)
+Rox.setCustomBooleanProperty('isLoggedIn', store.getters.isLoggedIn);
 ```
 
 3. The final `flags.js` should be
 <details><summary>this:</summary>
 
-```
+```javascript
 import Rox from 'rox-browser'
+import { store } from '../store'
 
-4. Your entire ```/frontend-spring-boot-react-crud-full-stack-with-maven/src/flags.js``` file should now look like 
-<details><summary>this:</summary>
+export const Flags = {
+  sidebar: new Rox.Flag(false)
+};
+
+export const configurationFetchedHandler = fetcherResults => {
+  if (fetcherResults.hasChanges && fetcherResults.fetcherStatus === 'APPLIED_FROM_NETWORK') {
+    window.location.reload(false)
+  }
+};
+const options = {
+  configurationFetchedHandler: configurationFetchedHandler
+};
+
+Rox.setCustomBooleanProperty('isLoggedIn', store.getters.isLoggedIn);
+Rox.register('default', Flags);
+Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
 	
 ```
-import Rox from 'rox-browser';
-
-const Flags = {
-	addFlag: new Rox.Flag(),
-	adminControl: new Rox.Flag()
-}
-
-Rox.register('default', Flags);
-Rox.setup('INSERT ROLLOUT KEY HERE', {
-  debugLevel: 'verbose'
-});
-export default Flags;
-```
 </details>
-
-Now we will wrap the existing front-end admin functionality in this new flag and then create regular user functionality as well.
-
-** ADD FINAL FLAGS.JS 
 
 4. Create a commit message (e.g. added setCustomBooleanProperty) and select "Commit directly to the `master` branch" radio button.
 
