@@ -5,7 +5,7 @@ count: false
 
 
 # CloudBees Core Workshop
-.one-third-up[![:scale 40%](../img/CloudBees-Logo-White+Tag.png)]
+.one-third-up[![:scale 40%](../img/Core-white.svg)]
 ???
 This workshop introduces attendees to the features for CloudBees Core.
 
