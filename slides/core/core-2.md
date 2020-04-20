@@ -11,6 +11,12 @@ name: core-casc-overview
 
 # CasC for Core Overview
 
+
+---
+name: core-casc-overview
+
+# Core Configuration Bundle
+
 CasC for CloudBees Core consists of a collection of YAML files referred to as a configuration bundle (or CasC bundle) that includes four files:
 
 1. `bundle.yaml` - This file describes the bundle, and references the other files in the bundle.
@@ -87,4 +93,12 @@ name: gitops-for-casc
 name: core-casc-lab-link
 # Lab - CloudBees Core - Configuration as Code
 
+The lab is available at the following URL: 
 [https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/core-casc/core-casc.md](https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/core-casc/core-casc.md)
+
+---
+name: core-casc-lab-review
+
+# CloudBees Core - Configuration as Code Lab Review
+
+You added configuration and reload the Core configuration bundle for your Team Master.
