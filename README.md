@@ -11,8 +11,13 @@ These workshop labs demonstrate how to  effectively use CI/CD practices, manage 
 * A basic understanding of Jenkins Pipelines: https://jenkins.io/doc/book/pipeline/getting-started/
 * A basic understanding of feature flags: https://rollout.io/blog/ultimate-feature-flag-guide/
 
-# Workshop Labs
+# Workshop Labs & Slides
 ## Core:
+
+### Slides
+https://cloudbees-days.github.io/core-rollout-flow-workshop/core/
+
+### Labs
  * [Lab 1 - Core Workshop Setup](labs/core-workshop-setup/workshop-setup.md)
  * [Lab 2 - Configuration as Code (CasC) for CloudBees Core](labs/core-casc/core-casc.md)
  * [Lab 3 - Pipeline Template Catalogs](labs/pipeline-template-catalog/pipeline-template-catalog.md)
@@ -24,6 +29,11 @@ These workshop labs demonstrate how to  effectively use CI/CD practices, manage 
 
 
 ## Rollout:
+
+### Slides
+https://cloudbees-days.github.io/core-rollout-flow-workshop/rollout/
+
+### Labs
  * [Lab 1 - Setting Up CloudBees Rollout](labs/rolloutSetup/rolloutSetup.md)
  * [Lab 2 - Adding a Sidebar to the Microblog](labs/rolloutFeature/rolloutFeature.md)
  * [Lab 3 - Control the Value of a Feature Flag](labs/rolloutExperiment/rolloutExperiment.md)
