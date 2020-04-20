@@ -93,8 +93,8 @@ h2, h3 {
 .remark-slide-content kbd,
 .remark-slide-content tt,
 .remark-slide-content samp {
-  font-size: 1.5rem;
-  line-height: 1.5;
+  font-size: 1rem;
+  line-height: 1.1;
 }
 .remark-slide-content.compact {
   padding: 20px 40px 0 40px;
