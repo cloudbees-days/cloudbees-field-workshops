@@ -26,7 +26,9 @@ name: agenda
 1. CloudBees Core Overview
 2. Setup for Labs
 3. Configuration as Code (CasC) with CloudBees Core
-4. 
+4. Pipeline Manageability & Governance with Templates and Policies
+5. Cross Team Collaboration
+6. Hibernating Masters
 
 ---
 name: lab-environment
