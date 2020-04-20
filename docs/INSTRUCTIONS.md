@@ -24,10 +24,11 @@ Speaker notes can go here.
 ## Viewing Rendered Slides
 The fastest way to see your changes is to run a web server from the `docs` directory. If you have Python 3 installed it is as easy as running this command `python3 -m http.server` in that directory and then navigating to http://localhost:8000 
 
+## Presenting Slides
 To present the slides so you can use the notes, press 'C' to first clone the opened slideshow in another browser window and the press 'P' in the browser window you would like to use for notes.
 
 If you are unfamiliar with markdown syntax [here is a good cheat sheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
 
 ## Styling
 
-Styling is on the to do list, but for the time being let's focus on content. We'll come back and polish it later.
+Styling is based on the excellent work done by the Apron styling extension for remark.js - customizations are in the ./css/apron.css file.
