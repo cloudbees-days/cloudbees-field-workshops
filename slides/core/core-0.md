@@ -69,9 +69,10 @@ Reduce risk
 ]
 
 ---
-name: core-overview-cap
+name: core-overview-scale
 
-# CloudBees Assurance Program for Core
-* The CloudBees Assurance Program (CAP) specifies the set of plugins, plugin versions, and plugin dependencies that are verified and trusted through integrated testing. 
-* This provides greater stability and security for Core based Jenkins environments. 
-* All CAP plugins are verified to be independently stable and they are tested in aggregate to ensure compatibility with each other and the Jenkins LTS version of the Core release.
+# Manage Jenkins at Scale
+* Curated and verified Jenkins plug-ins with CloudBees Assurance Program ensures you are using the most up-to-date and secure versions via monthly security and functionality releases 
+* Convenient master and agent management, including self-service master provisioning and the ability to manage inbound events across multiple masters 
+* Configuration as Code for Jenkins and Core commercial components
+* Enables Comprehensive Jenkins Team Management including Masters per Team, Role Based Access Control (RBAC), and Credentials Management
