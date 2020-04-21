@@ -7,13 +7,16 @@ count: false
 
 ---
 name: cross-team overview
-class: img-left
 
 # Cross Team Collaboration
 
 ![Cross Team Collaboration diagram](https://docs.cloudbees.com/docs/cloudbees-common/latest/_images/cross-team-collaboration-screenshots/cross-team-diagram.abf4b33.png)
 
 The [Cross Team Collaboration](https://docs.cloudbees.com/docs/cloudbees-core/2.204.2.2/cloud-admin-guide/cross-team-collaboration) functionality in CloudBees Core allows you to create events and listeners to trigger jobs across Core Masters. It provides a pub/sub relationship where jobs can send an event with data, and the jobs listening for it can trigger and process the data.
+
+---
+name: test
+test
 
 --- 
 name: cross-team-lab

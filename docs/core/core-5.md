@@ -1,3 +1,8 @@
-# Lab 4 - Preview Environment
+name: preview-title
+class: title, shelf, no-footer, fullbleed
+background-image: linear-gradient(135deg,#279be0,#036eb4)
+count: false
 
-[INSERT CONTENT HERE]
+# Preview Environments with CloudBees Core
+
+---
