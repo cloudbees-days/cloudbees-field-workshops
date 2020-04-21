@@ -1,4 +1,4 @@
-name: core-setup-title
+name: core-hibernate-title
 class: title, shelf, no-footer, fullbleed
 background-image: linear-gradient(135deg,#279be0,#036eb4)
 count: false
@@ -6,7 +6,7 @@ count: false
 # CloudBees Core Hibernating Masters
 
 ---
-name:
+name: hibernate-overview
 
 # CloudBees Core Hibernating Masters .badge-red[PREVIEW]
 
