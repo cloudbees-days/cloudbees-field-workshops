@@ -52,7 +52,7 @@ name: config-bundle-details-yaml
 # JCasC YAML
 
 .no-bullet[
-* The `jenkins.yaml` file provides all of the Jenkins system and plugin configuration - that is currently supported and primarily relies on the [OSS Jenkins Configuration as Code (JCasC) plugin](https://github.com/jenkinsci/configuration-as-code-plugin) for the OSS system and plugin configuration that is supported. Also note that some, but not all, CloudBees Core plugins support JCasC based configuration. 
+* The `jenkins.yaml` file provides all of the Jenkins system and plugin configuration - that is currently supported and relies on the [OSS Jenkins Configuration as Code (JCasC) plugin](https://github.com/jenkinsci/configuration-as-code-plugin) for the OSS system and plugin configuration that is supported. Also note that some, but not all, CloudBees Core plugins support JCasC based configuration. 
 * The following is an example of Jenkins credentials configuration via JCasC:
 ]
 
@@ -80,8 +80,8 @@ Core CasC was used to create two user specific Jenkins credentials for use in th
 .no-bullet[
 * [JCasC Secrets](https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/features/secrets.adoc) for credentials can be managed in a few different ways:
   1. As properties files in the Jenkins Master file system. For secrets that you want to share across Team Masters you can mount the same [Kubernetes Secret](https://kubernetes.io/docs/concepts/configuration/secret/) to every Master.
-  2. As Jenkins encrypted values using the Jenkins-internal secret key allowing the encrypted strings to be used directly in the  `jenkins.yaml` configuration as we are doing in this workshop. The Jenkins-internal secret key used for encryption is unique for to Jenkins instance and means that the credentials are not portable between Team Masters.
-* The `workshop-setup` job used Jenkins to encrypt the GitHub Personal Access Token that you provided so it can only be decrypted by your Team Master and then replaced the `REPLACE_WITH_JENKINS_ENCODED_PAT` placeholders in your copy of the `jenkins.yaml` file with the Jenkins encrypted value of your GitHub Personal Access Token. 
+  2. As Jenkins encrypted values using the Jenkins-internal secret key allowing the encrypted strings to be used directly in the  `jenkins.yaml` configuration as we are doing in this workshop. The Jenkins-internal secret key used for encryption is unique to a Jenkins instance and means that the credentials are not portable between Masters.
+* The `workshop-setup` job used your Team Master Jenkins instance to encrypt your GitHub Personal Access Token that you provided and then updated your copy of the `jenkins.yaml` file with the encrypted value. This is perfectly secure as it can only be decrypted by your Team Master. 
 ]
 
 ---
@@ -93,13 +93,13 @@ class: compact
 #### Pipeline Shared Library
 
 .no-bullet[
-* JCasC allows auto-configuring Pipeline Shared Libraries so it is very easy to provide the same Pipeline Shared Libraries across multiple teams - as we have done for this workshop. The Core Pipeline Shared Library was configured at the Jenkins global configuration level so that it will be available for all the Jenkins Pipeline that you run on your Team Master.
+* JCasC allows auto-configuring Pipeline Shared Libraries so it is very easy to provide the same Pipeline Shared Libraries across multiple teams - as we have done for this workshop. The Core Pipeline Shared Library was configured at the Jenkins global configuration level so that it will be available for all the Jenkins Pipeline jobs that you run on your Team Master for this workshop.
 ]
 
 #### Master Level Kubernetes Agent Templates
 
 .no-bullet[
-* The CloudBees Kube Management plugin allows you to [configure Kubernetes Pod Templates for agents at the Team/Master level](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-admin-guide/agents#_editing_pod_templates_per_team_using_masters) but still manage the Kubernetes cluster configuration for Kuberentes based agents at the Core Operations Center level.
+* The CloudBees Kube Management plugin allows you to [configure Kubernetes Pod Templates for agents at the Team/Master level](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-admin-guide/agents#_editing_pod_templates_per_team_using_masters) but still manage the Kubernetes cluster configuration for Kuberentes based agents at the Core Operations Center level. We added a Kubernetes Pod Template to use a in Pipeline job we will create from a Pipeline Template Catalog.
 ]
 
 ---
@@ -108,16 +108,17 @@ name: core-casc-lab-link
 # Lab - GitOps for Core CasC
 
 .no-bullet[
+* 
 * One of the main reasons to manage configuration as code is to take advantage of features provided by source control tools - like GitHub webhooks for example. You don't want to have to execute any manual steps when you commit approved changes to your Core configuration. 
 * In the following lab we will setup a Jenkins Pipeline job - or more specifically, a [Pipeline Organization Folder](https://jenkins.io/doc/book/pipeline/multibranch/#organization-folders) - on your Team Master that will be triggered whenever you commit any approved changes to the `**master**` branch of your Core configuration bundle repository.
+* The GitOps for Core CasC lab instructions are available at: 
+[https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/core-casc/core-casc.md](https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/core-casc/core-casc.md)
 ]
 
-The lab is available at the following URL: 
-[https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/core-casc/core-casc.md](https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/core-casc/core-casc.md)
 
 ---
 name: core-casc-lab-review
 
 # CloudBees Core - Configuration as Code Lab Review
 
-You added configuration and reload the Core configuration bundle for your Team Master.
+* You created a Pipeline job, via a GitHub Organization Folder project, that will update your Team Master configuration bundle whenever you commit any changes to the **master** branch of your fork of the **core-config-bundle** repository. This is GitOps for Jenkins configuration.
