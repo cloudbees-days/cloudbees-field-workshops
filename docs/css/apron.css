@@ -6,9 +6,9 @@ html {
   font-weight: 400;
 }
 
-body { font-family: 'Lato'; }
+body { font-family: 'Lato', sans-serif; }
 h1, h2, h3 {
-  font-family: 'Lato';
+  font-family: 'Lato', sans-serif;
 }
 h1, strong {
   font-weight: 700;
@@ -39,8 +39,8 @@ h2, h3 {
   height: 100%;
   line-height: 1.25;
   padding: 20px 80px 0 80px;
-  font-size: 1.9rem;
-  font-family: 'Lato', sans-serif;;
+  font-size: 1.7rem;
+  font-family: 'Lato', sans-serif;
 }
 .remark-slide-content * {
   box-sizing: border-box;
@@ -67,7 +67,7 @@ h2, h3 {
   background: white url(data:image/gif;base64,R0lGODdhEAAQAPEAAADw/wDx/xXy/////ywAAAAAEAAQAAACIZyPKckYDQFsb6ZqD85jZ2+BkwiRFKehhqQCQgDHcgwEBQA7 ) repeat top left;
 }
 .remark-slide-content h1 {
-  font-size: 3rem;
+  font-size: 2.75rem;
 }
 .remark-slide-content h2 {
   font-size: 2.5rem;
@@ -88,11 +88,7 @@ h2, h3 {
 .remark-slide-content li li:not(:first-child)  {
   padding-top: 0.5rem;
 }
-.remark-slide-content pre,
-.remark-slide-content code,
-.remark-slide-content kbd,
-.remark-slide-content tt,
-.remark-slide-content samp {
+.remark-slide-content pre code {
   font-size: 1rem;
   line-height: 1.1;
 }

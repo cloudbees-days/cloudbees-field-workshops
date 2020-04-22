@@ -18,11 +18,14 @@ Setup fo this workshop will include:
 
 ---
 name: core-setup-lab
-## Lab - Core Workshop Setup
+# Lab - Core Workshop Setup
 
-Today's URL for the CloudBees Core Workshop cluster is https://workshop.cb-sa.io/cjoc/
+Today's URL for the CloudBees Core Workshop cluster is:
+ 
+  https://workshop.cb-sa.io/cjoc/
 
-The lab is available at: 
+
+The *Workshop Setup* lab instructions are available at: 
 [https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/core-workshop-setup/workshop-setup.md](https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/core-workshop-setup/workshop-setup.md)
 
 ---
@@ -31,7 +34,7 @@ class: compact
 
 # Core Workshop Setup Review
 
-While your Team Master is restarting, let's explore what the `workshop-setup` Pipeline job did:
+While your Team Master is restarting, let's explore the results of the `workshop-setup` Pipeline:
 
 .no-bullet[
 * In the GitHub Organization that you created for this workshop you will notice that you now have 5 repositories. The following repositories were [forked](https://guides.github.com/activities/forking/) from the [CloudBees Days GitHub Organization](https://github.com/cloudbees-days) by the `workshop-setup` job you just ran on your Team Master:
@@ -40,4 +43,5 @@ While your Team Master is restarting, let's explore what the `workshop-setup` Pi
    3. **pipeline-template-catalog** - a set of templated Pipelines that you will use to create Jenkins Pipeline jobs for this workshop.
    4. **microblog-frontend** - a vue.js sample application to be used for this workshop.
    5. **microblog-backend** - a Python sample application to be used in conjunction with the **microblog-frontend** application to be used with this workshop.
+* Your Core Team Master was also setup to use Core configuration as code.
 ]
