@@ -1,8 +1,8 @@
 # <img src="images/cloudbeescore_logo.png" alt="CloudBees Core Logo" width="40" align="top"> CloudBees Core - Pipeline Template Catalogs
 
 ## Import Pipeline Template Catalog
-1. Navigate to the top-level of your Team Master level and click on "Pipeline Template Catalogs" in the left menu<p><img src="images/Initial-template-click.png" width=800/>
-2. Click on "Add catalog"<p><img src="images/Add-template-click.png" width=800/>
+1. Navigate to the top-level of your Team Master level and click on **Pipeline Template Catalogs** in the left menu<p><img src="images/Initial-template-click.png" width=800/>
+2. Click on **Add catalog**<p><img src="images/Add-template-click.png" width=800/>
 3. Fill out the catalog import parameters:
    1. **Branch or tag for this template catalog**: master
    2. Check off **Git**
