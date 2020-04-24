@@ -43,7 +43,7 @@ class: compact
 
 * The `workshop-setup` job that you ran in the *Core Workshop Setup* lab updated your forked copy of the `jenkins.yaml` file with your GitHub information and then copied the Core configuration bundle YAML files from your forked **core-config-bundle** repository to a sub-directory with the same name as your Team Master inside a special directory - the `jcasc-bundles-store` directory - in the Jenkins home of the Core Operations Center from which you created your Team Master. 
 * Your Team Master was then *re-provisioned* in order for the Core configuration bundle to take effect.
-* When the Core Operations Center is provisioning a Team Master it will check to see if there is a matching configuration for the name of the Team Master being provisioned and copy that Core configuration bundle link YAML file to `/var/casc-bundle/bundle-link.yaml` on your Team Master and set the value of the `core.casc.config.bundle` system property to match that file path.
+* When the Core Operations Center is provisioning a Team Master it will check to see if there is a matching configuration for the name of the Team Master being provisioned and copy a Core configuration bundle link YAML file to `/var/casc-bundle/bundle-link.yaml` on your Team Master and set the value of the `core.casc.config.bundle` system property to match that file path.
 * Your Team Master will then use that protected link to download the Core configuration bundle to your Team Master. The `jenkins.yaml` file will be downloaded from the OC to `/var/jenkins_home/core-casc-bundle/jenkins.yaml` and the `casc.jenkins.config` system property will be set to that file path.
 
 ---
@@ -52,7 +52,7 @@ name: config-bundle-details-yaml
 # JCasC YAML
 
 .no-bullet[
-* The `jenkins.yaml` file provides all of the Jenkins system and plugin configuration - that is currently supported and relies on the [OSS Jenkins Configuration as Code (JCasC) plugin](https://github.com/jenkinsci/configuration-as-code-plugin) for the OSS system and plugin configuration that is supported. Also note that some, but not all, CloudBees Core plugins support JCasC based configuration. 
+* The `jenkins.yaml` file provides Jenkins system and plugin configuration - as defined by the [OSS Jenkins Configuration as Code (JCasC) plugin](https://github.com/jenkinsci/configuration-as-code-plugin). Also note that many, but not all, CloudBees Core plugins support JCasC based configuration. 
 * The following is an example of Jenkins credentials configuration via JCasC:
 ]
 
@@ -68,7 +68,7 @@ credentials:
 ```
 
 ???
-It is completely safe to include the actual secret here as it has been encrypted by the Jenkins instance this particular credentials is targeted for and we will discuss JCasC credentials in further detail in the next slide.
+It is completely safe to include the actual secret here as it has been encrypted by the Jenkins instance and we will discuss JCasC credentials in further detail in the next slide.
 
 ---
 name: config-bundle-details-credentials
