@@ -16,10 +16,11 @@ In this lab we will setup [GitOps](https://www.gitops.tech/) for [Configuration 
 9. Click on the link of the Jenkins Multibranch Pipeline project for your fork of the **core-config-bundle** repository.<p><img src="images/core-config-bundle-multibranch.png" width=600/>
 10. Next, navigate to your fork of the **core-config-bundle** repository on GitHub.
 11. Click on the **New pull request** button to create a pull request between your **gitops-lab** branch and your **master** branch. The **gitops-lab** branch contains all the updates we want to make to the Core configuration bundle. <p><img src="images/new-pull-request.png" width=600/>
-12. On the next screen, select the **gitops-lab** branch as the **compare** branch and then click the green **Create pull request** button. <p><img src="images/compare-branch.png" width=600/>
-13. Now navigate to the **master** branch Pipeline job of the **core-config-bundle** Multibranch Pipeline project on your Team Master.
-14. After a couple of minutes you will see an addition **monitors** warning. Click on the **monitor** link of your Team Master and you will see that a new version of the configuration bundle is available - click on the **Reload Configuration** button and on the next screen click the **Yes** button to apply the updated configuration bundle.
-15. You will now see a link for **Pipeline Polices** and Core Master Hibernation has been configured for your Team Master.
+12. Next you will want to make sure that you are creating the pull request between the correct branches - select **gitops-lab** ast the **compare** branch and select your GitHub Organization fork of the **core-config-repository** as the **base repository**. <p><img src="images/select-pr-branches.png" width=600/>
+13. On the next screen, click the green **Create pull request** button. There will be no more **repository** drop downs since the pull request is between two branches in the same repository.<p><img src="images/create-pr.png" width=600/>
+14. Now navigate to the **master** branch Pipeline job of the **core-config-bundle** Multibranch Pipeline project on your Team Master.
+15. After a couple of minutes you will see an addition **monitors** warning. Click on the **monitor** link of your Team Master and you will see that a new version of the configuration bundle is available - click on the **Reload Configuration** button and on the next screen click the **Yes** button to apply the updated configuration bundle.
+16. You will now see a link for **Pipeline Polices** and Core Master Hibernation has been configured for your Team Master.
 
 >NOTE: The **Build strategies** configuration for Pipeline Organization Folder and Multibranch projects are provided by the [Basic Branch Build Strategies plugin](https://github.com/jenkinsci/basic-branch-build-strategies-plugin/blob/master/docs/user.adoc) and by selecting the *Skip initial build on first branch indexing* strategy we avoid an unnecessary build when we first create the Organization Folder project above.
 
