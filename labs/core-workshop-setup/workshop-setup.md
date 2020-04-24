@@ -61,4 +61,4 @@ You should see the following Blue Ocean **Pipelines** screen with one Pipeline n
 
 For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/core/#14).
 
-Or you may proceed to the next lab: [*Configuration as Code (CasC) for CloudBees Core*](../core-casc/core-casc.md) where we will explore your individual fork of the **core-config-bundle** repository or choose another lab on the [main page](../../README.md#workshop-labs).
+Otherwise, you may proceed to the next lab: [*Configuration as Code (CasC) for CloudBees Core*](../core-casc/core-casc.md) where we will explore your individual fork of the **core-config-bundle** repository or choose another lab on the [main page](../../README.md#workshop-labs).

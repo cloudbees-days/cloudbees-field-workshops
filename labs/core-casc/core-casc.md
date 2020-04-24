@@ -30,4 +30,4 @@ In this lab we will setup [GitOps](https://www.gitops.tech/) for [Configuration 
 
 For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/core/#23)
 
-You may proceed to the next lab: [*Hibernating Masters*](../hibernating-masters/hibernating-masters.md) or choose another lab on the [main page](../../README.md#workshop-labs).
+Otherwise, you may proceed to the next lab: [*Hibernating Masters*](../hibernating-masters/hibernating-masters.md) or choose another lab on the [main page](../../README.md#workshop-labs).

@@ -123,4 +123,10 @@ name: core-casc-lab-review
 
 * You created a Pipeline job, via a GitHub Organization Folder project, that will update your Team Master configuration bundle whenever you commit any changes to the **master** branch of your fork of the **core-config-bundle** repository. This is GitOps for Jenkins configuration.
 * Then, via the GitHub Pull Request you created and merged, your Team Master was updated with several plugins and configuration for some of those plugins.
-* In the next sections and labs we will be exploring the functionality of those plugins and other features.
+* In the next sections and labs we will be exploring the functionality of those plugins and other features - to include:
+  * Pipeline Template Catalogs
+  * Pipeline Policies
+  * CloudBees GitHub Reporting
+  * Cross Team Collaboration
+  * Hibernating Masters
+
