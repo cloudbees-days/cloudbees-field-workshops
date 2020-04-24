@@ -43,7 +43,7 @@ class: compact
 
 * The `workshop-setup` job that you ran in the *Core Workshop Setup* lab updated your forked copy of the `jenkins.yaml` file with your GitHub information and then copied the Core configuration bundle YAML files from your forked **core-config-bundle** repository to a sub-directory with the same name as your Team Master inside a special directory - the `jcasc-bundles-store` directory - in the Jenkins home of the Core Operations Center from which you created your Team Master. 
 * Your Team Master was then *re-provisioned* in order for the Core configuration bundle to take effect.
-* When the Core Operations Center is provisioning a Team/Managed Master it will check to see if there is a matching configuration for the name of the Team/Managed Master being provisioned and copy that Core configuration bundle link YAML file to `/var/casc-bundle/bundle-link.yaml` on your Team Master and set the value of the `core.casc.config.bundle` system property to match that file path.
+* When the Core Operations Center is provisioning a Team Master it will check to see if there is a matching configuration for the name of the Team Master being provisioned and copy that Core configuration bundle link YAML file to `/var/casc-bundle/bundle-link.yaml` on your Team Master and set the value of the `core.casc.config.bundle` system property to match that file path.
 * Your Team Master will then use that protected link to download the Core configuration bundle to your Team Master. The `jenkins.yaml` file will be downloaded from the OC to `/var/jenkins_home/core-casc-bundle/jenkins.yaml` and the `casc.jenkins.config` system property will be set to that file path.
 
 ---
