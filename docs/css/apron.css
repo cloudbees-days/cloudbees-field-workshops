@@ -38,7 +38,7 @@ h2, h3 {
   box-sizing: border-box;
   height: 100%;
   line-height: 1.25;
-  padding: 20px 80px 0 80px;
+  padding: 10px 80px 0 80px;
   font-size: 1.7rem;
   font-family: 'Lato', sans-serif;
 }
@@ -213,7 +213,6 @@ h2, h3 {
 }
 .remark-slide-content.img-caption {
   text-align: center;
-  padding-top: 544.8px;
 }
 .remark-slide-content.img-caption > p:first-of-type {
   padding: 0px;
@@ -448,4 +447,9 @@ ul, ol {
    margin-left: 1rem;
    max-width: 50%;
    padding-left: 1rem;
+ }
+
+ p {
+   margin-block-start: 0;
+   margin-block-end: 0;
  }

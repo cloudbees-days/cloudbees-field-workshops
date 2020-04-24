@@ -23,18 +23,36 @@ layout: true
 name: agenda
 # Agenda
 
-1. CloudBees Core Overview
-2. Setup for Labs
-3. Configuration as Code (CasC) with CloudBees Core
-4. Pipeline Manageability & Governance with Templates and Policies
-5. Cross Team Collaboration
-6. Hibernating Masters
+1. Workshop Tools Overview
+2. CloudBees Core Overview
+3. Setup for Labs
+4. Configuration as Code (CasC) with CloudBees Core
+5. Pipeline Manageability & Governance with Templates and Policies
+6. Cross Team Collaboration
+7. Hibernating Masters
+
+---
+name: workshop-tools
+# Workshop Tools Overview
+
+* We will be using Zoom breakout rooms for the majority of the workshop material.
+* Please use the Zoom chat to introduce yourself and if you have any questions.
+* We will have a short poll where you will be able to assess your experience level in a few technical areas. Based on your responses to the poll questions you will be asked to rank your overall experience level as a **1**, **2** or a **3**, and then rename yourself in Zoom by adding that number before your name.
+* After an overview of CloudBees Core you will grouped by experience level into Zoom breakout rooms.
+* Once in the breakout rooms please feel free to ask questions via audio or via the Zoom. You may also use the Zoom *Nonverbal* feedback feature to raise your hand or to ask you instructor to slow down or speed up. NOTE: The chat is only broadcast to your breakout room.
+
+---
+name: workshop-zoom
+# Workshop Zoom Overview
+
+TOOD - Will add a screenshot of Zoom showing how to rename and highlight the features discussed in the previous slide.
 
 ---
 name: lab-environment
 # Lab Environment
 * This workshop uses a CloudBees Core cluster, an enterprise version of Jenkins, running on the Google Kubernetes Engine (GKE)
-* All the instructions for the labs are available in GitHub
+  * Each attendee will provision their own Jenkins instance for the labs by leveraging the scalability of CloudBees Core on Kubernetes
+* All the instructions for the labs and these slides are publicly available in GitHub
 * Attendees will be using their own GitHub accounts 
 
 ---
@@ -69,6 +87,14 @@ Reduce risk
 .no-bullet[
 * Ensure compliance through global policy enforcement
 ]
+
+---
+name: core-k8s-architecture
+class: middle, center
+
+![:scale 80%](img/core-k8s-architecture.svg)
+
+CloudBees Core on Kubernetes
 
 ---
 name: core-overview-scale

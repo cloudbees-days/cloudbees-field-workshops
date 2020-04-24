@@ -37,6 +37,6 @@ name: github-reporting
 
 # CloudBees GitHub Reporting .badge-red[PRE-RELEASE]
 
-Whereas OSS github-branch-source displays only build-level statuses, this plugin should follow more detailed events inside a Pipeline build and emit corresponding GitHub statuses.
+Whereas OSS github-branch-source plugin displays only build-level statuses, the CloudBees GitHub Reporting plugin provides more detailed Jenkins Pipeline events as corresponding GitHub statuses.
 
-TODO add screenshots comparing OSS vs CloudBees.
+As the build runs, GitHub will surface status information about the build directly in GitHub, in real-time, alleviating the need to switch over to Jenkins to get an overview.
