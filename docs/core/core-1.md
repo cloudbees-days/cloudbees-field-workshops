@@ -40,5 +40,5 @@ While your Team Master is restarting, let's explore the results of the `workshop
    3. **pipeline-template-catalog** - a set of templated Pipelines that you will use to create Jenkins Pipeline jobs for this workshop.
    4. **microblog-frontend** - a vue.js sample application to be used for this workshop.
    5. **microblog-backend** - a Python sample application to be used in conjunction with the **microblog-frontend** application to be used with this workshop.
-* Your Core Team Master was also setup to use Core configuration as code.
+* Your Core Team Master was also setup to use Core configuration as code as we will explore next.
 ]
