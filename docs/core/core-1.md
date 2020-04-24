@@ -13,20 +13,17 @@ Setup fo this workshop will include:
 
 * Creating a CloudBees Core Jenkins instance referred to as a [Team Master](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-admin-guide/cje-ux).
 * Setting up a GitHub.com user account that will be used throughout the workshop. If you have an existing GitHub.com account you will be able to use that account if you are comfortable using that account to create a GitHub Organization and a GitHub Personal Access Token for use in this workshop.
-* Creating a Github Personal Access Token that you will use within Jenkins to connect Pipelines, Multibranch Pipelines, and Github Organization Projects to your Github organization and repositories.
+* Creating a Github Personal Access Token that you will use within your Team Masters (Jenkins instance) to connect Pipelines, Multibranch Pipelines, and Github Organization Projects to your Github organization and repositories created for this workshop.
 * Creating a GitHub organization to use for this workshop.
 
 ---
 name: core-setup-lab
 # Lab - Core Workshop Setup
 
-Today's URL for the CloudBees Core Workshop cluster is:
- 
-  https://workshop.cb-sa.io/cjoc/
-
-
-The *Workshop Setup* lab instructions are available at: 
-[https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/core-workshop-setup/workshop-setup.md](https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/core-workshop-setup/workshop-setup.md)
+* Today's URL for the CloudBees Core Workshop cluster is:
+  * https://workshop.cb-sa.io/cjoc/
+* The *Workshop Setup* lab instructions are available at: 
+  * [https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/core-workshop-setup/workshop-setup.md](https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/core-workshop-setup/workshop-setup.md)
 
 ---
 name: core-setup-review

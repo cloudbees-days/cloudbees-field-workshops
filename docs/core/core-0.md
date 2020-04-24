@@ -70,23 +70,55 @@ Notes
 name: core-overview-content
 class: compact
 
-# CloudBees Core
-### *Manage the Volume, Variety and Complexity of Pipelines*
+# Rapidly, Repeatedly, and Reliably Deliver Software
 
-Faster innovation
-.no-bullet[
-* Free developers to innovate more using toolchain automation
+.italic[
+  *Drive productivity and stability while accelerating time-to-market through automation of the software lifecycle.*
 ]
 
-Optimize delivery
+Increase Productivity
 .no-bullet[
-* Reduce administration overhead and optimize software delivery
+* Eliminate risk and delays due manual, error-prone hand-offs
 ]
 
-Reduce risk
+Eliminate Silos
 .no-bullet[
-* Ensure compliance through global policy enforcement
+* Enable cross-functional collaboration by automating across teams and tools
 ]
+
+Empower teams
+.no-bullet[
+* Enable freedom and experimentation by providing dedicated CD resources within a shared platform
+]
+
+Ensure Security and Compliance
+.no-bullet[
+* Drive best practices and standards across the organization with shared pipelines, gates, and continuous logging and metrics
+]
+
+---
+name: core-team-masters
+
+# CloudBees Core Enables Continuous Scaling
+
+.img-left[
+  .center[Team Masters]
+![Team Masters](img/dpa.png)
+]
+
+.img-right[
+* Project Isolation
+  * DevOps project teams get their own Jenkins Master
+  * Distributes workload across masters
+  * Cross project contamination of workspaces and data is eliminated
+* Scalable Architecture
+  * Scaling and elasticity achieved through use of cluster managed containers 
+* Data Isolation
+  * Data contamination from previous executions are easily eliminated
+]
+
+???
+Team Masters
 
 ---
 name: core-k8s-architecture
@@ -95,6 +127,14 @@ class: middle, center
 ![:scale 80%](img/core-k8s-architecture.svg)
 
 CloudBees Core on Kubernetes
+
+???
+They dynamic provisioning of Masters provided by CB Core on K8s makes it easy to provide a Jenkins instance for every team.
+* **Less downtime:** Liveness and readiness for Masters and Operations Center thanks to Kubernetes Stateful Sets
+* **Ephemeral agents:** Agents are containers deployed on a K8s pod. They are created and destroyed during pipeline run
+* **Kubernetes agent templates:** Templates can be defined for K8s Pod based agents, shared with the whole cluster or defined at the team level.
+Different K8s clouds can be configured and shared from OC or at the individual team level.
+
 
 ---
 name: core-overview-scale
@@ -105,5 +145,5 @@ name: core-overview-scale
 * Enables Comprehensive Jenkins Team Management including:
   * Masters per Team
   * Centrally managed Role Based Access Control (RBAC)
-  * Centralized Credentials Management
+  * Centralized and per team Credentials Management
   * Manage inbound events across multiple Masters

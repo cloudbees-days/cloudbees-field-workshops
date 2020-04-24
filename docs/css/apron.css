@@ -438,18 +438,22 @@ ul, ol {
  .img-left {
    float: left;
    margin-right: 1rem;
-   max-width: 50%;
+   max-width: 48%;
    padding-right: 1rem;
  }
 
  .img-right {
    float: right;
    margin-left: 1rem;
-   max-width: 50%;
+   max-width: 48%;
    padding-left: 1rem;
  }
 
  p {
    margin-block-start: 0;
    margin-block-end: 0;
+ }
+
+ .smaller {
+   font-size: smaller;
  }
