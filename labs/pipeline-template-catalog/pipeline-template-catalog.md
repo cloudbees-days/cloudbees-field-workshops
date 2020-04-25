@@ -9,7 +9,7 @@
    3. **Credentials**: select the *username/password* credential you created for the CloudBees Core workshop - it will show up as - `[GitHub username]/******`
    4. **Repository HTTPS URL**: The Git URL for your forked Pipeline Template Catalog repository.
    5. Next, click the **Validate** button to ensure your credentials and repository URL are set correctly.
-   6. Finally, click the **Save** button <p><img src="images/add-catalog-info.png" width=800/>
+   6. Finally, click the **Save** button <p><img src="images/add-catalog-save.png" width=800/>
 4. You should see the following once your catalog has been successfully imported<p><img src="images/Succesful-template-import.png" width=800/>
 5. On your Team Master navigate to the folder with the same name as your Team Master - you should see the `workshop-setup` Pipeline job.
 6. Click on the **New Item** link in the left menu<p><img src="images/new-item-click.png" width=800/>
