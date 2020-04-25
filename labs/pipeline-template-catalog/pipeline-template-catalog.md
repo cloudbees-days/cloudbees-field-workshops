@@ -10,7 +10,7 @@
    4. **Repository HTTPS URL**: The Git URL for your forked Pipeline Template Catalog repository.
    5. Next, click the **Validate** button to ensure your credentials and repository URL are set correctly.
    6. Finally, click the **Save** button <p><img src="images/add-catalog-save.png" width=800/>
-4. You should see the following once your catalog has been successfully imported<p><img src="images/Succesful-template-import.png" width=800/>
+4. You should see the following once your Pipeline Template Catalog has been successfully imported<p><img src="images/Succesful-template-import.png" width=800/>
 5. On your Team Master navigate to the folder with the same name as your Team Master - you should see the `workshop-setup` Pipeline job.
 6. Click on the **New Item** link in the left menu<p><img src="images/new-item-click.png" width=800/>
 7. We will now create a new folder called ***template-jobs***. <p><img src="images/new-folder-click.png" width=800/>
@@ -19,7 +19,7 @@
 ## Create vue.js Job from Pipeline Template Catalog
 In this lab you will create a new Multibranch Pipeline job from the **VueJS** template provided by the Pipeline Template Catalog you added above - just by filling in a few parameters.
 
-1. On your Team Master navigate to the **template-jobs** folder that you created in the previous lab.
+1. On your Team Master navigate into the **template-jobs** folder that you created in the previous lab.
 2. Click on the ***New VueJS*** link in the left menu. <p><img src="images/template_link.png" width=800/>
 3. Enter an item name of your **[GitHub username]-frontend**, select **VueJS**  and click the **OK** button. <p><img src="images/item_form.png" width=800/>
 4. Fill out the template parameters:
@@ -27,7 +27,7 @@ In this lab you will create a new Multibranch Pipeline job from the **VueJS** te
    2. **Repository**: The name of your forked repository, *microblog-frontend*
    3. **GitHub Credential ID**: select the *username/password* credential created for you by the **wokshop-setup** job and Core CasC - it will show up as - [GitHub username]/******
    4. Click the **Save** button<p><img src="images/template_parameters.png" width=800/>
-5. After the initial scan you should see two jobs, for the two branches in your forked repository<p><img src="images/one_job.png" width=800/>
+5. After the initial scan you should see one job for a GitHub pull request - **PR-1**.<p><img src="images/one_job.png" width=800/>
 
 ## Deploy to Staging
 Both jobs should automatically start running for both branches, however only the **master** branch job will deploy because the **Deploy** stage is configured to only run for the **master** branch.
