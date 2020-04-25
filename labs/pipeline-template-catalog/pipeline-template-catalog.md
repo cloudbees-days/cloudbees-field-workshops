@@ -5,10 +5,11 @@
 2. Click on **Add catalog**<p><img src="images/Add-template-click.png" width=800/>
 3. Fill out the catalog import parameters:
    1. **Branch or tag for this template catalog**: master
-   2. Check off **Git**
-   3. **Project Repository**: The Git URL for your forked Pipeline Template Catalog repository.
-   4. **Credentials**: select the *username/password* credential you created for the CloudBees Core workshop - it will show up as - `[GitHub username]/******`
-   5. Click the **Save** button<p><img src="images/Add-catalog-info.png" width=800/>
+   2. Select **GitHub** under **Catalog source code repository location**
+   3. **Credentials**: select the *username/password* credential you created for the CloudBees Core workshop - it will show up as - `[GitHub username]/******`
+   4. **Repository HTTPS URL**: The Git URL for your forked Pipeline Template Catalog repository.
+   5. Next, click the **Validate** button to ensure your credentials and repository URL are set correctly.
+   6. Finally, click the **Save** button <p><img src="images/add-catalog-info.png" width=800/>
 4. You should see the following once your catalog has been successfully imported<p><img src="images/Succesful-template-import.png" width=800/>
 5. Navigate back inside your team master and click in to the folder with your team name<p><img src="images/team-folder-click.png" width=800/>
 6. Click on the **New Item** link in the left menu<p><img src="images/new-item-click.png" width=800/>
@@ -18,7 +19,7 @@
 ## Create vue.js Job from Pipeline Template Catalog
 In this lab you will create a new Multibranch Pipeline job from the **VueJS** template provided by the Pipeline Template Catalog you added above - just by filling in a few parameters.
 
-1. On your Team Master navigate to the **template-jobs** folder that you created earlier.
+1. On your Team Master navigate to the **template-jobs** folder that you created in the previous lab.
 2. Click on the ***New VueJS*** link in the left menu. <p><img src="images/template_link.png" width=800/>
 3. Enter an item name of your **[GitHub username]-frontend**, select **VueJS**  and click the **OK** button. <p><img src="images/item_form.png" width=800/>
 4. Fill out the template parameters:
