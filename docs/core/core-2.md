@@ -96,8 +96,7 @@ class: compact
 #### Other Configuration
 * Installed the `antisamy-markup-formatter` plugin and configured your Team Master to use **Safe HTML** as the **Markup Formatter**
 * Applied a **System Message** to your Team Master so you could see that the Core CasC bundle was applied
-* Configured the GitHub plugin to manage webhooks for you using the `cbdays-github-token-secret` credential created
-* Installed the `basic-branch-build-strategies` and `pipeline-utility-steps` that will be used in the next lab
+* Installed the `basic-branch-build-strategies` and `pipeline-utility-steps` plugins to be used in the next lab
 
 ---
 name: core-casc-lab-link
