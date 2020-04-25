@@ -96,11 +96,12 @@ class: compact
 * JCasC allows auto-configuring Pipeline Shared Libraries so it is very easy to provide the same Pipeline Shared Libraries across multiple teams - as we have done for this workshop. The Core Pipeline Shared Library was configured at the Jenkins global configuration level so that it will be available for all the Jenkins Pipeline jobs that you run on your Team Master for this workshop.
 ]
 
-#### Master Level Kubernetes Agent Templates
+#### Other Configuration
 
-.no-bullet[
-* The CloudBees Kube Management plugin allows you to [configure Kubernetes Pod Templates for agents at the Team/Master level](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-admin-guide/agents#_editing_pod_templates_per_team_using_masters) but still manage the Kubernetes cluster configuration for Kuberentes based agents at the Core Operations Center level. We added a Kubernetes Pod Template to use a in Pipeline job we will create from a Pipeline Template Catalog.
-]
+* Installed the `antisamy-markup-formatter` plugin and configured your Team Master to use **Safe HTML** as the **Markup Formatter**
+* Applied a **System Message** to your Team Master so you could see that the Core CasC bundle was applied
+* Configured the GitHub plugin to manage webhooks for you using the `cbdays-github-token-secret` credential created
+* Installed the `basic-branch-build-strategies` and `pipeline-utility-steps` that will be used in the next lab
 
 ---
 name: core-casc-lab-link
@@ -124,6 +125,7 @@ name: core-casc-lab-review
 * You created a Pipeline job, via a GitHub Organization Folder project, that will update your Team Master configuration bundle whenever you commit any changes to the **master** branch of your fork of the **core-config-bundle** repository. This is GitOps for Jenkins configuration.
 * Then, via the GitHub Pull Request you created and merged, your Team Master was updated with several plugins and configuration for some of those plugins.
 * In the next sections and labs we will be exploring the functionality of those plugins and other features - to include:
+  * Master specific Pod Templates for Kubernetes based agents
   * Pipeline Template Catalogs
   * Pipeline Policies
   * CloudBees GitHub Reporting
