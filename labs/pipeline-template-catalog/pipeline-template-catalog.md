@@ -16,20 +16,20 @@
 8. Inside of the folder configuration click on "**Restrict the kind of children in this folder**" - a [CloudBees Folders Plus](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-secure-guide/folders-plus) feature - and then select "**VueJS**" only and then hit save<p><img src="images/restricted-items-check.png" width=800/>
    
 ## Create vue.js Job from Pipeline Template Catalog
-In this lab you will create a new Multibranch Pipeline job from the **VueJS** template provided by the Pipeline Template Catalog you added above.
+In this lab you will create a new Multibranch Pipeline job from the **VueJS** template provided by the Pipeline Template Catalog you added above - just by filling in a few parameters.
 
-1. On your Team Master navigate to the **template-jobs** folder
-2. Click on the ***New VueJS*** link in the left menu <p><img src="images/template_link.png" width=800/>
-3. Enter an item name of your **[GitHub username]-hello**, select **VueJS**  and click the **OK** button<p><img src="images/item_form.png" width=800/>
+1. On your Team Master navigate to the **template-jobs** folder that you created earlier.
+2. Click on the ***New VueJS*** link in the left menu. <p><img src="images/template_link.png" width=800/>
+3. Enter an item name of your **[GitHub username]-frontend**, select **VueJS**  and click the **OK** button. <p><img src="images/item_form.png" width=800/>
 4. Fill out the template parameters:
    1. **Repository Owner**: the GitHub Organization your created for the CloudBees Core workshop
-   2. **Repository**: The name of your forked repository, "microblog-frontend"
-   3. **GitHub Credential ID**: select the *username/password* credential you created for the the CloudBees Core workshop - it will show up as - [GitHub username]/******
+   2. **Repository**: The name of your forked repository, *microblog-frontend*
+   3. **GitHub Credential ID**: select the *username/password* credential created for you by the **wokshop-setup** job and Core CasC - it will show up as - [GitHub username]/******
    4. Click the **Save** button<p><img src="images/template_parameters.png" width=800/>
 5. After the initial scan you should see two jobs, for the two branches in your forked repository<p><img src="images/one_job.png" width=800/>
 
 ## Deploy to Staging
-Both jobs should automatically start running for both branches, however only the master branch job will deploy because the **Deploy** stage is configured to only run for the **master** branch.
+Both jobs should automatically start running for both branches, however only the **master** branch job will deploy because the **Deploy** stage is configured to only run for the **master** branch.
 
 The templated job will build a Docker image for your **microblog-frontend** application, push the image to the Google Container Registry (GCR), and then deploy your containerized application to a staging environment in Kubernetes - a link to your application will be available in the logs of your job. 
 
