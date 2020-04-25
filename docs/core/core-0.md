@@ -39,13 +39,13 @@ name: workshop-tools
 * Please use the Zoom chat to introduce yourself and if you have any questions.
 * We will have a short poll where you will be able to assess your experience level in a few technical areas. Based on your responses to the poll questions you will be asked to rank your overall experience level as a **1**, **2** or a **3**, and then rename yourself in Zoom by adding that number before your name.
 * After an overview of CloudBees Core you will grouped by experience level into Zoom breakout rooms.
-* Once in the breakout rooms please feel free to ask questions via audio or via the Zoom. You may also use the Zoom *Nonverbal* feedback feature to raise your hand or to ask you instructor to slow down or speed up. NOTE: The chat is only broadcast to your breakout room.
+* Once in the breakout rooms please feel free to ask questions via audio or via the Zoom chat. You may also use the Zoom *Nonverbal* feedback feature to raise your hand or to ask you instructor to slow down or speed up. NOTE: The chat is only broadcast to your breakout room.
 
 ---
 name: workshop-zoom
 # Workshop Zoom Overview
 
-TOOD - Will add a screenshot of Zoom showing how to rename and highlight the features discussed in the previous slide.
+![:scale 100%](img/zoom-tools.png)
 
 ---
 name: lab-environment
