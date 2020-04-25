@@ -3,7 +3,7 @@
 ## Import Pipeline Template Catalog
 1. Navigate to the top-level of your Team Master level and click on **Pipeline Template Catalogs** in the left menu<p><img src="images/Initial-template-click.png" width=800/>
 2. Click on **Add catalog**<p><img src="images/Add-template-click.png" width=800/>
-3. Fill out the catalog import parameters:
+3. Fill out the **Catalog source control options**:
    1. **Branch or tag for this template catalog**: master
    2. Select **GitHub** under **Catalog source code repository location**
    3. **Credentials**: select the *username/password* credential you created for the CloudBees Core workshop - it will show up as - `[GitHub username]/******`
