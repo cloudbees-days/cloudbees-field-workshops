@@ -11,9 +11,9 @@
    5. Next, click the **Validate** button to ensure your credentials and repository URL are set correctly.
    6. Finally, click the **Save** button <p><img src="images/add-catalog-info.png" width=800/>
 4. You should see the following once your catalog has been successfully imported<p><img src="images/Succesful-template-import.png" width=800/>
-5. Navigate back inside your team master and click in to the folder with your team name<p><img src="images/team-folder-click.png" width=800/>
+5. On your Team Master navigate to the folder with the same name as your Team Master - you should see the `workshop-setup` Pipeline job.
 6. Click on the **New Item** link in the left menu<p><img src="images/new-item-click.png" width=800/>
-7. We will now create a new folder called "**Template Jobs**"<p><img src="images/new-folder-click.png" width=800/>
+7. We will now create a new folder called "**template-jobs**"<p><img src="images/new-folder-click.png" width=800/>
 8. Inside of the folder configuration click on "**Restrict the kind of children in this folder**" - a [CloudBees Folders Plus](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-secure-guide/folders-plus) feature - and then select "**VueJS**" only and then hit save<p><img src="images/restricted-items-check.png" width=800/>
    
 ## Create vue.js Job from Pipeline Template Catalog
