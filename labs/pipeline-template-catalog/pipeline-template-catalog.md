@@ -21,7 +21,7 @@ In this lab you will create a new Multibranch Pipeline job from the **VueJS** te
 
 1. On your Team Master navigate into the **template-jobs** folder that you created in the previous lab.
 2. Click on the ***New VueJS*** link in the left menu. <p><img src="images/template_link.png" width=800/>
-3. Enter an item name of your **[GitHub username]-frontend**, select **VueJS**  and click the **OK** button. <p><img src="images/item_form.png" width=800/>
+3. Enter an item name as **[GitHub username]-frontend**, select **VueJS**  and click the **OK** button. <p><img src="images/item_form.png" width=800/>
 4. Fill out the template parameters:
    1. **Repository Owner**: the GitHub Organization your created for the CloudBees Core workshop
    2. **Repository**: The name of your forked repository, *microblog-frontend*
