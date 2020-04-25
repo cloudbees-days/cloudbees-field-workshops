@@ -89,15 +89,11 @@ name: config-bundle-details-additional
 class: compact
 
 # Additional JCasC Configuration
-
 #### Pipeline Shared Library
-
 .no-bullet[
 * JCasC allows auto-configuring Pipeline Shared Libraries so it is very easy to provide the same Pipeline Shared Libraries across multiple teams - as we have done for this workshop. The Core Pipeline Shared Library was configured at the Jenkins global configuration level so that it will be available for all the Jenkins Pipeline jobs that you run on your Team Master for this workshop.
 ]
-
 #### Other Configuration
-
 * Installed the `antisamy-markup-formatter` plugin and configured your Team Master to use **Safe HTML** as the **Markup Formatter**
 * Applied a **System Message** to your Team Master so you could see that the Core CasC bundle was applied
 * Configured the GitHub plugin to manage webhooks for you using the `cbdays-github-token-secret` credential created
