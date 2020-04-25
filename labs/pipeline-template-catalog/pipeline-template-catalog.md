@@ -7,14 +7,15 @@
    1. **Branch or tag for this template catalog**: master
    2. Select **GitHub** under **Catalog source code repository location**
    3. **Credentials**: select the *username/password* credential you created for the CloudBees Core workshop - it will show up as - `[GitHub username]/****** (GitHub PAT from JCasC - username/password)`
-   4. **Repository HTTPS URL**: The Git URL for your forked Pipeline Template Catalog repository.
+   4. **Repository HTTPS URL**: The GitHub URL for your forked copy of the **pipeline-template-catalog** repository.
    5. Next, click the **Validate** button to ensure your credentials and repository URL are set correctly.
    6. Finally, click the **Save** button <p><img src="images/add-catalog-save.png" width=800/>
-4. You should see the following once your Pipeline Template Catalog has been successfully imported<p><img src="images/Succesful-template-import.png" width=800/>
-5. On your Team Master navigate to the folder with the same name as your Team Master - you should see the `workshop-setup` Pipeline job.
-6. Click on the **New Item** link in the left menu<p><img src="images/new-item-click.png" width=800/>
-7. We will now create a new folder called ***template-jobs***. <p><img src="images/new-folder-click.png" width=800/>
-8. Inside of the folder configuration click on "**Restrict the kind of children in this folder**" - a [CloudBees Folders Plus](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-secure-guide/folders-plus) feature - and then select "**VueJS**" only and then hit the **Save** button. <p><img src="images/restricted-items-check.png" width=800/>
+4. Once the import is complete, click on the **CloudBees Days Workshop Catalog** link. <p><img src="images/catalog-link.png" width=800/>
+5. You should see the following once your Pipeline Template Catalog has been successfully imported. <p><img src="images/Succesful-template-import.png" width=800/>
+6. On your Team Master navigate to the folder with the same name as your Team Master - you should see the `workshop-setup` Pipeline job.
+7. Click on the **New Item** link in the left menu<p><img src="images/new-item-click.png" width=800/>
+8. We will now create a new folder called ***template-jobs***. <p><img src="images/new-folder-click.png" width=800/>
+9.  Inside of the folder configuration click on "**Restrict the kind of children in this folder**" - a [CloudBees Folders Plus](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-secure-guide/folders-plus) feature - and then select "**VueJS**" only and then hit the **Save** button. <p><img src="images/restricted-items-check.png" width=800/>
    
 ## Create vue.js Job from Pipeline Template Catalog
 In this lab you will create a new Multibranch Pipeline job from the **VueJS** template provided by the Pipeline Template Catalog you added above - just by filling in a few parameters.
