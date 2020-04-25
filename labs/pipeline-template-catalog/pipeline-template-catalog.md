@@ -6,7 +6,7 @@
 3. Fill out the **Catalog source control options**:
    1. **Branch or tag for this template catalog**: master
    2. Select **GitHub** under **Catalog source code repository location**
-   3. **Credentials**: select the *username/password* credential you created for the CloudBees Core workshop - it will show up as - `[GitHub username]/******`
+   3. **Credentials**: select the *username/password* credential you created for the CloudBees Core workshop - it will show up as - `[GitHub username]/****** (GitHub PAT from JCasC - username/password)`
    4. **Repository HTTPS URL**: The Git URL for your forked Pipeline Template Catalog repository.
    5. Next, click the **Validate** button to ensure your credentials and repository URL are set correctly.
    6. Finally, click the **Save** button <p><img src="images/add-catalog-save.png" width=800/>
