@@ -43,7 +43,6 @@ name: workshop-tools
 
 ---
 name: workshop-zoom
-# Workshop Zoom Overview
 
 ![:scale 100%](img/zoom-tools.png)
 
