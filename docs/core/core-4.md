@@ -22,6 +22,7 @@ class: compact
 
 ---
 name: pipeline-policies-lab
+class: compact
 
 # Lab - Enforcing Pipeline Timeouts with Pipeline Policies
 
