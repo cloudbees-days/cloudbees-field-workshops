@@ -12,10 +12,9 @@
    6. Finally, click the **Save** button <p><img src="images/add-catalog-save.png" width=800/>
 4. Once the import is complete, click on the **CloudBees Days Workshop Catalog** link. <p><img src="images/catalog-link.png" width=800/>
 5. The Pipeline Template Catalog you imported will have 4 templates to include the **VueJS** template. <p><img src="images/Succesful-template-import.png" width=800/>
-6. On your Team Master navigate to the folder with the same name as your Team Master - you should see the `workshop-setup` Pipeline job.
-7. Click on the **New Item** link in the left menu<p><img src="images/new-item-click.png" width=800/>
-8. We will now create a new folder called ***template-jobs***. <p><img src="images/new-folder-click.png" width=800/>
-9.  Inside of the folder configuration click on "**Restrict the kind of children in this folder**" - a [CloudBees Folders Plus](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-secure-guide/folders-plus) feature - and then select "**VueJS**" only and then hit the **Save** button. <p><img src="images/restricted-items-check.png" width=800/>
+6. On your Team Master navigate to the folder with the same name as your Team Master (you should see the `workshop-setup` Pipeline job) and then click on the **New Item** link in the left menu<p><img src="images/new-item-click.png" width=800/>
+7. For the **item name** enter ***template-jobs***, select **Folder** and then click the **OK** button. <p><img src="images/new-folder-click.png" width=800/>
+8.  Scroll to the bottom of the folder configuration and click on **Restrict the kind of children in this folder** - a [CloudBees Folders Plus](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-secure-guide/folders-plus) feature - and then select **VueJS** and then hit the **Save** button. <p><img src="images/restricted-items-check.png" width=800/>
    
 ## Create vue.js Job from Pipeline Template Catalog
 In this lab you will create a new Multibranch Pipeline job from the **VueJS** template provided by the Pipeline Template Catalog you added above - just by filling in a few parameters.
