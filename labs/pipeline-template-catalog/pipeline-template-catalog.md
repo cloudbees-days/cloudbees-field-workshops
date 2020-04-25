@@ -11,7 +11,7 @@
    5. Next, click the **Validate** button to ensure your credentials and repository URL are set correctly.
    6. Finally, click the **Save** button <p><img src="images/add-catalog-save.png" width=800/>
 4. Once the import is complete, click on the **CloudBees Days Workshop Catalog** link. <p><img src="images/catalog-link.png" width=800/>
-5. You should see the following once your Pipeline Template Catalog has been successfully imported. <p><img src="images/Succesful-template-import.png" width=800/>
+5. The Pipeline Template Catalog you imported will have 4 templates to include the **VueJS** template. <p><img src="images/Succesful-template-import.png" width=800/>
 6. On your Team Master navigate to the folder with the same name as your Team Master - you should see the `workshop-setup` Pipeline job.
 7. Click on the **New Item** link in the left menu<p><img src="images/new-item-click.png" width=800/>
 8. We will now create a new folder called ***template-jobs***. <p><img src="images/new-folder-click.png" width=800/>
