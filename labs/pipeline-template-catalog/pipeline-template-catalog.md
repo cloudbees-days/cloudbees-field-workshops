@@ -28,14 +28,13 @@ In this lab you will create a new Multibranch Pipeline job from the **VueJS** te
    3. **GitHub Credential ID**: select the *username/password* credential created for you by the **wokshop-setup** job and Core CasC - it will show up as - [GitHub username]/******
    4. Click the **Save** button<p><img src="images/template_parameters.png" width=800/>
 5. After the initial scan you should see one job for a GitHub pull request - **PR-1**.<p><img src="images/one_job.png" width=800/>
+6. Navigate to the 
 
 ## Deploy to Staging
 Both jobs should automatically start running for both branches, however only the **master** branch job will deploy because the **Deploy** stage is configured to only run for the **master** branch.
 
 The templated job will build a Docker image for your **microblog-frontend** application, push the image to the Google Container Registry (GCR), and then deploy your containerized application to a staging environment in Kubernetes - a link to your application will be available in the logs of your job. 
 
-Congratulations! You have imported a Pipeline Template Catalog into your Team Master and then created a folder where only the job from that template can be created.
-
-For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/core/).
+For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/core/#27).
 
 Otherwise, you may proceed to the next lab: [*CloudBees Pipeline Policies*](../pipeline-policies/pipeline-policies.md) or choose another lab on the [main page](../../README.md#workshop-labs).
