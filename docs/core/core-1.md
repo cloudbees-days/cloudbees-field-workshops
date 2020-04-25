@@ -42,3 +42,6 @@ While your Team Master is restarting, let's explore the results of the `workshop
    5. **microblog-backend** - a Python sample application to be used in conjunction with the **microblog-frontend** application to be used with this workshop.
 * Your Core Team Master was also setup to use Core configuration as code as we will explore next.
 ]
+
+???
+The `workshop-setup` job also created two GitHub pull requests to streamline that labs where they are needed.
