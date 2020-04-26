@@ -38,9 +38,9 @@ name: pipeline-template-catalog-overview
 
 # Pipeline Template Catalog Overview
 
-* Imported Pipeline Template Catalog
+* Imported a Pipeline Template Catalog from a GitHub repository
 * Used a CloudBees Folders Plus feature to restrict what type of jobs can be created in a folder
-* Leveraged CloudBees GitHub Reporting
+* Leveraged CloudBees GitHub Reporting to find and fix an error
 
 ### CloudBees GitHub Reporting .badge-red[PRE-RELEASE]
 
