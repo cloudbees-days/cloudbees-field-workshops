@@ -30,7 +30,8 @@ In this lab you will create a new Multibranch Pipeline job from the **VueJS** te
 5. After the initial scan you will see one job for a GitHub pull request - **PR-1**. <p><img src="images/one_job.png" width=800/>
 6. In GitHub, navigate to the **Add marker file** pull request (#1) in your fork of the **microblog-frontend** repository. <p><img src="images/pr-navigate.png" width=800/>
 7. Click on the pull request, scroll down to the pull request checks and you will see the stage level status of the Pipeline. Here you see that the **VueJS Tests** `stage` has started. <p><img src="images/pr-stage-status-pending.png" width=800/>
-8. Once the Pipeline finishes
+8. Once the Pipeline finishes you will see that all the checks failed on the pull request in GitHub. Clicking on the **Details** link of the **ci/cloudbees/error** check will take you directly to the build logs with the error in your Team Master. <p><img src="images/pr-stage-status-pending.png" width=800/>
+9. 
 
 
 For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/core/#27).
