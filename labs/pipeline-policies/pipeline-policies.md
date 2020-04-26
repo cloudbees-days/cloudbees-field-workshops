@@ -4,7 +4,7 @@
 
 In this lab you will create a [Pipeline Policy](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines-user-guide/pipeline-policies) to ensure that all Pipeline jobs that run on your Team Master have a 30 minute global `timeout` set.
 
-1. Navigate to the top-level of your Team Master and click on **Pipeline Policies** in the left menu<p><img src="images/policies-click.png" width=800/>
+1. Navigate to the top-level of your Team Master and click on **Pipeline Policies** in the left menu. <p><img src="images/policies-click.png" width=800/>
 2. Click on **New Policy**<p><img src="images/new-policy-click.png" width=600/>
 3. Fill out the Pipeline Policy parameters:
    1. **Name**: Timeout policy
