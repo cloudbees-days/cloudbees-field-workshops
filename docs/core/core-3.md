@@ -38,11 +38,11 @@ name: pipeline-template-catalog-overview
 
 # Pipeline Template Catalog Overview
 
----
-name: cloudbees-github-reporting
+* Imported Pipeline Template Catalog
+* Used a CloudBees Folders Plus feature to restrict what type of jobs can be created in a folder
+* Leveraged CloudBees GitHub Reporting
 
-# CloudBees GitHub Reporting .badge-red[PRE-RELEASE]
+### CloudBees GitHub Reporting .badge-red[PRE-RELEASE]
 
-Whereas OSS github-branch-source plugin displays only build-level statuses, the CloudBees GitHub Reporting plugin provides more detailed Jenkins Pipeline events as corresponding GitHub statuses.
-
-As the build runs, GitHub will surface status information about the build directly in GitHub, in real-time, alleviating the need to switch over to Jenkins to get an overview.
+* Whereas OSS github-branch-source plugin displays only build-level statuses, the CloudBees GitHub Reporting plugin provides more detailed Jenkins Pipeline events as corresponding GitHub statuses.
+* As the build runs, GitHub will surface status information about the build directly in GitHub, in real-time, alleviating the need to switch over to Jenkins to get an overview.
