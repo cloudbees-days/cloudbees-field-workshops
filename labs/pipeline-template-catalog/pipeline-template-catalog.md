@@ -27,13 +27,11 @@ In this lab you will create a new Multibranch Pipeline job from the **VueJS** te
    2. **Repository**: The name of your forked repository, *microblog-frontend*
    3. **GitHub Credential ID**: select the *username/password* credential created for you by the **wokshop-setup** job and Core CasC - it will show up as - [GitHub username]/******
    4. Click the **Save** button<p><img src="images/template_parameters.png" width=800/>
-5. After the initial scan you should see one job for a GitHub pull request - **PR-1**.<p><img src="images/one_job.png" width=800/>
-6. Navigate to the 
+5. After the initial scan you will see one job for a GitHub pull request - **PR-1**. <p><img src="images/one_job.png" width=800/>
+6. In GitHub, navigate to the **Add marker file** pull request (#1) in your fork of the **microblog-frontend** repository. <p><img src="images/pr-navigate.png" width=800/>
+7. Click on the pull request, scroll down to the pull request checks and you will see the stage level status of the Pipeline. Here you see that the **VueJS Tests** `stage` has started. <p><img src="images/pr-stage-status-pending.png" width=800/>
+8. Once the Pipeline finishes
 
-## Deploy to Staging
-Both jobs should automatically start running for both branches, however only the **master** branch job will deploy because the **Deploy** stage is configured to only run for the **master** branch.
-
-The templated job will build a Docker image for your **microblog-frontend** application, push the image to the Google Container Registry (GCR), and then deploy your containerized application to a staging environment in Kubernetes - a link to your application will be available in the logs of your job. 
 
 For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/core/#27).
 
