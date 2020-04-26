@@ -40,12 +40,11 @@ pipeline {
 }
 ```
 
-Now we just need another job that listens for the 'helloWorld' event. We can see there is a new `eventTrigger` type of job trigger specific for cross team collaboration.
+Now we just need another job that listens for the 'helloWorld' event. We can see there is a new `eventTrigger` type of job trigger specific for cross team collaboration. The following Pipeline will be triggered whenever the **helloWorld** event is published:
 
 ```groovy
 pipeline {
     agent any
-
     triggers {
         eventTrigger simpleMatch("helloWorld")
     }

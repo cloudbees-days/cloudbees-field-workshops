@@ -93,24 +93,24 @@ h2, h3 {
   line-height: 1.1;
 }
 .remark-slide-content.compact {
-  padding: 20px 40px 0 40px;
+  padding: 1rem 1.5rem 0 1.5rem;
   font-size: 1.25rem;
 }
 .remark-slide-content.compact h1 {
-  font-size: 2.5rem;
+  font-size: 2.4rem;
 }
 .remark-slide-content.compact h2 {
-  font-size: 2.25rem;
+  font-size: 2.2rem;
 }
 .remark-slide-content.compact h3 {
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 
 .remark-slide-content.compact h1,
 .remark-slide-content.compact h2,
 .remark-slide-content.compact h3 {
-  margin-top: 0.25em;
-  margin-bottom: 0.25em;
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
 }
 .remark-slide-content.compact pre,
 .remark-slide-content.compact code,
