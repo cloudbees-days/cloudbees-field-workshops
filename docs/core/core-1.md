@@ -9,7 +9,7 @@ count: false
 name: core-setup-overview
 # Core Workshop Setup
 
-Setup fo this workshop will include:
+Setup for this workshop will include:
 
 * Creating a CloudBees Core Jenkins instance referred to as a [Team Master](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-admin-guide/cje-ux).
 * Setting up a GitHub.com user account that will be used throughout the workshop. If you have an existing GitHub.com account you will be able to use that account if you are comfortable using that account to create a GitHub Organization and a GitHub Personal Access Token for use in this workshop.
