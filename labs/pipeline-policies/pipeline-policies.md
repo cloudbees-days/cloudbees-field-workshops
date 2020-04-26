@@ -19,6 +19,6 @@ In this lab you will create a [Pipeline Policy](https://docs.cloudbees.com/docs/
 7. In the GitHub editor, uncomment the `timeout` pipeline `option` and then click the **Commit changes** button to commit the updated `Jenkinsfile` to your **master** branch. <p><img src="images/pipeline-policy-fix-commit-jenkinsfile.png" width=800/>
 8. Finally, navigate back to the **PR-1** job for the **microblog-frontend** Mutlibranch project and click the **Build Now** link in the left menu. The build will complete successfully and the logs for that build will show that the all polices validated successfully. <p><img src="images/pipeline-policy-success.png" width=600/>
 
-For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/core/#27).
+For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/core/#31).
 
 You may proceed to the next lab: [*Cross Team Collaboration*](../cross-team-collaboration/cross-team-collaboration.md) or choose another lab on the [main page](../../README.md#workshop-labs).
