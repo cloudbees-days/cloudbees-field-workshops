@@ -24,7 +24,7 @@ class: compact
 
 # Cross Team Collaboration Syntax
 
-* Publish an event: In this case, we're using the string 'helloWorld' and any matching listeners will receive it.
+* Publish an event: In this case, we're using the string 'helloWorld' and any matching subscriber will receive it.
 
 ```groovy
 pipeline {
