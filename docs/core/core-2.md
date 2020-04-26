@@ -86,7 +86,6 @@ Core CasC was used to create two user specific Jenkins credentials for use in th
 
 ---
 name: config-bundle-details-additional
-class: compact
 
 # Additional JCasC Configuration
 #### Pipeline Shared Library

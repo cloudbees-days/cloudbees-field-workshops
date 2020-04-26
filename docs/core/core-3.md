@@ -27,13 +27,19 @@ Pipeline Shared Libraries and Pipeline Template Catalogs can 'live' in the same 
 ---
 name: pipeline-template-catalog-lab-link
 
-# Lab - Import Pipeline Template Catalog
+# Lab - Pipeline Template Catalog
 
+* In this lab you will import a Pipeline Template Catalog from a repository that was forked in by the setup job and then create a job from one of the templates in that catalog.
 * The *Pipeline Template Catalog* lab instructions are available at: 
   * [https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/pipeline-template-catalog/pipeline-template-catalog.md](https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/pipeline-template-catalog/pipeline-template-catalog.md)
 
 ---
-name: github-reporting
+name: pipeline-template-catalog-overview
+
+# Pipeline Template Catalog Overview
+
+---
+name: cloudbees-github-reporting
 
 # CloudBees GitHub Reporting .badge-red[PRE-RELEASE]
 
