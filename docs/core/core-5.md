@@ -16,6 +16,7 @@ name: cross-team overview
 
 .no-bullet[
 * The [Cross Team Collaboration](https://docs.cloudbees.com/docs/cloudbees-core/2.204.2.2/cloud-admin-guide/cross-team-collaboration) functionality in CloudBees Core allows you to create events and listeners to trigger jobs across Core Masters. It provides a pub/sub relationship where jobs can send an event with data, and the jobs listening for it can trigger and process the data.
+* 
 ]
 
 ---
@@ -58,8 +59,19 @@ pipeline {
 ```
 
 ---
+name: cross-team-event-types
+
+# Publish Event Types for Cross Team Collaboration
+
+* **`simpleEvent`**
+* **`jsonEvent`**
+
+---
 name: cross-team-lab
 
-## Lab  
+# Lab - Triggering Pipelines with Cross Team Collaboration
 
-[https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/cross-team-collaboration/cross-team-collaboration.md](https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/cross-team-collaboration/cross-team-collaboration.md)
+* In this lab we will take advantage of CloudBees Core cross team collaboration by adding an event trigger listener so that when the job for our base image is complete, it will kick off our frontend application job. This is a common real world scenario where your container base image may receive security patches or minor updates and you want all applications using that base image to be updated. Rather than asking everyone to make sure their application containers are rebuilt with the new base image version, this can be triggered automatically. 
+* The *Triggering Pipelines with Cross Team Collaboration* lab instructions are available at: 
+  * [https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/cross-team-collaboration/cross-team-collaboration.md](https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/cross-team-collaboration/cross-team-collaboration.md)
+
