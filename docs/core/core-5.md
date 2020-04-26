@@ -20,6 +20,7 @@ name: cross-team overview
 
 ---
 name: cross-team-syntax
+class: compact
 
 # Cross Team Collaboration Publish and Trigger Syntax
 

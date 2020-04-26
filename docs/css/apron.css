@@ -94,10 +94,10 @@ h2, h3 {
 }
 .remark-slide-content.compact {
   padding: 20px 40px 0 40px;
-  font-size: 1.75rem;
+  font-size: 1.25rem;
 }
 .remark-slide-content.compact h1 {
-  font-size: 2.75rem;
+  font-size: 2.5rem;
 }
 .remark-slide-content.compact h2 {
   font-size: 2.25rem;
@@ -105,12 +105,19 @@ h2, h3 {
 .remark-slide-content.compact h3 {
   font-size: 2rem;
 }
+
+.remark-slide-content.compact h1,
+.remark-slide-content.compact h2,
+.remark-slide-content.compact h3 {
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+}
 .remark-slide-content.compact pre,
 .remark-slide-content.compact code,
 .remark-slide-content.compact kbd,
 .remark-slide-content.compact tt,
 .remark-slide-content.compact samp {
-  font-size: 1.25rem;
+  font-size: 0.8rem;
 }
 .remark-slide-content.roomy {
   padding: 20px 80px 0 80px;
@@ -130,7 +137,7 @@ h2, h3 {
 .remark-slide-content.roomy kbd,
 .remark-slide-content.roomy tt,
 .remark-slide-content.roomy samp {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
 }
 .remark-slide-content.title h1 {
   font-size: 4rem;
