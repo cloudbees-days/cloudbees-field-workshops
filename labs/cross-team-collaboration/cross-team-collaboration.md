@@ -2,7 +2,7 @@
 
 # WORK IN PROGRESS
 
-## Enabled Cross Team Collaboration Notifications
+## Enable Cross Team Collaboration Notifications
 
 1. Navigate to the top-level of your Team Master and click on **Manage Jenkins** in the left menu. <p><img src="images/manage-jenkins.png" width=800/>
 2. On the **Manage Jenkins** page scroll down and click on the **Configure Notification** link. <p><img src="images/configure-notification-link.png" width=800/>
