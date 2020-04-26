@@ -4,42 +4,7 @@ In this lab we're going to take advantage of cross team collaboration by adding 
 
 Rather than asking everyone to make sure their application containers are rebuilt with the new base image version, we can trigger this automatically. For this workshop, the instructor will kick off a job which sends an event which will kick off your frontend job. 
 
-## Taking a brief look at event trigger syntax
 
-At its most basic, publishing an event is as simple as adding the the following step:
-`publishEvent simpleEvent('helloWorld')`. In this case, we're using the string 'helloWorld' and any matching listeners will receive it.
-
-```groovy
-pipeline {
-    agent any
-    stages {
-        stage('Publish event') {
-            steps {
-                publishEvent simpleEvent('helloWorld')
-            }
-        }
-    }
-}
-```
-
-Now we just need another job which has a listener listening for 'helloWorld'. We can see there is a new eventTrigger type of trigger specific for cross team collaboration.
-
-```groovy
-pipeline {
-    agent any
-
-    triggers {
-        eventTrigger simpleMatch("helloWorld")
-    }
-    stages {
-        stage('Example') {
-            steps {
-                echo 'received helloWorld'
-            }
-        }
-    }
-}
-```
 
 The `simpleEvent` and `simpleMatch` are great for a lot of situations, but for this workshop we are going to want to be able to pass some data along (in this case, the new image tag).
 

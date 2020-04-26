@@ -19,6 +19,46 @@ name: cross-team overview
 ]
 
 ---
+name: cross-team-syntax
+
+# Cross Team Collaboration Publish and Trigger Syntax
+
+At its most basic, publishing an event is as simple as adding the following step:
+`publishEvent simpleEvent('helloWorld')`. In this case, we're using the string 'helloWorld' and any matching listeners will receive it.
+
+```groovy
+pipeline {
+    agent any
+    stages {
+        stage('Publish event') {
+            steps {
+                publishEvent simpleEvent('helloWorld')
+            }
+        }
+    }
+}
+```
+
+Now we just need another job that listens for the 'helloWorld' event. We can see there is a new `eventTrigger` type of job trigger specific for cross team collaboration.
+
+```groovy
+pipeline {
+    agent any
+
+    triggers {
+        eventTrigger simpleMatch("helloWorld")
+    }
+    stages {
+        stage('Example') {
+            steps {
+                echo 'received helloWorld'
+            }
+        }
+    }
+}
+```
+
+---
 name: cross-team-lab
 
 ## Lab  
