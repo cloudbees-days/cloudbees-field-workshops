@@ -94,7 +94,7 @@ h2, h3 {
 }
 .remark-slide-content.compact {
   padding: 1rem 1.5rem 0 1.5rem;
-  font-size: 1.25rem;
+  font-size: 1.4rem;
 }
 .remark-slide-content.compact h1 {
   font-size: 2.4rem;
@@ -105,7 +105,10 @@ h2, h3 {
 .remark-slide-content.compact h3 {
   font-size: 1.8rem;
 }
-
+.remark-slide-content.compact li {
+  font-size: 1.3rem;
+  font-weight: 300;
+}
 .remark-slide-content.compact h1,
 .remark-slide-content.compact h2,
 .remark-slide-content.compact h3 {
