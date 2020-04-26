@@ -7,7 +7,6 @@ count: false
 
 ---
 name: pipeline-policies
-class: compact
 
 # CloudBees Pipeline Policies .badge-red[PREVIEW]
 
@@ -21,7 +20,7 @@ class: compact
   * EntirePipelineTimeoutRule - validates that a timeout period was set for the entire Pipeline execution.
 
 ---
-name: pipeline-policies-lab
+name: pipeline-policies-lab-link
 class: compact
 
 # Lab - Enforcing Pipeline Timeouts with Pipeline Policies

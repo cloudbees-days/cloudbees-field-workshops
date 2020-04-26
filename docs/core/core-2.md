@@ -37,7 +37,6 @@ CasC for CloudBees Core consists of a collection of YAML files referred to as a 
 
 ---
 name: enable-casc
-class: compact
 
 # Enabling CasC for a Core Managed/Team Master
 
@@ -106,8 +105,8 @@ name: core-casc-lab-link
 * One of the main reasons to manage configuration as code is to take advantage of features provided by source control tools - like GitHub webhooks for example. You don't want to have to execute any manual steps when you commit approved changes to your Core configuration. 
 ]
 
-* In the following lab we will setup a Jenkins Pipeline job - or more specifically, a [Pipeline Organization Folder](https://jenkins.io/doc/book/pipeline/multibranch/#organization-folders) - on your Team Master that will be triggered whenever you commit any approved changes to the `**master**` branch of your Core configuration bundle repository.
-* The GitOps for Core CasC lab instructions are available at: 
+* In the following lab we will setup a Jenkins Pipeline job - or more specifically, a [Pipeline Organization Folder](https://jenkins.io/doc/book/pipeline/multibranch/#organization-folders) - on your Team Master that will be triggered whenever you commit any approved changes to the **`master`** branch of your Core configuration bundle repository.
+* The *GitOps for Core CasC* lab instructions are available at: 
   * [https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/core-casc/core-casc.md](https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/core-casc/core-casc.md)
 
 ---
@@ -115,7 +114,7 @@ name: core-casc-lab-review
 
 # CloudBees Core - Configuration as Code Lab Review
 
-* You created a Pipeline job, via a GitHub Organization Folder project, that will update your Team Master configuration bundle whenever you commit any changes to the **master** branch of your fork of the **core-config-bundle** repository. This is GitOps for Jenkins configuration.
+* You created a Pipeline job, via a GitHub Organization Folder project, that will update your Team Master configuration bundle whenever you commit any changes to the **`master`** branch of your fork of the **`core-config-bundle`** repository. This is GitOps for Jenkins configuration.
 * Then, via the GitHub Pull Request you created and merged, your Team Master was updated with several plugins and configuration for some of those plugins.
 * In the next sections and labs we will be exploring the functionality of those plugins and other features - to include:
   * Master specific Pod Templates for Kubernetes based agents

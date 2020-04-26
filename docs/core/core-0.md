@@ -123,7 +123,7 @@ Team Masters
 name: core-k8s-architecture
 class: middle, center
 
-![:scale 80%](img/core-k8s-architecture.svg)
+![:scale 75%](img/core-k8s-architecture.svg)
 
 CloudBees Core on Kubernetes
 
