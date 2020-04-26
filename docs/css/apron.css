@@ -343,6 +343,15 @@ h2, h3 {
   top: 42px;
   left: 40px;
 }
+.remark-slide-content.compact ul,  .remark-slide-content.compact ol {
+  margin-block-start: 0.5rem;
+  margin-block-end: 0.5rem;
+ }
+
+ .remark-slide-content.compact ul ul, .remark-slide-content.compact ul ol {
+  margin-block-start: 0.25rem;
+  margin-block-end: 0.25rem;
+ }
 .remark-slide-content.col-3.roomy {
   padding-top: 168px;
 }
