@@ -38,8 +38,8 @@ h2, h3 {
   box-sizing: border-box;
   height: 100%;
   line-height: 1.25;
-  padding: 10px 80px 0 80px;
-  font-size: 1.7rem;
+  padding: 1rem 2.5rem 0 2.5rem;
+  font-size: 1.6rem;
   font-family: 'Lato', sans-serif;
 }
 .remark-slide-content * {
@@ -93,7 +93,7 @@ h2, h3 {
   line-height: 1.1;
 }
 .remark-slide-content.compact {
-  padding: 1rem 1.5rem 0 1.5rem;
+  padding: 1rem 2rem 0 2rem;
   font-size: 1.4rem;
 }
 .remark-slide-content.compact h1 {
