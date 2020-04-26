@@ -32,7 +32,7 @@ pipeline {
     stages {
         stage('Publish event') {
             steps {
-                publishEvent simpleEvent('helloWorld')
+*               publishEvent simpleEvent('helloWorld')
             }
         }
     }
@@ -45,7 +45,7 @@ pipeline {
 pipeline {
     agent any
     triggers {
-        eventTrigger simpleMatch("helloWorld")
+*       eventTrigger simpleMatch("helloWorld")
     }
     stages {
         stage('Example') {
