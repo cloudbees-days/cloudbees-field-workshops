@@ -22,10 +22,9 @@ name: cross-team overview
 name: cross-team-syntax
 class: compact
 
-# Cross Team Collaboration Publish and Trigger Syntax
+# Cross Team Collaboration Syntax
 
-At its most basic, publishing an event is as simple as adding the following step:
-`publishEvent simpleEvent('helloWorld')`. In this case, we're using the string 'helloWorld' and any matching listeners will receive it.
+* Publish an event: In this case, we're using the string 'helloWorld' and any matching listeners will receive it.
 
 ```groovy
 pipeline {
@@ -40,7 +39,7 @@ pipeline {
 }
 ```
 
-Now we just need another job that listens for the 'helloWorld' event. We can see there is a new `eventTrigger` type of job trigger specific for cross team collaboration. The following Pipeline will be triggered whenever the **helloWorld** event is published:
+* Subscribe to an event: the following Pipeline will be triggered whenever the **helloWorld** event is published.
 
 ```groovy
 pipeline {
