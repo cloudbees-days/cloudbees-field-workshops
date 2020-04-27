@@ -62,7 +62,7 @@ pipeline {
 pipeline {
   agent none
   triggers {
-    eventTrigger jmespathQuery("event=='imagePush' && name=='node'")
+*   eventTrigger jmespathQuery("event=='imagePush' && name=='node'")
   }
 ```
 
