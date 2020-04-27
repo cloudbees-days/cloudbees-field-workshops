@@ -36,7 +36,7 @@ publishEvent simpleEvent('helloWorld')
 * **`jsonEvent`** - a more complex publish event type, it allows you to specify any valid JSON as the event payload.
 
 ```groovy
-publishEvent event: jsonEvent('{"event":"imagePus","name":"node","tag":"14.0.0-alpine3.11"}')
+publishEvent event: jsonEvent('{"event":"imagePush","name":"node","tag":"14.0.0-alpine3.11"}')
 ```
 
 ---

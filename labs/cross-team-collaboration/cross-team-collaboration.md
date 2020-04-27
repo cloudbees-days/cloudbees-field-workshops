@@ -13,7 +13,7 @@
 1. In GitHub, navigate to the **Add event trigger** pull request (#1) in your fork of the **pipeline-template-catalog** repository. <p><img src="images/collab-pr-navigate.png" width=800/>
 2. To see the changes that will be made to your copy of the **VueJS** template, click on the **Files changed** tab and scroll down to see the differences. <p><img src="images/collab-pr-files-changed.png" width=800/>
 3. We are adding the `eventTrigger` using `jmespathQuery` and adding a new `stage` where we are using the `getImageBuildEventPayload` Pipeline Shared Library step to extract the event payload. 
-4. Once you have reviewed the changes, click back on the **Conversation** tab and then click the green **Merge pull request** button and then the **Confirm merge** button. <p><img src="images/collab-merge-pr.png" width=800/> 
+4. Once you have reviewed the changes, click back on the **Conversation** tab and then click the green **Merge pull request** button and then the **Confirm merge** button.
 
 ## Create a Pipeline to publish an event
 
@@ -22,8 +22,23 @@ Now that you have an `eventTrigger` added to your **VueJS** template we need to 
 1. On your Team Master and ensure that you are in the folder with the same name as your Team Master - you should see the `workshop-setup` Pipeline job.
 2. Click on the **New Item** link in the left navigation menu - again, make sure that you are in the **folder** with the same name as your Team Master, and not at the root of your Team Master.
 3. Enter an item name - say **publish-event** - then select **Pipeline** as the item type and then click the **OK** button. <p><img src="images/collab-publish-item.png" width=600/>
-4. 
+4. Copy the following Pipeline and paste it into the pipeline text area and click the **Save** button:
 
+```groovy
+pipeline {
+    agent none
+    stages {
+        stage('Publish Event') {
+            steps {
+                publishEvent event: jsonEvent('{"event":"imagePush","name":"node","tag":"14.0.0-alpine3.11"}')
+            }
+        }
+    }
+}
+```
+
+5. Click the **Build Now** link in the left menu. Once the **publish-event** Pipeline job completes successfully you will see your jobs job for the **microblog-frontend** Mutlibranch project triggered.
+6. 
 
 For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/core/#33).
 
