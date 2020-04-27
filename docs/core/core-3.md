@@ -10,7 +10,7 @@ name: pipeline-template-catalog
 
 # Pipeline Template Catalogs
 
-Pipeline Template Catalogs help ensure that Pipeline jobs conform to organizational standards.
+Pipeline Template Catalogs provide version controlled parameterized templates for Multibranch and stand-alone Pipeline jobs, and help ensure that Pipeline jobs conform to organizational standards.
 
 Benefits of using Pipeline Template Catalogs include:
 

@@ -21,27 +21,21 @@ name: cross-team overview
 ]
 
 ---
-name: cross-team-syntax
-class: compact
+name: cross-team-publish-types
 
-# Cross Team Collaboration Syntax
+# Publish Event Types for Cross Team Collaboration
 
-* Publish an event: In this case, we're using the string 'helloWorld' and any matching subscriber will receive it.
+There are two types of events that can be published for the `publishEvent` step:
+* **`simpleEvent`** - 
+* **`jsonEvent`** - 
 
-```groovy
-pipeline {
-    agent any
-    stages {
-        stage('Publish event') {
-            steps {
-*               publishEvent simpleEvent('helloWorld')
-            }
-        }
-    }
-}
-```
+---
+name: cross-team-trigger-types
 
-* Subscribe to an event: the following Pipeline will be triggered whenever the **helloWorld** event is published.
+# Event Trigger Types for Cross Team Collaboration
+
+Just as there are two types of publish events, there are also two corresponding `eventTrigger` types:
+* **`simpleMatch`** - this `eventTrigger` type is used for events that are published as a `simpleEvent` and will only match against simple strings.
 
 ```groovy
 pipeline {
@@ -49,33 +43,10 @@ pipeline {
     triggers {
 *       eventTrigger simpleMatch("helloWorld")
     }
-    stages {
-        stage('Example') {
-            steps {
-                echo 'received helloWorld'
-            }
-        }
-    }
-}
+...
 ```
 
----
-name: cross-team-event-types
-
-# Publish Event Types for Cross Team Collaboration
-
-There are two types of events that can be published.
-* **`simpleEvent`** - 
-* **`jsonEvent`** - 
-
----
-name: cross-team-event-types
-
-# Event Trigger Types for Cross Team Collaboration
-
-Just as there are two 
-* **`simpleEvent`**
-* **`jsonEvent`**
+* **`jmespathQuery`**
 
 
 ---

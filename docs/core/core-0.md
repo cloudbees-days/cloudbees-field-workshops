@@ -44,7 +44,7 @@ name: workshop-tools
 ---
 name: workshop-zoom
 
-![:scale 95%](img/zoom-tools.png)
+![:scale 90%](img/zoom-tools.png)
 
 ---
 name: lab-environment
