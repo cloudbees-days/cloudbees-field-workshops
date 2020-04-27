@@ -44,4 +44,4 @@ While your Team Master is restarting, let's explore the results of the `workshop
 ]
 
 ???
-The `workshop-setup` job also created two GitHub pull requests to streamline the labs where they are used.
+The `workshop-setup` job also created three GitHub pull requests to streamline the labs where they are used.
