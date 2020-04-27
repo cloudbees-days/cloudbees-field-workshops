@@ -7,7 +7,7 @@ count: false
 
 ---
 name: cross-team overview
-class: compact
+class: compact, middle
 
 # Cross Team Collaboration
 
