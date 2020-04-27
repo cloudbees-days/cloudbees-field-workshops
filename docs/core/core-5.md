@@ -71,8 +71,8 @@ name: cross-team-lab
 
 # Lab - Triggering Pipelines with Cross Team Collaboration
 
-* In this lab we will take advantage of CloudBees Core cross team collaboration by adding an event trigger listener so that when the job for our base image is complete, it will kick off our frontend application job. This is a common real world scenario where your container base image may receive security patches or minor updates and you want all applications using that base image to be updated. Rather than asking everyone to make sure their application containers are rebuilt with the new base image version, this can be triggered automatically. 
-* First, to figure out what we're dealing with, let's look at the actual Dockerfile for the microblog-frontend application:
+* In this lab we will use CloudBees Core cross team collaboration by adding an event trigger listener so that when the job for our base image is complete, it will kick off our frontend application job with an event payload that includes the information for the `node` image to use. This is a common real world scenario where your container base image may receive security patches or minor updates and you want all applications using that base image to be updated. 
+* First, to figure out what we're dealing with, let's look at the part of the `Dockerfile` for the `microblog-frontend` application. By default, it will use the `node:lts-alpine` image:
 
 ```Dockerfile
 ARG NODE_IMAGE=node:lts-alpine
