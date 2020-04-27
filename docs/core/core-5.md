@@ -27,8 +27,17 @@ name: cross-team-publish-types
 # Publish Event Types for Cross Team Collaboration
 
 There are two types of events that can be published for the `publishEvent` step:
-* **`simpleEvent`** - 
-* **`jsonEvent`** - 
+* **`simpleEvent`** - a publish event type that only allows including a single string as the event payload. The supplied string value will be dynamically *wrapped* as the value of the `event` JSON key.
+
+```groovy
+publishEvent simpleEvent('helloWorld')
+```
+
+* **`jsonEvent`** - a more complex publish event type, it allows you to specify any valid JSON as the event payload.
+
+```groovy
+publishEvent event: jsonEvent('{"event":"imagePus","name":"node","tag":"14.0.0-alpine3.11"}')
+```
 
 ---
 name: cross-team-trigger-types
