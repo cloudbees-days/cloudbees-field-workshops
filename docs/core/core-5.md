@@ -7,9 +7,9 @@ count: false
 
 ---
 name: cross-team overview
+class: compact
 
 # Cross Team Collaboration
-class: compact
 
 .img-left[
 ![Hibernating Masters Diagram](https://docs.cloudbees.com/docs/cloudbees-common/latest/_images/cross-team-collaboration-screenshots/cross-team-diagram.abf4b33.png)
