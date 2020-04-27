@@ -1,7 +1,5 @@
 # <img src="images/cloudbeescore_logo.png" alt="CloudBees Core Logo" width="40" align="top"> CloudBees Core - Cross Team Collaboration
 
-# WORK IN PROGRESS
-
 ## Enable Cross Team Collaboration Notifications
 
 1. Navigate to the top-level of your Team Master and click on **Manage Jenkins** in the left menu. <p><img src="images/manage-jenkins.png" width=800/>
@@ -43,8 +41,8 @@ pipeline {
 
 5. Click the **Build Now** link in the left menu. <p><img src="images/collab-publish-event-build.png" width=800/>
 6. Once the **publish-event** Pipeline job completes successfully you will see your jobs job for the **microblog-frontend** Mutlibranch project triggered.
-7. 
+7. Once the **master** branch job completes successfully you can see in the logs that the `FROM` image for the `build-stage` is `node:14.0.0-alpine3.11` as specified by the event you published above. <p><img src="images/collab-trigger-success-logs.png" width=800/>
 
-For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/core/#33).
+For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/core/#37).
 
 You may proceed to the next lab: [*Preview Environments with Core*](../core-preview-environment/catalog-templates.md) or choose another lab on the [main page](../../README.md#workshop-labs).

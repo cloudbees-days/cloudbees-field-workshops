@@ -68,6 +68,7 @@ pipeline {
 
 ---
 name: cross-team-lab
+class: compact
 
 # Lab - Triggering Pipelines with Cross Team Collaboration
 
