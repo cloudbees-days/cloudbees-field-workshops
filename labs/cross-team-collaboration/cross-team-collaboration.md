@@ -21,12 +21,15 @@ Now that you have an `eventTrigger` added to your **VueJS** template we need to 
 
 1. On your Team Master and ensure that you are in the folder with the same name as your Team Master - you should see the `workshop-setup` Pipeline job.
 2. Click on the **New Item** link in the left navigation menu - again, make sure that you are in the **folder** with the same name as your Team Master, and not at the root of your Team Master.
-3. Enter an item name - say **publish-event** - then select **Pipeline** as the item type and then click the **OK** button. <p><img src="images/collab-publish-item.png" width=600/>
-4. Copy the following Pipeline and paste it into the pipeline text area and click the **Save** button:
+3. Enter an item name - say **publish-event** - then select **Pipeline** as the item type and then click the **OK** button. <p><img src="images/collab-publish-event-item.png" width=800/>
+4. Copy the following Pipeline and paste it into the **Script** text area and click the **Save** button:
 
 ```groovy
 pipeline {
     agent none
+    options {
+        timeout(time: 30, unit: 'MINUTES')
+    }
     stages {
         stage('Publish Event') {
             steps {
@@ -36,9 +39,11 @@ pipeline {
     }
 }
 ```
+<p><img src="images/collab-publish-event-copy-script.png" width=800/>
 
-5. Click the **Build Now** link in the left menu. Once the **publish-event** Pipeline job completes successfully you will see your jobs job for the **microblog-frontend** Mutlibranch project triggered.
-6. 
+5. Click the **Build Now** link in the left menu. <p><img src="images/collab-publish-event-build.png" width=800/>
+6. Once the **publish-event** Pipeline job completes successfully you will see your jobs job for the **microblog-frontend** Mutlibranch project triggered.
+7. 
 
 For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/core/#33).
 
