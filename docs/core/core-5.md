@@ -67,18 +67,28 @@ pipeline {
 ```
 
 ---
-name: cross-team-lab
+name: collab-lab
 class: compact
 
 # Lab - Triggering Pipelines with Cross Team Collaboration
 
-* In this lab we will use CloudBees Core cross team collaboration by adding an event trigger listener so that when the job for our base image is complete, it will kick off our frontend application job with an event payload that includes the information for the `node` image to use. This is a common real world scenario where your container base image may receive security patches or minor updates and you want all applications using that base image to be updated. 
+* In this lab we will use CloudBees Core cross team collaboration by adding an event trigger listener so that when the job for our base image is complete, it will kick off our frontend application job with an event payload that includes the information for the `node` image to use.
 * First, to figure out what we're dealing with, let's look at the part of the `Dockerfile` for the `microblog-frontend` application. By default, it will use the `node:lts-alpine` image:
 
 ```Dockerfile
 ARG NODE_IMAGE=node:lts-alpine
 ...
 ```
+  * The **VueJS** template (and supporting Pipeline Shared Library) will be updated to override the `NODE_IMAGE` argument with a value from the payload of a published event.
 * The *Triggering Pipelines with Cross Team Collaboration* lab instructions are available at: 
   * [https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/cross-team-collaboration/cross-team-collaboration.md](https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/cross-team-collaboration/cross-team-collaboration.md)
 
+
+---
+name: collab-overview
+
+# Triggering Pipelines with Cross Team Collaboration Overview
+
+* Enabled **Notifications** for CloudBees Cross Team Collaboration on your team master
+* Updated the **VueJS** template of your Pipeline Template Catalog with an event trigger
+* Created a Pipeline job that publishes an event to trigger the jobs based on the **VueJS** template
