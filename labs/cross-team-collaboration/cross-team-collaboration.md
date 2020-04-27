@@ -1,139 +1,48 @@
 # <img src="images/cloudbeescore_logo.png" alt="CloudBees Core Logo" width="40" align="top"> CloudBees Core - Cross Team Collaboration
 
-In this lab we're going to take advantage of cross team collaboration by adding an event trigger listener so that when the job for our base image is complete, it will kick off our frontend application job. This is a common real world scenario where your container base image may receive security patches or minor updates and you want all applications using that base image to be updated. 
+## Enable Cross Team Collaboration Notifications
 
-Rather than asking everyone to make sure their application containers are rebuilt with the new base image version, we can trigger this automatically. For this workshop, the instructor will kick off a job which sends an event which will kick off your frontend job. 
+1. Navigate to the top-level of your Team Master and click on **Manage Jenkins** in the left menu. <p><img src="images/manage-jenkins.png" width=800/>
+2. On the **Manage Jenkins** page scroll down and click on the **Configure Notification** link. <p><img src="images/configure-notification-link.png" width=800/>
+3. Check the **Enabled** checkbox, select **Local Only** as the **Notification Router Implementation** and click the **Save** button. <p><img src="images/enable-notification-local.png" width=600/>
 
-## Taking a brief look at event trigger syntax
+## Adding an event trigger
 
-At its most basic, publishing an event is as simple as adding the the following step:
-`publishEvent simpleEvent('helloWorld')`. In this case, we're using the string 'helloWorld' and any matching listeners will receive it.
+1. In GitHub, navigate to the **Add event trigger** pull request (#1) in your fork of the **pipeline-template-catalog** repository. <p><img src="images/collab-pr-navigate.png" width=800/>
+2. To see the changes that will be made to your copy of the **VueJS** template, click on the **Files changed** tab and scroll down to see the differences. <p><img src="images/collab-pr-files-changed.png" width=800/>
+3. We are adding the `eventTrigger` using `jmespathQuery` and adding a new `stage` where we are using the `getImageBuildEventPayload` Pipeline Shared Library step to extract the event payload. 
+4. Once you have reviewed the changes, click back on the **Conversation** tab and then click the green **Merge pull request** button and then the **Confirm merge** button.
+
+## Create a Pipeline to publish an event
+
+Now that you have an `eventTrigger` added to your **VueJS** template we need to create a job that will publish an event that will trigger it. Each of you will create a simple Pipeline job that will publish an event to imitate the real world scenario where a new `node` base image would be built and pushed - typically by another team on a different Team Master.
+
+1. On your Team Master and ensure that you are in the folder with the same name as your Team Master - you should see the `workshop-setup` Pipeline job.
+2. Click on the **New Item** link in the left navigation menu - again, make sure that you are in the **folder** with the same name as your Team Master, and not at the root of your Team Master.
+3. Enter an item name - say **publish-event** - then select **Pipeline** as the item type and then click the **OK** button. <p><img src="images/collab-publish-event-item.png" width=800/>
+4. Copy the following Pipeline and paste it into the **Script** text area and click the **Save** button:
 
 ```groovy
 pipeline {
-    agent any
+    agent none
+    options {
+        timeout(time: 30, unit: 'MINUTES')
+    }
     stages {
-        stage('Publish event') {
+        stage('Publish Event') {
             steps {
-                publishEvent simpleEvent('helloWorld')
+                publishEvent event: jsonEvent('{"event":"imagePush","name":"node","tag":"14.0.0-alpine3.11"}')
             }
         }
     }
 }
 ```
+<p><img src="images/collab-publish-event-copy-script.png" width=800/>
 
-Now we just need another job which has a listener listening for 'helloWorld'. We can see there is a new eventTrigger type of trigger specific for cross team collaboration.
+5. Click the **Build Now** link in the left menu. <p><img src="images/collab-publish-event-build.png" width=800/>
+6. Once the **publish-event** Pipeline job completes successfully you will see your jobs job for the **microblog-frontend** Mutlibranch project triggered.
+7. Once the **master** branch job completes successfully you can see in the logs that the `FROM` image for the `build-stage` is `node:14.0.0-alpine3.11` as specified by the event you published above. <p><img src="images/collab-trigger-success-logs.png" width=800/>
 
-```groovy
-pipeline {
-    agent any
-
-    triggers {
-        eventTrigger simpleMatch("helloWorld")
-    }
-    stages {
-        stage('Example') {
-            steps {
-                echo 'received helloWorld'
-            }
-        }
-    }
-}
-```
-
-The `simpleEvent` and `simpleMatch` are great for a lot of situations, but for this workshop we are going to want to be able to pass some data along (in this case, the new image tag).
-
-Thankfully we have another type which lets us do just that. Instead of the simpleEvent we can now use the jsonEvent:
-
-```groovy
-publishEvent jsonEvent('{"eventName":"helloWorld"}')
-```
-
-And instead of simpleMatch trigger, we can use the jmespathQuery:
-
-```groovy
-    triggers {
-        eventTrigger jmespathQuery("eventName=='helloWorld'")
-    }
-```
-
-A JMESPath expression allows us to check a value against the JSON body we receive with the event.
-
-## Adding the trigger to our pipeline
-
-First, to figure out what we're dealing with, let's look at the actual Dockerfile for the microblog-frontend application:
-
-```Dockerfile
-ARG NODE_IMAGE=node:lts-alpine
-
-# build stage
-FROM $NODE_IMAGE as build-stage
-WORKDIR /app
-COPY package.json yarn.lock ./
-RUN yarn install
-COPY . .
-RUN yarn run build
-
-# production stage
-FROM nginx:stable-alpine as production-stage
-COPY --from=build-stage /app/dist /usr/share/nginx/html
-RUN rm /etc/nginx/conf.d/default.conf
-COPY nginx.conf /etc/nginx/conf.d
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
-```
-
-We can see in the build stage, by default, it is using this `node:lts-alpine` image. This `lts-alpine` image is great, but we actually want to use our own internal version of the image since it goes through our rigorous security scanning process.
-
-If you were to build this locally with Docker, you could run something like `docker build -t microblog-frontend NODE_IMAGE=internal-node:tag .` to use a specific `NODE_IMAGE`.
-
-What we need to do is update our pipeline template catalog to 1) listen for the trigger and 2) modify the docker build to use the argument.
-
-### The trigger
-
-In any pub/sub relationship, it's important to understand the format of the data being sent and received. So let's take a look at the data the instructors job will be sending. 
-
-```groovy
-publishEvent jsonEvent('{
-  "imageName": "node",
-  "image": "{registry}/node:version"
-}')
-```
-
-With this, we're going to want to trigger our job based on a search match on `imageName=='node'`.
-
-Let's add this trigger block to our vuejs-app pipeline template catalog. If you haven't forked the catalog repo in the previous labs, you can do it [here](https://github.com/cloudbees-days/pipeline-template-catalog).
-
-In your forked repo, navigate to `templates/vuejs-app/Jenkinsfile`.
-
-Currently we have no defined triggers in this template:
-
-```groovy
-library 'cb-days@master'
-def testPodYaml = libraryResource 'podtemplates/vuejs/vuejs-test-pod.yml'
-pipeline {
-  agent none
-  options { 
-    buildDiscarder(logRotator(numToKeepStr: '2'))
-    skipDefaultCheckout true
-    preserveStashes(buildCount: 2)
-  }
-  environment {
-    repoOwner = "${repoOwner}"
-    credId = "${githubCredentialId}"
-  }
-  stages('VueJS Test and Build')
-...
-```
-
-To get this job to trigger on the event, we simply need to add the following block below the `agent none`:
-
-```groovy
-triggers {
-  eventTrigger jmespathQuery("imageName=='node'")
-}
-```
-
----
+For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/core/#37).
 
 You may proceed to the next lab: [*Preview Environments with Core*](../core-preview-environment/catalog-templates.md) or choose another lab on the [main page](../../README.md#workshop-labs).

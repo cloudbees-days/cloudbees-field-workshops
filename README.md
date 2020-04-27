@@ -1,4 +1,4 @@
-# <img src="https://mms.businesswire.com/media/20191204005250/en/760213/23/Logo_-_Stacked_-_Full_Color%402x.jpg" width="100" align="top"> CloudBees Core-Rollout-Flow Integration Workshop
+# <img src="https://mms.businesswire.com/media/20191204005250/en/760213/23/Logo_-_Stacked_-_Full_Color%402x.jpg" width="100" align="top"> CloudBees Field Workshops
 These workshop labs demonstrate how to  effectively use CI/CD practices, manage feature flags, and orchestrating releases with CloudBees' Core, Rollout, and Flow products.
 
 # Workshop Prerequisites
@@ -11,8 +11,13 @@ These workshop labs demonstrate how to  effectively use CI/CD practices, manage 
 * A basic understanding of Jenkins Pipelines: https://jenkins.io/doc/book/pipeline/getting-started/
 * A basic understanding of feature flags: https://rollout.io/blog/ultimate-feature-flag-guide/
 
-# Workshop Labs
+# Workshop Labs & Slides
 ## Core:
+
+### Slides
+https://cloudbees-days.github.io/core-rollout-flow-workshop/core/
+
+### Labs
  * [Lab 1 - Core Workshop Setup](labs/core-workshop-setup/workshop-setup.md)
  * [Lab 2 - Configuration as Code (CasC) for CloudBees Core](labs/core-casc/core-casc.md)
  * [Lab 3 - Pipeline Template Catalogs](labs/pipeline-template-catalog/pipeline-template-catalog.md)
@@ -25,6 +30,7 @@ These workshop labs demonstrate how to  effectively use CI/CD practices, manage 
 
 ## Rollout:
 <<<<<<< HEAD
+<<<<<<< HEAD
  * [Lab 1.1 - Setting Up CloudBees Rollout](labs/rolloutSetup/rolloutSetup.md)
  * [Lab 1.2 - Adding a Sidebar to the Microblog](labs/rolloutFeature/rolloutFeature.md)
  * [Lab 1.3 - Control the Value of a Feature Flag](labs/rolloutExperiment/rolloutExperiment.md)
@@ -32,6 +38,13 @@ These workshop labs demonstrate how to  effectively use CI/CD practices, manage 
  * Lab 1.5 - Analytics and A/B testing
  * [Lab 1.6 - Feature Flag GitOps](labs/rollout-casc/rollout-casc.md)
 =======
+=======
+
+### Slides
+https://cloudbees-days.github.io/core-rollout-flow-workshop/rollout/
+
+### Labs
+>>>>>>> 113b9a8595fe83ce090a62cff71b622b50640571
  * [Lab 1 - Setting Up CloudBees Rollout](labs/rolloutSetup/rolloutSetup.md)
  * [Lab 2 - Adding a Sidebar to the Microblog](labs/rolloutFeature/rolloutFeature.md)
  * [Lab 3 - Control the Value of a Feature Flag](labs/rolloutExperiment/rolloutExperiment.md)
