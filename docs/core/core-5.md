@@ -89,6 +89,6 @@ name: collab-overview
 
 # Triggering Pipelines with Cross Team Collaboration Overview
 
-* Enabled **Notifications** for CloudBees Cross Team Collaboration on your team master
+* Enabled **Notifications** for CloudBees Cross Team Collaboration on your Team Master
 * Updated the **VueJS** template of your Pipeline Template Catalog with an event trigger
 * Created a Pipeline job that publishes an event to trigger the jobs based on the **VueJS** template
