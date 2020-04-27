@@ -56,8 +56,15 @@ pipeline {
 ...
 ```
 
-* **`jmespathQuery`**
+* **`jmespathQuery`** - this `eventTrigger` allows the use of complex queries against JSON event payloads.
 
+```groovy
+pipeline {
+  agent none
+  triggers {
+    eventTrigger jmespathQuery("event=='imagePush' && name=='node'")
+  }
+```
 
 ---
 name: cross-team-lab
