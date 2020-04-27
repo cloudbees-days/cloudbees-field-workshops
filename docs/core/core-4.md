@@ -28,3 +28,12 @@ class: compact
 * In the following lab you will create a Pipeline Policy that will require that all Pipeline jobs on your Team Master be configured with a 30 minute (or greater) global timeout.
 * The *Enforcing Pipeline Timeouts with Pipeline Policies* lab instructions are available at: 
   * [https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/pipeline-policies/pipeline-policies.md](https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/pipeline-policies/pipeline-policies.md)
+
+
+---
+name: pipeline-policies-overview
+
+# Pipeline Policies Overview
+
+* Created a Pipeline Policy to enforce a minimum 30 minute global timeout for all Pipeline jobs on your Team Master
+* Updated the **VueJS** template with a time out to validate successfully against the **Global timeout policiy** you created

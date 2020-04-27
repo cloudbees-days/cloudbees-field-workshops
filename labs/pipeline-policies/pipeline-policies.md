@@ -7,7 +7,7 @@ In this lab you will create a [Pipeline Policy](https://docs.cloudbees.com/docs/
 1. Navigate to the top-level of your Team Master and click on **Pipeline Policies** in the left menu. <p><img src="images/policies-click.png" width=800/>
 2. Click on **New Policy**<p><img src="images/new-policy-click.png" width=600/>
 3. Fill out the Pipeline Policy parameters:
-   1. **Name**: Timeout policy
+   1. **Name**: Global timeout policy
    2. **Action**: Fail
    3. Click on **Add Rule** button: 
       1. Select **Pipeline Timeout**

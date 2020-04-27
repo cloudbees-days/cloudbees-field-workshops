@@ -43,6 +43,7 @@ name: workshop-tools
 
 ---
 name: workshop-zoom
+class: center
 
 ![:scale 90%](img/zoom-tools.png)
 
@@ -67,7 +68,6 @@ Notes
 
 ---
 name: core-overview-content
-class: compact
 
 # Rapidly, Repeatedly, and Reliably Deliver Software
 
