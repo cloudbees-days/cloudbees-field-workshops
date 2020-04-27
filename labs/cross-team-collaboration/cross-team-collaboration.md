@@ -8,59 +8,19 @@
 2. On the **Manage Jenkins** page scroll down and click on the **Configure Notification** link. <p><img src="images/configure-notification-link.png" width=800/>
 3. Check the **Enabled** checkbox, select **Local Only** as the **Notification Router Implementation** and click the **Save** button. <p><img src="images/enable-notification-local.png" width=600/>
 
-## Create a Pipeline to publish an event
-
-1. On  your Team Master and ensure that you are in the folder with the same name as your Team Master - you should see the `workshop-setup` Pipeline job.
-
 ## Adding an event trigger
 
+1. In GitHub, navigate to the **Add event trigger** pull request (#1) in your fork of the **pipeline-template-catalog** repository. <p><img src="images/pr-navigate.png" width=800/>
 
+## Create a Pipeline to publish an event
 
+Now that you have an `eventTrigger` added to your **VueJS** template we need to create a job that will publish an event that will trigger it. Each of you will create a simple Pipeline job that will publish an event to imitate the real world scenario where a new `node` base image would be built and pushed - typically by another team on a different Team Master.
 
-### The trigger
+1. On your Team Master and ensure that you are in the folder with the same name as your Team Master - you should see the `workshop-setup` Pipeline job.
+2. Click on the **New Item** link in the left navigation menu - again, make sure that you are in the **folder** with the same name as your Team Master, and not at the root of your Team Master.
+3. Enter an item name - say **publish-event** - then select **Pipeline** as the item type and then click the **OK** button. <p><img src="images/collab-publish-item.png" width=600/>
+4. 
 
-In any pub/sub relationship, it's important to understand the format of the data being sent and received. So let's take a look at the data the instructors job will be sending. 
-
-```groovy
-publishEvent jsonEvent('{
-  "imageName": "node",
-  "image": "{registry}/node:version"
-}')
-```
-
-With this, we're going to want to trigger our job based on a search match on `imageName=='node'`.
-
-Let's add this trigger block to our vuejs-app pipeline template catalog. If you haven't forked the catalog repo in the previous labs, you can do it [here](https://github.com/cloudbees-days/pipeline-template-catalog).
-
-In your forked repo, navigate to `templates/vuejs-app/Jenkinsfile`.
-
-Currently we have no defined triggers in this template:
-
-```groovy
-library 'cb-days@master'
-def testPodYaml = libraryResource 'podtemplates/vuejs/vuejs-test-pod.yml'
-pipeline {
-  agent none
-  options { 
-    buildDiscarder(logRotator(numToKeepStr: '2'))
-    skipDefaultCheckout true
-    preserveStashes(buildCount: 2)
-  }
-  environment {
-    repoOwner = "${repoOwner}"
-    credId = "${githubCredentialId}"
-  }
-  stages('VueJS Test and Build')
-...
-```
-
-To get this job to trigger on the event, we simply need to add the following block below the `agent none`:
-
-```groovy
-triggers {
-  eventTrigger jmespathQuery("imageName=='node'")
-}
-```
 
 For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/core/#33).
 
