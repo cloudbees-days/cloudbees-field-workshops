@@ -4,8 +4,11 @@
 2. Connect the Rollout app into the Github repository
   1. Go to **App Settings > Integrations tab** (from the left Panel)
   2. Click the **Connect** button
+  <p><img src="images/app-integrations.png" />
 3. In GitHub, select to integrate the Rollout GitHub app with your created repository.
+<p><img src="images/github-app.png" />
 4. After clicking **Install**, you will be redirected back to the CloudBees Rollout dashboard to select your app and the repository
+<p><img src="images/github-rollout-confirmation.png" />
 5. Click connect and you are done
 
 ### Using GitOps
