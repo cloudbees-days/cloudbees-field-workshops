@@ -31,7 +31,7 @@ class: compact
 
 # Core Workshop Setup Review
 
-While your Team Master is restarting, let's explore the results of the `workshop-setup` Pipeline:
+While your Team Master is restarting, let's explore the results of the **`workshop-setup`** Pipeline:
 
 .no-bullet[
 * In the GitHub Organization that you created for this workshop you will notice that you now have 5 repositories. The following repositories were [forked](https://guides.github.com/activities/forking/) from the [CloudBees Days GitHub Organization](https://github.com/cloudbees-days) by the `workshop-setup` job you just ran on your Team Master:
