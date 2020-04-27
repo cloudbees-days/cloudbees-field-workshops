@@ -36,4 +36,4 @@ name: pipeline-policies-overview
 # Pipeline Policies Overview
 
 * Created a Pipeline Policy to enforce a minimum 30 minute global timeout for all Pipeline jobs on your Team Master
-* Updated the **VueJS** template with a time out to validate successfully against the **Timeout policiy** you created
+* Updated the **VueJS** template with a time out to validate successfully against the **Timeout policy** you created
