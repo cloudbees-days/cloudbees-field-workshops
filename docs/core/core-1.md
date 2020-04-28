@@ -23,7 +23,7 @@ name: core-setup-lab
 * Today's URL for the CloudBees Core Workshop cluster is:
   * https://workshop.cb-sa.io/cjoc/
 * The *Core Workshop Setup* lab instructions are available at: 
-  * [https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/core-workshop-setup/workshop-setup.md](https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/core-workshop-setup/workshop-setup.md)
+  * [https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/workshop-setup/workshop-setup.md](https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/workshop-setup/workshop-setup.md)
 
 ---
 name: core-setup-review

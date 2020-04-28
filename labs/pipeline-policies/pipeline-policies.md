@@ -15,10 +15,9 @@ In this lab you will create a [Pipeline Policy](https://docs.cloudbees.com/docs/
    4. Click the **Save** button <p><img src="images/policy-timeout-form.png" width=800/>
 4. Navigate back to the **PR-1** job for the **microblog-frontend** Mutlibranch project and click the **Build Now** link in the left menu. <p><img src="images/build-with-policy.png" width=800/>
 5. Navigate to the logs for that build and you will see that the build failed due to **Validation Errors** <p><img src="images/pipeline-policy-error.png" width=800/>
-6. To fix this we will have to update the `Jenkinsfile` of the **VueJS** template in your forked copy of the **pipeline-template-catalog** repository. Navigate to that `Jenkinsfile` and the click the **pencil icon** to open it in the GitHub editor. <p><img src="images/pipeline-policy-open-jenkinsfile.png" width=800/>
+6. To fix this we will have to update the `Jenkinsfile` of the **VueJS** template in your forked copy of the **pipeline-template-catalog** repository - remember, even though we are building the code in the **microblog-frontend** repository the `Jenkinsfile` is actually coming from the **VueJS** template. Navigate to that `Jenkinsfile` and the click the **pencil icon** to open it in the GitHub editor. <p><img src="images/pipeline-policy-open-jenkinsfile.png" width=800/>
 7. In the GitHub editor, uncomment the `timeout` pipeline `option` and then click the **Commit changes** button to commit the updated `Jenkinsfile` to your **master** branch. <p><img src="images/pipeline-policy-fix-commit-jenkinsfile.png" width=800/>
 8. Navigate back to the **PR-1** job for the **microblog-frontend** Mutlibranch project and click the **Build Now** link in the left menu. The build will complete successfully and the logs for that build will show that the all polices validated successfully. <p><img src="images/pipeline-policy-success.png" width=600/>
-9. Finally, now that all the tests pass and we fixed the Pipeline Policy - navigate to the pull request page for your **Add marker file** pull request in your fork of the **microblog-frontend** repository, scroll to the bottom and click the green **Merge pull request** button and then the **Confirm merge** button.
 
 For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/core/#31).
 

@@ -12,6 +12,7 @@
 2. To see the changes that will be made to your copy of the **VueJS** template, click on the **Files changed** tab and scroll down to see the differences. <p><img src="images/collab-pr-files-changed.png" width=800/>
 3. We are adding the `eventTrigger` using `jmespathQuery` and adding a new `stage` where we are using the `getImageBuildEventPayload` Pipeline Shared Library step to extract the event payload. 
 4. Once you have reviewed the changes, click back on the **Conversation** tab and then click the green **Merge pull request** button and then the **Confirm merge** button.
+5. Finally, in order to enable the trigger on your **microblog-frontend** Pipeline jobs you need to run the job once - so navigate to the pull request page for your **Add marker file** pull request in your fork of the **microblog-frontend** repository, scroll to the bottom and click the green **Merge pull request** button and then the **Confirm merge** button.
 
 ## Create a Pipeline to publish an event
 
