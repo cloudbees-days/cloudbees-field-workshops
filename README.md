@@ -12,6 +12,10 @@ These workshop labs demonstrate how to  effectively use CI/CD practices, manage 
 * A basic understanding of feature flags: https://rollout.io/blog/ultimate-feature-flag-guide/
 
 # Workshop Labs & Slides
+
+[Workshop Setup for all workshops](labs/workshop-setup/workshop-setup.md)
+
+
 ## Core:
 
 ### Slides
