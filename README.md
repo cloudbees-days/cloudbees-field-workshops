@@ -33,29 +33,17 @@ https://cloudbees-days.github.io/core-rollout-flow-workshop/core/
 
 
 ## Rollout:
-<<<<<<< HEAD
-<<<<<<< HEAD
+
+### Slides
+https://cloudbees-days.github.io/core-rollout-flow-workshop/rollout/
+
+### Labs
  * [Lab 1.1 - Setting Up CloudBees Rollout](labs/rolloutSetup/rolloutSetup.md)
  * [Lab 1.2 - Adding a Sidebar to the Microblog](labs/rolloutFeature/rolloutFeature.md)
  * [Lab 1.3 - Control the Value of a Feature Flag](labs/rolloutExperiment/rolloutExperiment.md)
  * [Lab 1.4 - User Targeting](labs/rolloutTargeting/rolloutTargeting.md)
  * Lab 1.5 - Analytics and A/B testing
  * [Lab 1.6 - Feature Flag GitOps](labs/rollout-casc/rollout-casc.md)
-=======
-=======
-
-### Slides
-https://cloudbees-days.github.io/core-rollout-flow-workshop/rollout/
-
-### Labs
->>>>>>> 113b9a8595fe83ce090a62cff71b622b50640571
- * [Lab 1 - Setting Up CloudBees Rollout](labs/rolloutSetup/rolloutSetup.md)
- * [Lab 2 - Adding a Sidebar to the Microblog](labs/rolloutFeature/rolloutFeature.md)
- * [Lab 3 - Control the Value of a Feature Flag](labs/rolloutExperiment/rolloutExperiment.md)
- * Lab 4 - User Targeting
- * Lab 5 - Analytics and A/B testing
- * [Lab 6 - Feature Flag GitOps](labs/rollout-casc/rollout-casc.md)
->>>>>>> ff2c2b9311af0f7d650d6f34d141e1149d573280
 
 
 
