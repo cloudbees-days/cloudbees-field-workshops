@@ -1,3 +1,5 @@
+# <img src="images/Rollout.svg" alt="CloudBees Rollout Logo" width="40" align="top"> CloudBees Rollout Workshop Setup
+
 ## CloudBees Rollout Set-Up
 1. Navigate to the CloudBees Rollout [sign-up](https://app.rollout.io/signup).
 2. Fill out the form, agree to the Terms of Service, and click Sign Up.
