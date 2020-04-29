@@ -1,4 +1,6 @@
-## Adding a Sidebar to the Microblog
+# <img src="images/Rollout-blue.svg" alt="CloudBees Rollout Logo" width="40" align="top"> Gating Code with a CloudBees Feature Flag
+
+### Adding a Sidebar to the Microblog
 1. In Github, navigate to the root directory of the microblog-frontend repository.
 2. Click `Branch: initRollout`
 3. Type `newSidebar` then click "Create branch: newSidebar from initRollout" to finish creating a new branch.
