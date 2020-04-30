@@ -30,10 +30,10 @@ class: compact
 
 # Core Workshop Setup Review
 
-While your Team Master is restarting, let's explore the results of the **`workshop-setup`** Pipeline:
+While your Team Master is restarting, let's explore the results of the **`core-workshop-setup`** Pipeline:
 
 .no-bullet[
-* In the GitHub Organization that you created for this workshop you will notice that you now have 5 repositories. The following repositories were [forked](https://guides.github.com/activities/forking/) from the [CloudBees Days GitHub Organization](https://github.com/cloudbees-days) by the `workshop-setup` job you just ran on your Team Master:
+* In the GitHub Organization that you created for this workshop you will notice that you now have 5 repositories. The following repositories were [forked](https://guides.github.com/activities/forking/) from the [CloudBees Days GitHub Organization](https://github.com/cloudbees-days) by the `core-workshop-setup` job you just ran on your Team Master:
    1. **core-config-bundle** - this repository provides a base CasC configuration for everyones' Team Master.
    2. **pipeline-library** - a Jenkins Pipeline Shared Library that will be used by the Jenkins Pipelines you create during this workshop.
    3. **pipeline-template-catalog** - a set of templated Pipelines that you will use to create Jenkins Pipeline jobs for this workshop.
@@ -43,4 +43,4 @@ While your Team Master is restarting, let's explore the results of the **`worksh
 ]
 
 ???
-The `workshop-setup` job also created three GitHub pull requests to streamline the labs where they are used.
+The `core-workshop-setup` job also created three GitHub pull requests to streamline the labs where they are used.
