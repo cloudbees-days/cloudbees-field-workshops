@@ -47,7 +47,7 @@ Feel free to use an existing GitHub.com account, otherwise create one:
     
 ## Run the Core Workshop Setup Pipeline
 You should see the following Blue Ocean **Pipelines** screen with a Pipeline named **core-workshop-setup** for your Team:
-<p><img src="images/setup-success.png" width=600/>
+<p><img src="images/setup-success.png" width=800/>
 
 1. Click on the `core-workshop-setup` Pipeline job.
 2. On the next screen, click on the **Run** button in the middle of the screen. <p><img src="images/workshop-setup-run.png" width=600/>
