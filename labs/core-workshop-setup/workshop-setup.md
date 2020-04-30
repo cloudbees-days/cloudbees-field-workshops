@@ -46,10 +46,10 @@ Feel free to use an existing GitHub.com account, otherwise create one:
 >NOTE: Even though you have to provide an email for billing, you will NOT be charged anything as long as you choose the free option.
     
 ## Run Workshop Setup Pipeline
-You should see the following Blue Ocean **Pipelines** screen with one Pipeline named **workshop-setup** for your Team:
+You should see the following Blue Ocean **Pipelines** screen with one Pipeline named **core-workshop-setup** for your Team:
 <p><img src="images/setup-success.png" width=600/>
 
-1. Click on the `workshop-setup` Pipeline job.
+1. Click on the `core-workshop-setup` Pipeline job.
 2. On the next screen, click on the **Run** button in the middle of the screen. <p><img src="images/workshop-setup-run.png" width=600/>
 3. Fill in the required parameters: <p><img src="images/workshop-setup-input-form.png" width=400/>
    1. ***githubPat*** - the GitHub Personal Access Token you created above.
