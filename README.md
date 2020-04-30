@@ -43,7 +43,7 @@ https://cloudbees-days.github.io/core-rollout-flow-workshop/rollout/
  * [Lab 3 - Control the Value of a Feature Flag](labs/rolloutExperiment/rolloutExperiment.md)
  * [Lab 4 - User Targeting](labs/rolloutTargeting/rolloutTargeting.md)
  * Lab 5 - Analytics and A/B testing
- * [Lab 6 - Feature Flag GitOps](labs/rollout-casc/rollout-casc.md)
+ * [Lab 6 - Rollout Configuration as Code](labs/rollout-cac/rollout-cac.md)
 
 
 

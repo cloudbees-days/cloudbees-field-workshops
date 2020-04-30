@@ -1,4 +1,5 @@
-## Feature Flags and GitOps
+# <img src="images/Rollout-blue.svg" alt="CloudBees Rollout Logo" width="40" align="top"> CloudBees Rollout - Feature Flags and GitOps
+
 ### Connecting to GitHub Cloud
 1. Create an empty repository in your GitHub organization
 2. Connect the Rollout app into the Github repository

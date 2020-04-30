@@ -22,3 +22,12 @@ layout: true
 ---
 name: agenda
 # Agenda
+
+1. Rollout Workshop Setup
+2. Adding a Sidebar to the Microblog
+3. Control the Value of a Feature Flag
+4. User Targeting
+5. Analytics and A/B testing
+6. Rollout Configuration as Code
+
+---
