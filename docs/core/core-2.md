@@ -40,7 +40,7 @@ name: enable-casc
 
 # Enabling CasC for a Core Managed/Team Master
 
-* The `workshop-setup` job that you ran in the *Core Workshop Setup* lab updated your forked copy of the `jenkins.yaml` file with your GitHub information and then copied the Core configuration bundle YAML files from your forked **core-config-bundle** repository to a sub-directory with the same name as your Team Master inside a special directory - the `jcasc-bundles-store` directory - in the Jenkins home of the Core Operations Center from which you created your Team Master. 
+* The `core-workshop-setup` job that you ran in the *Core Workshop Setup* lab updated your forked copy of the `jenkins.yaml` file with your GitHub information and then copied the Core configuration bundle YAML files from your forked **core-config-bundle** repository to a sub-directory with the same name as your Team Master inside a special directory - the `jcasc-bundles-store` directory - in the Jenkins home of the Core Operations Center from which you created your Team Master. 
 * Your Team Master was then *re-provisioned* in order for the Core configuration bundle to take effect.
 * When the Core Operations Center is provisioning a Team Master it will check to see if there is a matching configuration for the name of the Team Master being provisioned and copy a Core configuration bundle link YAML file to `/var/casc-bundle/bundle-link.yaml` on your Team Master and set the value of the `core.casc.config.bundle` system property to match that file path.
 * Your Team Master will then use that protected link to download the Core configuration bundle to your Team Master. The `jenkins.yaml` file will be downloaded from the OC to `/var/jenkins_home/core-casc-bundle/jenkins.yaml` and the `casc.jenkins.config` system property will be set to that file path.
@@ -80,7 +80,7 @@ Core CasC was used to create two user specific Jenkins credentials for use in th
 * [JCasC Secrets](https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/features/secrets.adoc) for credentials can be managed in a few different ways:
   1. As properties files in the Jenkins Master file system. For secrets that you want to share across Team Masters you can mount the same [Kubernetes Secret](https://kubernetes.io/docs/concepts/configuration/secret/) to every Master.
   2. As Jenkins encrypted values using the Jenkins-internal secret key allowing the encrypted strings to be used directly in the  `jenkins.yaml` configuration as we are doing in this workshop. The Jenkins-internal secret key used for encryption is unique to a Jenkins instance and means that the credentials are not portable between Masters.
-* The `workshop-setup` job used your Team Master Jenkins instance to encrypt your GitHub Personal Access Token that you provided and then updated your copy of the `jenkins.yaml` file with the encrypted value. This is perfectly secure as it can only be decrypted by your Team Master. 
+* The `core-workshop-setup` job used your Team Master Jenkins instance to encrypt your GitHub Personal Access Token that you provided and then updated your copy of the `jenkins.yaml` file with the encrypted value. This is perfectly secure as it can only be decrypted by your Team Master. 
 ]
 
 ---
