@@ -4,7 +4,7 @@
 ## CloudBees Core Workshop Set-up
 In this lab you will setup a work environment for the CloudBees Core labs.  Ask the instructor for the URL of the server you will be using for the Core Workshop.
 
-Today's URL for the CloudBees Core Workshop environment is https://workshop.cb-sa.io/cjoc/
+Today's URL for the CloudBees Core Workshop environment will be provided by your instructor. If you haven't already signed up for an account then follow [these instructions](../workshop-setup/workshop-setup.md) and then come back to the *Core Workshop Set-up*.
 
 ### Login to CloudBees Core
 
@@ -25,6 +25,7 @@ Today's URL for the CloudBees Core Workshop environment is https://workshop.cb-s
 
 ## Create a GitHub.com Account
 
+Feel free to use an existing GitHub.com account, otherwise create one:
 1. Visit https://github.com/join and fill in the required fields to create a user account.
 2. Select "Unlimited public repositories for free" when choosing your plan.
 3. Verify your email account to ensure you account is activated.  An activated account will be **required** for the rest of this workshop.

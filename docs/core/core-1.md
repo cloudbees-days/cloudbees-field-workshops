@@ -20,8 +20,7 @@ Setup for this workshop will include:
 name: core-setup-lab
 # Lab - Core Workshop Setup
 
-* Today's URL for the CloudBees Core Workshop cluster is:
-  * https://workshop.cb-sa.io/cjoc/
+* Today's URL for the CloudBees Core Workshop cluster will be provided by your instructor.
 * The *Core Workshop Setup* lab instructions are available at: 
   * [https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/workshop-setup/workshop-setup.md](https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/workshop-setup/workshop-setup.md)
 
