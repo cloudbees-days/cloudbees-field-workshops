@@ -4,8 +4,6 @@ background-image: linear-gradient(135deg,#279be0,#036eb4)
 count: false
 
 # Rollout Configuration as Code
-.one-third-up[![:scale 10%](../img/Rollout-white.svg)]
-
 
 ---
 name: rollout-cac
