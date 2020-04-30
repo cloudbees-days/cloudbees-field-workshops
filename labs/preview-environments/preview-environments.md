@@ -2,4 +2,4 @@
 
 Coming soon...
 
-That completes this lab and the Core workshop, please return to the [main page](../../README.md#workshop-labs) for other workshops and labs.
+You may proceed to the next lab: [*Hibernating Masters*](../hibernating-masters/hibernating-masters.md) or choose another lab on the [main page](../../README.md#workshop-labs).
