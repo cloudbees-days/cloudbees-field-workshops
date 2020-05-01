@@ -20,3 +20,5 @@
 5. In Rollout, notice that your default.sidebar experiment default value is updated for the Development environment.
 6. In Github, merge `Development` and `Master` branches.
 7. In Rollout, note the change to the Production environment.
+
+Please return to the [main page](../../README.md#workshop-labs) for other workshops and labs.
