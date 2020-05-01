@@ -47,9 +47,3 @@ Rox.setup("<ROLLOUT_ENV_KEY>");
 
 Otherwise, you may proceed to the next lab: [**Gating a Component with a CloudBees Feature Flag**](../rolloutFeature/rolloutFeature.md) or choose another lab on the [main page](../../README.md#workshop-labs).
 
-**NOTES FOR TEAM**
-
-Need to trigger pipeline/preview to run the application and successful install.
-Should this be on master to trigger pipeline and preview?
-
-9. Configuration Fetch Handler
