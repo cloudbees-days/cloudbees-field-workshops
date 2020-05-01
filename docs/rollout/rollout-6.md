@@ -28,10 +28,9 @@ Smooth promotion of changes from test to production
 
 ---
 name: rollout-cac-architecture
-# Config as Code Architecture Overview
-
 class: middle, center
 
+# Config as Code Architecture Overview
 ![:scale 75%](img/rollout_cac_arch.jpg)
 
 ---
