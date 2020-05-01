@@ -34,9 +34,9 @@ In this lab you will create a new Multibranch Pipeline job from the **VueJS** te
 9. The logs show us that a test in `tests/unit/Posts.spec.js` failed - a typo where the word **function** was mis-typed as **funcion**. <p><img src="images/pr-failed-test-log.png" width=800/>
 10. In GitHub, navigate back to the **Add marker file** pull request for your forked **microblog-frontend** repository, click on the **Files changed** tab and then click on the context menu for the `tests/unit/Posts.spec.js` file and select . <p><img src="images/pr-file-context-edit.png" width=800/>
 11. In the GitHub editor for the `tests/unit/Posts.spec.js` file fix the typo changing **funcion** to **function**, and then click the **Commit changes** button to commit the changes to the **marker-file** branch of your forked **microblog-frontend** repository. <p><img src="images/pr-edit-fix-typo.png" width=800/>
-12. Finally, on the pull request page for your **Add marker file** pull request click on the **Conversation** tab and scroll down to the pull request checks. After the **PR-1** pipeline job completes you will see that all the checks are now successful. DO NOT MERGE THE PULL REQUEST. <p><img src="images/pr-checks-success.png" width=800/>
+12. Finally, on the pull request page for your **Add marker file** pull request click on the **Conversation** tab and scroll down to the pull request checks. After the **PR-1** pipeline job completes you will see that all the checks are now successful, scroll to the bottom and click the green **Merge pull request** button and then the **Confirm merge** button to merge the pull request to your **master** branch.<p><img src="images/pr-checks-success.png" width=800/>
 
 
-For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/core/#27).
+**For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/core/#27).**
 
 Otherwise, you may proceed to the next lab: [*CloudBees Pipeline Policies*](../pipeline-policies/pipeline-policies.md) or choose another lab on the [main page](../../README.md#workshop-labs).
