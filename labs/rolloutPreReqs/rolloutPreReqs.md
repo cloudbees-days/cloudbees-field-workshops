@@ -13,6 +13,21 @@ Feel free to use an existing GitHub.com account, otherwise create one:
 2. Select "Unlimited public repositories for free" when choosing your plan.
 3. Verify your email account to ensure you account is activated.  An activated account will be **required** for the rest of this workshop.
 
+## Create a GitHub Personal Access Token
+
+1. Click on [this link to automatically select the required **Personal access token settings**](https://github.com/settings/tokens/new?scopes=repo,read:user,user:email,admin:repo_hook,admin:org_hook)
+2. Click on **Generate Token**
+3. As the success message says: **Make sure to copy your new personal access token now. You won’t be able to see it again!**  
+
+## Create a GitHub Organization
+
+1. On GitHub navigate to **Organizations**: https://github.com/settings/organizations (after logging in) 
+2. Click on **New Organization** <p><img src="images/setup-github-new-org.png" width=550/>
+3. Fill in the **Organization Name**, **Billing Email**, and click on **Create Organization**<p><img src="images/setup-create-org.png" width=550/>
+4. On the **Invite organization members** - just click the **Continue** button. On the next page, **Enter Organization Details**, either click **Submit** button or **skip this step** to finish creating the GitHub Organization.
+
+>NOTE: Even though you have to provide an email for billing, you will NOT be charged anything as long as you choose the free option.
+
 ### Login to CloudBees Core
 
 1. Goto to the Workshop URL provided by the instructor.
@@ -29,21 +44,6 @@ Feel free to use an existing GitHub.com account, otherwise create one:
 7. **Select team master creation recipe** - click on the drop-down to see the options, but just stick with the **Basic** recipe.
 8. Finally, click the **Create team** button. <p><img src="images/setup-create-team.png" width=450/>
 9. While your Core Team Master is being created (**it takes anywhere from 2-3 minutes to provision your Team Master**), move onto the next section.
-
-## Create a GitHub Personal Access Token
-
-1. Click on [this link to automatically select the required **Personal access token settings**](https://github.com/settings/tokens/new?scopes=repo,read:user,user:email,admin:repo_hook,admin:org_hook)
-2. Click on **Generate Token**
-3. As the success message says: **Make sure to copy your new personal access token now. You won’t be able to see it again!**  
-
-## Create a GitHub Organization
-
-1. On GitHub navigate to **Organizations**: https://github.com/settings/organizations (after logging in) 
-2. Click on **New Organization** <p><img src="images/setup-github-new-org.png" width=550/>
-3. Fill in the **Organization Name**, **Billing Email**, and click on **Create Organization**<p><img src="images/setup-create-org.png" width=550/>
-4. On the **Invite organization members** - just click the **Continue** button. On the next page, **Enter Organization Details**, either click **Submit** button or **skip this step** to finish creating the GitHub Organization.
-
->NOTE: Even though you have to provide an email for billing, you will NOT be charged anything as long as you choose the free option.
     
 ## Run the Rollout Workshop Setup Pipeline
 You should see the following Blue Ocean **Pipelines** screen with a Pipeline named **rollout-workshop-setup** for your Team:
