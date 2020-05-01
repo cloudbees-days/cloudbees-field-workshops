@@ -55,7 +55,7 @@ You should see the following Blue Ocean **Pipelines** screen with a Pipeline nam
    1. ***githubPat*** - the GitHub Personal Access Token you created above.
    2. The GitHub username/account id you used to create the above GitHub Personal Access Token.
    3. The name of the GitHub Organization you created above specifically for this workshop
-   4. The Kubernetes Namespace where your Team Master has been deployed - only change the default value if you are instructed to do so.
+   4. The Kubernetes Namespace where your Team Master has been deployed - **only change the default value if you are instructed to do so.**
 4. Once you have provided the above required input parameters click the **Run** button at the bottom of the parameters input form.
 5. Blue Ocean will automatically switch to the Pipeline **Activity** screen, click anywhere on the Pipeline run row to see the Pipeline run and view the logs. But make sure you don't click on the **Stop** button to the right of the red box in the screenshot below.<p><img src="images/workshop-setup-activity.png" width=600/>
 6. Once the **core-workshop-setup** Pipeline job completes successfully your Team Master will be restarted so you should see a **Connect lost: waiting** alert in the bottom right of your Blue Ocean screen. <p><img src="images/workshop-setup-connection-lost.png" width=600/> <p>You may also experience a **503 Service Temporarily Unavailable** screen - that is because the actual Kubernetes Pod that your Team Master is running in is being re-created. Your Team Master will return in a few minutes.

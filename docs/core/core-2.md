@@ -119,7 +119,7 @@ name: core-casc-lab-review
 # CloudBees Core - Configuration as Code Lab Review
 
 * You created a Pipeline job, via a GitHub Organization Folder project, that will update your Team Master configuration bundle whenever you commit any changes to the **`master`** branch of your fork of the **`core-config-bundle`** repository. This is GitOps for Jenkins configuration.
-* Then, via the GitHub Pull Request you merged, the Core CasC bundle for you Team Master was updated, and finally you applied that update that included several new plugins and configuration for some of those plugins.
+* Then, via the GitHub Pull Request, you merged the Core CasC bundle for you Team Master was updated, and finally you applied that update that included several new plugins and configuration for some of those plugins.
 * In the next sections and labs we will be exploring the functionality of those plugins and other features - to include:
   * Master specific Pod Templates for Kubernetes based agents
   * Pipeline Template Catalogs
