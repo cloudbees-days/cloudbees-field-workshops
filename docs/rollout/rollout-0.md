@@ -94,4 +94,6 @@ Customization
 name: rollout-overview-architecture
 # CloudBees Rollout on AWS
 
-*super dope architecture diagram*
+class: middle, center
+
+![:scale 75%](img/rollout_saas_arch.jpg)

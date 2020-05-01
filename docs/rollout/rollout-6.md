@@ -30,7 +30,9 @@ Smooth promotion of changes from test to production
 name: rollout-cac-architecture
 # Config as Code Architecture Overview
 
-*super dope architecture diagram*
+class: middle, center
+
+![:scale 75%](img/rollout_cac_arch.jpg)
 
 ---
 name: rollout-cac-lab
