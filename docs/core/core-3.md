@@ -45,7 +45,7 @@ name: pipeline-template-catalog-overview
 ### CloudBees GitHub Reporting .badge-red[PRE-RELEASE]
 
 * Whereas OSS github-branch-source plugin displays only build-level statuses, the CloudBees GitHub Reporting plugin provides more detailed Jenkins Pipeline events as corresponding GitHub statuses.
-* As the build runs, GitHub will surface status information about the build directly in GitHub, in real-time, alleviating the need to switch over to Jenkins to get an overview.
+* As the build runs, Core will surface status information about the build directly in GitHub, in real-time, alleviating the need to switch over to Jenkins to get an overview.
 
 ---
 name: pipeline-template-catalog-slack
@@ -59,4 +59,5 @@ name: pipeline-template-catalog-slack
 
 .img-right[
 * Similar to the CloudBees GitHub Reporting plugin, the CloudBees Slack plugin provides actionable build information inside of the tools you prefer to use
+* After a build runs, the Core Slack plugin will surface results about the build directly in Slack, alleviating the need to switch over to Jenkins to get an overview.
 ]
