@@ -3,7 +3,7 @@
 ## CloudBees Rollout Set-Up
 In this lab, you will set up a CloudBees Rollout account and use it to manage feature flags through remote configurations created in the dashboard.
 
-### Create a CloudBees Rollout Account 
+### Create a CloudBees Rollout Account
 
 1. In a new tab, navigate to the CloudBees Rollout [sign-up URL](https://app.rollout.io/signup).
 2. Fill out the form with your name, email, and created password. After confirming your password,  check the box agreeing to Rollout's Terms of Service (which can be viewed [here](https://docs.cloudbees.com/docs/cloudbees-common/latest/subscription-agreement/)).
@@ -47,9 +47,3 @@ Rox.setup("<ROLLOUT_ENV_KEY>");
 
 Otherwise, you may proceed to the next lab: [**Gating a Component with a CloudBees Feature Flag**](../rolloutFeature/rolloutFeature.md) or choose another lab on the [main page](../../README.md#workshop-labs).
 
-**NOTES FOR TEAM**
-
-Need to trigger pipeline/preview to run the application and successful install.
-Should this be on master to trigger pipeline and preview?
-
-9. Configuration Fetch Handler
