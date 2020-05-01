@@ -53,11 +53,11 @@ name: pipeline-template-catalog-slack
 # CloudBees Slack Plugin .badge-red[PRE-RELEASE]
 
 .img-left[
-  .center[Team Masters]
-![Team Masters](img/cloudbees-slack-post.png)
+![CloudBees Slack Message](img/cloudbees-slack-post.png)
 ]
 
 .img-right[
-* Similar to the CloudBees GitHub Reporting plugin, the CloudBees Slack plugin provides actionable build information inside of the tools you prefer to use
+* Similar to the CloudBees GitHub Reporting plugin, the CloudBees Slack plugin provides actionable build information inside of Slack.
 * After a build runs, the Core Slack plugin will surface results about the build directly in Slack, alleviating the need to switch over to Jenkins to get an overview.
+* The Slack messages are sent directly to individual users based on who committed the code that triggered the Core job.
 ]
