@@ -37,6 +37,8 @@ https://cloudbees-days.github.io/core-rollout-flow-workshop/core/
 ### Slides
 https://cloudbees-days.github.io/core-rollout-flow-workshop/rollout/
 
+If you did not attend the Core Workshop or go through the above labs, please follow [these instructions](labs/rolloutPreReqs/rolloutPreReqs.md) before proceeding to Lab 1 below.
+
 ### Labs
  * [Lab 1 - Rollout Workshop Setup](labs/rolloutSetup/rolloutSetup.md)
  * [Lab 2 - Adding a Sidebar to the Microblog](labs/rolloutFeature/rolloutFeature.md)

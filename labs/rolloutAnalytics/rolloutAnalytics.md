@@ -1,4 +1,4 @@
-# <img src="images/Rollout-blue.svg" alt="CloudBees Rollout Logo" width="40" align="top"> User Targeting in CloudBees Rollout
+# <img src="images/Rollout-blue.svg" alt="CloudBees Rollout Logo" width="40" align="top"> CloudBees Rollout and Analytics
 
 1. `public/index.html`
 
