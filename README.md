@@ -40,10 +40,10 @@ https://cloudbees-days.github.io/core-rollout-flow-workshop/rollout/
 ### Labs
  * [Lab 1 - Rollout Workshop Setup](labs/rolloutSetup/rolloutSetup.md)
  * [Lab 2 - Adding a Sidebar to the Microblog](labs/rolloutFeature/rolloutFeature.md)
- * [Lab 3 - Control the Value of a Feature Flag](labs/rolloutExperiment/rolloutExperiment.md)
+ * [Lab 3 - Controlling the Value of a Feature Flag](labs/rolloutExperiment/rolloutExperiment.md)
  * [Lab 4 - User Targeting](labs/rolloutTargeting/rolloutTargeting.md)
  * Lab 5 - Analytics and A/B testing
- * [Lab 6 - Feature Flag GitOps](labs/rollout-casc/rollout-casc.md)
+ * [Lab 6 - Rollout Configuration as Code](labs/rollout-cac/rollout-cac.md)
 
 
 
