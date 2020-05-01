@@ -2,6 +2,7 @@
 
 
 ### Adding the Configuration Fetched Handler
+
 The Configuration Fetched Handler allows us to control what happens whenever when a new configuration is fetched. In order for changes to be applied, an action has to take place, like a page refresh.
 1. In Github, navigate to the root directory of the microblog-frontend repository.
 2. Click `Branch: newSidebar`
@@ -49,8 +50,11 @@ Rox.setup("<ROLLOUT_ENV_KEY>", options);
 </details>
 8. Create a commit message and select **Commit directly to the `experiment` branch** radio button.
 9. Click **Commit new file**
+10. **Need to edit** Create a pull request from experiment to `Development` branch. Merge.
+11. **Need to edit** Open the URL produced from the Core Development branch job.
 
 ### Control the Value of a Feature Flag
+
 1. Navigate to the Rollout Dashboard.
 2. On the left-hand side of the screen, click Production, and then Experiments from the expanded list. Then, click "Create a New Experiment" button.
 <p><img src="images/ProdCreateNewExp.png" />
