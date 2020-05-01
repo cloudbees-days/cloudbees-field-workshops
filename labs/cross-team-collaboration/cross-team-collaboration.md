@@ -44,6 +44,6 @@ pipeline {
 6. Once the **publish-event** Pipeline job completes successfully you will see your jobs job for the **microblog-frontend** Mutlibranch project triggered.
 7. Once the **master** branch job completes successfully you can see in the logs that the `FROM` image for the `build-stage` is `node:14.0.0-alpine3.11` as specified by the event you published above. <p><img src="images/collab-trigger-success-logs.png" width=800/>
 
-For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/core/#37).
+**For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/core/#37).**
 
 You may proceed to the next lab: [*Preview Environments with Core*](../core-preview-environment/catalog-templates.md) or choose another lab on the [main page](../../README.md#workshop-labs).
