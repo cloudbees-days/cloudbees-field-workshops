@@ -1,7 +1,8 @@
-## User Targeting in CloudBees Rollout
+# <img src="images/Rollout-blue.svg" alt="CloudBees Rollout Logo" width="40" align="top"> User Targeting in CloudBees Rollout
 
 The goal of this lab is to use a property from our code, and allow users in the Rollout dashboard to create a ruleset such that the `sidebar` element is only visible to users that have successfully logged in.
 
+### Using `setCustomProperty`
 1. First we need to make sure the `isLoggedIn` function is available to the `flag.js` file. Navigate to the microblog-frontend repository in Github. In the `src\utils\flags.js` file, add the following import line:
 ```javascript
 import { store } from '../store'
@@ -61,8 +62,6 @@ Rox.setup("<ROLLOUT_ENV_KEY>", options);
 10. Click Add New Condition. This should create a new condition next to the `if` statement. In the drop down menu (currently displaying All Users), select `Target Group`, then `matches any of`, and finally `LoggedInUsers`. Since we want the `sidebar` to show for this target group, select `true` for the condition after the `then` statement.
 
 11. Ensure the `else` statement is set to `false` and the finished experiment configuration should be the same as the below iamge:
-
-** Insert image
 
 12. Click Update Audience
 
