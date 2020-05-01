@@ -63,8 +63,6 @@ name: rollout-overview-content
 ---
 name: rollout-overview-value
 # CloudBees Feature Management Solution
-
-
 .italic[
   *Rollout is a multi-platform, Infrastructure as Code,
 SaaS feature management and remote configuration solution.*
