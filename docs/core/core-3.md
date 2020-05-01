@@ -53,7 +53,6 @@ name: pipeline-template-catalog-slack
 # CloudBees Slack Plugin .badge-red[PRE-RELEASE]
 
 .img-left[
-![CloudBees Slack Plugin](img/cloudbees-slack-plugin.png)
 ![CloudBees Slack Message](img/cloudbees-slack-post.png)
 ]
 
