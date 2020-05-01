@@ -27,6 +27,12 @@ Smooth promotion of changes from test to production
 * CloudBees Rollout uses a git branch for each environment e.g. production, staging, development. Promoting changes from these environments using git native merging or GitHub pull request is simpler than clicking through many UI pages, testing that everything works and next tediously repeating the same steps on the production instance. With configuration as code you can simply deploy plans to a test instance, verify changes and then deploy to the production instance just by merging the code back to the `master` branch.
 
 ---
+name: rollout-cac-architecture
+# Config as Code Architecture Overview
+
+*super dope architecture diagram*
+
+---
 name: rollout-cac-lab
 # Lab - Configuration as Code
 
