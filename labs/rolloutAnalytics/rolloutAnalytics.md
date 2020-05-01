@@ -1,6 +1,8 @@
 # <img src="images/Rollout-blue.svg" alt="CloudBees Rollout Logo" width="40" align="top"> CloudBees Rollout and Analytics
 
-1. `public/index.html`
+1. Set up 50% split for sidebar test
+
+2. `public/index.html`
 
 ```html
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -14,7 +16,7 @@
 </script>
 ```
 
-2. `src/utils/flag.js` impressionHandler
+3. `src/utils/flag.js` impressionHandler
 ```javascript
 export const impressionHandler = (reporting, experiment) => {
   if (experiment) {
@@ -29,7 +31,7 @@ export const impressionHandler = (reporting, experiment) => {
   }
 };
 ```
-3. Add to options
+4. Add to options
 ```javascript
 const options = {
   configurationFetchedHandler: configurationFetchedHandler,

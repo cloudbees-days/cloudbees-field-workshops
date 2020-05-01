@@ -7,15 +7,17 @@ In this lab, you will set up a CloudBees Rollout account and use it to manage fe
 
 1. In a new tab, navigate to the CloudBees Rollout [sign-up URL](https://app.rollout.io/signup).
 2. Fill out the form with your name, email, and created password. After confirming your password,  check the box agreeing to Rollout's Terms of Service (which can be viewed [here](https://docs.cloudbees.com/docs/cloudbees-common/latest/subscription-agreement/)).
-3. In order to control feature flags from the Rollout dashboard, we have to add the `<ROLLOUT_ENV_KEY>` to our microblog code. On the far left side of the dashboard, click the **App Settings** panel. From the resulting page, select the **Environments** tab. Click to copy your unique `<ROLLOUT_ENV_KEY>` associated with the Production environment and paste it in a notepad for future reference.
+3. In order to control feature flags from the Rollout dashboard, we have to add the `<ROLLOUT_ENV_KEY>` to our microblog code. On the far left side of the dashboard, click the **App Settings** panel. From the resulting page, select the **Environments** tab.
+4. Click **Add New Environment** and name it Development.
+5. Click to copy your unique `<ROLLOUT_ENV_KEY>` associated with the Development environment and paste it in a notepad for future reference.
 
 <p><img src="images/RolloutEnvKey.png" />
 
 ### Create Rollout Feature Flags
 
 1. In Github, navigate to the microblog-frontend repository previously forked to the organization.
-2. Click `Branch: master`
-3. Type `initRollout` then click **"Create branch: initRollout from master"** to finish creating a new branch.
+2. Click `Branch: development`
+3. Type `initRollout` then click **"Create branch: initRollout from development"** to finish creating a new branch.
 
 <p><img src="images/initRolloutBranch.gif" />
 
@@ -43,7 +45,15 @@ Rox.setup("<ROLLOUT_ENV_KEY>");
 
 <p><img src="images/flagJSCommit.png" />
 
-8. **For instructor led workshops please return to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/rollout/#1).**
+8. **Need to edit** Create a pull request from initSidebar to `Development` branch. Merge.
+
+9. **Need to edit** Open the URL produced from the Core Development branch job.
+
+10. Navigate to the Rollout Dashboard, and click **Install Instructions** panel on the left. A succesful connection message should be displayed like the one below.
+
+<p><img src="images/SuccessfullyRunCode.png" />
+
+11. **For instructor led workshops please return to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/rollout/#1).**
 
 Otherwise, you may proceed to the next lab: [**Gating a Component with a CloudBees Feature Flag**](../rolloutFeature/rolloutFeature.md) or choose another lab on the [main page](../../README.md#workshop-labs).
 

@@ -3,6 +3,8 @@
 The goal of this lab is to use a property from our code, and allow users in the Rollout dashboard to create a ruleset such that the `sidebar` element is only visible to users that have successfully logged in.
 
 ### Using `setCustomProperty`
+
+**NEED TO EDIT**0. New branch.
 1. First we need to make sure the `isLoggedIn` function is available to the `flag.js` file. Navigate to the microblog-frontend repository in Github. In the `src\utils\flags.js` file, add the following import line:
 ```javascript
 import { store } from '../store'
@@ -39,10 +41,9 @@ Rox.setup("<ROLLOUT_ENV_KEY>", options);
 ```
 </details>
 
-4. Create a commit message (e.g. added setCustomBooleanProperty) and select "Commit directly to the `master` branch" radio button.
-
+4. Create a commit message (e.g. added setCustomBooleanProperty).
+**NEED TO EDIT** MERGE, open URL
 5. In the Rollout dashboard, click the Target Groups option from the navigation panel on the left.
-
 6. On the subsequent page, click Create New Target Group.
 
 7. Now that the property is made visible to the Rollout dashboard, we can use this to define a segmented user group. Fill the pop-up window with the appropriate information:
