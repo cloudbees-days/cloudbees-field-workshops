@@ -14,6 +14,7 @@
 4. Once you have reviewed the changes, click back on the **Conversation** tab and then click the green **Merge pull request** button and then the **Confirm merge** button.
 5. Next, to ensure that we are using the updated **VueJS** template, we will **re-import** the Pipeline Template Catalog you just updated. Navigate to the top-level of your Team Master and click on **Pipeline Template Catalogs** in the left menu and then click the **workshopCatalog** link. <p><img src="images/workshop-catalog-link.png" width=800/>
 6. Finally, in order to enable the trigger on your **microblog-frontend** Pipeline jobs you need to run the job once - so navigate to the **master** branch job for the **microblog-frontend** Mutlibranch project and click the **Build Now** link in the left menu.
+7. After the **VueJS** template is loaded the job configuration for your **master** branch job will be updated to reflect the addition of the event trigger. <p><img src="images/job-build-trigger.png" width=800/>
 
 ## Create a Pipeline to publish an event
 
