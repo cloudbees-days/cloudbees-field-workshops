@@ -469,6 +469,9 @@ ul, ol {
    max-width: 48%;
    padding-right: 1rem;
  }
+ .img-left img {
+   margin-top: 2rem;
+ }
 
  .img-right {
    float: right;
@@ -476,6 +479,9 @@ ul, ol {
    max-width: 48%;
    padding-left: 1rem;
  }
+ .img-right img {
+  margin-top: 2rem;
+}
 
  p {
    margin-block-start: 0;
