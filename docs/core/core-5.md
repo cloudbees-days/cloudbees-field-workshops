@@ -87,7 +87,7 @@ ARG NODE_IMAGE=node:lts-alpine
 ---
 name: collab-overview
 
-# Triggering Pipelines with Cross Team Collaboration Overview
+# Cross Team Collaboration Lab Overview
 
 * Enabled **Notifications** for CloudBees Cross Team Collaboration on your Team Master
 * Updated the **VueJS** template of your Pipeline Template Catalog with an event trigger
