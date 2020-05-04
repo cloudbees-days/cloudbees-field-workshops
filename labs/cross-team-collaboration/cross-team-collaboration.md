@@ -12,7 +12,8 @@
 2. To see the changes that will be made to your copy of the **VueJS** template, click on the **Files changed** tab and scroll down to see the differences. <p><img src="images/collab-pr-files-changed.png" width=800/>
 3. We are adding the `eventTrigger` using `jmespathQuery` and adding a new `stage` where we are using the `getImageBuildEventPayload` Pipeline Shared Library step to extract the event payload. 
 4. Once you have reviewed the changes, click back on the **Conversation** tab and then click the green **Merge pull request** button and then the **Confirm merge** button.
-5. Finally, in order to enable the trigger on your **microblog-frontend** Pipeline jobs you need to run the job once - so navigate to the **master** branch job for the **microblog-frontend** Mutlibranch project and click the **Build Now** link in the left menu.
+5. Next, to ensure that we are using the updated **VueJS** template, we will **re-import** the Pipeline Template Catalog you just updated. Navigate to the top-level of your Team Master and click on **Pipeline Template Catalogs** in the left menu and then click the **workshopCatalog** link. <p><img src="images/workshop-catalog-link.png" width=800/>
+6. Finally, in order to enable the trigger on your **microblog-frontend** Pipeline jobs you need to run the job once - so navigate to the **master** branch job for the **microblog-frontend** Mutlibranch project and click the **Build Now** link in the left menu.
 
 ## Create a Pipeline to publish an event
 
@@ -41,7 +42,7 @@ pipeline {
 <p><img src="images/collab-publish-event-copy-script.png" width=800/>
 
 5. Click the **Build Now** link in the left menu. <p><img src="images/collab-publish-event-build.png" width=800/>
-6. Once the **publish-event** Pipeline job completes successfully you will see your jobs job for the **microblog-frontend** Mutlibranch project triggered.
+6. Once the **publish-event** Pipeline job completes successfully you will see your job for the **microblog-frontend** Mutlibranch project triggered.
 7. Once the **master** branch job completes successfully you can see in the logs that the `FROM` image for the `build-stage` is `node:14.0.0-alpine3.11` as specified by the event you published above. <p><img src="images/collab-trigger-success-logs.png" width=800/>
 
 **For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/core/#38).**
