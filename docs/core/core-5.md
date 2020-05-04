@@ -12,7 +12,7 @@ class: compact, middle
 # Cross Team Collaboration
 
 .img-left[
-![Hibernating Masters Diagram](https://docs.cloudbees.com/docs/cloudbees-common/latest/_images/cross-team-collaboration-screenshots/cross-team-diagram.abf4b33.png)
+![Cross Team Collaboration Diagram](img/cross-team-diagram.png)
 ]
 
 .no-bullet.img-right[
