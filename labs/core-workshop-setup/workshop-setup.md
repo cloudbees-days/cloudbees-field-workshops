@@ -32,7 +32,7 @@ Feel free to use an existing GitHub.com account, otherwise create one:
 
 ## Create a GitHub Personal Access Token
 
-1. Click on [this link to automatically select the required **Personal access token settings**](https://github.com/settings/tokens/new?scopes=repo,read:user,user:email,admin:repo_hook,admin:org_hook)
+1. Click on [this link to automatically select the required **Personal access token settings**](https://github.com/settings/tokens/new?scopes=repo,read:user,user:email,admin:repo_hook,admin:org_hook,delete_repo)
 2. Enter a name for your **New personal access token** (PAT) and notice that all the necessary **scopes** have already been checked off for you by using the link from above. <p><img src="images/create-pat.png" width=600/>
 3. Click on **Generate Token** button at the bottom of the page.
 4. As the success message says: **Make sure to copy your new personal access token now. You won’t be able to see it again!**  
