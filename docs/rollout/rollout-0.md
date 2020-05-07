@@ -63,7 +63,9 @@ This technique offers many other benefits and will be discussed in greater detai
 ---
 name: rollout-overview-content
 
-(we need some stat on the rise of flagging or something)
+.italic[
+  *95% of respondent's organizations have implemented, begun implementing, or plan to implement feature flags in the future* - Atlassian / Rollout market research report 2018
+]
 
 # Feature Flag Management
 * Costly, Manual, Development Headaches
