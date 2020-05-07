@@ -6,6 +6,19 @@ count: false
 # Configuration as Code (CasC) for CloudBees Core
 
 ---
+name: agenda-setup
+# Agenda
+
+1. Workshop Tools Overview
+2. CloudBees Core Overview
+3. Setup for Labs
+4. .blue-bold[Configuration as Code (CasC) with CloudBees Core]
+5. Pipeline Manageability & Governance with Templates and Policies
+6. Cross Team Collaboration
+7. Hibernating Masters
+
+
+---
 name: core-casc-overview
 
 # CasC for Core Overview .badge-red[PREVIEW]

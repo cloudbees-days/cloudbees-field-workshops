@@ -6,6 +6,18 @@ count: false
 # CloudBees Cross Team Collaboration
 
 ---
+name: agenda-templates
+# Agenda
+
+1. Workshop Tools Overview
+2. CloudBees Core Overview
+3. Setup for Labs
+4. Configuration as Code (CasC) with CloudBees Core
+5. Pipeline Manageability & Governance with Templates and Policies
+6. .blue-bold[Cross Team Collaboration]
+7. Hibernating Masters
+
+---
 name: cross-team overview
 class: compact, middle
 

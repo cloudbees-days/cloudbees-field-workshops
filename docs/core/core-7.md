@@ -6,6 +6,18 @@ count: false
 # CloudBees Core Hibernating Masters
 
 ---
+name: agenda-templates
+# Agenda
+
+1. Workshop Tools Overview
+2. CloudBees Core Overview
+3. Setup for Labs
+4. Configuration as Code (CasC) with CloudBees Core
+5. Pipeline Manageability & Governance with Templates and Policies
+6. Cross Team Collaboration
+7. .blue-bold[Hibernating Masters]
+
+---
 name: hibernate-overview
 
 # CloudBees Core Hibernating Masters .badge-red[PREVIEW]
