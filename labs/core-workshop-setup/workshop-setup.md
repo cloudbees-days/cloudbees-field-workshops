@@ -61,6 +61,6 @@ You should see the following Blue Ocean **Pipelines** screen with a Pipeline nam
 5. Blue Ocean will automatically switch to the Pipeline **Activity** screen, click anywhere on the Pipeline run row to see the Pipeline run and view the logs. But make sure you don't click on the **Stop** button to the right of the red box in the screenshot below.<p><img src="images/workshop-setup-activity.png" width=600/>
 6. Once the **core-workshop-setup** Pipeline job completes successfully your Team Master will be restarted so you should see a **Connect lost: waiting** alert in the bottom right of your Blue Ocean screen. <p><img src="images/workshop-setup-connection-lost.png" width=600/> <p>You may also experience a **503 Service Temporarily Unavailable** screen - that is because the actual Kubernetes Pod that your Team Master is running in is being re-created. Your Team Master will return in a few minutes.
 
-**For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/core/#14).**
+**For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/core/#16).**
 
 Otherwise, you may proceed to the next lab: [*Configuration as Code (CasC) for CloudBees Core*](../core-casc/core-casc.md) where we will explore your individual fork of the **core-config-bundle** repository or choose another lab on the [main page](../../README.md#workshop-labs).
