@@ -46,6 +46,6 @@ pipeline {
 6. Once the **publish-event** Pipeline job completes successfully you will see your job for the **microblog-frontend** Mutlibranch project triggered.
 7. Once the **master** branch job completes successfully you can see in the logs: `Resolved base name $NODE_IMAGE to node:14.0.0-alpine3.11` as specified by the event you published above. <p><img src="images/collab-trigger-success-logs.png" width=800/>
 
-**For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/core/#38).**
+**For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/core/#44).**
 
 You may proceed to the next lab: [*Preview Environments with Core*](../core-preview-environment/preview-environment.md) or choose another lab on the [main page](../../README.md#workshop-labs).
