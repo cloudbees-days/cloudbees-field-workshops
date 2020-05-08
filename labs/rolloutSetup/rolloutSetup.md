@@ -54,7 +54,7 @@ const options = {
 };
 
 Rox.register('default', Flags);
-Rox.setup("<ROLLOUT_ENV_KEY>", options);
+Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
 	
 ```
 </details>
