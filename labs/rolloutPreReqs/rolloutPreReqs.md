@@ -15,7 +15,7 @@ Feel free to use an existing GitHub.com account, otherwise create one:
 
 ## Create a GitHub Personal Access Token
 
-1. Click on [this link to automatically select the required **Personal access token settings**](https://github.com/settings/tokens/new?scopes=repo,read:user,user:email,admin:repo_hook,admin:org_hook)
+1. Click on [this link to automatically select the required **Personal access token settings**](https://github.com/settings/tokens/new?scopes=repo,read:user,user:email,admin:repo_hook,admin:org_hook,delete_repo)
 2. Click on **Generate Token**
 3. As the success message says: **Make sure to copy your new personal access token now. You won’t be able to see it again!**  
 
