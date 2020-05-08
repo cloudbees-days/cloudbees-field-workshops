@@ -53,11 +53,11 @@ name: feature-flag-background
 # What is Feature Flagging?
 
 At its most simplistic, feature flagging is a practice of wrapping new functionality in conditional code blocks.
-
-
+<br/>
+<br/>
 Feature flags are used to hide, enable or disable features during runtime. With feature flags, a software feature can be tested even before it is completed and ready for release.  For example, during the development process, a developer can enable the feature for local testing and disable it for all other users. Feature flagging also provides an alternative to maintaining multiple feature branches in source code.
-
-
+<br/>
+<br/>
 This technique offers many other benefits and will be discussed in greater detail in this workshop.
 
 ---
@@ -83,7 +83,8 @@ name: rollout-overview-value
   *Rollout is a multi-platform, Infrastructure as Code,
 SaaS feature management and remote configuration solution.*
 ]
-
+<br/>
+<br/>
 Faster Delivery
 .no-bullet[
 * Don’t wait for a feature to trickle out across multiple servers in a highly scaled application; turn it on all at once when it’s ready, or selectively enable it for users.
