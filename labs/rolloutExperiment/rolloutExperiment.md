@@ -24,7 +24,7 @@ For local testing or development, we may need to specify values for each flags o
 1. In the Microblog header, click DEV. A pop-up window should appear in the lower right hand corner of the screen.
 2. Right now, both `title` and `sidebar` flags are set to true. Select a different value and refresh the page. 
 3. To simulate another tester on a different device, open the Microblog URL in a different internet browser. Again, click DEV in the header, and set the flags to different values, and refresh the page.
-4. Each user (represented by the microblog in separate browsers) can now set their own personal feature flag values for local testing or development.
+4. Each user (represented by the microblog in separate browsers) can now set their own personal feature flag values for local testing or development. Close this browser when finished. Back in origal browser, click **Reset All Overrides** from the FlagOverride menu, and refresh the page.
 5. Navigate to the Github repository, and ensure you are on the `development` branch.
 6. Navigate to `src/components/Nav.vue` by clicking the `src` folder, then `components` folder, and finally the `Nav.vue` file.
 * Note that on **Line 16**, we are including the rolloutOverride view made available when clicked on the DEV link.
