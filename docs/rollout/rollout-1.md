@@ -20,7 +20,3 @@ name: rollout-setup-lab
 
 * The *Rollout Workshop Setup* lab instructions are available at:
   * [https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/rolloutSetup/rolloutSetup.md](https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/rolloutSetup/rolloutSetup.md)
-
----
-name: rollout-setup-review
-# Probably no review necessary for setup? 

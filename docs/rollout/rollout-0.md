@@ -109,7 +109,7 @@ Customization
 name: rollout-overview-architecture
 class: middle, center
 
-# CloudBees Rollout on AWS
+# CloudBees Rollout Flag Update Process
 ![:scale 75%](img/rollout_saas_arch.jpg)
 
 ???
