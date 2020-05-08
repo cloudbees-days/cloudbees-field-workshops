@@ -169,7 +169,7 @@ The Configuration Fetched Handler allows us to control what happens whenever whe
 2. Ensure you are on the `development` branch. Then, open the `flags.js` file (`src/utils/flag.js`).
 3. Insert the `configurationFetchedHandler` constant **and** ensure it is called in `options` as seen in the `flag.js` file below:
 
-<details><summary>`flags.js`</summary>
+<details><summary><code>flags.js</code></summary>
 
 ```javascript
 import Rox from 'rox-browser'
@@ -190,7 +190,7 @@ const options = {
 };
 
 Rox.register('default', Flags);
-Rox.setup("<ROLLOUT_ENV_KEY>", options);
+Rox.setupRox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
   
 ```
 </details>
