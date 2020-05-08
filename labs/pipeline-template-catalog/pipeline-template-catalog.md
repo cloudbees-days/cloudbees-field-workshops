@@ -27,8 +27,8 @@ In this lab you will create a new Multibranch Pipeline job from the **VueJS** te
    2. **Repository**: The name of your forked repository, *microblog-frontend*
    3. **GitHub Credential ID**: select the *username/password* credential created for you by the **wokshop-setup** job and Core CasC - it will show up as - [GitHub username]/******
    4. Click the **Save** button<p><img src="images/template_parameters.png" width=800/>
-5. After the initial scan you will see one job for a GitHub pull request - **PR-1**. <p><img src="images/one_job.png" width=800/>
-6. In GitHub, navigate to the **Add marker file** pull request (#1) in your fork of the **microblog-frontend** repository. <p><img src="images/pr-navigate.png" width=800/>
+5. After the initial scan you will see one Jenkins Pipeline job funder the **Pull Requests** tab of the Pipeline Mulitbranch project that was just created for your fork of the **microblog-frontend** repository - **PR-1**. <p><img src="images/one_job.png" width=800/>
+6. Now, in **GitHub**, navigate to the **Add marker file** pull request (#1) in your fork of the **microblog-frontend** repository. <p><img src="images/pr-navigate.png" width=800/>
 7. Click on the pull request, scroll down to the pull request checks and you will see the stage level status of the Pipeline. Here you see that the **VueJS Tests** `stage` has started. <p><img src="images/pr-stage-status-pending.png" width=800/>
 8. Once the Pipeline finishes you will see that all the checks failed on the pull request in GitHub. Clicking on the **Details** link of the **ci/cloudbees/error** check will take you directly to the build logs with the error in your Team Master. <p><img src="images/pr-stage-status-failed.png" width=800/>
 9. The logs show us that a test in `tests/unit/Posts.spec.js` failed - a typo where the word **function** was mis-typed as **funcion**. <p><img src="images/pr-failed-test-log.png" width=800/>
@@ -37,6 +37,6 @@ In this lab you will create a new Multibranch Pipeline job from the **VueJS** te
 12. Finally, on the pull request page for your **Add marker file** pull request click on the **Conversation** tab and scroll down to the pull request checks. After the **PR-1** pipeline job completes you will see that all the checks are now successful, scroll to the bottom and click the green **Merge pull request** button and then the **Confirm merge** button to merge the pull request to your **master** branch.<p><img src="images/pr-checks-success.png" width=800/>
 
 
-**For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/core/#27).**
+**For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/core/#31).**
 
 Otherwise, you may proceed to the next lab: [*CloudBees Pipeline Policies*](../pipeline-policies/pipeline-policies.md) or choose another lab on the [main page](../../README.md#workshop-labs).

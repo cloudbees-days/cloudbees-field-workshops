@@ -67,6 +67,18 @@ count: false
 Notes
 
 ---
+name: agenda-overview
+# Agenda
+
+1. Workshop Tools Overview
+2. .blue-bold[CloudBees Core Overview]
+3. Setup for Labs
+4. Configuration as Code (CasC) with CloudBees Core
+5. Pipeline Manageability & Governance with Templates and Policies
+6. Cross Team Collaboration
+7. Hibernating Masters
+
+---
 name: core-overview-content
 
 # Rapidly, Repeatedly, and Reliably Deliver Software

@@ -1,38 +1,13 @@
-name: core-hibernate-title
+name: preview-title
 class: title, shelf, no-footer, fullbleed
 background-image: linear-gradient(135deg,#279be0,#036eb4)
 count: false
 
-# CloudBees Core Hibernating Masters
+# Preview Environments with CloudBees Core Cross Team Collaboration
 
 ---
-name: hibernate-overview
+name: external-webhooks
 
-# CloudBees Core Hibernating Masters .badge-red[PREVIEW]
+# Cross Team Collaboration External HTTP Endpoints
 
-* [CloudBees Core Managed Master hibernation](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-admin-guide/managing-masters#_hibernation_in_managed_masters) takes advantage of running Core on Kubernetes by automatically shutting down or hibernating Team/Managed Masters. This is done by scaling the Kubernetes StatefulSet down to zero replicas.
-* Hibernation was enabled for everyones' Team Master earlier in the workshop with a 
-
-???
-The workshop clusters will continue to be available for both Core and Rollout for the rest of the week of CB Connect. We need to make sure that all Core attendees are aware that their Team Master will most likely be hibernating when they come back to complete any labs and that they just need to click on it to ‘wake it up’ from the classic UI of OC.
-
----
-name: hibernating-masters-cost-saving
-
-# How Hibernating Masters Reduce Infrastructure Costs
-
-There are several ways that costs may be reduced with Managed Master hibernation:
-
-1. When using Kubernetes auto-scaling and a Managed Master is hibernated then the Kubernetes cluster has the potential to downscale by removing a node.
-2. When a Managed Master is hibernated you immediately gain additional CPU and memory on the node where your Team/Managed Master pod was running - this additional capacity is immediately available for Kubernetes based agents reducing the possibility of agents queueing and/or triggering an upscaling of your Kubernetes cluster. 
-
----
-
-# Lab - Configuring Webhooks for Hibernating Masters
-
-* The *Configuring Webhooks for Hibernating Masters* lab instructions are available at: 
-  * [https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/hibernating-masters/hibernating-masters.md](https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/hibernating-masters/hibernating-masters.md)
-
-???
-
-All presenters should familiarize themselves with the hibernation monitor design document: https://github.com/cloudbees/managed-master-hibernation-monitor/blob/master/design.md 
+External HTTP endpoints work with Cross Team Collaboration to enable external systems such as GitHub or Nexus to generate notification events for Pipelines for all the Masters connected to the CloudBees Core Operations Center.

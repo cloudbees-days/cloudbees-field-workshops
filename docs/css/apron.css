@@ -6,6 +6,11 @@ html {
   font-weight: 400;
 }
 
+.blue-bold {
+  font-weight: 700;
+  color: #036eb4;
+}
+
 body { font-family: 'Lato', sans-serif; }
 h1, h2, h3 {
   font-family: 'Lato', sans-serif;

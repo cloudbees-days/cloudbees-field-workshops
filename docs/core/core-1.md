@@ -6,6 +6,18 @@ count: false
 # Core Workshop Setup
 
 ---
+name: agenda-setup
+# Agenda
+
+1. Workshop Tools Overview
+2. CloudBees Core Overview
+3. .blue-bold[Setup for Labs]
+4. Configuration as Code (CasC) with CloudBees Core
+5. Pipeline Manageability & Governance with Templates and Policies
+6. Cross Team Collaboration
+7. Hibernating Masters
+
+---
 name: core-setup-overview
 # Core Workshop Setup
 
