@@ -11,6 +11,13 @@ In this lab, you will set up a CloudBees Rollout account and use it to manage fe
 4. Click **Add New Environment** and name it Development.
 5. Click to copy your unique `<ROLLOUT_ENV_KEY>` associated with the Development environment and paste it in a notepad for future reference.
 
+
+### Environment Vairable
+1. In Github, navigate to the microblog-frontend repository previously forked to the organization.
+2. Click `Branch: development`.
+3. At the root of the directory, click the `.env.development` file. Click the pencil icon to edit file.
+4.  
+
 <p><img src="images/RolloutEnvKey.png" />
 
 ### Create Rollout Feature Flags
@@ -21,11 +28,11 @@ In this lab, you will set up a CloudBees Rollout account and use it to manage fe
 
 <p><img src="images/initRolloutBranch.gif" />
 
-4. Ensure you are within the initRollout branch, then click the `src` folder. On the resulting page, click the **Create new file** button.
+4. Ensure you are within the `development` branch, then navigate to `src/utils/` directory by clicking `src` then `utils`.
 
 <p><img src="images/srcCreateNewFile.png" />
 
-5. In the textbox next to `microblog-frontend/src/`, type: `utils/flag.js` and press return (on the keyboard).
+5. The `flags.js` file defines the feature flags that our application will use and then registers those flags for remote configuration via a `setup` call to the dashboard.
 
 <p><img src="images/utilsFlagJS.gif" />
 
