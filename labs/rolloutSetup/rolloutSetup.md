@@ -28,15 +28,14 @@ In this lab, you will set up a CloudBees Rollout account and use it to manage fe
 ### Create Rollout Feature Flags
 
 * The `flags.js` file defines the feature flags that our application will use and then registers those flags for remote configuration via a `setup` call to the dashboard.
-*
 
 1. Ensure you are on the `development` branch at the root of the microblog-frontend repository.
 2. Navigate to `src\utils\flags.js` by clicking the `src` folder, followed by the `utils` folder, then the `flag.js` file.
-3. Click the pencil to edit the `flags.js` file. Define the `flagEnabled` toggle by adding the following within the `const Flag` section:
+3. Click the pencil to edit the `flags.js` file. Define the `title` toggle by adding the following within the `const Flag` section:
 ```javascript
 export const Flags = {
 	sidebar: new Rox.Flag(false),
-	flagEnabled: new Rox.Flag(false)
+	title: new Rox.Flag(false)
 };
 ```
 
@@ -48,7 +47,7 @@ import Rox from 'rox-browser'
 
 export const Flags = {
   sidebar: new Rox.Flag(false),
-  flagEnabled: new Rox.Flag(false)
+  title: new Rox.Flag(false)
 };
 
 const options = {
@@ -60,7 +59,7 @@ Rox.setup("<ROLLOUT_ENV_KEY>", options);
 ```
 </details>
 
-4. Commit the changes by adding a comment (e.g. "added flagEnabled flag"), and select the **Commit directly to the development branch** radio button, before clicking **Commit changes**.
+4. Commit the changes by adding a comment (e.g. "added title flag"), and select the **Commit directly to the development branch** radio button, before clicking **Commit changes**.
 
 ### Adding .vuejs
 
