@@ -10,9 +10,7 @@ name: rollout-targeting-overview
 # User Targeting
 
 You may not always want everyone to receive the same experience when rolling out a new feature, or simply updating an existing feature. When working with a new front-end UX design, a back-end search improvement, or anything in between, targeting specific users can help ensure the best experience for all of your customers.
-
-
-
+<br/>
 Target groups let you define groups of users based on user priorities or device attributes. CloudBees Rollout also includes built-in targeting using the format `rox.<attribute name>`.
 
 ---
