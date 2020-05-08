@@ -1,26 +1,19 @@
 # <img src="images/Rollout-blue.svg" alt="CloudBees Rollout Logo" width="40" align="top"> Gating Code with a CloudBees Feature Flag
 
-In this lab, you will create a sidebar component and add it to the microblog. Since this component is *experimental*, we can gate it behind our previosuly created feature flag (`sidebar: new Rox.flag(false)`) that will initially hide it. Then using Rollout's dashboard, we will remotely configure the value of the flag, and will thus enable the sidebar.
+In this lab, you will gate a component behind the previously defined `title` feature flag. Later, using Rollout's dashboard, we will remotely configure the value of the flag, to either expose or hide this gated element at will.
 
-### Adding a Sidebar to the Microblog
+### Adding a Posts Title to the Microblog
 
-1. In Github, navigate to the root directory of the microblog-frontend repository.
-2. Click `Branch: initRollout`
-3. Type `newSidebar` then click **Create branch: newSidebar from initRollout** to finish creating a new branch.
-4. Ensure you are within the newSidebar branch, then navigate to the `src/views/Posts.vue` file.
+1. In Github, navigate to the root directory of the microblog-frontend repository. Ensure you are within the `development` branch.
+2. Navigate to the `Posts.vue` file by navigating to `src/views/Posts.vue`. 
 
 <p><img src="images/srcViewsPost.gif" />
 
-5. Click the pencil icon to edit the file.
-TODO: ADD RED CALLOUT BOX TO BELOW PNG
+3. Click the pencil icon to edit the file.
 
 <p><img src="images/PostsVuePencil.png" />
 
-6. In order to reference our previously created feature flag, we must import the `Flags` constant from the `flags.js` file. On line 28, add the following statement:
-```javascript
-import { Flags } from '../utils/flags'
-```
-7. Now, we need to create a function called `show_sidebar` that will return  the boolean value associated with our `sidebar` feature flag. That return value is accessed by `Flags.sidebar.isEnabled()`. To declare the `show_sidebar` function and relate it to the value of our previously created feature flag, add it to the end of the `data: function ()` block starting at line 34. Don't forget to add a comma ater the `errors` function, as seen in in the finished snippet below:
+6. In order to reference our previously created feature flags, we use the `import` statement on **Line 50**. We need to create a function called `show_title` that will return  the boolean value returned from checking `Flags.title.isEnabled()`. To declare the `show_title` function and relate it to the value of our previously created feature flag, add it after the `show_sidebar` function after **Line 63**. The `show_title` function should be added to the `data` segment as seen below: 
 ```javascript
 data: function () {
   return {
@@ -28,56 +21,17 @@ data: function () {
     posts: [],
     users: [],
     errors: [],
-    show_sidebar: Flags.sidebar.isEnabled()
+    show_sidebar: Flags.sidebar.isEnabled(),
+    show_title: Flags.title.isEnabled()
   }
 },
 ```
-8. Now we're going to add a text component that will only be displayed when `show_sidebar` is evaluated to `true`. In line 6, make the following edits:
+
+7. Now we're going to add a title component that will only be displayed when `show_title` is evaluated to `true`. In line 5, add the following edits:
 ```html
- <h1 class="title">Posts <span v-if="show_sidebar"> - Show sidebar!</span></h1>
+ <h1 class="title">Posts <span v-if="show_title"> - Show New Title!</span></h1>
 ```
-9. The new sidebar should only be shown if the `show_sidebar` function (or the `Flags.sidebar.isEnabled` call) returns `true`. To implement the new sidebar functionality gated behind this if logic, add a new line after line 7 and insert the following code:
-```html
-  <div class="columns" v-if="show_sidebar">
-    <div class="box column is-three-quarters">
-      <div class="box">
-        <b-field label="What's going on today?"
-          class="is-marginless"
-        >
-          <b-input v-model="message" maxlength="140" type="textarea"/>
-        </b-field>
-          <b-button type="is-dark" @click="addPost">Submit</b-button>
-      </div>
-      <hr class="hr">
-      <Post v-for="post in posts" :key="post.id" :post="post"/>
-    </div>
-    <div class="box column">
-      <h3 class="is-size-4 has-text-weight-bold">Users list</h3>
-      <ul>
-        <li v-for="user in users" :key="user.url">
-          <a :href="user.url">{{user.username}}</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-```
-10. Now, **either** the sidebar **or** the existing "What's going on today" component should be displayed, **but not both**. This means we need to gate the existing component behind an `else` statement. We can accomplish this with one `v-else` edit to remaining of the html:
-```html
-  <div class="box" v-else>
-    <div class="box">
-      <b-field label="What's going on today?"
-                   class="is-marginless"
-      >
-        <b-input v-model="message" maxlength="140" type="textarea"/>
-      </b-field>
-      <b-button type="is-dark" @click="addPost">Submit</b-button>
-      </div>
-      <hr class="hr">
-        <Post v-for="post in posts" :key="post.id" :post="post"/>
-    </div>
-  </div>
-```
-11. The final The final `Post.vue` should be
+8. The final The final `Post.vue` should be
 <details><summary>this:</summary>
 
 ```html
@@ -86,7 +40,7 @@ data: function () {
     <hr class="hr is-invisible">
     <div class="box">
 
-      <h1 class="title">Posts <span v-if="show_sidebar"> - Show sidebar!</span></h1>
+      <h1 class="title">Posts <span v-if="show_title"> - Show New Title!</span></h1>
       <hr class="hr">
       <div class="columns" v-if="show_sidebar">
         <div class="box column is-three-quarters">
@@ -144,7 +98,8 @@ export default {
       posts: [],
       users: [],
       errors: [],
-      show_sidebar: Flags.sidebar.isEnabled()
+      show_sidebar: Flags.sidebar.isEnabled(),
+      show_title: Flags.title.isEnabled()
     }
   },
   created () {
@@ -204,8 +159,53 @@ export default {
 ```
 </details>
 
-12. Create a commit message and select **Commit directly to the `newSidebar` branch** radio button.
-13. Click **Commit new file**
-14. **For instructor led workshops please return to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/rollout/#1)**
+8. Create a commit message (e.g. "Added title component") and select **Commit directly to the `development` branch** radio button.
+9. Click **Commit changes**
+
+### Adding the Configuration Fetched Handler
+
+The Configuration Fetched Handler allows us to control what happens whenever when a new configuration is fetched. In order for changes to be applied, an action has to take place, like a page refresh.
+1. In Github, navigate to the root directory of the microblog-frontend repository.
+2. Ensure you are on the `development` branch. Then, open the `flags.js` file (`src/utils/flag.js`).
+3. Insert the `configurationFetchedHandler` constant **and** ensure it is called in `options` as seen in the `flag.js` file below:
+
+<details><summary>`flags.js`</summary>
+
+```javascript
+import Rox from 'rox-browser'
+
+export const Flags = {
+  sidebar: new Rox.Flag(false),
+  title: new Rox.Flag(false)
+};
+
+export const configurationFetchedHandler = fetcherResults => {
+  if (fetcherResults.hasChanges && fetcherResults.fetcherStatus === 'APPLIED_FROM_NETWORK') {
+    window.location.reload(false)
+  }
+};
+
+const options = {
+  configurationFetchedHandler: configurationFetchedHandler
+};
+
+Rox.register('default', Flags);
+Rox.setup("<ROLLOUT_ENV_KEY>", options);
+  
+```
+</details>
+
+4. Create a commit message (e.g. "Inserted configurationFetchedHandler) and select **Commit directly to the `development` branch** radio button.
+5. Click **Commit changes**.
+
+### Checking
+
+1. Navigate to CloudBees Core.
+2. Navigate to `microblog-frontend`
+3. Open Blue Ocean
+4. Click `development` branch to see the pipeline.
+5. Click deploy, and the last shell script. Open the URL 
+
+* **For instructor led workshops please return to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/rollout/#1)**
 
 Otherwise, you may proceed to the next lab: [**Control the Value of a Flag with CloudBees Rollout**](../rolloutExperiment/rolloutExperiment.md) or choose another lab on the [main page](../../README.md#workshop-labs).
