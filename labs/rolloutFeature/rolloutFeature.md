@@ -29,7 +29,7 @@ data: function () {
 
 7. Now we're going to add a title component that will only be displayed when `show_title` is evaluated to `true`. In line 5, add the following edits:
 ```html
- <h1 class="title">Posts <span v-if="show_title"> - Show title!</span></h1>
+ <h1 class="title">Posts <span v-if="show_title"> - Show New Title!</span></h1>
 ```
 8. The final The final `Post.vue` should be
 <details><summary>this:</summary>
@@ -40,7 +40,7 @@ data: function () {
     <hr class="hr is-invisible">
     <div class="box">
 
-      <h1 class="title">Posts <span v-if="show_title"> - Show sidebar!</span></h1>
+      <h1 class="title">Posts <span v-if="show_title"> - Show New Title!</span></h1>
       <hr class="hr">
       <div class="columns" v-if="show_sidebar">
         <div class="box column is-three-quarters">
