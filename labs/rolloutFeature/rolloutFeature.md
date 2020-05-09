@@ -161,11 +161,11 @@ export default {
 
 
 7. Create a commit message (e.g. "Added title component") and select **Commit directly to the `development` branch** radio button.
-8. Click **Commit changes**
+8. Click **Commit changes**.
 
 ### Adding the Configuration Fetched Handler
 
-The Configuration Fetched Handler allows us to control what happens whenever when a new configuration is fetched. In order for changes to be applied, an action has to take place, like a page refresh.
+The Configuration Fetched Handler provides a mechanism to alert when the Rollout SDK has loaded updated configuration from local storage or via an asynchronous network call. It allows us to control what happens whenever a new configuration is fetched. In order for changes to be applied, an action has to take place, like a page refresh.
 1. In Github, navigate to the root directory of the microblog-frontend repository.
 2. Ensure you are on the `development` branch. Then, open the `flags.js` file (`src/utils/flag.js`).
 3. Insert the `configurationFetchedHandler` constant **and** ensure it is called in `options` as seen in the `flag.js` file below:
