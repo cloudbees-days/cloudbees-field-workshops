@@ -65,7 +65,7 @@ This technique offers many other benefits and will be discussed in greater detai
 ---
 name: rollout-overview-content
 
-.no-bullet.smaller[
+.italic[
   *95% of respondent's organizations have implemented, begun implementing, or plan to implement feature flags in the future* - Atlassian / Rollout market research report 2018
 ]
 
