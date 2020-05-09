@@ -135,13 +135,26 @@ h2, h3 {
   font-size: 2.25rem;
 }
 .remark-slide-content.roomy h1 {
-  font-size: 4rem;
+  font-size: 3rem;
 }
 .remark-slide-content.roomy h2 {
   font-size: 2.75rem;
 }
 .remark-slide-content.roomy h3 {
   font-size: 2.5rem;
+}
+.remark-slide-content.roomy li {
+  font-size: 1.75rem;
+  font-weight: 300;
+}
+.remark-slide-content.roomy li:not(:first-child) {
+  padding-top: 1.2rem;
+}
+.remark-slide-content.roomy li li {
+  font-size: 1.3rem;
+}
+.remark-slide-content.roomy li li:not(:first-child)  {
+  padding-top: 0.8rem;
 }
 .remark-slide-content.roomy pre,
 .remark-slide-content.roomy code,
