@@ -69,7 +69,7 @@ name: rollout-overview-content
   *95% of respondent's organizations have implemented, begun implementing, or plan to implement feature flags in the future* <br>- Atlassian / Rollout market research report 2018
 ]
 
-# Feature Flag Management
+# Lack of Feature Flag Management
 * Costly, Manual, Development Headaches
 * Risk in Testing and Production
 * Slow Time to Market
