@@ -34,9 +34,11 @@ name: agenda
 name: rollout-lab-environment
 # Lab Environment
 
-* This workshop uses CloudBees Rollout SaaS version running on AWS
-  * Each attendee will sign up for a CloudBees Rollout account
+* This workshop uses the CloudBees Rollout SaaS running on AWS
+  * Each attendee will sign up for a CloudBees Rollout trial account
   * If you are already a Rollout customer, simply sign in as usual
+* This workshop leverages CloudBees Core for automating the build and deployment of the sample application
+  * Each attendee will create their own CloudBees Core Jenkins Master that they will provision as part of the setup
 * All the instructions for the labs and these slides are publicly available in GitHub
 * Attendees will be using their own GitHub accounts
 
@@ -52,7 +54,7 @@ count: false
 name: feature-flag-background
 # What is Feature Flagging?
 
-At its most simplistic, feature flagging is a practice of wrapping new functionality in conditional code blocks.
+Feature flagging is a practice of wrapping new functionality in conditional code blocks.
 <br/>
 <br/>
 Feature flags are used to hide, enable or disable features during runtime. With feature flags, a software feature can be tested even before it is completed and ready for release.  For example, during the development process, a developer can enable the feature for local testing and disable it for all other users. Feature flagging also provides an alternative to maintaining multiple feature branches in source code.
@@ -63,7 +65,7 @@ This technique offers many other benefits and will be discussed in greater detai
 ---
 name: rollout-overview-content
 
-.italic[
+.no-bullet.smaller[
   *95% of respondent's organizations have implemented, begun implementing, or plan to implement feature flags in the future* - Atlassian / Rollout market research report 2018
 ]
 

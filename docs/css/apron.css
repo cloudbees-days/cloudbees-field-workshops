@@ -496,3 +496,9 @@ ul, ol {
  .smaller {
    font-size: smaller;
  }
+
+ .italic {
+   font-size: smaller;
+   font-weight: 300;
+   margin-bottom: 0.4rem;
+ }
