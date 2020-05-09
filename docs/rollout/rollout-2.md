@@ -3,26 +3,32 @@ class: title, shelf, no-footer, fullbleed
 background-image: linear-gradient(135deg,#279be0,#036eb4)
 count: false
 
-# Adding a Sidebar to the Microblog
+# Gating Code with CloudBees Feature Flags
 
 ---
 name: rollout-sidebar-overview
-# Adding a Sidebar to the Microblog
+# Gating Code with CloudBees Feature Flags
 
-Is there really a need for intro slide here?
+Feature flags allow you to put gates around the code for your new features.
+
+* Flags are added to the source code of an application.
+* A flag is then used to wrap the code of a new feature.
+* There are SDKs that support both frontend and backend development.
 
 ---
 name: rollout-sidebar-lab
-# Lab - Adding a Sidebar to the Microblog
 
-* In this lab, you will create a sidebar component and add it to the microblog. Since this component is *experimental*, we will gate it behind our previously created feature flag (`sidebar: new Rox.flag(false)`) that will initially hide it. Then using Rollout's dashboard, we will remotely configure the value of the flag, thus enabling the sidebar.
+# Lab - Gating Code with CloudBees Feature Flags
 
-* The *Adding a Sidebar to the Microblog* lab instructions are available at:
+* In this lab, you will create a sidebar component and add it to the **microblog-frontend** sample application. Since this component is *experimental*, we will gate it behind our previously created feature flag (`sidebar: new Rox.flag(false)`) that will initially hide it. Then, using Rollout's dashboard, we will remotely configure the value of the flag, enabling the sidebar.
+
+* The *Gating Code with CloudBees Feature Flags* lab instructions are available at:
   * [https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/rolloutFeature/rolloutFeature.md](https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/rolloutFeature/rolloutFeature.md)
 
 ---
 name: rollout-sidebar-review
-# Adding a Sidebar to the Microblog Lab Review
+
+# Gating Code with CloudBees Feature Flags Lab Review
 
 * You created an experimental component.
 * You created a `show_sidebar` function that returned the boolean value assigned to our `sidebar` feature flag.
