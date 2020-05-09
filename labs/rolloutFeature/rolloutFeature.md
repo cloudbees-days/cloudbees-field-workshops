@@ -31,8 +31,7 @@ data: function () {
 ```html
  <h1 class="title">Posts <span v-if="show_title"> - Show New Title!</span></h1>
 ```
-6. The final The final `Post.vue` should be
-<details><summary>this:</summary>
+6. <details><summary>The updated `Post.vue` should match the following:</summary>
 
 ```html
 <template>
@@ -159,8 +158,8 @@ export default {
 ```
 </details>
 
-7. Create a commit message (e.g. "Added title component") and select **Commit directly to the `development` branch** radio button.
-8. Click **Commit changes**
+1. Create a commit message (e.g. "Added title component") and select **Commit directly to the `development` branch** radio button.
+2. Click **Commit changes**
 
 ### Adding the Configuration Fetched Handler
 
