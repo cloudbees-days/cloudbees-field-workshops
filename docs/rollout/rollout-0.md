@@ -83,26 +83,22 @@ class: compact
 # CloudBees Feature Management Solution
 
 .italic[
-  *Rollout is a multi-platform, Infrastructure as Code,
+  ## *Rollout is a multi-platform, Infrastructure as Code,
 SaaS feature management and remote configuration solution.*
 ]
-
-Faster Delivery
+### Faster Delivery
 .no-bullet[
-* Don’t wait for a feature to trickle out across multiple servers in a highly scaled application; turn it on all at once when it’s ready, or selectively enable it for users.
+* Don’t wait for a feature to trickle out across multiple servers in a highly scaled application; turn it on all at once when it’s ready, or selectively enable it for targeted users.
 ]
-
-Safer Releases
+### Safer Releases
 .no-bullet[
-* Test new code  safely in production with blue/green and canary deployments. If a bug is discovered, just turn off that feature right away and then repair it.
+* Test new code safely in production with blue/green and canary deployments. If a bug is discovered, just turn off that feature right away and then fix it.
 ]
-
-Experimentation
+### Experimentation
 .no-bullet[
 * Determine the impact of a feature on your revenue, user engagement, etc. Enable features only for your QA team to allow validation with production data.
 ]
-
-Customization
+### Customization
 .no-bullet[
 * Turn specific features on or off for particular customers, based on preferences, location, licensing, etc.
 ]
