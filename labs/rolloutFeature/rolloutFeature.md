@@ -31,8 +31,8 @@ data: function () {
 ```html
  <h1 class="title">Posts <span v-if="show_title"> - Show New Title!</span></h1>
 ```
-6. <details><summary>The updated `Post.vue` should match the following:</summary>
-
+6. Expand the following to review:
+<details><summary>Updated <code>Post.vue</code></summary>
 ```html
 <template>
   <div class="container">
