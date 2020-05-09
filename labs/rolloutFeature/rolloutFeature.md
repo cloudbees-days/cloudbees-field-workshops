@@ -33,6 +33,7 @@ data: function () {
 ```
 6. Expand the following to review:
 <details><summary>Updated <code>Post.vue</code></summary>
+
 ```html
 <template>
   <div class="container">
@@ -158,8 +159,9 @@ export default {
 ```
 </details>
 
-1. Create a commit message (e.g. "Added title component") and select **Commit directly to the `development` branch** radio button.
-2. Click **Commit changes**
+
+7. Create a commit message (e.g. "Added title component") and select **Commit directly to the `development` branch** radio button.
+8. Click **Commit changes**
 
 ### Adding the Configuration Fetched Handler
 
