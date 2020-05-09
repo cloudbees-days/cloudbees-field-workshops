@@ -9,7 +9,7 @@ count: false
 name: rollout-sidebar-overview
 # Gating Code with CloudBees Feature Flags
 
-Feature flags allow you to put gates around the code for your new features.
+Feature flags allow you to put gates around new feature code.
 
 * Flags are added to the source code of an application.
 * A flag is then used to wrap the code of a new feature.

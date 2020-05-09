@@ -1,10 +1,10 @@
 # <img src="images/Rollout-blue.svg" alt="CloudBees Rollout Logo" width="40" align="top"> Gating Code with a CloudBees Feature Flag
 
-In this lab, you will gate a component behind the previously defined `title` feature flag. Later, using Rollout's dashboard, we will remotely configure the value of the flag, to either expose or hide this gated element at will.
+In this lab, you will gate a component behind the already defined `title` feature flag. Later, using Rollout's dashboard, we will remotely configure the value of the flag, to either expose or hide this gated element at will.
 
 ### Adding a Posts Title to the Microblog
 
-1. In Github, navigate to the root directory of the microblog-frontend repository. Ensure you are within the `development` branch.
+1. In Github, navigate to the root directory of your fork of the **microblog-frontend** repository. Ensure that you are within the `development` branch.
 2. Navigate to the `Posts.vue` file by navigating to `src/views/Posts.vue`. 
 
 <p><img src="images/srcViewsPost.gif" />
@@ -13,7 +13,7 @@ In this lab, you will gate a component behind the previously defined `title` fea
 
 <p><img src="images/PostsVuePencil.png" />
 
-6. In order to reference our previously created feature flags, we use the `import` statement on **Line 50**. We need to create a function called `show_title` that will return  the boolean value returned from checking `Flags.title.isEnabled()`. To declare the `show_title` function and relate it to the value of our previously created feature flag, add it after the `show_sidebar` function after **Line 63**. The `show_title` function should be added to the `data` segment as seen below: 
+4. In order to reference our previously created feature flags, we use the `import` statement on **Line 50**. We need to create a function called `show_title` that will return  the boolean value returned from checking `Flags.title.isEnabled()`. To declare the `show_title` function and relate it to the value of our previously created feature flag, add it after the `show_sidebar` function after **Line 63**. The `show_title` function should be added to the `data` segment as seen below: 
 ```javascript
 data: function () {
   return {
@@ -27,11 +27,11 @@ data: function () {
 },
 ```
 
-7. Now we're going to add a title component that will only be displayed when `show_title` is evaluated to `true`. In line 5, add the following edits:
+5. Now we're going to add a title component that will only be displayed when `show_title` is evaluated to `true`. In line 5, add the following edits:
 ```html
  <h1 class="title">Posts <span v-if="show_title"> - Show New Title!</span></h1>
 ```
-8. The final The final `Post.vue` should be
+6. The final The final `Post.vue` should be
 <details><summary>this:</summary>
 
 ```html
@@ -159,8 +159,8 @@ export default {
 ```
 </details>
 
-8. Create a commit message (e.g. "Added title component") and select **Commit directly to the `development` branch** radio button.
-9. Click **Commit changes**
+7. Create a commit message (e.g. "Added title component") and select **Commit directly to the `development` branch** radio button.
+8. Click **Commit changes**
 
 ### Adding the Configuration Fetched Handler
 
