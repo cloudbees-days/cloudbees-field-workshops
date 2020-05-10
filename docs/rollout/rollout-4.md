@@ -17,11 +17,11 @@ Target groups let you define groups of users based on one or more user propertie
 <br/>
 
 Attribute Name | Notes
---- | :---:
-`rox.language` |      Two letter language code, e.g., "en," "es," or "fr
-`rox.platform` |      OS name, e.g., "iOS" or "Android"
-`rox.screen_height` |      Screen height in pixels
-`rox.screen_width` |      Screen width in pixels
+--- | ---
+`rox.language` | &nbsp;&nbsp;Two letter language code, e.g., "en," "es," or "fr
+`rox.platform` | &nbsp;&nbsp;OS name, e.g., "iOS" or "Android"
+`rox.screen_height` | &nbsp;&nbsp;Screen height in pixels
+`rox.screen_width` | &nbsp;&nbsp;Screen width in pixels
 
 ---
 name: rollout-targeting-lab
