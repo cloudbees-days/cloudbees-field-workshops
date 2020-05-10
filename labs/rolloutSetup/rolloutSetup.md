@@ -10,26 +10,21 @@ In this lab, you will set up a CloudBees Rollout account and use it to manage fe
 3. In order to control feature flags from the Rollout dashboard, we have to add the `<ROLLOUT_ENV_KEY>` to our microblog code. On the far left side of the dashboard, click the **App Settings** panel. From the resulting page, select the **Environments** tab.
 5. Click **Add New Environment** and name it **Development**. Then click **Create New Environment?**.
 6. Leave this Rollout tab open in the browser. Both `Production` and `Development` keys should be displayed for future reference.
----
-4. Click to copy your unique `<ROLLOUT_ENV_KEY>` associated with the Production environment and paste it in a notepad for future reference.
-6. Click to copy your unique `<ROLLOUT_ENV_KEY>` associated with the Development environment and paste it in a notepad for later.
----
-
 
 ### Environment Vairable
 
 1. In Github, navigate to the microblog-frontend repository previously forked to your organization.
 2. Change the branch from `master` to `development`. After changing to `development` branch, click the `.env.production` file.
-3. Select the pencil icon to edit the file. Copy the _Production_ `<ROLLOUT_ENV_KEY>` from the Rollout tab. Then within Github editor, replace `YOUR_PRODUCTION_KEY_HERE` on **Line 1** by pasting your unique Production key from the Rollout dashboard.
+3. Select the pencil icon to edit the file. Switch to the tab with your Rollout dashboard, and copy the `<ROLLOUT_ENV_KEY>` associated with the _Production_ environment. Switch back to the Github tab editing the `.env.production` file. Replace `YOUR_PRODUCTION_KEY_HERE` on **Line 1** by pasting your unique Production key from the Rollout dashboard.
 4. Commit your changes by selecting **Commit directly to the `development` branch** radio button. Then click the **Commit changes** button.
-5. Click the `.env.development` file, then select the pencil icon on the following page to make an edit. Now, copy your _Development_ `<Rollout_ENV_KEY>` from the Rollout dashboard and replace `YOUR_DEVELOPMENT_KEY_HERE` by pasting the unique key.
-6. Commit the file directly to the `development` branch, and click **Commit changes**.
+5. Navigate back to the root directory of the microblog-frontend repository. Click the `.env.development` file, then select the pencil icon on the following page to make an edit. Now, copy your _Development_ `<ROLLOUT_ENV_KEY>` from the Rollout dashboard and replace `YOUR_DEVELOPMENT_KEY_HERE` by pasting the unique Development key.
+6. Select the **Commit the file directly to the `development` branch** radio button, and then click **Commit changes**.
 
 <p><img src="images/RolloutEnvKey.png" />
 
 ### Create Rollout Feature Flags
 
-* The `flags.js` file imports the relevant Rollout SDK and defines the feature flags that an application will use. It then calls a `setup` function to establish a connection with the Rollout dashboard. It's from this dashboard interface that will allow for remote configuration in future labs.
+The `flags.js` file imports the relevant Rollout SDK and defines the feature flags that an application will use. It then calls a `setup` function to establish a connection with the Rollout dashboard. It's from this dashboard interface that will allow for remote configuration in future labs.
 
 1. Ensure you are on the `development` branch at the root of the microblog-frontend repository.
 2. Navigate to `src\utils\flags.js` by firstclicking the `src` folder, followed by the `utils` folder, and then the `flag.js` file.
@@ -61,21 +56,20 @@ Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
 ```
 </details>
 
-4. Commit the changes by adding a comment (e.g. "added title flag"), and select the **Commit directly to the `development` branch** radio button, before clicking **Commit changes**.
+4. Commit the changes by adding a comment (e.g. "added title flag"), and select the **Commit directly to the `development` branch** radio button. And then click **Commit changes**.
 
-### Adding .vuejs
+### Adding .vuejs Marke File
 
-1. At the root level of `development` branch, click **Create a new file** button.
-2. Name your file `.vuejs` (don't forget leading period).
-3. Leave the file blank, commit the file by adding a comment (e.g. "New .vuejs file"). Ensure the **Commit directly to the `development` branch** radio button is enabled, the click **Commit new file**.
+1. Navigate to the root level of the `development` branch of the microblog-frontend repository. Click the **Create a new file** button.
+2. Name the file `.vuejs` (don't forget leading period).
+3. Leave the file blank, commit the file by adding a comment (e.g. "New .vuejs file"). Ensure the **Commit directly to the `development` branch** radio button is enabled. Then select **Commit new file**.
 
 ### See Deployed Microblog Website
-1. Navigate to CloudBees Core, ensure you are with the **Blue Ocean** view. On the header, click **Pipelines**.
-2. Click the `microblog-frontend` pipeline.
-3. Select the job running from the `development` branch.
-4. On the subsequent page, you should see 3 stages that define the pipeline. Click the **Deploy** stage to see all the steps that will run during this stage.
-5. When the **Deploy** stage has completed (indicated by the header turning green), select the last **Shell Script** step.
-6. Open the the displayed URL in a new tab(that follows the format: http://development.YOUR_ORG_NAME-microblog-frontend.v1.k8s.tel). This is the microblog!
+1. Switch to the CloudBees Core tab within your internet browser. Select the **Blue Ocean** view associated with your team if not already seen. In the header, click **Pipelines** option.
+2. Select the `microblog-frontend` pipeline. Then, click on the job currently running from the `development` branch.
+3. On the subsequent page, you should see 3 stages that define the pipeline. Click the **Deploy** stage to see all the steps that will run during this stage.
+4. When the **Deploy** stage has completed (indicated by the header turning green), select the last **Shell Script** step.
+5. Open the the displayed URL in a new tab(that follows the format: http://development.YOUR_ORG_NAME-microblog-frontend.v1.k8s.tel). This is the microblog!
 
 ### Checking Communication with CloudBees Rollout
 
