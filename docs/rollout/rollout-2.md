@@ -16,6 +16,25 @@ Feature flags allow you to put gates around new feature code.
 * There are SDKs that support both frontend and backend development.
 
 ---
+name: rollout-control-overview
+class: compact
+
+# Introduction to Configuration Fetching
+In order to see our gated code on our example application, we need to know a few key pieces of information:
+1. Has the flag value changed?
+2. From where was the value change initiated?
+<br/>
+<br/>
+You can identify when Rollout SDK has loaded configuration from local storage or network by adding the `configurationFetchedHandler`.
+<br/>
+<br/>
+The `configurationFetchedHandler` returns `fetcherResult` which has the following information regarding the actual fetch:
+* `fetcherStatus` - an enum that identifies which configuration was fetched (from the network, from local storage, an error occurred)
+* `creationDate` - Date of configuration creation
+* `errorDetails` - The description of the error if one exists
+* `hasChanges` - Boolean `True` if the configuration differ from the one it is replacing
+
+---
 name: rollout-sidebar-lab
 
 # Lab - Gating Code with CloudBees Feature Flags
