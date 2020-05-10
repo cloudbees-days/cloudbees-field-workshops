@@ -43,6 +43,6 @@ Now that you are satisfied with the experiment in your Development environment, 
 
 *Final screenshot of Prod env with `WHATS_THE_NAME_OF_THIS.yml` and `default.sidebar.yml`*
 
-You have successfully completed the introductory Rollout workshop!
+You have successfully completed the introductory CloudBees Rollout workshop!
 
 Please return to the [main page](../../README.md#workshop-labs) for other workshops and labs.

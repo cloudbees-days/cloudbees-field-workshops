@@ -20,7 +20,7 @@ name: rollout-sidebar-lab
 
 # Lab - Gating Code with CloudBees Feature Flags
 
-* In this lab, you will create a sidebar component and add it to the **microblog-frontend** sample application. Since this component is *experimental*, we will gate it behind our previously created feature flag (`sidebar: new Rox.flag(false)`) that will initially hide it. Then, using Rollout's dashboard, we will remotely configure the value of the flag, enabling the sidebar.
+* In this lab, you will create a title component and add it to the **microblog-frontend** sample application. Since this component is *experimental*, we will gate it behind our previously created feature flag (`title: new Rox.flag(false)`) that will initially hide it. Then, using Rollout's dashboard, we will remotely configure the value of the flag, enabling the title.
 
 * The *Gating Code with CloudBees Feature Flags* lab instructions are available at:
   * [https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/rolloutFeature/rolloutFeature.md](https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/rolloutFeature/rolloutFeature.md)
@@ -31,6 +31,7 @@ name: rollout-sidebar-review
 # Gating Code with CloudBees Feature Flags Lab Review
 
 * You created an experimental component.
-* You created a `show_sidebar` function that returned the boolean value assigned to our `sidebar` feature flag.
-* You wrapped your experimental component in conditional logic to only display when `show_sidebar` is `True`.
+* You created a `show_title` function that returned the boolean value assigned to our `title` feature flag.
+* You wrapped your experimental component in conditional logic to only display when `show_title` is `True`.
+* You defined a `configurationFetchedHandler` and added it to your `options` to alert your application that a configuration value has changed and allowed for updated config values to be applied on an action (page refresh).
 * You committed your code back to your `development` branch.
