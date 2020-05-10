@@ -88,7 +88,7 @@ class: compact
 ### *Rollout is a multi-platform, Infrastructure as Code, SaaS feature management and remote configuration solution.*
 
 ]
-### Faster Delivery
+### Faster Deliverya
 .no-bullet[
 * Don’t wait for a feature to trickle out across multiple servers in a highly scaled application; turn it on all at once when it’s ready, or selectively enable it for targeted users.
 ]
