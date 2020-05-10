@@ -14,7 +14,9 @@
 
 ### Using CasC and GitOps
 1. In the Rollout dashboard, disable the side experiment in Development environment by toggling `Active` to `Killed`.
+
 <p><img src="images/sidebar_killed.png" />
+
 2. In GitHub, go look at your `experiments` folder, click on `WHATS_THE_NAME_OF_THIS.yml` and note the structure.
 3. Then, switch from `master` branch to our automatically created `Development` branch and note the differences in your `experiments` folder, especially the addition of `default.sidebar.yml` with `enabled: false` on line 5.
 4. Within the Github code editor, modify `default.sidebar.yml` by deleting the line `enabled: false` and commit to `Development` branch. Your YAML should closely resemble this:
@@ -33,9 +35,12 @@ value: false
 ```
 
 5. In Rollout, notice that your default.sidebar experiment is now reactivated on the Development environment.
+
 Now that you are satisfied with the experiment in your Development environment, you want to include this experiment in your Production environment.
+
 6. In Github, merge `Development` to `master` branch with an appropriate commit message.
 7. In Rollout, note the sidebar experiment is now added to the Production environment.
+
 *Final screenshot of Prod env with `WHATS_THE_NAME_OF_THIS.yml` and `default.sidebar.yml`*
 
 You have successfully completed the introductory Rollout workshop!

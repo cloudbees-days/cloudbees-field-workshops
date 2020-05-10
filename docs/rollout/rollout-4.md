@@ -36,4 +36,4 @@ name: rollout-targeting-lab
 ---
 name: rollout-targeting-review
 
-not sure review of the lab is necessary... thoughts?
+User targeting is an important concept in Rollout. With this lab complete, you can now offer a different user experience based on known attributes and you defined a custom property `isLoggedIn`. In this case, our microblog now has an additional UI element for the users with an account compared to those who do not. 
