@@ -17,10 +17,10 @@ In this lab, you will set up a CloudBees Rollout account and use it to manage fe
 2. Change the branch from `master` to `development`. _All work until Lab 5 will take place on the `development` brach_. After changing branches, select the `.env.production` file.
 3. Click the pencil icon to edit the file. Switch back to your Rollout tab with the dashboard in view.
 4. Copy the `<ROLLOUT_ENV_KEY>` associated with the _Production_ environment. Switch back to the Github tab with the `.env.production` file being edited.
-5. Replace `YOUR_PRODUCTION_KEY_HERE` on **Line 1** by pasting your unique Production key copied from the Rollout dashboard.
+5. Replace `YOUR_PRODUCTION_KEY_HERE` on **Line 1** by pasting your unique Production `<ROLLOUT_ENV_KEY>`.
 6. At the bottom of the page, select **Commit directly to the `development` branch** radio button. Then click the **Commit changes** button.
 7. Navigate back to the root directory of the microblog-frontend repository (`development` branch). Click the `.env.development` file. And then select the pencil icon on the following page to make an edit to the file.
-8. Now, copy your _Development_ `<ROLLOUT_ENV_KEY>` from the Rollout dashboard and replace `YOUR_DEVELOPMENT_KEY_HERE` by pasting the unique Development key previously copied.
+8. Now, copy your _Development_ `<ROLLOUT_ENV_KEY>` from the Rollout dashboard. Then replace `YOUR_DEVELOPMENT_KEY_HERE` in the `.env.development` file by pasting the unique Development Rollout key.
 9. Select the **Commit the file directly to the `development` branch** radio button, and then click **Commit changes**.
 
 <p><img src="images/RolloutEnvKey.png" />
