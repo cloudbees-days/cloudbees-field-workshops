@@ -17,21 +17,21 @@ In this lab, you will set up a CloudBees Rollout account and use it to manage fe
 2. Change the branch from `master` to `development`. _All work until Lab 5 will take place on the `development` brach_. After changing branches, select the `.env.production` file.
 3. Click the pencil icon to edit the file. Switch back to your Rollout tab with the dashboard in view.
 4. Copy the `<ROLLOUT_ENV_KEY>` associated with the _Production_ environment. Switch back to the Github tab with the `.env.production` file being edited.
-5. Replace `YOUR_PRODUCTION_KEY_HERE` on **Line 1** by pasting your unique Production key copied from the Rollout dashboard.
+5. Replace `YOUR_PRODUCTION_KEY_HERE` on **Line 1** by pasting your unique Production `<ROLLOUT_ENV_KEY>`.
 6. At the bottom of the page, select **Commit directly to the `development` branch** radio button. Then click the **Commit changes** button.
 7. Navigate back to the root directory of the microblog-frontend repository (`development` branch). Click the `.env.development` file. And then select the pencil icon on the following page to make an edit to the file.
-8. Now, copy your _Development_ `<ROLLOUT_ENV_KEY>` from the Rollout dashboard and replace `YOUR_DEVELOPMENT_KEY_HERE` by pasting the unique Development key previously copied.
+8. Now, copy your _Development_ `<ROLLOUT_ENV_KEY>` from the Rollout dashboard. Then replace `YOUR_DEVELOPMENT_KEY_HERE` in the `.env.development` file by pasting the unique Development Rollout key.
 9. Select the **Commit the file directly to the `development` branch** radio button, and then click **Commit changes**.
 
 <p><img src="images/RolloutEnvKey.png" />
 
 ### Create Rollout Feature Flags
 
-The `flags.js` file imports the relevant Rollout SDK and defines the feature flags an application will use. It then calls a `setup` function to establish a connection to the Rollout dashboard. The Rollout dashboard interface will allow for remote configuration in future labs.
+The `flags.js` file imports the relevant Rollout SDK and defines the feature flags (with its `DEFAULT` values) that an application will use. The file contains a call to the `setup` function that establishes a connection to the Rollout dashboard. The Rollout dashboard interface will allow for remote configuration in future labs.
 
 1. In Github, navigate to the root level of the microblog-frontend repository (Ensure you are working on the `development` branch).
 2. Change directories and select the `flags.js` file (`src\utils\flags.js`) by first clicking the `src` folder from root view, followed by the `utils` folder, and finally select the subsequent `flag.js` file.
-3. Click the pencil to edit the file. Define the `title` flag by adding the following within the `const Flag` section after **Line 4**:
+3. We will later add a component to the **Posts view** of the microblog application that is gated by a `title` feature flag. Click the pencil to edit the file. Define the `title` flag and its default value (`false`) by adding the following within the `const Flag` section after **Line 4**:
 ```javascript
 export const Flags = {
 	sidebar: new Rox.Flag(false),

@@ -1,19 +1,22 @@
 # <img src="images/Rollout-blue.svg" alt="CloudBees Rollout Logo" width="40" align="top"> Gating Code with a CloudBees Feature Flag
 
-In this lab, you will gate a component behind the already defined `title` feature flag. Later, using Rollout's dashboard, we will remotely configure the value of the flag, to either expose or hide this gated element at will.
+## Using a Rollout Feature Flag
+In this lab, you will gate a component behind the `title` feature flag, defined in the previous lab. Later, using Rollout's dashboard, we will remotely configure the value of the flag, to either expose or hide this title element at will.
 
-### Adding a Posts Title to the Microblog
+### Adding a Title to the Microblog Post
 
-1. In Github, navigate to the root directory of your fork of the **microblog-frontend** repository. Ensure that you are within the `development` branch.
-2. Navigate to the `Posts.vue` file by navigating to `src/views/Posts.vue`. 
+1. In Github, navigate to the root directory of the microblog-frontend repository. Ensure that you are on the `development` branch.
+2. Navigate to the `Posts.vue` file (`src/views/Posts.vue`) by clicking the `src` folder, `views` folder, followed by `Posts.vue`, consecutively. 
 
 <p><img src="images/srcViewsPost.gif" />
 
-3. Click the pencil icon to edit the file.
+3. Select the pencil icon to edit the file.
 
 <p><img src="images/PostsVuePencil.png" />
 
-4. In order to reference our previously created feature flags, we use the `import` statement on **Line 50**. We need to create a function called `show_title` that will return  the boolean value returned from checking `Flags.title.isEnabled()`. To declare the `show_title` function and relate it to the value of our previously created feature flag, add it after the `show_sidebar` function after **Line 63**. The `show_title` function should be added to the `data` segment as seen below: 
+4. In order to use the feature flags created in the `flags.js` file, we've included the `import` statement on **Line 50**. Now, we'll create a function called `show_title` that will return the `boolean` value from `Flags.title.isEnabled()`.
+
+To add this functionality, first insert a comma `,` at the end of the `show_sidebar` definition on **Line 63**. Then, add a new line after the comma, and define the `show_title` function as seen in the `data` segment below: 
 ```javascript
 data: function () {
   return {
@@ -27,11 +30,12 @@ data: function () {
 },
 ```
 
-5. Now we're going to add a title component that will only be displayed when `show_title` is evaluated to `true`. In line 5, add the following edits:
+5. Now we're going to add a new title component gated behind our `title` feature flag. This will allow the element to _only_ be displayed when `Flags.title.isEnabled()` is `true`. Insert the following code, calling the `show_title` function, on **Line 5**:
 ```html
  <h1 class="title">Posts <span v-if="show_title"> - Show New Title!</span></h1>
 ```
-6. Expand the following to review:
+
+6. After editing, expand the following to review:
 <details><summary>Updated <code>Post.vue</code></summary>
 
 ```html
@@ -39,7 +43,6 @@ data: function () {
   <div class="container">
     <hr class="hr is-invisible">
     <div class="box">
-
       <h1 class="title">Posts <span v-if="show_title"> - Show New Title!</span></h1>
       <hr class="hr">
       <div class="columns" v-if="show_sidebar">
@@ -159,18 +162,17 @@ export default {
 ```
 </details>
 
-
-7. Create a commit message (e.g. "Added title component") and select **Commit directly to the `development` branch** radio button.
-8. Click **Commit changes**.
+7. Create a commit message (e.g. "Added title component") and select the **Commit directly to the `development` branch** radio button. Click **Commit changes**.
 
 ### Adding the Configuration Fetched Handler
 
-The Configuration Fetched Handler provides a mechanism to alert when the Rollout SDK has loaded updated configuration from local storage or via an asynchronous network call. It allows us to control what happens whenever a new configuration is fetched. In order for changes to be applied, an action has to take place, like a page refresh.
-1. In Github, navigate to the root directory of the microblog-frontend repository.
-2. Ensure you are on the `development` branch. Then, open the `flags.js` file (`src/utils/flag.js`).
-3. Insert the `configurationFetchedHandler` constant **and** ensure it is called in `options` as seen in the `flag.js` file below:
+The Configuration Fetched Handler provides a mechanism to alert the Rollout SDK when an updated configuration, from local storage or via an asynchronous network call, has loaded. It allows us to control what happens whenever a new configuration is fetched, and can be useful for troubleshooting by logging the `fetchedResults`. To apply the changes for client-side feature flags from the new configuration, an action (like a page refresh) has to take place.
 
-<details><summary><code>flags.js</code></summary>
+1. In Github, navigate to the root directory of the microblog-frontend repository on the `development` branch.
+2. Open the `flags.js` file (navigating to `src/utils/flag.js`), and select the pencil icon to edit the file.
+3. We will induce the page refresh when a **new** configuration is retrieved **from the network**. We can also assist in any troubleshooting by adding `console.log` statements. Define the `configurationFetchedHandler` constant with its boolean logic cases; also, **ensure it is called in `options` constant** as seen in the `flag.js` file below:
+
+<details><summary>Updated <code>flags.js</code></summary>
 
 ```javascript
 import Rox from 'rox-browser'
@@ -181,8 +183,12 @@ export const Flags = {
 };
 
 export const configurationFetchedHandler = fetcherResults => {
+  console.log('The configuration status is: ' + fetcherResults.fetcherStatus)
   if (fetcherResults.hasChanges && fetcherResults.fetcherStatus === 'APPLIED_FROM_NETWORK') {
     window.location.reload(false)
+  }
+  else if (fetcherResults.fetcherStatus === 'ERROR_FETCH_FAILED') {
+    console.log('Error occured! Details are: ' + fetcherResults.errorDetails)
   }
 };
 
@@ -196,17 +202,18 @@ Rox.setupRox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
 ```
 </details>
 
-4. Create a commit message (e.g. "Inserted configurationFetchedHandler) and select **Commit directly to the `development` branch** radio button.
-5. Click **Commit changes**.
+4. Create a commit message (e.g. "Inserted configurationFetchedHandler) and select **Commit directly to the `development` branch** radio button. Click **Commit changes**.
 
-### Checking
+### Checking Microblog Website
 
-1. Navigate to CloudBees Core.
-2. Navigate to `microblog-frontend`
-3. Open Blue Ocean
-4. Click `development` branch to see the pipeline.
-5. Click deploy, and the last shell script. Open the URL 
+1. Switch tabs to your CloudBees Core team master. You should see the results of a _previous_ micoblog-frontend pipeline.
+2. In the left corner of the header, use the **right arrow** to navigate to **the most recent** pipeline run (until the right arrow is no longer shown). 
+3. Once the _entire_ pipeline is complete (header should turn green), navigate to the microblog website (either by switching tabs or clicking the link supplied in the last step of **Deploy** stage).
+4. Refresh the page, and open the console from your browser's developer tools. Check the log to view the messages from the `configurationFetchedHandler`.
 
-* **For instructor led workshops please return to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/rollout/#1)**
+### Lab 2 Completed!
+Congratulations! You have finished Lab 2 of the CloudBees Rollout Workshop.
+
+**For instructor led workshops please return to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/rollout/#17)**
 
 Otherwise, you may proceed to the next lab: [**Control the Value of a Flag with CloudBees Rollout**](../rolloutExperiment/rolloutExperiment.md) or choose another lab on the [main page](../../README.md#workshop-labs).
