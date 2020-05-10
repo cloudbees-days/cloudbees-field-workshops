@@ -85,6 +85,7 @@ class: compact
 <br/>
 .italic[
 ### *Rollout is a multi-platform, Infrastructure as Code, SaaS feature management and remote configuration solution.*
+
 ]
 ### Faster Delivery
 .no-bullet[
