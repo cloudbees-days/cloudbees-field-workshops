@@ -35,3 +35,23 @@ name: rollout-targeting-lab
 name: rollout-targeting-review
 
 not sure review of the lab is necessary... thoughts?
+
+[cols="1a,1a",options="header"]
+.Built-in attributes
+|===
+
+| Attribute Name
+| Notes
+
+| `rox.language`
+| Two letter language code, e.g., "en," "es," or "fr"
+
+| `rox.platform`
+| OS name, e.g., "iOS" or "Android"
+
+| `ox.screen_height`
+| Screen height in pixels
+
+| `rox.screen_width`
+| Screen width in pixels
+|===
