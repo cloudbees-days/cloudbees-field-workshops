@@ -1,11 +1,12 @@
-# <img src="images/Rollout-blue.svg" alt="CloudBees Rollout Logo" width="40" align="top"> Gating Code with a CloudBees Feature Flag
+# <img src="images/Rollout-blue.svg" alt="CloudBees Rollout Logo" width="40" align="top"> Gating Code with a CloudBees Rollout Flag
 
-In this lab, you will gate a component behind the already defined `title` feature flag. Later, using Rollout's dashboard, we will remotely configure the value of the flag, to either expose or hide this gated element at will.
+## Using a Feature Flag in Code
+In this lab, you will gate a component behind the `title` feature flag, defined in the previous lab. Later, using Rollout's dashboard, we will remotely configure the value of the flag, to either expose or hide this title element at will.
 
-### Adding a Posts Title to the Microblog
+### Adding a Title to the Microblog Post
 
-1. In Github, navigate to the root directory of your fork of the **microblog-frontend** repository. Ensure that you are within the `development` branch.
-2. Navigate to the `Posts.vue` file by navigating to `src/views/Posts.vue`. 
+1. In Github, navigate to the root directory of the microblog-frontend repository. Ensure that you are on the `development` branch.
+2. Navigate to the `Posts.vue` file (`src/views/Posts.vue`) by clicking the `src` folder, `views` folder, followed by `Posts.vue`, consecutively. 
 
 <p><img src="images/srcViewsPost.gif" />
 
@@ -13,7 +14,8 @@ In this lab, you will gate a component behind the already defined `title` featur
 
 <p><img src="images/PostsVuePencil.png" />
 
-4. In order to reference our previously created feature flags, we use the `import` statement on **Line 50**. We need to create a function called `show_title` that will return  the boolean value returned from checking `Flags.title.isEnabled()`. To declare the `show_title` function and relate it to the value of our previously created feature flag, add it after the `show_sidebar` function after **Line 63**. The `show_title` function should be added to the `data` segment as seen below: 
+4. In order to use the feature flags created in our `flags.js` file, we included the `import` statement on **Line 50**. Now, we'll create a function called `show_title` that will return the `boolean` value from `Flags.title.isEnabled()`.
+To add an additional function, first insert a comma `,` at the end of the `show_sidebar` definition on **Line 63**. Then add a new line after the comma, and define the `show_title` function as seen in the `data` segment below: 
 ```javascript
 data: function () {
   return {
@@ -27,7 +29,7 @@ data: function () {
 },
 ```
 
-5. Now we're going to add a title component that will only be displayed when `show_title` is evaluated to `true`. In line 5, add the following edits:
+5. Now we're going to add a new title component gated behind a feature flag. This will allow the element to only be displayed when the `show_title` function is evaluated to `true`. Insert the following code on **Line 5**.:
 ```html
  <h1 class="title">Posts <span v-if="show_title"> - Show New Title!</span></h1>
 ```
