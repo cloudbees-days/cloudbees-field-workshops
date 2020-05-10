@@ -9,30 +9,39 @@ count: false
 name: rollout-control-overview
 # Controlling the Value of a Feature Flag
 
-In order to control the value of a feature flag with CloudBees Rollout for this lab, we need to know a few key pieces of information:
-1. Has the flag value changed?
-2. From where was the value change initiated?
+In order to control the value of a feature flag with CloudBees Rollout for this lab, we will be creating an experiment in the dashboard.
+<br/>
+<br/>
+Experiments are how you use your feature flags to expose your target groups to different application behaviors.
 
+---
+name: rollout-control-override
 
-You can identify when Rollout SDK has loaded configuration from local storage or network by adding the `configurationFetchedHandler`.
+# Introduction to Flags Override View
 
-
-The `configurationFetchedHandler` returns `fetcherResult` which has the following information regarding the actual fetch:
-* `fetcherStatus` - an enum that identifies which configuration was fetched (from the network, from local storage, an error occurred)
-* `creationDate` - Date of configuration creation
-* `errorDetails` - The description of the error if one exists
-* `hasChanges` - Boolean `True` if the configuration differ from the one it is replacing
+The *Flags Override view* is useful for debugging purposes. It allows developers to expose a view that shows the current status for each flag, and it allows the user to override these flags. This view is usually exposed to only developers, the QA team, and the product team.
+<br/>
+<br/>
+In the *Flags Override view*, a flag can appear in the following states:
+* The *flag is on* state means the value from the server of a flag is on and is not overridden on the device.
+* The *flag is off* state means the value from the server of a flag is off and isn’t overridden on the device.
+* The *flag is overridden* state means the value from the server is overridden on this specific device.
 
 ---
 name: rollout-control-lab
 # Lab - Controlling the Value of a Feature Flag
 
-* In this lab you will add a configuration fetched handler to apply changes to microblog on page refresh
-* You will control the value of a flag by creating an experiment via the Rollout dashboard
+* In this lab you will control the value of a flag by creating an experiment via the Rollout dashboard.
+* For local testing or development, we may need to specify values for each flags on our local machines. In order to do this without affecting others' work, we will implement the Flag Override and toggle the values as needed.
 * The *Controlling the Value of a Feature Flag* lab instructions are available at:
   * [https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/rolloutExperiment/rolloutExperiment.md](https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/rolloutExperiment/rolloutExperiment.md)
 
 ---
 name: rollout-control-review
 
-not sure review of the lab is necessary... thoughts?
+# Controlling the Value of a Feature Flag Lab Review
+
+Experiments are an important concept in CloudBees Rollout. With this lab complete, you can now control the value of "default.sidebar" by creating an experiment via the Rollout dashboard.
+<br/>
+<br/>
+You also used the *Flags Override view* UI element to modify flag values to allow for validation on your local machine without affecting others' work. 
