@@ -24,7 +24,7 @@ name: agenda
 # Agenda
 
 1. Rollout Workshop Setup
-2. Gating Code with CloudBees Feature Flags
+2. Adding a Sidebar to the Microblog
 3. Controlling the Value of a Feature Flag
 4. User Targeting
 5. Analytics and A/B testing
@@ -34,11 +34,9 @@ name: agenda
 name: rollout-lab-environment
 # Lab Environment
 
-* This workshop uses the CloudBees Rollout SaaS running on AWS
-  * Each attendee will sign up for a CloudBees Rollout trial account
+* This workshop uses CloudBees Rollout SaaS version running on AWS
+  * Each attendee will sign up for a CloudBees Rollout account
   * If you are already a Rollout customer, simply sign in as usual
-* This workshop leverages CloudBees Core for automating the build and deployment of the sample application
-  * Each attendee will create their own CloudBees Core Jenkins Master that they will provision as part of the setup
 * All the instructions for the labs and these slides are publicly available in GitHub
 * Attendees will be using their own GitHub accounts
 
@@ -52,25 +50,24 @@ count: false
 
 ---
 name: feature-flag-background
-class: roomy
-
 # What is Feature Flagging?
 
-.no-bullet[
-* Feature flagging is a practice of wrapping new functionality in conditional code blocks.
-* Feature flags are used to hide, enable or disable features during runtime. With feature flags, a software feature can be tested even before it is completed and ready for release.  For example, during the development process, a developer can enable the feature for local testing and disable it for all other users.
-* Feature flagging also provides an alternative to maintaining multiple feature branches in source code.
-* This technique offers many other benefits and will be discussed in greater detail in this workshop.
-]
+At its most simplistic, feature flagging is a practice of wrapping new functionality in conditional code blocks.
+<br/>
+<br/>
+Feature flags are used to hide, enable or disable features during runtime. With feature flags, a software feature can be tested even before it is completed and ready for release.  For example, during the development process, a developer can enable the feature for local testing and disable it for all other users. Feature flagging also provides an alternative to maintaining multiple feature branches in source code.
+<br/>
+<br/>
+This technique offers many other benefits and will be discussed in greater detail in this workshop.
 
 ---
 name: rollout-overview-content
 
 .italic[
-  *95% of respondent's organizations have implemented, begun implementing, or plan to implement feature flags in the future* <br>- Atlassian / Rollout market research report 2018
+  *95% of respondent's organizations have implemented, begun implementing, or plan to implement feature flags in the future* - Atlassian / Rollout market research report 2018
 ]
 
-# Lack of Feature Flag Management
+# Feature Flag Management
 * Costly, Manual, Development Headaches
 * Risk in Testing and Production
 * Slow Time to Market
@@ -82,28 +79,28 @@ name: rollout-overview-value
 class: compact
 
 # CloudBees Feature Management Solution
-<br/>
 
 .italic[
-### *Rollout is a multi-platform, Infrastructure as Code, SaaS feature management and remote configuration solution.*
-
+*Rollout is a multi-platform, Infrastructure as Code,
+SaaS feature management and remote configuration solution.*
 ]
-### Faster Deliverya
+
+Faster Delivery
 .no-bullet[
-* Don’t wait for a feature to trickle out across multiple servers in a highly scaled application; turn it on all at once when it’s ready, or selectively enable it for targeted users.
+* Don’t wait for a feature to trickle out across multiple servers in a highly scaled application; turn it on all at once when it’s ready, or selectively enable it for users.
 ]
 
-### Safer Releases
+Safer Releases
 .no-bullet[
-* Test new code safely in production with blue/green and canary deployments. If a bug is discovered, just turn off that feature right away and then fix it.
+* Test new code  safely in production with blue/green and canary deployments. If a bug is discovered, just turn off that feature right away and then repair it.
 ]
 
-### Experimentation
+Experimentation
 .no-bullet[
 * Determine the impact of a feature on your revenue, user engagement, etc. Enable features only for your QA team to allow validation with production data.
 ]
 
-### Customization
+Customization
 .no-bullet[
 * Turn specific features on or off for particular customers, based on preferences, location, licensing, etc.
 ]
