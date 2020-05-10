@@ -12,7 +12,7 @@ name: rollout-targeting-overview
 You may not always want everyone to receive the same experience when rolling out a new feature, or simply updating an existing feature. When working with a new front-end UX design, a back-end search improvement, or anything in between, targeting specific users can help ensure the best experience for all of your customers.
 <br/>
 <br/>
-Target groups let you define groups of users based on one or more user properties or device attributes. CloudBees Rollout also includes built-in targeting using the format `rox.<attribute name>`.
+Target groups let you define groups of users based on one or more user properties or device attributes. CloudBees Rollout also includes built-in targeting using the format `rox.<attribute_name>`.
 <br/>
 <br/>
 
@@ -35,23 +35,3 @@ name: rollout-targeting-lab
 name: rollout-targeting-review
 
 not sure review of the lab is necessary... thoughts?
-
-[cols="1a,1a",options="header"]
-.Built-in attributes
-|===
-
-| Attribute Name
-| Notes
-
-| `rox.language`
-| Two letter language code, e.g., "en," "es," or "fr"
-
-| `rox.platform`
-| OS name, e.g., "iOS" or "Android"
-
-| `rox.screen_height`
-| Screen height in pixels
-
-| `rox.screen_width`
-| Screen width in pixels
-|===
