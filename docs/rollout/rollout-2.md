@@ -20,10 +20,12 @@ name: rollout-control-overview
 class: compact
 
 # Introduction to Configuration Fetching
-
+<br/>
+<br/>
 In order to see our gated code on our example application, we need to know a few key pieces of information:
 1. Has the flag value changed?
 2. From where was the value change initiated?
+<br/>
 <br/>
 <br/>
 You can identify when Rollout SDK has loaded configuration from local storage or network by adding the `configurationFetchedHandler`. The `configurationFetchedHandler` returns `fetcherResult` which has the following information regarding the actual fetch:
