@@ -83,6 +83,7 @@ class: compact
 
 # CloudBees Feature Management Solution
 <br/>
+
 .italic[
 ### *Rollout is a multi-platform, Infrastructure as Code, SaaS feature management and remote configuration solution.*
 
