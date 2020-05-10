@@ -10,12 +10,13 @@ In this lab, you will gate a component behind the `title` feature flag, defined 
 
 <p><img src="images/srcViewsPost.gif" />
 
-3. Click the pencil icon to edit the file.
+3. Select the pencil icon to edit the file.
 
 <p><img src="images/PostsVuePencil.png" />
 
-4. In order to use the feature flags created in our `flags.js` file, we included the `import` statement on **Line 50**. Now, we'll create a function called `show_title` that will return the `boolean` value from `Flags.title.isEnabled()`.
-To add an additional function, first insert a comma `,` at the end of the `show_sidebar` definition on **Line 63**. Then add a new line after the comma, and define the `show_title` function as seen in the `data` segment below: 
+4. In order to use the feature flags created in the `flags.js` file, we've included the `import` statement on **Line 50**. Now, we'll create a function called `show_title` that will return the `boolean` value from `Flags.title.isEnabled()`.
+
+To add this functionality, first insert a comma `,` at the end of the `show_sidebar` definition on **Line 63**. Then, add a new line after the comma, and define the `show_title` function as seen in the `data` segment below: 
 ```javascript
 data: function () {
   return {
@@ -29,10 +30,11 @@ data: function () {
 },
 ```
 
-5. Now we're going to add a new title component gated behind a feature flag. This will allow the element to only be displayed when the `show_title` function is evaluated to `true`. Insert the following code on **Line 5**.:
+5. Now we're going to add a new title component gated behind our `title` feature flag. This will allow the element to _only_ be displayed when `Flags.title.isEnabled()` is `true`. Insert the following code, calling the `show_title` function, on **Line 5**:
 ```html
  <h1 class="title">Posts <span v-if="show_title"> - Show New Title!</span></h1>
 ```
+
 6. After editing, expand the following to review:
 <details><summary>Updated <code>Post.vue</code></summary>
 
@@ -164,7 +166,7 @@ export default {
 
 ### Adding the Configuration Fetched Handler
 
-The Configuration Fetched Handler provides a mechanism to alert the Rollout SDK when an updated configuration, from local storage or via an asynchronous network call, has loaded. It allows us to control what happens whenever a new configuration is fetched. In order for changes to be applied for client-side flags, an action, like a page refresh, has to take place.
+The Configuration Fetched Handler provides a mechanism to alert the Rollout SDK when an updated configuration, from local storage or via an asynchronous network call, has loaded. It allows us to control what happens whenever a new configuration is fetched, and can be useful for troubleshooting by logging the `fetchedResults`. To apply the changes for client-side feature flags from the new configuration, an action (like a page refresh) has to take place.
 
 1. In Github, navigate to the root directory of the microblog-frontend repository on the `development` branch.
 2. Open the `flags.js` file (navigating to `src/utils/flag.js`), and select the pencil icon to edit the file.
@@ -186,7 +188,7 @@ export const configurationFetchedHandler = fetcherResults => {
     window.location.reload(false)
   }
   else if (fetcherResults.fetcherStatus === 'ERROR_FETCH_FAILED') {
-    console.log('Error occured during configuration fetch. Details are: ' + fetcherResults.errorDetails)
+    console.log('Error occured! Details are: ' + fetcherResults.errorDetails)
   }
 };
 
@@ -202,11 +204,11 @@ Rox.setupRox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
 
 4. Create a commit message (e.g. "Inserted configurationFetchedHandler) and select **Commit directly to the `development` branch** radio button. Click **Commit changes**.
 
-### Checking Deployed Microblog Website
+### Checking Microblog Website
 
 1. Switch tabs to your CloudBees Core team master. You should see the results of a _previous_ micoblog-frontend pipeline.
 2. In the left corner of the header, use the **right arrow** to navigate to **the most recent** pipeline run (until the right arrow is no longer shown). 
-3. Once the _entire_ pipeline is complete, navigate to the microblog website (either by switching tabs or clicking the link supplied in the last step of **Deploy** stage).
+3. Once the _entire_ pipeline is complete (header should turn green), navigate to the microblog website (either by switching tabs or clicking the link supplied in the last step of **Deploy** stage).
 4. Refresh the page, and open the console from your browser's developer tools. Check the log to view the messages from the `configurationFetchedHandler`.
 
 ### Lab 2 Completed!
