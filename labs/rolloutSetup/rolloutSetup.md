@@ -29,7 +29,7 @@ In this lab, you will set up a CloudBees Rollout account and use it to manage fe
 
 ### Create Rollout Feature Flags
 
-* The `flags.js` file defines the feature flags that an application uses. It also calls a `setup` function to establish a connection with the Rollout dashboard and allow for future, remote configuration
+* The `flags.js` file imports the relevant Rollout SDK and defines the feature flags that an application will use. It then calls a `setup` function to establish a connection with the Rollout dashboard. It's from this dashboard interface that will allow for remote configuration in future labs.
 
 1. Ensure you are on the `development` branch at the root of the microblog-frontend repository.
 2. Navigate to `src\utils\flags.js` by firstclicking the `src` folder, followed by the `utils` folder, and then the `flag.js` file.
@@ -86,7 +86,7 @@ Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
 ### Lab 1 Completed!
 Congratulations! You have finished Lab 1 of the CloudBees Rollout Workshop.
 
-**For instructor led workshops please return to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/rollout/#1).**
+**For instructor led workshops please return to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/rollout/#12).**
 
 Otherwise, you may proceed to the next lab: [**Gating a Component with a CloudBees Feature Flag**](../rolloutFeature/rolloutFeature.md) or choose another lab on the [main page](../../README.md#workshop-labs).
 
