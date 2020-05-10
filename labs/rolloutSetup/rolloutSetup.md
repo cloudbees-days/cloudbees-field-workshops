@@ -89,4 +89,3 @@ Congratulations! You have finished Lab 1 of the CloudBees Rollout Workshop.
 **For instructor led workshops please return to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/rollout/#12).**
 
 Otherwise, you may proceed to the next lab: [**Gating a Component with a CloudBees Feature Flag**](../rolloutFeature/rolloutFeature.md) or choose another lab on the [main page](../../README.md#workshop-labs).
-
