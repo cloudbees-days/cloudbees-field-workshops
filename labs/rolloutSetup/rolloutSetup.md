@@ -27,11 +27,11 @@ In this lab, you will set up a CloudBees Rollout account and use it to manage fe
 
 ### Create Rollout Feature Flags
 
-The `flags.js` file imports the relevant Rollout SDK and defines the feature flags an application will use. It then calls a `setup` function to establish a connection to the Rollout dashboard. The Rollout dashboard interface will allow for remote configuration in future labs.
+The `flags.js` file imports the relevant Rollout SDK and defines the feature flags (with its `DEFAULT` values) that an application will use. The file contains a call to the `setup` function that establishes a connection to the Rollout dashboard. The Rollout dashboard interface will allow for remote configuration in future labs.
 
 1. In Github, navigate to the root level of the microblog-frontend repository (Ensure you are working on the `development` branch).
 2. Change directories and select the `flags.js` file (`src\utils\flags.js`) by first clicking the `src` folder from root view, followed by the `utils` folder, and finally select the subsequent `flag.js` file.
-3. Click the pencil to edit the file. Define the `title` flag by adding the following within the `const Flag` section after **Line 4**:
+3. We will later add a component to the **Posts view** of the microblog application that is gated by a `title` feature flag. Click the pencil to edit the file. Define the `title` flag and its default value (`false`) by adding the following within the `const Flag` section after **Line 4**:
 ```javascript
 export const Flags = {
 	sidebar: new Rox.Flag(false),
