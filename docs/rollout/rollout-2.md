@@ -38,8 +38,8 @@ name: rollout-sidebar-lab
 
 # Lab - Gating Code with CloudBees Feature Flags
 
-* In this lab, you will create a title component and add it to the **microblog-frontend** sample application. Since this component is *experimental*, we will gate it behind our previously created feature flag (`title: new Rox.flag(false)`) that will initially hide it. Then, using Rollout's dashboard, we will remotely configure the value of the flag, enabling the title.
-
+* In this lab, you will create a title component and add it to the **microblog-frontend** sample application. Since this component is *experimental*, we will gate it behind our previously created feature flag (`title: new Rox.flag(false)`) that will initially hide it.
+* Using Rollout's dashboard, we will remotely configure the value of the flag, enabling the title.
 * The *Gating Code with CloudBees Feature Flags* lab instructions are available at:
   * [https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/rolloutFeature/rolloutFeature.md](https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/rolloutFeature/rolloutFeature.md)
 

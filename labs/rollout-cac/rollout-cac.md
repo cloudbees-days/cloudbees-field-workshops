@@ -13,7 +13,7 @@
 5. Click connect and you are done
 
 ### Using CasC and GitOps
-1. In the Rollout dashboard, disable the side experiment in Development environment by toggling `Active` to `Killed`.
+1. In the Rollout dashboard, disable the sidebar experiment in Development environment by toggling `Active` to `Killed`.
 
 <p><img src="images/sidebar_killed.png" />
 
