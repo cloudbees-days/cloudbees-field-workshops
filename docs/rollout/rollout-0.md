@@ -76,7 +76,6 @@ name: rollout-overview-content
 
 ---
 name: rollout-overview-value
-class: compact
 
 # CloudBees Feature Management Solution
 
