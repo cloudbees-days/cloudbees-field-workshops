@@ -21,7 +21,6 @@ class: compact
 
 # Introduction to Configuration Fetching
 <br/>
-<br/>
 In order to see our gated code on our example application, we need to know a few key pieces of information:
 1. Has the flag value changed?
 2. From where was the value change initiated?
