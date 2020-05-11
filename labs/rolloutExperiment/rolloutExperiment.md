@@ -1,17 +1,24 @@
 # <img src="images/Rollout-blue.svg" alt="CloudBees Rollout Logo" width="40" align="top"> Control the Value of a Flag with CloudBees Rollout
 
-### Control the Value of a Feature Flag
+## Control the Value of a Feature Flag
+In this lab, you will use the CloudBees Rollout dashboard to remotely configure the values of the `title` and `sidebar` feature flags. Additionally, we will introduce the Flag Override tool, and walk through a scenario where developers may need to alter a flag's for local testing without affecting the values for others.
 
-1. Navigate to the Rollout Dashboard.
-2. On the left-hand side of the screen, click Development, and then Experiments from the expanded list. Then, click "Create a New Experiment" button.
+### Creating a Rollout Experiment
+
+1. Bring up to the Rollout Dashboard.
+2. On the left-hand side of the screen, click the **Development** environment, and then select **Experiments** from the expanded list. From the view that follows, click the **Create a New Experiment** button.
+
 <p><img src="images/ProdCreateNewExp.png" />
 
-3. In the pop-up, ensure the "default.title" flag is selected from the drop-down menu before clicking **Set Audience**.
-4. Right now, the title is not updated is not because the value of the feature flag is set to `False` by default. Click on the drop-down menu next to then, and select `True`. Finally, to update the `title` flag's boolean value, click "Update Audience" button.
+3. In the pop-up menu, choose the "default.title" flag from the drop-down. To set up the experiment, choose the **Set Audience** button.
+4. Right now, the new title is hidden for all. And the title experiment reflects this: the only condition uses the `title` flag's default value (False). This default experiment is set for the audience defined on **All Versions** (the microblog only has 1 version) and **All Users**.
+5. Let's change the flag's experiment so that all users will see the new title. Click the current **False** behavior value, and from the drop-down menu, choose **True** to edit the `title` flag experiment.
+6. When changes to an experiment are applied, a new configuration file is written and delivered to the devices. Select **Update Audience** button to send the new configuration with its updated `title` flag value.
 <p><img src="images/UpdateAudience.gif" />
 
-5. Navigate to the Microblog website, and ensure that the page refreshes automatically. Then the new title should appear!
-6. Navigate back to the Rollout Dashboard.
+7. Switch tabs to bring up the Microblog website. Thanks to the `configurationFetchedHandler` implemented in the previous lab, the page refreshes automatically and the new configuration applied. Then the new title should appear!
+8. Switch tabs to bring CloudBees Core into view. The _most recent_ should be the deployment induced from adding the configurationFetchedHandler to `flags.js` in the previous lab. We have successfully changed the behavior of feature flag gated code from an dashboard and **without additional code deployments**. 
+6. Navigate back to the Rollout dashboard.
 7. On the left-hand side of the screen, click Development, and then Experiments from the expanded list. Then, click "Create a New Experiment" button. In the pop-up, select "default.sidebar" before clicking **Set Audience**.
 <p><img src="images/CreateNewSidebarExp.png" />	
 8. Remotely configure the value of the `sidebar` flag from `False` to `True`.
