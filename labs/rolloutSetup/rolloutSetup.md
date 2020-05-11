@@ -5,33 +5,33 @@ In this lab, you will set up a CloudBees Rollout account and use it to manage fe
 
 ### Create a CloudBees Rollout Account
 
-1. In a new tab, navigate to the CloudBees Rollout [sign-up URL](https://app.rollout.io/signup).
-2. Fill out the form with your name, email, and created password. After confirming your password,  check the box agreeing to Rollout's Terms of Service (which can be viewed [here](https://docs.cloudbees.com/docs/cloudbees-common/latest/subscription-agreement/)).
-3. In order to control feature flags from the Rollout dashboard, we have to add the `<ROLLOUT_ENV_KEY>` to our microblog code. On the far left side of the dashboard, click the **App Settings** panel. From the resulting page, select the **Environments** tab.
-4. Click to copy your unique `<ROLLOUT_ENV_KEY>` associated with the Production environment and paste it in a notepad for future reference.
-5. Click **Add New Environment** and name it Development.
-6. CLick to copy your unique `<ROLLOUT_ENV_KEY>` associated with the Development environment and paste it in a notepad for later.
-
+1. Open the CloudBees Rollout [sign-up form](https://app.rollout.io/signup) in a _new tab_ within your internet browser.
+2. Fill out the form with your name, email, and a created password. After confirming your password,  check the box agreeing to Rollout's Terms of Service (which can be viewed [here](https://docs.cloudbees.com/docs/cloudbees-common/latest/subscription-agreement/)), and click **Sign Up**.
+3. After sign up, the Rollout dashboard should be displayed. On the far left side of the dashboard, click the **App Settings** panel. From the resulting page, select the **Environments** tab.
+4. Click **Add New Environment** and name it **Development**. Then click **Generate Key**. 
+5. **Close** the subsequent **Development Key** pop-up window so that both _Production_ and _Development_ keys are displayed. Leave this Rollout dashboard tab open in the browser. Both keys will be referenced later in this lab.
 
 ### Environment Vairable
 
-1. In Github, navigate to the microblog-frontend repository previously forked to the organization.
-2. Ensure you are on the `master branch`. Click the `.env.production` file.
-3. Select the pencil icon to edit the file. On line 1, paste your _Production_ `<ROLLOUT_ENV_KEY>` _after_ the equals sign(=). Ensure the key is surrounded by 'single quotes', as seen below.
-4. Commit the file to the `master` branch.
-5. Click `Branch: master`, and select `development` to switch branches.
-6. Now within the `development` branch, click the `.env.development` file. Select the pencil icon on the following page to edit the file. Then, paste your _Development_ `<Rollout_ENV_KEY>` after the equals sign on line 1. Ensure it surrounded by 'single quotes'.
-7. Commit the file directly to the `development` branch.
+1. Switch tabs to your Github organization created for the workshop. Navigate to the microblog-frontend repository within your organization.
+2. Change the branch from `master` to `development`. _All work until some components of Lab 6 will take place on the `development` brach_. After changing branches, select the `.env.production` file.
+3. Click the pencil icon to edit the file. Switch back to your Rollout tab with the dashboard in view.
+4. Copy the `<ROLLOUT_ENV_KEY>` associated with the _Production_ environment. Switch back to the Github tab with the `.env.production` file being edited.
+5. Replace `YOUR_PRODUCTION_KEY_HERE` on **Line 1** by pasting your unique Production `<ROLLOUT_ENV_KEY>`.
+6. At the bottom of the page, select **Commit directly to the `development` branch** radio button. Then click the **Commit changes** button.
+7. Navigate back to the root directory of the microblog-frontend repository (`development` branch). Click the `.env.development` file. And then select the pencil icon on the following page to make an edit to the file.
+8. Now, copy your _Development_ `<ROLLOUT_ENV_KEY>` from the Rollout dashboard. Then replace `YOUR_DEVELOPMENT_KEY_HERE` in the `.env.development` file by pasting the unique Development Rollout key.
+9. Select the **Commit the file directly to the `development` branch** radio button, and then click **Commit changes**.
 
 <p><img src="images/RolloutEnvKey.png" />
 
 ### Create Rollout Feature Flags
 
-* The `flags.js` file defines the feature flags that our application will use and then registers those flags for remote configuration via a `setup` call to the dashboard.
+The `flags.js` file imports the relevant Rollout SDK and defines the feature flags (with its `DEFAULT` values) that an application will use. The file contains a call to the `setup` function that establishes a connection to the Rollout dashboard. The Rollout dashboard interface will allow for remote configuration in future labs.
 
-1. Ensure you are on the `development` branch at the root of the microblog-frontend repository.
-2. Navigate to `src\utils\flags.js` by clicking the `src` folder, followed by the `utils` folder, then the `flag.js` file.
-3. Click the pencil to edit the `flags.js` file. Define the `title` toggle by adding the following within the `const Flag` section:
+1. In Github, navigate to the root level of the microblog-frontend repository (Ensure you are working on the `development` branch).
+2. Change directories and select the `flags.js` file (`src\utils\flags.js`) by first clicking the `src` folder from root view, followed by the `utils` folder, and finally select the subsequent `flag.js` file.
+3. We will later add a component to the **Posts view** of the microblog application that is gated by a `title` feature flag. Click the pencil to edit the file. Define the `title` flag and its default value (`false`) by adding the following within the `const Flag` section after **Line 4**:
 ```javascript
 export const Flags = {
 	sidebar: new Rox.Flag(false),
@@ -39,7 +39,7 @@ export const Flags = {
 };
 ```
 
-**The `flags.js` should be**
+**After this edit, the `flags.js` should be**
 <details><summary>this:</summary>
 
 ```javascript
@@ -59,57 +59,31 @@ Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
 ```
 </details>
 
-4. Commit the changes by adding a comment (e.g. "added title flag"), and select the **Commit directly to the development branch** radio button, before clicking **Commit changes**.
+4. Commit the changes by adding a comment (e.g. "added title flag"), and select the **Commit directly to the `development` branch** radio button. And then click **Commit changes**.
 
-### Adding .vuejs
+### Adding .vuejs Marker File
 
-1. At root of `development` branch, click **Create a new file** button.
-2. Name your file `.vuejs` (don't forget leading period)
-3. Leave the file blank, commit the file by adding a comment (e.g. "New .vuejs file"). Ensure the **Commit directly to the `development` branch** radio button is enabled, the click **Commit new file**.
-Type `initRollout` then click **"Create branch: initRollout from development"** to finish creating a new branch.
+1. Navigate to the root level of the microblog-frontend repository on the `development` branch. Click the **Create a new file** button.
+2. Name the file `.vuejs` (don't forget the leading period).
+3. Leave the file blank, commit the file by adding a comment (e.g. "New .vuejs file"). Ensure the **Commit directly to the `development` branch** radio button is enabled. Then select **Commit new file**.
 
-### Checking
-1. Navigate to CloudBees Core.
-2. Navigate to `microblog-frontend`
-3. Open Blue Ocean
-4. Click `development` branch to see the pipeline.
-5. Click deploy, and the last shell script
+### See Deployed Microblog Website
 
+1. Switch tabs to your CloudBees Core team master. Select the **Blue Ocean** view associated with your team master. Then, click the **Pipelines** panel in the header of the Blue Ocean view.
+2. Select the `microblog-frontend` pipeline. Then, click on the job currently running from the changes made on the `development` branch.
+3. On the next page, you should see 3 stages that define the pipeline. Click the **Deploy** stage to see all the steps that will run during this stage.
+4. When the **Deploy** stage has completed (indicated by the header turning green), select the last **Shell Script** step.
+5. Open the the URL in a new tab (that follows the format: `http://development.YOUR_ORG_NAME-microblog-frontend.v1.k8s.tel`). This is the microblog!
 
-<p><img src="images/initRolloutBranch.gif" />
+### Checking Communication with CloudBees Rollout
 
-4. Ensure you are within the `development` branch, then navigate to `src/utils/` directory by clicking `src` then `utils`.
+1. Switch tabs to CloudBees Rollout.
+2. On the left-hand side of the dashboard, click the **Development** panel and then select the **Audit Logs** view from the drop down options.
+3. You should see both the `default.title` and the `default.sidebar` flags added from the code are available for remote configuration in the dashboard! There are also some default properties that have been added, but we'll add more to use in a future lab.
 
-<p><img src="images/srcCreateNewFile.png" />
+### Lab 1 Completed!
+Congratulations! You have finished Lab 1 of the CloudBees Rollout Workshop.
 
-5. 
-<p><img src="images/utilsFlagJS.gif" />
-
-6. In this file, you need to import the Rollout library, create a feature flag for a sidebar element, then setup the connection to the dashboard using the `<ROLLOUT_ENV_KEY>`. To do this, type the follow snippet within the Github code editor. Make sure that you replace `<ROLLOUT_ENV_KEY>` with your unique key copied earlier.
-```javascript
-import Rox from 'rox-browser'
-
-export const Flags = {
-	sidebar: new Rox.Flag(false)
-};
-
-Rox.register('default', Flags);
-
-Rox.setup("<ROLLOUT_ENV_KEY>");
-```
-7. Create a commit message (e.g. Create flag.js) and select **Commit directly to the `initRollout` branch** radio button. The file and its directory path should look similar to the picture below. Then click **Commit new file**.
-
-<p><img src="images/flagJSCommit.png" />
-
-8. **Need to edit** Create a pull request from initSidebar to `Development` branch. Merge.
-
-9. **Need to edit** Open the URL produced from the Core Development branch job.
-
-10. Navigate to the Rollout Dashboard, and click **Install Instructions** panel on the left. A succesful connection message should be displayed like the one below.
-
-<p><img src="images/SuccessfullyRunCode.png" />
-
-11. **For instructor led workshops please return to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/rollout/#12).**
+**For instructor led workshops please return to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/rollout/#12).**
 
 Otherwise, you may proceed to the next lab: [**Gating a Component with a CloudBees Feature Flag**](../rolloutFeature/rolloutFeature.md) or choose another lab on the [main page](../../README.md#workshop-labs).
-
