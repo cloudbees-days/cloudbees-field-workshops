@@ -202,7 +202,7 @@ Rox.setupRox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
 ```
 </details>
 
-4. Create a commit message (e.g. "Inserted configurationFetchedHandler) and select **Commit directly to the `development` branch** radio button. Click **Commit changes**.
+4. Create a commit message (e.g. "Inserted configurationFetchedHandler") and select **Commit directly to the `development` branch** radio button. Click **Commit changes**.
 
 ### Checking Microblog Website
 
