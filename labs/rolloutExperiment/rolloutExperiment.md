@@ -1,6 +1,7 @@
-# <img src="images/Rollout-blue.svg" alt="CloudBees Rollout Logo" width="40" align="top"> Control the Value of a Flag with CloudBees Rollout
+# <img src="images/Rollout-blue.svg" alt="CloudBees Rollout Logo" width="40" align="top"> Using CloudBees Rollout to Control Flags
 
-## Control the Value of a Feature Flag
+## Using CloudBees Rollout to Control Feature Flag Values
+
 In this lab, you will use the CloudBees Rollout dashboard to remotely configure the values of the `title` and `sidebar` feature flags. Additionally, we will introduce the Flag Override tool, and walk through a scenario where developers may need to alter a flag's for local testing without affecting the values for others.
 
 ### Creating a Rollout Experiment
