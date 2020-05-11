@@ -14,7 +14,7 @@ In this lab, you will set up a CloudBees Rollout account and use it to manage fe
 ### Environment Vairable
 
 1. Switch tabs to your Github organization created for the workshop. Navigate to the microblog-frontend repository within your organization.
-2. Change the branch from `master` to `development`. _All work until Lab 5 will take place on the `development` brach_. After changing branches, select the `.env.production` file.
+2. Change the branch from `master` to `development`. _All work until some components of Lab 6 will take place on the `development` brach_. After changing branches, select the `.env.production` file.
 3. Click the pencil icon to edit the file. Switch back to your Rollout tab with the dashboard in view.
 4. Copy the `<ROLLOUT_ENV_KEY>` associated with the _Production_ environment. Switch back to the Github tab with the `.env.production` file being edited.
 5. Replace `YOUR_PRODUCTION_KEY_HERE` on **Line 1** by pasting your unique Production `<ROLLOUT_ENV_KEY>`.
