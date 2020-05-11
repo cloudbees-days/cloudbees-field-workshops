@@ -6,7 +6,7 @@ In this lab, you will use the CloudBees Rollout dashboard to remotely configure 
 
 ### Creating a Rollout Experiment
 
-1. Bring up to the Rollout Dashboard.
+1. Switch tabs to bring up the Rollout Dashboard.
 2. On the left-hand side of the screen, click the **Development** environment, and then select **Experiments** from the expanded list. From the view that follows, click the **Create a New Experiment** button.
 
 <p><img src="images/ProdCreateNewExp.png" />
