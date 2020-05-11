@@ -19,7 +19,7 @@ Rox.setCustomBooleanProperty('isBetaUser', betaAccess());
 ```
 
 4. Review your edits with updated code below
-<details><summary>Final <code>flag.js</code></summary>
+<details><summary>Updated <code>flag.js</code></summary>
 
 ```javascript
 import Rox from 'rox-browser'
@@ -95,4 +95,4 @@ Congratulations! You have finished Lab 4 of the CloudBees Rollout Workshop.
 
 **For instructor led workshops please return to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/rollout/#26)**
 
-Otherwise, you may proceed to the next lab: [**Leveraging Analytics with Rollout**](../rolloutAnalytics/rolloutAnalytics.md) or choose another lab on the [main page](../../README.md#workshop-labs).
+Otherwise, you may proceed to the next lab: [**Leveraging Analytics with CloudBees Rollout**](../rolloutAnalytics/rolloutAnalytics.md) or choose another lab on the [main page](../../README.md#workshop-labs).
