@@ -19,7 +19,7 @@ Rox.setCustomBooleanProperty('isBetaUser', betaAccess());
 ```
 
 4. Review your edits with updated code below
-<details><summary>Updated <code>flag.js</code></summary>
+<details><summary>Updated <code>flags.js</code></summary>
 
 ```javascript
 import Rox from 'rox-browser'
