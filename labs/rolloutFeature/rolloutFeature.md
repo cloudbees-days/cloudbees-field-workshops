@@ -197,7 +197,7 @@ const options = {
 };
 
 Rox.register('default', Flags);
-Rox.setupRox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
+Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
   
 ```
 </details>
