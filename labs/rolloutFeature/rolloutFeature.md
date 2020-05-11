@@ -165,12 +165,12 @@ export default {
 
 ### Adding the Configuration Fetched Handler
 
-The Configuration Fetched Handler provides a mechanism to alert when the Rollout SDK has loaded updated configuration from local storage or via an asynchronous network call. It allows us to control what happens whenever a new configuration is fetched. In order for changes to be applied, an action has to take place, like a page refresh.
+The Configuration Fetched Handler provides a mechanism for an application to identify when the Rollout SDK has loaded updated configuration from local storage or via an asynchronous network call. It allows us to control what happens when a new configuration is fetched. In order for changes to be applied, an action has to take place, like a page refresh.
 1. In Github, navigate to the root directory of the microblog-frontend repository.
 2. Ensure you are on the `development` branch. Then, open the `flags.js` file (`src/utils/flag.js`).
 3. Insert the `configurationFetchedHandler` constant **and** ensure it is called in `options` as seen in the `flag.js` file below:
 
-<details><summary><code>flags.js</code></summary>
+<details><summary>Updated <code>flags.js</code></summary>
 
 ```javascript
 import Rox from 'rox-browser'
@@ -201,12 +201,12 @@ Rox.setupRox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
 
 ### Checking
 
-1. Navigate to CloudBees Core.
-2. Navigate to `microblog-frontend`
+1. Navigate to your CloudBees Core Team Master.
+2. Navigate to the **microblog-frontend** Jenkins Pipeline job for your **development** branch.
 3. Open Blue Ocean
 4. Click `development` branch to see the pipeline.
 5. Click deploy, and the last shell script. Open the URL 
 
-* **For instructor led workshops please return to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/rollout/#1)**
+* **For instructor led workshops please return to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/rollout/#15)**
 
 Otherwise, you may proceed to the next lab: [**Control the Value of a Flag with CloudBees Rollout**](../rolloutExperiment/rolloutExperiment.md) or choose another lab on the [main page](../../README.md#workshop-labs).
