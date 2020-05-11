@@ -106,7 +106,7 @@ const options = {
 };
 
 Rox.setCustomBooleanProperty('isLoggedIn', store.getters.isLoggedIn);
-Rox.setCustomBooleanProperty('isBetaUser', betaAccess())
+Rox.setCustomBooleanProperty('hasBetaAccess', betaAccess())
 
 Rox.register('default', Flags);
 Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
