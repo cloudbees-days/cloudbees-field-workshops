@@ -46,7 +46,7 @@ const options = {
 };
 
 Rox.setCustomBooleanProperty('isLoggedIn', store.getters.isLoggedIn);
-Rox.setCustomBooleanProperty('isBetaUser', betaAccess())
+Rox.setCustomBooleanProperty('isBetaUser', betaAccess());
 
 Rox.register('default', Flags);
 Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
@@ -54,9 +54,9 @@ Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
 ```
 </details>
 
-5. Create a commit message (e.g. "Added setCustomBooleanProperty"). Commit directly to the `development` branch. Then click **Commit changes**.
+5. Create a commit message (e.g. "Added setCustomBooleanProperty"). **Commit changes** directly to the `development` branch.
 
-### Using A Single Property to Define a User Group.
+### Segment Title Experiment Using A Single Property
 
 1. Switch tabs to bring up the microblog website. To check the current width, bring up Developer Tools. In the console, type `window.innerWidth` and note the value returned.
 2. We will initially segment a flag's value based on a _single_ property (`rox.screen_width`). Bring up the Rollout dashboard, and within the Development environment view, select the **title** experiment.
@@ -86,7 +86,7 @@ Reflect this logic in the **BetaUsers** Target Group Window by _first_ defining 
 3. Edit the older condition that became the `else` block such that the sidebar flag value will be **False**. The experiment modifications should be appear similar to the below image.
 
 4. Apply the experimentation changes through clicking **Update Audience**.
-5. Navigate to the microblog websiteto test the configuration logic. 
+5. Navigate to the microblog website to test the configuration logic. 
 * Log in with the username `admin` and the password `admin` and then navigate back to the homepage. The sidebar should be hidden! 
 * Log out, and sign in with the username `betauser` and `betauser` password. Upon, navigating back to the homepage the sidebar is now displayed, as we configured it to be _only for Beta Users_.
 
