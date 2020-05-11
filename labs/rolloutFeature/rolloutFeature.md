@@ -169,8 +169,8 @@ export default {
 The Configuration Fetched Handler provides a mechanism to alert the Rollout SDK when an updated configuration, from local storage or via an asynchronous network call, has loaded. It allows us to control what happens whenever a new configuration is fetched, and can be useful for troubleshooting by logging the `fetchedResults`. To apply the changes for client-side feature flags from the new configuration, an action (like a page refresh) has to take place.
 
 1. In Github, navigate to the root directory of the microblog-frontend repository on the `development` branch.
-2. Open the `flags.js` file (navigating to `src/utils/flag.js`), and select the pencil icon to edit the file.
-3. We will induce the page refresh when a **new** configuration is retrieved **from the network**. We can also assist in any troubleshooting by adding `console.log` statements. Define the `configurationFetchedHandler` constant with its boolean logic cases; also, **ensure it is called in `options` constant** as seen in the `flag.js` file below:
+2. Open the `flags.js` file (navigating to `src/utils/flags.js`), and select the pencil icon to edit the file.
+3. We will induce the page refresh when a **new** configuration is retrieved **from the network**. We can also assist in any troubleshooting by adding `console.log` statements. Define the `configurationFetchedHandler` constant with its boolean logic cases; also, **ensure it is called in `options` constant** as seen in the `flags.js` file below:
 
 <details><summary>Updated <code>flags.js</code></summary>
 

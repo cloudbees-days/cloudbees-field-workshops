@@ -7,8 +7,8 @@ This lab will leverage CloudBees Rollout's `impressionHandler` to forward flag i
 ### Adding the ImpressionHandler to Code
 **TO DO, add brief explanation on the ImpressionHandler**
 
-1. Switch tabs to bring up the microblog-frontend repository. Within the root directory, on the `development` branch, navigate to the public folder. Then select the `index.html` file to the `flags.js` file (`src/utils/flags.js`).
-2. Google Analytics requires a site tag. Select the pencil icon to edit, and remove the comments on **Line 5** and **Line 13** so that the `gtag.js` can be seen.
+1. Switch tabs to bring up the microblog-frontend repository. Within the root directory, on the `development` branch, navigate to the public folder. Then select the `index.html` file.
+2. Google Analytics requires a site tag. Select the pencil icon to edit the `index.html` file, and remove the comments on **Line 5** and **Line 13** so that the `gtag.js` can be seen.
 
 3. Review the edits below in
 <details><summary>Updated <code>index.html</code></summary>
@@ -45,9 +45,9 @@ This lab will leverage CloudBees Rollout's `impressionHandler` to forward flag i
 ```
 </details>
 
-4. Create a commit message (e.g. "insert gtag.js"). Then **Commit changes** directly to `development branch`.
+4. Create a commit message (e.g. "insert gtag.js"). Then **Commit changes** directly to `development` branch.
 5. From the microblog's root directory on the `development` branch, navigate to the `flags.js` file (`src/utils/flags.js`).
-6. We want to send data to Google Analytics, but may only want to send _some_ of the flag data, like only the flag data that is used in the A/B experiment. Click the pencil to edit the file. On **Line 16** insert a new line then implement `impresionHandler` constant seen below:
+6. We want to send data to Google Analytics, but may only want to send _some_ of the flag data, like only if the flag data is used in our A/B **title** experiment. Click the pencil to edit the file. On **Line 16** insert a new line then implement `impresionHandler` constant seen below:
 ```javascript
 export const impressionHandler = (reporting, experiment) => {
   if (experiment.name === 'title') {
@@ -59,10 +59,10 @@ export const impressionHandler = (reporting, experiment) => {
   } else {
     console.log('Not in title experiment. Flag ' + reporting.name + '. default value ' + reporting.value + ' was used')
   }
-}
+};
 ```
 
-7. After the definition of the `impressionHandler`, include a call within the `options` constant. After the configurationFetchedHandler call, insert a comma then implement:
+7. Within the `options` constant, include a call to the newly defined `impressionHandler`. After the configurationFetchedHandler call, insert a comma then and make the `impressionHandler` part of the options as seen below:
 ```javascript
 const options = {
   configurationFetchedHandler: configurationFetchedHandler,
