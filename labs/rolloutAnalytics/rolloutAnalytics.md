@@ -8,7 +8,7 @@ This lab will leverage CloudBees Rollout's `impressionHandler` to forward flag i
 **TO DO, add brief explanation on the ImpressionHandler**
 
 1. Switch tabs to bring up the microblog-frontend repository. Within the root directory, on the `development` branch, navigate to the public folder. Then select the `index.html` file to the `flags.js` file (`src/utils/flags.js`).
-2. Google Analytics requires a site tag. Select the pencil icon to edit, and remove the comment **Line 5** and **Line 13** so that the `gtag.js` can be seen.
+2. Google Analytics requires a site tag. Select the pencil icon to edit, and remove the comments on **Line 5** and **Line 13** so that the `gtag.js` can be seen.
 
 3. Review the edits below in
 <details><summary>Updated <code>index.html</code></summary>
