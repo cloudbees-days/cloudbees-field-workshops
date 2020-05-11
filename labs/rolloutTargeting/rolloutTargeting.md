@@ -15,7 +15,7 @@ import { betaAccess } from './users'
 3. The `isLoggedIn` and `betaAccess` boolean functions have to be communicated to the Rollout dashboard. To accomplish this, set up a `setCustomBooleanProperty` call for each of the functions. Before the `Rox.register` line, add the following lines:
 ```javascript
 Rox.setCustomBooleanProperty('isLoggedIn', store.getters.isLoggedIn);
-Rox.setCustomBooleanProperty('isBetaUser', betaAccess());
+Rox.setCustomBooleanProperty('hasBetaAccess', betaAccess());
 ```
 
 4. Review your edits with updated code below
@@ -46,7 +46,7 @@ const options = {
 };
 
 Rox.setCustomBooleanProperty('isLoggedIn', store.getters.isLoggedIn);
-Rox.setCustomBooleanProperty('isBetaUser', betaAccess());
+Rox.setCustomBooleanProperty('hasBetaAccess', betaAccess());
 
 Rox.register('default', Flags);
 Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
@@ -72,7 +72,7 @@ Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
 2. We are going to create a new Target Group, _useful when defined by 2 or more `customProperties`_. First name the new group **BetaUsers**, a subset that will be defined by the `isLoggedIn` and `betaAccess` properties. 
 3. A microblog user is considered part of the **BetaUsers** group when **both** of the following conditions are met:
 * `isLoggedIn` is **True**
-* `betaAccess` is **True**
+* `hasBetaAccess` is **True**
 
 Reflect this logic in the **BetaUsers** Target Group Window by _first_ defining that the `isLoggedIn` property is **True**. Then, **Add a New Condition**, select the subsequent _Matches All Conditions_ option, and ensure that `betaAccess` must also be **True**.
 4. The **BetaUsers** Target Group definition should look similar to that below. Then click **Create Group** so the defined Target Group can be used in experiments.
