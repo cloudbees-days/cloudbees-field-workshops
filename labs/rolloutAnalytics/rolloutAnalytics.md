@@ -110,7 +110,7 @@ Rox.setCustomBooleanProperty('hasBetaAccess', betaAccess())
 
 Rox.register('default', Flags);
 Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
-  
+
 ```
 </details>
 
@@ -130,9 +130,7 @@ Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
 * Include SA Discussion points
 * Make an option to include their own GA property tag
 
-### Lab 5 Completed!
-Congratulations! You have finished Lab 5 of the CloudBees Rollout Workshop.
+### Lab 6 Completed!
+You have successfully completed the introductory CloudBees Rollout workshop!
 
-**For instructor led workshops please return to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/rollout/#30)**
-
-Otherwise, you may proceed to the next lab: [**CloudBees Rollout Configuration as Code**](../rollout-cac/rollout-cac.md) or choose another lab on the [main page](../../README.md#workshop-labs).
+Please return to the [main page](../../README.md#workshop-labs) for other workshops and labs.
