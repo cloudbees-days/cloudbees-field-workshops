@@ -95,4 +95,4 @@ Congratulations! You have finished Lab 4 of the CloudBees Rollout Workshop.
 
 **For instructor led workshops please return to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/rollout/#25)**
 
-Otherwise, you may proceed to the next lab: [**Leveraging Analytics with CloudBees Rollout**](../rolloutAnalytics/rolloutAnalytics.md) or choose another lab on the [main page](../../README.md#workshop-labs).
+Otherwise, you may proceed to the next lab: [**Rollout Configuration as Code**](../rollout-cac/rollout-cac.md) or choose another lab on the [main page](../../README.md#workshop-labs).
