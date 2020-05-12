@@ -6,10 +6,27 @@
 2. Fill out the form and make sure to save your password. If you don't already have the **Invite code** it will be provided by your instructor. <p><img src="images/registration-form.png" width=600/>
 3. Click the **Sign up** button.
 
+## Login to CloudBees Core
+
+1. Goto to the Workshop URL provided by the instructor.
+2. Enter the username and password you created in the workshop registration form into the login screen.<p><img src="images/setup-login.png" width=400/>
+
+## Create a Team Master
+
+1. If not in CloudBees Team UI, click on the **Teams** link in the left menu. <p><img src="images/setup-classic-ui-Teams-link.png" width=400/>
+2. Click on the **Create team** button in the center of your screen.<p><img src="images/setup-create-a-team.png" width=400/>
+3. **Name this team** - enter a name for your team - **IMPORTANT: to ensure uniqueness, use your GitHub username** and then click **Next**.<p><img src="images/setup-name-this-team.png" width=450/>
+4. **Choose an icon for this team** to help uniquely identify your team - select an icon and color for your team and then click **Next**.
+5. **Add people to this team** - your user will show up as a **Team Admin** and we won't be adding any additional users right now, but feel free to look around and then click **Next**.
+6. **Select the cluster endpoint to create the team in** - just stick with the default value `kubernetes` and click **Next**.
+7. **Select team master creation recipe** - click on the drop-down to see the options, but just stick with the **Basic** recipe.
+8. Finally, click the **Create team** button. <p><img src="images/setup-create-team.png" width=450/>
+9. While your Core Team Master is being created (**it takes anywhere from 2-3 minutes to provision your Team Master**), move onto the next section.
+
 ## Create a GitHub.com Account
 
 Feel free to use an existing GitHub.com account, otherwise create one:
-1. Visit https://github.com/join and fill in the required fields to create a user account.
+1. In a new browser tab or window, visit https://github.com/join and fill in the required fields to create a user account.
 2. Select "Unlimited public repositories for free" when choosing your plan.
 3. Verify your email account to ensure you account is activated.  An activated account will be **required** for the rest of this workshop.
 
@@ -27,26 +44,9 @@ Feel free to use an existing GitHub.com account, otherwise create one:
 4. On the **Invite organization members** - just click the **Continue** button. On the next page, **Enter Organization Details**, either click **Submit** button or **skip this step** to finish creating the GitHub Organization.
 
 >NOTE: Even though you have to provide an email for billing, you will NOT be charged anything as long as you choose the free option.
-
-### Login to CloudBees Core
-
-1. Goto to the Workshop URL provided by the instructor.
-2. Enter the username and password you created earlier into the login screen.<p><img src="images/setup-login.png" width=400/>
-
-### Create a Team Master
-
-1. If not in CloudBees Team UI, click on the **Teams** link in the left menu. <p><img src="images/setup-classic-ui-Teams-link.png" width=400/>
-2. Click on the **Create team** button in the center of your screen.<p><img src="images/setup-create-a-team.png" width=400/>
-3. **Name this team** - enter a name for your team - **IMPORTANT: to ensure uniqueness, use your GitHub username** and then click **Next**.<p><img src="images/setup-name-this-team.png" width=450/>
-4. **Choose an icon for this team** to help uniquely identify your team - select an icon and color for your team and then click **Next**.
-5. **Add people to this team** - your user will show up as a **Team Admin** and we won't be adding any additional users right now, but feel free to look around and then click **Next**.
-6. **Select the cluster endpoint to create the team in** - just stick with the default value `kubernetes` and click **Next**.
-7. **Select team master creation recipe** - click on the drop-down to see the options, but just stick with the **Basic** recipe.
-8. Finally, click the **Create team** button. <p><img src="images/setup-create-team.png" width=450/>
-9. While your Core Team Master is being created (**it takes anywhere from 2-3 minutes to provision your Team Master**), move onto the next section.
     
 ## Run the Rollout Workshop Setup Pipeline
-You should see the following Blue Ocean **Pipelines** screen with a Pipeline named **rollout-workshop-setup** for your Team:
+Return to CloudBees Core and you should see the following Blue Ocean **Pipelines** screen with a Pipeline named **rollout-workshop-setup** for your Team:
 **Note to self: Need to paste new image here**
 
 1. Click on the `rollout-workshop-setup` Pipeline job.

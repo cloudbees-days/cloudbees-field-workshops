@@ -26,7 +26,7 @@ Today's URL for the CloudBees Core Workshop environment will be provided by your
 ## Create a GitHub.com Account
 
 Feel free to use an existing GitHub.com account, otherwise create one:
-1. Visit https://github.com/join and fill in the required fields to create a user account.
+1. In a new browser tab or window, visit https://github.com/join and fill in the required fields to create a user account.
 2. Select "Unlimited public repositories for free" when choosing your plan.
 3. Verify your email account to ensure you account is activated.  An activated account will be **required** for the rest of this workshop.
 
