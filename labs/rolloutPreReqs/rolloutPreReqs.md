@@ -64,6 +64,5 @@ Return to CloudBees Core and you should see the following Blue Ocean **Pipelines
 * pipeline-library
 * microblog-frontend
 
-**For instructor led workshops please return to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/rollout/#1).**
 
-Otherwise, you may proceed to the next lab: [**CloudBees Rollout Workshop Set-Up**](../rolloutSetup/rolloutSetup.md) or choose another lab on the [main page](../../README.md#workshop-labs).
+Proceed to the next lab: [**CloudBees Rollout Workshop Set-Up**](../rolloutSetup/rolloutSetup.md) or choose another lab on the [main page](../../README.md#workshop-labs).

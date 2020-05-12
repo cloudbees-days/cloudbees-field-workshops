@@ -30,7 +30,7 @@ data: function () {
 },
 ```
 
-5. Now we're going to add a new title component gated behind our `title` feature flag. This will allow the element to _only_ be displayed when `Flags.title.isEnabled()` is `true`. Insert the following code, calling the `show_title` function, on **Line 5**:
+5. Now we're going to add a new title component gated behind our `title` feature flag. This will allow the element to _only_ be displayed when `Flags.title.isEnabled()` is `true`. Update the code following code on **Line 5** to gate the *Show New Title!* text behind the `show_title` flag:
 ```html
  <h1 class="title">Posts <span v-if="show_title"> - Show New Title!</span></h1>
 ```
