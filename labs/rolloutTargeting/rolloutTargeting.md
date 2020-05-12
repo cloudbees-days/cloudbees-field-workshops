@@ -50,7 +50,7 @@ Rox.setCustomBooleanProperty('hasBetaAccess', betaAccess());
 
 Rox.register('default', Flags);
 Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
-	
+
 ```
 </details>
 
@@ -64,12 +64,12 @@ Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
 4. We will limit the availability of the title feature to a subset of users, an audience defined by the screen's width property as the sole criterion. Within this newly added condition, change **All Users** to **Property** match. Set the new condition's remaining behavior such that _if the rox.screen_width is less than or equal to `<=` **half** of the width value returned from Step 1, **then** the title flag should be **True**_.
 5. Edit the older condition that became the **else** block, such that the _title flag is **False**_.
 6. Apply this new segmented audience experiment by clicking **Update Audience**.
-7. Switch tabs to bring the Microblog's website into view. Copy your unique Microblog URL. _Open a new browser window_ such that there is only one tab in the new session. Bring up **Developer Tools**, and modify the session's screen width to be _less than the value set in title's experiment_. Only after the session window has been resized, **paste** and go to your Microblog URL. The new title should be displayed in this size, but not in the larger sized browsing session. After noting the distinction, close Developer Tools and the smaller sized browsing session. 
+7. Switch tabs to bring the Microblog's website into view. Copy your unique Microblog URL. _Open a new browser window_ such that there is only one tab in the new session. Bring up **Developer Tools**, and modify the session's screen width to be _less than the value set in title's experiment_. Only after the session window has been resized, **paste** and go to your Microblog URL. The new title should be displayed in this size, but not in the larger sized browsing session. After noting the distinction, close Developer Tools and the smaller sized browsing session.
 
 ### Create a Target Group Based on Custom Properties
 
 1. In the Rollout dashboard, navigate to the **Target Groups** displayed on the left. Select the **Create a New Group** button in the middle of the resulting page.
-2. We are going to create a new Target Group, _useful when defined by 2 or more `customProperties`_. First name the new group **BetaUsers**, a subset that will be defined by the `isLoggedIn` and `betaAccess` properties. 
+2. We are going to create a new Target Group, _useful when defined by 2 or more `customProperties`_. First name the new group **BetaUsers**, a subset that will be defined by the `isLoggedIn` and `betaAccess` properties.
 3. A microblog user is considered part of the **BetaUsers** group when **both** of the following conditions are met:
 * `isLoggedIn` is **True**
 * `hasBetaAccess` is **True**
@@ -86,13 +86,13 @@ Reflect this logic in the **BetaUsers** Target Group Window by _first_ defining 
 3. Edit the older condition that became the `else` block such that the sidebar flag value will be **False**. The experiment modifications should be appear similar to the below image.
 
 4. Apply the experimentation changes through clicking **Update Audience**.
-5. Navigate to the microblog website to test the configuration logic. 
-* Log in with the username `admin` and the password `admin` and then navigate back to the homepage. The sidebar should be hidden! 
+5. Navigate to the microblog website to test the configuration logic.
+* Log in with the username `admin` and the password `admin` and then navigate back to the homepage. The sidebar should be hidden!
 * Log out, and sign in with the username `betauser` and `betauser` password. Upon, navigating back to the homepage the sidebar is now displayed, as we configured it to be _only for Beta Users_.
 
 ### Lab 4 Completed!
 Congratulations! You have finished Lab 4 of the CloudBees Rollout Workshop.
 
-**For instructor led workshops please return to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/rollout/#26)**
+**For instructor led workshops please return to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/rollout/#25)**
 
 Otherwise, you may proceed to the next lab: [**Leveraging Analytics with CloudBees Rollout**](../rolloutAnalytics/rolloutAnalytics.md) or choose another lab on the [main page](../../README.md#workshop-labs).

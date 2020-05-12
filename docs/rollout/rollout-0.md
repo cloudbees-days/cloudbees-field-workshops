@@ -24,7 +24,7 @@ name: agenda
 # Agenda
 
 1. Rollout Workshop Setup
-2. Adding a Sidebar to the Microblog
+2. Adding a Title to the Microblog
 3. Controlling the Value of a Feature Flag
 4. User Targeting
 5. Analytics and A/B testing
