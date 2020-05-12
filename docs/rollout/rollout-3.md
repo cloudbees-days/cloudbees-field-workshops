@@ -12,7 +12,7 @@ name: rollout-control-overview
 In order to control the value of a feature flag with CloudBees Rollout for this lab, we will be creating an experiment in the dashboard.
 <br/>
 <br/>
-Experiments are how you use your feature flags to expose your target groups to different application behaviors.
+Experiments are how you use your feature flags to expose your target groups to different application behaviors. Experiments are simply the ruleset for flag utilization. 
 
 ---
 name: rollout-control-override
