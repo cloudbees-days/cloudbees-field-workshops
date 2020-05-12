@@ -27,8 +27,9 @@ name: agenda
 2. Adding a Title to the Microblog
 3. Controlling the Value of a Feature Flag
 4. User Targeting
-5. Analytics and A/B testing
-6. Rollout Configuration as Code
+5. Rollout Configuration as Code
+6. Analytics and A/B testing
+
 
 ---
 name: rollout-lab-environment
