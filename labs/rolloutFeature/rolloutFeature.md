@@ -210,20 +210,13 @@ Rox.setupRox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
 2. In the left corner of the header, use the **right arrow** to navigate to **the most recent** pipeline run (until the right arrow is no longer shown). 
 3. Once the _entire_ pipeline is complete (header should turn green), navigate to the microblog website (either by switching tabs or clicking the link supplied in the last step of **Deploy** stage).
 4. Refresh the page, and open the console from your browser's developer tools. Check the log to view the messages from the `configurationFetchedHandler`.
+5. Navigate to your CloudBees Core Team Master.
+6. Navigate to the **microblog-frontend** Jenkins Pipeline job for your **development** branch.
+7. Open Blue Ocean
+8. Click `development` branch to see the pipeline.
+9. Click deploy, and the last shell script. Open the URL 
 
-<<<<<<< HEAD
-1. Navigate to your CloudBees Core Team Master.
-2. Navigate to the **microblog-frontend** Jenkins Pipeline job for your **development** branch.
-3. Open Blue Ocean
-4. Click `development` branch to see the pipeline.
-5. Click deploy, and the last shell script. Open the URL 
+* **For instructor led workshops please return to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/rollout/#16)**
 
-* **For instructor led workshops please return to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/rollout/#15)**
-=======
-### Lab 2 Completed!
-Congratulations! You have finished Lab 2 of the CloudBees Rollout Workshop.
-
-**For instructor led workshops please return to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/rollout/#17)**
->>>>>>> 559e979bf79fd54651de9f27982efc6603e841e4
 
 Otherwise, you may proceed to the next lab: [**Control the Value of a Flag with CloudBees Rollout**](../rolloutExperiment/rolloutExperiment.md) or choose another lab on the [main page](../../README.md#workshop-labs).
