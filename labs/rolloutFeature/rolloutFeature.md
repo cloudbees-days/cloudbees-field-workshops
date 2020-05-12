@@ -6,7 +6,7 @@ In this lab, you will gate a component behind the `title` feature flag, defined 
 ### Adding a Title to the Microblog Post
 
 1. In Github, navigate to the root directory of the microblog-frontend repository. Ensure that you are on the `development` branch.
-2. Navigate to the `Posts.vue` file (`src/views/Posts.vue`) by clicking the `src` folder, `views` folder, followed by `Posts.vue`, consecutively. 
+2. Navigate to the `Posts.vue` file (`src/views/Posts.vue`) by clicking the `src` folder, `views` folder, followed by `Posts.vue`, consecutively.
 
 <p><img src="images/srcViewsPost.gif" />
 
@@ -16,7 +16,7 @@ In this lab, you will gate a component behind the `title` feature flag, defined 
 
 4. In order to use the feature flags created in the `flags.js` file, we've included the `import` statement on **Line 50**. Now, we'll create a function called `show_title` that will return the `boolean` value from `Flags.title.isEnabled()`.
 
-To add this functionality, first insert a comma `,` at the end of the `show_sidebar` definition on **Line 63**. Then, add a new line after the comma, and define the `show_title` function as seen in the `data` segment below: 
+To add this functionality, first insert a comma `,` at the end of the `show_sidebar` definition on **Line 63**. Then, add a new line after the comma, and define the `show_title` function as seen in the `data` segment below:
 ```javascript
 data: function () {
   return {
@@ -169,8 +169,8 @@ export default {
 The Configuration Fetched Handler provides a mechanism to alert the Rollout SDK when an updated configuration, from local storage or via an asynchronous network call, has loaded. It allows us to control what happens whenever a new configuration is fetched, and can be useful for troubleshooting by logging the `fetchedResults`. To apply the changes for client-side feature flags from the new configuration, an action (like a page refresh) has to take place.
 
 1. In Github, navigate to the root directory of the microblog-frontend repository on the `development` branch.
-2. Open the `flags.js` file (navigating to `src/utils/flag.js`), and select the pencil icon to edit the file.
-3. We will induce the page refresh when a **new** configuration is retrieved **from the network**. We can also assist in any troubleshooting by adding `console.log` statements. Define the `configurationFetchedHandler` constant with its boolean logic cases; also, **ensure it is called in `options` constant** as seen in the `flag.js` file below:
+2. Open the `flags.js` file (navigating to `src/utils/flags.js`), and select the pencil icon to edit the file.
+3. We will induce the page refresh when a **new** configuration is retrieved **from the network**. We can also assist in any troubleshooting by adding `console.log` statements. Define the `configurationFetchedHandler` constant with its boolean logic cases; also, **ensure it is called in `options` constant** as seen in the `flags.js` file below:
 
 <details><summary>Updated <code>flags.js</code></summary>
 
@@ -197,8 +197,8 @@ const options = {
 };
 
 Rox.register('default', Flags);
-Rox.setupRox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
-  
+Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
+
 ```
 </details>
 
@@ -207,7 +207,7 @@ Rox.setupRox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
 ### Checking Microblog Website
 
 1. Switch tabs to your CloudBees Core team master. You should see the results of a _previous_ micoblog-frontend pipeline.
-2. In the left corner of the header, use the **right arrow** to navigate to **the most recent** pipeline run (until the right arrow is no longer shown). 
+2. In the left corner of the header, use the **right arrow** to navigate to **the most recent** pipeline run (until the right arrow is no longer shown).
 3. Once the _entire_ pipeline is complete (header should turn green), navigate to the microblog website (either by switching tabs or clicking the link supplied in the last step of **Deploy** stage).
 4. Refresh the page, and open the console from your browser's developer tools. Check the log to view the messages from the `configurationFetchedHandler`.
 5. Navigate to your CloudBees Core Team Master.
@@ -216,7 +216,6 @@ Rox.setupRox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
 8. Click `development` branch to see the pipeline.
 9. Click deploy, and the last shell script. Open the URL 
 
-* **For instructor led workshops please return to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/rollout/#16)**
-
+**For instructor led workshops please return to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/rollout/#16)**
 
 Otherwise, you may proceed to the next lab: [**Control the Value of a Flag with CloudBees Rollout**](../rolloutExperiment/rolloutExperiment.md) or choose another lab on the [main page](../../README.md#workshop-labs).

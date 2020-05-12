@@ -44,8 +44,9 @@ If you did not attend the Core Workshop or go through the above labs, please fol
  * [Lab 2 - Gating Code with CloudBees Feature Flags](labs/rolloutFeature/rolloutFeature.md)
  * [Lab 3 - Controlling the Value of a Feature Flag](labs/rolloutExperiment/rolloutExperiment.md)
  * [Lab 4 - User Targeting](labs/rolloutTargeting/rolloutTargeting.md)
- * [Lab 5 - CloudBees Rollout and Analytics](labs/rolloutAnalytics/rolloutAnalytics.md)
- * [Lab 6 - Rollout Configuration as Code](labs/rollout-cac/rollout-cac.md)
+ * [Lab 5 - Rollout Configuration as Code](labs/rollout-cac/rollout-cac.md)
+ * [Lab 6 - CloudBees Rollout and Analytics](labs/rolloutAnalytics/rolloutAnalytics.md)
+
 
 
 

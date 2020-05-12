@@ -44,6 +44,9 @@ Now that you are satisfied with the experiment in your Development environment, 
 
 <p><img src="images/production_sidebar.png" />
 
-You have successfully completed the introductory CloudBees Rollout workshop!
+### Lab 5 Completed!
+Congratulations! You have finished Lab 5 of the CloudBees Rollout Workshop.
 
-Please return to the [main page](../../README.md#workshop-labs) for other workshops and labs.
+**For instructor led workshops please return to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/rollout/#31)**
+
+Otherwise, you may proceed to the next lab: [**CloudBees Rollout and Analytics**](../rolloutAnalytics/rolloutAnalytics.md) or choose another lab on the [main page](../../README.md#workshop-labs).

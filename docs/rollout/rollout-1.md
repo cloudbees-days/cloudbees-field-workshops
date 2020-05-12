@@ -20,5 +20,6 @@ Setup for this workshop will include:
 name: rollout-setup-lab
 # Lab - Rollout Workshop Setup
 
+* If you did not attend the Core Workshop or go through the Core labs, please follow [these instructions](https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/rolloutPreReqs/rolloutPreReqs.md) before proceeding to the lab.
 * The *Rollout Workshop Setup* lab instructions are available at:
   * [https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/rolloutSetup/rolloutSetup.md](https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/rolloutSetup/rolloutSetup.md)
