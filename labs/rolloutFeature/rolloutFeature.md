@@ -166,8 +166,6 @@ The Configuration Fetched Handler provides a mechanism to alert the Rollout SDK 
 2. Open the `flags.js` file (navigating to `src/utils/flags.js`), and select the pencil icon to edit the file.
 3. We will induce the page refresh when a **new** configuration is retrieved **from the network**. We can also assist in any troubleshooting by adding `console.log` statements. Define the `configurationFetchedHandler` constant with its boolean logic cases; also, **ensure that it is added to `options` constant used to configure the `Rox.setup` call** as seen in the `flags.js` file below:
 
-<details><summary>Updated <code>flags.js</code></summary>
-
 ```javascript
 import Rox from 'rox-browser'
 
@@ -194,9 +192,8 @@ Rox.register('default', Flags);
 Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
 
 ```
-</details>
 
-1. Create a commit message (e.g. "Inserted configurationFetchedHandler") and select **Commit directly to the `development` branch** radio button. Click **Commit changes**.
+4. Create a commit message (e.g. "Inserted configurationFetchedHandler") and select **Commit directly to the `development` branch** radio button. Click **Commit changes**.
 
 ### Checking Microblog Website
 
