@@ -55,6 +55,8 @@ name: rollout-lab-environment
 * This workshop uses CloudBees Rollout SaaS version running on AWS
   * Each attendee will sign up for a CloudBees Rollout account
   * If you are already a Rollout customer, simply sign in as usual
+* This workshop also will use a CloudBees Core cluster, an enterprise version of Jenkins, running on the Google Kubernetes Engine (GKE) to provide automated build and deploy for everyones' sample applications
+  * Each attendee will provision their own Jenkins instance for the labs by leveraging the scalability of CloudBees Core on Kubernetes
 * All the instructions for the labs and these slides are publicly available in GitHub
 * Attendees will be using their own GitHub accounts
 
