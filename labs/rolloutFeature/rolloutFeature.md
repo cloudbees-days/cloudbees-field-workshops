@@ -216,6 +216,6 @@ Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
 8. Click `development` branch to see the pipeline.
 9. Click deploy, and the last shell script. Open the URL 
 
-**For instructor led workshops please return to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/rollout/#16)**
+**For instructor led workshops please return to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/rollout/#18)**
 
 Otherwise, you may proceed to the next lab: [**Control the Value of a Flag with CloudBees Rollout**](../rolloutExperiment/rolloutExperiment.md) or choose another lab on the [main page](../../README.md#workshop-labs).

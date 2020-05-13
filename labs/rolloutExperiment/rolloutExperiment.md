@@ -47,6 +47,6 @@ The experiments seen in a Rollout environment view govern the behavior of all co
 ### Lab 3 Completed!
 Congratulations! You have finished Lab 3 of the CloudBees Rollout Workshop.
 
-**For instructor led workshops please return to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/rollout/#21)**
+**For instructor led workshops please return to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/rollout/#23)**
 
 Otherwise, you may proceed to the next lab: [**User Targeting**](../rolloutTargeting/rolloutTargeting.md) or choose another lab on the [main page](../../README.md#workshop-labs).

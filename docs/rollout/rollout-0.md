@@ -30,6 +30,23 @@ name: agenda
 5. Rollout Configuration as Code
 6. Analytics and A/B testing
 
+**Please note, it is likely that we won't get through all the material. However, all of the lab material is freely available on GitHub and can be self-led. The Core lab environment will be available until next Monday if you would like to complete any labs we don't finish today.**
+
+---
+name: workshop-tools
+# Workshop Tools Overview
+
+* We will be using Zoom breakout rooms for the majority of the workshop material.
+* Please use the Zoom chat to introduce yourself and if you have any questions.
+* We will be grouping attendees in Zoom breakout rooms based on if you did the CloudBees Core workshop just before this one. If you did the Core workshop rename yourself in Zoom by adding that number **1** before your name.
+* After an overview of CloudBees Core you will be grouped into Zoom breakout rooms where you will complete the workshop.
+* Once in the breakout rooms please feel free to ask questions via audio or via the Zoom chat. You may also use the Zoom *Nonverbal* feedback feature to raise your hand or to ask you instructor to slow down or speed up. NOTE: The chat is only broadcast to your breakout room.
+
+---
+name: workshop-zoom
+class: center
+
+![:scale 90%](img/zoom-tools.png)
 
 ---
 name: rollout-lab-environment
