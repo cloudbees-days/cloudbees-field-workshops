@@ -31,7 +31,7 @@ name: agenda
 6. Cross Team Collaboration
 7. Hibernating Masters
 
-**Please note, it is likely that we won't get through all the material. However, all of the lab material is freely available on GitHub and can be self-led. The Core lab environment will be available until next Monday if you would like to complete any labs we don't.**
+**Please note, it is unlikely that we will get through all the material. However, all of the lab material is freely available on GitHub and can be self-led. The Core lab environment will be available until next Monday if you would like to complete any labs we don't.**
 
 ---
 name: workshop-tools

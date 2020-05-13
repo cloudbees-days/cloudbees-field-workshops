@@ -30,7 +30,7 @@ name: agenda
 5. Rollout Configuration as Code
 6. Analytics and A/B testing
 
-**Please note, it is likely that we won't get through all the material. However, all of the lab material is freely available on GitHub and can be self-led. The Core lab environment will be available until next Monday if you would like to complete any labs we don't finish today.**
+**Please note, it is unlikely that we will get through all the material. However, all of the lab material is freely available on GitHub and can be self-led. The Core lab environment will be available until next Monday and the Rollout trial is available for 14 days if you would like to complete any labs we don't finish today.**
 
 ---
 name: workshop-tools
