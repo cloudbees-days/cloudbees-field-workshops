@@ -85,6 +85,8 @@ Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
 
 5. Open the the URL in a new tab (that follows the format: `http://development.YOUR_ORG_NAME-microblog-frontend.v1.k8s.tel`). This is the microblog!
 
+<p><img src="images/microblogWebsite.png" />
+
 ### Checking Communication with CloudBees Rollout
 
 1. Switch tabs to CloudBees Rollout.
