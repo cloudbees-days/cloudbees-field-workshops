@@ -14,7 +14,7 @@ In this lab, you will gate a component behind the `title` feature flag, defined 
 
 <p><img src="images/PostsVuePencil.png" />
 
-4. In order to use the feature flags created in the `flags.js` file, we've included the `import` statement on **Line 50**. Now, we'll create a function called `show_title` that will return the `boolean` value from `Flags.title.isEnabled()`.
+4. This file is already using the `sidebar` flag, and to use this and the `title` feature flags created in the `flags.js` file, we've included the `import` statement on **Line 50**. Now, we'll create a function called `show_title` that will return the `boolean` value from `Flags.title.isEnabled()`.
 
 To add this functionality, first insert a comma `,` at the end of the `show_sidebar` definition on **Line 63**. Then, add a new line after the comma, and define the `show_title` function as seen in the `data` segment below:
 ```javascript
