@@ -58,8 +58,7 @@ Return to CloudBees Core and you should see the following Blue Ocean **Pipelines
    4. The Kubernetes Namespace where your Team Master has been deployed - **only change the default value if you are instructed to do so.**
 4. Once you have provided the above required input parameters click the **Run** button at the bottom of the parameters input form.
 5. Blue Ocean will automatically switch to the Pipeline **Activity** screen, click anywhere on the Pipeline run row to see the Pipeline run and view the logs. But make sure you don't click on the **Stop** button to the right of the red box in the screenshot below.<p><img src="images/workshop-setup-activity.png" width=600/>
-6. **Please let me know if this happens for you** Once the **rollout-workshop-setup** Pipeline job is completed, your Team Master will be restarted so you should see a **Connect lost: waiting** alert in the bottom right of your Blue Ocean screen. <p><img src="images/workshop-setup-connection-lost.png" width=600/> <p>You may also experience a **503 Service Temporarily Unavailable** screen - that is because the actual Kubernetes Pod that your Team Master is running in is being re-created. Your Team Master will return in a few minutes.
-7. To confirm that the success of the pipeline job, navigate to your Github Organization that you created for this workshop, and refresh the page. You should see the following repositories that were copied during the pipeline job:
+6. To confirm that the success of the pipeline job, navigate to your Github Organization that you created for this workshop, and refresh the page. You should see the following repositories that were copied during the pipeline job:
 * pipeline-template-catalog
 * pipeline-library
 * microblog-frontend
