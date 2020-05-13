@@ -7,16 +7,10 @@ In this lab, you will gate a component behind the `title` feature flag, defined 
 
 1. In Github, navigate to the root directory of the microblog-frontend repository. Ensure that you are on the `development` branch.
 2. Navigate to the `Posts.vue` file (`src/views/Posts.vue`) by clicking the `src` folder, `views` folder, followed by `Posts.vue`, consecutively.
-
-<p><img src="images/srcViewsPost.gif" />
-
 3. Select the pencil icon to edit the file.
-
-<p><img src="images/PostsVuePencil.png" />
-
 4. This file is already using the `sidebar` flag and its state is checked using the `show_sidebar` function that gates the component as seen on **Line 7**. To use this and the `title` feature flags created in the `flags.js` file, we've included the `import` statement on **Line 50**. Now, we'll create a function called `show_title` that will return the `boolean` value from `Flags.title.isEnabled()`.
 
-To add this functionality, first insert a comma `,` at the end of the `show_sidebar` definition on **Line 63**. Then, add a new line after the comma, and define the `show_title` function as seen in the `data` segment below:
+To add this functionality, first insert a comma `,` at the end of the `show_sidebar` definition on **Line 63**. Then, add a new line after the comma, and define the `show_title` to check the `title` flag state using `Flags.title.isEnabled()` as seen in the `data` segment below:
 ```javascript
 data: function () {
   return {
