@@ -59,6 +59,7 @@ name: rollout-lab-environment
   * Each attendee will provision their own Jenkins instance for the labs by leveraging the scalability of CloudBees Core on Kubernetes
 * All the instructions for the labs and these slides are publicly available in GitHub
 * Attendees will be using their own GitHub accounts
+* A portion of this workshop requires using your web browser's developer tools, we recommend Chrome
 
 ---
 name: rollout-overview-title
