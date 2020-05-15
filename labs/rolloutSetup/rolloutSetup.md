@@ -8,7 +8,7 @@ In this lab, you will set up a CloudBees Rollout account and use it to manage fe
 1. Open the CloudBees Rollout [sign-up form](https://app.rollout.io/signup) in a _new tab_ within your internet browser.
 2. Fill out the form with your name, email, and a created password. After confirming your password,  check the box agreeing to Rollout's Terms of Service (which can be viewed [here](https://docs.cloudbees.com/docs/cloudbees-common/latest/subscription-agreement/)), and click **Sign Up**.
 3. After sign up, the Rollout dashboard should be displayed. On the far left side of the dashboard, click the **App Settings** panel. From the resulting page, select the **Environments** tab.
-4. Click **Add New Environment** and name it **Development**. Then click **Generate Key**. 
+4. Click **Add New Environment** and name it **Development**. Then click **Generate Key**.
 5. **Close** the subsequent **Development Key** pop-up window so that both _Production_ and _Development_ keys are displayed. Leave this Rollout dashboard tab open in the browser. Both keys will be referenced later in this lab.
 
 <p><img src="images/RolloutEnvKey.png" />
@@ -62,7 +62,7 @@ const options = {
 
 Rox.register('default', Flags);
 Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
-	
+
 ```
 </details>
 
@@ -83,7 +83,7 @@ Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
 
 <p><img src="images/firstDeployment.png" />
 
-5. Open the the URL in a new tab (that follows the format: `http://development.YOUR_ORG_NAME-microblog-frontend.v1.k8s.tel`). This is the microblog!
+5. Open the the URL in a new tab (that follows the format: `http://development.YOUR_ORG_NAME-microblog-frontend.cbws.io`). This is the microblog!
 
 <p><img src="images/microblogWebsite.png" />
 
