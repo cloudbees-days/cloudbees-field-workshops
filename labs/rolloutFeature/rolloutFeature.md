@@ -197,7 +197,7 @@ Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
 
 ### Checking Microblog Website
 
-1. Switch tabs to your CloudBees Core team master. You should see the results of a _previous_ micoblog-frontend pipeline.
+1. Switch tabs to your CloudBees Core team master. You should see the results of a _previous_ microblog-frontend pipeline.
 2. In the left corner of the header, use the **right arrow** to navigate to **the most recent** pipeline run (until the right arrow is no longer shown).
 3. Once the _entire_ pipeline is complete (header should turn green), navigate to the microblog website (either by switching tabs or clicking the link supplied in the last step of **Deploy** stage).
 4. Refresh the page, and open the console from your browser's developer tools. Check the log to view the messages from the `configurationFetchedHandler`.
