@@ -24,8 +24,7 @@ The *Flags Override view* is useful for debugging purposes. It allows developers
 <br/>
 
 .img-right[
-  .center[Rox Overrides]
-![Rox Overrides](img/rox_overrides.png)
+![:scale 75%](img/rox_overrides.png)
 ]
 
 .img-left[
