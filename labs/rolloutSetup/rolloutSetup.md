@@ -13,7 +13,7 @@ In this lab, you will set up a CloudBees Rollout account and use it to manage fe
 
 <p><img src="images/RolloutEnvKey.png" />
 
-### Environment Vairable
+### Environment Variable
 
 Our CloudBees Core pipeline will use a different Rollout environment key, stored in an variable within the repository, depending on which branch we deploy from. Later in the workshop, we'll learn how these separate environment keys can be leveraged to apply the multi-environment view of the Rollout dashboard. This will allow a flag to have a particular Production configuration, while using a completely different ruleset for the code connected to the Development environment.
 
