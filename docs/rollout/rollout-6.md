@@ -28,5 +28,10 @@ name: rollout-analytics-review
 
 * With this lab complete, you should be able to set up percentage split experiments and connect to Google Analytics.
 * Also, you should be able to update the impression handler to push key information to GA.
-
-**You have now completed the CloudBees Rollout lab exercises!** 
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+**You have now completed the CloudBees Rollout lab exercises!**
