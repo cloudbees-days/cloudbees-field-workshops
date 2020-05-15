@@ -32,6 +32,4 @@ name: rollout-analytics-review
 <br/>
 <br/>
 <br/>
-<br/>
-<br/>
 **You have now completed the CloudBees Rollout lab exercises!**
