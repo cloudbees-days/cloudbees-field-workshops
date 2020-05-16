@@ -2,6 +2,8 @@
 
 In this lab we will setup [GitOps](https://www.gitops.tech/) for [Configuration as Code (CasC) for CloudBees Core](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-admin-guide/core-casc-modern) so that any Jenkins configuration changes you make in source control will automatically be updated in your Core Team Master. 
 
+[Instructor led video of lab.](https://youtu.be/P-_xHx3db2k)
+
 * You will create a Jenkins Pipeline job on your Team Master to automatically update the Core configuration bundle for your Team Master.
 * You will add some new configuration to the Core configuration bundle in your forked **core-config-bundle** repository and then commit the changes to the **master** branch of your **core-config-bundle** repository that will in turn tigger a Jenkins Pipeline to update your Core configuration bundle.
 

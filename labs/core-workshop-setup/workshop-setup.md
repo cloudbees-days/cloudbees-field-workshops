@@ -4,7 +4,7 @@
 ## CloudBees Core Workshop Set-up
 In this lab you will setup a work environment for the CloudBees Core labs.  Ask the instructor for the URL of the server you will be using for the Core Workshop.
 
-<a href="https://youtu.be/AZetQJYIKU4" target="_blank">Instructor led vide of lab.</a>
+<a href="https://youtu.be/AZetQJYIKU4" target="_blank">Instructor led video of lab.</a>
 
 Today's URL for the CloudBees Core Workshop environment will be provided by your instructor. If you haven't already signed up for an account then follow [these instructions](../workshop-setup/workshop-setup.md) and then come back to the *Core Workshop Set-up*.
 
