@@ -39,7 +39,7 @@ name: workshop-tools
 * We will be using Zoom breakout rooms for the majority of the workshop material.
 * Please use the Zoom chat to introduce yourself and if you have any questions.
 * We will be grouping attendees in Zoom breakout rooms based on if you did the CloudBees Core workshop just before this one. If you did the Core workshop rename yourself in Zoom by adding the number **1** before your name.
-* After an overview of CloudBees Core you will be grouped into Zoom breakout rooms where you will complete the workshop.
+* After an overview of CloudBees Rollout you will be grouped into Zoom breakout rooms where you will complete the workshop.
 * Once in the breakout rooms please feel free to ask questions via audio or via the Zoom chat. You may also use the Zoom *Nonverbal* feedback feature to raise your hand or to ask you instructor to slow down or speed up. NOTE: The chat is only broadcast to your breakout room.
 
 ---
@@ -59,6 +59,7 @@ name: rollout-lab-environment
   * Each attendee will provision their own Jenkins instance for the labs by leveraging the scalability of CloudBees Core on Kubernetes
 * All the instructions for the labs and these slides are publicly available in GitHub
 * Attendees will be using their own GitHub accounts
+* A portion of this workshop requires using your web browser's developer tools, we recommend Chrome
 
 ---
 name: rollout-overview-title

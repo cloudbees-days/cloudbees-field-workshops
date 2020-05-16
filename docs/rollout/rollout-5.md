@@ -47,6 +47,6 @@ name: rollout-cac-review
 * You created a new GitHub repository and connected your Rollout app to the repo.
 * In the Rollout dashboard, you disabled the sidebar experiment in Development environment by toggling `Active` to `Killed`.
 * Within the Github code editor, you modified `default.sidebar.yml` to re-enable the feature in the Rollout dashboard.
-* Finally, you merged `Development` branch with `master` and noted the promotion of the sidebar experiment in the production environment.
+* Finally, you merged `Development` branch with `master` and noted the promotion of the sidebar and title experiments to the production environment.
 
 With Configuration as Code set up, you can now lock down the Production environment in Rollout so that no one can make changes via dashboard. Instead, Production can only be modified by pull request which allows you to use GitOps to its full potential.

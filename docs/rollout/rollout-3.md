@@ -22,10 +22,18 @@ name: rollout-control-override
 The *Flags Override view* is useful for debugging purposes. It allows developers to expose a view that shows the current status for each flag, and it allows the user to override these flags. This view is usually exposed to only developers, the QA team, and the product team.
 <br/>
 <br/>
+
+.img-right[
+![:scale 75%](img/rox_overrides.png)
+]
+
+.img-left[
 In the *Flags Override view*, a flag can appear in the following states:
 * The *flag is on* state means the value from the server of a flag is on and is not overridden on the device.
 * The *flag is off* state means the value from the server of a flag is off and isn’t overridden on the device.
 * The *flag is overridden* state means the value from the server is overridden on this specific device.
+]
+
 
 ---
 name: rollout-control-lab
@@ -41,7 +49,7 @@ name: rollout-control-review
 
 # Controlling the Value of a Feature Flag Lab Review
 
-Experiments are an important concept in CloudBees Rollout. With this lab complete, you can now control the value of "default.sidebar" by creating an experiment via the Rollout dashboard.
+Experiments are an important concept in CloudBees Rollout. With this lab complete, you can now control the value of "default.sidebar" and "default.title" by creating experiments via the Rollout dashboard.
 <br/>
 <br/>
 You also used the *Flags Override view* UI element to modify flag values to allow for validation on your local machine without affecting others' work.

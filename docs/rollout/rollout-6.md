@@ -24,4 +24,12 @@ name: rollout-analytics-lab
 
 ---
 name: rollout-analytics-review
-Should we discuss some analytics use cases here?
+# CloudBees Rollout and Analytics Lab Review
+
+* With this lab complete, you should be able to set up percentage split experiments and connect to Google Analytics.
+* Also, you should be able to update the impression handler to push key information to GA.
+<br/>
+<br/>
+<br/>
+<br/>
+**You have now completed the CloudBees Rollout lab exercises!**
