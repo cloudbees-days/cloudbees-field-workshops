@@ -1,13 +1,4 @@
-layout: true
 
-.header[
-]
-
-.footer[
-- © 2020 CloudBees, Inc.
-- ![:scale 100%](../img/CloudBees-Submark-Full-Color.svg)
-]
----
 name: cloudbees product naming 
 # Cloudbees Product Naming
 
