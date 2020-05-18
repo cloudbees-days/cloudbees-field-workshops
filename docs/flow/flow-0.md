@@ -22,3 +22,9 @@ layout: true
 ---
 name: agenda
 # Agenda
+    Workshop Tools Overview
+    CloudBees Core Overview
+    Setup for Labs
+    Configuration as Code (CasC) with CloudBees Core
+    Pipeline Manageability & Governance with Templates and Policies
+    Cross Team Collaboration
