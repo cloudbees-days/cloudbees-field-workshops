@@ -1,3 +1,14 @@
+layout: true
+
+.header[
+]
+
+.footer[
+- © 2020 CloudBees, Inc.
+- ![:scale 100%](../img/CloudBees-Submark-Full-Color.svg)
+]
+---
+name: cloudbees product naming 
 # Cloudbees Product Naming
 
 Cloudbees products have been renamed. The following is the succession maing scheme.
