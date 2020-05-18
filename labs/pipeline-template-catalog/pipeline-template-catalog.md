@@ -27,7 +27,7 @@ In this lab you will create a new Multibranch Pipeline job from the **VueJS** te
 4. Fill out the template parameters:
    1. **Repository Owner**: the GitHub Organization your created for the CloudBees Core workshop
    2. **Repository**: The name of your forked repository, *microblog-frontend*
-   3. **GitHub Credential ID**: select the *username/password* credential created for you by the **wokshop-setup** job and Core CasC - it will show up as - [GitHub username]/******
+   3. **GitHub Credential ID**: select the *username/password* credential created for you by the **workshop-setup** job and Core CasC - it will show up as - [GitHub username]/******
    4. Click the **Save** button<p><img src="images/template_parameters.png" width=800/>
 5. After the initial scan you will see one Jenkins Pipeline job funder the **Pull Requests** tab of the Pipeline Mulitbranch project that was just created for your fork of the **microblog-frontend** repository - **PR-1**. <p><img src="images/one_job.png" width=800/>
 6. Now, in **GitHub**, navigate to the **Add marker file** pull request (#1) in your fork of the **microblog-frontend** repository. <p><img src="images/pr-navigate.png" width=800/>
