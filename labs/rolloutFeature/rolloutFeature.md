@@ -6,7 +6,7 @@ In this lab, you will gate a component behind the `title` feature flag, defined 
 ### Adding a Title to the Microblog Post
 
 1. In Github, navigate to the root directory of the microblog-frontend repository. Ensure that you are on the `development` branch.
-2. Navigate to the `Posts.vue` file (`src/views/Posts.vue`) by clicking the `src` folder, `views` folder, followed by `Posts.vue`, consecutively.
+2. Navigate to the `Posts.vue` file (`src/views/Posts.vue`) by clicking the `src` folder, `views` folder, followed by `Posts.vue`, consecutively. <p><img src="images/edit-postsvue-add-title-flag.png" /> 
 3. Select the pencil icon to edit the file.
 4. This file is already using the `sidebar` flag and its state is checked using the `show_sidebar` function that gates the component as seen on **Line 7**. To use this and the `title` feature flags created in the `flags.js` file, we've included the `import` statement on **Line 50**. Now, we'll create a function called `show_title` that will return the `boolean` value from `Flags.title.isEnabled()`.
 
@@ -24,7 +24,7 @@ data: function () {
 },
 ```
 
-1. Now we're going to add a new title component gated behind our `title` feature flag. This will allow the element to _only_ be displayed when `Flags.title.isEnabled()` is `true`. Update the code on **Line 5** to gate the *Show New Title!* text behind the `show_title` flag:
+5. Now we're going to add a new title component gated behind our `title` feature flag. This will allow the element to _only_ be displayed when `Flags.title.isEnabled()` is `true`. Update the code on **Line 5** to gate the *Show New Title!* text behind the `show_title` flag:
 ```html
  <h1 class="title">Posts <span v-if="show_title"> - Show New Title!</span></h1>
 ```
