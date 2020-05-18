@@ -2,10 +2,12 @@
 name: cloudbees product naming 
 # Cloudbees Product Naming
 
-Cloudbees products have been renamed. The following is the succession maing scheme.
+Cloudbees products have been renamed. 
 
-(EC) Commander - (EC) Flow  - Cloudbees Flow  - Cloudbees CD
-Cloudbees EJC - Core - Cloudbees CI
+The following is the succession naming scheme.
+
+  - (EC) Commander - (EC) Flow  - Cloudbees Flow  - Cloudbees CD
+  - Cloudbees EJC - Core - Cloudbees CI
 
 ---
 layout: true
