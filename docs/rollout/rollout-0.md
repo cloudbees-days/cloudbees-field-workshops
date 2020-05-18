@@ -36,6 +36,7 @@ name: agenda
 name: workshop-tools
 # Workshop Tools Overview
 
+* We highly recommend using Google Chrome as the web browser - other browsers will work, but we have found Chrome to have the best *Developer* tools for the labs.
 * We will be using Zoom breakout rooms for the majority of the workshop material.
 * Please use the Zoom chat to introduce yourself and if you have any questions.
 * We will be grouping attendees in Zoom breakout rooms based on if you did the CloudBees Core workshop just before this one. If you did the Core workshop rename yourself in Zoom by adding the number **1** before your name.
