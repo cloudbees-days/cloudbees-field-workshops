@@ -5,12 +5,10 @@ Cloudbees products have been renamed. The following is the succession maing sche
 (EC) Commander - (EC) Flow  - Cloudbees Flow  - Cloudbees CD
 Cloudbees EJC - Core - Cloudbees CI
 
-
-
-
+---
 # Cloudbees CD Fundamentals
 
-
+---
 # Cloudbees CD Fundamentals : Overview of the Release Process.
 
 Releases allow you to group together multiple applications and their Pipelines into a single entity for a targeted release.
