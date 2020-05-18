@@ -6,11 +6,31 @@ Cloudbees products have been renamed. The following is the succession maing sche
 Cloudbees EJC - Core - Cloudbees CI
 
 ---
+layout: true
 
+.header[
+]
+
+.footer[
+- © 2020 CloudBees, Inc.
+- ![:scale 100%](../img/CloudBees-Submark-Full-Color.svg)
+]
+---
+name: cloudbees cd fundamentals 
 # Cloudbees CD Fundamentals
 
 ---
+layout: true
 
+.header[
+]
+
+.footer[
+- © 2020 CloudBees, Inc.
+- ![:scale 100%](../img/CloudBees-Submark-Full-Color.svg)
+]
+---
+name: overview of release process
 # Cloudbees CD Fundamentals : Overview of the Release Process.
 
 Releases allow you to group together multiple applications and their Pipelines into a single entity for a targeted release.
