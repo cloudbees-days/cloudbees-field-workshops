@@ -79,11 +79,11 @@ Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
 1. Switch tabs to your CloudBees Core team master. Select the **Blue Ocean** view associated with your team master. Then, click the **Pipelines** panel in the header of the Blue Ocean view.
 2. Select the `microblog-frontend` pipeline. Then, click on the job currently running from the changes made on the `development` branch.
 3. On the next page, you should see 3 stages that define the pipeline. Click the **Deploy** stage to see all the steps that will run during this stage.
-4. When the **Deploy** stage has completed (indicated by the header turning green), select the last **Shell Script** step.
+4. When the **Deploy** stage has completed (indicated by the header turning green), select the **deployment url** step.
 
 <p><img src="images/firstDeployment.png" />
 
-5. Open the the URL in a new tab (that follows the format: `http://development.YOUR_ORG_NAME-microblog-frontend.cbws.io`). This is the microblog!
+5. Open the URL in a new tab (that follows the format: `http://development.YOUR_ORG_NAME-microblog-frontend.cbws.io`). This is the microblog!
 
 <p><img src="images/microblogWebsite.png" />
 
