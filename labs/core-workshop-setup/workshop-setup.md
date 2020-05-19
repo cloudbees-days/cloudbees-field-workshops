@@ -23,7 +23,7 @@ Today's URL for the CloudBees Core Workshop environment will be provided by your
 6. **Select the cluster endpoint to create the team in** - just stick with the default value `kubernetes` and click **Next**.
 7. **Select team master creation recipe** - click on the drop-down to see the options, but just stick with the **Basic** recipe.
 8. Finally, click the **Create team** button. <p><img src="images/setup-create-team.png" width=450/>
-9. While your Core Team Master is being created (**it takes anywhere from 2-3 minutes to provision your Team Master**), move onto the next section.
+9. **IMPORTANT** - While your Core Team Master is being created (**it takes anywhere from 2-3 minutes to provision your Team Master**), move onto the next section.
 
 ## Create a GitHub.com Account
 
