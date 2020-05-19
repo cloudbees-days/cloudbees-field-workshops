@@ -1,10 +1,10 @@
-# name: flow-title-slide
+name: flow-title-slide
 class: title, shelf, no-footer, fullbleed
 background-image: linear-gradient(135deg,#279be0,#036eb4)
 count: false
 
 
-# CloudBees Flow Workshop
+# CloudBees CD Workshop
 .one-third-up[![:scale 10%](../img/Rollout-white.svg)]
 ???
 This workshop introduces attendees to the features for CloudBees Flow.
@@ -22,3 +22,9 @@ layout: true
 ---
 name: agenda
 # Agenda
+    
+    1. CloudBees CD Fundamentals and Architecture
+    2. Setup for Labs
+    Configuration as Code (CasC) with CloudBees Core
+    Pipeline Manageability & Governance with Templates and Policies
+    Cross Team Collaboration
