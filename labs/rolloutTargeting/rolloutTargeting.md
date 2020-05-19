@@ -75,9 +75,9 @@ Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
 * `hasBetaAccess` is **True**
 
 Reflect this logic in the **BetaUsers** Target Group Window by _first_ defining that the `isLoggedIn` property is **True**. Then, **Add a New Condition**, select the subsequent _Matches All Conditions_ option, and ensure that `betaAccess` must also be **True**.
+
 4. The **BetaUsers** Target Group definition should look similar to that below. Then click **Create Group** so the defined Target Group can be used in experiments.
 
-**TODO: INSERT PICTURE HERE**
 
 ### Using a Target Group in an Experiment
 
