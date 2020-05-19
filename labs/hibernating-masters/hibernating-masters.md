@@ -8,7 +8,7 @@ The Master Hibernation is managed at the global Jenkins configuration level and 
 ## Un-hibernate a Master
 
 1. Navigate to the classic UI of Operations Center and find your Team Master in the list of masters. 
-2. If there is a light blue **pause** icon next to your Team  Master then it is hibernating. Just click on it to **un-hibernate** it. <p><img src="images/hibernating-master.png" width=800/>
+2. If there is a light blue **pause** icon next to your Team  Master then it is hibernating. Just click on the link for your Team Master to **un-hibernate** it. <p><img src="images/hibernating-master.png" width=800/>
 3. Once you click on your Team Master link from the classic UI of Operations Center you will see a screen that shows that it is "getting ready to work". <p><img src="images/unhibernate.png" width=800/>
 4. After a couple of minutes, your Team Master will be ready to use and in the same state as it was when it hibernated.
 
