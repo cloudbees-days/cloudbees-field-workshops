@@ -30,7 +30,7 @@ https://cloudbees-days.github.io/core-rollout-flow-workshop/core/
  * [Lab 5 - Cross Team Collaboration](labs/cross-team-collaboration/cross-team-collaboration.md)
  * [Lab 6 - Hibernating Masters](labs/hibernating-masters/hibernating-masters.md)
 
->NOTE: If you are returning to the workshop cluster to complete a lab please review this lab on [**Un-hibernating a Master**](labs/hibernating-masters/hibernating-masters.md).
+>NOTE: If you are returning to the workshop cluster to complete a lab please review this lab on [**Un-hibernating a Master**](labs/hibernating-masters/hibernating-masters.md#un-hibernate-a-master).
 
 ## Rollout:
 
