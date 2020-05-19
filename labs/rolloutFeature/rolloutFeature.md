@@ -197,7 +197,7 @@ Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
 
 ### Checking Microblog Website
 
-1. Check the latest pipeline and once it's complete, navigate to the microblog website (either by switching tabs or clicking the link supplied in the last step of **Deploy** stage).
+1. Check the latest pipeline and once it's complete, navigate to the microblog website (either by switching tabs or clicking the link supplied in the `deployment url` step of **Deploy** stage).
 2. On the microblog website, refresh the page, and then open the console from your browser's developer tools. Check the log to view the messages from the `configurationFetchedHandler`.
 
 **For instructor led workshops please return to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/rollout/#18)**
