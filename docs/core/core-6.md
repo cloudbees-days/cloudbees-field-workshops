@@ -23,7 +23,10 @@ name: hibernate-overview
 # CloudBees Core Hibernating Masters .badge-red[PREVIEW]
 
 * [CloudBees Core Managed Master hibernation](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-admin-guide/managing-masters#_hibernation_in_managed_masters) takes advantage of running Core on Kubernetes by automatically shutting down or hibernating Team/Managed Masters. This is done by scaling the Kubernetes StatefulSet down to zero replicas.
-* Hibernation was enabled for everyones' Team Master earlier in the workshop and everyones' Team Masters will hibernate after 30 minutes of inactivity.
+* Hibernation was enabled for everyones' Team Master earlier in the CasC lab and everyones' Team Masters will hibernate after 30 minutes of inactivity.
+* Filtered web activity and direct web access will *wake up** the Team Master. If a Team Master is hibernating - signified by the **pause** icon next to it in the classic UI of Operations Center, all you need to do is click on it and it will be up and running in a few minutes.
+
+![:scale 80%](img/hibernating-master.png)
 
 ???
 The workshop clusters will continue to be available for both Core and Rollout for the rest of the week of CB Connect. We need to make sure that all Core attendees are aware that their Team Master will most likely be hibernating when they come back to complete any labs and that they just need to click on it to ‘wake it up’ from the classic UI of OC.

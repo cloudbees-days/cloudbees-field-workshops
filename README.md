@@ -28,8 +28,7 @@ https://cloudbees-days.github.io/core-rollout-flow-workshop/core/
  * [Lab 3 - Pipeline Template Catalogs](labs/pipeline-template-catalog/pipeline-template-catalog.md)
  * [Lab 4 - Pipeline Policies](labs/pipeline-policies/pipeline-policies.md)
  * [Lab 5 - Cross Team Collaboration](labs/cross-team-collaboration/cross-team-collaboration.md)
- * [Lab 6 - Preview Environment](labs/core-preview-environment/preview-environment.md)
- * [Lab 7 - Hibernating Masters](labs/hibernating-masters/hibernating-masters.md)
+ * [Lab 6 - Hibernating Masters](labs/hibernating-masters/hibernating-masters.md)
 
 
 
