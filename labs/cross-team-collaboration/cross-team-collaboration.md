@@ -20,7 +20,7 @@
 
 Now that you have an `eventTrigger` added to your **VueJS** template we need to create a job that will publish an event that will trigger it. Each of you will create a simple Pipeline job that will publish an event to imitate the real world scenario where a new `node` base image would be built and pushed - typically by another team on a different Team Master.
 
-1. On your Team Master and ensure that you are in the folder with the same name as your Team Master - you should see the `workshop-setup` Pipeline job.
+1. On your Team Master and ensure that you are in the folder with the same name as your Team Master - you should see the `core-workshop-setup` Pipeline job.
 2. Click on the **New Item** link in the left navigation menu - again, make sure that you are in the **folder** with the same name as your Team Master, and not at the root of your Team Master.
 3. Enter an item name - say **publish-event** - then select **Pipeline** as the item type and then click the **OK** button. <p><img src="images/collab-publish-event-item.png" width=800/>
 4. Copy the following Pipeline and paste it into the **Script** text area and click the **Save** button:
