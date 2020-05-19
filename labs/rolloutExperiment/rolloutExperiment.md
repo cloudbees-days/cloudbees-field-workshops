@@ -38,7 +38,7 @@ The experiments seen in a Rollout environment view govern the behavior of all co
 
 * Bring the microblog-frontend repository and its root directory view in Github.
 * On the `development` branch, navigate to `src/components/Nav.vue` by clicking the `src` folder, then `components` folder, and finally the `Nav.vue` file.
-* Note that on **Line 16**, we are including the Flags Override view, `rolloutOverride`, made available when the DEV link is seen, gated by `v-if="isDev"`.
+* Note that on **Line 15**, we are including the Flags Override view, `rolloutOverride`, made available when the DEV link is seen, gated by `v-if="isDev"`.
 * The Flags Override view relies on including the Rollout library for this file as seen on **Line 45**. The `rolloutOverride` function is implemented using the library's `Rox.showOverrides()`, seen on **Line 53**.
 * To restrict the Flags Override view and functionality from unintended audiences, we have chosen to show this tool **only on the Development branch deployments**. This is accomplished on **Line 15**, where `isDev` gates the component using the boolean value returned from the function defined on **Line 58**.
 
