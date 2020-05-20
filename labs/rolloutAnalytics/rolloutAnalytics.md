@@ -3,12 +3,13 @@
 ## Forwarding Flag Data to Analytics Platform
 This lab will leverage CloudBees Rollout's `impressionHandler` to forward flag information to a more robust analytics platform (we will use Google Analytics for this lab, but the abstracted process remains the same for integration with other tools). We can pass information about feature flags values evaluated on each client back for analysis. We'll set-up the beginning process for A/B testing process.
 
+**NOTE: If you going through these workshops on your own, feel free to create your own Google Analytics dashboard. Use your own UA proptery tag when necessary.**
+
 
 ### Adding the ImpressionHandler to Code
-**TO DO, add brief explanation on the ImpressionHandler**
 
 1. Switch tabs to bring up the microblog-frontend repository. Within the root directory, on the `development` branch, navigate to the public folder. Then select the `index.html` file.
-2. Google Analytics requires a site tag. Select the pencil icon to edit the `index.html` file, and remove the comments on **Line 5** and **Line 13** so that the `gtag.js` can be seen.
+2. Google Analytics requires a site tag. Select the pencil icon to edit the `index.html` file, and remove the comments on **Line 5** and **Line 13** so that the `gtag.js` can be seen. If using your own dashboard replace your `UA` property ID where appropriate.
 
 3. Review the edits below in
 <details><summary>Updated <code>index.html</code></summary>
@@ -123,12 +124,9 @@ Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
 3. The premise of this A/B test will be to route 50% of all users to a **True** value and the other 50% to a **False** value. This can be accomplished by changing **False** to **Split** within the drop down menu. The default split experiment should reflect these weightings to each value.
 4. **Update Audience** to apply the changes made in this experiment.
 
-### SA Leads GA Discussion on Dashboard
+### Google Analytics Dashboard
 
-
-**TODO**
-* Include SA Discussion points
-* Make an option to include their own GA property tag
+* Open your Google Analytics dashboard, from the **Realtime Reports** panel, select **Events**.
 
 ### Lab 6 Completed!
 You have successfully completed the introductory CloudBees Rollout workshop!
