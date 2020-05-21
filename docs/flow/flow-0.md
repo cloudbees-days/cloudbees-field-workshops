@@ -23,8 +23,7 @@ layout: true
 name: agenda
 # Agenda
     
-    1. CloudBees CD Fundamentals and Architecture
-    2. Setup for Labs
-    Configuration as Code (CasC) with CloudBees Core
-    Pipeline Manageability & Governance with Templates and Policies
-    Cross Team Collaboration
+    1. CloudBees CD Fundamentals
+    2. CloudBees CD Fundamentals : Overview of Release Process
+    3. CloudBees CD Fundamentals : Overview of Deployment Automation
+    4. CloudBees CD Architecture
