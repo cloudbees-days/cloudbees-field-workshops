@@ -47,7 +47,6 @@ Feel free to use an existing GitHub.com account, otherwise create one:
     
 ## Run the Rollout Workshop Setup Pipeline
 Return to CloudBees Core and you should see the following Blue Ocean **Pipelines** screen with a Pipeline named **rollout-workshop-setup** for your Team:
-**Note to self: Need to paste new image here**
 
 1. Click on the `rollout-workshop-setup` Pipeline job.
 2. On the next screen, click on the **Run** button in the middle of the screen. **Replace image**<p><img src="images/workshop-setup-run.png" width=600/>
