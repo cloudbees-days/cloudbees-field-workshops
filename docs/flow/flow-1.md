@@ -7,6 +7,7 @@ name: cloudbees product naming
 - The following is the succession naming scheme.
 
    **- ElectricCloud (EC) Commander - (EC) ElectricFlow  - Cloudbees Flow  - Cloudbees CD **
+   
    **- Cloudbees EJC - Core - Cloudbees CI **
 
 ---
