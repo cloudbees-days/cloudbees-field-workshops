@@ -27,8 +27,9 @@ name: agenda
     2. CloudBees CD Fundamentals : Overview of Release Process
     3. CloudBees CD Fundamentals : Overview of Deployment Automation
     4. CloudBees CD Architecture
-    5. Use Case 1 - Build Generic Release Process
-    6. Use Case 2 - Execute a script
-    7. Use Case 3 - Integrate JIRA into a task
-    8. Use Case 4 - Combine Use case 2 and Use Case 3
+    5. Setup Demo System for Workshop
+    6. Use Case 1 - Build Generic Release Process
+    7. Use Case 2 - Execute a script
+    8. Use Case 3 - Integrate JIRA into a task
+    9. Use Case 4 - Combine Use case 2 and Use Case 3
     
