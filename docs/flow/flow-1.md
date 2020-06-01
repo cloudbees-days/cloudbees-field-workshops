@@ -4,7 +4,7 @@ name: cloudbees product naming
 
  ##  Cloudbees products have been renamed.
 
- - ElectricCloud Flow, now called Cloudbees CD
+ - ElectricCloud ElectricFlow, now called Cloudbees CD
 
  - Cloudbees EJC now called Cloudbees CI
 
