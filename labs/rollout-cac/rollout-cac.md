@@ -4,19 +4,13 @@
 1. Create an empty repository in your GitHub organization named "rollout-configuration-as-code"
 2. Connect the Rollout app into the Github repository
   1. Go to **App Settings > Integrations tab** (from the left Panel)
-  2. Click the **Connect** button
-  <p><img src="images/app-integrations.png" />
-3. In GitHub, select to integrate the Rollout GitHub app with your created repository.
-<p><img src="images/github-app.png" />
-4. After clicking **Install** you will be redirected back to the CloudBees Rollout dashboard to select your app and the repository
-<p><img src="images/github-rollout-confirmation.png" />
+  2. Click the **Connect** button <p><img src="images/app-integrations.png" />
+3. In GitHub, select to integrate the Rollout GitHub app with your created repository. <p><img src="images/github-app.png" />
+4. After clicking **Install** you will be redirected back to the CloudBees Rollout dashboard to select your app and the repository <p><img src="images/github-rollout-confirmation.png" />
 5. Click connect and you are done
 
 ### Using CasC and GitOps
-1. In the Rollout dashboard, disable the sidebar experiment in Development environment by toggling `Active` to `Killed`.
-
-<p><img src="images/sidebar_killed.png" />
-
+1. In the Rollout dashboard, disable the sidebar experiment in Development environment by toggling `Active` to `Killed`. <p><img src="images/sidebar_killed.png" />
 2. In GitHub, go look at your `rollout-configuration-as-code` repo and note the structure. You should see an automatically generated `README.md` and a `target_groups` directory.
 3. Then, switch from `master` branch to our automatically created `Development` branch and note the differences. Especially the existence of an `experiments` folder that contains `default.sidebar.yml` with `enabled: false` on line 5.
 4. Within the Github code editor, modify `default.sidebar.yml` by editing the line `enabled: false` to become `enabled: true` and commit to `Development` branch. Your YAML should closely resemble this:

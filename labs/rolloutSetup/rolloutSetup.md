@@ -18,7 +18,7 @@ In this lab, you will set up a CloudBees Rollout account and use it to manage fe
 Our CloudBees Core pipeline will use a different Rollout environment key, stored in an variable within the repository, depending on which branch we deploy from. Later in the workshop, we'll learn how these separate environment keys can be leveraged to apply the multi-environment view of the Rollout dashboard. This will allow a flag to have a particular Production configuration, while using a completely different ruleset for the code connected to the Development environment.
 
 1. Switch tabs to your Github organization created for the workshop. Navigate to the microblog-frontend repository within your organization.
-2. Change the branch from `master` to `development`. _All work until some components of Lab 5 will take place on the `development` brach_. After changing branches, select the `.env.production` file.
+2. Change the branch from `master` to `development`. _All work until some components of Lab 5 will take place on the `development` branch. After changing branches, select the `.env.production` file.
 3. Click the pencil icon to edit the file.
 
 <p><img src="images/pencilEdit.png" />
