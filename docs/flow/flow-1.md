@@ -25,8 +25,8 @@ name: cloudbees cd fundamentals
 - Overview of Release Orchestration
 - Overview of Deployment Automation
 - Cloudbees CD Architecture Overview
--- Single Server Architecture
--- Clustered Server Architecture
+ - Single Server Architecture
+ - Clustered Server Architecture
 ---
 layout: true
 
