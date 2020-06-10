@@ -22,7 +22,9 @@ layout: true
 ---
 name: cloudbees cd fundamentals 
 # Cloudbees CD Fundamentals
-
+- Overview of Release Orchestration
+- Overview of Deployment Automation
+- Cloudbees CD Architecture
 ---
 layout: true
 
