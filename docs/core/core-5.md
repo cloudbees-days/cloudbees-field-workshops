@@ -10,9 +10,9 @@ name: agenda-templates
 # Agenda
 
 1. Workshop Tools Overview
-2. CloudBees Core Overview
+2. CloudBees CI Overview
 3. Setup for Labs
-4. Configuration as Code (CasC) with CloudBees Core
+4. Configuration as Code (CasC) with CloudBees CI
 5. Pipeline Manageability & Governance with Templates and Policies
 6. .blue-bold[Cross Team Collaboration]
 7. Hibernating Masters
@@ -28,9 +28,9 @@ class: compact, middle
 ]
 
 .no-bullet.img-right[
-* CloudBees Core [Cross Team Collaboration](https://docs.cloudbees.com/docs/cloudbees-core/2.204.2.2/cloud-admin-guide/cross-team-collaboration) simplifies the cumbersome and complicated tasks of triggering downstream jobs by eliminating the need to identify and maintain the full path for every downstream job. Prior to this feature, the details of every downstream job had to meticulously specified in the upstream job. If the job name changed, the upstream job had to be refactored, creating a maintenance burden and discouraging the adoption of event-based triggers.
+* CloudBees CI [Cross Team Collaboration](https://docs.cloudbees.com/docs/cloudbees-core/2.204.2.2/cloud-admin-guide/cross-team-collaboration) simplifies the cumbersome and complicated tasks of triggering downstream jobs by eliminating the need to identify and maintain the full path for every downstream job. Prior to this feature, the details of every downstream job had to meticulously specified in the upstream job. If the job name changed, the upstream job had to be refactored, creating a maintenance burden and discouraging the adoption of event-based triggers.
 * Cross Team Collaboration essentially allows a Pipeline to create a notification event to be consumed by other Pipelines waiting on it. It consists of a Publishing Event and a Trigger Condition.
-* The Cross Team Collaboration feature has a configurable router for routing events either across all Masters connected via Core Operations Center or locally within one Master. It needs to be enabled and configured on your Team Master before you will be able to receive an event published by another Pipeline. 
+* The Cross Team Collaboration feature has a configurable router for routing events either across all Masters connected via CloudBees CI Operations Center or locally within one Master. It needs to be enabled and configured on your Team Master before you will be able to receive an event published by another Pipeline. 
 ]
 
 ---
@@ -84,7 +84,7 @@ class: compact
 
 # Lab - Triggering Pipelines with Cross Team Collaboration
 
-* In this lab we will use CloudBees Core cross team collaboration by adding an event trigger listener so that when the job for our base image is complete, it will kick off our frontend application job with an event payload that includes the information for the `node` image to use.
+* In this lab we will use CloudBees CI cross team collaboration by adding an event trigger listener so that when the job for our base image is complete, it will kick off our frontend application job with an event payload that includes the information for the `node` image to use.
 * First, to figure out what we're dealing with, let's look at the part of the `Dockerfile` for the `microblog-frontend` application. By default, it will use the `node:lts-alpine` image:
 
 ```Dockerfile

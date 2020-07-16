@@ -4,10 +4,10 @@ background-image: linear-gradient(135deg,#279be0,#036eb4)
 count: false
 
 
-# CloudBees Core Workshop
+# CloudBees CI Workshop
 .one-third-up[![:scale 10%](../img/Core-white.svg)]
 ???
-This workshop introduces attendees to the features for CloudBees Core.
+This workshop introduces attendees to the features for CloudBees CI.
 
 ---
 layout: true
@@ -26,12 +26,12 @@ name: agenda
 1. Workshop Tools Overview
 2. CloudBees Core Overview
 3. Setup for Labs
-4. Configuration as Code (CasC) with CloudBees Core
+4. Configuration as Code (CasC) with CloudBees CI
 5. Pipeline Manageability & Governance with Templates and Policies
 6. Cross Team Collaboration
 7. Hibernating Masters
 
-**Please note, it is unlikely that we will get through all the material. However, all of the lab material is freely available on GitHub and can be self-led. The Core lab environment will be available until next Monday if you would like to complete any labs we don't.**
+**Please note, it is unlikely that we will get through all the material. However, all of the lab material is freely available on GitHub and can be self-led. The CloudBees CI lab environment will be available until next Monday if you would like to complete any labs we don't.**
 
 ---
 name: workshop-tools
@@ -41,7 +41,7 @@ name: workshop-tools
 * We will be using Zoom breakout rooms for the majority of the workshop material.
 * Please use the Zoom chat to introduce yourself and if you have any questions.
 * We will have a short poll where you will be able to assess your experience level in a few technical areas. Based on your responses to the poll question you will be asked to rank your overall experience level as a **1**, **2** or a **3**, and then rename yourself in Zoom by adding that number before your name.
-* After an overview of CloudBees Core you will be grouped by experience level into Zoom breakout rooms where you will complete the workshop.
+* After an overview of CloudBees CI you will be grouped by experience level into Zoom breakout rooms where you will complete the workshop.
 * Once in the breakout rooms please feel free to ask questions via audio or via the Zoom chat. You may also use the Zoom *Nonverbal* feedback feature to raise your hand or to ask you instructor to slow down or speed up. NOTE: The chat is only broadcast to your breakout room.
 
 ---
@@ -53,8 +53,8 @@ class: center
 ---
 name: lab-environment
 # Lab Environment
-* This workshop uses a CloudBees Core cluster, an enterprise version of Jenkins, running on the Google Kubernetes Engine (GKE)
-  * Each attendee will provision their own Jenkins instance for the labs by leveraging the scalability of CloudBees Core on Kubernetes
+* This workshop uses a CloudBees CI cluster, an enterprise version of Jenkins, running on the Google Kubernetes Engine (GKE)
+  * Each attendee will provision their own Jenkins instance for the labs by leveraging the scalability of CloudBees CI on Kubernetes
 * All the instructions for the labs and these slides are publicly available in GitHub
 * Attendees will be using their own GitHub accounts 
 
@@ -64,7 +64,7 @@ class: title, shelf, no-footer, fullbleed
 background-image: linear-gradient(135deg,#279be0,#036eb4)
 count: false
 
-# CloudBees Core Overview
+# CloudBees CI Overview
 
 ???
 Notes
@@ -74,9 +74,9 @@ name: agenda-overview
 # Agenda
 
 1. Workshop Tools Overview
-2. .blue-bold[CloudBees Core Overview]
+2. .blue-bold[CloudBees CI Overview]
 3. Setup for Labs
-4. Configuration as Code (CasC) with CloudBees Core
+4. Configuration as Code (CasC) with CloudBees CI
 5. Pipeline Manageability & Governance with Templates and Policies
 6. Cross Team Collaboration
 7. Hibernating Masters
@@ -113,7 +113,7 @@ Ensure Security and Compliance
 ---
 name: core-team-masters
 
-# CloudBees Core Enables Continuous Scaling
+# CloudBees CI Enables Continuous Scaling
 
 .img-left[
   .center[Team Masters]
@@ -140,10 +140,10 @@ class: middle, center
 
 ![:scale 75%](img/core-k8s-architecture.svg)
 
-CloudBees Core on Kubernetes
+CloudBees CI on Kubernetes
 
 ???
-They dynamic provisioning of Masters provided by CB Core on K8s makes it easy to provide a Jenkins instance for every team.
+They dynamic provisioning of Masters provided by CloudBees CI on K8s makes it easy to provide a Jenkins instance for every team.
 * **Less downtime:** Liveness and readiness for Masters and Operations Center thanks to Kubernetes Stateful Sets
 * **Ephemeral agents:** Agents are containers deployed on a K8s pod. They are created and destroyed during pipeline run
 * **Kubernetes agent templates:** Templates can be defined for K8s Pod based agents, shared with the whole cluster or defined at the team level.
@@ -155,7 +155,7 @@ name: core-overview-scale
 
 # Manage Jenkins at Scale
 * Curated and verified Jenkins plug-ins with **CloudBees Assurance Program** ensures you are using the most up-to-date and secure versions via monthly security and functionality releases 
-* Configuration as Code for Jenkins and Core commercial components
+* Configuration as Code for Jenkins and CloudBees CI commercial components
 * Enables Comprehensive Jenkins Team Management including:
   * Masters per Team
   * Centrally managed Role Based Access Control (RBAC)

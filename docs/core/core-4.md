@@ -10,9 +10,9 @@ name: agenda-templates
 # Agenda
 
 1. Workshop Tools Overview
-2. CloudBees Core Overview
+2. CloudBees CI Overview
 3. Setup for Labs
-4. Configuration as Code (CasC) with CloudBees Core
+4. Configuration as Code (CasC) with CloudBees CI
 5. .blue-bold[Pipeline Manageability & Governance with] Templates and .blue-bold[Policies]
 6. Cross Team Collaboration
 7. Hibernating Masters
@@ -22,7 +22,7 @@ name: pipeline-policies
 
 # CloudBees Pipeline Policies .badge-red[PREVIEW]
 
-* [Pipeline Policies for CloudBees Core](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines-user-guide/pipeline-policies) allow organizations to enforce standards across Pipeline jobs.
+* [Pipeline Policies for CloudBees CI](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines-user-guide/pipeline-policies) allow organizations to enforce standards across Pipeline jobs.
 * Pipeline Policies are centrally managed runtime validations that support both scripted and declarative pipelines.
 * Pipeline Policies provide administrators a way to include warnings for or block the execution of pipelines that do not comply with certain regulatory requirements or best practice guidelines captured as policy rules.
 * There are currently 4 supported policy rules:

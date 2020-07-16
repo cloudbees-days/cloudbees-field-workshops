@@ -10,9 +10,9 @@ name: agenda-templates
 # Agenda
 
 1. Workshop Tools Overview
-2. CloudBees Core Overview
+2. CloudBees CI Overview
 3. Setup for Labs
-4. Configuration as Code (CasC) with CloudBees Core
+4. Configuration as Code (CasC) with CloudBees CI
 5. .blue-bold[Pipeline Manageability & Governance with Templates] and Policies
 6. Cross Team Collaboration
 7. Hibernating Masters
@@ -52,12 +52,12 @@ name: pipeline-template-catalog-overview
 
 * Imported a Pipeline Template Catalog from a GitHub repository
 * Used a CloudBees Folders Plus feature to restrict what type of jobs can be created in a folder
-* Leveraged CloudBees GitHub Reporting to find and fix an error
+* Leveraged CloudBees SCM Reporting for GitHub to find and fix an error
 
-### CloudBees GitHub Reporting .badge-red[PRE-RELEASE]
+### CloudBees SCM Reporting for GitHub .badge-red[PRE-RELEASE]
 
 * Whereas OSS github-branch-source plugin displays only build-level statuses, the CloudBees GitHub Reporting plugin provides more detailed Jenkins Pipeline events as corresponding GitHub statuses.
-* As the build runs, Core will surface status information about the build directly in GitHub, in real-time, alleviating the need to switch over to Jenkins to get an overview.
+* As the build runs, CloudBees CI will surface status information about the build directly in GitHub, in real-time, alleviating the need to switch over to Jenkins to get an overview.
 
 ---
 name: pipeline-template-catalog-slack
@@ -69,7 +69,7 @@ name: pipeline-template-catalog-slack
 ]
 
 .img-right[
-* Similar to the CloudBees GitHub Reporting plugin, the CloudBees Slack plugin provides actionable build information inside of Slack.
-* After a build runs, the Core Slack plugin will surface results about the build directly in Slack, alleviating the need to switch over to Jenkins to get an overview.
-* The Slack messages are sent directly to individual users based on who committed the code that triggered the Core job.
+* Similar to the CloudBees SCM Reporting plugin, the CloudBees Slack plugin provides actionable build information inside of Slack.
+* After a build runs, the CloudBees Slack plugin will surface results about the build directly in Slack, alleviating the need to switch over to Jenkins to get an overview.
+* The Slack messages are sent directly to individual users based on who committed the code that triggered the CloudBees CI job.
 ]

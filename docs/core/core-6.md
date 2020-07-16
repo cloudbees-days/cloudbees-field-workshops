@@ -10,9 +10,9 @@ name: agenda-templates
 # Agenda
 
 1. Workshop Tools Overview
-2. CloudBees Core Overview
+2. CloudBees CI Overview
 3. Setup for Labs
-4. Configuration as Code (CasC) with CloudBees Core
+4. Configuration as Code (CasC) with CloudBees CI
 5. Pipeline Manageability & Governance with Templates and Policies
 6. Cross Team Collaboration
 7. .blue-bold[Hibernating Masters]
@@ -20,14 +20,14 @@ name: agenda-templates
 ---
 name: hibernate-overview
 
-# CloudBees Core Hibernating Masters .badge-red[PREVIEW]
+# CloudBees CI Hibernating Masters .badge-red[PREVIEW]
 
-* [CloudBees Core Managed Master hibernation](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-admin-guide/managing-masters#_hibernation_in_managed_masters) takes advantage of running Core on Kubernetes by automatically shutting down or hibernating Team/Managed Masters. This is done by scaling the Kubernetes StatefulSet down to zero replicas.
+* [CloudBees CI Managed Master hibernation](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-admin-guide/managing-masters#_hibernation_in_managed_masters) takes advantage of running CloudBees CI on Kubernetes by automatically shutting down or hibernating Team/Managed Masters. This is done by scaling the Kubernetes StatefulSet down to zero replicas.
 * Hibernation was enabled for everyones' Team Master earlier in the CasC lab and everyones' Team Masters will hibernate after 30 minutes of inactivity.
 * Filtered web activity and direct web access will **wake up** the Team Master. If a Team Master is hibernating - signified by the light blue **pause** icon next to it in the classic UI of Operations Center - all you need to do is click on it and it will be up and running in a few minutes.
 
 ???
-The workshop clusters will continue to be available for both Core and Rollout for the rest of the week of CB Connect. We need to make sure that all Core attendees are aware that their Team Master will most likely be hibernating when they come back to complete any labs and that they just need to click on it to ‘wake it up’ from the classic UI of OC.
+The workshop clusters will continue to be available for both CloudBees CI and CloudBees Feature Flags for as long as necessary after the workshop. We need to make sure that all CloudBees CI attendees are aware that their Team Master will most likely be hibernating when they come back to complete any labs and that they just need to click on it to ‘wake it up’ from the classic UI of Operations Center.
 
 ---
 name: hibernate-screenshot

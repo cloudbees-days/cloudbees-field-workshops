@@ -1,9 +1,9 @@
 # <img src="images/cloudbeescore_logo.png" alt="CloudBees Core Logo" width="40" align="top"> CloudBees Core - Hibernating Masters
 
-The [CloudBees Core Managed Master hibernation](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-admin-guide/managing-masters#_hibernation_in_managed_masters) feature takes advantage of running Core on Kubernetes by automatically shutting down or hibernating Team/Managed Masters after a specified amount of time of inactivity.
+The [CloudBees CI Managed Master hibernation](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-admin-guide/managing-masters#_hibernation_in_managed_masters) feature takes advantage of running CloudBees CI on Kubernetes by automatically shutting down or hibernating Team/Managed Masters after a specified amount of time of inactivity.
 
 ## Configure Hibernation
-The Master Hibernation is managed at the global Jenkins configuration level and was configured in the `jenkins.yaml` file in the Core CasC lab.
+The Master Hibernation is managed at the global Jenkins configuration level and was configured in the `jenkins.yaml` file in the CloudBees CI CasC lab.
 
 ## Un-hibernate a Master
 

@@ -1,4 +1,4 @@
-# <img src="images/cloudbeescore_logo.png" alt="CloudBees Core Logo" width="40" align="top"> CloudBees Core - Pipeline Template Catalogs
+# <img src="images/cloudbeescore_logo.png" alt="CloudBees Core Logo" width="40" align="top"> CloudBees CI - Pipeline Template Catalogs
 
 [Instructor led video of lab.](https://youtu.be/YBoX-bE3YYQ)
 
@@ -8,8 +8,8 @@
 3. Fill out the **Catalog source control options**:
    1. **Branch or tag for this template catalog**: master
    2. Select **GitHub** under **Catalog source code repository location**
-   3. **Credentials**: select the *username/password* credential you created for the CloudBees Core workshop - it will show up as - `[GitHub username]/****** (GitHub PAT from JCasC - username/password)`
-   4. **Repository HTTPS URL**: The GitHub URL for your forked copy of the **pipeline-template-catalog** repository. In the example below the GitHub Organization being used is **bee-cd** so the *repository URL* would be `https://github.com/bee-cd/pipeline-template-catalog.git`. **NOTE:** You need to use the repository URL for the GitHub Organization you created for this workshop in the CloudBees Core workshop setup lab - so `bee-cd` would be replaced with your GitHub Organization.
+   3. **Credentials**: select the *username/password* credential you created for the CloudBees CI workshop - it will show up as - `[GitHub username]/****** (GitHub PAT from JCasC - username/password)`
+   4. **Repository HTTPS URL**: The GitHub URL for your forked copy of the **pipeline-template-catalog** repository. In the example below the GitHub Organization being used is **bee-cd** so the *repository URL* would be `https://github.com/bee-cd/pipeline-template-catalog.git`. **NOTE:** You need to use the repository URL for the GitHub Organization you created for this workshop in the CloudBees CI workshop setup lab - so `bee-cd` would be replaced with your GitHub Organization.
    5. Next, click the **Validate** button to ensure your credentials and repository URL are set correctly. If the validation fails, please check that you selected the correct GitHub credentials and that the **Repository HTTPS URL** points to the fork of the **pipeline-template-catalog** repository in the GitHub Organization that you created for this workhsop.
    6. Finally, click the **Save** button <p><img src="images/add-catalog-save.png" width=800/>
 4. Once the import is complete, click on the **CloudBees Days Workshop Catalog** link. <p><img src="images/catalog-link.png" width=800/>
@@ -25,9 +25,9 @@ In this lab you will create a new Multibranch Pipeline job from the **VueJS** te
 2. Click on the ***New VueJS*** link in the left menu. <p><img src="images/template_link.png" width=800/>
 3. **Enter an item name** as ***[GitHub username]-frontend***, select **VueJS**  and click the **OK** button. <p><img src="images/item_form.png" width=800/>
 4. Fill out the template parameters:
-   1. **Repository Owner**: the GitHub Organization your created for the CloudBees Core workshop
+   1. **Repository Owner**: the GitHub Organization your created for the CloudBees CI workshop
    2. **Repository**: The name of your forked repository, *microblog-frontend*
-   3. **GitHub Credential ID**: select the *username/password* credential created for you by the **workshop-setup** job and Core CasC - it will show up as - [GitHub username]/******
+   3. **GitHub Credential ID**: select the *username/password* credential created for you by the **workshop-setup** job and CloudBees CI CasC - it will show up as - [GitHub username]/******
    4. Click the **Save** button<p><img src="images/template_parameters.png" width=800/>
 5. After the initial scan you will see one Jenkins Pipeline job funder the **Pull Requests** tab of the Pipeline Mulitbranch project that was just created for your fork of the **microblog-frontend** repository - **PR-1**. <p><img src="images/one_job.png" width=800/>
 6. Now, in **GitHub**, navigate to the **Add marker file** pull request (#1) in your fork of the **microblog-frontend** repository. <p><img src="images/pr-navigate.png" width=800/>

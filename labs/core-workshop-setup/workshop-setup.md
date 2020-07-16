@@ -6,9 +6,9 @@ In this lab you will setup a work environment for the CloudBees Core labs.  Ask 
 
 <a href="https://youtu.be/AZetQJYIKU4" target="_blank">Instructor led video of lab.</a>
 
-Today's URL for the CloudBees Core Workshop environment will be provided by your instructor. If you haven't already signed up for an account then follow [these instructions](../workshop-setup/workshop-setup.md) and then come back to the *Core Workshop Set-up*.
+Today's URL for the CloudBees CI Workshop environment will be provided by your instructor. If you haven't already signed up for an account then follow [these instructions](../workshop-setup/workshop-setup.md) and then come back to the *Core CI Set-up*.
 
-### Login to CloudBees Core
+### Login to CloudBees CI
 
 1. Goto to the Workshop URL provided by the instructor.
 2. Enter the username and password you created earlier into the login screen.<p><img src="images/setup-login.png" width=400/>
@@ -48,11 +48,11 @@ Feel free to use an existing GitHub.com account, otherwise create one:
 
 >NOTE: Even though you have to provide an email for billing, you will NOT be charged anything as long as you choose the free option.
     
-## Run the Core Workshop Setup Pipeline
-You should see the following Blue Ocean **Pipelines** screen with a Pipeline named **core-workshop-setup** for your Team:
+## Run the CloudBees CI Workshop Setup Pipeline
+You should see the following Blue Ocean **Pipelines** screen with a Pipeline named **cloudbees-ci-workshop-setup** for your Team:
 <p><img src="images/setup-success.png" width=800/>
 
-1. Click on the `core-workshop-setup` Pipeline job.
+1. Click on the `cloudbees-ci-workshop-setup` Pipeline job.
 2. On the next screen, click on the **Run** button in the middle of the screen. <p><img src="images/workshop-setup-run.png" width=600/>
 3. Fill in the required parameters: <p><img src="images/workshop-setup-input-form.png" width=400/>
    1. ***githubPat*** - the GitHub Personal Access Token you created above.
@@ -61,8 +61,8 @@ You should see the following Blue Ocean **Pipelines** screen with a Pipeline nam
    4. The Kubernetes Namespace where your Team Master has been deployed - **only change the default value if you are instructed to do so.**
 4. Once you have provided the above required input parameters click the **Run** button at the bottom of the parameters input form.
 5. Blue Ocean will automatically switch to the Pipeline **Activity** screen, click anywhere on the Pipeline run row to see the Pipeline run and view the logs. But make sure you don't click on the **Stop** button to the right of the red box in the screenshot below.<p><img src="images/workshop-setup-activity.png" width=600/>
-6. Once the **core-workshop-setup** Pipeline job completes successfully your Team Master will be restarted so you should see a **Connect lost: waiting** alert in the bottom right of your Blue Ocean screen. <p><img src="images/workshop-setup-connection-lost.png" width=600/> <p>You may also experience a **503 Service Temporarily Unavailable** screen - that is because the actual Kubernetes Pod that your Team Master is running in is being re-created. Your Team Master will return in a few minutes.
+6. Once the **cloudbees-ci-workshop-setup** Pipeline job completes successfully your Team Master will be restarted so you should see a **Connect lost: waiting** alert in the bottom right of your Blue Ocean screen. <p><img src="images/workshop-setup-connection-lost.png" width=600/> <p>You may also experience a **503 Service Temporarily Unavailable** screen - that is because the actual Kubernetes Pod that your Team Master is running in is being re-created. Your Team Master will return in a few minutes.
 
 **For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/core/#16).**
 
-Otherwise, you may proceed to the next lab: [*Configuration as Code (CasC) for CloudBees Core*](../core-casc/core-casc.md) where we will explore your individual fork of the **core-config-bundle** repository or choose another lab on the [main page](../../README.md#workshop-labs).
+Otherwise, you may proceed to the next lab: [*Configuration as Code (CasC) for CloudBees CI*](../core-casc/core-casc.md) where we will explore your individual fork of the **cloudbees-ci-config-bundle** repository or choose another lab on the [main page](../../README.md#workshop-labs).

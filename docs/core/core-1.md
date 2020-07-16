@@ -3,36 +3,36 @@ class: title, shelf, no-footer, fullbleed
 background-image: linear-gradient(135deg,#279be0,#036eb4)
 count: false
 
-# Core Workshop Setup
+# CloudBees CI Workshop Setup
 
 ---
 name: agenda-setup
 # Agenda
 
 1. Workshop Tools Overview
-2. CloudBees Core Overview
+2. CloudBees CI Overview
 3. .blue-bold[Setup for Labs]
-4. Configuration as Code (CasC) with CloudBees Core
+4. Configuration as Code (CasC) with CloudBees CI
 5. Pipeline Manageability & Governance with Templates and Policies
 6. Cross Team Collaboration
 7. Hibernating Masters
 
 ---
 name: core-setup-overview
-# Core Workshop Setup
+# CloudBees CI Workshop Setup
 
 Setup for this workshop will include:
 
-* Creating a CloudBees Core Jenkins instance referred to as a [Team Master](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-admin-guide/cje-ux).
+* Creating a CloudBees CI Jenkins instance referred to as a [Team Master](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-admin-guide/cje-ux).
 * Setting up a GitHub.com user account that will be used throughout the workshop. If you have an existing GitHub.com account you will be able to use that account if you are comfortable using that account to create a GitHub Organization and a GitHub Personal Access Token for use in this workshop.
 * Creating a Github Personal Access Token that you will use within your Team Masters (Jenkins instance) to connect Pipelines, Multibranch Pipelines, and Github Organization Projects to your Github organization and repositories created for this workshop.
 * Creating a GitHub organization to use for this workshop.
 
 ---
 name: core-setup-lab
-# Lab - Core Workshop Setup
+# Lab - CloudBees CI Workshop Setup
 
-* Today's URL for the CloudBees Core Workshop cluster will be provided by your instructor.
+* Today's URL for the CloudBees CI Workshop cluster will be provided by your instructor.
 * The *Core Workshop Setup* lab instructions are available at: 
   * [https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/workshop-setup/workshop-setup.md](https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/workshop-setup/workshop-setup.md)
 
@@ -40,7 +40,7 @@ name: core-setup-lab
 name: core-setup-review
 class: compact
 
-# Core Workshop Setup Review
+# CloudBees CI Workshop Setup Review
 
 While your Team Master is restarting, let's explore the results of the **`core-workshop-setup`** Pipeline:
 
@@ -51,7 +51,7 @@ While your Team Master is restarting, let's explore the results of the **`core-w
    3. **pipeline-template-catalog** - a set of templated Pipelines that you will use to create Jenkins Pipeline jobs for this workshop.
    4. **microblog-frontend** - a vue.js sample application to be used for this workshop.
    5. **microblog-backend** - a Python sample application to be used in conjunction with the **microblog-frontend** application to be used with this workshop.
-* Your Core Team Master was also setup to use Core configuration as code as we will explore next.
+* Your CloudBees CI Team Master was also setup to use CloudBees CI configuration as code as we will explore next.
 ]
 
 ???
