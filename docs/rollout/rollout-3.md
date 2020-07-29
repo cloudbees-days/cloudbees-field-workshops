@@ -9,10 +9,10 @@ count: false
 name: rollout-control-overview
 # Controlling the Value of a Feature Flag
 
-In order to control the value of a feature flag with CloudBees Rollout for this lab, we will be creating an experiment in the dashboard.
+In order to control the value of a feature flag with CloudBees Feature Flags for this lab, we will be creating an experiment in the dashboard.
 <br/>
 <br/>
-An experiment in the Rollout dashboard refers to the definition of a ruleset around a specific feature flag. It is within the experiment that we will decide if a flag should be on or off, for which users, what percentage of users, etc. Any rule that applies to a feature flag will be defined inside of an experiment.
+An experiment in the CloudBees Feature Flags dashboard refers to the definition of a ruleset around a specific feature flag. It is within the experiment that we will decide if a flag should be on or off, for which users, what percentage of users, etc. Any rule that applies to a feature flag will be defined inside of an experiment.
 
 ---
 name: rollout-control-override
@@ -39,7 +39,7 @@ In the *Flags Override view*, a flag can appear in the following states:
 name: rollout-control-lab
 # Lab - Controlling the Value of a Feature Flag
 
-* In this lab you will control the value of a flag by creating an experiment via the Rollout dashboard.
+* In this lab you will control the value of a flag by creating an experiment via the CloudBees Feature Flags dashboard.
 * For local testing or development, we will need to specify values for each flags on our local machines. In order to do this without affecting others' work, we will implement the Flag Override and toggle the values as needed.
 * The *Controlling the Value of a Feature Flag* lab instructions are available at:
   * [https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/rolloutExperiment/rolloutExperiment.md](https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/rolloutExperiment/rolloutExperiment.md)
@@ -49,7 +49,7 @@ name: rollout-control-review
 
 # Controlling the Value of a Feature Flag Lab Review
 
-Experiments are an important concept in CloudBees Rollout. With this lab complete, you can now control the value of "default.sidebar" and "default.title" by creating experiments via the Rollout dashboard.
+Experiments are an important concept in CloudBees Feature Flags. With this lab complete, you can now control the value of "default.sidebar" and "default.title" by creating experiments via the CloudBees Feature Flags dashboard.
 <br/>
 <br/>
 You also used the *Flags Override view* UI element to modify flag values to allow for validation on your local machine without affecting others' work.

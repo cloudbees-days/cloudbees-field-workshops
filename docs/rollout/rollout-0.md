@@ -4,7 +4,7 @@ background-image: linear-gradient(135deg,#279be0,#036eb4)
 count: false
 
 
-# CloudBees Rollout Workshop
+# CloudBees Feature Flags Workshop
 .one-third-up[![:scale 10%](../img/Rollout-white.svg)]
 ???
 This workshop introduces attendees to the features for CloudBees Rollout.
@@ -23,14 +23,14 @@ layout: true
 name: agenda
 # Agenda
 
-1. Rollout Workshop Setup
+1. CloudBees Feature Flags Workshop Setup
 2. Adding a Title to the Microblog
 3. Controlling the Value of a Feature Flag
 4. User Targeting
-5. Rollout Configuration as Code
+5. CloudBees Feature Flags Configuration as Code
 6. Analytics and A/B testing
 
-**Please note, it is unlikely that we will get through all the material. However, all of the lab material is freely available on GitHub and can be self-led. The Core lab environment will be available until next Monday and the Rollout trial is available for 14 days if you would like to complete any labs we don't finish today.**
+**Please note, it is unlikely that we will get through all the material. However, all of the lab material is freely available on GitHub and can be self-led. The Core lab environment will be available until next Monday and the CloudBees Feature Flags trial is available for 14 days if you would like to complete any labs we don't finish today.**
 
 ---
 name: workshop-tools
@@ -40,7 +40,7 @@ name: workshop-tools
 * We will be using Zoom breakout rooms for the majority of the workshop material.
 * Please use the Zoom chat to introduce yourself and if you have any questions.
 * We will be grouping attendees in Zoom breakout rooms based on if you did the CloudBees Core workshop just before this one. If you did the Core workshop rename yourself in Zoom by adding the number **1** before your name.
-* After an overview of CloudBees Rollout you will be grouped into Zoom breakout rooms where you will complete the workshop.
+* After an overview of CloudBees Feature Flags you will be grouped into Zoom breakout rooms where you will complete the workshop.
 * Once in the breakout rooms please feel free to ask questions via audio or via the Zoom chat. You may also use the Zoom *Nonverbal* feedback feature to raise your hand or to ask you instructor to slow down or speed up. NOTE: The chat is only broadcast to your breakout room.
 
 ---
@@ -53,9 +53,9 @@ class: center
 name: rollout-lab-environment
 # Lab Environment
 
-* This workshop uses CloudBees Rollout SaaS version running on AWS
-  * Each attendee will sign up for a CloudBees Rollout account
-  * If you are already a Rollout customer, simply sign in as usual
+* This workshop uses CloudBees Feature Flags SaaS version running on AWS
+  * Each attendee will sign up for a CloudBees Feature Flags account
+  * If you are already a CloudBees Feature Flags customer, simply sign in as usual
 * This workshop also will use a CloudBees Core cluster, an enterprise version of Jenkins, running on the Google Kubernetes Engine (GKE) to provide automated build and deploy for everyones' sample applications
   * Each attendee will provision their own Jenkins instance for the labs by leveraging the scalability of CloudBees Core on Kubernetes
 * All the instructions for the labs and these slides are publicly available in GitHub
@@ -68,7 +68,7 @@ class: title, shelf, no-footer, fullbleed
 background-image: linear-gradient(135deg,#279be0,#036eb4)
 count: false
 
-# CloudBees Rollout Overview
+# CloudBees Feature Flags Overview
 
 ---
 name: feature-flag-background
@@ -86,7 +86,7 @@ This technique offers many other benefits and will be discussed in greater detai
 name: rollout-overview-content
 
 .italic[
-  *95% of respondent's organizations have implemented, begun implementing, or plan to implement feature flags in the future* - Atlassian / Rollout market research report 2018
+  *95% of respondent's organizations have implemented, begun implementing, or plan to implement feature flags in the future* - Atlassian / CloudBees Feature Flags market research report 2018
 ]
 
 # Feature Flag Management
@@ -102,7 +102,7 @@ name: rollout-overview-value
 # CloudBees Feature Management Solution
 
 .italic[
-*Rollout is a multi-platform, Infrastructure as Code,
+*CloudBees Feature Flags is a multi-platform, Infrastructure as Code,
 SaaS feature management and remote configuration solution.*
 ]
 
@@ -130,16 +130,16 @@ Customization
 name: rollout-overview-architecture
 class: middle, center
 
-# CloudBees Rollout Flag Update Process
+# CloudBees Feature Flags Flag Update Process
 ![:scale 75%](img/rollout_saas_arch.jpg)
 
 ???
-Starting from dashboard on bottom left, we process configuration on the rollout server to generate a JSON config file and we sign that JSON file with a public and private key and save the file to a cloud service, specifically amazon s3.
+Starting from dashboard on bottom left, we process configuration on the CloudBees Feature Flags server to generate a JSON config file and we sign that JSON file with a public and private key and save the file to a cloud service, specifically amazon s3.
 
 And then the Client side SDKs (mobile, web, backend service etc) download that JSON file so all the processing and all the decision points happen on the target device itself.
 
 The entire architecture is stateless, for 2 main reasons
 1. privacy and security: we do not want you to share your user info with us. All we know are experiment names, target group names, feature flags name, but we do not know user information.
-2. we want to ensure there is no impact to your services. Even if we have an outage and our servers are down, at maximum you will not be able to make a configuration change via the dashboard. Your service will not be impacted because at the end you are just reading a JSON file. We also try to mitigate service issues during network outages because our feature flags always have default values, we also use local caching on the device and other mechanisms to ensure there is no impact if Rollout has a problem.
+2. we want to ensure there is no impact to your services. Even if we have an outage and our servers are down, at maximum you will not be able to make a configuration change via the dashboard. Your service will not be impacted because at the end you are just reading a JSON file. We also try to mitigate service issues during network outages because our feature flags always have default values, we also use local caching on the device and other mechanisms to ensure there is no impact if CloudBees Feature Flags has a problem.
 
 Lastly, we are using Server sent event protocol to notify the SDKs that they need to download a JSON file when there is a change in the dashboard. The idea is to ensure that every change to the dashboard is received as fast as possible on the end devices.

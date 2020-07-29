@@ -15,7 +15,7 @@ name: agenda-templates
 4. Configuration as Code (CasC) with CloudBees CI
 5. Pipeline Manageability & Governance with Templates and Policies
 6. .blue-bold[Cross Team Collaboration]
-7. Hibernating Masters
+7. Hibernating Managed Jenkins Instances
 
 ---
 name: cross-team overview
@@ -30,7 +30,7 @@ class: compact, middle
 .no-bullet.img-right[
 * CloudBees CI [Cross Team Collaboration](https://docs.cloudbees.com/docs/cloudbees-core/2.204.2.2/cloud-admin-guide/cross-team-collaboration) simplifies the cumbersome and complicated tasks of triggering downstream jobs by eliminating the need to identify and maintain the full path for every downstream job. Prior to this feature, the details of every downstream job had to meticulously specified in the upstream job. If the job name changed, the upstream job had to be refactored, creating a maintenance burden and discouraging the adoption of event-based triggers.
 * Cross Team Collaboration essentially allows a Pipeline to create a notification event to be consumed by other Pipelines waiting on it. It consists of a Publishing Event and a Trigger Condition.
-* The Cross Team Collaboration feature has a configurable router for routing events either across all Masters connected via CloudBees CI Operations Center or locally within one Master. It needs to be enabled and configured on your Team Master before you will be able to receive an event published by another Pipeline. 
+* The Cross Team Collaboration feature has a configurable router for routing events either across all Managed Jenkins instances connected via CloudBees CI Operations Center or locally within one Managed Jenkins instance. It needs to be enabled and configured on your Team (Jenkins instance) before you will be able to receive an event published by another Pipeline. 
 ]
 
 ---
@@ -101,6 +101,6 @@ name: collab-overview
 
 # Cross Team Collaboration Lab Overview
 
-* Enabled **Notifications** for CloudBees Cross Team Collaboration on your Team Master
+* Enabled **Notifications** for CloudBees Cross Team Collaboration on your Team (Jenkins instance)
 * Updated the **VueJS** template of your Pipeline Template Catalog with an event trigger
 * Created a Pipeline job that publishes an event to trigger the jobs based on the **VueJS** template

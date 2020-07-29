@@ -1,7 +1,7 @@
 # <img src="images/Rollout-blue.svg" alt="CloudBees Rollout Logo" width="40" align="top"> Gating Code with a CloudBees Feature Flag
 
-## Using a Rollout Feature Flag
-In this lab, you will gate a component behind the `title` feature flag, defined in the previous lab. Later, using Rollout's dashboard, we will remotely configure the value of the flag, to either expose or hide this title element at will.
+## Using a Feature Flag with CloudBees Feature Flags
+In this lab, you will gate a component behind the `title` feature flag, defined in the previous lab. Later, using CloudBees Feature Flags's dashboard, we will remotely configure the value of the flag, to either expose or hide this title element at will.
 
 ### Adding a Title to the Microblog Post
 
@@ -160,7 +160,7 @@ export default {
 
 ### Adding the Configuration Fetched Handler
 
-The Configuration Fetched Handler provides a mechanism to alert the Rollout SDK when an updated configuration, from local storage or via an asynchronous network call, has loaded. It allows us to control what happens whenever a new configuration is fetched, and can be useful for troubleshooting by logging the `fetchedResults`. To apply the changes for client-side feature flags from the new configuration, an action (like a page refresh) has to take place.
+The Configuration Fetched Handler provides a mechanism to alert the CloudBees Feature Flags SDK when an updated configuration, from local storage or via an asynchronous network call, has loaded. It allows us to control what happens whenever a new configuration is fetched, and can be useful for troubleshooting by logging the `fetchedResults`. To apply the changes for client-side feature flags from the new configuration, an action (like a page refresh) has to take place.
 
 1. In Github, navigate to the root directory of the microblog-frontend repository on the `development` branch.
 2. Open the `flags.js` file (navigating to `src/utils/flags.js`), and select the pencil icon to edit the file.
@@ -202,4 +202,4 @@ Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
 
 **For instructor led workshops please return to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/rollout/#18)**
 
-Otherwise, you may proceed to the next lab: [**Control the Value of a Flag with CloudBees Rollout**](../rolloutExperiment/rolloutExperiment.md) or choose another lab on the [main page](../../README.md#workshop-labs).
+Otherwise, you may proceed to the next lab: [**Control the Value of a Flag with CloudBees Feature Flags**](../rolloutExperiment/rolloutExperiment.md) or choose another lab on the [main page](../../README.md#workshop-labs).

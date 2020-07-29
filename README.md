@@ -19,18 +19,26 @@ These workshop labs demonstrate how to  effectively use CI/CD practices, manage 
 
 ## CloudBees CI:
 
+The CloudBees CI workshop is composed of two sections. The first is focused on the features that allow managing continuous integration at scale and the second is focused on the features that provide a developer centric experience.
+
 ### Slides
 https://cloudbees-days.github.io/core-rollout-flow-workshop/core/
 
-### Labs
+For both sections:
  * [Lab 1 - CloudBees CI Workshop Setup](labs/core-workshop-setup/workshop-setup.md)
- * [Lab 2 - Configuration as Code (CasC) for CloudBees CI](labs/core-casc/core-casc.md)
- * [Lab 3 - Pipeline Template Catalogs](labs/pipeline-template-catalog/pipeline-template-catalog.md)
- * [Lab 4 - Pipeline Policies](labs/pipeline-policies/pipeline-policies.md)
- * [Lab 5 - Cross Team Collaboration](labs/cross-team-collaboration/cross-team-collaboration.md)
- * [Lab 6 - Hibernating Masters](labs/hibernating-masters/hibernating-masters.md)
 
->NOTE: If you are returning to the workshop cluster to complete a lab please review this lab on [**Un-hibernating a Master**](labs/hibernating-masters/hibernating-masters.md#un-hibernate-a-master).
+### Section 1: Managing Continuous Integration at Scale
+ * [Lab 2 - Configuration as Code (CasC) for CloudBees CI](labs/cloudbees-ci/casc/casc.md)
+ * [Lab 3 - Creating and Configuring Pipeline Template Catalogs](labs/cloudbees-ci/pipeline-template-catalog/pipeline-template-catalog.md)
+ * [Lab 4 - Pipeline Policies](labs/cloudbees-ci/pipeline-policies/pipeline-policies.md)
+
+### Section 2: A Developer Centric Experience
+ * [Lab 5 - Using Pipeline Template Catalogs](labs/cloudbees-ci/pipeline-template-catalog/pipeline-template-catalog.md)
+ * Lab 6 - Contextual Pipeline Feedback (GitHub Reporting & Slack)
+ * [Lab 7 - Cross Team Collaboration](labs/cloudbees-ci/cross-team-collaboration/cross-team-collaboration.md)
+ * [Lab 8 - Hibernating Managed Jenkins Instances](labs/cloudbees-ci/hibernating/hibernating.md)
+
+>NOTE: If you are returning to the workshop cluster to complete a lab please review this lab on [**Un-hibernating a Managed Jenkins Instance**](labs/hibernating/hibernating.md#un-hibernate-a-managed-jenkins-instance).
 
 ## CloudBees Feature Flags:
 
@@ -40,12 +48,12 @@ https://cloudbees-days.github.io/core-rollout-flow-workshop/rollout/
 If you did not attend the CloudBees CI Workshop or go through the above labs, please follow [these instructions](labs/rolloutPreReqs/rolloutPreReqs.md) before proceeding to Lab 1 below.
 
 ### Labs
- * [Lab 1 - CloudBees Feature Flags Workshop Setup](labs/rolloutSetup/rolloutSetup.md)
- * [Lab 2 - Gating Code with CloudBees Feature Flags](labs/rolloutFeature/rolloutFeature.md)
- * [Lab 3 - Controlling the Value of a Feature Flag](labs/rolloutExperiment/rolloutExperiment.md)
- * [Lab 4 - User Targeting](labs/rolloutTargeting/rolloutTargeting.md)
- * [Lab 5 - CloudBees Feature Flags Configuration as Code](labs/rollout-cac/rollout-cac.md)
- * [Lab 6 - CloudBees Feature Flags and Analytics](labs/rolloutAnalytics/rolloutAnalytics.md)
+ * [Lab 1 - CloudBees Feature Flags Workshop Setup](labs/cloudbees-feature-flags/setup/setup.md)
+ * [Lab 2 - Gating Code with CloudBees Feature Flags](labs/cloudbees-feature-flags/feature/feature.md)
+ * [Lab 3 - Controlling the Value of a Feature Flag](labs/cloudbees-feature-flags/experiment/experiment.md)
+ * [Lab 4 - User Targeting](labs/cloudbees-feature-flags/targeting/targeting.md)
+ * [Lab 5 - CloudBees Feature Flags Configuration as Code](labs/cloudbees-feature-flags/cac/cac.md)
+ * [Lab 6 - CloudBees Feature Flags and Analytics](labs/cloudbees-feature-flags/analytics/analytics.md)
 
 
 

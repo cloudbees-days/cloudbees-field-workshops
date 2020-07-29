@@ -15,7 +15,7 @@ name: agenda-templates
 4. Configuration as Code (CasC) with CloudBees CI
 5. .blue-bold[Pipeline Manageability & Governance with] Templates and .blue-bold[Policies]
 6. Cross Team Collaboration
-7. Hibernating Masters
+7. Hibernating Managed Jenkins Instances
 
 ---
 name: pipeline-policies
@@ -37,7 +37,7 @@ class: compact
 
 # Lab - Enforcing Pipeline Timeouts with Pipeline Policies
 
-* In the following lab you will create a Pipeline Policy that will require that all Pipeline jobs on your Team Master be configured with a 30 minute (or greater) global timeout.
+* In the following lab you will create a Pipeline Policy that will require that all Pipeline jobs on your Team (Jenkins instance) be configured with a 30 minute (or greater) global timeout.
 * The *Enforcing Pipeline Timeouts with Pipeline Policies* lab instructions are available at: 
   * [https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/pipeline-policies/pipeline-policies.md](https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/pipeline-policies/pipeline-policies.md)
 
@@ -47,5 +47,5 @@ name: pipeline-policies-overview
 
 # Pipeline Policies Overview
 
-* Created a Pipeline Policy to enforce a minimum 30 minute global timeout for all Pipeline jobs on your Team Master
+* Created a Pipeline Policy to enforce a minimum 30 minute global timeout for all Pipeline jobs on your Team (Jenkins instance)
 * Updated the **VueJS** template with a time out to validate successfully against the **Timeout policy** you created

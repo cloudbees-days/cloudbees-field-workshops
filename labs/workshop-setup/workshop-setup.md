@@ -8,6 +8,6 @@
 
 After you have successfully registered please continue to the workshop you are doing:
 
-**[CloudBees Core Workshop](../core-workshop-setup/workshop-setup.md)**
+**[CloudBees CI Workshop](../core-workshop-setup/workshop-setup.md)**
 
-**[CloudBees Rollout Workshop](../rolloutSetup/rolloutSetup.md)**
+**[CloudBees Feature Flags Workshop](../rolloutSetup/rolloutSetup.md)**

@@ -24,12 +24,12 @@ name: agenda
 # Agenda
 
 1. Workshop Tools Overview
-2. CloudBees Core Overview
+2. CloudBees CI Overview
 3. Setup for Labs
 4. Configuration as Code (CasC) with CloudBees CI
 5. Pipeline Manageability & Governance with Templates and Policies
 6. Cross Team Collaboration
-7. Hibernating Masters
+7. Hibernating Managed Jenkins Instances
 
 **Please note, it is unlikely that we will get through all the material. However, all of the lab material is freely available on GitHub and can be self-led. The CloudBees CI lab environment will be available until next Monday if you would like to complete any labs we don't.**
 
@@ -79,7 +79,7 @@ name: agenda-overview
 4. Configuration as Code (CasC) with CloudBees CI
 5. Pipeline Manageability & Governance with Templates and Policies
 6. Cross Team Collaboration
-7. Hibernating Masters
+7. Hibernating Managed Jenkins Instances
 
 ---
 name: core-overview-content
@@ -111,19 +111,19 @@ Ensure Security and Compliance
 ]
 
 ---
-name: core-team-masters
+name: core-team-instance
 
 # CloudBees CI Enables Continuous Scaling
 
 .img-left[
-  .center[Team Masters]
-![Team Masters](img/dpa.png)
+  .center[Team (Jenkins instance)]
+![Team (Jenkins instance)](img/dpa.png)
 ]
 
 .img-right[
 * Project Isolation
-  * DevOps project teams get their own Jenkins Master
-  * Distributes workload across masters
+  * DevOps project teams get their own Jenkins instance
+  * Distributes workload across many Jenkins instances
   * Cross project contamination of workspaces and data is eliminated
 * Scalable Architecture
   * Scaling and elasticity achieved through use of cluster managed containers 
@@ -132,7 +132,7 @@ name: core-team-masters
 ]
 
 ???
-Team Masters
+Team (Managed Jenkins Instance)
 
 ---
 name: core-k8s-architecture
@@ -143,8 +143,8 @@ class: middle, center
 CloudBees CI on Kubernetes
 
 ???
-They dynamic provisioning of Masters provided by CloudBees CI on K8s makes it easy to provide a Jenkins instance for every team.
-* **Less downtime:** Liveness and readiness for Masters and Operations Center thanks to Kubernetes Stateful Sets
+They dynamic provisioning of Managed Jenkins instances provided by CloudBees CI on K8s makes it easy to provide a Jenkins instance for every team.
+* **Less downtime:** Liveness and readiness for Managed Jenkins instances and Operations Center thanks to Kubernetes Stateful Sets
 * **Ephemeral agents:** Agents are containers deployed on a K8s pod. They are created and destroyed during pipeline run
 * **Kubernetes agent templates:** Templates can be defined for K8s Pod based agents, shared with the whole cluster or defined at the team level.
 Different K8s clouds can be configured and shared from OC or at the individual team level.
@@ -157,7 +157,7 @@ name: core-overview-scale
 * Curated and verified Jenkins plug-ins with **CloudBees Assurance Program** ensures you are using the most up-to-date and secure versions via monthly security and functionality releases 
 * Configuration as Code for Jenkins and CloudBees CI commercial components
 * Enables Comprehensive Jenkins Team Management including:
-  * Masters per Team
+  * Managed Jenkins instances per Team
   * Centrally managed Role Based Access Control (RBAC)
   * Centralized and per team Credentials Management
-  * Manage inbound events across multiple Masters
+  * Manage inbound events across multiple Managed Jenkins instances

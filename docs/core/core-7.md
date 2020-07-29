@@ -10,4 +10,4 @@ name: external-webhooks
 
 # Cross Team Collaboration External HTTP Endpoints
 
-External HTTP endpoints work with Cross Team Collaboration to enable external systems such as GitHub or Nexus to generate notification events for Pipelines for all the Masters connected to the CloudBees CI Operations Center.
+External HTTP endpoints work with Cross Team Collaboration to enable external systems such as GitHub or Nexus to generate notification events for Pipelines for all the Managed Jenkins Instances connected to the CloudBees CI Operations Center.

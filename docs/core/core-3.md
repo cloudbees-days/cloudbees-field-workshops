@@ -15,7 +15,7 @@ name: agenda-templates
 4. Configuration as Code (CasC) with CloudBees CI
 5. .blue-bold[Pipeline Manageability & Governance with Templates] and Policies
 6. Cross Team Collaboration
-7. Hibernating Masters
+7. Hibernating Managed Jenkins Instances
 
 ---
 name: pipeline-template-catalog

@@ -1,4 +1,4 @@
-# Rollout Pre-Workshop Set-Up
+# CloudBees Feature Flags Pre-Workshop Set-Up
 
 ## Create a Workshop Account
 
@@ -11,7 +11,7 @@
 1. Goto to the Workshop URL provided by the instructor.
 2. Enter the username and password you created in the workshop registration form into the login screen.<p><img src="images/setup-login.png" width=400/>
 
-## Create a Team Master
+## Create a Team (Jenkins instance)
 
 1. If not in CloudBees Team UI, click on the **Teams** link in the left menu. <p><img src="images/setup-classic-ui-Teams-link.png" width=400/>
 2. Click on the **Create team** button in the center of your screen.<p><img src="images/setup-create-a-team.png" width=400/>
@@ -19,9 +19,9 @@
 4. **Choose an icon for this team** to help uniquely identify your team - select an icon and color for your team and then click **Next**.
 5. **Add people to this team** - your user will show up as a **Team Admin** and we won't be adding any additional users right now, but feel free to look around and then click **Next**.
 6. **Select the cluster endpoint to create the team in** - just stick with the default value `kubernetes` and click **Next**.
-7. **Select team master creation recipe** - click on the drop-down to see the options, but just stick with the **Basic** recipe.
+7. **Select Team creation recipe** - click on the drop-down to see the options, but just stick with the **Basic** recipe.
 8. Finally, click the **Create team** button. <p><img src="images/setup-create-team.png" width=450/>
-9. While your Core Team Master is being created (**it takes anywhere from 2-3 minutes to provision your Team Master**), move onto the next section.
+9. While your Core Team (Jenkins instance) is being created (**it takes anywhere from 2-3 minutes to provision your Team (Jenkins instance)**), move onto the next section.
 
 ## Create a GitHub.com Account
 
@@ -45,16 +45,16 @@ Feel free to use an existing GitHub.com account, otherwise create one:
 
 >NOTE: Even though you have to provide an email for billing, you will NOT be charged anything as long as you choose the free option.
     
-## Run the Rollout Workshop Setup Pipeline
+## Run the CloudBees Feature Flags Workshop Setup Pipeline
 Return to CloudBees Core and you should see the following Blue Ocean **Pipelines** screen with a Pipeline named **rollout-workshop-setup** for your Team:
 
-1. Click on the `rollout-workshop-setup` Pipeline job.
+1. Click on the `cloudbees-feature-flags-workshop-setup` Pipeline job.
 2. On the next screen, click on the **Run** button in the middle of the screen. **Replace image**<p><img src="images/workshop-setup-run.png" width=600/>
 3. Fill in the required parameters: <p><img src="images/workshop-setup-input-form.png" width=400/>
    1. ***githubPat*** - the GitHub Personal Access Token you created above.
    2. The GitHub username/account id you used to create the above GitHub Personal Access Token.
    3. The name of the GitHub Organization you created above specifically for this workshop
-   4. The Kubernetes Namespace where your Team Master has been deployed - **only change the default value if you are instructed to do so.**
+   4. The Kubernetes Namespace where your Team (Jenkins instance) has been deployed - **only change the default value if you are instructed to do so.**
 4. Once you have provided the above required input parameters click the **Run** button at the bottom of the parameters input form.
 5. Blue Ocean will automatically switch to the Pipeline **Activity** screen, click anywhere on the Pipeline run row to see the Pipeline run and view the logs. But make sure you don't click on the **Stop** button to the right of the red box in the screenshot below.<p><img src="images/workshop-setup-activity.png" width=600/>
 6. To confirm that the success of the pipeline job, navigate to your Github Organization that you created for this workshop, and refresh the page. You should see the following repositories that were copied during the pipeline job:
@@ -63,4 +63,4 @@ Return to CloudBees Core and you should see the following Blue Ocean **Pipelines
 * microblog-frontend
 
 
-Proceed to the next lab: [**CloudBees Rollout Workshop Set-Up**](../rolloutSetup/rolloutSetup.md) or choose another lab on the [main page](../../README.md#workshop-labs).
+Proceed to the next lab: [**CloudBees CloudBees Feature Flags Workshop Set-Up**](../rolloutSetup/rolloutSetup.md) or choose another lab on the [main page](../../README.md#workshop-labs).

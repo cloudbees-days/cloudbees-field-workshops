@@ -1,7 +1,7 @@
-# <img src="images/Rollout-blue.svg" alt="CloudBees Rollout Logo" width="40" align="top"> CloudBees Rollout and Analytics
+# <img src="images/Rollout-blue.svg" alt="CloudBees Rollout Logo" width="40" align="top"> CloudBees Feature Flags and Analytics
 
 ## Forwarding Flag Data to Analytics Platform
-This lab will leverage CloudBees Rollout's `impressionHandler` to forward flag information to a more robust analytics platform (we will use Google Analytics for this lab, but the abstracted process remains the same for integration with other tools). We can pass information about feature flags values evaluated on each client back for analysis. We'll set-up the beginning process for A/B testing process.
+This lab will leverage CloudBees Feature Flags's `impressionHandler` to forward flag information to a more robust analytics platform (we will use Google Analytics for this lab, but the abstracted process remains the same for integration with other tools). We can pass information about feature flags values evaluated on each client back for analysis. We'll set-up the beginning process for A/B testing process.
 
 **NOTE: If you going through these workshops on your own, feel free to create your own Google Analytics dashboard. Use your own UA proptery tag when necessary.**
 
@@ -119,7 +119,7 @@ Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
 
 ### Split Based Test for Title Experiment
 
-1. Navigate to the Rollout dashboard, and bring up the **title** experiment.
+1. Navigate to the CloudBees Feature Flags dashboard, and bring up the **title** experiment.
 2. Select the trashcan icon to the right of the first condition to **remove** it.
 3. The premise of this A/B test will be to route 50% of all users to a **True** value and the other 50% to a **False** value. This can be accomplished by changing **False** to **Split** within the drop down menu. The default split experiment should reflect these weightings to each value.
 4. **Update Audience** to apply the changes made in this experiment.
@@ -129,6 +129,6 @@ Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
 * Open your Google Analytics dashboard, from the **Realtime Reports** panel, select **Events**.
 
 ### Lab 6 Completed!
-You have successfully completed the introductory CloudBees Rollout workshop!
+You have successfully completed the introductory CloudBees Feature Flags workshop!
 
 Please return to the [main page](../../README.md#workshop-labs) for other workshops and labs.
