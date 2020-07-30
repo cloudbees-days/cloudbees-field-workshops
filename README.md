@@ -19,20 +19,28 @@ These workshop labs demonstrate how to  effectively use CI/CD practices, manage 
 
 ## CloudBees CI:
 
-The CloudBees CI workshop is composed of two sections. The first is focused on the features that allow managing continuous integration at scale and the second is focused on the features that provide a developer centric experience.
+The CloudBees CI workshop is composed of two distinct sets of labs. The first is focused on product capabilities that make it easy to manage continuous integration at scale and the second is focused on features that provide a developer centric experience for software delivery. 
+
+### Manage Continuous Integration at Scale
+These labs will provide hands-on examples that will show you how CloudBees CI enables shared services teams and Jenkins admins to provide highly scalable and easily manageable continuous integration for all of your software delivery teams. You will learn how CloudBees CI provides comprehensive centralized team management with features to manage Jenkins configuration as code, create and share templates for Jenkins pipelines, enforce pipeline policies and simplify collaboration across disparate development teams.
+
+### A Developer Centric Experience
+These labs will provide hands-on examples that will show you how CloudBees CI enables developers to spend less time on admin tasks and more time coding. These labs will explore how the CloudBee CI developer centric features provide contextual Jenkins pipeline feedback, in tools such as GitHub and Slack, resulting in less context-switching. These labs will also explore how the scalability and central management of CloudBees CI allows developers to focus on writing and delivering software without being slowed down by their continuous integration tools and processes.
 
 ### Slides
 https://cloudbees-days.github.io/core-rollout-flow-workshop/core/
 
+### Labs
+
 For both sections:
  * [Lab 1 - CloudBees CI Workshop Setup](labs/core-workshop-setup/workshop-setup.md)
 
-### Section 1: Managing Continuous Integration at Scale
+#### Manage Continuous Integration at Scale
  * [Lab 2 - Configuration as Code (CasC) for CloudBees CI](labs/cloudbees-ci/casc/casc.md)
  * [Lab 3 - Creating and Configuring Pipeline Template Catalogs](labs/cloudbees-ci/pipeline-template-catalog/pipeline-template-catalog.md)
  * [Lab 4 - Pipeline Policies](labs/cloudbees-ci/pipeline-policies/pipeline-policies.md)
 
-### Section 2: A Developer Centric Experience
+#### A Developer Centric Experience
  * [Lab 5 - Using Pipeline Template Catalogs](labs/cloudbees-ci/pipeline-template-catalog/pipeline-template-catalog.md)
  * Lab 6 - Contextual Pipeline Feedback (GitHub Reporting & Slack)
  * [Lab 7 - Cross Team Collaboration](labs/cloudbees-ci/cross-team-collaboration/cross-team-collaboration.md)
