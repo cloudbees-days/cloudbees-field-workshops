@@ -11,4 +11,8 @@ metaDataFormat = "yaml"
   # Change default color scheme with a variant one. Can be "red", "blue", "green".
   themeVariant = "cloudbees"
   editURL = "https://github.com/cloudbees-days/core-rollout-flow-workshop/edit/cbci-updates/labs/cloudbees-ci/content/"
+  # Shows a checkmark for visited pages on the menu
+  showVisitedLinks = true
+  # Set this to true to disable copy-to-clipboard button for inline code.
+  disableInlineCopyToClipBoard = true
 
