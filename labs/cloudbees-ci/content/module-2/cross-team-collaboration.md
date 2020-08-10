@@ -1,4 +1,8 @@
-# <img src="images/cloudbeescore_logo.png" alt="CloudBees Core Logo" width="40" align="top"> CloudBees CI - Cross Team Collaboration
+---
+title: "Cross Team Collaboration"
+chapter: false
+weight: 3
+---
 
 ## Enable Cross Team Collaboration Notifications
 

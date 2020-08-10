@@ -1,4 +1,8 @@
-# <img src="images/cloudbeescore_logo.png" alt="CloudBees Core Logo" width="40" align="top"> CloudBees CI - Pipeline Policies
+---
+title: "Pipeline Policies"
+chapter: false
+weight: 3
+---
 
 ## Create a Pipeline Policy
 

@@ -1,0 +1,14 @@
+baseURL = "/"
+languageCode = "en-US"
+defaultContentLanguage = "en"
+
+title = "CloudBees CI Workshop"
+theme = "hugo-theme-learn"
+metaDataFormat = "yaml"
+
+
+[params]
+  # Change default color scheme with a variant one. Can be "red", "blue", "green".
+  themeVariant = "cloudbees"
+  editURL = "https://github.com/cloudbees-days/core-rollout-flow-workshop/edit/cbci-updates/labs/cloudbees-ci/content/"
+

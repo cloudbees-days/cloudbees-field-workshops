@@ -1,4 +1,8 @@
-# <img src="images/cloudbeescore_logo.png" alt="CloudBees Core Logo" width="40" align="top"> CloudBees Core - Hibernation for Managed Jenkins Instances
+---
+title: "Hibernation for Managed Jenkins Instances"
+chapter: false
+weight: 4
+---
 
 The [CloudBees CI hibernation for Managed Jenkins instances](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-admin-guide/managing-masters#_hibernation_in_managed_masters) feature takes advantage of running CloudBees CI on Kubernetes by automatically shutting down or hibernating Team/Managed Jenkins Instance after a specified amount of time of inactivity.
 
