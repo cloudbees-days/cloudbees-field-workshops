@@ -28,7 +28,3 @@ Click on the **Edit** button next to the webhook that was created for your Team 
 Update the **Payload URL** by inserting `/hibernation/queue` in front of `/github-webhook/`.
 
 Scroll down and click on the **Update webhook** button.
-
-
-
-Please return to the [main page](../../README.md#workshop-labs) for other workshops and labs.

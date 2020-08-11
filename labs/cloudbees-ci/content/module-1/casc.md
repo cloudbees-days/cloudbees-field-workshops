@@ -11,7 +11,7 @@ In this lab we will setup [GitOps](https://www.gitops.tech/) for [Configuration 
 * You will create a Jenkins Pipeline job on your Team (Jenkins instance) to automatically update the CloudBees CI configuration bundle for your Team (Jenkins instance).
 * You will add some new configuration to the CloudBees CI configuration bundle in your forked **cloudbees-ci-config-bundle** repository and then commit the changes to the **master** branch of your **cloudbees-ci-config-bundle** repository that will in turn tigger a Jenkins Pipeline to update your CloudBees CI configuration bundle.
 
-1. If you are in the Blue Ocean UI, switch to the classic UI by clicking on the ***Go to classic*** button next to the ***Logout*** button in Blue Ocean navigation bar.<p><img src="go-to-classic.png" width=800/>
+1. If you are in the Blue Ocean UI, switch to the classic UI by clicking on the ***Go to classic*** button next to the ***Logout*** button in Blue Ocean navigation bar.<p>![Go to classic](go-to-classic.png?width=70pc)
 2. Once in the classic UI on your Team (Jenkins instance), ensure that you are in the folder with the same name as your Team (Jenkins instance) - you should see the `cloudbees-ci-workshop-setup` and `cloudbees-feature-flats-workshop-setup` Pipeline jobs. This is important if you want to use Blue Ocean to visualize the Pipeline runs of Pipeline jobs you add to your Team (Jenkins instance), because only jobs under this folder will show up in Blue Ocean.<p><img src="blue-steel-folder.png" width=800/>
 3. Click on the **New Item** link in the left navigation menu - again, make sure that you are in the **folder** with the same name as your Team (Jenkins instance), and not at the root of your Team (Jenkins instance).
 4. Enter the name of the GitHub Organization you created for this workshop as the **Item Name**, select **GitHub Organization** as the item type and then click the **OK** button.<p><img src="github-organization-item.png" width=600/>
@@ -34,5 +34,3 @@ In this lab we will setup [GitOps](https://www.gitops.tech/) for [Configuration 
 >NOTE: The **Build strategies** configuration for Pipeline Organization Folder and Multibranch projects are provided by the [Basic Branch Build Strategies plugin](https://github.com/jenkinsci/basic-branch-build-strategies-plugin/blob/master/docs/user.adoc) and by selecting the *Skip initial build on first branch indexing* strategy we avoid an unnecessary build when we first create the Organization Folder project above.
 
 **For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/core/#26)**
-
-Otherwise, you may proceed to the next lab: [*Pipeline Template Catalogs*](../pipeline-template-catalog/pipeline-template-catalog.md) or choose another lab on the [main page](../../README.md#workshop-labs).

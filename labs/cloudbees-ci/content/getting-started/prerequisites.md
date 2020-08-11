@@ -12,6 +12,5 @@ weight: 1
 * A basic understanding of Docker: https://docs.docker.com/get-started/
 * A basic understanding of Kubernetes: https://kubernetes.io/docs/tutorials/kubernetes-basics/
 * A basic understanding of Jenkins Pipelines: https://jenkins.io/doc/book/pipeline/getting-started/
-* A basic understanding of feature flags: https://rollout.io/blog/ultimate-feature-flag-guide/
 * Finally, we highly recommend using the Google Chrome browser to work through the lab content.
 
