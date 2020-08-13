@@ -16,3 +16,7 @@ metaDataFormat = "yaml"
   # Set this to true to disable copy-to-clipboard button for inline code.
   disableInlineCopyToClipBoard = true
 
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
