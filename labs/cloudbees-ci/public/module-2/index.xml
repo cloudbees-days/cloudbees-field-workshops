@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Module 2: A Developer Centric Experience on CloudBees CI Workshop</title>
+    <link>https://labs.cb-sa.io/module-2/</link>
+    <description>Recent content in Module 2: A Developer Centric Experience on CloudBees CI Workshop</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://labs.cb-sa.io/module-2/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Using Pipeline Templates</title>
+      <link>https://labs.cb-sa.io/module-2/using-pipeline-templates/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://labs.cb-sa.io/module-2/using-pipeline-templates/</guid>
+      <description>Create vue.js Job from Pipeline Template Catalog In this lab you will create a new Multibranch Pipeline job from the VueJS template provided by the Pipeline Template Catalog you added above - just by filling in a few parameters.
+ On your Team (Jenkins instance) navigate into the template-jobs folder that you created in the previous lab. Click on the New VueJS link in the left menu.  Enter an item name as [GitHub username]-frontend, select VueJS and click the OK button.</description>
+    </item>
+    
+    <item>
+      <title>Contextual Pipeline Feedback</title>
+      <link>https://labs.cb-sa.io/module-2/contextual-pipeline-feedback/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://labs.cb-sa.io/module-2/contextual-pipeline-feedback/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cross Team Collaboration</title>
+      <link>https://labs.cb-sa.io/module-2/cross-team-collaboration/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://labs.cb-sa.io/module-2/cross-team-collaboration/</guid>
+      <description>Enable Cross Team Collaboration Notifications  Navigate to the top-level of your Team (Jenkins instance) and click on Manage Jenkins in the left menu.  On the Manage Jenkins page scroll down and click on the Configure Notification link.  Check the Enabled checkbox, select Local Only as the Notification Router Implementation and click the Save button.   Adding an event trigger  In GitHub, navigate to the Add event trigger pull request (#1) in your fork of the pipeline-template-catalog repository.</description>
+    </item>
+    
+    <item>
+      <title>Hibernation for Managed Jenkins Instances</title>
+      <link>https://labs.cb-sa.io/module-2/hibernating/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://labs.cb-sa.io/module-2/hibernating/</guid>
+      <description>The CloudBees CI hibernation for Managed Jenkins instances feature takes advantage of running CloudBees CI on Kubernetes by automatically shutting down or hibernating Team/Managed Jenkins Instance after a specified amount of time of inactivity.
+Configure Hibernation Hibernation for Managed Jenkins Instances is managed at the global Jenkins configuration level and was configured in the jenkins.yaml file in the CloudBees CI CasC lab.
+Un-hibernate a Managed Jenkins Instance  Navigate to the classic UI of Operations Center and find your Team (Jenkins instance) in the list of Managed Jenkins instances.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://labs.cb-sa.io/module-2/preview-environment/preview-environment/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://labs.cb-sa.io/module-2/preview-environment/preview-environment/</guid>
+      <description>CloudBees CI - Preview Environments Coming soon&amp;hellip;
+In this lab we will examine external endpoints for CloudBees CI Cross Team Collaboration and explore how they can be used to provided automated and ephemeral preview environments for GitHub pull requests (PR).
+You may proceed to the next lab: Hibernating Managed Jenkins Instances or choose another lab on the main page.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://labs.cb-sa.io/module-2/preview-environments/preview-environments/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://labs.cb-sa.io/module-2/preview-environments/preview-environments/</guid>
+      <description>CloudBees Core - Preview Environments Coming soon&amp;hellip;
+You may proceed to the next lab: Hibernating Managed Jenkins Instances or choose another lab on the main page.</description>
+    </item>
+    
+  </channel>
+</rss>

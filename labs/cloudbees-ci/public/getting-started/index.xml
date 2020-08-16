@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Getting Started on CloudBees CI Workshop</title>
+    <link>https://labs.cb-sa.io/getting-started/</link>
+    <description>Recent content in Getting Started on CloudBees CI Workshop</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://labs.cb-sa.io/getting-started/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Prerequisites</title>
+      <link>https://labs.cb-sa.io/getting-started/prerequisites/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://labs.cb-sa.io/getting-started/prerequisites/</guid>
+      <description>Workshop Prerequisites  Internet access to include access to https://github.com and to include the ability to access and use the GitHub File Editor. Access to https://app.slack.com An account on https://github.com and a basic understanding of how to use GitHub to do things like fork a repository, edit files in the web UI, and create pull requests. A basic understanding of Docker: https://docs.docker.com/get-started/ A basic understanding of Kubernetes: https://kubernetes.io/docs/tutorials/kubernetes-basics/ A basic understanding of Jenkins Pipelines: https://jenkins.</description>
+    </item>
+    
+    <item>
+      <title>Setup</title>
+      <link>https://labs.cb-sa.io/getting-started/workshop-setup/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://labs.cb-sa.io/getting-started/workshop-setup/</guid>
+      <description>CloudBees CI Workshop Set-up In this lab you will setup a work environment for the CloudBees CI workshop. Ask the instructor for the URL of the server you will be using for the CloudBees CI Workshop.
+Instructor led video of lab.
+Today&amp;rsquo;s URL for the CloudBees CI Workshop environment will be provided by your instructor.
+Login to CloudBees CI  Goto to the Workshop URL provided by the instructor. Enter the username and password you created earlier into the login screen.</description>
+    </item>
+    
+  </channel>
+</rss>

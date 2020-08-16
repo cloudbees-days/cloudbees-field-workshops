@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CloudBees CI Workshop</title>
+    <link>https://labs.cb-sa.io/</link>
+    <description>Recent content on CloudBees CI Workshop</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-US</language>
+    
+	<atom:link href="https://labs.cb-sa.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>GitOps for CloudBees CI CasC</title>
+      <link>https://labs.cb-sa.io/module-1/casc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://labs.cb-sa.io/module-1/casc/</guid>
+      <description>In this lab we will setup GitOps for Configuration as Code (CasC) for CloudBees CI so that any Jenkins configuration changes you make in source control will automatically be updated in your CloudBees CI Team (Jenkins instance).
+Instructor led video of lab.
+ You will create a Jenkins Pipeline job on your Team (Jenkins instance) to automatically update the CloudBees CI configuration bundle for your Team (Jenkins instance). You will add some new configuration to the CloudBees CI configuration bundle in your forked cloudbees-ci-config-bundle repository and then commit the changes to the master branch of your cloudbees-ci-config-bundle repository that will in turn tigger a Jenkins Pipeline to update your CloudBees CI configuration bundle.</description>
+    </item>
+    
+    <item>
+      <title>Prerequisites</title>
+      <link>https://labs.cb-sa.io/getting-started/prerequisites/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://labs.cb-sa.io/getting-started/prerequisites/</guid>
+      <description>Workshop Prerequisites  Internet access to include access to https://github.com and to include the ability to access and use the GitHub File Editor. Access to https://app.slack.com An account on https://github.com and a basic understanding of how to use GitHub to do things like fork a repository, edit files in the web UI, and create pull requests. A basic understanding of Docker: https://docs.docker.com/get-started/ A basic understanding of Kubernetes: https://kubernetes.io/docs/tutorials/kubernetes-basics/ A basic understanding of Jenkins Pipelines: https://jenkins.</description>
+    </item>
+    
+    <item>
+      <title>Using Pipeline Templates</title>
+      <link>https://labs.cb-sa.io/module-2/using-pipeline-templates/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://labs.cb-sa.io/module-2/using-pipeline-templates/</guid>
+      <description>Create vue.js Job from Pipeline Template Catalog In this lab you will create a new Multibranch Pipeline job from the VueJS template provided by the Pipeline Template Catalog you added above - just by filling in a few parameters.
+ On your Team (Jenkins instance) navigate into the template-jobs folder that you created in the previous lab. Click on the New VueJS link in the left menu.  Enter an item name as [GitHub username]-frontend, select VueJS and click the OK button.</description>
+    </item>
+    
+    <item>
+      <title>Contextual Pipeline Feedback</title>
+      <link>https://labs.cb-sa.io/module-2/contextual-pipeline-feedback/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://labs.cb-sa.io/module-2/contextual-pipeline-feedback/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pipeline Template Catalogs</title>
+      <link>https://labs.cb-sa.io/module-1/pipeline-template-catalog/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://labs.cb-sa.io/module-1/pipeline-template-catalog/</guid>
+      <description>Instructor led video of lab.
+Import Pipeline Template Catalog  Navigate to the top-level of your Team (Jenkins instance) and click on Pipeline Template Catalogs in the left menu Click on Add catalog Fill out the Catalog source control options:  Branch or tag for this template catalog: master Select GitHub under Catalog source code repository location Credentials: select the username/password credential you created for the CloudBees CI workshop - it will show up as - [GitHub username]/****** (GitHub PAT from JCasC - username/password) Repository HTTPS URL: The GitHub URL for your forked copy of the pipeline-template-catalog repository.</description>
+    </item>
+    
+    <item>
+      <title>Setup</title>
+      <link>https://labs.cb-sa.io/getting-started/workshop-setup/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://labs.cb-sa.io/getting-started/workshop-setup/</guid>
+      <description>CloudBees CI Workshop Set-up In this lab you will setup a work environment for the CloudBees CI workshop. Ask the instructor for the URL of the server you will be using for the CloudBees CI Workshop.
+Instructor led video of lab.
+Today&amp;rsquo;s URL for the CloudBees CI Workshop environment will be provided by your instructor.
+Login to CloudBees CI  Goto to the Workshop URL provided by the instructor. Enter the username and password you created earlier into the login screen.</description>
+    </item>
+    
+    <item>
+      <title>Cross Team Collaboration</title>
+      <link>https://labs.cb-sa.io/module-2/cross-team-collaboration/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://labs.cb-sa.io/module-2/cross-team-collaboration/</guid>
+      <description>Enable Cross Team Collaboration Notifications  Navigate to the top-level of your Team (Jenkins instance) and click on Manage Jenkins in the left menu.  On the Manage Jenkins page scroll down and click on the Configure Notification link.  Check the Enabled checkbox, select Local Only as the Notification Router Implementation and click the Save button.   Adding an event trigger  In GitHub, navigate to the Add event trigger pull request (#1) in your fork of the pipeline-template-catalog repository.</description>
+    </item>
+    
+    <item>
+      <title>Pipeline Policies</title>
+      <link>https://labs.cb-sa.io/module-1/pipeline-policies/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://labs.cb-sa.io/module-1/pipeline-policies/</guid>
+      <description>Create a Pipeline Policy In this lab you will create a Pipeline Policy to ensure that all Pipeline jobs that run on your Team (Jenkins instance) have a 30 minute global timeout set.
+Instructor led video of lab.
+ Navigate to the top-level of your Team (Jenkins instance) and click on Pipeline Policies in the left menu.  Click on New Policy Fill out the Pipeline Policy parameters:  Name: Timeout policy Action: Fail Click on Add Rule button:  Select Pipeline Timeout Timeout: 30 MINUTES   Click the Save button    Navigate back to the master branch job for the microblog-frontend Mutlibranch project and click the Build Now link in the left menu.</description>
+    </item>
+    
+    <item>
+      <title>Hibernation for Managed Jenkins Instances</title>
+      <link>https://labs.cb-sa.io/module-2/hibernating/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://labs.cb-sa.io/module-2/hibernating/</guid>
+      <description>The CloudBees CI hibernation for Managed Jenkins instances feature takes advantage of running CloudBees CI on Kubernetes by automatically shutting down or hibernating Team/Managed Jenkins Instance after a specified amount of time of inactivity.
+Configure Hibernation Hibernation for Managed Jenkins Instances is managed at the global Jenkins configuration level and was configured in the jenkins.yaml file in the CloudBees CI CasC lab.
+Un-hibernate a Managed Jenkins Instance  Navigate to the classic UI of Operations Center and find your Team (Jenkins instance) in the list of Managed Jenkins instances.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://labs.cb-sa.io/module-2/preview-environment/preview-environment/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://labs.cb-sa.io/module-2/preview-environment/preview-environment/</guid>
+      <description>CloudBees CI - Preview Environments Coming soon&amp;hellip;
+In this lab we will examine external endpoints for CloudBees CI Cross Team Collaboration and explore how they can be used to provided automated and ephemeral preview environments for GitHub pull requests (PR).
+You may proceed to the next lab: Hibernating Managed Jenkins Instances or choose another lab on the main page.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://labs.cb-sa.io/module-2/preview-environments/preview-environments/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://labs.cb-sa.io/module-2/preview-environments/preview-environments/</guid>
+      <description>CloudBees Core - Preview Environments Coming soon&amp;hellip;
+You may proceed to the next lab: Hibernating Managed Jenkins Instances or choose another lab on the main page.</description>
+    </item>
+    
+  </channel>
+</rss>

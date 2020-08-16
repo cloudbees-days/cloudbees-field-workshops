@@ -6,20 +6,20 @@ weight: 2
 
 
 ## CloudBees CI Workshop Set-up
-In this lab you will setup a work environment for the CloudBees Core labs.  Ask the instructor for the URL of the server you will be using for the Core Workshop.
+In this lab you will setup a work environment for the CloudBees CI workshop.  Ask the instructor for the URL of the server you will be using for the CloudBees CI Workshop.
 
 <a href="https://youtu.be/AZetQJYIKU4" target="_blank">Instructor led video of lab.</a>
 
-Today's URL for the CloudBees CI Workshop environment will be provided by your instructor. If you haven't already signed up for an account then follow [these instructions](../workshop-setup/workshop-setup.md) and then come back to the *Core CI Set-up*.
+Today's URL for the CloudBees CI Workshop environment will be provided by your instructor.
 
 ### Login to CloudBees CI
 
 1. Goto to the Workshop URL provided by the instructor.
 2. Enter the username and password you created earlier into the login screen.<p>![CloudBees CI Login](setup-login.png?width=40pc)
 
-### Create a Team (Jenkins instance)
+### Create a CloudBees CI Managed Controller (Jenkins instance)
 
-1. If not in CloudBees Team UI, click on the **Teams** link in the left menu. <p>![Create a Team Instance](setup-classic-ui-Teams-link.png?width=60pc)
+1. Click on the **Create Team** link near the top of the page.<p>![Create Team](create-team-link.png?width=70pc)
 2. Click on the **Create team** button in the center of your screen.<p><img src="setup-create-a-team.png" width=400/>
 3. **Name this team** - enter a name for your team - **IMPORTANT: to ensure uniqueness, use your GitHub username** and then click **Next**.<p><img src="setup-name-this-team.png" width=450/>
 4. **Choose an icon for this team** to help uniquely identify your team - select an icon and color for your team and then click **Next**.
@@ -27,7 +27,7 @@ Today's URL for the CloudBees CI Workshop environment will be provided by your i
 6. **Select the cluster endpoint to create the team in** - just stick with the default value `kubernetes` and click **Next**.
 7. **Select Team creation recipe** - click on the drop-down to see the options, but just stick with the **Basic** recipe.
 8. Finally, click the **Create team** button. <p><img src="setup-create-team.png" width=450/>
-9. **IMPORTANT** - While your Core Team (Jenkins instance) is being created (**it takes anywhere from 2-3 minutes to provision your Team (Jenkins instance)**), move onto the next section.
+9. **IMPORTANT** - While your CloudBees CI managed controller (Jenkins instance) is being started (**it takes a few minutes to provision your managed controller (Jenkins instance)**), move onto the next section.
 
 ## Create a GitHub.com Account
 
@@ -68,5 +68,3 @@ You should see the following Blue Ocean **Pipelines** screen with a Pipeline nam
 6. Once the **cloudbees-ci-workshop-setup** Pipeline job completes successfully your Team (Jenkins instance) will be restarted so you should see a **Connect lost: waiting** alert in the bottom right of your Blue Ocean screen. <p><img src="workshop-setup-connection-lost.png" width=600/> <p>You may also experience a **503 Service Temporarily Unavailable** screen - that is because the actual Kubernetes Pod that your Team (Jenkins instance) is running in is being re-created. Your Team (Jenkins instance) will return in a few minutes.
 
 **For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/core/#16).**
-
-Otherwise, you may proceed to the next lab: [*Configuration as Code (CasC) for CloudBees CI*](../core-casc/core-casc.md) where we will explore your individual fork of the **cloudbees-ci-config-bundle** repository or choose another lab on the [main page](../../README.md#workshop-labs).
