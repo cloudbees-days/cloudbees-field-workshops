@@ -4,11 +4,11 @@ chapter: false
 weight: 1
 ---
 
-In this lab we will setup [GitOps](https://www.gitops.tech/) for [Configuration as Code (CasC) for CloudBees CI](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-admin-guide/core-casc-modern) so that any Jenkins configuration changes you make in source control will automatically be updated in your CloudBees CI managed controller (Jenkins instance). 
+In this lab we will setup [GitOps](https://www.gitops.tech/) for [Configuration as Code (CasC) for CloudBees CI](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-admin-guide/core-casc-modern) so that any CloudBeees CI configuration changes you make in source control will automatically be updated in your CloudBees CI managed controller (Jenkins instance). 
 
 [Instructor led video of lab.](https://youtu.be/P-_xHx3db2k)
 
-* You will create a Jenkins Pipeline job on your CloudBees CI managed controller to automatically update the CloudBees CI configuration bundle for your CloudBees CI managed controller.
+* You will create a Jenkins Pipeline job on your CloudBees CI managed controller to automatically update the [CloudBees CI configuration bundle](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/ci-casc-modern#_creating_a_configuration_bundle) for your CloudBees CI managed controller.
 * You will add some new configuration to the CloudBees CI configuration bundle in your forked **cloudbees-ci-config-bundle** repository and then commit the changes to the **master** branch of your **cloudbees-ci-config-bundle** repository that will in turn tigger a Jenkins Pipeline to update your CloudBees CI configuration bundle.
 
 1. If you are in the Blue Ocean UI, switch to the classic UI by clicking on the ***Go to classic*** button next to the ***Logout*** button in Blue Ocean navigation bar.<p>![Go to classic](go-to-classic.png?width=70pc)
