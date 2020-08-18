@@ -10,7 +10,7 @@ In this lab you will create a [Pipeline Policy](https://docs.cloudbees.com/docs/
 
 [Instructor led video of lab.](https://youtu.be/4J8S-9Ux-GI)
 
-1. Navigate to the top-level of your Team (Jenkins instance) and click on **Pipeline Policies** in the left menu. <p><img src="policies-click.png" width=800/>
+1. Navigate to the top-level of your CloudBees CI managed controller (Jenkins instance) and click on **Pipeline Policies** in the left menu. <p><img src="policies-click.png" width=800/>
 2. Click on **New Policy**<p><img src="new-policy-click.png" width=600/>
 3. Fill out the Pipeline Policy parameters:
    1. **Name**: Timeout policy
