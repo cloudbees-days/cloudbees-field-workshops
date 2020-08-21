@@ -15,12 +15,19 @@ Feel free to use an existing GitHub.com account or create a new one:
 2. Select "Unlimited public repositories for free" when choosing your plan.
 3. Verify your email account to ensure you account is activated.  An activated account will be **required** for the rest of this workshop.
 
-## Create a GitHub Personal Access Token
+## Create a GitHub Organization
 
-1. Click on [this link to automatically select the required Personal access token settings](https://github.com/settings/tokens/new?scopes=repo,read:user,user:email,admin:repo_hook,admin:org_hook,delete_repo)
-2. Enter a name for your **New personal access token** (PAT), such as ***CloudBees CI Workshop***, and notice that all the necessary **scopes** have already been checked off for you by using the link from above.
-3. Click on **Generate Token** button at the bottom of the page.
-4. Save your new GitHub personal access token as you will need it later in this setup. As the success message says: **Make sure to copy your new personal access token now. You won’t be able to see it again!**  
+1. Ensure that you are logged into GitHub.com and then navigate to your [Organizations Settings page](https://github.com/settings/organizations). 
+2. Click on **New Organization** <p><img src="setup-github-new-org.png" width=550/>
+3. Fill in the **Organization Name**, **Billing Email**, and click on **Create Organization**<p><img src="setup-create-org.png" width=550/>
+4. On the **Invite organization members** - just click the **Continue** button. On the next page, **Enter Organization Details**, either click **Submit** button or **skip this step** to finish creating the GitHub Organization.
+
+>NOTE: Even though you have to provide an email for billing, **you will NOT be charged anything** as long as you choose the free option.
+
+### Install GitHub App
+
+1. Ensure that you are logged into GitHub.com and then navigate to [https://github.com/apps/cloudbees-ci-workshop](https://github.com/apps/cloudbees-ci-workshop).<p>![GitHub App](cbci-github-app.png?width=70pc)
+2. Click on the 
 
 ### Create a CloudBees CI Account
 
@@ -39,14 +46,5 @@ Feel free to use an existing GitHub.com account or create a new one:
 2. In the left navigation menu, click on the **Build with parameters** link.<p>![Build with parameters](create-team-build-link.png?width=70pc)
 3. Fill out the form and click the **Build** button.<p>![Create Team form](create-team-form.png?width=70pc)
 4. **IMPORTANT** - While your CloudBees CI managed controller (Jenkins instance) is being provisioned (**it takes a few minutes to provision your managed controller (Jenkins instance)**), move onto the next section.
-
-## Create a GitHub Organization
-
-1. Ensure that you are logged into GitHub.com and then navigate to your [Organizations Settings page](https://github.com/settings/organizations). 
-2. Click on **New Organization** <p><img src="setup-github-new-org.png" width=550/>
-3. Fill in the **Organization Name**, **Billing Email**, and click on **Create Organization**<p><img src="setup-create-org.png" width=550/>
-4. On the **Invite organization members** - just click the **Continue** button. On the next page, **Enter Organization Details**, either click **Submit** button or **skip this step** to finish creating the GitHub Organization.
-
->NOTE: Even though you have to provide an email for billing, **you will NOT be charged anything** as long as you choose the free option.
     
 **For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/core/#16).**
