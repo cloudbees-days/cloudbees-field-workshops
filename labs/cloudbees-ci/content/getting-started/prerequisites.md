@@ -12,4 +12,5 @@ weight: 1
   * Understand the concept of a [Kubernetes Pod](https://kubernetes.io/docs/concepts/workloads/pods/) and how it is different than a Docker container
 * A basic understanding of [Jenkins Pipelines](https://jenkins.io/doc/book/pipeline/getting-started/)
 * Finally, we highly recommend using the Google Chrome browser to work through the lab content.
+* Test
 
