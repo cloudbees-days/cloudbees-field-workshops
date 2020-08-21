@@ -8,15 +8,18 @@ In this lab you will setup a work environment for the CloudBees CI Workshop.
 
 If you haven't already received the link for the CLoudBees CI Workshop cluster, then ask your instructor for it.
 
-## Create a GitHub.com Account
+## GitHub
+
+### Create a GitHub.com Account
 
 Feel free to use an existing GitHub.com account or create a new one:
 1. In a new browser tab or window, visit [https://github.com/join](https://github.com/join) and fill in the required fields to create a GitHub.com user account.
 2. Select "Unlimited public repositories for free" when choosing your plan.
 3. Verify your email account to ensure you account is activated.  An activated account will be **required** for the rest of this workshop.
 
-## Create a GitHub Organization
+### Create a GitHub Organization
 
+We recommend creating a new GitHub Organization for the CloudBees CI Workshop. We will be using a GitHub App based credential for authentication and authorization between GitHub.com and  CloudBees CI.
 1. Ensure that you are logged into GitHub.com and then navigate to your [Organizations Settings page](https://github.com/settings/organizations). 
 2. Click on **New Organization** <p><img src="setup-github-new-org.png" width=550/>
 3. Fill in the **Organization Name**, **Billing Email**, and click on **Create Organization**<p><img src="setup-create-org.png" width=550/>
@@ -28,6 +31,8 @@ Feel free to use an existing GitHub.com account or create a new one:
 
 1. Ensure that you are logged into GitHub.com and then navigate to [https://github.com/apps/cloudbees-ci-workshop](https://github.com/apps/cloudbees-ci-workshop).<p>![GitHub App](cbci-github-app.png?width=70pc)
 2. Click on the 
+
+## CloudBees CI
 
 ### Create a CloudBees CI Account
 

@@ -120,6 +120,7 @@ border-color: var(--MENU-SEARCH-BOX-color);
   border-width: 1px;
   border-style: solid;
   border-color: var(--MENU-SECTIONS-BG-color);
+  border-radius: 2px;
 }
 
 #chapter p {
