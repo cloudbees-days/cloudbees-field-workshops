@@ -116,6 +116,12 @@ border-color: var(--MENU-SEARCH-BOX-color);
   border-right-color: var(--MENU-HEADER-BG-color);
 }
 
+#body-inner img {
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--MENU-HEADER-BG-color);
+}
+
 #chapter p {
   text-align: left;
 }
