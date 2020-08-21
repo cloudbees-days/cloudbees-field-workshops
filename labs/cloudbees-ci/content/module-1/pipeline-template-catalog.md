@@ -7,7 +7,7 @@ weight: 2
 [Instructor led video of lab.](https://youtu.be/YBoX-bE3YYQ)
 
 ## Import Pipeline Template Catalog
-1. Navigate to the top-level of your Team (Jenkins instance) and click on **Pipeline Template Catalogs** in the left menu<p><img src="Initial-template-click.png" width=800/>
+1. Navigate to the top-level of your CloudBees CI managed controller (Jenkins instance) and click on **Pipeline Template Catalogs** in the left menu<p><img src="Initial-template-click.png" width=800/>
 2. Click on **Add catalog**<p><img src="Add-template-click.png" width=800/>
 3. Fill out the **Catalog source control options**:
    1. **Branch or tag for this template catalog**: master
@@ -18,7 +18,7 @@ weight: 2
    6. Finally, click the **Save** button <p><img src="add-catalog-save.png" width=800/>
 4. Once the import is complete, click on the **CloudBees Days Workshop Catalog** link. <p><img src="catalog-link.png" width=800/>
 5. The Pipeline Template Catalog you imported will have 4 templates to include the **VueJS** template which we will be using next. <p><img src="Succesful-template-import.png" width=800/>
-6. On your Team (Jenkins instance) navigate to the folder with the same name as your Team (Jenkins instance) (you should see the `workshop-setup` Pipeline job) and then click on the **New Item** link in the left menu<p><img src="new-item-click.png" width=800/>
+6. On your CloudBees CI managed controller (Jenkins instance) navigate to the folder with the same name as your CloudBees CI managed controller (Jenkins instance) (you should see the `workshop-setup` Pipeline job) and then click on the **New Item** link in the left menu<p><img src="new-item-click.png" width=800/>
 7. For the **item name** enter ***template-jobs***, select **Folder** and then click the **OK** button. <p><img src="new-folder-click.png" width=800/>
 8.  Scroll to the bottom of the folder configuration and click on **Restrict the kind of children in this folder** - a [CloudBees Folders Plus](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-secure-guide/folders-plus) feature - and then select **VueJS** and then hit the **Save** button. <p><img src="restricted-items-check.png" width=800/>
    
