@@ -30,7 +30,9 @@ We recommend creating a new GitHub Organization for the CloudBees CI Workshop. W
 ### Install GitHub App
 
 1. Ensure that you are logged into GitHub.com and then navigate to [https://github.com/apps/cloudbees-ci-workshop](https://github.com/apps/cloudbees-ci-workshop).<p>![GitHub App](cbci-github-app.png?width=70pc)
-2. Click on the 
+2. Click on the **Configure** button.
+3. Next, select the GitHub Organization you created for the CloudBees CI Workshop.
+4. 
 
 ## CloudBees CI
 
