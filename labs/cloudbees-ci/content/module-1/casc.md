@@ -1,15 +1,38 @@
 ---
-title: "GitOps for CloudBees CI CasC"
+title: "CloudBees CI Configuration as Code"
 chapter: false
 weight: 1
 ---
 
-In this lab we will setup [GitOps](https://www.gitops.tech/) for [Configuration as Code (CasC) for CloudBees CI](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-admin-guide/core-casc-modern) so that any CloudBeees CI configuration changes you make in source control will automatically be updated in your CloudBees CI managed controller (Jenkins instance). 
+In this lab we will setup [GitOps](https://www.gitops.tech/) for [Configuration as Code (CasC) for CloudBees CI](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-admin-guide/core-casc-modern) so that any CloudBeees CI configuration changes you make in source control will automatically be updated in your CloudBees CI managed controller (Jenkins instance). But first you will provision a CloudBees managed controller (Jenkins instance) with the initial configuration provided by CloudBees CI CasC.
 
-[Instructor led video of lab.](https://youtu.be/P-_xHx3db2k)
+## Provision a CloudBees CI Managed COntroller
 
-* You will create a Jenkins Pipeline job on your CloudBees CI managed controller to automatically update the [CloudBees CI configuration bundle](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/ci-casc-modern#_creating_a_configuration_bundle) for your CloudBees CI managed controller.
-* You will add some new configuration to the CloudBees CI configuration bundle in your forked **cloudbees-ci-config-bundle** repository and then commit the changes to the **master** branch of your **cloudbees-ci-config-bundle** repository that will in turn tigger a Jenkins Pipeline to update your CloudBees CI configuration bundle.
+### Create a CloudBees CI Account
+
+1. Navigate to the CloudBees CI Workshop registration form. The URL will be provided by your instructor.
+2. Fill out the form, using your GitHub username as your CloudBees CI username, and make sure to save your password. <p>![Create Account](registration-form.png?width=40pc)
+3. Click the **Create Account** button.
+
+### Login to CloudBees CI
+
+1. Goto to the Workshop URL provided by the instructor.
+2. Enter the username and password you created earlier into the login screen and click the **Sign in** button.<p>![CloudBees CI Login](setup-login.png?width=40pc)
+
+## Create a CloudBees CI Managed Controller (Jenkins instance)
+
+1. Click on the **Create Team** link near the top of the page.<p>![Create Team](create-team-link.png?width=70pc)
+2. In the left navigation menu, click on the **Build with parameters** link.<p>![Build with parameters](create-team-build-link.png?width=70pc)
+3. Fill out the form and click the **Build** button.<p>![Create Team form](create-team-form.png?width=70pc)
+4. **IMPORTANT** - While your CloudBees CI managed controller (Jenkins instance) is being provisioned (**it takes a few minutes to provision your managed controller (Jenkins instance)**), move onto the next section.
+
+> NOTE: TODO explain the provisioning job and current limitations of CloudBees CI CasC.
+
+## GitOps for CloudBees CI CasC
+
+In this lab you will:
+* Create a Jenkins Pipeline job on your CloudBees CI managed controller to automatically update the [CloudBees CI configuration bundle](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/ci-casc-modern#_creating_a_configuration_bundle) for your CloudBees CI managed controller.
+* Add some new configuration to the CloudBees CI configuration bundle in your forked **cloudbees-ci-config-bundle** repository and then commit the changes to the **master** branch of your **cloudbees-ci-config-bundle** repository that will in turn tigger a Jenkins Pipeline to update your CloudBees CI configuration bundle.
 
 1. If you are in the Blue Ocean UI, switch to the classic UI by clicking on the ***Go to classic*** button next to the ***Logout*** button in Blue Ocean navigation bar.<p>![Go to classic](go-to-classic.png?width=70pc)
 2. Once in the classic UI on your CloudBees CI managed controller, ensure that you are in the folder with the same name as your CloudBees CI managed controller - you should see the `cloudbees-ci-workshop-setup` and `cloudbees-feature-flats-workshop-setup` Pipeline jobs. This is important if you want to use Blue Ocean to visualize the Pipeline runs of Pipeline jobs you add to your CloudBees CI managed controller, because only jobs under this folder will show up in Blue Ocean.<p><img src="blue-steel-folder.png" width=800/>

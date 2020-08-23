@@ -34,25 +34,5 @@ We recommend creating a new GitHub Organization for the CloudBees CI Workshop. W
 3. Next, select the GitHub Organization you created for the CloudBees CI Workshop.<p>![GitHub App](github-app-select-org.png?width=70pc)
 4. On the next screen, select **All repositories** and click the **Install** button.<p>![GitHub App](github-app-install.png?width=70pc)
 5. You may be prompted for your GitHub password. Enter your password to complete the installation of the CloudBees CI Workshop GitHub App into your workshop specific GitHub Organization.
-
-## CloudBees CI Setup
-
-### Create a CloudBees CI Account
-
-1. Navigate to the CloudBees CI Workshop registration form. The URL will be provided by your instructor.
-2. Fill out the form, using your GitHub username as your CloudBees CI username, and make sure to save your password. <p>![Create Account](registration-form.png?width=40pc)
-3. Click the **Create Account** button.
-
-### Login to CloudBees CI
-
-1. Goto to the Workshop URL provided by the instructor.
-2. Enter the username and password you created earlier into the login screen and click the **Sign in** button.<p>![CloudBees CI Login](setup-login.png?width=40pc)
-
-### Create a CloudBees CI Managed Controller (Jenkins instance)
-
-1. Click on the **Create Team** link near the top of the page.<p>![Create Team](create-team-link.png?width=70pc)
-2. In the left navigation menu, click on the **Build with parameters** link.<p>![Build with parameters](create-team-build-link.png?width=70pc)
-3. Fill out the form and click the **Build** button.<p>![Create Team form](create-team-form.png?width=70pc)
-4. **IMPORTANT** - While your CloudBees CI managed controller (Jenkins instance) is being provisioned (**it takes a few minutes to provision your managed controller (Jenkins instance)**), move onto the next section.
     
 **For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/core/#16).**
