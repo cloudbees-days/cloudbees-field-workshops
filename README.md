@@ -31,8 +31,9 @@ These labs will provide hands-on examples that will show you how CloudBees CI en
 https://cloudbees-days.github.io/core-rollout-flow-workshop/core/
 
 ### Labs
+https://labs.cb-sa.io/
 
-For both sections:
+For both modules:
  * [Lab 1 - CloudBees CI Workshop Setup](labs/core-workshop-setup/workshop-setup.md)
 
 #### Manage Continuous Integration at Scale

@@ -8,7 +8,7 @@ In this lab you will setup a work environment for the CloudBees CI Workshop.
 
 If you haven't already received the link for the CLoudBees CI Workshop cluster, then ask your instructor for it.
 
-## GitHub
+## GitHub Setup
 
 ### Create a GitHub.com Account
 
@@ -19,7 +19,7 @@ Feel free to use an existing GitHub.com account or create a new one:
 
 ### Create a GitHub Organization
 
-We recommend creating a new GitHub Organization for the CloudBees CI Workshop. We will be using a GitHub App based credential for authentication and authorization between GitHub.com and  CloudBees CI.
+We recommend creating a new GitHub Organization for the CloudBees CI Workshop. We will be using a GitHub App based credential for authentication and authorization between GitHub.com and CloudBees CI.
 1. Ensure that you are logged into GitHub.com and then navigate to your [Organizations Settings page](https://github.com/settings/organizations). 
 2. Click on **New Organization** <p><img src="setup-github-new-org.png" width=550/>
 3. Fill in the **Organization Name**, **Billing Email**, and click on **Create Organization**<p><img src="setup-create-org.png" width=550/>
@@ -31,10 +31,11 @@ We recommend creating a new GitHub Organization for the CloudBees CI Workshop. W
 
 1. Ensure that you are logged into GitHub.com and then navigate to [https://github.com/apps/cloudbees-ci-workshop](https://github.com/apps/cloudbees-ci-workshop).<p>![GitHub App](cbci-github-app.png?width=70pc)
 2. Click on the **Configure** button.
-3. Next, select the GitHub Organization you created for the CloudBees CI Workshop.
-4. 
+3. Next, select the GitHub Organization you created for the CloudBees CI Workshop.<p>![GitHub App](github-app-select-org.png?width=70pc)
+4. On the next screen, select **All repositories** and click the **Install** button.<p>![GitHub App](github-app-install.png?width=70pc)
+5. You may be prompted for your GitHub password. Enter your password to complete the installation of the CloudBees CI Workshop GitHub App into your workshop specific GitHub Organization.
 
-## CloudBees CI
+## CloudBees CI Setup
 
 ### Create a CloudBees CI Account
 
