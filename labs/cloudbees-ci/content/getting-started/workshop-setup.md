@@ -6,7 +6,7 @@ weight: 2
 
 In this lab you will setup a work environment for the CloudBees CI Workshop.  
 
-If you haven't already received the link for the CLoudBees CI Workshop cluster, then ask your instructor for it.
+If you are attending a CloudBees led workshop then these setup steps should be completed before the start of the workshop event.
 
 ## GitHub Setup
 
