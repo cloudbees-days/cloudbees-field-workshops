@@ -26,9 +26,8 @@ But first you will provision a CloudBees managed controller (Jenkins instance) w
 ## Create a CloudBees CI Managed Controller (Jenkins instance)
 
 1. Click on the **Create Team** link near the top of the page.<p>![Create Team](create-team-link.png?width=70pc)
-2. In the left navigation menu, click on the **Build with parameters** link.<p>![Build with parameters](create-team-build-link.png?width=70pc)
-3. Fill out the form and click the **Build** button.<p>![Create Team form](create-team-form.png?width=70pc)
-4. **IMPORTANT** - While your CloudBees CI managed controller (Jenkins instance) is being provisioned (**it takes a few minutes to provision your managed controller (Jenkins instance)**), move onto the next section.
+2. Fill out the form and click the **Build** button.<p>![Create Team form](create-team-form.png?width=70pc)
+3. **IMPORTANT** - While your CloudBees CI managed controller (Jenkins instance) is being provisioned (**it takes a few minutes to provision your managed controller (Jenkins instance)**), move onto the next section.
 
 > NOTE: TODO explain the provisioning job and current limitations of CloudBees CI CasC.
 
