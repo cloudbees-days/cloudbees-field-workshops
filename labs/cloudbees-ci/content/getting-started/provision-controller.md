@@ -13,7 +13,7 @@ In this lab you will provision a CloudBees managed controller (Jenkins instance)
 ### Create a CloudBees CI Account
 
 1. Navigate to the CloudBees CI Workshop registration form. The URL will be provided by your instructor.
-2. Fill out the form, using your GitHub username as your CloudBees CI username, and make sure to save your password. <p>![Create Account](registration-form.png?width=40pc)
+2. Fill out the form, using your GitHub username as your CloudBees CI username, the same email you used to sign-up for the CloudBees Workshop Slack workspace, and make sure to save your password. <p>![Create Account](registration-form.png?width=40pc)
 3. Click the **Create Account** button.
 
 ### Login to CloudBees CI

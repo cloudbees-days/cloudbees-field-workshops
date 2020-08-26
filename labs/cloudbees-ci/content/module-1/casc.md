@@ -1,7 +1,7 @@
 ---
 title: "Configuration as Code"
 chapter: false
-weight: 1
+weight: 2
 ---
 
 In this lab we will setup [GitOps](https://www.gitops.tech/) for [Configuration as Code (CasC) for CloudBees CI](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-admin-guide/core-casc-modern) so that any CloudBeees CI configuration changes you make in source control will automatically be updated in your CloudBees CI managed controller (Jenkins instance). 

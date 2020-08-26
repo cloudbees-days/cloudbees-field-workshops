@@ -1,7 +1,7 @@
 ---
 title: "Pipeline Template Catalogs"
 chapter: false
-weight: 2
+weight: 1
 ---
 
 [Instructor led video of lab.](https://youtu.be/YBoX-bE3YYQ)
