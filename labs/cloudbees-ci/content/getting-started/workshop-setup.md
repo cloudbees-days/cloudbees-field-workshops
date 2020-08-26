@@ -1,10 +1,8 @@
 ---
-title: "Workshop Setup"
+title: "Pre-Workshop Setup"
 chapter: false
 weight: 2
----
-
-In this lab you will setup a work environment for the CloudBees CI Workshop.  
+--- 
 
 If you are attending a CloudBees led workshop then these setup steps should be completed before the start of the workshop event.
 
@@ -43,4 +41,3 @@ We highly recommend creating a new GitHub Organization for the CloudBees CI Work
    3. https://github.com/cloudbees-days/pipeline-template-catalog
    4. https://github.com/cloudbees-days/simple-java-maven-app<p>![GitHub App Installed](forked-repos.png?width=50pc)
     
-**For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/core/#16).**
