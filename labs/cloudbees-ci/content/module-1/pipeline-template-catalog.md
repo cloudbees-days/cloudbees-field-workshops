@@ -4,9 +4,9 @@ chapter: false
 weight: 1
 ---
 
-[Instructor led video of lab.](https://youtu.be/YBoX-bE3YYQ)
-
 ## Import Pipeline Template Catalog
+Although you can add Pipeline Template Catalogs via the managed controller UI, this lab will explore how to manage CloudBees CI Pipeline Template Catalogs with the CloudBees CI command-line interface (CLI). 
+
 1. Navigate to the top-level of your CloudBees CI managed controller (Jenkins instance) and click on **Pipeline Template Catalogs** in the left menu<p><img src="Initial-template-click.png" width=800/>
 2. Click on **Add catalog**<p><img src="Add-template-click.png" width=800/>
 3. Fill out the **Catalog source control options**:

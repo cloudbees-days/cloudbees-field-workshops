@@ -31,21 +31,7 @@ These labs will provide hands-on examples that will show you how CloudBees CI en
 https://cloudbees-days.github.io/core-rollout-flow-workshop/core/
 
 ### Labs
-https://labs.cb-sa.io/
-
-For both modules:
- * [Lab 1 - CloudBees CI Workshop Setup](labs/core-workshop-setup/workshop-setup.md)
-
-#### Manage Continuous Integration at Scale
- * [Lab 2 - Configuration as Code (CasC) for CloudBees CI](labs/cloudbees-ci/casc/casc.md)
- * [Lab 3 - Creating and Configuring Pipeline Template Catalogs](labs/cloudbees-ci/pipeline-template-catalog/pipeline-template-catalog.md)
- * [Lab 4 - Pipeline Policies](labs/cloudbees-ci/pipeline-policies/pipeline-policies.md)
-
-#### A Developer Centric Experience
- * [Lab 5 - Using Pipeline Template Catalogs](labs/cloudbees-ci/pipeline-template-catalog/pipeline-template-catalog.md)
- * Lab 6 - Contextual Pipeline Feedback (GitHub Reporting & Slack)
- * [Lab 7 - Cross Team Collaboration](labs/cloudbees-ci/cross-team-collaboration/cross-team-collaboration.md)
- * [Lab 8 - Hibernating Managed Controllers (Jenkins instance)](labs/cloudbees-ci/hibernating/hibernating.md)
+https://cloudbees-ci.labs.cb-sa.io/
 
 >NOTE: If you are returning to the workshop cluster to complete a lab please review this lab on [**Un-hibernating a Managed Controller**](labs/hibernating/hibernating.md#un-hibernate-a-managed-jenkins-instance).
 
