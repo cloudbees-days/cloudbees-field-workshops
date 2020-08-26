@@ -45,9 +45,9 @@ For both modules:
  * [Lab 5 - Using Pipeline Template Catalogs](labs/cloudbees-ci/pipeline-template-catalog/pipeline-template-catalog.md)
  * Lab 6 - Contextual Pipeline Feedback (GitHub Reporting & Slack)
  * [Lab 7 - Cross Team Collaboration](labs/cloudbees-ci/cross-team-collaboration/cross-team-collaboration.md)
- * [Lab 8 - Hibernating Managed Jenkins Instances](labs/cloudbees-ci/hibernating/hibernating.md)
+ * [Lab 8 - Hibernating Managed Controllers (Jenkins instance)](labs/cloudbees-ci/hibernating/hibernating.md)
 
->NOTE: If you are returning to the workshop cluster to complete a lab please review this lab on [**Un-hibernating a Managed Jenkins Instance**](labs/hibernating/hibernating.md#un-hibernate-a-managed-jenkins-instance).
+>NOTE: If you are returning to the workshop cluster to complete a lab please review this lab on [**Un-hibernating a Managed Controller**](labs/hibernating/hibernating.md#un-hibernate-a-managed-jenkins-instance).
 
 ## CloudBees Feature Flags:
 

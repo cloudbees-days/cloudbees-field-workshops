@@ -27,6 +27,6 @@ count: false
 
 The CloudBees field workshops provide a hands-on overview of CloudBees' products and features within those products. In addition to the hands-on labs there are also slides provided for each product covered by the workshops.
 
-### [CloudBees CI](core/)
+### [CloudBees CI](cloudbees-ci/)
 
-### [CloudBees Feature Flags](rollout/)
+### [CloudBees Feature Flags](cloudbees-feature-flags/)

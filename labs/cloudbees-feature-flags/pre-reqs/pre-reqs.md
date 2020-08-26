@@ -6,12 +6,12 @@
 2. Fill out the form and make sure to save your password. If you don't already have the **Invite code** it will be provided by your instructor. <p><img src="images/registration-form.png" width=600/>
 3. Click the **Sign up** button.
 
-## Login to CloudBees Core
+## Login to CloudBees CI
 
 1. Goto to the Workshop URL provided by the instructor.
 2. Enter the username and password you created in the workshop registration form into the login screen.<p><img src="images/setup-login.png" width=400/>
 
-## Create a Team (Jenkins instance)
+## Create a Managed Controllers (Jenkins instance)
 
 1. If not in CloudBees Team UI, click on the **Teams** link in the left menu. <p><img src="images/setup-classic-ui-Teams-link.png" width=400/>
 2. Click on the **Create team** button in the center of your screen.<p><img src="images/setup-create-a-team.png" width=400/>
@@ -21,7 +21,7 @@
 6. **Select the cluster endpoint to create the team in** - just stick with the default value `kubernetes` and click **Next**.
 7. **Select Team creation recipe** - click on the drop-down to see the options, but just stick with the **Basic** recipe.
 8. Finally, click the **Create team** button. <p><img src="images/setup-create-team.png" width=450/>
-9. While your Core Team (Jenkins instance) is being created (**it takes anywhere from 2-3 minutes to provision your Team (Jenkins instance)**), move onto the next section.
+9. While your CloudBees CI ***managed controller*** is being created (**it takes anywhere from 2-3 minutes to provision your managed controller**), move onto the next section.
 
 ## Create a GitHub.com Account
 
