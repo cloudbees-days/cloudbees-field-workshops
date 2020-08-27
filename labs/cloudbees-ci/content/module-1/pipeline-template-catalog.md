@@ -13,7 +13,7 @@ Although you can add Pipeline Template Catalogs via the managed controller UI, t
 4. Select ***Git*** as the **SCM** type and then:
    1. Enter the URL for your fork of the **pipeline-template-catalog** as the value for the **Repository URL** - ***https:\//github.com/{YOUR_GITHUB_ORGANIZATION}/pipeline-template-catalog.git***
 
-   >TIP: If you navigate to your GitHub repository and click on the **Code** button and then click on the *clipboard* icon to copy the Git URL for your repository. <p>![Copy Repo Git URL](copy-repo-url.png?width=30pc)
+   >TIP: If you navigate to your GitHub repository, and click on the **Code** button, you can then click on the *clipboard* icon to copy the Git URL for your repository. <p>![Copy Repo Git URL](copy-repo-url.png?width=40pc)
 
    1. Select ***77562/\*\*\*\*\*\* (CloudBees CI Workshop GitHub App credential)*** for the **Credentials** value. The rest of the default values are sufficient.
    2. Click the **Save** button. <p>![Pipeline SCM Configuration](pipeline-scm-config.png?width=60pc)
