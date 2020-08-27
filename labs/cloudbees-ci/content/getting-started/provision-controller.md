@@ -27,6 +27,6 @@ CloudBees CI for modern platforms takes advantage of Kubernetes to providing dyn
 2. Fill out the form and click the **Build** button.<p>![Create Team form](create-team-form.png?width=70pc)
 3. **IMPORTANT** - While your CloudBees CI managed controller is being provisioned (**it takes a few minutes for Operations Center to provision your managed controller on Kubernetes**), move onto the next section.
 
->NOTE: There are a number of ways to create a managed controller.
+>NOTE: There are a number of ways to create a managed controller. We take a very opinionated way to provision attendees managed controllers for this workshop in order to streamline the process for all everyone.
 
 **For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/core/#16).**
