@@ -5,7 +5,7 @@ count: false
 
 
 # CloudBees CI Workshop
-.one-third-up[![:scale 10%](../img/Core-white.svg)]
+.one-third-up[![:scale 10%](../img/CloudBees-Submark-White.svg)]
 ???
 This workshop introduces attendees to the features for CloudBees CI.
 
