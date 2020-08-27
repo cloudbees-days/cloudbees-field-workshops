@@ -21,8 +21,15 @@ name: agenda-setup
 
 ### CloudBees SCM Reporting for GitHub 
 
-* The CloudBees GitHub Reporting plugin provides more detailed Jenkins Pipeline events as corresponding GitHub statuses.
+* The CloudBees SCM Reporting plugin supports detailed commit statuses for GitHub and BitBucket.
 * As the build runs, CloudBees CI will surface actionable build information directly in GitHub, in real-time, alleviating the need to switch over to your CloudBees CI managed controller to get an overview.
+
+#### GitHub App Credential
+By using the GitHub App credential type with the CloudBees SCM Reporting plugin offers the following additional benefits:
+* Larger rate limits - The rate limit for a GitHub app scales with your organization size, whereas a user based token has a limit of 5000 regardless of how many repositories you have.
+* User-independent authentication - Each GitHub app has its own user-independent authentication. No more need for 'bot' users or figuring out who should be the owner of 2FA or OAuth tokens.
+* Improved security and tighter permissions - GitHub Apps offer much finer-grained permissions compared to a service user and its personal access tokens. This lets the Jenkins GitHub app require a much smaller set of privileges to run properly.
+* GitHub Checks API - allows the CloudBees SCM Reporting plugin to leverage the GitHub Checks API to create check runs and check suites from Jenkins jobs and provide detailed feedback on commits as well as detailed code annotations.
 
 ---
 name: pipeline-template-catalog-slack
