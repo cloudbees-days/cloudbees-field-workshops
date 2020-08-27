@@ -28,10 +28,11 @@ Although you can add Pipeline Template Catalogs via the managed controller UI, t
    ```
 
 7. Navigate to the top-level of your ***managed controller*** and then click on the **Pipeline Template Catalogs** link in the menu on the left. <p>![Pipeline Template Catalogs link](catalog-link.png?width=60pc)
-8. On the **Pipeline Template Catalogs** page click on the line for the **workshopCatalog**. <p>![workshopCatalog link](workshopcatalog-link.png?width=60pc)
-9.  On the **CloudBees CI Workshop Template Catalog** screen you will see 5 templates listed. <p>![Template List](workshop-template-list.png?width=60pc)
+8. On the **Pipeline Template Catalogs** page click on the line for the **workshopCatalog**. <p>![workshopCatalog link](workshopcatalog-link.png?width=50pc)
+9.  On the **CloudBees CI Workshop Template Catalog** screen you will see the following templates listed: <p>![Template List](workshop-template-list.png?width=50pc)
 
 ## Enforce the Use of Templates at the Folder Level
+The CloudBees CI Folders Plus feature allows you to restrict the type of items 
 
 1. Navigate back to the top-level of your CloudBees CI managed controller (Jenkins instance) and click on **New Item** in the left menu.
 2. For the **item name** enter ***template-jobs***, select **Folder** and then click the **OK** button. <p><img src="new-folder-click.png" width=800/>
