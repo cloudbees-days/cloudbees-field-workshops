@@ -9,11 +9,11 @@ In this lab we will setup [GitOps](https://www.gitops.tech/) for [Configuration 
 ## GitOps for CloudBees CI CasC
 
 In this lab you will:
-* Create a Jenkins Pipeline job on your CloudBees CI managed controller to automatically update the [CloudBees CI configuration bundle](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/ci-casc-modern#_creating_a_configuration_bundle) for your CloudBees CI managed controller.
-* Add some new configuration to the CloudBees CI configuration bundle in your forked **cloudbees-ci-config-bundle** repository and then commit the changes to the **master** branch of your **cloudbees-ci-config-bundle** repository that will in turn tigger a Jenkins Pipeline to update your CloudBees CI configuration bundle.
+* Create a Pipeline template job on your CloudBees CI managed controller to automatically update the [CloudBees CI configuration bundle](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/ci-casc-modern#_creating_a_configuration_bundle) for your CloudBees CI managed controller.
+* Update the CloudBees CI configuration bundle in your forked **cloudbees-ci-config-bundle** repository and then commit the changes to the **master** branch of your **cloudbees-ci-config-bundle** repository that will in turn tigger the Pipeline template job.
 
 1. Click on the **New Item** link in the left navigation menu.
-2. Enter the name of the GitHub Organization you created for this workshop as the **Item Name**, select **GitHub Organization** as the item type and then click the **OK** button.<p><img src="github-organization-item.png" width=600/>
+2. Enter ***update-config-bundle** as the **Item Name**, select **CloudBees CI Configuration Bundle** as the item type and then click the **OK** button.<p><img src="github-organization-item.png" width=600/>
 3. On the next screen, select the **Credentials** with the ***GitHub PAT from JCasC - username/password*** description and displaying your GitHub username - this credential was created with the CloudBees CI CasC bundle applied to your CloudBees CI managed controller by the **cloudbees-ci-workshop-setup** job.
 4. The value of the **Owner** field is already filled in and matching the **Item Name** you entered above - ensure that it matches the name of the GitHub Organization you created for this workshop.
 5. Next, under the **Behaviors** section, click the **Add** button, select **Filter by name (with wildcards)** under **- Within repository -** and then enter ***master*** as an **Include** so that will be the only branch that gets scanned and built. **IMPORTANT** - make sure you select the **Filter by name (with wildcards)** option **UNDERNEATH** the **- Within repository -** section of the **Behaviors** select list. <p><img src="behaviors-filter-branch-by-name.png" width=900/>

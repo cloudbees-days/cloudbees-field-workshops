@@ -3,7 +3,7 @@ class: title, shelf, no-footer, fullbleed
 background-image: linear-gradient(135deg,#279be0,#036eb4)
 count: false
 
-# CloudBees Pipeline Template Catalogs
+# CloudBees CI Pipeline Template Catalogs
 
 ---
 name: agenda-templates
@@ -43,7 +43,7 @@ name: pipeline-template-catalog-lab-link
 
 # Lab - Pipeline Template Catalog
 
-* In this lab you will use the CloudBees CI CLI to create a Pipeline Template Catalog from the repository that was forked (copied) into your workshop GitHub Organization.
+* In this lab you will use the CloudBees CI CLI to create a Pipeline Template Catalog from the `pipeline-template-catalog` repository that was forked (copied) into your workshop GitHub Organization.
 * The *Pipeline Template Catalog* lab instructions are available at: 
   * https://cloudbees-ci.labs.cb-sa.io/module-1/pipeline-template-catalog/
 
@@ -54,4 +54,3 @@ name: pipeline-template-catalog-overview
 
 * Imported a Pipeline Template Catalog from a GitHub repository
 * Used a CloudBees Folders Plus feature to restrict what type of jobs can be created in a folder
-* Leveraged CloudBees SCM Reporting for GitHub to find and fix an error
