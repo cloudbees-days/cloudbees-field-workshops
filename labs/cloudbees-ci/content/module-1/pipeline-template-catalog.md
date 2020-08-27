@@ -37,6 +37,6 @@ The CloudBees CI Folders Plus feature allows you to restrict the type of items
 1. Navigate back to the top-level of your CloudBees CI managed controller (Jenkins instance) and click on **New Item** in the left menu.
 2. For the **item name** enter ***template-jobs***, select **Folder** and then click the **OK** button. <p><img src="new-folder-click.png" width=800/>
 3. Scroll to the bottom of the folder configuration and click on **Restrict the kind of children in this folder** - a [CloudBees Folders Plus](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-secure-guide/folders-plus) feature - and then select **CloudBees CI Configuration Bundle** and **Maven Pipeline Template**, and then hit the **Save** button. <p>![Restricted Folder Items](restricted-items-check.png?width=60pc)
-4. Now when you click on **New Item** in the **template-jobs** folder you will only have the **CloudBees CI Configuration Bundle** and **Maven Pipeline Template** item types available to select.
+4. Now when you click on **New Item** in the **template-jobs** folder you will only have the **CloudBees CI Configuration Bundle** and **Maven Pipeline Template** item types available to select.<p>![Restricted Folder New Item](restricted-folder-new-item.png?width=60pc)
    
 **For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/cloudbees-ci/#31).**
