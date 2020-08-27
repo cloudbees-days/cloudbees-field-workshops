@@ -4,9 +4,9 @@ chapter: false
 weight: 3
 --- 
 
-In this lab you will provision a CloudBees managed controller (Jenkins instance) with the initial configuration provided by CloudBees CI CasC.
+CloudBees CI for modern platforms takes advantage of Kubernetes to providing dynamic provisioning of team specific Jenkins instances we refer to as ***managed controllers***. In this lab you will provision a CloudBees ***managed controller*** (Jenkins instance) with an initial configuration provided by CloudBees CI Configuration-as-Code.
 
-*If you haven't already received the link for the CloudBees CI Workshop cluster, then ask your instructor for it.
+>NOTE: If you haven't already received the link for the CloudBees CI Workshop cluster, then ask your instructor for it.
 
 ## Provision a CloudBees CI Managed Controller
 
@@ -25,6 +25,8 @@ In this lab you will provision a CloudBees managed controller (Jenkins instance)
 
 1. Click on the **Create Team** link near the top of the page.<p>![Create Team](create-team-link.png?width=70pc)
 2. Fill out the form and click the **Build** button.<p>![Create Team form](create-team-form.png?width=70pc)
-3. **IMPORTANT** - While your CloudBees CI managed controller (Jenkins instance) is being provisioned (**it takes a few minutes for Operations Center to provision your managed controller on Kubernetes**), move onto the next section.
+3. **IMPORTANT** - While your CloudBees CI managed controller is being provisioned (**it takes a few minutes for Operations Center to provision your managed controller on Kubernetes**), move onto the next section.
+
+>NOTE: There are a number of ways to create a managed controller.
 
 **For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/core/#16).**
