@@ -16,6 +16,25 @@ Although you can add Pipeline Template Catalogs via the managed controller UI, t
    - If you navigate to your GitHub `pipeline-template-catalog` repository, and click on the **Code** button, you can then click on the *clipboard* icon to copy the Git URL for your repository. ![Copy Repo Git URL](copy-repo-url.png?width=40pc)
    - Select ***77562/\*\*\*\*\*\* (CloudBees CI Workshop GitHub App credential)*** for the **Credentials** value. The rest of the default values are sufficient.
    - Click the **Save** button. <p>![Pipeline SCM Configuration](pipeline-scm-config.png?width=60pc)
+   - ***import-catalog*** `Jenkinsfile`:
+```groovy
+pipeline {
+  agent { label 'default-jnlp'} 
+  stages {
+    stage("Import Catalog") {
+      steps {
+        withCredentials([usernamePassword(credentialsId: 'admin-cli-token', usernameVariable: 'JENKINS_CLI_USR', passwordVariable: 'JENKINS_CLI_PSW')]) {
+          sh """
+            curl -O http://teams-beedemo-dev/teams-beedemo-dev/jnlpJars/jenkins-cli.jar
+            alias cli='java -jar jenkins-cli.jar -s http://teams-beedemo-dev/teams-beedemo-dev/ -auth $JENKINS_CLI_USR:$JENKINS_CLI_PSW'
+            cli pipeline-template-catalogs --put < create-pipeline-template-catalog.json
+          """
+        }
+      }
+    }
+  }
+}
+```
 6. Click **Build Now** in the left navigation menu.
 7. Once the job is complete you should see the following success message in the build log:
    
