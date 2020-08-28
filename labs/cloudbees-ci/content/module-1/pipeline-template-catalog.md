@@ -12,12 +12,11 @@ Although you can add Pipeline Template Catalogs via the managed controller UI, t
 3. Enter ***import-catalog*** as the **item name**, select **Pipeline** and the click the **OK** button.<p>![import-catalog Pipeline](create-pipeline-item.png?width=60pc)
 4. Scroll down to the **Pipeline** section of the job configuration and select ***Pipeline script from SCM*** for the **Definition**. <p>![Pipeline Definition](pipeline-definition.png?width=60pc)
 5. Select ***Git*** as the **SCM** type and then:
-   1. Enter the URL for your fork of the **pipeline-template-catalog** as the value for the **Repository URL** - ***https:\//github.com/{YOUR_GITHUB_ORGANIZATION}/pipeline-template-catalog.git***
+   - Enter the URL for your fork of the `pipeline-template-catalog` as the value for the **Repository URL** - ***https:\//github.com/{YOUR_GITHUB_ORGANIZATION}/pipeline-template-catalog.git***
+   - If you navigate to your GitHub `pipeline-template-catalog` repository, and click on the **Code** button, you can then click on the *clipboard* icon to copy the Git URL for your repository. ![Copy Repo Git URL](copy-repo-url.png?width=40pc)
 
-   >TIP: If you navigate to your GitHub repository, and click on the **Code** button, you can then click on the *clipboard* icon to copy the Git URL for your repository. <p>![Copy Repo Git URL](copy-repo-url.png?width=40pc)
-
-   1. Select ***77562/\*\*\*\*\*\* (CloudBees CI Workshop GitHub App credential)*** for the **Credentials** value. The rest of the default values are sufficient.
-   2. Click the **Save** button. <p>![Pipeline SCM Configuration](pipeline-scm-config.png?width=60pc)
+   - Select ***77562/\*\*\*\*\*\* (CloudBees CI Workshop GitHub App credential)*** for the **Credentials** value. The rest of the default values are sufficient.
+   - Click the **Save** button. <p>![Pipeline SCM Configuration](pipeline-scm-config.png?width=60pc)
 6. Click **Build Now** in the left navigation menu.
 7. Once the job is complete you should see the following success message in the build log:
    
