@@ -49,4 +49,4 @@ pipeline {
 9.  On the next screen, click the **Run Catalog Import Now** link. ![Import Now](click-import-link.png?width=50pc)
 10.  After the import is complete, navigate back to the **master** branch job in the **update-config-bundle** Mutlibranch project in the **template-jobs** folder and click the **Build Now** link in the left menu. The build will complete successfully and the logs for that build will show that the Pipeline policy validated successfully. ![Policy Success](pipeline-policy-success.png?width=50pc)
 
-**For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/cloudbees-ci/#37).**
+**For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/cloudbees-ci/#36).**
