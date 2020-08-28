@@ -14,7 +14,6 @@ Although you can add Pipeline Template Catalogs via the managed controller UI, t
 5. Select ***Git*** as the **SCM** type and then:
    - Enter the URL for your fork of the `pipeline-template-catalog` as the value for the **Repository URL** - ***https:\//github.com/{YOUR_GITHUB_ORGANIZATION}/pipeline-template-catalog.git***
    - If you navigate to your GitHub `pipeline-template-catalog` repository, and click on the **Code** button, you can then click on the *clipboard* icon to copy the Git URL for your repository. ![Copy Repo Git URL](copy-repo-url.png?width=40pc)
-
    - Select ***77562/\*\*\*\*\*\* (CloudBees CI Workshop GitHub App credential)*** for the **Credentials** value. The rest of the default values are sufficient.
    - Click the **Save** button. <p>![Pipeline SCM Configuration](pipeline-scm-config.png?width=60pc)
 6. Click **Build Now** in the left navigation menu.
@@ -29,14 +28,14 @@ Although you can add Pipeline Template Catalogs via the managed controller UI, t
 
 8. Navigate to the top-level of your ***managed controller*** and then click on the **Pipeline Template Catalogs** link in the menu on the left. <p>![Pipeline Template Catalogs link](catalog-link.png?width=60pc)
 9. On the **Pipeline Template Catalogs** page ensure that the **workshopCatalog** catalog's **Status** is ***Healthy*** and then click on the **workshopCatalog** link. <p>![workshopCatalog link](workshopcatalog-link.png?width=50pc)
-10. On the **CloudBees CI Workshop Template Catalog** screen you will see the following templates listed: <p>![Template List](workshop-template-list.png?width=50pc)
+10. On the **CloudBees CI Workshop Template Catalog** screen you will see the following templates listed: ![Template List](workshop-template-list.png?width=50pc)
 
 ## Enforce the Use of Templates at the Folder Level
 The [CloudBees CI Folders Plus plugin](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-secure-guide/folders-plus) includes the ability to restrict the type of items/jobs allowed to be created in a folder. When this capability is used with CloudBees CI RBAC you can easily enforce that all your CloudBees CI users use an approved (and tested) Pipeline template.
 
 1. Navigate back to the top-level of your CloudBees CI managed controller (Jenkins instance) and click on **New Item** in the left menu.
-2. For the **item name** enter ***template-jobs***, select **Folder** and then click the **OK** button. <p><img src="new-folder-click.png" width=800/>
-3. Scroll to the bottom of the folder configuration and click on **Restrict the kind of children in this folder** - a [CloudBees Folders Plus](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-secure-guide/folders-plus) feature - and then select **CloudBees CI Configuration Bundle** and **Maven Pipeline Template**, and then hit the **Save** button. <p>![Restricted Folder Items](restricted-items-check.png?width=60pc)
-4. Now when you click on **New Item** in the **template-jobs** folder you will only have the **CloudBees CI Configuration Bundle** and **Maven Pipeline Template** item types available to select.<p>![Restricted Folder New Item](restricted-folder-new-item.png?width=60pc)
+2. For the **item name** enter ***template-jobs***, select **Folder** as the item type and then click the **OK** button. ![Restricted Folder Item](new-folder-click.png?width=50pc)
+3. Scroll to the bottom of the folder configuration and click on **Restrict the kind of children in this folder** - a [CloudBees Folders Plus](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-secure-guide/folders-plus) feature - and then select **CloudBees CI Configuration Bundle** and **Maven Pipeline Template**, and then hit the **Save** button. ![Restricted Folder Items](restricted-items-check.png?width=60pc)
+4. Now when you click on **New Item** in the **template-jobs** folder you will only have the **CloudBees CI Configuration Bundle** and **Maven Pipeline Template** item types available to select. ![Restricted Folder New Item](restricted-folder-new-item.png?width=60pc)
    
-**For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/cloudbees-ci/#31).**
+**For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/cloudbees-ci/#21).**
