@@ -1,7 +1,7 @@
 ---
 title: "Hibernation for Managed Controllers"
 chapter: false
-weight: 4
+weight: 5
 ---
 
 The [CloudBees CI hibernation for Managed Controllers](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-admin-guide/managing-masters#_hibernation_in_managed_masters) feature takes advantage of running CloudBees CI on Kubernetes by automatically shutting down or hibernating CloudBees CI managed controller after a specified amount of time of inactivity.

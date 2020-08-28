@@ -18,12 +18,10 @@ Feel free to use an existing GitHub.com account or create a new one:
 ### Create a GitHub Organization
 
 We highly recommend creating a new GitHub Organization for the CloudBees CI Workshop. We will be using a GitHub App based credential to enable authentication and authorization between your GitHub.com Organization for the workshop and CloudBees CI.
-1. Ensure that you are logged into GitHub.com and then navigate to your [Organizations Settings page](https://github.com/settings/organizations). 
-2. Click on **New Organization** button.<p><img src="setup-github-new-org.png" width=550/>
-3. Select the **Free** plan by clicking on the **Join for free** button.<p>![GitHub Org Free](github-org-free.png?width=60pc)
-4. On the next screen, enter a unique ***Organization account name***, a valid ***Contact email***, select **My personal account** for ***This organization belongs to*** and then click on the **Next** button.<p>![GitHub Org Set up](github-org-set-up.png?width=40pc) 
-5. On the **Welcome to GitHub** screen just click the **Complete setup** button.<p>![GitHub Org Set up](github-org-welcome.png?width=50pc) 
-6. On the final page you don't have to fill anything in/answer any questions (unless your really want to) and just scroll to the bottom of the page and click the **Submit** button.
+1. Ensure that you are logged into GitHub.com and then navigate to this [link to create a new (and free) GitHub Organization](https://github.com/account/organizations/new?coupon=&plan=team_free). 
+2. Enter a unique ***Organization account name***, a valid ***Contact email***, select **My personal account** for ***This organization belongs to*** and then click on the **Next** button.<p>![GitHub Org Set up](github-org-set-up.png?width=40pc) 
+3. On the **Welcome to GitHub** screen just click the **Complete setup** button.<p>![GitHub Org Set up](github-org-welcome.png?width=50pc) 
+4. On the final page you don't have to fill anything in/answer any questions (unless your really want to) and just scroll to the bottom of the page and click the **Submit** button.
 
 >NOTE: Even though you have to provide an email for billing, **you will NOT be charged anything** as long as you choose the free option.
 

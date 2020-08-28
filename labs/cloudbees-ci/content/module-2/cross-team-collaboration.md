@@ -1,7 +1,7 @@
 ---
 title: "Cross Team Collaboration"
 chapter: false
-weight: 3
+weight: 4
 ---
 
 ## Enable Cross Team Collaboration Notifications

@@ -4,7 +4,7 @@ chapter: false
 weight: 1
 ---
 
-## Create vue.js Job from Pipeline Template Catalog
+## Create a Job from Pipeline Template Catalog
 In this lab you will create a new Multibranch Pipeline job from the **VueJS** template provided by the Pipeline Template Catalog you added above - just by filling in a few parameters.
 
 1. On your CloudBees CI managed controller (Jenkins instance) navigate into the **template-jobs** folder that you created in the previous lab.
