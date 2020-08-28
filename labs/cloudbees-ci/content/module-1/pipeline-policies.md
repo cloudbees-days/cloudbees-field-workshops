@@ -21,7 +21,7 @@ In this lab you will create a [Pipeline Policy](https://docs.cloudbees.com/docs/
 5. Navigate to the logs for that build and you will see that the build failed due to **Validation Errors** ![Policy Error](pipeline-policy-error.png?width=50pc) 
 6. To fix this we will have to update the `Jenkinsfile` of the **CloudBees CI Configuration Bundle** template in your forked copy of the `pipeline-template-catalog` repository - remember, even though we are building from the `cloudbees-ci-config-bundle` repository, the `Jenkinsfile` is actually coming from the **CloudBees CI Configuration Bundle** template. Navigate to that `Jenkinsfile` and the click the **pencil icon** to open it in the GitHub file editor. ![Edit Timeout](pipeline-policy-open-jenkinsfile.png?width=50pc) 
 7. In the GitHub file editor, change the `time` value of the `timeout` pipeline `option`  from `60` to `30` and then click the **Commit changes** button to commit the updated `Jenkinsfile` to your **master** branch. ![Fix Timeout](pipeline-policy-fix-commit-jenkinsfile.png?width=50pc) 
-{{%expand "Expand to copy complete updated Jenkinsfile" %}}
+{{%expand "***Expand to copy complete updated `Jenkinsfile`***" %}}
 ```groovy
 @Library('pipeline-library@master') _
 pipeline {
