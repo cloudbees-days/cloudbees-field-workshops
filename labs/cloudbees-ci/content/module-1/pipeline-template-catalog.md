@@ -8,7 +8,7 @@ weight: 1
 Although you can add Pipeline Template Catalogs via the managed controller UI, this lab will explore how to manage CloudBees CI Pipeline Template Catalogs with the CloudBees CI command-line interface (CLI). 
 
 1. Navigate to the top-level of Operations Center - **Jenkins** - and click on the link for your ***managed controller***. ![Managed Controller link](managed-controller-link.png?width=60pc)
-2. Next navigate to the top-level of your CloudBees CI managed controller (Jenkins instance) and click on **New Item** in the left menu. ![New Item](create-new-item.png?width=60pc)
+2. At the top-level of your CloudBees CI managed controller (Jenkins instance) and click on **New Item** in the left menu. ![New Item](create-new-item.png?width=60pc)
 3. Enter ***import-catalog*** as the **item name**, select **Pipeline** and the click the **OK** button.<p>![import-catalog Pipeline](create-pipeline-item.png?width=60pc)
 4. Scroll down to the **Pipeline** section of the job configuration and select ***Pipeline script from SCM*** for the **Definition**. <p>![Pipeline Definition](pipeline-definition.png?width=60pc)
 5. Select ***Git*** as the **SCM** type and then:
@@ -34,7 +34,7 @@ Although you can add Pipeline Template Catalogs via the managed controller UI, t
 The [CloudBees CI Folders Plus plugin](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-secure-guide/folders-plus) includes the ability to restrict the type of items/jobs allowed to be created in a folder. When this capability is used with CloudBees CI RBAC you can easily enforce that all your CloudBees CI users use an approved (and tested) Pipeline template.
 
 1. Navigate back to the top-level of your CloudBees CI managed controller (Jenkins instance) and click on **New Item** in the left menu.
-2. For the **item name** enter ***template-jobs***, select **Folder** as the item type and then click the **OK** button. ![Restricted Folder Item](new-folder-click.png?width=50pc)
+2. For the **item name** enter ***template-jobs***, select **Folder** (be sure to select **Folder** and not **Folder Template**) as the item type and then click the **OK** button. ![Restricted Folder Item](new-folder-click.png?width=50pc)
 3. Scroll to the bottom of the folder configuration and click on **Restrict the kind of children in this folder** - a [CloudBees Folders Plus](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-secure-guide/folders-plus) feature - and then select **CloudBees CI Configuration Bundle** and **Maven Pipeline Template**, and then hit the **Save** button. ![Restricted Folder Items](restricted-items-check.png?width=60pc)
 4. Now when you click on **New Item** in the **template-jobs** folder you will only have the **CloudBees CI Configuration Bundle** and **Maven Pipeline Template** item types available to select. ![Restricted Folder New Item](restricted-folder-new-item.png?width=60pc)
    
