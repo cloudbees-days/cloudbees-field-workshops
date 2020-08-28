@@ -29,4 +29,4 @@ CloudBees CI for modern platforms takes advantage of Kubernetes to providing dyn
 
 >NOTE: There are a number of ways to create a managed controller. We take a very opinionated way to provision attendees managed controllers for this workshop in order to streamline the process for all everyone.
 
-**For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/core/#16).**
+**For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/cloudbees-ci/#16).**

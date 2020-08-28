@@ -4,12 +4,12 @@ chapter: false
 weight: 2
 ---
 
-In this lab we will setup [GitOps](https://www.gitops.tech/) for [Configuration as Code (CasC) for CloudBees CI](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-admin-guide/core-casc-modern) so that any CloudBeees CI configuration changes you make in source control will automatically be updated in your CloudBees CI managed controller (Jenkins instance). 
+In this lab we will setup [GitOps](https://www.gitops.tech/) for [CloudBees CI Configuration as Code (CasC) ](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-admin-guide/core-casc-modern) so that any CloudBeees CI configuration changes you make in source control will automatically be updated in your CloudBees CI ***managed controller*** (Jenkins instance). 
 
 ## GitOps for CloudBees CI CasC
 
 In this lab you will:
-* Create a Pipeline template job on your CloudBees CI managed controller to automatically update the [CloudBees CI configuration bundle](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/ci-casc-modern#_creating_a_configuration_bundle) for your CloudBees CI managed controller. 
+* Create a job from a Pipeline template on your CloudBees CI managed controller to automatically update the [CloudBees CI configuration bundle](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/ci-casc-modern#_creating_a_configuration_bundle) for your CloudBees CI managed controller. 
 * Update the CloudBees CI configuration bundle in your forked `cloudbees-ci-config-bundle` repository and then commit the changes to the **master** branch of your **cloudbees-ci-config-bundle** repository that will in turn tigger the Pipeline template job.
 
 1. Navigation into the **template-jobs** folder on your ***managed controller***.
@@ -27,4 +27,4 @@ In this lab you will:
 13. Among other configuration changes, you will now see a link for **Pipeline Polices** in the left navigation menu, an updated system message and [CloudBees CI Hibernation for Managed Controllers](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-admin-guide/managing-masters#_hibernation_in_managed_masters) has been configured for your CloudBees CI managed controller. ![Scan Log](casc-update-applied.png?width=50pc)
 >NOTE: The **Build strategies** configuration for Pipeline Organization Folder and Multibranch projects are provided by the [Basic Branch Build Strategies plugin](https://github.com/jenkinsci/basic-branch-build-strategies-plugin/blob/master/docs/user.adoc) and by selecting the *Skip initial build on first branch indexing* strategy we avoid an unnecessary build when we first create the Organization Folder project above.
 
-**For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/core/#26)**
+**For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/cloudbees-ci/#26)**
