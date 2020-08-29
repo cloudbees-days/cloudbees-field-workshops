@@ -8,7 +8,7 @@ weight: 1
 Although you can add Pipeline Template Catalogs via the managed controller UI, this lab will explore how to manage CloudBees CI Pipeline Template Catalogs with the CloudBees CI command-line interface (CLI). 
 
 1. Navigate to the top-level of Operations Center - **Jenkins** - and click on the link for your ***managed controller***. ![Managed Controller link](managed-controller-link.png?width=60pc)
-2. At the top-level of your CloudBees CI managed controller (Jenkins instance) and click on **New Item** in the left menu. ![New Item](create-new-item.png?width=60pc)
+2. At the top-level of your CloudBees CI managed controller (Jenkins instance) click on **New Item** in the left menu. ![New Item](create-new-item.png?width=60pc)
 3. Enter ***import-catalog*** as the **item name**, select **Pipeline** and the click the **OK** button.<p>![import-catalog Pipeline](create-pipeline-item.png?width=60pc)
 4. Scroll down to the **Pipeline** section of the job configuration and select ***Pipeline script from SCM*** for the **Definition**. <p>![Pipeline Definition](pipeline-definition.png?width=60pc)
 5. Select ***Git*** as the **SCM** type and then:
@@ -16,25 +16,21 @@ Although you can add Pipeline Template Catalogs via the managed controller UI, t
    - If you navigate to your GitHub `pipeline-template-catalog` repository, and click on the **Code** button, you can then click on the *clipboard* icon to copy the Git URL for your repository. ![Copy Repo Git URL](copy-repo-url.png?width=40pc)
    - Select ***77562/\*\*\*\*\*\* (CloudBees CI Workshop GitHub App credential)*** for the **Credentials** value. The rest of the default values are sufficient.
    - Click the **Save** button. <p>![Pipeline SCM Configuration](pipeline-scm-config.png?width=60pc)
-   - ***import-catalog*** `Jenkinsfile`:
-```groovy
-pipeline {
-  agent { label 'default-jnlp'} 
-  stages {
-    stage("Import Catalog") {
-      steps {
-        withCredentials([usernamePassword(credentialsId: 'admin-cli-token', usernameVariable: 'JENKINS_CLI_USR', passwordVariable: 'JENKINS_CLI_PSW')]) {
-          sh """
-            curl -O http://teams-beedemo-dev/teams-beedemo-dev/jnlpJars/jenkins-cli.jar
-            alias cli='java -jar jenkins-cli.jar -s http://teams-beedemo-dev/teams-beedemo-dev/ -auth $JENKINS_CLI_USR:$JENKINS_CLI_PSW'
-            cli pipeline-template-catalogs --put < create-pipeline-template-catalog.json
-          """
-        }
-      }
-    }
-  }
-}
-```
+   - The Pipeline is configured to use the CloudBees CI `pipeline-template-catalogs` CLI command to create a **Pipeline Template Catalog** from the `create-pipeline-template-catalog.json` file in your `pipeline-template-catalog` repository as seen below:
+     ```json
+     [
+       {
+         "scm":{ 
+           "$class":"GitHubSCMSource",
+           "credentialsId":"cloudbees-ci-workshop-github-app",
+           "repoOwner":"bee-cd",
+           "repository":"pipeline-template-catalog"
+         },
+         "branchOrTag":"master",
+         "updateInterval":"28d"
+       }
+     ]
+     ```
 6. Click **Build Now** in the left navigation menu.
 7. Once the job is complete you should see the following success message in the build log:
    

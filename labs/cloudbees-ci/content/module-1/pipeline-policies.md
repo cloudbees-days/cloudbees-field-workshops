@@ -46,8 +46,8 @@ pipeline {
 ```
 {{% /expand%}}
 
-1. Next, to ensure that we are using the updated **CloudBees CI Configuration Bundle** template, we will **re-import** the Pipeline Template Catalog you just updated. Navigate to the top-level of your CloudBees CI managed controller (Jenkins instance) and click on **Pipeline Template Catalogs** in the left menu and then click the **workshopCatalog** link. ![workshop Catalog link](workshop-catalog-link.png?width=50pc) 
-2.  On the next screen, click the **Run Catalog Import Now** link. ![Import Now](click-import-link.png?width=50pc)
-3.   After the import is complete, navigate back to the **master** branch job in the **update-config-bundle** Mutlibranch project in the **template-jobs** folder and click the **Build Now** link in the left menu. The build will complete successfully and the logs for that build will show that the Pipeline policy validated successfully. ![Policy Success](pipeline-policy-success.png?width=50pc)
+7. Next, to ensure that we are using the updated **CloudBees CI Configuration Bundle** template, we will **re-import** the Pipeline Template Catalog you just updated. Navigate to the top-level of your CloudBees CI managed controller (Jenkins instance) and click on **Pipeline Template Catalogs** in the left menu and then click the **workshopCatalog** link. ![workshop Catalog link](workshop-catalog-link.png?width=50pc) 
+8.  On the next screen, click the **Run Catalog Import Now** link. ![Import Now](click-import-link.png?width=50pc)
+9.   After the import is complete, navigate back to the **master** branch job in the **update-config-bundle** Mutlibranch project in the **template-jobs** folder and click the **Build Now** link in the left menu. The build will complete successfully and the logs for that build will show that the Pipeline policy validated successfully. ![Policy Success](pipeline-policy-success.png?width=50pc)
 
 **For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/cloudbees-ci/#36).**
