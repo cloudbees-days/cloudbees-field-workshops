@@ -10,14 +10,14 @@ In this lab we will setup [GitOps](https://www.gitops.tech/) for [CloudBees CI C
 
 In this lab you will:
 * Create a job from a Pipeline template on your CloudBees CI managed controller to automatically update the [CloudBees CI configuration bundle](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/ci-casc-modern#_creating_a_configuration_bundle) for your CloudBees CI managed controller. 
-* Update the CloudBees CI configuration bundle in your forked `cloudbees-ci-config-bundle` repository and then commit the changes to the **master** branch of your **cloudbees-ci-config-bundle** repository that will in turn tigger the Pipeline template job.
+* Update the CloudBees CI configuration bundle in your forked `cloudbees-ci-config-bundle` repository and then commit the changes to the **master** branch of your `cloudbees-ci-config-bundle`**` repository that will in turn tigger the Pipeline template job.
 
 1. Navigation into the **template-jobs** folder on your ***managed controller***.
 2. Click on the **New Item** link in the left navigation menu.
-3. Enter ***update-config-bundle*** as the **Item Name**, select **CloudBees CI Configuration Bundle** as the item type and then click the **OK** button. ![New Update Bundle](new-bundle-template-job.png?width=50pc)
+3. Enter ***config-bundle-ops*** as the **Item Name**, select **CloudBees CI Configuration Bundle** as the item type and then click the **OK** button. ![New Update Bundle](new-bundle-template-job.png?width=50pc)
 4. On the next screen, fill in the **GitHub Organization** template parameters (all the other default values should be correct) and then click the **Save** button. ![Config Bundle Template Parameters](bundle-template-params.png?width=50pc) 
 5.  After you click the **Save** button the Multibranch Pipeline project (created by the template) will scan your fork of the `cloubees-ci-config-bunlde` repository, creating a Pipeline job for each branch where there is a marker file that matched `bundle.yaml` (or in this case, just the `PR-1` Pull Request). Click on the **Scan Repository Log** link in the left menu to see the results of the branch indexing scan. ![Scan Log](bundle-scan-log.png?width=50pc) 
-6.  Next, click on the **update-config-bundle** link in the menu at the top of page and you will see that there are no jobs for **Branches** and 2 jobs for **Pull Requests**.  Click on the **Pull Requests** tab. ![Scan Log](bundle-no-branch-jobs.png?width=50pc) 
+6.  Next, click on the **config-bundle-ops** link in the menu at the top of page and you will see that there are no jobs for **Branches** and 2 jobs for **Pull Requests**.  Click on the **Pull Requests** tab. ![Scan Log](bundle-no-branch-jobs.png?width=50pc) 
 7.  In the **Pull Requests** view of your Multibranch project click on the link for **PR-1**. ![PR-1 Link](pr-link.png?width=50pc)
 8.  On the build screen for **PR-1** click on the **GitHub** link in the left navigation menu that will take you to the pull request page in GitHub. ![PR-1 GitHub Link](pr-github-link.png?width=50pc)
 9.  To quickly review the changes that will be made to your CloudBees CI configuration bundle for your CloudBees CI managed controller, click on the **Files changed** tab and scroll down to see the differences. 
