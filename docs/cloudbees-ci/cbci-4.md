@@ -32,14 +32,17 @@ name: pipeline-policies
   * PausedActionTimeoutRule - validates that pipeline steps that require an external condition must be defined within a timeout.
   * PausedActionInAgentRule - validates that a paused action step isn’t executed on an agent.
   * EntirePipelineTimeoutRule - validates that a timeout period was set for the entire Pipeline execution.
+* CloudBees CI provides a CLI for managing Pipeline Policies at scale
 
 ---
 name: pipeline-policies-lab-link
 class: compact
 
-# Lab - Enforcing Pipeline Timeouts with Pipeline Policies
+# Labs - Enforcing Pipeline Timeouts with Pipeline Policies and GitOps for Pipeline Policies
 
-* In the following lab you will create a Pipeline Policy that will require that all Pipeline jobs on your ***managed controller*** be configured with a 30 minute (or greater) global timeout.
+* In the following labs:
+  *  You will create a Pipeline Policy that will require that all Pipeline jobs on your ***managed controller*** be configured with a 30 minute (or greater) global timeout.
+  *  You will explore GitOps for Pipeline Policies.
 * The *Enforcing Pipeline Timeouts with Pipeline Policies* lab instructions are available at: 
   * https://cloudbees-ci.labs.cb-sa.io/module-1/pipeline-policies/
 
