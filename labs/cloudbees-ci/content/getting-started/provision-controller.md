@@ -23,9 +23,15 @@ CloudBees CI for modern platforms takes advantage of Kubernetes to providing dyn
 
 ## Create a CloudBees CI Managed Controller (Jenkins instance)
 
-1. Click on the **Create Team** link near the top of the page.<p>![Create Team](create-team-link.png?width=70pc)
-2. Fill out the form and click the **Build** button.<p>![Create Team form](create-team-form.png?width=70pc)
-3. **IMPORTANT** - While your CloudBees CI managed controller is being provisioned (**it takes a few minutes for Operations Center to provision your managed controller on Kubernetes**), move onto the next section.
+1. Click on the **Create Team** link near the top of the page. ![Create Team](create-team-link.png?width=70pc)
+2. Fill out the form and click the **Build** button. ![Create Team form](create-team-form.png?width=70pc)
+3. After the **Create Team** setup job completes you should see the following repositories forked into the GitHub Organization.
+   - https://github.com/cloudbees-days/cloudbees-ci-config-bundle
+   - https://github.com/cloudbees-days/pipeline-library
+   - https://github.com/cloudbees-days/pipeline-template-catalog
+   - https://github.com/cloudbees-days/pipeline-policies
+   - https://github.com/cloudbees-days/simple-java-maven-app ![GitHub App Installed](forked-repos.png?width=50pc)
+4. **IMPORTANT** - While your CloudBees CI managed controller is being provisioned (**it takes a few minutes for Operations Center to provision your managed controller on Kubernetes**), move onto the next section.
 
 >NOTE: There are a number of ways to create a managed controller. We take a very opinionated way to provision attendees managed controllers for this workshop in order to pre-configure the components that you will interact with during the workshop.
 

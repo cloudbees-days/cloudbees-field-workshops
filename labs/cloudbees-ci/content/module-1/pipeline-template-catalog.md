@@ -8,7 +8,7 @@ weight: 1
 Although you can add Pipeline Template Catalogs via the managed controller UI, this lab will explore how to manage CloudBees CI Pipeline Template Catalogs with the CloudBees CI command-line interface (CLI). 
 
 1. Navigate to the top-level of Operations Center - **Jenkins** - and click on the link for your ***managed controller***. ![Managed Controller link](managed-controller-link.png?width=60pc)
-2. At the top-level of your CloudBees CI managed controller (Jenkins instance) click on **New Item** in the left menu. ![New Item](create-new-item.png?width=60pc)
+2. At the top-level of your CloudBees CI managed controller click on **New Item** in the left menu. ![New Item](create-new-item.png?width=60pc)
 3. Enter ***import-catalog*** as the **item name**, select **Pipeline** and the click the **OK** button.<p>![import-catalog Pipeline](create-pipeline-item.png?width=60pc)
 4. Scroll down to the **Pipeline** section of the job configuration and select ***Pipeline script from SCM*** for the **Definition**. <p>![Pipeline Definition](pipeline-definition.png?width=60pc)
 5. Select ***Git*** as the **SCM** type and then:

@@ -46,8 +46,21 @@ pipeline {
 ```
 {{% /expand%}}
 
-7. Next, to ensure that we are using the updated **CloudBees CI Configuration Bundle** template, we will **re-import** the Pipeline Template Catalog you just updated. Navigate to the top-level of your CloudBees CI managed controller (Jenkins instance) and click on **Pipeline Template Catalogs** in the left menu and then click the **workshopCatalog** link. ![workshop Catalog link](workshop-catalog-link.png?width=50pc) 
-8.  On the next screen, click the **Run Catalog Import Now** link. ![Import Now](click-import-link.png?width=50pc)
-9.   After the import is complete, navigate back to the **master** branch job in the **update-config-bundle** Mutlibranch project in the **template-jobs** folder and click the **Build Now** link in the left menu. The build will complete successfully and the logs for that build will show that the Pipeline policy validated successfully. ![Policy Success](pipeline-policy-success.png?width=50pc)
+1. Next, to ensure that we are using the updated **CloudBees CI Configuration Bundle** template, we will **re-import** the Pipeline Template Catalog you just updated. Navigate to the top-level of your CloudBees CI ***managed controller*** and click on **Pipeline Template Catalogs** in the left menu and then click the **workshopCatalog** link. ![workshop Catalog link](workshop-catalog-link.png?width=50pc) 
+2.  On the next screen, click the **Run Catalog Import Now** link. ![Import Now](click-import-link.png?width=50pc)
+3.   After the import is complete, navigate back to the **master** branch job in the **update-config-bundle** Mutlibranch project in the **template-jobs** folder and click the **Build Now** link in the left menu. The build will complete successfully and the logs for that build will show that the Pipeline policy validated successfully. ![Policy Success](pipeline-policy-success.png?width=50pc)
+
+## Pipeline Policies as Code
+
+Managing Pipeline Policies across a large number of ***managed controllers*** using the graphical user interface (GUI) is time consuming and prone to human error due to the repetitive nature of the task.
+
+Using the provided CLI commands allows the administrator to automate the management of Pipeline Policies across multiple managed controllers, which reduces efforts and consistency across all development teams. There are two provided CLI commands for working with Pipeline Policies, listing and creating/updating. 
+
+In this lab we leverage a Pipeline Template that uses the CloudBees CI `policies` CLI command to output the policy that you created above to a file and the push that to your fork of the `pipeline-policies` repository.
+
+1. Navigation into the **template-jobs** folder on your ***managed controller***.
+2. Click on the **New Item** link in the left navigation menu.
+3. Enter ***pipeline-policies-ops*** as the **Item Name**, select **Pipeline Policies GitOps** template as the item type and then click the **OK** button. ![New Pipeline Policies GitOps template job](new-policies-template-job.png?width=50pc)
+4. On the next screen, fill in the **GitHub Organization** template parameters (all the other default values should be correct) and then click the **Save** button. ![Config Policies template Parameters](policies-template-params.png?width=50pc)
 
 **For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/cloudbees-ci/#36).**

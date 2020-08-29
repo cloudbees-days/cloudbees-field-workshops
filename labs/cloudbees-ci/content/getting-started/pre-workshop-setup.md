@@ -38,9 +38,3 @@ We highly recommend creating a new GitHub Organization for the CloudBees CI Work
 4. On the next screen, select **All repositories** and click the **Install** button.<p>![GitHub App](github-app-install.png?width=50pc)
 5. You may be prompted for your GitHub password. Enter your GitHub.com password, for the GitHub account you are using for this workshop, to complete the installation of the CloudBees CI Workshop GitHub App into your workshop specific GitHub Organization.
 6. The CloudBees CI Workshop GitHub App is now installed on your workshop GitHub Organization. <p>![GitHub App Installed](installed-now.png?width=50pc)
-7. Shortly after you install the CloudBees CI Workshop GitHub App on your workshop GitHub Organization you should see the following 4 repositories forked into your Organization.
-   1. https://github.com/cloudbees-days/cloudbees-ci-config-bundle
-   2. https://github.com/cloudbees-days/pipeline-library
-   3. https://github.com/cloudbees-days/pipeline-template-catalog
-   4. https://github.com/cloudbees-days/simple-java-maven-app<p>![GitHub App Installed](forked-repos.png?width=50pc)
-    
