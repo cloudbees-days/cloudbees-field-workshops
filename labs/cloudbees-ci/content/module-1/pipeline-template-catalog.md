@@ -5,6 +5,7 @@ weight: 1
 ---
 
 Managing Pipeline Template Catalogs across a large number of Jenkins masters using the graphical user interface (GUI) is time consuming and prone to human error due to the repetitive nature of the task.
+
 Using the provided CLI commands allows the administrator to automate the management of Pipeline Template Catalogs across multiple managed controllers, which reduces efforts and ensures consistency across all development teams.
 
 
