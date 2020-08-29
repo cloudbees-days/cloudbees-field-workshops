@@ -87,6 +87,6 @@ In this lab we leverage a Pipeline Template that uses the CloudBees CI `policies
 12. On the next screen click the **Merge pull request** button and then the **Confirm merge** button to merge the changes with the `master` branch of your `pipeline-policies` repository and trigger the ***pipeline-policies-ops*** job on your ***managed controller***. ![merge pr](merge-policy-pr.png?width=50pc)
 13. On the next screen click the **Delete branch** button.
 14. Navigate to the top-level of your CloudBees CI managed controller and click on **Pipeline Policies** in the left menu.
-15. The **Timeout policy** you created in the previous lab will now have a **Timeout** value of `60 MINUTES`. ![updated policy](updated-policy.png?width=50pc)
+15. The **Timeout policy** you created in the previous lab will now have an updated **Timeout** value of `60 MINUTES`. ![updated policy](updated-policy.png?width=50pc)
 
 **For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/cloudbees-ci/#36).**

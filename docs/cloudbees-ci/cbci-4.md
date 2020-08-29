@@ -51,3 +51,4 @@ name: pipeline-policies-overview
 
 * Created a Pipeline Policy to enforce a minimum 30 minute global timeout for all Pipeline jobs on your ***managed controller***
 * Updated the **CloudBees CI Configuration Bundle** template with a time out to validate successfully against the **Timeout policy** you created
+* Created a job to export Pipeline Policies from your ***managed controller*** to source control and to update the Pipeline Policies on your ***managed controller*** from source control.
