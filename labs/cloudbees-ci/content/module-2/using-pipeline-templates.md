@@ -5,7 +5,7 @@ weight: 1
 ---
 
 ## Create a Job from Pipeline Template Catalog
-In this lab you will create a new Multibranch Pipeline job from the **Maven Pipeline Template** template provided by a Pipeline Template Catalog. And just by filling in a few parameters of a Pipeline template you will have a complete continuous integration for your application.
+In this lab you will create a new Multibranch Pipeline job from the **Maven Pipeline Template** template provided by a Pipeline Template Catalog. And just by filling in a few parameters of a Pipeline template you will quickly have a complete continuous integration pipeline for your application that meets the required standards of your organization.
 
 1. On your CloudBees CI ***managed controller*** (Jenkins instance) navigate into the **template-jobs** folder.
 2. Click on the **New Item** link in the left navigation menu.
