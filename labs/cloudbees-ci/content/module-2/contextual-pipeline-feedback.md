@@ -16,4 +16,10 @@ In this lab you will create a PR for your fork of the `simple-java-maven-app` re
 5. Scroll to the top of the Slack message, note that the build failed, and then click on the **PR#1 Update App.java** link to review the GitHub pull request you created above. ![Slack PR link](slack-pr-link.png?width=50pc)
 6. Back in GitHub, click on the **Checks** tab. 
 7. On the **Checks** screen click on the **error** check under the **CloudBees CI Workshop** check run on the left side of the screen and then expand the **Log** under the **Details**. ![Check error](check-error-log.png?width=50pc)
-8. 
+8. Next, click on the **pmd** check and review the **Annotations**. ![pmd Annotations](pmd-annotations.png?width=50pc)
+9. Click on the file icon to see the **UnnecessaryModifier** annotation in the context of the file with the PMD warning. 
+10. On the **Files changed** screen you will see the exact line of code that is causing the PMD warning resulting in a failed build. Click on the 3 dots to the right of the file name to edit `src/main/java/com/mycompany/app/App.java`. ![edit file](edit-file.png?width=50pc)
+11. In the file editor for `src/main/java/com/mycompany/app/App.java`, remove the `final` modifier from the `getMessage()` method and then scroll to the bottom of the screen and click the **Commit changes** button. ![fix pmd warning](fix-pmd-warning.png?width=50pc)
+12. Return to the **Checks** tab and you will see that another build was triggered and GitHub is waiting for the checks information. ![waiting for checks](waiting-for-checks.png?width=50pc)
+13. Once the build completes (you may need to refresh your GitHub Checks page), click on the **pmd** check. Next click on the **checkstyle** check and you will see that there is still one issue, but it is not blocking the build. ![build passed with checkstyle issues](build-passed.png?width=50pc)
+14. Return the **Conversation** tab. 
