@@ -6,11 +6,11 @@ weight: 1
 
 Managing Pipeline Template Catalogs across a large number of ***managed controllers*** using the graphical user interface (GUI) is time consuming and prone to human error due to the repetitive nature of the task.
 
-Using the provided CLI commands allows the administrator to automate the management of Pipeline Template Catalogs across multiple managed controllers, which reduces efforts and ensures consistency across all development teams.
+Using the provided command-line interface (CLI) allows the administrator to automate the management of Pipeline Template Catalogs across multiple managed controllers, which reduces efforts and ensures consistency across all development teams.
 
 
 ## Import Pipeline Template Catalog
-Although you can add Pipeline Template Catalogs via the managed controller UI, this lab will explore how to manage CloudBees CI Pipeline Template Catalogs with the CloudBees CI command-line interface (CLI). 
+This lab will explore how to manage CloudBees CI Pipeline Template Catalogs with the CloudBees CI CLI. 
 
 1. Navigate to the top-level of Operations Center - **Jenkins** - and click on the link for your ***managed controller***. ![Managed Controller link](managed-controller-link.png?width=60pc)
 2. At the top-level of your CloudBees CI managed controller click on **New Item** in the left menu. ![New Item](create-new-item.png?width=60pc)

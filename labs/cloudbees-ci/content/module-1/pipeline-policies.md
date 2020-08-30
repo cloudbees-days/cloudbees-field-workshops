@@ -4,9 +4,11 @@ chapter: false
 weight: 3
 ---
 
+Pipeline Policies are runtime validations that work for both scripted and declarative pipelines and provide administrators a way to include warnings for or block the execution of pipelines that do not comply with the policies applied to your ***managed controller***.
+
 ## Create a Pipeline Policy
 
-In this lab you will create a [Pipeline Policy](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines-user-guide/pipeline-policies) to ensure that all Pipeline jobs that run on your CloudBees CI ***managed controller*** (Jenkins instance) have a 30 minute global `timeout` set.
+In this lab you will create a [Pipeline Policy](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines-user-guide/pipeline-policies) to ensure that all Pipeline jobs that run on your CloudBees CI ***managed controller*** (Jenkins instance) have a maximum 30 minute global `timeout` set.
 
 1. Navigate to the top-level of your CloudBees CI managed controller and click on **Pipeline Policies** in the left menu. ![Pipeline Policies Link](policies-click.png?width=50pc) 
 2. Next, on the **Pipeline Policies** screen, click on the **New Policy** button.
