@@ -22,6 +22,12 @@ h2, h3 {
   font-weight: 400;
 }
 
+span.footnote {
+  font-size: 1rem;
+  position: absolute;
+  bottom: 50px;
+}
+
 .remark-slide {
   display: block;
   box-sizing: border-box;
