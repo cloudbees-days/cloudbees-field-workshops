@@ -22,4 +22,9 @@ In this lab you will create a PR for your fork of the `simple-java-maven-app` re
 11. In the file editor for `src/main/java/com/mycompany/app/App.java`, remove the `final` modifier from the `getMessage()` method and then scroll to the bottom of the screen and click the **Commit changes** button. ![fix pmd warning](fix-pmd-warning.png?width=50pc)
 12. Return to the **Checks** tab and you will see that another build was triggered and GitHub is waiting for the checks information. ![waiting for checks](waiting-for-checks.png?width=50pc)
 13. Once the build completes (you may need to refresh your GitHub Checks page), click on the **pmd** check. Next click on the **checkstyle** check and you will see that there is still one issue, but it is not blocking the build. ![build passed with checkstyle issues](build-passed.png?width=50pc)
-14. Return the **Conversation** tab. 
+14. Return the **Conversation** tab. Note that the **Required** checks - **checkstyle** and **pmd** - have all passed and the **Merge pull request** button is enabled. Click the **Merge pull request** button and on the next screen click the **Confirm merge** button. 
+15. On the next screen click the **Delete branch** button.
+
+In this lab you saw how CloudBees CI contextual feedback allows you to spend more time in the tools you use for development.
+
+
