@@ -1,9 +1,9 @@
-name: core-hibernate-title
+name: cross-team-title
 class: title, shelf, no-footer, fullbleed
 background-image: linear-gradient(135deg,#279be0,#036eb4)
 count: false
 
-# CloudBees Core Hibernating Managed Controllers
+# CloudBees Cross Team Collaboration
 
 ---
 name: agenda-templates
@@ -15,45 +15,95 @@ name: agenda-templates
 4. Pipeline Manageability & Governance with Templates
 5. Configuration as Code (CasC) with CloudBees CI
 6. Pipeline Manageability & Governance with Policies
-7. Contextual Feedback for Pipelines
-8. Cross Team Collaboration
-9. .blue-bold[Hibernating Managed Controllers]
+7. Configuration as Code (CasC) for Developers
+8. Contextual Feedback for Pipelines
+9. .blue-bold[Cross Team Collaboration]
+10. Hibernating Managed Controllers
 
 ---
-name: hibernate-overview
+name: cross-team overview
+class: compact, middle
 
-# CloudBees CI Hibernating Managed Controllers
+# Cross Team Collaboration
 
-* [CloudBees CI Managed Controller hibernation](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-admin-guide/managing-masters#_hibernation_in_managed_masters) takes advantage of running CloudBees CI on Kubernetes by automatically shutting down or hibernating ***managed controllers***. This is done by scaling the Kubernetes StatefulSet down to zero replicas.
-* Hibernation is enabled for everyones' ***managed controller*** provisioned earlier in the workshop and everyones' ***managed controller*** will hibernate after 30 minutes of inactivity.
-* Filtered web activity and direct web access will **wake up** the ***managed controller***. If a ***managed controller*** is hibernating - signified by the light blue **pause** icon next to it in the classic UI of Operations Center - all you need to do is click on it and it will be up and running in a few minutes.
+.img-left[
+![Cross Team Collaboration Diagram](img/cross-team-diagram.png)
+]
 
-???
-The workshop clusters will continue to be available for both CloudBees CI and CloudBees Feature Flags for as long as necessary after the workshop. We need to make sure that all CloudBees CI attendees are aware that their ***managed controller*** will most likely be hibernating when they come back to complete any labs and that they just need to click on it to ‘wake it up’ from the classic UI of Operations Center.
-
----
-name: hibernate-screenshot
-class: center
-
-![:scale 80%](img/hibernating-master.png)
+.no-bullet.img-right[
+* CloudBees CI [Cross Team Collaboration](https://docs.cloudbees.com/docs/cloudbees-core/2.204.2.2/cloud-admin-guide/cross-team-collaboration) simplifies the cumbersome and complicated tasks of triggering downstream jobs by eliminating the need to identify and maintain the full path for every downstream job. Prior to this feature, the details of every downstream job had to meticulously specified in the upstream job. If the job name changed, the upstream job had to be refactored, creating a maintenance burden and discouraging the adoption of event-based triggers.
+* Cross Team Collaboration essentially allows a Pipeline to create a notification event to be consumed by other Pipelines waiting on it. It consists of a Publishing Event and a Trigger Condition.
+* The Cross Team Collaboration feature has a configurable router for routing events either across all ***managed controllers*** via CloudBees CI Operations Center or locally within a single ***managed controller***. CloudBees CI Notifications need to be enabled and configured on your team specific ***managed controller*** before you will be able to receive an event published by another Pipeline. 
+]
 
 ---
-name: hibernating-masters-cost-saving
+name: cross-team-publish-types
 
-# How Hibernating Managed Controllers Reduce Infrastructure Costs
+# Publish Event Types for Cross Team Collaboration
 
-There are several ways that costs may be reduced with ***managed controller*** hibernation:
+There are two types of events that can be published for the `publishEvent` step:
+* **`simpleEvent`** - a publish event type that only allows including a single string as the event payload. The supplied string value will be dynamically *wrapped* as the value of the `event` JSON key.
 
-1. When using Kubernetes auto-scaling and a ***managed controller*** is hibernated then the Kubernetes cluster has the potential to scale down by removing a node.
-2. When a ***managed controller*** is hibernated you immediately gain additional CPU and memory on the node where your ***managed controller*** pod was running - this additional capacity is immediately available for Kubernetes based agents reducing the possibility of agents queueing and/or triggering an upscaling of your Kubernetes cluster. 
+```groovy
+publishEvent simpleEvent('helloWorld')
+```
+
+* **`jsonEvent`** - a more complex publish event type, it allows you to specify any valid JSON as the event payload.
+
+```groovy
+publishEvent event: jsonEvent('{"event":"imagePush","name":"node","tag":"14.0.0-alpine3.11"}')
+```
 
 ---
+name: cross-team-trigger-types
 
-# Lab - Configuring Webhooks for Hibernating Managed Controllers
+# Event Trigger Types for Cross Team Collaboration
 
-* The *Configuring Webhooks for Hibernating Managed Controllers* lab instructions are available at: 
-  * [https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/hibernating/hibernating.md](https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/hibernating-masters/hibernating-masters.md)
+Just as there are two types of publish events, there are also two corresponding `eventTrigger` types:
+* **`simpleMatch`** - this `eventTrigger` type is used for events that are published as a `simpleEvent` and will only match against simple strings.
 
-???
+```groovy
+pipeline {
+    agent any
+    triggers {
+*       eventTrigger simpleMatch("helloWorld")
+    }
+...
+```
 
-All presenters should familiarize themselves with the hibernation monitor design document: https://github.com/cloudbees/managed-master-hibernation-monitor/blob/master/design.md 
+* **`jmespathQuery`** - this `eventTrigger` allows the use of complex queries against JSON event payloads.
+
+```groovy
+pipeline {
+  agent none
+  triggers {
+*   eventTrigger jmespathQuery("event=='imagePush' && name=='node'")
+  }
+```
+
+---
+name: collab-lab
+class: compact
+
+# Lab - Triggering Pipelines with Cross Team Collaboration
+
+* In this lab we will use CloudBees CI cross team collaboration by adding an event trigger listener so that when the job for our base image is complete, it will kick off our frontend application job with an event payload that includes the information for the `node` image to use.
+* First, to figure out what we're dealing with, let's look at the part of the `Dockerfile` for the `microblog-frontend` application. By default, it will use the `node:lts-alpine` image:
+
+```Dockerfile
+ARG NODE_IMAGE=node:lts-alpine
+...
+```
+  * The **VueJS** template (and supporting Pipeline Shared Library) will be updated to override the `NODE_IMAGE` argument with a value from the payload of a published event.
+* The *Triggering Pipelines with Cross Team Collaboration* lab instructions are available at: 
+  * [https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/cross-team-collaboration/cross-team-collaboration.md](https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/cross-team-collaboration/cross-team-collaboration.md)
+
+
+---
+name: collab-overview
+
+# Cross Team Collaboration Lab Overview
+
+* Enabled **Notifications** for CloudBees Cross Team Collaboration on your ***managed controller***
+* Updated the **VueJS** template of your Pipeline Template Catalog with an event trigger
+* Created a Pipeline job that publishes an event to trigger the jobs based on the **VueJS** template
