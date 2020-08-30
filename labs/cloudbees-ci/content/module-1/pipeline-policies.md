@@ -21,7 +21,7 @@ In this lab you will create a [Pipeline Policy](https://docs.cloudbees.com/docs/
    4. Click the **Save** button ![Create Policy](policy-timeout-form.png?width=50pc) 
 4. Navigate to the **config-bundle-ops** Mutlibranch project in the **template-jobs** folder, click on the **master** branch job and then click the **Build Now** link in the left menu. ![Build with Policy](build-with-policy.png?width=50pc) 
 5. Navigate to the logs for that build and you will see that the build failed due to **Validation Errors** ![Policy Error](pipeline-policy-error.png?width=50pc) 
-6. To fix this we will have to update the `Jenkinsfile` of the **CloudBees CI Configuration Bundle** template in your forked copy of the `pipeline-template-catalog` repository - remember, even though we are building from the `cloudbees-ci-config-bundle` repository, the `Jenkinsfile` is actually coming from the **CloudBees CI Configuration Bundle** template. Navigate to that `Jenkinsfile` and the click the **pencil icon** to open it in the GitHub file editor. ![Edit Timeout](pipeline-policy-open-jenkinsfile.png?width=50pc) 
+6. To fix this we will have to update the `Jenkinsfile` of the **CloudBees CI Configuration Bundle** template in your forked copy of the `pipeline-template-catalog` repository - remember, even though we are building from the `cloudbees-ci-config-bundle` repository, the `Jenkinsfile` is actually coming from the **CloudBees CI Configuration Bundle** template. Navigate to that `Jenkinsfile` and click the **pencil icon** to open it in the GitHub file editor. ![Edit Timeout](pipeline-policy-open-jenkinsfile.png?width=50pc) 
 7. In the GitHub file editor, change the `time` value of the `timeout` pipeline `option`  from `60` to `10` and then click the **Commit changes** *(directly to the `master` branch)* button to commit the updated `Jenkinsfile` to your **master** branch. ![Fix Timeout](pipeline-policy-fix-commit-jenkinsfile.png?width=50pc) 
 {{%expand "expand to copy edited Jenkinsfile" %}}
 ```groovy
@@ -48,7 +48,7 @@ pipeline {
 ```
 {{% /expand%}}
 
-8. Next, to ensure that we are using the updated **CloudBees CI Configuration Bundle** template, we will check the Pipeline Template Catalog **Import Log**. Navigate to the top-level of your CloudBees CI ***managed controller*** and click on **Pipeline Template Catalogs** link in the left menu and then click the **workshopCatalog** link. ![workshop Catalog link](workshop-catalog-link.png?width=50pc) 
+8. Next, to ensure that we are using the updated **CloudBees CI Configuration Bundle** template, we will check the Pipeline Template Catalog **Import Log**. Navigate to the top-level of your CloudBees CI ***managed controller*** and click on **Pipeline Template Catalogs** link in the left menu and then click the **workshopCatalog** link. ***NOTE:*** *Because the **pipeline-catalog-ops** project is a Multibranch pipeline it will be triggered via a GitHub webhook on all code commits resulting in a re-import of the Pipeline Template Catalog.* ![workshop Catalog link](workshop-catalog-link.png?width=50pc) 
 9.  On the next screen, click the **Import Log** link to ensure the catalog was imported successfully and recently. ![Import Now](click-import-log-link.png?width=50pc)
 10.    After the import is complete, navigate back to the **master** branch job in the **config-bundle-ops** Mutlibranch project in the **template-jobs** folder and click the **Build Now** link in the left menu. The build will complete successfully and the logs for that build will show that the Pipeline policy validated successfully. ![Policy Success](pipeline-policy-success.png?width=50pc)
 
@@ -56,9 +56,9 @@ pipeline {
 
 Managing Pipeline Policies across a large number of ***managed controllers*** using the graphical user interface (GUI) is time consuming and prone to human error due to the repetitive nature of the task.
 
-Using the provided CLI commands allows the administrator to automate the management of Pipeline Policies across multiple managed controllers, which reduces efforts and consistency across all development teams. There are two provided CLI commands for working with Pipeline Policies, listing and creating/updating. 
+Using the provided CLI commands allows the administrator to automate the management of Pipeline Policies across multiple managed controllers, which reduces efforts while providing consistency across all development teams.
 
-In this lab we leverage a Pipeline Template that uses the CloudBees CI `policies` CLI command to output the policy that you created above to a file and then push that to a new branch on your fork of the `pipeline-policies` repository. We will then update the exported policy file in GitHub to update the policy on your ***managed controller***.
+In this lab we leverage a Pipeline Template that uses the CloudBees CI `policies` CLI command to output the policy that you created above to a file and then push that to a new branch on your `pipeline-policies` repository. We will then update the exported policy file in GitHub and merge those changes to the `master` branch to update the policy on your ***managed controller***.
 
 1. Navigate into the **template-jobs** folder on your ***managed controller***.
 2. Click on the **New Item** link in the left navigation menu.
