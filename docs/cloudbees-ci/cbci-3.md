@@ -3,9 +3,7 @@ class: title, shelf, no-footer, fullbleed
 background-image: linear-gradient(135deg,#279be0,#036eb4)
 count: false
 
-# CloudBees CI
-
-# Configuration as Code (CasC) 
+# CloudBees CI<br>Configuration as Code (CasC) 
 
 ---
 name: agenda-setup
