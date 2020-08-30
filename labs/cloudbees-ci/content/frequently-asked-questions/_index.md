@@ -17,3 +17,12 @@ The classic view (left image) shows a list of teams visible to you, depending on
 
 The hibernation message from CloudBees CI is shown at right, and the bottom is the message while the managed controller is starting back up.
 
+### CloudBees CI managed controller top-level
+
+In the navigation pane at the top-level of your CloudBees CI managed controller, you will see an icon to configure pipeline template catalogs. You may also see an icon to configure pipeline policies depending on which lab you have completed.
+
+If you have added catalogs you will see them in the work area in the center, shown in the image on the right.
+
+In the  work area you will also see a folder named for your team. Click that folder to reach your team’s infrastructure. The breadcrumbs will then show your team name twice.
+
+
