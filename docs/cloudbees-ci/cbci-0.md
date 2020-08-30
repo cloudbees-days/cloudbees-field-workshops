@@ -21,6 +21,8 @@ layout: true
 ]
 ---
 name: agenda
+class: compact
+
 # Agenda
 
 1. Workshop Tools Overview
@@ -34,7 +36,7 @@ name: agenda
 9. Cross Team Collaboration
 10. Hibernating Managed Controllers
 
-**Please note, it is unlikely that we will get through all the material. However, all of the lab material is freely available on GitHub and can be self-led. The CloudBees CI lab environment will be available until next Monday if you would like to complete any labs we don't.**
+.footnote[.bold[*] Please note, it is unlikely that we will get through all the material. However, all of the lab material is freely available on GitHub and can be self-led. The CloudBees CI lab environment will be available until next Monday if you would like to complete any labs we don't]
 
 ---
 name: workshop-tools
