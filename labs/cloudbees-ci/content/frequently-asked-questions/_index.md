@@ -1,7 +1,7 @@
 ---
 title: "Frequently Asked Questions"
 chapter: false
-weight: 1
+weight: 4
 ---
 
 ### Waiting the provisioning of your managed controller

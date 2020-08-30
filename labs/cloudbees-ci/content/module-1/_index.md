@@ -1,7 +1,7 @@
 ---
 title: "Module 1: Managing Continuous Integration at Scale"
 chapter: true
-weight: 1
+weight: 2
 ---
 
 # Module 1: Managing Continuous Integration at Scale
