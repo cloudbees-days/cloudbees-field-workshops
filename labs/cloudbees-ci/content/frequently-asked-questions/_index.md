@@ -4,8 +4,18 @@ chapter: false
 weight: 4
 ---
 
+We have  illustrated some issues people find during our instructor-led training, either live or recorded. Check here to see if yours is one of these.
+
+### Typing Your Password
+
+Typos happen regularly. 
+
+Click the **Show** check box to be sure you are not accidentally transposing letters.
+![Show password](show-password.png?width=40pc)
+
 ### Waiting the provisioning of your managed controller
-While your team is being provisioned, you might see that your infrastructure is disconnected, or you might get an HTTP 503 Service Unavailable server error response code indicating that the server is not ready to handle the request.
+
+While your team is being provisioned, you might see that your infrastructure is disconnected, or you might get an HTTP 503 Service Unavailable server error response code indicating that the server is not ready to handle the request. ![503 Error](503-error.png?width=50pc)
 
 It’s not uncommon to wait several minutes for all your resources to be allocated, especially if there are many participants in the workshop.
 
