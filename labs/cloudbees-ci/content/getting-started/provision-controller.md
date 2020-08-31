@@ -23,6 +23,8 @@ CloudBees CI for modern platforms takes advantage of Kubernetes to providing dyn
 
 ## Create a CloudBees CI Managed Controller (Jenkins instance)
 
+The **Create Team** job will provision a CloudBees CI **managed controller** that will be named after the GitHub Organization id (the name as all lowercase and spaced replaced with dashes as it appears in the URL for your GitHub Organization). The job will also create several GitHub repositories in your workshop GitHub Organization.
+
 1. Click on the **Create Team** link near the top of the page. ![Create Team](create-team-link.png?width=70pc)
 2. Fill out the form and click the **Build** button. ![Create Team form](create-team-form.png?width=70pc)
 3. After the **Create Team** setup job completes you should see the following repositories forked into the GitHub Organization.
