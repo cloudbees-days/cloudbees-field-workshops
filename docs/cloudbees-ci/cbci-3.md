@@ -97,7 +97,7 @@ CloudBees CI CasC was used to create two user specific Jenkins credentials for u
 * [JCasC Secrets](https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/features/secrets.adoc) for credentials can be managed in a few different ways:
   1. As properties files in the Managed Jenkins file system. For secrets that you want to share across ***managed controller*** you can mount the same [Kubernetes Secret](https://kubernetes.io/docs/concepts/configuration/secret/) to every ***managed controller***.
   2. As Jenkins encrypted values using the Jenkins-internal secret key allowing the encrypted strings to be used directly in the  `jenkins.yaml` configuration as we are doing in this workshop. The Jenkins-internal secret key used for encryption is unique to a Jenkins instance and means that the credentials are not portable between Jenkins instances.
-* The `cloudbees-ci-workshop-setup` job used your ***managed controller*** to encrypt your GitHub Personal Access Token that you provided and then updated your copy of the `jenkins.yaml` file with the encrypted value. This is perfectly secure as it can only be decrypted by your ***managed controller***. 
+* For the CloudBees CI Workshop we have mounted Kubernetes `Secrets` to each of your ***managed controller*** for use with the GitHub and Slack integrations.
 ]
 
 ---
@@ -110,7 +110,8 @@ name: config-bundle-details-additional
 ]
 #### Other Configuration
 * Applied a **System Message** to your ***managed controller*** so you could see that the CloudBees CI CasC bundle was applied
-* Installed the `basic-branch-build-strategies` and `pipeline-utility-steps` plugins to be used in the next lab
+* Created a ***managed controller*** level Kubernetes Pod Template for use in a later lab.
+* Installed several plugins to be used in the rest of the workshop.
 
 ---
 name: core-casc-lab-link
@@ -122,7 +123,7 @@ name: core-casc-lab-link
 * One of the main reasons to manage configuration as code is to take advantage of features provided by source control tools - like GitHub webhooks for example. You don't want to have to execute any manual steps when you commit approved changes to your CloudBees CI configuration. 
 ]
 
-* In the following lab we will setup a Jenkins Pipeline job - or more specifically, a [Pipeline Organization Folder](https://jenkins.io/doc/book/pipeline/multibranch/#organization-folders) - on your ***managed controller*** that will be triggered whenever you commit any approved changes to the **`master`** branch of your CloudBees CI configuration bundle repository.
+* In the following lab we will setup a Jenkins Pipeline job - or more specifically, a **Pipeline Template** based job on your ***managed controller*** that will be triggered whenever you commit any approved changes to the **`master`** branch of your CloudBees CI configuration bundle repository.
 * The *GitOps for CloudBees CI CasC* lab instructions are available at: 
   * https://cloudbees-ci.labs.cb-sa.io/module-1/casc/
   

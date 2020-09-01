@@ -33,6 +33,4 @@ In the navigation pane at the top-level of your CloudBees CI managed controller,
 
 If you have added catalogs you will see them in the work area in the center, shown in the image on the right.
 
-In the  work area you will also see a folder named for your team. Click that folder to reach your team’s infrastructure. The breadcrumbs will then show your team name twice.
-
 
