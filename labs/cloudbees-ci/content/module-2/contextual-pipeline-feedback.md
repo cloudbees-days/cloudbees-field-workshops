@@ -15,14 +15,14 @@ In this lab you will create a PR for your fork of the `simple-java-maven-app` re
 4. Navigate to the [CloudBees Workshops Slack workspace](https://app.slack.com/client/T010A455W77/) and after the CloudBees CI build finishes you will receive a new Slackbot direct message from the CloudBees CI Bot. ![Slack build message](slack-build-msg.png?width=50pc)
 5. Scroll to the top of the Slack message, note that the build failed, and then click on the **PR#1 Update App.java** link to review the GitHub pull request you created above. ![Slack PR link](slack-pr-link.png?width=50pc)
 6. Back in GitHub, click on the **Checks** tab. 
-7. On the **Checks** screen click on the **error** check under the **CloudBees CI Workshop** check run on the left side of the screen and then expand the **Log** under the **Details**. ![Check error](check-error-log.png?width=50pc)
+7. On the **Checks** screen, expand the **CloudBees CI Workshop** check if not already expanded, then click on the **error** check and then expand the **Log** under the **Details**. ![Check error](check-error-log.png?width=50pc)
 8. Next, click on the **pmd** check and review the **Annotations**. ![pmd Annotations](pmd-annotations.png?width=50pc)
 9. Click on the file icon to see the **UnnecessaryModifier** annotation in the context of the file with the PMD warning. 
 10. On the **Files changed** screen you will see the exact line of code that is causing the PMD warning resulting in a failed build. Click on the 3 dots to the right of the file name to edit `src/main/java/com/mycompany/app/App.java`. ![edit file](edit-file.png?width=50pc)
 11. In the file editor for `src/main/java/com/mycompany/app/App.java`, remove the `final` modifier from the `getMessage()` method and then scroll to the bottom of the screen and click the **Commit changes** button. ![fix pmd warning](fix-pmd-warning.png?width=50pc)
 12. Return to the **Checks** tab and you will see that another build was triggered and GitHub is waiting for the checks information. ![waiting for checks](waiting-for-checks.png?width=50pc)
 13. Once the build completes (you may need to refresh your GitHub Checks page), click on the **pmd** check. Next click on the **checkstyle** check and you will see that there is still one issue, but it is not blocking the build. ![build passed with checkstyle issues](build-passed.png?width=50pc)
-14. Return the **Conversation** tab. Note that the **Required** checks - **checkstyle** and **pmd** - have all passed and the **Merge pull request** button is enabled. Click the **Merge pull request** button and on the next screen click the **Confirm merge** button. 
+14. Return the **Conversation** tab. Note that the **Required** checks - **checkstyle** and **pmd** - have all passed and the **Merge pull request** button is enabled. Click the **Merge pull request** button and on the next screen click the **Confirm merge** button. ![All checks passed](checks-passed-merge.png?width=40pc)
 15. On the next screen click the **Delete branch** button.
 16. The **master** branch job of your **simple-maven-app** Multibranch Pipeline project will now complete successfully. ![simple-maven-app success](simple-maven-app-success.png?width=50pc)
 
