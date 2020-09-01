@@ -127,13 +127,13 @@ name: cloudbees-ci-managed-controller
 ]
 
 .img-right[
-* Project Isolation
+* **Project Isolation**
   * DevOps project teams get their own Jenkins instance
   * Workloads are distributed across many Jenkins instances
   * Cross project contamination of workspaces and data is eliminated
-* Scalable Architecture
+* **Scalable Architecture**
   * Scaling and elasticity achieved through use of cluster managed containers 
-* Data Isolation
+* **Data Isolation**
   * Data contamination from previous executions are easily eliminated
 ]
 

@@ -53,6 +53,7 @@ CasC for CloudBees CI consists of a collection of YAML files referred to as a co
 
 ---
 name: enable-casc
+class: compact
 
 # Enabling CasC for a CloudBees CI Managed Controllers (Jenkins instance)
 
