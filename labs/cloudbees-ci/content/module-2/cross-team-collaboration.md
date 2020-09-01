@@ -14,9 +14,12 @@ We will utilize CloudBees CI CasC to enable and configure Notifications for Cros
 4. On the next screen click the **Delete branch** button.
 5. Navigate to the **config-bundle-ops** job under the **template-jobs** folder on your CloudBees CI managed controller. Shortly after the **master** branch job completes successfully you will see a new **monitor alert** at the top of the screen. ![Monitor alert](monitor-alert.png?width=50pc)
 6. Click on the **monitor** link of your CloudBees CI managed controller and you will see that a new version of the configuration bundle is available - click on the **Reload Configuration** button and on the next screen click the **Yes** button to apply the updated configuration bundle. NOTE: If you do not see the **Reload Configuration** button then click the **Safe Restart** button. ![Reload CasC](reload-config.png?width=50pc)
-7. Once your managed controller is finished updating the configuration click on the **Notifications** configuration and note that it is enable and set to **Local only**. ![Notifications configured](notifications-configured.png?width=50pc)
+7. Once your managed controller is finished updating the configuration click on the **Notifications** configuration. ![Notifications config link](notifications-config-link.png?width=50pc)
+8. Note that the **Notification Configuration** is **Enabled** and the **Notification Router Implementation** is set to **Local only**. ![Notifications configured](notifications-configured.png?width=50pc)
 
 ## Adding an event trigger
+
+Now that we have configured CloudBees CI Notifications for our managed controllers we will add an event trigger to a Pipeline template.
 
 1. In GitHub, navigate to the **Cross Team Collaboration: Add Event Trigger** pull request (#1) in your fork of the **pipeline-template-catalog** repository. ![Notifications configured](notifications-configured.png?width=50pc)
 2. To see the changes that will be made to the **Maven Pipeline Template**, click on the **Files changed** tab and scroll down to see the differences. ![Notifications configured](notifications-configured.png?width=50pc)
