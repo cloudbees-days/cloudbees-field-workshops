@@ -21,23 +21,22 @@ We will utilize CloudBees CI CasC to enable and configure Notifications for Cros
 
 Now that we have configured CloudBees CI Notifications for our managed controllers we will add an event trigger to a Pipeline template.
 
-1. In GitHub, navigate to the **Cross Team Collaboration: Add Event Trigger** pull request (#1) in your fork of the **pipeline-template-catalog** repository. ![Notifications configured](notifications-configured.png?width=50pc)
-2. To see the changes that will be made to the **Maven Pipeline Template**, click on the **Files changed** tab and scroll down to see the differences. ![Notifications configured](notifications-configured.png?width=50pc)
-3. We are adding the `eventTrigger` using `jmespathQuery` and adding a new `stage` where we are using the `getImageBuildEventPayload` Pipeline Shared Library step to extract the event payload. 
+1. In GitHub, navigate to the **Cross Team Collaboration: Add Event Trigger** pull request (#1) in your fork of the **pipeline-template-catalog** repository. ![Event trigger PR](event-trigger-pr.png?width=50pc)
+2. Click on **Cross Team Collaboration: Add Event Trigger** the pull request link and then click on the **Files changed** tab to see the changes that will be made to the **Maven Pipeline Template**. ![Event trigger changes](event-trigger-changes.png?width=50pc)
+3. We are adding the `eventTrigger` using `jmespathQuery` and adding a new `stage` that will on run when the Pipeline is triggered by an `EventTriggerCause`, and in that `stage` we are using the `getImageBuildEventPayload` Pipeline Shared Library step to extract the event payload. 
 4. Once you have reviewed the changes, click back on the **Conversation** tab and then click the green **Merge pull request** button, then the **Confirm merge** button and then delete the branch.
-5. Next, to ensure that we are using the updated **Maven Pipeline Template**, we will **re-import** the Pipeline Template Catalog you just updated. Navigate to the top-level of your CloudBees CI managed controller (Jenkins instance) and click on **Pipeline Template Catalogs** in the left menu and then click the **workshopCatalog** link. ![Notifications configured](notifications-configured.png?width=50pc)
-6. Finally, in order to enable the trigger on your **simple-maven-app** Pipeline jobs you need to run the job once - so navigate to the **master** branch job for the **simple-maven-app** Mutlibranch project and click the **Build Now** link in the left menu.
-7. After the **Maven Pipeline Template** is loaded the job configuration for your **master** branch job will be updated to reflect the addition of the event trigger. ![Notifications configured](notifications-configured.png?width=50pc)
+5. Next, to ensure that we are using the updated **Maven Pipeline Template**, we will check the Pipeline Template Catalog **Import Log**. Navigate to the top-level of your CloudBees CI ***managed controller*** and click on **Pipeline Template Catalogs** link in the left menu and then click the **workshopCatalog** link. 
+   - ***NOTE:*** *Because the **pipeline-catalog-ops** project is a Multibranch pipeline it will be triggered via a GitHub webhook on all code commits resulting in a re-import of the Pipeline Template Catalog.* ![workshop Catalog link](workshop-catalog-link.png?width=50pc) 
+6. Finally, in order to enable the trigger on your **simple-maven-app** Pipeline job you need to run the job once - so navigate to the **master** branch job for the **simple-maven-app** Mutlibranch project and click the **Build Now** link in the left menu.
+7. After the **Maven Pipeline Template** is loaded the job configuration for your **master** branch job will be updated to reflect the addition of the event trigger. ![Trigger configured](trigger-configured.png?width=50pc)
 
 ## Create a Pipeline to publish an event
 
-Now that you have an `eventTrigger` added to your **VueJS** template we need to create a job that will publish an event that will trigger it. Each of you will create a simple Pipeline job that will publish an event to imitate the real world scenario where a new `node` base image would be built and pushed - typically by another team on a different Team (Jenkins instance).
+Now that you have an `eventTrigger` added to your **Maven Pipeline Template** we need to create a job that will publish an event that will trigger it. Each of you will create a simple Pipeline job that will publish an event to imitate the real world scenario where a new `maven` build image would be built and pushed - typically by another team on a different managed controller (Jenkins instance).
 
-1. On your CloudBees CI managed controller (Jenkins instance) and ensure that you are in the folder with the same name as your CloudBees CI managed controller (Jenkins instance) - you should see the `cloudbees-ci-workshop-setup` Pipeline job.
-2. Click on the **New Item** link in the left navigation menu - again, make sure that you are in the **folder** with the same name as your CloudBees CI managed controller (Jenkins instance), and not at the root of your CloudBees CI managed controller (Jenkins instance).
-3. Enter an item name - say **publish-event** - then select **Pipeline** as the item type and then click the **OK** button. ![Notifications configured](notifications-configured.png?width=50pc)
-4. Copy the following Pipeline and paste it into the **Script** text area and click the **Save** button:
-
+1. At the top level of your CloudBees CI managed controller click on the **New Item** link in the left navigation menu.
+2. Enter an item name - say **publish-event** - then select **Pipeline** as the item type and then click the **OK** button. ![Create publish event pipeline](create-publish-event-pipeline.png?width=50pc)
+3. Click on the **Pipeline** tab and then Copy the following Pipeline, paste it into the **Script** text area and then click the **Save** button:
 ```groovy
 pipeline {
     agent none
@@ -53,10 +52,9 @@ pipeline {
     }
 }
 ```
-<p><img src="images/collab-publish-event-copy-script.png" width=800/>
-
-5. Click the **Build Now** link in the left menu. <p><img src="images/collab-publish-event-build.png" width=800/>
-6. Once the **publish-event** Pipeline job completes successfully you will see your job for the **microblog-frontend** Mutlibranch project triggered.
-7. Once the **master** branch job completes successfully you can see in the logs: `Resolved base name $NODE_IMAGE to node:14.0.0-alpine3.11` as specified by the event you published above. <p><img src="images/collab-trigger-success-logs.png" width=800/>
+![Publish event script](publish-event-script.png?width=50pc)
+1. Click the **Build Now** link in the left menu and then view the logs to see the `Publishing event notification` `Event JSON`.  The `verbose` option on the `publishEvent` steps prints out the JSON being sent by the event in the logs. ![Build publish event log](publish-event-log.png?width=50pc)
+2. Once the **publish-event** Pipeline job completes successfully you will see the **master** branch job of the **simple-maven-app** Mutlibranch project triggered.
+3. Once the **master** branch job completes successfully you can see in the logs: `new build image: maven:3.6.3-openjdk-15`, as specified by the event you published above and see that the build was triggered by an **event**. ![Trigger success](triggered-by-event.png?width=50pc)
 
 **For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/cloudbees-ci/#44).**
