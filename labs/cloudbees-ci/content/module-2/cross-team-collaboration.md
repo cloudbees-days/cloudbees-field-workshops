@@ -6,9 +6,15 @@ weight: 4
 
 ## Enable Cross Team Collaboration Notifications
 
-1. Navigate to the top-level of your CloudBees CI managed controller (Jenkins instance) and click on **Manage Jenkins** in the left menu. <p><img src="images/manage-jenkins.png" width=800/>
-2. On the **Manage Jenkins** page scroll down and click on the **Configure Notification** link. <p><img src="images/configure-notification-link.png" width=800/>
-3. Check the **Enabled** checkbox, select **Local Only** as the **Notification Router Implementation** and click the **Save** button. <p><img src="images/enable-notification-local.png" width=600/>
+We will utilize CloudBees CI CasC to enable and configure Notifications for Cross Team Collaboration.
+
+1. Navigate to your `cloudbees-ci-config-bundle` repository in GitHub and click on the **Pull requests** link. ![PR link](pr-link.png?width=50pc) 
+2. On the next screen, click on the **Cross Team Collaboration Lab: Enable Notifications** pull request (#3) and then click on the **Files changed** tab to review the requested configuration changes. As you can see, we are adding `notificationConfiguration` for your CloudBees CI managed controller. ![PR Files Changed](collab-casc-changes.png?width=50pc)
+3. Once you have reviewed the changed files, click on the **Conversation** tab, scroll down and click the green **Merge pull request** button and then the **Confirm merge** button.
+4. On the next screen click the **Delete branch** button.
+5. Navigate to the **config-bundle-ops** job under the **template-jobs** folder on your CloudBees CI managed controller. Shortly after the **master** branch job completes successfully you will see a new **monitor alert** at the top of the screen. ![Monitor alert](monitor-alert.png?width=50pc)
+6. Click on the **monitor** link of your CloudBees CI managed controller and you will see that a new version of the configuration bundle is available - click on the **Reload Configuration** button and on the next screen click the **Yes** button to apply the updated configuration bundle. NOTE: If you do not see the **Reload Configuration** button then click the **Safe Restart** button. ![Reload CasC](reload-config.png?width=50pc)
+7. Once your managed controller is finished updating the configuration click on the **Notifications** configuration and note that it is enable and set to **Local only**. ![Notifications configured](notifications-configured.png?width=50pc)
 
 ## Adding an event trigger
 
