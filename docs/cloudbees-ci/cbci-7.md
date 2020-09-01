@@ -87,14 +87,14 @@ class: compact
 
 # Lab - Triggering Pipelines with Cross Team Collaboration
 
-* In this lab we will use CloudBees CI cross team collaboration by adding an event trigger listener so that when the job for our base image is complete, it will kick off our frontend application job with an event payload that includes the information for the `node` image to use.
-* First, to figure out what we're dealing with, let's look at the part of the `Dockerfile` for the `microblog-frontend` application. By default, it will use the `node:lts-alpine` image:
+* In this lab we will use CloudBees CI cross team collaboration by adding an event trigger listener so that when the job for our build image is complete, it will kick off the template job for the `simple-java-maven-app` application with an event payload that includes the information for the `maven` image to use.
+* First, to figure out what we're dealing with, let's look at the part of the `Dockerfile` for the `simple-java-maven-app` application. By default, it will use the `maven:3-openjdk-8` image:
 
 ```Dockerfile
-ARG NODE_IMAGE=node:lts-alpine
+ARG BUILD_IMAGE=maven:3-openjdk-8
 ...
 ```
-  * The **VueJS** template (and supporting Pipeline Shared Library) will be updated to override the `NODE_IMAGE` argument with a value from the payload of a published event.
+  * The **Maven Pipeline Template** (and supporting Pipeline Shared Library) will be updated to override the `BUILD_IMAGE` argument with a value from the payload of a published event.
 * The *Triggering Pipelines with Cross Team Collaboration* lab instructions are available at: 
   * [https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/cross-team-collaboration/cross-team-collaboration.md](https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/cross-team-collaboration/cross-team-collaboration.md)
 
@@ -105,5 +105,5 @@ name: collab-overview
 # Cross Team Collaboration Lab Overview
 
 * Enabled **Notifications** for CloudBees Cross Team Collaboration on your ***managed controller***
-* Updated the **VueJS** template of your Pipeline Template Catalog with an event trigger
-* Created a Pipeline job that publishes an event to trigger the jobs based on the **VueJS** template
+* Updated the **Maven Pipeline Template** of your Pipeline Template Catalog with an event trigger
+* Created a Pipeline job that publishes an event to trigger the jobs based on the **Maven Pipeline Template**
