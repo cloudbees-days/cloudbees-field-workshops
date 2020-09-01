@@ -84,7 +84,7 @@ In this lab we leverage a Pipeline Template that uses the CloudBees CI `policies
 } ]
 ```
 {{% /expand%}}
-10. Navigate back to the top level of your `pipeline-policies` repository and click the green **Compare & pull request** button or the **Pull request** link if the button is not available. ![create pr](create-policy-pr.png?width=50pc)
+10. Navigate back to the top level of your `pipeline-policies` repository, ensuring that you are still on the `policy-patch` branch and click the green **Compare & pull request** button or the **Pull request** link if the button is not available. ![create pr](create-policy-pr.png?width=50pc)
 11. On the next screen accept the default values and then click the **Create pull request** button.
 12. On the next screen click the **Merge pull request** button and then the **Confirm merge** button to merge the changes with the `master` branch of your `pipeline-policies` repository and trigger the ***pipeline-policies-ops*** job on your ***managed controller***. ![merge pr](merge-policy-pr.png?width=50pc)
 13. On the next screen click the **Delete branch** button.
