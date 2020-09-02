@@ -12,14 +12,14 @@ CloudBees CI for modern platforms takes advantage of Kubernetes to providing dyn
 
 ### Create a CloudBees CI Account
 
-1. Navigate to the CloudBees CI Workshop registration form. The URL will be provided by your instructor.
+1. Navigate to the CloudBees CI Workshop registration form at: https://workshop.cb-sa.io/cjoc/signup 
 2. Fill out the form, using your GitHub username as your CloudBees CI username, the same email you used to sign-up for the CloudBees Workshop Slack workspace, and make sure to save your password. <p>![Create Account](registration-form.png?width=40pc)
 3. Click the **Create Account** button.
 
 ### Login to CloudBees CI
 
-1. Goto to the Workshop URL provided by the instructor.
-2. Enter the username and password you created earlier into the login screen and click the **Sign in** button.<p>![CloudBees CI Login](setup-login.png?width=40pc)
+1. Login into the CloudBees CI Workshop cluster at: https://workshop.cb-sa.io/cjoc/login 
+2. Enter the username and password, you created above, into the login screen and click the **Sign in** button.<p>![CloudBees CI Login](setup-login.png?width=40pc)
 
 ## Create a CloudBees CI Managed Controller (Jenkins instance)
 

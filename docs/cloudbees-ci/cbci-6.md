@@ -26,7 +26,7 @@ class: compact
 
 ### CloudBees SCM Reporting for GitHub 
 
-* The CloudBees SCM Reporting plugin supports detailed commit statuses for GitHub and BitBucket.
+* The CloudBees SCM Reporting plugin supports detailed commit statuses for GitHub and BitBucket. 
 * As the build runs, CloudBees CI will surface actionable build information directly in your source control tool, in real-time, alleviating the need to switch over to your CloudBees CI ***managed controller*** to get an overview.
 
 #### GitHub App Credential
