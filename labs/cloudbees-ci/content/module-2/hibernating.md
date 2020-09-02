@@ -17,6 +17,9 @@ Hibernation for CloudBees CI managed controller is managed at the global Jenkins
 4. After a couple of minutes, your CloudBees CI ***managed controller*** will be ready to use and in the same state as it was when it was hibernated.
 
 ## Hibernation Proxy for Webhooks
+
+>NOTE: For this workshop, the GitHub webhook used by all attendees has been configured at the GitHub App level and we are using [Smee.io](https://smee.io/) to forward those webhook deliveries to everyones' CloudBees CI ***managed controllers***. The Smee forwarding client is already configured to forward webhook delieveries to the `/hibernation/queue` endpoint for your ***managed controller***.
+
 The hibernating monitor service provides a post proxy for things like GitHub webhooks.
 
 Navigate to the GitHub Organization you created for this workshop and click on the **Settings** link. 
