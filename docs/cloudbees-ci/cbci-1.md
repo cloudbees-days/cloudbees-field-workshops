@@ -52,7 +52,8 @@ While your ***managed controller*** is restarting, let's explore the results of 
 * In the GitHub Organization that you created for this workshop you will notice that you now have 4 repositories. The following repositories were [forked](https://guides.github.com/activities/forking/) from the [CloudBees Days GitHub Organization](https://github.com/cloudbees-days) when you installed the **CloudBees CI Workshop** GitHub App into your workshop GitHub Organization:
    1. **cloudbees-ci-config-bundle** - this repository provides a base CasC configuration for everyones' ***managed controller***.
    2. **pipeline-library** - a Jenkins Pipeline Shared Library that will be used by the Jenkins Pipelines you create during this workshop.
-   3. **pipeline-template-catalog** - a set of templated Pipelines that you will use to create Jenkins Pipeline jobs for this workshop.
-   4. **simple-java-maven-app** - a simple Java project using Maven, used to highlight contextual Pipeline feedback.
+   3. **pipeline-policies** - used for the Pipeline Policies GitOps lab.
+   4. **pipeline-template-catalog** - a set of templated Pipelines that you will use to create Jenkins Pipeline jobs for this workshop.
+   5. **simple-java-maven-app** - a simple Java project using Maven, used to highlight contextual Pipeline feedback.
 * Your CloudBees CI ***managed controller*** was also setup to use CloudBees CI configuration as code as we will explore after the next section on Pipeline Template Catalogs.
 ]
