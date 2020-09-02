@@ -6,14 +6,14 @@ weight: 1
 
 Managing Pipeline Template Catalogs across a large number of ***managed controllers*** using the graphical user interface (GUI) is time consuming and prone to human error due to the repetitive nature of the task.
 
-Using the provided command-line interface (CLI) allows the administrator to automate the management of Pipeline Template Catalogs across multiple managed controllers, which reduces efforts and ensures consistency across all development teams.
+Using the provided command-line interface (CLI) allows the administrator to automate the management of Pipeline Template Catalogs across multiple ***managed controllers***, which reduces efforts and ensures consistency across all development teams.
 
 
 ## Import Pipeline Template Catalog
 This lab will explore how to manage CloudBees CI Pipeline Template Catalogs with the CloudBees CI CLI. 
 
 1. Navigate to the top-level of Operations Center - **Jenkins** - and click on the link for your ***managed controller***. ![Managed Controller link](managed-controller-link.png?width=60pc)
-2. At the top-level of your CloudBees CI managed controller click on **New Item** in the left menu. ![New Item](create-new-item.png?width=40pc)
+2. At the top-level of your CloudBees CI ***managed controller*** click on **New Item** in the left menu. ![New Item](create-new-item.png?width=40pc)
 3. Enter ***pipeline-catalog-ops*** as the **item name**, select **Multibranch Pipeline** as the item type and the click the **OK** button. ![import-catalog Pipeline](create-pipeline-item.png?width=60pc)
 4. Under **Branch Sources** click on **Add source** and select ***GitHub*** ![Branch Sources Configuration](add-source-github.png?width=40pc)
 5. Under the **GitHub** branch source enter the following:
@@ -44,7 +44,7 @@ This lab will explore how to manage CloudBees CI Pipeline Template Catalogs with
 ## Enforce the Use of Templates at the Folder Level
 The [CloudBees CI Folders Plus plugin](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-secure-guide/folders-plus) includes the ability to restrict the type of items/jobs allowed to be created in a folder. When this capability is used with CloudBees CI RBAC you can easily enforce that all your CloudBees CI users use an approved (and tested) Pipeline template.
 
-1. Navigate back to the top-level of your CloudBees CI managed controller (Jenkins instance) and click on **New Item** in the left menu.
+1. Navigate back to the top-level of your CloudBees CI ***managed controller*** (Jenkins instance) and click on **New Item** in the left menu.
 2. For the **item name** enter ***template-jobs***, select **Folder** (be sure to select **Folder** and not **Folder Template**) as the item type and then click the **OK** button. ![Restricted Folder Item](new-folder-click.png?width=50pc)
 3. Scroll to the bottom of the folder configuration and click on **Restrict the kind of children in this folder** - a [CloudBees Folders Plus](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-secure-guide/folders-plus) feature - and then select **CloudBees CI Configuration Bundle**, **Maven Pipeline Template** and **Pipeline Policies GitOps** (the template jobs we will be using throughout the rest of the workshop) - and then hit the **Save** button. ![Restricted Folder Items](restricted-items-check.png?width=40pc)
 4. Now when you click on **New Item** in the **template-jobs** folder you will be restricted to the **CloudBees CI Configuration Bundle**, **Maven Pipeline Template** and **Pipeline Policies GitOps** item types. This reduces confusion of what job types to use and enforces the use of approved templates. ![Restricted Folder New Item](restricted-folder-new-item.png?width=30pc)

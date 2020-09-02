@@ -10,7 +10,7 @@ Pipeline Policies are runtime validations that work for both scripted and declar
 
 In this lab you will create a [Pipeline Policy](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines-user-guide/pipeline-policies) to ensure that all Pipeline jobs that run on your CloudBees CI ***managed controller*** (Jenkins instance) have a maximum 30 minute global `timeout` set.
 
-1. Navigate to the top-level of your CloudBees CI managed controller and click on **Pipeline Policies** in the left menu. ![Pipeline Policies Link](policies-click.png?width=50pc) 
+1. Navigate to the top-level of your CloudBees CI ***managed controller*** and click on **Pipeline Policies** in the left menu. ![Pipeline Policies Link](policies-click.png?width=50pc) 
 2. Next, on the **Pipeline Policies** screen, click on the **New Policy** button.
 3. Fill out the Pipeline Policy parameters:
    1. **Name**: ***Timeout policy***
@@ -57,7 +57,7 @@ pipeline {
 
 Managing Pipeline Policies across a large number of ***managed controllers*** using the graphical user interface (GUI) is time consuming and prone to human error due to the repetitive nature of the task.
 
-Using the provided CLI commands allows the administrator to automate the management of Pipeline Policies across multiple managed controllers, which reduces efforts while providing consistency across all development teams.
+Using the provided CLI commands allows the administrator to automate the management of Pipeline Policies across multiple ***managed controllers***, which reduces efforts while providing consistency across all development teams.
 
 In this lab we leverage a Pipeline Template that uses the CloudBees CI `policies` CLI command to output the policy that you created above to a file and then push that to a new branch on your `pipeline-policies` repository. We will then update the exported policy file in GitHub and merge those changes to the `master` branch to update the policy on your ***managed controller***.
 
@@ -89,7 +89,7 @@ In this lab we leverage a Pipeline Template that uses the CloudBees CI `policies
 11. On the next screen accept the default values and then click the **Create pull request** button.
 12. On the next screen click the **Merge pull request** button and then the **Confirm merge** button to merge the changes with the `master` branch of your `pipeline-policies` repository and trigger the ***pipeline-policies-ops*** job on your ***managed controller***. ![merge pr](merge-policy-pr.png?width=50pc)
 13. On the next screen click the **Delete branch** button.
-14. Once the ***pipeline-policies-ops*** **master** branch job completes successfully navigate to the top-level of your CloudBees CI managed controller and click on **Pipeline Policies** in the left menu.
+14. Once the ***pipeline-policies-ops*** **master** branch job completes successfully navigate to the top-level of your CloudBees CI ***managed controller*** and click on **Pipeline Policies** in the left menu.
 15. The **Timeout policy** you created in the previous lab will now have an updated **Timeout** value of `60 MINUTES`. ![updated policy](updated-policy.png?width=50pc)
 
 **For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/cloudbees-ci/#36).**

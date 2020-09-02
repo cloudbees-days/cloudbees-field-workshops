@@ -27,7 +27,7 @@ class: compact
 ### CloudBees SCM Reporting for GitHub 
 
 * The CloudBees SCM Reporting plugin supports detailed commit statuses for GitHub and BitBucket.
-* As the build runs, CloudBees CI will surface actionable build information directly in your source control tool, in real-time, alleviating the need to switch over to your CloudBees CI managed controller to get an overview.
+* As the build runs, CloudBees CI will surface actionable build information directly in your source control tool, in real-time, alleviating the need to switch over to your CloudBees CI ***managed controller*** to get an overview.
 
 #### GitHub App Credential
 Using the GitHub App credential type with the CloudBees SCM Reporting plugin offers the following additional benefits:
@@ -47,7 +47,7 @@ name: pipeline-template-catalog-slack
 
 .img-right[
 * Similar to the CloudBees SCM Reporting plugin, the CloudBees Slack plugin provides actionable build information as Slack messages.
-* After a build runs, the CloudBees Slack plugin will surface results about the build directly in Slack, alleviating the need to switch over to your CloudBees CI managed controller (Jenkins instance) to get an overview.
+* After a build runs, the CloudBees Slack plugin will surface results about the build directly in Slack, alleviating the need to switch over to your CloudBees CI ***managed controller*** (Jenkins instance) to get an overview.
 * The Slack messages are sent directly to individual users based on who committed the code that triggered the CloudBees CI job.
 ]
 

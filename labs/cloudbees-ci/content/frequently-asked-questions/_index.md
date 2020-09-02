@@ -25,11 +25,11 @@ If you are returning to the workshop after a time away, your team infrastructure
 
 The classic view (left image) shows a list of teams visible to you, depending on your permissions, with a server icon for each team. If the infrastructure is hibernating, the server icon is superimposed with a pause button. Here one server is paused and one is not. Click your team name to wake it. 
 
-The hibernation message from CloudBees CI is shown at right, and the bottom is the message while the managed controller is starting back up.
+The hibernation message from CloudBees CI is shown at right, and the bottom is the message while the ***managed controller*** is starting back up.
 
 ### CloudBees CI managed controller top-level
 
-In the navigation pane at the top-level of your CloudBees CI managed controller, you will see an icon to configure pipeline template catalogs. You may also see an icon to configure pipeline policies depending on which lab you have completed.
+In the navigation pane at the top-level of your CloudBees CI ***managed controller***, you will see an icon to configure pipeline template catalogs. You may also see an icon to configure pipeline policies depending on which lab you have completed.
 
 If you have added catalogs you will see them in the work area in the center, shown in the image on the right.
 

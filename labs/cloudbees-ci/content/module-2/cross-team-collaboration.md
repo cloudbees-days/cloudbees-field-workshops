@@ -9,17 +9,17 @@ weight: 4
 We will utilize CloudBees CI CasC to enable and configure Notifications for Cross Team Collaboration.
 
 1. Navigate to your `cloudbees-ci-config-bundle` repository in GitHub and click on the **Pull requests** link. ![PR link](pr-link.png?width=50pc) 
-2. On the next screen, click on the **Cross Team Collaboration Lab: Enable Notifications** pull request (#3) and then click on the **Files changed** tab to review the requested configuration changes. As you can see, we are adding `notificationConfiguration` for your CloudBees CI managed controller. ![PR Files Changed](collab-casc-changes.png?width=50pc)
+2. On the next screen, click on the **Cross Team Collaboration Lab: Enable Notifications** pull request (#3) and then click on the **Files changed** tab to review the requested configuration changes. As you can see, we are adding `notificationConfiguration` for your CloudBees CI ***managed controller***. ![PR Files Changed](collab-casc-changes.png?width=50pc)
 3. Once you have reviewed the changed files, click on the **Conversation** tab, scroll down and click the green **Merge pull request** button and then the **Confirm merge** button.
 4. On the next screen click the **Delete branch** button.
-5. Navigate to the **config-bundle-ops** job under the **template-jobs** folder on your CloudBees CI managed controller. Shortly after the **master** branch job completes successfully you will see a new **monitor alert** at the top of the screen. ![Monitor alert](monitor-alert.png?width=50pc)
-6. Click on the **monitor** link of your CloudBees CI managed controller and you will see that a new version of the configuration bundle is available - click on the **Reload Configuration** button and on the next screen click the **Yes** button to apply the updated configuration bundle. NOTE: If you do not see the **Reload Configuration** button then click the **Safe Restart** button. ![Reload CasC](reload-config.png?width=50pc)
-7. Once your managed controller is finished updating the configuration click on the **Notifications** configuration. ![Notifications config link](notifications-config-link.png?width=50pc)
+5. Navigate to the **config-bundle-ops** job under the **template-jobs** folder on your CloudBees CI ***managed controller***. Shortly after the **master** branch job completes successfully you will see a new **monitor alert** at the top of the screen. ![Monitor alert](monitor-alert.png?width=50pc)
+6. Click on the **monitor** link of your CloudBees CI ***managed controller*** and you will see that a new version of the configuration bundle is available - click on the **Reload Configuration** button and on the next screen click the **Yes** button to apply the updated configuration bundle. NOTE: If you do not see the **Reload Configuration** button then click the **Safe Restart** button. ![Reload CasC](reload-config.png?width=50pc)
+7. Once your ***managed controller*** is finished updating the configuration click on the **Notifications** configuration. ![Notifications config link](notifications-config-link.png?width=50pc)
 8. Note that the **Notification Configuration** is **Enabled** and the **Notification Router Implementation** is set to **Local only**. ![Notifications configured](notifications-configured.png?width=50pc)
 
 ## Adding an event trigger
 
-Now that we have configured CloudBees CI Notifications for our managed controllers we will add an event trigger to a Pipeline template.
+Now that we have configured CloudBees CI Notifications for our ***managed controllers*** we will add an event trigger to a Pipeline template.
 
 1. In GitHub, navigate to the **Cross Team Collaboration: Add Event Trigger** pull request (#1) in your fork of the **pipeline-template-catalog** repository. ![Event trigger PR](event-trigger-pr.png?width=50pc)
 2. Click on **Cross Team Collaboration: Add Event Trigger** the pull request link and then click on the **Files changed** tab to see the changes that will be made to the **Maven Pipeline Template**. ![Event trigger changes](event-trigger-changes.png?width=50pc)
@@ -32,9 +32,9 @@ Now that we have configured CloudBees CI Notifications for our managed controlle
 
 ## Create a Pipeline to publish an event
 
-Now that you have an `eventTrigger` added to your **Maven Pipeline Template** we need to create a job that will publish an event that will trigger it. Each of you will create a simple Pipeline job that will publish an event to imitate the real world scenario where a new `maven` build image would be built and pushed - typically by another team on a different managed controller (Jenkins instance).
+Now that you have an `eventTrigger` added to your **Maven Pipeline Template** we need to create a job that will publish an event that will trigger it. Each of you will create a simple Pipeline job that will publish an event to imitate the real world scenario where a new `maven` build image would be built and pushed - typically by another team on a different ***managed controller*** (Jenkins instance).
 
-1. At the top level of your CloudBees CI managed controller click on the **New Item** link in the left navigation menu.
+1. At the top level of your CloudBees CI ***managed controller*** click on the **New Item** link in the left navigation menu.
 2. Enter an item name - say **publish-event** - then select **Pipeline** as the item type and then click the **OK** button. ![Create publish event pipeline](create-publish-event-pipeline.png?width=50pc)
 3. Click on the **Pipeline** tab and then Copy the following Pipeline, paste it into the **Script** text area and then click the **Save** button:
 ```groovy

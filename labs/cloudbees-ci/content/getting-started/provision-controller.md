@@ -34,8 +34,8 @@ The **Create Team** job will provision a CloudBees CI **managed controller** tha
    - https://github.com/cloudbees-days/pipeline-template-catalog
    - https://github.com/cloudbees-days/pipeline-policies
    - https://github.com/cloudbees-days/simple-java-maven-app ![GitHub App Installed](forked-repos.png?width=50pc)
-4. **IMPORTANT** - While your CloudBees CI managed controller is being provisioned (**it takes a few minutes for Operations Center to provision your managed controller on Kubernetes**), move onto the next section.
+4. **IMPORTANT** - While your CloudBees CI ***managed controller*** is being provisioned (**it takes a few minutes for Operations Center to provision your managed controller on Kubernetes**), move onto the next section.
 
->NOTE: There are a number of ways to create a managed controller. We take a very opinionated way to provision attendees managed controllers for this workshop in order to pre-configure the components that you will interact with during the workshop.
+>NOTE: There are a number of ways to create a ***managed controller***. We take a very opinionated way to provision attendees ***managed controllers*** for this workshop in order to pre-configure the components that you will interact with during the workshop.
 
 **For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/cloudbees-ci/#16).**
