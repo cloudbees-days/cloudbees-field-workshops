@@ -96,7 +96,7 @@ ARG BUILD_IMAGE=maven:3-openjdk-8
 ```
   * The **Maven Pipeline Template** (and supporting Pipeline Shared Library) will be updated to override the `BUILD_IMAGE` argument with a value from the payload of a published event.
 * The *Triggering Pipelines with Cross Team Collaboration* lab instructions are available at: 
-  * [https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/cross-team-collaboration/cross-team-collaboration.md](https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/cross-team-collaboration/cross-team-collaboration.md)
+  * https://cloudbees-ci.labs.cb-sa.io/module-2/cross-team-collaboration/
 
 
 ---

@@ -53,7 +53,7 @@ There are several ways that costs may be reduced with ***managed controller*** h
 # Lab - Configuring Webhooks for Hibernating Managed Controllers
 
 * The *Configuring Webhooks for Hibernating Managed Controllers* lab instructions are available at: 
-  * [https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/hibernating/hibernating.md](https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/hibernating-masters/hibernating-masters.md)
+  * https://cloudbees-ci.labs.cb-sa.io/module-2/hibernating/
 
 ???
 
