@@ -27,7 +27,6 @@ The **Create Team** job will provision a CloudBees CI **managed controller** tha
 
 1. Click on the **Create Team** link near the top of the page. ![Create Team](create-team-link.png?width=70pc)
 2. Fill out the form and click the **Build** button. ![Create Team form](create-team-form.png?width=70pc)
-   - **IMPORTANT - Do not use the display name for the GitHub Organization value. The GitHub Organization has to be all lowercase with dashes for spaces. Example: The GitHub Organization id for an Organization display name of "Bee CD" would be "bee-cd".** 
 3. After the **Create Team** setup job completes you should see the following repositories forked into the GitHub Organization.
    - https://github.com/cloudbees-days/cloudbees-ci-config-bundle
    - https://github.com/cloudbees-days/pipeline-library
