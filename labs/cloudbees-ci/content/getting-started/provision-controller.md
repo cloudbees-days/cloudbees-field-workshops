@@ -12,13 +12,13 @@ CloudBees CI for modern platforms takes advantage of Kubernetes to providing dyn
 
 ### Create a CloudBees CI Account
 
-1. Navigate to the CloudBees CI Workshop registration form at: https://workshop.cb-sa.io/cjoc/signup 
+1. Navigate to the CloudBees CI Workshop registration form at: [https://workshop.cb-sa.io/cjoc/signup](https://workshop.cb-sa.io/cjoc/signup) 
 2. Fill out the form, using your GitHub username as your CloudBees CI username, the same email you used to sign-up for the CloudBees Workshop Slack workspace, and make sure to save your password. <p>![Create Account](registration-form.png?width=40pc)
 3. Click the **Create Account** button.
 
 ### Login to CloudBees CI
 
-1. Login into the CloudBees CI Workshop cluster at: https://workshop.cb-sa.io/cjoc/login 
+1. Login into the CloudBees CI Workshop cluster at: [https://workshop.cb-sa.io/cjoc/login](https://workshop.cb-sa.io/cjoc/login) 
 2. Enter the username and password, you created above, into the login screen and click the **Sign in** button.<p>![CloudBees CI Login](setup-login.png?width=40pc)
 
 ## Create a CloudBees CI Managed Controller (Jenkins instance)
@@ -38,4 +38,4 @@ The **Create Team** job will provision a CloudBees CI **managed controller** tha
 
 >NOTE: There are a number of ways to create a ***managed controller***. We take a very opinionated way to provision attendees ***managed controllers*** for this workshop in order to pre-configure the components that you will interact with during the workshop.
 
-**For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/cloudbees-ci/#16).**
+**For instructor led workshops please returns to the workshop slides: https://cloudbees-days.github.io/core-rollout-flow-workshop/cloudbees-ci/#16**

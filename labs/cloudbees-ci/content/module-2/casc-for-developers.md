@@ -20,4 +20,4 @@ In this lab you will act as developer and CloudBees CI admin, where you will rev
 10. On the **User Settings** screen for the CloudBees Slack Integration, click on the **Send Test Message** button and you should see the message ***"Message sent successfully, please check Slack"***. Finally, click on the **Save** button. ![Slack Send Test Message](slack-send-test-msg.png?width=50pc)
 11. Navigate to the [CloudBees Workshops Slack workspace](https://app.slack.com/client/T010A455W77/) and you should see a direct message from the **Slackbot**. ![Slack Test Message](slack-test-msg.png?width=50pc)
 
-**For instructor led workshops please returns to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/cloudbees-ci/#38).**
+**For instructor led workshops please returns to the workshop slides: https://cloudbees-days.github.io/core-rollout-flow-workshop/cloudbees-ci/#38**
