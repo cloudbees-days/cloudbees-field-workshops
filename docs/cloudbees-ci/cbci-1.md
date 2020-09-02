@@ -49,7 +49,7 @@ class: compact
 While your ***managed controller*** is restarting, let's explore the results of the workshop setup:
 
 .no-bullet[
-* In the GitHub Organization that you created for this workshop you will notice that you now have 4 repositories. The following repositories were [forked](https://guides.github.com/activities/forking/) from the [CloudBees Days GitHub Organization](https://github.com/cloudbees-days) when you installed the **CloudBees CI Workshop** GitHub App into your workshop GitHub Organization:
+* In the GitHub Organization that you created for this workshop you will notice that you now have 5 repositories. The following repositories were [copied from templates](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template) from the [CloudBees Field Workshops GitHub Organization](https://github.com/cloudbees-days) when you installed the **CloudBees CI Workshop** GitHub App into your workshop GitHub Organization:
    1. **cloudbees-ci-config-bundle** - this repository provides a base CasC configuration for everyones' ***managed controller***.
    2. **pipeline-library** - a Jenkins Pipeline Shared Library that will be used by the Jenkins Pipelines you create during this workshop.
    3. **pipeline-policies** - used for the Pipeline Policies GitOps lab.
