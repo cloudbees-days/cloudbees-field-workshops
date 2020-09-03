@@ -21,7 +21,7 @@ This lab will explore how to manage CloudBees CI Pipeline Template Catalogs with
    - Enter the URL for your copy of the `pipeline-template-catalog` as the value for the **Repository HTTPS URL** - ***https:\//github.com/{YOUR_GITHUB_ORGANIZATION}/pipeline-template-catalog.git***
      - TIP: If you navigate to your GitHub `pipeline-template-catalog` repository, and click on the **Code** button, you can then click on the *clipboard* icon to copy the Git URL for your repository. ![Copy Repo Git URL](copy-repo-url.png?width=40pc)
    - The rest of the default values are sufficient so click the **Save** button. ![Branch Sources Configuration](branch-source-config.png?width=50pc)
-   - The `Jenkinsfile` in your `pipeline-template-catalog` repository is configured to use the CloudBees CI `pipeline-template-catalogs` CLI command to create a **Pipeline Template Catalog** on your ***managed controller*** from the `create-pipeline-template-catalog.json` file in your `pipeline-template-catalog` repository as seen below:
+   - The `Jenkinsfile` in your `pipeline-template-catalog` repository is configured to use the CloudBees CI CLI command `cli pipeline-template-catalogs --put < create-pipeline-template-catalog.json` to create a **Pipeline Template Catalog** on your ***managed controller*** from the `create-pipeline-template-catalog.json` file in your `pipeline-template-catalog` repository as seen below:
      ```json
      [
        {
