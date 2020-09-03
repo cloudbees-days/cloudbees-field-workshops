@@ -45,6 +45,4 @@ Now that you are satisfied with the experiment in your Development environment, 
 ### Lab 5 Completed!
 Congratulations! You have finished Lab 5 of the CloudBees Feature Flags Workshop.
 
-**For instructor led workshops please return to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/rollout/#33)**
-
-Otherwise, you may proceed to the next lab: [**CloudBees Feature Flags and Analytics**](../rolloutAnalytics/rolloutAnalytics.md) or choose another lab on the [main page](../../README.md#workshop-labs).
+**For instructor led workshops please return to the workshop slides: https://cloudbees-days.github.io/core-rollout-flow-workshop/cloudbees-feature-flags/#33**
