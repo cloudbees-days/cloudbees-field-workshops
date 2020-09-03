@@ -1,6 +1,8 @@
-# <img src="images/Rollout-blue.svg" alt="CloudBees Rollout Logo" width="40" align="top"> Using CloudBees Feature Flags to Control Flags
-
-## Using CloudBees Feature Flags to Control Feature Flag Values
+---
+title: "Using CloudBees Feature Flags to Control Flags"
+chapter: false
+weight: 1
+--- 
 
 In this lab, you will use the CloudBees Feature Flags dashboard to remotely configure the values of the `title` and `sidebar` feature flags. Additionally, we will introduce the Flag Override tool, and walk through a scenario where developers may need to alter a flag's for local testing without affecting the values for others.
 

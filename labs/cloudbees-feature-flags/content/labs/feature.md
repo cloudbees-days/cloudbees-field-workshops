@@ -1,4 +1,8 @@
-# <img src="images/Rollout-blue.svg" alt="CloudBees Rollout Logo" width="40" align="top"> Gating Code with a CloudBees Feature Flag
+---
+title: "Gating Code with a CloudBees Feature Flag"
+chapter: false
+weight: 1
+--- 
 
 ## Using a Feature Flag with CloudBees Feature Flags
 In this lab, you will gate a component behind the `title` feature flag, defined in the previous lab. Later, using CloudBees Feature Flags's dashboard, we will remotely configure the value of the flag, to either expose or hide this title element at will.

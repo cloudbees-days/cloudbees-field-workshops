@@ -1,4 +1,8 @@
-# <img src="images/Rollout-blue.svg" alt="CloudBees Rollout Logo" width="40" align="top"> CloudBees Feature Flags - Feature Flags and GitOps
+---
+title: "CloudBees Feature Flags - Feature Flags and GitOps"
+chapter: false
+weight: 4
+--- 
 
 ### Connecting to GitHub Cloud
 1. Create an empty repository in your GitHub organization named "feature-flags-configuration-as-code"

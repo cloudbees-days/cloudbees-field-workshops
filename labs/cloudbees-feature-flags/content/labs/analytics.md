@@ -1,4 +1,8 @@
-# <img src="images/Rollout-blue.svg" alt="CloudBees Rollout Logo" width="40" align="top"> CloudBees Feature Flags and Analytics
+---
+title: "CloudBees Feature Flags and Analytics"
+chapter: false
+weight: 5
+--- 
 
 ## Forwarding Flag Data to Analytics Platform
 This lab will leverage CloudBees Feature Flags's `impressionHandler` to forward flag information to a more robust analytics platform (we will use Google Analytics for this lab, but the abstracted process remains the same for integration with other tools). We can pass information about feature flags values evaluated on each client back for analysis. We'll set-up the beginning process for A/B testing process.

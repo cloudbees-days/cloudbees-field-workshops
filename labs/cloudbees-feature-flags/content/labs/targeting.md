@@ -1,4 +1,8 @@
-# <img src="images/Rollout-blue.svg" alt="CloudBees Rollout Logo" width="40" align="top"> User Targeting in CloudBees Feature Flags
+---
+title: "User Targeting in CloudBees Feature Flags"
+chapter: false
+weight: 3
+--- 
 
 ## Changing Flag Behavior for a Defined Audience
 The goal of this lab is route a _subset_ of the microblog's audience to experience one value of a feature flag, while the rest of the users will see a separate value. The intended sub-group that will be created in the CloudBees Feature Flags interface and defined by properties in code and communicated to the CloudBees Feature Flags dashboard through the `setup` function in the `flags.js` file. This lab will implement logic to _display the sidebar_ **only for logged in, Beta Users**.
