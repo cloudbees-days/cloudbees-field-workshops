@@ -26,6 +26,7 @@ In this lab you will create a new Multibranch Pipeline job from the **Maven Pipe
      markerFile: cloudbees-ci.yml 
      branchSource:
        github:
+       ...
    ```
 7. Now, in **GitHub**, navigate to your `simple-java-maven-app` repository, click on the `example.cloudbees-ci.yml` file, then click pencil icon to edit the file and then rename the file by deleting `example.` from the beginning of the file name, leaving just `cloudbees-ci.yml`. ![Rename Marker File](rename-marker-file.png?width=50pc)
 8. Scroll to the bottom of the page and click the **Commit changes** *(directly to the `master` branch)* button to commit the renamed `cloudbees-ci.yml` to the **master** branch of your `simple-java-maven-app` repository. 
