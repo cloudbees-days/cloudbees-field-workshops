@@ -6,7 +6,7 @@ weight: 1
 
 # CloudBees CI Workshop
 
-The CloudBees CI workshop is composed of two distinct modules. The first is focused on product capabilities that make it easy to manage continuous integration at scale and the second is focused on features that provide a developer centric experience for software delivery. 
+The CloudBees CI workshop is composed of two modules. The first is focused on product capabilities that make it easy to manage continuous integration at scale and the second is focused on features that provide a developer centric experience for software delivery. 
 
 ## Module 1: Manage Continuous Integration at Scale
 
