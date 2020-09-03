@@ -25,9 +25,12 @@ CloudBees CI for modern platforms takes advantage of Kubernetes to providing dyn
 
 The **Create Team** job will provision a CloudBees CI **managed controller** that will be named after the GitHub Organization id (the name as all lowercase and spaced replaced with dashes as it appears in the URL for your GitHub Organization). The job will also create several GitHub repositories in your workshop GitHub Organization.
 
-1. Click on the **Create Team** link near the top of the page. ![Create Team](create-team-link.png?width=70pc)
-2. Fill out the form and click the **Build** button. ![Create Team form](create-team-form.png?width=70pc)
-3. After the **Create Team** setup job completes you should see the following repositories forked into the GitHub Organization.
+1. Click on the **Create Team** link near the top of the page. ![Create Team](create-team-link.png?width=50pc)
+2. Fill out the form and click the **Build** button. 
+   1. **IMPORTANT:** If your GitHub Organization includes capital letters then be sure to include that capitalization for the **GitHubOrganization** input of the of the **Project create-team** form:
+![GitHub Org caps](github-org-caps.png?width=50pc)
+![Create Team form](create-team-form.png?width=50pc)
+3. After the **Create Team** setup job completes you should see the following repositories copied into your workshop GitHub Organization.
    - https://github.com/cloudbees-days/cloudbees-ci-config-bundle
    - https://github.com/cloudbees-days/pipeline-library
    - https://github.com/cloudbees-days/pipeline-template-catalog
@@ -37,4 +40,4 @@ The **Create Team** job will provision a CloudBees CI **managed controller** tha
 
 >NOTE: There are a number of ways to create a ***managed controller***. We take a very opinionated way to provision attendees ***managed controllers*** for this workshop in order to pre-configure the components that you will interact with during the workshop.
 
-**For instructor led workshops please returns to the workshop slides: https://cloudbees-days.github.io/core-rollout-flow-workshop/cloudbees-ci/#16**
+**For instructor led workshops please return to the workshop slides: https://cloudbees-days.github.io/core-rollout-flow-workshop/cloudbees-ci/#16**

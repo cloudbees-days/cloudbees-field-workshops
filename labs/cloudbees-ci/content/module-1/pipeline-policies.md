@@ -92,4 +92,4 @@ In this lab we leverage a Pipeline Template that uses the CloudBees CI `policies
 14. Once the ***pipeline-policies-ops*** **master** branch job completes successfully navigate to the top-level of your CloudBees CI ***managed controller*** and click on **Pipeline Policies** in the left menu.
 15. The **Timeout policy** you created in the previous lab will now have an updated **Timeout** value of `60 MINUTES`. ![updated policy](updated-policy.png?width=50pc)
 
-**For instructor led workshops please returns to the workshop slides: https://cloudbees-days.github.io/core-rollout-flow-workshop/cloudbees-ci/#36**
+**For instructor led workshops please return to the workshop slides: https://cloudbees-days.github.io/core-rollout-flow-workshop/cloudbees-ci/#36**
