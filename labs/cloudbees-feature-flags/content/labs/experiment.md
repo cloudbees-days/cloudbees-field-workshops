@@ -1,7 +1,7 @@
 ---
 title: "Using CloudBees Feature Flags to Control Flags"
 chapter: false
-weight: 1
+weight: 2
 --- 
 
 In this lab, you will use the CloudBees Feature Flags dashboard to remotely configure the values of the `title` and `sidebar` feature flags. Additionally, we will introduce the Flag Override tool, and walk through a scenario where developers may need to alter a flag's for local testing without affecting the values for others.
@@ -47,6 +47,4 @@ The experiments seen in a CloudBees Feature Flags environment view govern the be
 ### Lab 3 Completed!
 Congratulations! You have finished Lab 3 of the CloudBees Feature Flags  Workshop.
 
-**For instructor led workshops please return to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/rollout/#23)**
-
-Otherwise, you may proceed to the next lab: [**User Targeting**](../rolloutTargeting/rolloutTargeting.md) or choose another lab on the [main page](../../README.md#workshop-labs).
+**For instructor led workshops please return to the workshop slides: https://cloudbees-days.github.io/core-rollout-flow-workshop/rollout/#23**

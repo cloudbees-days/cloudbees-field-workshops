@@ -134,5 +134,3 @@ Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
 
 ### Lab 6 Completed!
 You have successfully completed the introductory CloudBees Feature Flags workshop!
-
-Please return to the [main page](../../README.md#workshop-labs) for other workshops and labs.
