@@ -1,0 +1,9 @@
+[submodule "labs/cloudbees-ci/themes/hugo-theme-learn"]
+	path = labs/cloudbees-ci/themes/hugo-theme-learn
+	url = https://github.com/matcornic/hugo-theme-learn.git
+[submodule "labs/base/themes/themes/hugo-theme-learn"]
+	path = labs/base/themes/themes/hugo-theme-learn
+	url = https://github.com/matcornic/hugo-theme-learn.git
+[submodule "labs/base/themes/hugo-theme-learn"]
+	path = labs/base/themes/hugo-theme-learn
+	url = https://github.com/matcornic/hugo-theme-learn.git
