@@ -1,6 +1,9 @@
-# <img src="images/Rollout-blue.svg" alt="CloudBees Rollout Logo" width="40" align="top"> CloudBees Feature Flags Workshop Setup
+---
+title: "CloudBees Feature Flags Workshop Setup"
+chapter: false
+weight: 2
+--- 
 
-## CloudBees Feature Flags Set-Up
 In this lab, you will set up a CloudBees Feature Flags account and use it to manage feature flags through remote configurations created in the dashboard.
 
 ### Create a CloudBees Feature Flags Account
@@ -10,8 +13,7 @@ In this lab, you will set up a CloudBees Feature Flags account and use it to man
 3. After sign up, the CloudBees Feature Flags dashboard should be displayed. On the far left side of the dashboard, click the **App Settings** panel. From the resulting page, select the **Environments** tab.
 4. Click **Add New Environment** and name it **Development**. Then click **Generate Key**.
 5. **Close** the subsequent **Development Key** pop-up window so that both _Production_ and _Development_ keys are displayed. Leave this CloudBees Feature Flags dashboard tab open in the browser. Both keys will be referenced later in this lab.
-
-<p><img src="images/RolloutEnvKey.png" />
+![Environment Key](images/RolloutEnvKey.png?width=50pc)
 
 ### Environment Variable
 
