@@ -85,7 +85,7 @@ Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
 
 <p><img src="images/firstDeployment.png" />
 
-5. Open the URL in a new tab (that follows the format: `http://development.YOUR_ORG_NAME-microblog-frontend.cbws.io`). This is the microblog!
+5. Open the URL in a new tab (that follows the format: `http://development.YOUR_ORG_NAME-microblog-frontend.workshop.cbws.io`). This is the microblog!
 
 <p><img src="images/microblogWebsite.png" />
 
@@ -100,6 +100,4 @@ Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
 ### Lab 1 Completed!
 Congratulations! You have finished Lab 1 of the CloudBees Feature Flags Workshop.
 
-**For instructor led workshops please return to the [workshop slides](https://cloudbees-days.github.io/core-rollout-flow-workshop/rollout/#14).**
-
-Otherwise, you may proceed to the next lab: [**Gating a Component with a CloudBees Feature Flag**](../rolloutFeature/rolloutFeature.md) or choose another lab on the [main page](../../README.md#workshop-labs).
+**For instructor led workshops please return to the workshop slides: https://cloudbees-days.github.io/core-rollout-flow-workshop/cloudbees-feature-flags/#14.**
