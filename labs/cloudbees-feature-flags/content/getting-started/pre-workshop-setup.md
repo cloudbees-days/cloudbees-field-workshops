@@ -27,7 +27,7 @@ We highly recommend creating a new GitHub Organization for the CloudBees CI Work
 
 ### Install the CloudBees Feature Flags Workshop GitHub App
 
-1. Ensure that you are logged into GitHub.com and then navigate to [https://github.com/apps/cloudbees-ci-workshop](https://github.com/apps/cloudbees-ci-workshop).<p>![GitHub App](cbff-github-app.png?width=60pc)
+1. Ensure that you are logged into GitHub.com and then navigate to [https://github.com/apps/cloudbees-feature-flags-workshop](https://github.com/apps/cloudbees-feature-flags-workshop).<p>![GitHub App](cbff-github-app.png?width=60pc)
 2. Click on the **Install** button.
 3. Next, select the GitHub Organization you created above for the CloudBees CI Workshop.<p>![GitHub App](github-app-select-org.png?width=50pc)
 4. On the next screen, select **All repositories** and click the **Install** button.<p>![GitHub App](github-app-install.png?width=50pc)
