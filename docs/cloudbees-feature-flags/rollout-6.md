@@ -20,7 +20,7 @@ name: rollout-analytics-lab
 
 * In this lab you will set up a 50% split for a sidebar test, connect CloudBees Feature Flags to Google Analytics, and update the impression handler to push key information to GA.
 * The *CloudBees Feature Flags and Analytics* lab instructions are available at:
-  * [https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/rolloutAnalytics/rolloutAnalytics.md](https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/rolloutAnalytics/rolloutAnalytics.md)
+  * https://cloudbees-feature-flags.labs.cb-sa.io/labs/analytics/ 
 
 ---
 name: rollout-analytics-review

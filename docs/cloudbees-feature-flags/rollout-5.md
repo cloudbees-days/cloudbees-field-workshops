@@ -38,7 +38,7 @@ name: rollout-cac-lab
 # Lab - Configuration as Code
 
 * The *CloudBees Feature Flags Configuration as Code* lab instructions are available at:
-  * [https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/rollout-cac/rollout-cac.md](https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/rollout-cac/rollout-cac.md)
+  * https://cloudbees-feature-flags.labs.cb-sa.io/labs/cac/ 
 
 ---
 name: rollout-cac-review

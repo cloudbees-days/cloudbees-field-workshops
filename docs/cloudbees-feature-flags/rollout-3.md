@@ -42,7 +42,7 @@ name: rollout-control-lab
 * In this lab you will control the value of a flag by creating an experiment via the CloudBees Feature Flags dashboard.
 * For local testing or development, we will need to specify values for each flags on our local machines. In order to do this without affecting others' work, we will implement the Flag Override and toggle the values as needed.
 * The *Controlling the Value of a Feature Flag* lab instructions are available at:
-  * [https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/rolloutExperiment/rolloutExperiment.md](https://github.com/cloudbees-days/core-rollout-flow-workshop/blob/master/labs/rolloutExperiment/rolloutExperiment.md)
+  * https://cloudbees-feature-flags.labs.cb-sa.io/labs/experiment/ 
 
 ---
 name: rollout-control-review
