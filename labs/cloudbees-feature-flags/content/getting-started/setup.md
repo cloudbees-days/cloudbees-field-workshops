@@ -86,9 +86,7 @@ Once you commit the `.vuejs` **marker file** a job will be triggered on the Clou
 
 1. Switch tabs to CloudBees Feature Flags.
 2. On the left-hand side of the dashboard, click the **Development** panel and then select the **Audit Logs** view from the drop down options.
-3. You should see both the `default.title` and the `default.sidebar` flags added from the code are available for remote configuration in the dashboard! There are also some default properties that have been added, but we'll add more to use in a future lab.
-
-<p><img src="images/auditLogs.png" />
+3. You should see both the `default.title` and the `default.sidebar` flags added from the code are available for remote configuration in the dashboard! There are also some default properties that have been added, but we'll add more to use in a future lab. ![Audit logs](images/auditLogs.png?width=50pc)
 
 ### Lab 1 Completed!
 Congratulations! You have finished Lab 1 of the CloudBees Feature Flags Workshop.

@@ -4,7 +4,7 @@ chapter: false
 weight: 2
 --- 
 
-In this lab, you will use the CloudBees Feature Flags dashboard to remotely configure the values of the `title` and `sidebar` feature flags. Additionally, we will introduce the Flag Override tool, and walk through a scenario where developers may need to alter a flag's for local testing without affecting the values for others.
+In this lab, you will use the CloudBees Feature Flags dashboard to remotely configure the values of the `title` and `sidebar` feature flags. Additionally, we will introduce the Flag Override tool, and walk through a scenario where developers may need to alter the values of flags for local testing without affecting the values for others.
 
 ### Creating a CloudBees Feature Flags Experiment
 
@@ -21,10 +21,9 @@ In this lab, you will use the CloudBees Feature Flags dashboard to remotely conf
 <p><img src="images/setTitleTrue.png" />
 
 7. Switch tabs to bring up the Microblog website. Thanks to the `configurationFetchedHandler` implemented in the previous lab, the page refreshes automatically and the new configuration is applied. The new title should appear!
-8. Switch tabs to bring CloudBees Core into view. The _most recent run_ from the microblog's `development` branch should be the pipeline induced by the configurationFetchedHandler commit from the previous lab. We have successfully changed the behavior of feature flag gated code dashboard and **without additional code deployments**.
-9. Navigate back to the CloudBees Feature Flags dashboard. And navigate to **Experiments** view under **Development** environment, and choose a **Create a New Experiment** button. Ensure the new experiment will change the behavior for the **default.sidebar** flag before continuing to **Set Audience**.
-10. Similar to the title experiment, edit the **sidebar** by changing the only condition's **False** behavior value to **True**. Apply the experiment's changes through the **Update Audience** button.
-11. Switch back to the Microblog website, and after the auto-refresh, the sidebar should now be displayed!
+8. Navigate back to the CloudBees Feature Flags dashboard. And navigate to **Experiments** view under **Development** environment, and choose a **Create a New Experiment** button. Ensure the new experiment will change the behavior for the **default.sidebar** flag before continuing to **Set Audience**.
+9.  Similar to the title experiment, edit the **sidebar** by changing the only condition's **False** behavior value to **True**. Apply the experiment's changes through the **Update Audience** button.
+10. Switch back to the Microblog website, and after the auto-refresh, the sidebar should now be displayed!
 
 ### Flag Override View Interface
 
@@ -38,13 +37,13 @@ The experiments seen in a CloudBees Feature Flags environment view govern the be
 
 ### Learning Flags Override Code Implementation
 
-* Bring the microblog-frontend repository and its root directory view in Github.
-* On the `development` branch, navigate to `src/components/Nav.vue` by clicking the `src` folder, then `components` folder, and finally the `Nav.vue` file.
-* Note that on **Line 16**, we are including the Flags Override view, `rolloutOverride`, made available when the DEV link is seen, gated by `v-if="isDev"`.
-* The Flags Override view relies on including the CloudBees Feature Flags library for this file as seen on **Line 45**. The `rolloutOverride` function is implemented using the library's `Rox.showOverrides()`, seen on **Line 53**.
-* To restrict the Flags Override view and functionality from unintended audiences, we have chosen to show this tool **only on the Development branch deployments**. This is accomplished on **Line 15**, where `isDev` gates the component using the boolean value returned from the function defined on **Line 58**.
+1. Bring the microblog-frontend repository and its root directory view in Github.
+2. On the `development` branch, navigate to `src/components/Nav.vue` by clicking the `src` folder, then `components` folder, and finally the `Nav.vue` file.
+3. Note that on **Line 16**, we are including the Flags Override view, `rolloutOverride`, made available when the DEV link is seen, gated by `v-if="isDev"`.
+4. The Flags Override view relies on including the CloudBees Feature Flags library for this file as seen on **Line 45**. The `rolloutOverride` function is implemented using the library's `Rox.showOverrides()`, seen on **Line 53**.
+5. To restrict the Flags Override view and functionality from unintended audiences, we have chosen to show this tool **only on the Development branch deployments**. This is accomplished on **Line 15**, where `isDev` gates the component using the boolean value returned from the function defined on **Line 58**.
 
 ### Lab 3 Completed!
-Congratulations! You have finished Lab 3 of the CloudBees Feature Flags  Workshop.
+Congratulations! You have finished Lab 3 of the CloudBees Feature Flags Workshop.
 
 **For instructor led workshops please return to the workshop slides: https://cloudbees-days.github.io/core-rollout-flow-workshop/rollout/#23**

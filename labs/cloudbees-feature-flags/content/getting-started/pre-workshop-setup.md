@@ -30,6 +30,6 @@ We highly recommend creating a new GitHub Organization for the CloudBees Feature
 1. Ensure that you are logged into GitHub.com and then navigate to [https://github.com/apps/cloudbees-feature-flags-workshop](https://github.com/apps/cloudbees-feature-flags-workshop). ![GitHub App](cbff-github-app.png?width=60pc)
 2. Click on the **Install** button.
 3. Next, select the GitHub Organization you created above for the CloudBees Feature Flags Workshop. ![GitHub App](github-app-select-org.png?width=50pc)
-4. On the next screen, select **All repositories** and click the **Install** button. ![GitHub App](github-app-install.png?width=50pc)
+4. On the next screen, ensure that **All repositories** is selected and click the **Install** button. ![GitHub App](github-app-install.png?width=50pc)
 5. You may be prompted for your GitHub password. Enter your GitHub.com password, for the GitHub account you are using for this workshop, to complete the installation of the CloudBees Feature Flags Workshop GitHub App into your workshop specific GitHub Organization.
 6. The CloudBees Feature Flags Workshop GitHub App is now installed on your workshop GitHub Organization. ![GitHub App Installed](installed-now.png?width=50pc)

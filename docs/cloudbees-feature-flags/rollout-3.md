@@ -3,7 +3,7 @@ class: title, shelf, no-footer, fullbleed
 background-image: linear-gradient(135deg,#279be0,#036eb4)
 count: false
 
-# Controlling the Value of a Feature Flag
+# CloudBees Feature Flags<br>Controlling the Value of a Feature Flag
 
 ---
 name: rollout-control-overview

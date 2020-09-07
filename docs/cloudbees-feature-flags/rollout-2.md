@@ -3,7 +3,7 @@ class: title, shelf, no-footer, fullbleed
 background-image: linear-gradient(135deg,#279be0,#036eb4)
 count: false
 
-# Gating Code with CloudBees Feature Flags
+# CloudBees Feature Flags<br>Gating Code
 
 ---
 name: rollout-sidebar-overview

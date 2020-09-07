@@ -5,12 +5,12 @@ weight: 1
 --- 
 
 ## Using a Feature Flag with CloudBees Feature Flags
-In this lab, you will gate a component behind the `title` feature flag, defined in the previous lab. Later, using CloudBees Feature Flags's dashboard, we will remotely configure the value of the flag, to either expose or hide this title element at will.
+In this lab, you will gate a component behind the `title` feature flag, defined in the previous lab and, using CloudBees Feature Flags's dashboard, we will remotely configure the value of the flag, to either expose or hide this title element based on the remote configuration.
 
 ### Adding a Title to the Microblog Post
 
-1. In Github, navigate to the root directory of the microblog-frontend repository. Ensure that you are on the `development` branch.
-2. Navigate to the `Posts.vue` file (`src/views/Posts.vue`) by clicking the `src` folder, `views` folder, followed by `Posts.vue`, consecutively. <p><img src="images/edit-postsvue-add-title-flag.png" /> 
+1. In Github, navigate to the root directory of the `microblog-frontend` repository. Ensure that you are on the `development` branch.
+2. Navigate to the `Posts.vue` file (`src/views/Posts.vue`) by clicking the `src` folder, `views` folder, followed by `Posts.vue`, consecutively. ![Add title flag to Posts.vue](images/edit-postsvue-add-title-flag.png?width=50pc)
 3. Click on the pencil icon to edit the file.
 4. This file is already using the `sidebar` flag and its state is checked using the `show_sidebar` function that gates the component as seen on **Line 7**. To use this and the `title` feature flags created in the `flags.js` file, we've included the `import` statement on **Line 50**. Now, we'll create a function called `show_title` that will return the `boolean` value from `Flags.title.isEnabled()`.
 
@@ -164,9 +164,9 @@ export default {
 
 ### Adding the Configuration Fetched Handler
 
-The Configuration Fetched Handler provides a mechanism to alert the CloudBees Feature Flags SDK when an updated configuration, from local storage or via an asynchronous network call, has loaded. It allows us to control what happens whenever a new configuration is fetched, and can be useful for troubleshooting by logging the `fetchedResults`. To apply the changes for client-side feature flags from the new configuration, an action (like a page refresh) has to take place.
+The **Configuration Fetched Handler** provides a mechanism to alert the CloudBees Feature Flags SDK when an updated configuration, from local storage or via an asynchronous network call, has loaded. It allows us to control what happens whenever a new configuration is fetched, and can be useful for troubleshooting by logging the `fetchedResults`. To apply the changes for client-side feature flags from the new configuration, an action (like a page refresh) has to take place.
 
-1. In Github, navigate to the root directory of the microblog-frontend repository on the `development` branch.
+1. In Github, navigate to the root directory of the `microblog-frontend` repository on the `development` branch.
 2. Open the `flags.js` file (navigating to `src/utils/flags.js`), and select the pencil icon to edit the file.
 3. We will induce the page refresh when a **new** configuration is retrieved **from the network**. We can also assist in any troubleshooting by adding `console.log` statements. Define the `configurationFetchedHandler` constant with its boolean logic cases; also, **ensure that it is added to `options` constant used to configure the `Rox.setup` call** as seen in the `flags.js` file below:
 
