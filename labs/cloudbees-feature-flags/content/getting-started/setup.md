@@ -54,14 +54,19 @@ import Rox from 'rox-browser'
 export const Flags = {
   sidebar: new Rox.Flag(false),
   title: new Rox.Flag(false)
-};
-
-const options = {
 }
 
-Rox.register('default', Flags)
-Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options)
+async function initRollout () {
+  const options = {
+  }
 
+  Rox.register('default', Flags)
+  await Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options)
+}
+
+initRollout().then(function () {
+  console.log('Done loading Rollout')
+})
 ```
 </details>
 
@@ -78,7 +83,7 @@ Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options)
 Once you commit the `.vuejs` **marker file** a job will be triggered on the CloudBees CI ***managed controller*** that was provisioned for you for this workshop. That job will build and deploy the `microblog-frontend` repository.
 
 1. Refresh the GitHub page for your `microblog-frontend` repository and you will eventually see a new **Environments** section on the right side of the page. Click on the **staging** link. ![Environments staging link](images/gitHubEnvironments.png?width=50pc)
-2. On the **Deployments / Activity log** page click on the **View deployment** button. ![Deployment activity](images/deploymentsActivity.png?width=50pc)
+2. On the **Deployments / Activity log** page, once the the **staging** environment is **Active**, click on the **View deployment** button. ![Deployment activity](images/deploymentsActivity.png?width=50pc)
 3. Open the URL in a new tab (that follows the format: `http://development.YOUR_ORG_NAME-microblog-frontend.workshop.labs.cb-sa.io`). This is the microblog!
 ![Deployed site](images/microblogWebsite.png?width=50pc)
 
