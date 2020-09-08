@@ -1,7 +1,7 @@
 ---
-title: "CloudBees Feature Flags Workshop Setup"
+title: "CloudBees Feature Flags Setup"
 chapter: false
-weight: 2
+weight: 3
 --- 
 
 In this lab, you will set up a CloudBees Feature Flags account and use it to manage feature flags through remote configurations created in the CloudBees Feature Flags dashboard.
