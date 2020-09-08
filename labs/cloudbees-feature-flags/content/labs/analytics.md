@@ -1,5 +1,5 @@
 ---
-title: "CloudBees Feature Flags and Analytics"
+title: "Feature Flags and Analytics"
 chapter: false
 weight: 5
 --- 
