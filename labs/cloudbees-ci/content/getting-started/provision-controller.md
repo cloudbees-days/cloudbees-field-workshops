@@ -15,12 +15,6 @@ CloudBees CI for modern platforms takes advantage of Kubernetes to providing dyn
 1. Login into the CloudBees CI Workshop cluster at: [https://workshop.cb-sa.io/cjoc/login](https://workshop.cb-sa.io/cjoc/login) 
 2. Enter the username and password, provided by your instructor, into the login screen and click the **Sign in** button. ![CloudBees CI Login](setup-login.png?width=40pc)
 3. Click on the link of your CloudBees CI ***managed controller***.
-4. You should see the following repositories copied into your workshop GitHub Organization.
-   - https://github.com/cloudbees-days/cloudbees-ci-config-bundle
-   - https://github.com/cloudbees-days/pipeline-library
-   - https://github.com/cloudbees-days/pipeline-template-catalog
-   - https://github.com/cloudbees-days/pipeline-policies
-   - https://github.com/cloudbees-days/simple-java-maven-app ![GitHub App Installed](forked-repos.png?width=50pc)
 
 >NOTE: There are a number of ways to create a ***managed controller***. We take a very opinionated way to provision attendees ***managed controllers*** for this workshop in order to pre-configure the components that you will interact with during the workshop.
 
