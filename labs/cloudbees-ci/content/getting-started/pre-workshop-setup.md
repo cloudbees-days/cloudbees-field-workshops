@@ -46,4 +46,3 @@ We highly recommend creating a new GitHub Organization for the CloudBees CI Work
    - https://github.com/cloudbees-days/simple-java-maven-app ![GitHub App Installed](forked-repos.png?width=50pc)
 
 >NOTE: These repositories were created from GitHub template repositories in the [CloudBees Field Workshops GitHub Organization](https://github.com/cloudbees-days).
-
