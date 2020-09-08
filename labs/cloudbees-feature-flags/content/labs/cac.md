@@ -1,5 +1,5 @@
 ---
-title: "CloudBees Feature Flags - Feature Flags and GitOps"
+title: "Feature Flags and GitOps"
 chapter: false
 weight: 4
 --- 

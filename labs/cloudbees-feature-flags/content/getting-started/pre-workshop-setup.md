@@ -1,7 +1,7 @@
 ---
 title: "Pre-Workshop Set-Up"
 chapter: false
-weight: 1
+weight: 2
 --- 
 
 If you are attending a CloudBees led workshop then these setup steps should be completed before the start of the workshop event.
