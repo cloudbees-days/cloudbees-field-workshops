@@ -1,5 +1,5 @@
 ---
-title: "Gating Code with a CloudBees Feature Flag"
+title: "Gating Code with Feature Flags"
 chapter: false
 weight: 1
 --- 

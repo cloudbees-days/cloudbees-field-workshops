@@ -1,5 +1,5 @@
 ---
-title: "Using CloudBees Feature Flags to Control Flags"
+title: "Controlling Flags"
 chapter: false
 weight: 2
 --- 

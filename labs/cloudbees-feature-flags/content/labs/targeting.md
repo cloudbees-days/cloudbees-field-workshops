@@ -1,5 +1,5 @@
 ---
-title: "User Targeting in CloudBees Feature Flags"
+title: "User Targeting"
 chapter: false
 weight: 3
 --- 
