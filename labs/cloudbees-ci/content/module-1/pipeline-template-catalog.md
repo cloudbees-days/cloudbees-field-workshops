@@ -42,7 +42,7 @@ This lab will explore how to manage CloudBees CI Pipeline Template Catalogs with
 9.  On the **CloudBees CI Workshop Template Catalog** screen you will see the following templates listed: ![Template List](workshop-template-list.png?width=50pc)
 
 ## Enforce the Use of Templates at the Folder Level
-The [CloudBees CI Folders Plus plugin](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-secure-guide/folders-plus) includes the ability to restrict the type of items/jobs allowed to be created in a folder. When this capability is used with CloudBees CI RBAC you can easily enforce that all your CloudBees CI users use an approved (and tested) Pipeline template.
+The [CloudBees CI Folders Plus plugin](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-secure-guide/folders-plus) includes the ability to restrict the type of items/jobs allowed to be created in a folder. When this capability is used with [CloudBees CI RBAC](https://docs.beescloud.com/docs/cloudbees-ci/latest/cloud-secure-guide/rbac) you can easily enforce the use of approved (and tested) Pipeline templates across all your CloudBees CI users.
 
 1. Navigate back to the top-level of your CloudBees CI ***managed controller*** (Jenkins instance) and click on **New Item** in the left menu.
 2. For the **item name** enter ***template-jobs***, select **Folder** (be sure to select **Folder** and not **Folder Template**) as the item type and then click the **OK** button. ![Restricted Folder Item](new-folder-click.png?width=50pc)
