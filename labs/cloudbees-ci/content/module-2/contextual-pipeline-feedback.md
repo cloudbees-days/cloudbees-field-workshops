@@ -1,7 +1,7 @@
 ---
 title: "Contextual Pipeline Feedback"
 chapter: false
-weight: 3
+weight: 4
 ---
 
 Developers should use the tools they want and not be required to use tools that slow them down. CloudBees CI contextual feedback for Jenkins Pipelines allows you to focus on your code and not your continuous integration tool.

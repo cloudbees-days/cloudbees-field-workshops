@@ -1,7 +1,7 @@
 ---
 title: "Using Pipeline Templates"
 chapter: false
-weight: 1
+weight: 2
 ---
 
 ## Create a Job from Pipeline Template Catalog
