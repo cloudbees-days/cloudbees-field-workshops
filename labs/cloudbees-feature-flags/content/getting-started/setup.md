@@ -4,6 +4,8 @@ chapter: false
 weight: 3
 --- 
 
+**For instructor led workshops please go to the workshop slides before proceeding with this lab: https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-feature-flags/#1**
+
 In this lab, you will set up a CloudBees Feature Flags account and use it to manage feature flags through remote configurations created in the CloudBees Feature Flags dashboard.
 
 ### Create a CloudBees Feature Flags Account
