@@ -46,4 +46,4 @@ The experiments seen in a CloudBees Feature Flags environment view govern the be
 ### Lab 3 Completed!
 Congratulations! You have finished Lab 3 of the CloudBees Feature Flags Workshop.
 
-**For instructor led workshops please return to the workshop slides: https://cloudbees-days.github.io/cloudbees-field-workshops/rollout/#23**
+**For instructor led workshops please return to the workshop slides: https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-feature-flags/#23**
