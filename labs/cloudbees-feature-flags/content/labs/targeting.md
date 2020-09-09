@@ -97,4 +97,4 @@ Reflect this logic in the **BetaUsers** Target Group Window by _first_ defining 
 ### Lab 4 Completed!
 Congratulations! You have finished Lab 4 of the CloudBees Feature Flags Workshop.
 
-**For instructor led workshops please return to the workshop slides: https://cloudbees-days.github.io/core-rollout-flow-workshop/rollout/#27**
+**For instructor led workshops please return to the workshop slides: https://cloudbees-days.github.io/cloudbees-field-workshops/rollout/#27**
