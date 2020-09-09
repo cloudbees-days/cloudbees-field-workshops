@@ -1,5 +1,5 @@
 ---
-title: "CloudBees CI Setup"
+title: "CloudBees CI Login"
 chapter: false
 weight: 3
 --- 
