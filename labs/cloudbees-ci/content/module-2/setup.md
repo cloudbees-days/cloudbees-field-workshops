@@ -11,4 +11,4 @@ For those attendees that did not complete **Module 1** we need to update the con
 3. Navigate back to your CloudBees CI managed controller and click on the monitor link of your CloudBees CI managed controller (if you don’t see a monitor alert then refresh your browser as it may take a minute or two for it to appear). ![Reload CasC](reload-config.png?width=50pc)
 4. Navigate back to the top-level of your ***managed controller***. Among other configuration changes, you will now see a **template-jobs** folder and an updated system message for your CloudBees CI ***managed controller*** showing that you are on *v2* of the CloudBees CI CasC bundle. ![Updated config](updated-config.png?width=50pc)
 
-**For instructor led workshops please return to the workshop slides: https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-ci/#40**
+**For instructor led workshops please return to the workshop slides: https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-ci/#41**
