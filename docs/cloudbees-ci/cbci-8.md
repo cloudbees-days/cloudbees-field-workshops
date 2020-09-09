@@ -7,6 +7,8 @@ count: false
 
 ---
 name: agenda-setup
+class: compact
+
 # Agenda
 
 1. Workshop Tools Overview
@@ -16,11 +18,11 @@ name: agenda-setup
 5. Configuration as Code (CasC) with CloudBees CI
 6. Pipeline Manageability & Governance with Policies
 7. A Developer Centric Experience
-7. Using Pipeline Templates
-8. Configuration as Code (CasC) for Developers
-9. .blue-bold[Contextual Feedback for Pipelines]
-10. Cross Team Collaboration
-11. Hibernating Managed Controllers
+8. Using Pipeline Templates
+9. Configuration as Code (CasC) for Developers
+10. .blue-bold[Contextual Feedback for Pipelines]
+11. Cross Team Collaboration
+12. Hibernating Managed Controllers
 
 ---
 name: contextual-feedback-overview

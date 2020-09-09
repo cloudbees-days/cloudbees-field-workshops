@@ -7,6 +7,8 @@ count: false
 
 ---
 name: dev-centric-agenda
+class: compact
+
 # Agenda
 
 1. Workshop Tools Overview

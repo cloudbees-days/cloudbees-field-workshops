@@ -7,6 +7,8 @@ count: false
 
 ---
 name: agenda-templates
+class: compact
+
 # Agenda
 
 1. Workshop Tools Overview
