@@ -15,11 +15,12 @@ name: agenda-setup
 4. Pipeline Manageability & Governance with Templates
 5. .blue-bold[Configuration as Code (CasC) with CloudBees CI]
 6. Pipeline Manageability & Governance with Policies
-7. Using Pipeline Templates
-8. Configuration as Code (CasC) for Developers
-9. Contextual Feedback for Pipelines
-10. Cross Team Collaboration
-11. Hibernating Managed Controllers
+7. A Developer Centric Experience
+8. Using Pipeline Templates
+9. Configuration as Code (CasC) for Developers
+10. Contextual Feedback for Pipelines
+11. Cross Team Collaboration
+12. Hibernating Managed Controllers
 
 
 ---
