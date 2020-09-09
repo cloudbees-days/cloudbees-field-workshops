@@ -1,5 +1,5 @@
 ---
-title: "Module 2 Setup"
+title: "Setup"
 chapter: false
 weight: 1
 ---
