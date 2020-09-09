@@ -70,7 +70,7 @@ In this lab we leverage a Pipeline Template that uses the CloudBees CI `policies
 7. Click on the **GitHub** link in the left menu to navigate to that branch in GitHub of your `pipeline-policies` repository.
 8. Notice that there is now a `pipeline-policies.json` file. This is the file that was exported by the **pipeline-policies-ops**.  Click on that file. ![pipeline-policies.json link](pipeline-policies-json-link.png?width=50pc)
 9. Click on the pencil icon to edit the file, then update the `maxTime` from `30` to `60` and then click the **Commit changes** button at the bottom of the screen to commit the changes to the `policy-patch` branch. ![edit pipeline-policies.json](edit-pipeline-policies-json.png?width=50pc)
-{{%expand "expand to copy edited pipeline-policies.json" %}}
+{{%expand "**EXPAND** to copy edited pipeline-policies.json" %}}
 ```json
 [ {
   "action" : "fail",
@@ -92,4 +92,4 @@ In this lab we leverage a Pipeline Template that uses the CloudBees CI `policies
 14. Once the ***pipeline-policies-ops*** **master** branch job completes successfully navigate to the top-level of your CloudBees CI ***managed controller*** and click on **Pipeline Policies** in the left menu.
 15. The **Timeout policy** you created in the previous lab will now have an updated **Timeout** value of `60 MINUTES`. ![updated policy](updated-policy.png?width=50pc)
 
-**For instructor led workshops please return to the workshop slides: https://cloudbees-days.github.io/core-rollout-flow-workshop/cloudbees-ci/#36**
+**For instructor led workshops please return to the workshop slides: https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-ci/#36**

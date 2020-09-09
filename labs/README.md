@@ -10,4 +10,4 @@ For the CloudBees Feature Flags Workshop labs:
 hugo --config ../cloudbees-feature-flags/config.toml --contentDir ../cloudbees-feature-flags/content/
 ```
 
-If you create a PR in the https://github.com/cloudbees-days/core-rollout-flow-workshop/ repository then a preview site will be built and deployed for you with the link provided as a PR comment once the site is ready. 
+If you create a PR in the https://github.com/cloudbees-days/cloudbees-field-workshops/ repository then a preview site will be built and deployed for you with the link provided as a PR comment once the site is ready. 
