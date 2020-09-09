@@ -82,11 +82,15 @@ name: agenda-overview
 1. Workshop Tools Overview
 2. .blue-bold[CloudBees CI Overview]
 3. Setup for Labs
-4. Configuration as Code (CasC) with CloudBees CI
-5. Pipeline Manageability & Governance with Templates and Policies
-6. Contextual Feedback for Pipelines
-7. Cross Team Collaboration
-8. Hibernating Managed Controllers
+4. Pipeline Manageability & Governance with Templates
+5. Configuration as Code (CasC) with CloudBees CI
+6. Pipeline Manageability & Governance with Policies
+7. A Developer Centric Experience
+8. Using Pipeline Templates
+9. Configuration as Code (CasC) for Developers
+10. Contextual Feedback for Pipelines
+11. Cross Team Collaboration
+12. Hibernating Managed Controllers
 
 ---
 name: core-overview-content
