@@ -24,7 +24,7 @@ In this lab you will create a PR for your fork of the `simple-java-maven-app` re
 13. Once the build completes (you may need to refresh your GitHub Checks page), click on the **pmd** check. Next click on the **checkstyle** check and you will see that there is still one issue, but it is not blocking the build. ![build passed with checkstyle issues](build-passed.png?width=50pc)
 14. Return the **Conversation** tab. Note that the **Required** checks - **checkstyle** and **pmd** - have all passed and the **Merge pull request** button is enabled. Click the **Merge pull request** button and on the next screen click the **Confirm merge** button. ![All checks passed](checks-passed-merge.png?width=40pc)
 15. On the next screen click the **Delete branch** button.
-16. The **master** branch job of your **simple-maven-app** Multibranch Pipeline project will now complete successfully. ![simple-maven-app success](simple-maven-app-success.png?width=50pc)
+16. The **main** branch job of your **simple-maven-app** Multibranch Pipeline project will now complete successfully. ![simple-maven-app success](simple-maven-app-success.png?width=50pc)
 
 In this lab you saw how CloudBees CI contextual feedback allows you to spend more time in the tools you use for development.
 
