@@ -11,7 +11,7 @@ In this lab, you will set up a CloudBees Feature Flags account and use it to man
 ### Create a CloudBees Feature Flags Account
 
 1. Open the CloudBees Feature Flags [sign-up form](https://app.rollout.io/signup) in a _new tab_ within your browser.
-2. Fill out the form with your name, email, and a created password. After confirming your password,  check the box agreeing to CloudBees Feature Flags' Terms of Service (which can be viewed [here](https://docs.cloudbees.com/docs/cloudbees-common/latest/subscription-agreement/)), and click **Sign Up**.
+2. Fill out the form with your name, email, and a created password. After confirming your password, check the box agreeing to CloudBees Feature Flags' Terms of Service (which can be viewed [here](https://docs.cloudbees.com/docs/cloudbees-common/latest/subscription-agreement/)), and click **Sign Up**.
 3. After you have successfully created an account, the CloudBees Feature Flags dashboard will be displayed. On the far left side of the dashboard, click the **App Settings** panel. From the resulting page, select the **Environments** tab.
 4. Click **Add New Environment** and name it **Development**. Then click **Generate Key**.
 5. **Close** the subsequent **Development Key** pop-up window so that both _Production_ and _Development_ keys are displayed. Leave this CloudBees Feature Flags dashboard tab open in the browser. Both keys will be referenced later in this lab.
@@ -74,11 +74,6 @@ initRollout().then(function () {
 
 4. Commit the changes by adding a comment (e.g. "added title flag"), and select the **Commit directly to the `development` branch** radio button. And then click **Commit changes**.
 
-### Adding .vuejs Marker File
-
-1. Navigate to the root level of the `microblog-frontend` repository on the `development` branch. Click the **Create a new file** button.
-2. Name the file `.vuejs` (don't forget the leading period).
-3. Leave the file blank, commit the file by adding a comment (e.g. "New .vuejs file"). Ensure the **Commit directly to the `development` branch** radio button is enabled. Then select **Commit new file**.
 
 ### See Deployed Microblog Website
 
