@@ -35,17 +35,17 @@ If you haven't already done the pre-workshop setup then do it now: https://cloud
 The pre-workshop setup consisted of:
 * Setting up a GitHub.com user account that will be used throughout the workshop. If you have an existing GitHub.com account you will be able to use that account if you are comfortable using that account to create a GitHub Organization for use in this workshop.
 * Creating a GitHub organization to use for this workshop.
-* Installing the CloudBees CI Workshop GitHub App into your workshop GitHub Organization which will trigger a CloudBees CI job that will:
-  * Install several repositories, to used in the workshop labs, into your workshop GitHub Organization.
-  * A CloudBees CI (Jenkins) account was created for you.
-  * A (team specific) CloudBees CI managed Jenkins instance we refer to as a [***managed controller***](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/managing-masters) was provisioned for each of you.
+* Installing the CloudBees CI Workshop GitHub App into your workshop GitHub Organization triggering a CloudBees CI job that:
+  * Installed several repositories into your workshop GitHub Organization.
+  * Created a CloudBees CI (Jenkins) account for you.
+  * Provisioned a (team specific) CloudBees CI managed Jenkins instance we refer to as a [***managed controller***](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/managing-masters) for each of you.
 
 ---
 name: core-setup-lab
 # Lab - CloudBees CI Setup
 In this lab you will login into your CloudBees CI managed controller.
 
-* If the URL for the CloudBees CI Workshop cluster has not already been provided then it will be provided by your instructor.
+* If the URL for the CloudBees CI Workshop cluster was not already provided to you then it will be provided by your instructor.
 * The *CloudBees CI Workshop Setup* lab instructions are available at: 
   * https://cloudbees-ci.labs.cb-sa.io/getting-started/cloudbees-ci-login/
 
