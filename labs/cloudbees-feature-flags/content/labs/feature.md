@@ -5,7 +5,7 @@ weight: 1
 --- 
 
 ## Using a Feature Flag with CloudBees Feature Flags
-In this lab, you will gate a component behind the `title` feature flag, defined in the previous lab and, using CloudBees Feature Flags's dashboard, we will remotely configure the value of the flag, to either expose or hide this title element based on the remote configuration.
+In this lab, you will *gate* a component behind the `title` feature flag defined in the previous lab by using CloudBees Feature Flags's dashboard. We will then remotely configure the value of the flag to control whether the title element is visible or hidden.
 
 ### Adding a Title to the Microblog Post
 
@@ -33,7 +33,7 @@ data: function () {
  <h1 class="title">Posts <span v-if="show_title"> - Show New Title!</span></h1>
 ```
 
-6. After editing, expand the following to review:
+6. After editing, expand the following to review (and if you have any errors then replace the entire file in GitHub with the contents):
 <details><summary>Updated <code>Post.vue</code></summary>
 
 ```html
@@ -164,7 +164,7 @@ export default {
 
 ### Adding the Configuration Fetched Handler
 
-The **Configuration Fetched Handler** provides a mechanism to alert the CloudBees Feature Flags SDK when an updated configuration, from local storage or via an asynchronous network call, has loaded. It allows us to control what happens whenever a new configuration is fetched, and can be useful for troubleshooting by logging the `fetchedResults`. To apply the changes for client-side feature flags from the new configuration, an action (like a page refresh) has to take place.
+The **Configuration Fetched Handler** provides a mechanism to alert the CloudBees Feature Flags SDK in your application when an updated configuration, from local storage or via an asynchronous network call, has loaded. It allows us to control what happens when a new configuration is fetched, and can be used for troubleshooting by logging the `fetchedResults`. To apply the changes for client-side feature flags from the new configuration, an action (like a page refresh) has to take place.
 
 1. In Github, navigate to the root directory of the `microblog-frontend` repository on the `development` branch.
 2. Open the `flags.js` file (navigating to `src/utils/flags.js`), and select the pencil icon to edit the file.
@@ -176,7 +176,7 @@ import Rox from 'rox-browser'
 export const Flags = {
   sidebar: new Rox.Flag(false),
   title: new Rox.Flag(false)
-};
+}
 
 export const configurationFetchedHandler = fetcherResults => {
   console.log('The configuration status is: ' + fetcherResults.fetcherStatus)
@@ -186,18 +186,24 @@ export const configurationFetchedHandler = fetcherResults => {
   else if (fetcherResults.fetcherStatus === 'ERROR_FETCH_FAILED') {
     console.log('Error occured! Details are: ' + fetcherResults.errorDetails)
   }
-};
+}
 
-const options = {
-  configurationFetchedHandler: configurationFetchedHandler
-};
+async function initRollout () {
+  const options = {
+    configurationFetchedHandler: configurationFetchedHandler
+  }
 
-Rox.register('default', Flags);
-Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
+  Rox.register('default', Flags)
+  await Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options)
+}
+
+initRollout().then(function () {
+  console.log('Done loading Rollout')
+})
 
 ```
 
-4. Create a commit message (e.g. "Inserted configurationFetchedHandler") and select **Commit directly to the `development` branch** radio button. Click **Commit changes**.
+1. Enter a commit message (e.g. "Inserted configurationFetchedHandler"), select **Commit directly to the `development` branch** radio button and click **Commit changes**.
 
 ### Checking Microblog Website
 
