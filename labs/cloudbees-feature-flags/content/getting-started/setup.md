@@ -19,18 +19,18 @@ In this lab, you will set up a CloudBees Feature Flags account and use it to man
 
 ### Environment Variable
 
-The CloudBees CI Pipeline, that will automatically build and deploy your `mircroblog-frontend` application, uses a different CloudBees Feature Flags environment key depending on which branch is deployed. Later in the workshop, we'll learn how these separate environment keys can be leveraged to apply the multi-environment view of the CloudBees Feature Flags dashboard. This will allow a flag to have a particular *Production* configuration, while using a completely different ruleset for the code connected to the *Development* environment.
+The CloudBees CI Pipeline, that will automatically build and deploy your `mircroblog-frontend` application, uses a different CloudBees Feature Flags environment key depending on which branch is deployed. Later in the workshop, we'll learn how these separate environment keys can be leveraged to apply the multi-environment view of the CloudBees Feature Flags dashboard. This will allow a flag to have a particular *Production* configuration, while using a completely different ruleset for the code connected to the *Development* environment. However, in this lab we will update a GitHub pull request between the `development` and `main` branch of your  `mircroblog-frontend` repository.
 
-1. Switch tabs to your Github organization created for the workshop and navigate to your copy of the `microblog-frontend` repository.
+1. Open your browser to the Github Organization you created for the workshop and navigate to the `microblog-frontend` repository.
 2. Change the branch from `main` to `development`. All work, until some components of Lab 5, will take place on the `development` branch. After changing branches, click on the `.env.production` file.
-3. Click the pencil icon to edit the file - again, making sure you are on the `development` branch.
-![GitHub edit file](images/pencilEdit.png?width=50pc)
-1. Switch back to your CloudBees Feature Flags tab with the dashboard in view. Copy the `<ROLLOUT_ENV_KEY>` associated with the _Production_ environment. Navigate back to the Github tab with the `.env.production` file being edited.
-2. Replace `YOUR_PRODUCTION_KEY_HERE` on **Line 1** by pasting your unique Production `<ROLLOUT_ENV_KEY>`.
-3. At the bottom of the page, select **Commit directly to the `development` branch** radio button. Then click the **Commit changes** button.
-4. Navigate back to the root directory of the microblog-frontend repository (`development` branch). Click the `.env.development` file. And then select the pencil icon on the following page to make an edit to the file.
-5. Now, copy your _Development_ `<ROLLOUT_ENV_KEY>` from the CloudBees Feature Flags dashboard. Then replace `YOUR_DEVELOPMENT_KEY_HERE` in the `.env.development` file by pasting the unique Development CloudBees Feature Flags key.
-6. Select the **Commit the file directly to the `development` branch** radio button, and then click **Commit changes**.
+3. Click the pencil icon to edit the file - again, making sure you are on the `development` branch. ![GitHub edit file](images/pencilEdit.png?width=50pc)
+1. Switch back to the CloudBees Feature Flags dashboard. Copy the `<ROLLOUT_ENV_KEY>` associated with the _Production_ environment. 
+2. Navigate back to the Github tab with the `.env.production` file being edited.
+3. Replace `YOUR_PRODUCTION_KEY_HERE` on **Line 1** by pasting your unique Production `<ROLLOUT_ENV_KEY>`.
+4. At the bottom of the page, select **Commit directly to the `development` branch** radio button. Then click the **Commit changes** button.
+5. Navigate back to the root directory of the microblog-frontend repository (`development` branch). Click the `.env.development` file. And then select the pencil icon on the following page to make an edit to the file.
+6. Now, copy your _Development_ `<ROLLOUT_ENV_KEY>` from the CloudBees Feature Flags dashboard. Then replace `YOUR_DEVELOPMENT_KEY_HERE` in the `.env.development` file by pasting the unique Development CloudBees Feature Flags key.
+7. Select the **Commit the file directly to the `development` branch** radio button, and then click **Commit changes**.
 ![Commit changes](images/commitChanges.png?width=50pc)
 
 ### Create Feature Flags with CloudBees Feature Flags
@@ -79,9 +79,12 @@ initRollout().then(function () {
 
 Once you commit the `.vuejs` **marker file** a job will be triggered on the CloudBees CI ***managed controller*** that was provisioned for you for this workshop. That job will build and deploy the `microblog-frontend` repository.
 
-1. Refresh the GitHub page for your `microblog-frontend` repository and you will eventually see a new **Environments** section on the right side of the page. Click on the **staging** link. ![Environments staging link](images/gitHubEnvironments.png?width=50pc)
-2. On the **Deployments / Activity log** page, once the the **staging** environment is **Active**, click on the **View deployment** button. ![Deployment activity](images/deploymentsActivity.png?width=50pc)
-3. Open the URL in a new tab (that follows the format: `http://development.YOUR_ORG_NAME-microblog-frontend.workshop.labs.cb-sa.io`). This is the microblog!
+1. Navigate to the `microblog-frontend` repository.
+2. Click on the **Pull requests** tab and the click on the **New Feature** pull request. ![New Feature PR](new-feature-pr.png?width=50pc)
+3. On the **Open** pull requests screen you will see that there is a CloudBees CI build in process. ![Build in progress](images/building.png?width=50pc)
+4. Once the build has finished you will see that the branch was successfully deployed to the *staging* environment, click on the **View deployment** button. ![Deployment activity](images/view-deployment.png?width=50pc)
+5. On the **Deployments / Activity log** page, once the the **staging** environment is **Active**, click on the **View deployment** button. 
+6. This is the microblog frontend.
 ![Deployed site](images/microblogWebsite.png?width=50pc)
 
 ### Checking Communication with CloudBees Feature Flags
