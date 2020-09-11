@@ -31,11 +31,12 @@ class: compact
 4. Pipeline Manageability & Governance with Templates
 5. Configuration as Code (CasC) with CloudBees CI
 6. Pipeline Manageability & Governance with Policies
-7. Using Pipeline Templates
-8. Configuration as Code (CasC) for Developers
-9. Contextual Feedback for Pipelines
-10. Cross Team Collaboration
-11. Hibernating Managed Controllers
+7. A Developer Centric Experience
+8. Using Pipeline Templates
+9. Configuration as Code (CasC) for Developers
+10. Contextual Feedback for Pipelines
+11. Cross Team Collaboration
+12. Hibernating Managed Controllers
 
 .footnote[.bold[*] Please note, it is unlikely that we will get through all the material. However, all of the lab material is freely available on GitHub and can be self-led. The CloudBees CI lab environment will be available until next Monday if you would like to complete any labs we don't get through.]
 

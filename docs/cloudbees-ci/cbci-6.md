@@ -19,10 +19,10 @@ class: compact
 6. Pipeline Manageability & Governance with Policies
 7. A Developer Centric Experience
 7. .blue-bold[Using Pipeline Templates]
-8. Configuration as Code (CasC) for Developers
-9. Contextual Feedback for Pipelines
-10. Cross Team Collaboration
-11. Hibernating Managed Controllers
+9. Configuration as Code (CasC) for Developers
+10. Contextual Feedback for Pipelines
+11. Cross Team Collaboration
+12. Hibernating Managed Controllers
 
 ---
 name: dev-casc-overview
