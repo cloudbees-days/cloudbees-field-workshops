@@ -7,6 +7,8 @@ count: false
 
 ---
 name: agenda-setup
+class: compact
+
 # Agenda
 
 1. Workshop Tools Overview

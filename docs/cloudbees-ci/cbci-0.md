@@ -77,6 +77,8 @@ Notes
 
 ---
 name: agenda-overview
+class: compact
+
 # Agenda
 
 1. Workshop Tools Overview
