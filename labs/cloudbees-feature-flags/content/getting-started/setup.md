@@ -77,19 +77,21 @@ initRollout().then(function () {
 
 ### See Deployed Microblog Website
 
-Once you commit the `.vuejs` **marker file** a job will be triggered on the CloudBees CI ***managed controller*** that was provisioned for you for this workshop. That job will build and deploy the `microblog-frontend` repository.
+Once you committed the `flags.js` file a job will be triggered on the CloudBees CI ***managed controller*** that was provisioned for you for this workshop. That job will build and deploy the `microblog-frontend` application.
 
 1. Navigate to the `microblog-frontend` repository.
 2. Click on the **Pull requests** tab and the click on the **New Feature** pull request. ![New Feature PR](new-feature-pr.png?width=50pc)
 3. On the **Open** pull requests screen you will see that there is a CloudBees CI build in process. ![Build in progress](images/building.png?width=50pc)
 4. Once the build has finished you will see that the branch was successfully deployed to the *staging* environment, click on the **View deployment** button. ![Deployment activity](images/view-deployment.png?width=50pc)
+   - **IMPORTANT:** If your build end with any errors then click on the **Details** link for the **error check**.
 5. On the **Deployments / Activity log** page, once the the **staging** environment is **Active**, click on the **View deployment** button. 
 6. This is the microblog frontend.
 ![Deployed site](images/microblogWebsite.png?width=50pc)
 
+
 ### Checking Communication with CloudBees Feature Flags
 
-1. Switch tabs to CloudBees Feature Flags.
+1. In your browser, switch to CloudBees Feature Flags dashboard.
 2. On the left-hand side of the dashboard, click the **Development** panel and then select the **Audit Logs** view from the drop down options.
 3. You should see both the `default.title` and the `default.sidebar` flags added from the code are available for remote configuration in the dashboard! There are also some default properties that have been added, but we'll add more to use in a future lab. ![Audit logs](images/auditLogs.png?width=50pc)
 
