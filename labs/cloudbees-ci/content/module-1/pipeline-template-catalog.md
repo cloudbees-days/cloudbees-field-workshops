@@ -48,5 +48,5 @@ The [CloudBees CI Folders Plus plugin](https://docs.cloudbees.com/docs/cloudbees
 2. For the **item name** enter ***template-jobs***, select **Folder** (be sure to select **Folder** and not **Folder Template**) as the item type and then click the **OK** button. ![Restricted Folder Item](new-folder-click.png?width=50pc)
 3. Scroll to the bottom of the folder configuration and click on **Restrict the kind of children in this folder** - a [CloudBees Folders Plus](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-secure-guide/folders-plus) feature - and then select **CloudBees CI Configuration Bundle**, **Maven Pipeline Template** and **Pipeline Policies GitOps** (the template jobs we will be using throughout the rest of the workshop) - and then hit the **Save** button. ![Restricted Folder Items](restricted-items-check.png?width=40pc)
 4. Now when you click on **New Item** in the **template-jobs** folder you will be restricted to the **CloudBees CI Configuration Bundle**, **Maven Pipeline Template** and **Pipeline Policies GitOps** item types. This reduces confusion of what job types to use and enforces the use of approved templates. ![Restricted Folder New Item](restricted-folder-new-item.png?width=30pc)
-   
-**For instructor led workshops please return to the workshop slides: https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-ci/#21**
+
+**For instructor led workshops please <a href="https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-ci/#21">return to the workshop slides</a>**   
