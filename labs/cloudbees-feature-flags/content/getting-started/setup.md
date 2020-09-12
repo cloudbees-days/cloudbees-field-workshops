@@ -83,7 +83,9 @@ Once you committed the `flags.js` file a job will be triggered on the CloudBees 
 2. Click on the **Pull requests** tab and the click on the **New Feature** pull request. ![New Feature PR](new-feature-pr.png?width=50pc)
 3. On the **Open** pull requests screen you will see that there is a CloudBees CI build in process. ![Build in progress](images/building.png?width=50pc)
 4. Once the build has finished you will see that the branch was successfully deployed to the *staging* environment, click on the **View deployment** button. ![Deployment activity](images/view-deployment.png?width=50pc)
-   - **IMPORTANT:** If your build end with any errors then click on the **Details** link for the **error check**.
+   - **IMPORTANT:** If your build ends with any errors then click on the **Details** link for the **error** check. ![Error](images/pr-error.png?width=50pc)
+   - In the **Checks** view, with the **error** check selected, expand the **Log** under **Details**. ![Error log](images/error-log.png?width=50pc)
+   - Scroll down and, in this example, you will see that we forgot a comma. ![Missing comma](images/missing-comma.png?width=50pc)
 5. On the **Deployments / Activity log** page, once the the **staging** environment is **Active**, click on the **View deployment** button. 
 6. This is the microblog frontend.
 ![Deployed site](images/microblogWebsite.png?width=50pc)
