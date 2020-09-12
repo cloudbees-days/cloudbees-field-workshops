@@ -87,8 +87,9 @@ Once you committed the `flags.js` file a job will be triggered on the CloudBees 
    - In the **Checks** view, with the **error** check selected, expand the **Log** under **Details**. ![Error log](images/error-log.png?width=50pc)
    - Scroll down and, in this example, you will see that we forgot a comma in the `/src/utils/flags.js` file. ![Missing comma](images/missing-comma.png?width=50pc)
    - To fix the syntax error click on the **Files changed** tab, scroll down to the `flags.js` file, then click on the 3 dots to bring up the menu to access and click the **Edit file** link. ![Edit file](images/edit-file.png?width=50pc)
-   - Fix the error, in this case adding a comma after `sidebar: new Rox.Flag(false)`, and then click the **Commit changes** button. 
-   - A new build will be triggered and the error will be fixed. ![Fix error](images/fix-error.png?width=50pc)
+   - Fix the error, in this case adding a comma after `sidebar: new Rox.Flag(false)`, and then click the **Commit changes** button. ![Fix error](images/fix-error.png?width=50pc)
+   - Navigate back to the **Checks** view and you will see a new build was triggered. ![Waiting for checks](images/checks-waiting.png?width=50pc)
+   - Once the build completes you should see that your error is fixed.
 5. On the **Deployments / Activity log** page, once the **staging** environment is **Active**, click on the **View deployment** button. 
 6. This is the microblog frontend.
 ![Deployed site](images/microblogWebsite.png?width=50pc)
