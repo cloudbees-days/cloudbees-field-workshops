@@ -4,7 +4,7 @@ chapter: false
 weight: 2
 --- 
 
-In this lab, you will use the CloudBees Feature Flags dashboard to remotely configure the values of the `title` and `sidebar` feature flags. Additionally, we will introduce the Flag Override tool, and walk through a scenario where developers may need to alter the values of flags for local testing without affecting the values for others.
+In this lab, you will use the CloudBees Feature Flags dashboard to remotely configure the values of the `title` and `sidebar` feature flags. We will also introduce the [Flags Override tool](https://docs.beescloud.com/docs/cloudbees-feature-flags/latest/debugging/override-view#_using_the_flags_override_view), and walk through a scenario where developers may need to alter the values of flags for local testing without affecting the values for others.
 
 ### Creating a CloudBees Feature Flags Experiment
 
@@ -14,16 +14,13 @@ In this lab, you will use the CloudBees Feature Flags dashboard to remotely conf
 
 <p><img src="images/createNewTitleExp.png" />
 
-4. Right now, the new title is hidden for all. And the title experiment reflects this: the only condition uses the `title` flag's default value (False). This default experiment is set for the audience defined on **All Versions** (the microblog only has 1 version) and **All Users**.
+4. Right now, the new title is hidden for all. And the title experiment reflects this: the default condition uses the `title` flag's default value (False). This default experiment is set for the audience defined on **All Versions** (the microblog currently only has 1 version) and **All Users**.
 5. Let's change the flag's experiment so that all users will see the new title. Click the current **False** behavior value, and from the drop-down menu, choose **True** to edit the `title` flag experiment.
-6. When changes to an experiment are applied, a new configuration file is written and delivered to the devices. Select **Update Audience** button to send the new configuration with its updated `title` flag value.
-
-<p><img src="images/setTitleTrue.png" />
-
-7. Switch tabs to bring up the Microblog website. Thanks to the `configurationFetchedHandler` implemented in the previous lab, the page refreshes automatically and the new configuration is applied. The new title should appear!
+6. When changes to an experiment are applied, a new configuration file is written and delivered to the devices. Select **Update Audience** button to send the new configuration with its updated `title` flag value. ![Title true](images/setTitleTrue.png?width=50pc)
+7. Switch tabs to bring up the Microblog website. Thanks to the `configurationFetchedHandler` implemented in the previous lab, the page refreshes automatically and the new configuration is applied. The new title will appear! ![New title](images/new-title-visible.png?width=50pc)
 8. Navigate back to the CloudBees Feature Flags dashboard. And navigate to **Experiments** view under **Development** environment, and choose a **Create a New Experiment** button. Ensure the new experiment will change the behavior for the **default.sidebar** flag before continuing to **Set Audience**.
-9.  Similar to the title experiment, edit the **sidebar** by changing the only condition's **False** behavior value to **True**. Apply the experiment's changes through the **Update Audience** button.
-10. Switch back to the Microblog website, and after the auto-refresh, the sidebar should now be displayed!
+9.  Similar to the title experiment, edit the **sidebar** by changing the only condition's **False** behavior value to **True**. Apply the experiment's changes through the **Update Audience** button. ![Sidebar experiment](images/sidebar-experiment.png?width=50pc)
+10. Switch back to the Microblog website, and after the auto-refresh, the sidebar will now be displayed! ![Sidebar visible](images/sidebar-visible.png?width=50pc)
 
 ### Flag Override View Interface
 
