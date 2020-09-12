@@ -34,8 +34,8 @@ The experiments seen in a CloudBees Feature Flags environment view govern the be
 
 ### Learning Flags Override Code Implementation
 
-1. Bring the microblog-frontend repository and its root directory view in Github.
-2. On the `development` branch, navigate to `src/components/Nav.vue` by clicking the `src` folder, then `components` folder, and finally the `Nav.vue` file.
+1. In GitHub, navigate to the root directory of your `microblog-frontend` repository.
+2. Making sure you are in the `development` branch, navigate to `src/components/Nav.vue` by clicking the `src` folder, then `components` folder, and finally the `Nav.vue` file.
 3. Note that on **Line 16**, we are including the Flags Override view, `rolloutOverride`, made available when the DEV link is seen, gated by `v-if="isDev"`.
 4. The Flags Override view relies on including the CloudBees Feature Flags library for this file as seen on **Line 45**. The `rolloutOverride` function is implemented using the library's `Rox.showOverrides()`, seen on **Line 53**.
 5. To restrict the Flags Override view and functionality from unintended audiences, we have chosen to show this tool **only on the Development branch deployments**. This is accomplished on **Line 15**, where `isDev` gates the component using the boolean value returned from the function defined on **Line 58**.
@@ -43,4 +43,4 @@ The experiments seen in a CloudBees Feature Flags environment view govern the be
 ### Lab 3 Completed!
 Congratulations! You have finished Lab 3 of the CloudBees Feature Flags Workshop.
 
-**For instructor led workshops please return to the workshop slides: https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-feature-flags/#23**
+**For instructor led workshops please <a href="https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-feature-flags/#23">return to the workshop slides</a>**
