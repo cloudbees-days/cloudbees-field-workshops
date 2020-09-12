@@ -82,7 +82,6 @@ Once you committed the `flags.js` file a job will be triggered on the CloudBees 
 1. Navigate to the `microblog-frontend` repository.
 2. Click on the **Pull requests** tab and the click on the **New Feature** pull request. ![New Feature PR](new-feature-pr.png?width=50pc)
 3. On the **Open** pull requests screen you will see that there is a CloudBees CI build in process. ![Build in progress](images/building.png?width=50pc)
-4. Once the build has finished you will see that the branch was successfully deployed to the *staging* environment, click on the **View deployment** button. ![Deployment activity](images/view-deployment.png?width=50pc)
    - **IMPORTANT:** If your build ends with any errors then click on the **Details** link for the **error** check. ![Error](images/pr-error.png?width=50pc)
    - In the **Checks** view, with the **error** check selected, expand the **Log** under **DETAILS**. ![Error log](images/error-log.png?width=50pc)
    - Scroll down and, in this example, you will see that we forgot a comma in the `/src/utils/flags.js` file. ![Missing comma](images/missing-comma.png?width=50pc)
@@ -90,6 +89,7 @@ Once you committed the `flags.js` file a job will be triggered on the CloudBees 
    - Fix the error, in this case adding a comma after `sidebar: new Rox.Flag(false)`, and then click the **Commit changes** button. ![Fix error](images/fix-error.png?width=50pc)
    - Navigate back to the **Checks** view and you will see a new build was triggered. ![Waiting for checks](images/checks-waiting.png?width=50pc)
    - Once the build completes you should see that your error is fixed. 
+4. Once the build has finished successfully you will see the branch deployed to the *staging* environment, click on the **View deployment** button. ![Deployment activity](images/view-deployment.png?width=50pc)
 5. This is the microblog frontend.
 ![Deployed site](images/microblogWebsite.png?width=50pc)
 
@@ -99,6 +99,7 @@ Once you committed the `flags.js` file a job will be triggered on the CloudBees 
 1. In your browser, switch to CloudBees Feature Flags dashboard.
 2. On the left-hand side of the dashboard, click the **Development** panel and then select the **Audit Logs** view from the drop down options.
 3. You should see both the `default.title` and the `default.sidebar` flags added from the code are available for remote configuration in the dashboard! There are also some default properties that have been added, but we'll add more to use in a future lab. ![Audit logs](images/auditLogs.png?width=50pc)
+4. Finally, click on **Flags** in the left menu and you will see the two flags in your `flag.js` file. ![Flags](images/dashboard-flags.png?width=50pc)
 
 ### Lab 1 Completed!
 Congratulations! You have finished Lab 1 of the CloudBees Feature Flags Workshop.

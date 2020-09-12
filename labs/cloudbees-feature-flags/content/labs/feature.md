@@ -168,7 +168,7 @@ The **Configuration Fetched Handler** provides a mechanism to alert the CloudBee
 
 1. In Github, navigate to the root directory of the `microblog-frontend` repository on the `development` branch.
 2. Open the `flags.js` file (navigating to `src/utils/flags.js`), and select the pencil icon to edit the file.
-3. We will induce the page refresh when a **new** configuration is retrieved **from the network**. We can also assist in any troubleshooting by adding `console.log` statements. Define the `configurationFetchedHandler` constant with its boolean logic cases; also, **ensure that it is added to `options` constant used to configure the `Rox.setup` call** as seen in the `flags.js` file below:
+3. We will trigger a page refresh when a **new** configuration is retrieved **from the network**. We can also assist in any troubleshooting by adding `console.log` statements. Define the `configurationFetchedHandler` constant with its boolean logic cases; also, **ensure that it is added to `options` constant used to configure the `Rox.setup` call** as seen in the `flags.js` file below:
 
 ```javascript
 import Rox from 'rox-browser'
@@ -182,8 +182,7 @@ export const configurationFetchedHandler = fetcherResults => {
   console.log('The configuration status is: ' + fetcherResults.fetcherStatus)
   if (fetcherResults.hasChanges && fetcherResults.fetcherStatus === 'APPLIED_FROM_NETWORK') {
     window.location.reload(false)
-  }
-  else if (fetcherResults.fetcherStatus === 'ERROR_FETCH_FAILED') {
+  } else if (fetcherResults.fetcherStatus === 'ERROR_FETCH_FAILED') {
     console.log('Error occured! Details are: ' + fetcherResults.errorDetails)
   }
 }
@@ -200,14 +199,12 @@ async function initRollout () {
 initRollout().then(function () {
   console.log('Done loading Rollout')
 })
-
 ```
-
-1. Enter a commit message (e.g. "Inserted configurationFetchedHandler"), select **Commit directly to the `development` branch** radio button and click **Commit changes**.
+4. Enter a commit message (e.g. "Inserted configurationFetchedHandler"), select **Commit directly to the `development` branch** radio button and click **Commit changes**.
 
 ### Checking Microblog Website
 
-1. Check the latest pipeline and once it's complete, navigate to the microblog website (either by switching tabs or clicking the link supplied in the `deployment url` step of **Deploy** stage).
+1. Navigate back to the **New Feature** pull request and once the build has finished successfully you will see the branch deployed to the *staging* environment, click on the **View deployment** button.
 2. On the microblog website, refresh the page, and then open the console from your browser's developer tools. Check the log to view the messages from the `configurationFetchedHandler`.
 
-**For instructor led workshops please return to the workshop slides: https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-feature-flags/#18**
+**For instructor led workshops please <a href="https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-feature-flags/#18">return to the workshop slides</a>**
