@@ -32,4 +32,4 @@ In this lab you will create a new Multibranch Pipeline job from the **Maven Pipe
 8. Scroll to the bottom of the page and click the **Commit changes** *(directly to the `main` branch)* button to commit the renamed `cloudbees-ci.yml` to the **main** branch of your `simple-java-maven-app` repository. 
 9.  Navigate back to the **simple-maven-app** Multibranch Pipeline on your CloudBees CI ***managed controller*** project and you will see that there is now a **main** branch job. ![Maven main job](maven-main-job.png?width=50pc)
 
-**For instructor led workshops please return to the workshop slides: https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-ci/#44**
+**For instructor led workshops please <a href="https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-ci/#44">return to the workshop slides</a>**
