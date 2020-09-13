@@ -69,7 +69,7 @@ In this lab we leverage a Pipeline Template that uses the CloudBees CI `policies
 6. Shortly after the **master** branch job completes successfully you will see a new **policy-patch** branch job. Click on the **policy-patch** branch job. If you don't see the **policy-patch** branch job refresh your browser page. ![policy-patch job](policy-patch-job.png?width=50pc)
 7. Click on the **GitHub** link in the left menu to navigate to that branch in GitHub of your `pipeline-policies` repository.
 8. Notice that there is now a `pipeline-policies.json` file. This is the file that was exported by the **pipeline-policies-ops**.  Click on that file. ![pipeline-policies.json link](pipeline-policies-json-link.png?width=50pc)
-9. Click on the pencil icon to edit the file, then update the `maxTime` from `30` to `60` and then click the **Commit changes** button at the bottom of the screen to commit the changes to the `policy-patch` branch. ![edit pipeline-policies.json](edit-pipeline-policies-json.png?width=50pc)
+9. Click on the pencil icon to edit the file, then update the `maxTime` from `30` to `60` and then click the **Commit changes** button at the bottom of the screen to commit the changes directly to the `policy-patch` branch. ![edit pipeline-policies.json](edit-pipeline-policies-json.png?width=50pc)
 {{%expand "**EXPAND** to copy edited pipeline-policies.json" %}}
 ```json
 [ {
