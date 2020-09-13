@@ -20,8 +20,8 @@ In this lab you will:
 6.  Next, click on the **config-bundle-ops** link in the menu at the top of page and you will see that there are no jobs for **Branches** and 4 jobs for **Pull Requests**.  Click on the **Pull Requests** tab. ![Scan Log](bundle-no-branch-jobs.png?width=50pc) 
 7.  In the **Pull Requests** view of your Multibranch project click on the link for **PR-1**. ![PR-1 Link](pr-link.png?width=50pc)
 8.  On the build screen for **PR-1** click on the **GitHub** link in the left navigation menu that will take you to the pull request page in GitHub. ![PR-1 GitHub Link](pr-github-link.png?width=50pc)
-9.  To quickly review the changes that will be made to your CloudBees CI configuration bundle for your CloudBees CI ***managed controller***, click on the **Files changed** tab and scroll down to see the differences. 
-    - The `version` of the `bundle.yaml` file was updated to **2**, this is required to trigger a reload of the configuration bundle from CloudBees CI Operations Center to your ***managed controller***.
+9.  To review the changes that will be made to your CloudBees CI configuration bundle for your CloudBees CI ***managed controller***, click on the **Files changed** tab and scroll down to see the differences. 
+    - The `version` of the `bundle.yaml` file was updated to **2**, **it is important to note that this is required to trigger a reload of the configuration bundle from CloudBees CI Operations Center to your** ***managed controller***.
     - The `cloudbees-pipeline-policies` plugin, that we will need for the next lab, was added to the `plugins.yaml` file. ![Scan Log](pr-files-changed.png?width=50pc)
 10. Once you have reviewed the changes, click back on the **Conversation** tab and then click the green **Merge pull request** button and then the **Confirm merge** button. ![Merge PR](merge-pr.png?width=50pc)
 11. On the next screen click the **Delete branch** button.
