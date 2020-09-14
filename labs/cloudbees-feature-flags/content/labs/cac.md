@@ -15,7 +15,7 @@ weight: 4
 
 ### Using CasC and GitOps
 1. In the CloudBees Feature Flags dashboard, disable the sidebar experiment in Development environment by toggling `Active` to `Killed`. <p><img src="images/sidebar_killed.png" />
-2. In GitHub, go look at your `rollout-configuration-as-code` repo and note the structure. You should see an automatically generated `README.md` and a `target_groups` directory.
+2. In GitHub, go look at your `feature-flags-configuration-as-code` repo and note the structure. You should see an automatically generated `README.md` and a `target_groups` directory.
 3. Then, switch from `master` branch to the automatically created `Development` branch and note the differences. Note the existence of an `experiments` folder that contains `default.sidebar.yml` with `enabled: false` on line 5.
 4. Within the Github code editor, modify `default.sidebar.yml` by editing the line `enabled: false` to become `enabled: true` and commit to `Development` branch. Your YAML should closely resemble this:
 
