@@ -13,7 +13,7 @@ Hibernation for CloudBees CI managed controller is managed at the global Jenkins
 
 >NOTE: For this workshop, the GitHub webhook used by all attendees has been configured at the GitHub App level and we are using [Smee.io](https://smee.io/) to forward those webhook deliveries to everyones' CloudBees CI ***managed controllers***. 
 
-The hibernating monitor service provides a post proxy for things like GitHub webhooks. In this lab we will add a GitHub webhook to your `simple-java-maven-app` repository that includes the CloudBeesCI hibernation POST queue infix.
+The hibernating monitor service provides a `POST` proxy for things like GitHub webhooks. In this lab we will add a GitHub webhook to your `simple-java-maven-app` repository that includes the [CloudBees CI hibernation POST queue infix](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/managing-masters#post-queue-github).
 
 1. First, we will update the hibernation grace period of your ***managed controller*** so we don't have to wait 2 hours for it to hibernate. Navigate to the top-level of your ***managed controlller**, click on the **Mange Jenkins** in the left menu and then click **Configure System**. ![Manage Jenkins](manage-jenkins.png?width=50pc)
 2. Scroll down to the **Automatic hibernation** configuration and update the **Grace period** from *7200* seconds (configured via CasC) to *60* seconds and then click the **Save** button. By the time we are finished with the rest of the steps in this lab your ***managed controller** should be hibernating. ![Grace period](grace-period.png?width=50pc)
@@ -24,6 +24,8 @@ The hibernating monitor service provides a post proxy for things like GitHub web
 7. Navigate to the `src/main/java/com/mycompany/app/App.java` file in your `simple-java-maven-app` repository and click on the pencil icon to edit it. ![App.java](app-java-file.png?width=50pc)
 8. We will fix the checkstyle warning by moving the `}` on line 10, column 17 to be alone on a line. Make the change and then click the **Commit changes** button to commit directly to the `main` branch. ![Update and commit](update-commit.png?width=50pc)
 9.  After a few minutes your ***managed controller*** will no longer be hibernated and you will see that the **main** branch job for your **simple-maven-app** was triggered by the **Push event to branch main**. ![Job triggered](job-triggered.png?width=50pc)
+
+>NOTE: If you review the **Automatic hibernation** configuration for your ***managed controller*** after it is awoken, then you will see that the hibernation **Grace period** has been reconfigured to a value of ***7200*** seconds or 2 hours based on the value configured in the CloudBees CI configuration bundle for your ***managed controller***.
 
 ## Un-hibernate a Managed Controllers via the Operations Center UI
 
