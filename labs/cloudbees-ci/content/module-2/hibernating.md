@@ -15,7 +15,7 @@ Hibernation for CloudBees CI managed controller is managed at the global Jenkins
 
 The hibernating monitor service provides a `POST` proxy for things like GitHub webhooks. In this lab we will add a GitHub webhook to your `simple-java-maven-app` repository that includes the [CloudBees CI hibernation POST queue infix](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/managing-masters#post-queue-github).
 
-1. First, we will update the hibernation grace period of your ***managed controller*** so we don't have to wait 2 hours for it to hibernate. Navigate to the top-level of your ***managed controlller**, click on the **Mange Jenkins** in the left menu and then click **Configure System**. ![Manage Jenkins](manage-jenkins.png?width=50pc)
+1. First, we will update the hibernation grace period of your ***managed controller*** so we don't have to wait 2 hours for it to hibernate. Navigate to the top-level of your ***managed controller***, click on the **Mange Jenkins** link in the left menu and then click **Configure System**. ![Manage Jenkins](manage-jenkins.png?width=50pc)
 2. Scroll down to the **Automatic hibernation** configuration and update the **Grace period** from *7200* seconds (configured via CasC) to *60* seconds and then click the **Save** button. By the time we are finished with the rest of the steps in this lab your ***managed controller** should be hibernating. ![Grace period](grace-period.png?width=50pc)
 3. Navigate to your `simple-java-maven-app` repository and click on the **Settings** link. ![GitHub Settings link](settings-link.png?width=50pc)
 4. In the **Settings** left menu click on the **Webhooks** link and then click on the **Add webhook** button. ![Add webhook button](add-webhook-button.png?width=50pc)
