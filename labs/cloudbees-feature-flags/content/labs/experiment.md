@@ -10,10 +10,7 @@ In this lab, you will use the CloudBees Feature Flags dashboard to remotely conf
 
 1. Switch tabs to bring up the CloudBees Feature Flags Dashboard.
 2. On the left-hand side of the screen, click the **Development** environment, and then select **Experiments** from the expanded list. From the view that follows, click the **Create a New Experiment** button.
-3. In the pop-up menu, choose the **default.title** flag from the drop-down. To set up the experiment, choose the **Set Audience** button.
-
-<p><img src="images/createNewTitleExp.png" />
-
+3. In the pop-up menu, choose the **default.title** flag from the drop-down. To set up the experiment, choose the **Set Audience** button. ![Title true](images/createNewTitleExp.png?width=50pc)
 4. Right now, the new title is hidden for all. And the title experiment reflects this: the default condition uses the `title` flag's default value (False). This default experiment is set for the audience defined on **All Versions** (the microblog currently only has 1 version) and **All Users**.
 5. Let's change the flag's experiment so that all users will see the new title. Click the current **False** behavior value, and from the drop-down menu, choose **True** to edit the `title` flag experiment.
 6. When changes to an experiment are applied, a new configuration file is written and delivered to the devices. Select **Update Audience** button to send the new configuration with its updated `title` flag value. ![Title true](images/setTitleTrue.png?width=50pc)
