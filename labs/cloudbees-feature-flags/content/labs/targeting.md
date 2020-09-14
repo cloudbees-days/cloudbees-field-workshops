@@ -5,11 +5,11 @@ weight: 3
 --- 
 
 ## Changing Flag Behavior for a Defined Audience
-The goal of this lab is route a _subset_ of the microblog's audience to experience one value of a feature flag, while the rest of the users will see a separate value. The intended sub-group that will be created in the CloudBees Feature Flags interface and defined by properties in code and communicated to the CloudBees Feature Flags dashboard through the `setup` function in the `flags.js` file. This lab will implement logic to _display the sidebar_ **only for logged in, Beta Users**.
+The goal of this lab is route a _subset_ of the microblog's audience to experience one value of a feature flag, while the rest of the users will see a separate value. The intended sub-group will be created in the CloudBees Feature Flags interface and defined by properties in code, and then communicated to the CloudBees Feature Flags dashboard through the `setup` function in the `flags.js` file. This lab will implement logic to _display the sidebar_ **only for logged in, Beta Users**.
 
 ### Add Properties from Code to CloudBees Feature Flags Dashboard
 
-1. First we need to make sure the `isLoggedIn` and `betaAccess` functions are available to be used in the `flags.js` file. In the `development` branch of the microblog repository, navigate to the `flags.js` file (`src/utils/flags.js`). Click the pencil icon to edit the file.
+1. First we need to make sure the `isLoggedIn` and `betaAccess` functions are available to be used in the `flags.js` file. Make sure you are on the `development` branch of the `microblog-frontend` repository, navigate to the `flags.js` file (`src/utils/flags.js`). Click the pencil icon to edit the file. ![Edit flags.js on development branch](images/edit-flags-deve-branch.png?width=50pc)
 2. Allow `flags.js` to call `isLoggedIn` and `betaAccess` functions. Import `store` and `betaAccess` from their respective definition files. Starting on **Line 2**, include the following import calls:
 ```javascript
 import store from '../store'
@@ -18,8 +18,8 @@ import { betaAccess } from './users'
 
 3. The `isLoggedIn` and `betaAccess` boolean functions have to be communicated to the CloudBees Feature Flags dashboard. To accomplish this, set up a `setCustomBooleanProperty` call for each of the functions. Before the `Rox.register` line, add the following lines:
 ```javascript
-Rox.setCustomBooleanProperty('isLoggedIn', store.getters.isLoggedIn);
-Rox.setCustomBooleanProperty('hasBetaAccess', betaAccess());
+Rox.setCustomBooleanProperty('isLoggedIn', store.getters.isLoggedIn)
+Rox.setCustomBooleanProperty('hasBetaAccess', betaAccess())
 ```
 
 4. Review your edits with updated code below
@@ -30,30 +30,34 @@ import Rox from 'rox-browser'
 import store from '../store'
 import { betaAccess } from './users'
 
-export const Flags = {
+export const Flags = 
+  {
   sidebar: new Rox.Flag(false),
   title: new Rox.Flag(false)
-};
+}
 
 export const configurationFetchedHandler = fetcherResults => {
   console.log('The configuration status is: ' + fetcherResults.fetcherStatus)
   if (fetcherResults.hasChanges && fetcherResults.fetcherStatus === 'APPLIED_FROM_NETWORK') {
     window.location.reload(false)
-  }
-  else if (fetcherResults.fetcherStatus === 'ERROR_FETCH_FAILED') {
+  } else if (fetcherResults.fetcherStatus === 'ERROR_FETCH_FAILED') {
     console.log('Error occured! Details are: ' + fetcherResults.errorDetails)
   }
-};
+}
 
-const options = {
-  configurationFetchedHandler: configurationFetchedHandler
-};
+async function initRollout () {
+    const options = {
+    configurationFetchedHandler: configurationFetchedHandler
+  }
+  Rox.setCustomBooleanProperty('isLoggedIn', store.getters.isLoggedIn)
+  Rox.setCustomBooleanProperty('hasBetaAccess', betaAccess())
+  Rox.register('default', Flags);
+  await Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
+}
 
-Rox.setCustomBooleanProperty('isLoggedIn', store.getters.isLoggedIn);
-Rox.setCustomBooleanProperty('hasBetaAccess', betaAccess());
-
-Rox.register('default', Flags);
-Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
+initRollout().then(function () {
+  console.log('Done loading Rollout')
+})
 
 ```
 </details>

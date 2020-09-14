@@ -5,7 +5,7 @@ weight: 4
 --- 
 
 ### Connecting to GitHub Cloud
-1. Create an empty repository in your GitHub organization named "feature-flags-configuration-as-code"
+1. Create an empty repository named ***feature-flags-configuration-as-code*** in your workshop GitHub Organization. 
 2. Connect the CloudBees Feature Flags app into the Github repository
   1. Go to **App Settings > Integrations tab** (from the left Panel)
   2. Click the **Connect** button <p><img src="images/app-integrations.png" />
