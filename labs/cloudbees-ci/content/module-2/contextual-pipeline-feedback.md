@@ -26,6 +26,6 @@ In this lab you will create a PR for your fork of the `simple-java-maven-app` re
 15. On the next screen click the **Delete branch** button.
 16. The **main** branch job of your **simple-maven-app** Multibranch Pipeline project will now complete successfully. ![simple-maven-app success](simple-maven-app-success.png?width=50pc)
 
-In this lab you saw how CloudBees CI contextual feedback allows you to spend more time in the tools you use for development but still having access to important feedback from your continuous integration pipelines.
+In this lab you saw how CloudBees CI contextual feedback allows you to spend more time in the tools you use for development while still having access to important and actionable feedback from your continuous integration pipelines.
 
 **For instructor led workshops please <a href="https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-ci/#53">return to the workshop slides</a>**
