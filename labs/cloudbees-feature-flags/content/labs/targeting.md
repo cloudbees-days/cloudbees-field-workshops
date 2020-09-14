@@ -64,16 +64,6 @@ initRollout().then(function () {
 
 5. Create a commit message (e.g. "Added setCustomBooleanProperty"). **Commit changes** directly to the `development` branch.
 
-### Segment Title Experiment Using A Single Property
-
-1. Switch tabs to bring up the microblog website. To check the current width, bring up Developer Tools. In the console, type `window.innerWidth` and note the value returned.
-2. We will initially segment a flag's value based on a _single_ property (`rox.screen_width`). Bring up the CloudBees Feature Flags dashboard, and within the Development environment view, select the **title** experiment.
-3. To segment users, we need to select **Add New Condition** that begins to create the `if-else` structure of the resulting configuration.
-4. We will limit the availability of the title feature to a subset of users, an audience defined by the screen's width property as the sole criterion. Within this newly added condition, change **All Users** to **Property** match. Set the new condition's remaining behavior such that _if the rox.screen_width is less than or equal to `<=` **half** of the width value returned from Step 1, **then** the title flag should be **True**_.
-5. Edit the older condition that became the **else** block, such that the _title flag is **False**_.
-6. Apply this new segmented audience experiment by clicking **Update Audience**.
-7. Switch tabs to bring the Microblog's website into view. Copy your unique Microblog URL. _Open a new private browser window_ such that there is only one tab in the new session with a clear cache. Bring up **Developer Tools**, and modify the session's screen width to be _less than the value set in title's experiment_. Only after the session window has been resized, **paste** and go to your Microblog URL. The new title should be displayed in this size, but not in the larger sized browsing session. After noting the distinction, close Developer Tools and the smaller sized browsing session.
-
 ### Create a Target Group Based on Custom Properties
 
 1. In the CloudBees Feature Flags dashboard, navigate to the **Target Groups** displayed on the left. Select the **Create a New Group** button in the middle of the resulting page.
