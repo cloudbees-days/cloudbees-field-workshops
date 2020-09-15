@@ -13,7 +13,7 @@ This lab will leverage CloudBees Feature Flags's `impressionHandler` to forward 
 ### Adding the ImpressionHandler to Code
 
 1. Switch tabs to bring up the `microblog-frontend` repository. Within the root directory, on the `development` branch, navigate to the public folder. Then select the `index.html` file.
-2. Google Analytics requires a site tag. Select the pencil icon to edit the `index.html` file, and remove the comments on **Line 5** and **Line 13** so that the `gtag.js` can be seen. If using your own dashboard replace your `UA` property ID where appropriate.
+2. Google Analytics requires a site tag. Select the pencil icon to edit the `index.html` file, and remove the comments on **Line 5** and **Line 10** so that the `gtag.js` can be seen. If using your own dashboard replace your `UA` property ID where appropriate.
 
 3. Review the edits below in
 <details><summary>Updated <code>index.html</code></summary>
@@ -57,14 +57,14 @@ This lab will leverage CloudBees Feature Flags's `impressionHandler` to forward 
 export const impressionHandler = (reporting, experiment) => {
   if (experiment.name === 'title') {
     console.log('Title flag, ' + reporting.name + ' ,value is ' + reporting.value)
-    gtag('event', experiment.name, {
+    window.gtag('event', experiment.name, {
       'event_category': reporting.name,
       'event_label': reporting.value
     })
   } else {
     console.log('Not in title experiment. Flag ' + reporting.name + '. default value ' + reporting.value + ' was used')
   }
-};
+}
 ```
 
 7. Within the `options` constant, include a call to the newly defined `impressionHandler`. After the configurationFetchedHandler call, insert a comma then and make the `impressionHandler` part of the options as seen below:
@@ -84,37 +84,45 @@ import { store } from '../store'
 import { betaAccess } from './users'
 
 export const Flags = {
-  sidebar: new Rox.Flag(false)
-};
+  sidebar: new Rox.Flag(false),
+  title: new Rox.Flag(false)
+}
 
 export const configurationFetchedHandler = fetcherResults => {
+  console.log('The configuration status is: ' + fetcherResults.fetcherStatus)
   if (fetcherResults.hasChanges && fetcherResults.fetcherStatus === 'APPLIED_FROM_NETWORK') {
     window.location.reload(false)
+  } else if (fetcherResults.fetcherStatus === 'ERROR_FETCH_FAILED') {
+    console.log('Error occured! Details are: ' + fetcherResults.errorDetails)
   }
-};
+}
 
 export const impressionHandler = (reporting, experiment) => {
-  if (experiment.name === 'title') {
+  if (experiment.name === 'title) {
     console.log('Title flag, ' + reporting.name + ' ,value is ' + reporting.value)
-    gtag('event', experiment.name, {
+    window.gtag('event', experiment.name, {
       'event_category': reporting.name,
       'event_label': reporting.value
     })
   } else {
     console.log('Not in title experiment. Flag ' + reporting.name + '. default value ' + reporting.value + ' was used')
   }
-};
+}
 
-const options = {
-  configurationFetchedHandler: configurationFetchedHandler,
-  impressionHandler: impressionHandler
-};
+async function initRollout () {
+  const options = {
+    configurationFetchedHandler: configurationFetchedHandler,
+    impressionHandler: impressionHandler     
+  }
+  Rox.setCustomBooleanProperty('isLoggedIn', store.getters.isLoggedIn)
+  Rox.setCustomBooleanProperty('hasBetaAccess', betaAccess())
+  Rox.register('default', Flags)
+  await Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options)
+}
 
-Rox.setCustomBooleanProperty('isLoggedIn', store.getters.isLoggedIn);
-Rox.setCustomBooleanProperty('hasBetaAccess', betaAccess())
-
-Rox.register('default', Flags);
-Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
+initRollout().then(function () {
+  console.log('Done loading Rollout')
+})
 
 ```
 </details>
