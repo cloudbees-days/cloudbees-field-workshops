@@ -28,7 +28,7 @@ flag: default.sidebar
 enabled: true
 conditions:
   - group:
-      name: LoggedInUsers
+      name: BetaUsers
     value: true
 value: false
 ```
