@@ -29,12 +29,13 @@ name: cloudbees-ci-overview-dev
 
 # CloudBees CI Overview
 
- Enable developers to spend less time on admin tasks and more time coding. 
+ CloudBees CI enables developers to spend less time on admin tasks and more time coding. 
  
  - Increase efficiency and speed to release. Decrease context-switching.  
  - Provide repeatable components utilizing Configuration as Code. 
  - Speed your time to build with streamlined and self-service ***managed controller*** ( team specific Jenkins instances) provisioning.  
  - Dynamically share build agents across many controllers allowing for increased performance with decreased cost.
+ - Reduce infrastructure costs by automatically hibernating idle resources.
 
 ---
 name: dev-centric-lab
