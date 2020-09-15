@@ -64,7 +64,7 @@ In this lab we leverage a Pipeline Template that uses the CloudBees CI `policies
 1. Navigate into the **template-jobs** folder on your ***managed controller***.
 2. Click on the **New Item** link in the left navigation menu.
 3. Enter ***pipeline-policies-ops*** as the **Item Name**, select **Pipeline Policies GitOps** template as the item type and then click the **OK** button. ![New Pipeline Policies GitOps template job](new-policies-template-job.png?width=50pc)
-4. On the next screen, fill in the **GitHub Organization** template parameter (all the other default values should be correct) and then click the **Save** button. ![Config Policies template Parameters](policies-template-params.png?width=50pc)
+4. On the next screen, fill in the **GitHub Organization** template parameter with the name of the GitHub Organization you created for this workshop (all the other default values should be correct) and then click the **Save** button. ![Config Policies template Parameters](policies-template-params.png?width=50pc)
 5. Click on the **Scan Repository Log** link in the left menu to see the results of the branch indexing scan and then click on the **pipeline-catalog-ops** link at the top of the page. ![Scan Log](policy-ops-scan-log.png?width=50pc)
 6. Shortly after the **master** branch job completes successfully you will see a new **policy-patch** branch job. Click on the **policy-patch** branch job. If you don't see the **policy-patch** branch job refresh your browser page. ![policy-patch job](policy-patch-job.png?width=50pc)
 7. Click on the **GitHub** link in the left menu to navigate to that branch in GitHub of your `pipeline-policies` repository.

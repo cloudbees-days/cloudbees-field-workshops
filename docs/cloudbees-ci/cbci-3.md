@@ -61,10 +61,9 @@ class: compact
 
 # Enabling CasC for a CloudBees CI Managed Controllers (Jenkins instance)
 
-* The `core-workshop-setup` job that you ran in the *CloudBees CI Workshop Setup* lab updated your forked copy of the `jenkins.yaml` file with your GitHub information and then copied the Core configuration bundle YAML files from your forked **core-config-bundle** repository to a sub-directory with the same name as your ***managed controller*** inside a special directory - the `jcasc-bundles-store` directory - in the Jenkins home of the CloudBees CI Operations Center from which you created your ***managed controller***. 
-* Your ***managed controller*** was then *re-provisioned* in order for the CloudBees CI configuration bundle to take effect.
+* After you installed the CloudBees CI Workshop GitHub App into your workshop GitHub Organization a customized configuration bundle created in your copy of the **core-config-bundle** repository was copied to a special sub-directory on CloudBees CI Operations Center with the same name as your ***managed controller***. 
 * When the CloudBees CI Operations Center is provisioning a ***managed controller*** it will check to see if there is a matching configuration for the name of the ***managed controller*** being provisioned and copy a CloudBees CI configuration bundle link YAML file to `/var/casc-bundle/bundle-link.yaml` on your ***managed controller*** and set the value of the `core.casc.config.bundle` system property to match that file path.
-* Your ***managed controller*** will then use that protected link to download the CloudBees CI configuration bundle to your ***managed controller***. The `jenkins.yaml` file will be downloaded from the OC to `/var/jenkins_home/core-casc-bundle/jenkins.yaml` and the `casc.jenkins.config` system property will be set to that file path.
+* Your ***managed controller*** used that protected link to download the CloudBees CI configuration bundle to your ***managed controller***. The `jenkins.yaml` (and other bundler yaml files) file were downloaded from the CloudBees CI Operations Center to the `/var/jenkins_home/core-casc-bundle/` directory and the `casc.jenkins.config` system property was set to the `jenkins.yaml` file path.
 
 ---
 name: config-bundle-details-yaml
