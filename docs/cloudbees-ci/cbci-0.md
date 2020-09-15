@@ -64,6 +64,7 @@ name: lab-environment
   * Each attendee will have their own Jenkins instance provisioned as if you were a team. We refer to these as a ***managed controller*** since they are dynamical provisioned on Kubernetes and their full lifecycle is **managed** by the CloudBees CI Operations Center.
 * All the instructions for the labs and these slides are publicly available
 * Attendees will be using their own GitHub accounts 
+* **IMPORTANT:** If you haven't already completed the *Pre-Workshop Setup* then do so here: https://cloudbees-ci.labs.cb-sa.io/getting-started/pre-workshop-setup/
 
 ---
 name: core-overview-title

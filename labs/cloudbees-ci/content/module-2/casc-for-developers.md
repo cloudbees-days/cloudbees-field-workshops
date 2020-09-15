@@ -6,7 +6,7 @@ weight: 3
 
 As a developer you typically (and shouldn't) have access to makes configuration changes to your team's CloudBees CI ***managed controller*** (Jenkins instance). However, developers can take advantage of the GitOps approach to managing the configuration of a CloudBees CI ***managed controller*** by requesting configuration changes via a GitHub pull requests.
 
-In this lab you will act as developer and CloudBees CI admin, where you will create, review and merge a pull request to your `cloudbees-ci-config-bundle` repository in your workshop GitHub Organization.
+In this lab you will act as developer and CloudBees CI admin, where you will review and merge a pull request to your `cloudbees-ci-config-bundle` repository in your workshop GitHub Organization.
 
 1. Navigate to your `cloudbees-ci-config-bundle` repository in GitHub and click on the **Pull requests** link. ![PR link](pr-link.png?width=50pc) 
 2. On the next screen, click on the **CasC for Devs lab updates** pull request (#2) and then click on the **Files changed** tab to review the requested configuration changes. As you can see, we are adding the `cloudbees-slack` plugin and `cloudbees-slack-integration` configuration for your CloudBees CI user. ![PR Files Changed](dev-casc-changes.png?width=50pc)
