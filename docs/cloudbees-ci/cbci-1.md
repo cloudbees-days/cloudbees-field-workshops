@@ -55,7 +55,7 @@ class: compact
 
 # CloudBees CI Workshop Setup Review
 
-While your ***managed controller*** is restarting, let's explore the results of the workshop setup:
+Let's explore the results of the workshop setup:
 
 .no-bullet[
 * In the GitHub Organization that you created for this workshop you will notice that you now have 5 repositories. The following repositories were [copied from templates](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template) from the [CloudBees Field Workshops GitHub Organization](https://github.com/cloudbees-days) when you installed the **CloudBees CI Workshop** GitHub App into your workshop GitHub Organization:
