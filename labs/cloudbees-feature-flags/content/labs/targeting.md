@@ -89,4 +89,4 @@ initRollout().then(function () {
 ### Lab 4 Completed!
 Congratulations! You have finished Lab 4 of the CloudBees Feature Flags Workshop.
 
-**For instructor led workshops please return to the workshop slides: https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-feature-flags/#27**
+**For instructor led workshops please <a href="https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-feature-flags/#27">return to the workshop slides</a>**
