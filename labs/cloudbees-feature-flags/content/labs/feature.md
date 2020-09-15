@@ -12,9 +12,7 @@ In this lab, you will *gate* a component behind the `title` feature flag defined
 1. In Github, navigate to the root directory of the `microblog-frontend` repository. Ensure that you are on the `development` branch.
 2. Navigate to the `Posts.vue` file (`src/views/Posts.vue`) by clicking the `src` folder, `views` folder, followed by `Posts.vue`, consecutively. ![Add title flag to Posts.vue](images/edit-postsvue-add-title-flag.png?width=50pc)
 3. Click on the pencil icon to edit the file.
-4. This file is already using the `sidebar` flag and its state is checked using the `show_sidebar` function that gates the component as seen on **Line 7**. To use this and the `title` feature flags created in the `flags.js` file, we've included the `import` statement on **Line 50**. Now, we'll create a function called `show_title` that will return the `boolean` value from `Flags.title.isEnabled()`.
-
-To add this functionality, first insert a comma `,` at the end of the `show_sidebar` definition on **Line 63**. Then, add a new line after the comma, and define the `show_title` to check the `title` flag state using `Flags.title.isEnabled()` as seen in the `data` segment below:
+4. This file is already using the `sidebar` flag and its state is checked using the `show_sidebar` function that gates the component as seen on **Line 7**. To use this and the `title` feature flags created in the `flags.js` file, we've included the `import` statement on **Line 50**. Now, we'll create a function called `show_title` that will return the `boolean` value from `Flags.title.isEnabled()`. To add this functionality, first insert a comma `,` at the end of the `show_sidebar` definition on **Line 63**. Then, add a new line after the comma, and define the `show_title` to check the `title` flag state using `Flags.title.isEnabled()` as seen in the `data` segment below:
 ```javascript
 data: function () {
   return {
@@ -160,15 +158,15 @@ export default {
 ```
 </details>
 
-7. Create a commit message (e.g. "Added title component") and select the **Commit directly to the `development` branch** radio button. Click **Commit changes**.
+7. Create a commit message (e.g. "Added new title feature") and select the **Commit directly to the `development` branch** radio button. Click **Commit changes**.
 
 ### Adding the Configuration Fetched Handler
 
-The **Configuration Fetched Handler** provides a mechanism to alert the CloudBees Feature Flags SDK in your application when an updated configuration, from local storage or via an asynchronous network call, has loaded. It allows us to control what happens when a new configuration is fetched, and can be used for troubleshooting by logging the `fetchedResults`. To apply the changes for client-side feature flags from the new configuration, an action (like a page refresh) has to take place.
+The **Configurationed Fetch Handler** provides a mechanism to alert the CloudBees Feature Flags SDK in your application when an updated configuration, from local storage or via an asynchronous network call, has loaded. It allows us to control what happens when a new configuration is fetched, and can be used for troubleshooting by logging the `fetchedResults`. For the changes for a client-side feature flags from the new configuration to be applied, an action (like a page refresh) has to take place.
 
 1. In Github, navigate to the root directory of the `microblog-frontend` repository on the `development` branch.
 2. Open the `flags.js` file (navigating to `src/utils/flags.js`), and select the pencil icon to edit the file.
-3. We will trigger a page refresh when a **new** configuration is retrieved **from the network**. We can also assist in any troubleshooting by adding `console.log` statements. Define the `configurationFetchedHandler` constant with its boolean logic cases; also, **ensure that it is added to `options` constant used to configure the `Rox.setup` call** as seen in the `flags.js` file below:
+3. We will trigger a page refresh when a **new** configuration is retrieved **from the network**. We can also assist in any troubleshooting by adding `console.log` statements. Define the `configurationFetchedHandler` constant with its boolean logic cases and then ad it to the `options` constant used to configure the `Rox.setup` call as seen in the `flags.js` file below:
 
 ```javascript
 import Rox from 'rox-browser'

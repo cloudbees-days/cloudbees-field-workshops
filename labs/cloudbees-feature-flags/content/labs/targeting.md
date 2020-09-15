@@ -67,26 +67,24 @@ initRollout().then(function () {
 ### Create a Target Group Based on Custom Properties
 
 1. In the CloudBees Feature Flags dashboard, navigate to the **Target Groups** displayed on the left. Select the **Create a New Group** button in the middle of the resulting page.
-2. We are going to create a new Target Group, _useful when defined by 2 or more `customProperties`_. First name the new group **BetaUsers**, a subset that will be defined by the `isLoggedIn` and `betaAccess` properties.
+2. We are going to create a new Target Group, _useful when defined by 2 or more `customProperties`_. Enter ***BetaUsers*** **Name** of the new group, a subset that will be defined by the `isLoggedIn` and `betaAccess` properties.
 3. A microblog user is considered part of the **BetaUsers** group when **both** of the following conditions are met:
-* `isLoggedIn` is **True**
-* `hasBetaAccess` is **True**
+   * `isLoggedIn` is **True**
+   * `hasBetaAccess` is **True**
+   * Reflect this logic in the **BetaUsers** Target Group Window be defining the first **Condition** as `isLoggedIn` **Is True**. Then, **Add a New Condition**, select the ***Matches All Conditions*** option, and the select the `betaAccess` **Property** as **Is True**.
 
-Reflect this logic in the **BetaUsers** Target Group Window by _first_ defining that the `isLoggedIn` property is **True**. Then, **Add a New Condition**, select the subsequent _Matches All Conditions_ option, and ensure that `betaAccess` must also be **True**.
-
-4. The **BetaUsers** Target Group definition should look similar to that below. Then click **Create Group** so the defined Target Group can be used in experiments.
+4. Once your **BetaUsers** **New Target Group** definition looks similar to screenshot below click **Create Group** button so it can be used in experiments. ![New target group](images/new-target-group.png?width=50pc)
 
 
 ### Using a Target Group in an Experiment
 
-1. Within the CloudBees Feature Flags dashboard, navigate to the **Development** experiment, and bring up the **sidebar** experiment.
-2. Create a new condition by selecting **Add New Condition**. Within new condition, change the audience selection from **All Users** to **Target Group**. Edit the remainder of the `if` condition block so that _for a Target Group that matches any of BetaUsers, the sidebar flag value is **True**_.
-3. Edit the older condition that became the `else` block such that the sidebar flag value will be **False**. The experiment modifications should be appear similar to the below image.
-
-4. Apply the experimentation changes through clicking **Update Audience**.
+1. Within the CloudBees Feature Flags dashboard, navigate to the **Development** **Experiments**, and click on the **sidebar** experiment.
+2. Create a new condition by selecting **Add New Condition**. Within the new condition, change the audience selection from **All Users** to **Target Group**. Edit the remainder of the `if` condition block so that _for a Target Group that matches any of BetaUsers, the sidebar flag value is ***True***.
+3. Edit the older condition that became the `else` block such that the sidebar flag value will be **False**. The experiment modifications should match the following screenshot. ![Update sidebar experiment](images/update-sidebar-experiment.png?width=50pc)
+4. Apply the experimentation changes by clicking **Update Audience**.
 5. Navigate to the microblog website to test the configuration logic.
-* Log in with the username `admin` and the password `admin` and then navigate back to the homepage. The sidebar should be hidden!
-* Log out, and sign in with the username `betauser` and `betauser` password. Upon, navigating back to the homepage the sidebar is now displayed, as we configured it to be _only for Beta Users_.
+   * Log in with the username `admin` and the password `admin` and then navigate back to the homepage. The sidebar should be hidden!
+   * Log out, and sign in with the username `betauser` and `betauser` password. Upon, navigating back to the homepage the sidebar is now displayed (you may need to refresh the browser page), as we configured it to be _only for Beta Users_.
 
 ### Lab 4 Completed!
 Congratulations! You have finished Lab 4 of the CloudBees Feature Flags Workshop.
