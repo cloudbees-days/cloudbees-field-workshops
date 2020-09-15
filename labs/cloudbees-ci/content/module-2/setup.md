@@ -4,7 +4,7 @@ chapter: false
 weight: 1
 ---
 
-If you completed **Module 1** then skip this setup.
+**IMPORTANT:** If you completed **Module 1** then skip this setup.
 
 For those attendees that did not complete **Module 1** we need to update the configuration of your CloudBees CI ***managed controller*** to match what was completed in **Module 1**. 
 
