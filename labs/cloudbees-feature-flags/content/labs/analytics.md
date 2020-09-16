@@ -16,6 +16,7 @@ This lab will leverage CloudBees Feature Flags's `impressionHandler` to forward 
 2. Google Analytics requires a site tag. Select the pencil icon to edit the `index.html` file, and remove the comments on **Line 5** and **Line 13** so that the `gtag.js` can be seen. If using your own dashboard replace your `UA` property ID where appropriate.
 3. Review the edits below:
    <details><summary>Updated <code>index.html</code></summary>
+   
    ```html
    <!DOCTYPE html>
    <html lang="en">
