@@ -50,7 +50,7 @@ This lab will leverage CloudBees Feature Flags's `impressionHandler` to forward 
 
 4. Create a commit message (e.g. "insert gtag.js"). Then **Commit changes** directly to `development` branch.
 5. From the microblog's root directory on the `development` branch, navigate to the `flags.js` file (`src/utils/flags.js`).
-6. We want to send data to Google Analytics, but may only want to send _some_ of the flag data, like only if the flag data is used in our A/B **title** experiment. Click the pencil to edit the file. On **Line 16** insert a new line then implement `impresionHandler` constant seen below:
+6. We want to send data to Google Analytics, but may only want to send _some_ of the flag data, like only if the flag data is used in our A/B **title** experiment. Click the pencil to edit the file. On **Line 19** insert a new line then implement `impresionHandler` constant seen below:
 ```javascript
 export const impressionHandler = (reporting, experiment) => {
   if (experiment.name === 'title') {
