@@ -10,7 +10,7 @@ In this lab, you will set up a CloudBees Feature Flags account and use it to man
 
 ### Create a CloudBees Feature Flags Account
 
-1. Open the CloudBees Feature Flags [sign-up form](https://app.rollout.io/signup) in a _new tab_ within your browser. If you already have a CloudBees Feature Flags account the [click here to login to your account](https://app.rollout.io/login) and proceed to step 3.
+1. Open the CloudBees Feature Flags [sign-up form](https://rollout.io/sign-up/) in a _new tab_ within your browser. If you already have a CloudBees Feature Flags account the [click here to login to your account](https://app.rollout.io/login) and proceed to step 3.
 2. Fill out the form with your name, email, and a created password. After confirming your password, check the box agreeing to CloudBees Feature Flags' Terms of Service (which can be viewed [here](https://docs.cloudbees.com/docs/cloudbees-common/latest/subscription-agreement/)), and click **Sign Up**.
 3. After you have successfully created an account, the CloudBees Feature Flags dashboard will be displayed. On the far left side of the dashboard, click the **App Settings** panel. From the resulting page, select the **Environments** tab.
 4. Click **Add New Environment** and name it **Development**. Then click **Generate Key**.
