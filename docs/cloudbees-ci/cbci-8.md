@@ -51,7 +51,7 @@ name: pipeline-template-catalog-slack
 
 .img-right[
 * Similar to the CloudBees SCM Reporting plugin, the CloudBees Slack plugin provides actionable build information as Slack messages.
-* After a build runs, the CloudBees Slack plugin will surface results about the build directly in Slack, alleviating the need to switch over to your CloudBees CI ***managed controller*** (Jenkins instance) to get an overview.
+* After a build runs *for a GitHub Pull Request*, the CloudBees Slack plugin will surface results about the build directly in Slack, alleviating the need to switch over to your CloudBees CI ***managed controller*** (Jenkins instance) to get an overview.
 * The Slack messages are sent directly to individual users based on who committed the code that triggered the CloudBees CI job.
 ]
 

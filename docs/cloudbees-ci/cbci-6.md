@@ -25,6 +25,25 @@ class: compact
 12. Hibernating Managed Controllers
 
 ---
+name: pipeline-template-catalog
+
+# Pipeline Template Catalogs
+
+Pipeline Template Catalogs provide version controlled parameterized templates for Multibranch and stand-alone Pipeline jobs, and help ensure that Pipeline jobs conform to organizational standards.
+
+Benefits of using Pipeline Template Catalogs include:
+
+* Providing developers with a simplified and directed experience for configuring Pipeline in “domain specific” terms that make sense for an organization. This allows developers to focus on shipping software.
+* Organizing Pipelines per projects and/or teams. Similar-looking jobs that only differ in a few aspects can be easily parameterized on a per job basis. When you change a template, all the jobs created from that template get updated automatically.
+
+When combined with Pipeline Shared Libraries, Pipeline Template Catalogs provide an easy way to make your organization's Pipelines reusable — boosting cross-team collaboration, saving time and reducing errors.
+
+???
+Pipeline Template Catalogs help ensure that Pipeline jobs conform to organizational standards and when used in combination with Shared Libraries provide reusable Pipelines — boosting cross-team collaborations, saving time and reducing errors.
+
+Pipeline Shared Libraries and Pipeline Template Catalogs can 'live' in the same source code repository.
+
+---
 name: dev-casc-overview
 class: compact
 
