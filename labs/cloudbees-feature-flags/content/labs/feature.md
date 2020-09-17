@@ -166,7 +166,7 @@ The **Configurationed Fetch Handler** provides a mechanism to alert the CloudBee
 
 1. In Github, navigate to the root directory of the `microblog-frontend` repository on the `development` branch.
 2. Open the `flags.js` file (navigating to `src/utils/flags.js`), and select the pencil icon to edit the file.
-3. We will trigger a page refresh when a **new** configuration is retrieved **from the network**. We can also assist in any troubleshooting by adding `console.log` statements. Define the `configurationFetchedHandler` constant with its boolean logic cases and then ad it to the `options` constant used to configure the `Rox.setup` call as seen in the `flags.js` file below:
+3. We will trigger a page refresh when a **new** configuration is retrieved **from the network**. We can also assist in any troubleshooting by adding `console.log` statements. Define the `configurationFetchedHandler` constant with its boolean logic cases and then add it to the `options` constant used to configure the `Rox.setup` call as seen in the `flags.js` file below:
 
 ```javascript
 import Rox from 'rox-browser'
