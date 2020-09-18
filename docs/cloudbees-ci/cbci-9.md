@@ -28,7 +28,7 @@ class: compact
 name: cross-team overview
 class: center
 
-![:scale 70%](img/cbci-eventing.png)
+![:scale 60%](img/cbci-eventing.png)
 
 ---
 name: cross-team-publish-types
