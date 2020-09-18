@@ -43,13 +43,13 @@ pipeline {
               mv docs/Dockerfile Dockerfile
               cp -r docs/ public/
             """
-            stash name: "docs", includes: "docs/**,Dockerfile"
+            stash name: "slides", includes: "public/**,Dockerfile"
           }
         }
         stage("Build and push image") {
           steps {
             containerBuildPushGeneric("${projectName}", "${BRANCH_NAME.toLowerCase()}", "${gcpProject}"){
-              unstash "docs"
+              unstash "slides"
             }
           }
         }
