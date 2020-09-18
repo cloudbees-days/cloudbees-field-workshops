@@ -40,7 +40,7 @@ pipeline {
             gitHubDeploy(repoOwner, repo, "", "${projectName} preview", "${githubCredentialId}", "true", "false")
             sh """
               mkdir -p public
-              mv docs/Dockerfile Dockerfile
+              cp labs/base/Dockerfile Dockerfile
               cp -r docs/ public/
             """
             stash name: "slides", includes: "public/**,Dockerfile"
