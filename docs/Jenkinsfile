@@ -18,7 +18,7 @@ pipeline {
     preserveStashes(buildCount: 2)
   }
   triggers {
-    eventTrigger jmespathQuery("action=='closed' && repository.full_name=='${repoOwner}/${repo}'")
+    eventTrigger jmespathQuery("action=='closed' && repository.full_name=='cloudbees-days/cloudbees-field-workshops'")
   }
   stages {
     stage("Checkout") {
