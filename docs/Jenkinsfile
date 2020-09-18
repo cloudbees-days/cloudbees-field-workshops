@@ -40,10 +40,12 @@ pipeline {
             gitHubDeploy(repoOwner, repo, "", "${projectName} preview", "${githubCredentialId}", "true", "false")
             sh """
               mkdir -p public
+              mkdir -p nginx
               cp labs/base/Dockerfile Dockerfile
+              cp labs/base/nginx/** nginx/
               cp -r docs/. public/
             """
-            stash name: "slides", includes: "public/**,Dockerfile"
+            stash name: "slides", includes: "public/**,Dockerfile,nginx/**"
           }
         }
         stage("Build and push image") {
