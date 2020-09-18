@@ -34,4 +34,4 @@ The hibernating monitor service provides a `POST` proxy for things like GitHub w
 3. Once you click on your CloudBees CI ***managed controller*** link from the classic UI of Operations Center you will see a screen that shows that it is "getting ready to work". ![Un-hibernate](unhibernate.png?width=50pc)
 4. After a couple of minutes, your CloudBees CI ***managed controller*** will be ready to use and in the same state as it was when it was hibernated.
 
-**For instructor led workshops please <a href="https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-ci/#67">return to the workshop slides</a>**
+**For instructor led workshops please <a href="https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-ci/#cbci-thanks">return to the workshop slides</a>**

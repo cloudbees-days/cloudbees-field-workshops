@@ -134,7 +134,7 @@ name: core-casc-lab-link
 If you show off the Kubernetes pod templates view, talk about our kube agent plugin which brings enhancements to the open source plugin.
 
 ---
-name: core-casc-lab-review
+name: casc-lab-review
 
 # CloudBees CI - GitOps for CloudBees CI CasC Lab Review
 

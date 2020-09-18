@@ -63,4 +63,4 @@ pipeline {
 2. Once the **publish-event** Pipeline job completes successfully you will see the **master** branch job of the **simple-maven-app** Mutlibranch project triggered.
 3. Once the **master** branch job completes successfully you can see in the logs: `new build image: maven:3.6.3-openjdk-15`, as specified by the event you published above and see that the build was triggered by an **event**. ![Trigger success](triggered-by-event.png?width=50pc)
 
-**For instructor led workshops please <a href="https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-ci/#60">return to the workshop slides</a>**
+**For instructor led workshops please <a href="https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-ci/#collab-lab-overview">return to the workshop slides</a>**

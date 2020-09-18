@@ -94,7 +94,7 @@ ARG BUILD_IMAGE=maven:3-openjdk-8
 
 
 ---
-name: collab-overview
+name: collab-lab-overview
 
 # Cross Team Collaboration Lab Overview
 
