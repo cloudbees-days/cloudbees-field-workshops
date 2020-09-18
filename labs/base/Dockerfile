@@ -1,5 +1,5 @@
-FROM node:12.13-alpine
+FROM node:lts-alpine
 WORKDIR /app
-RUN yarn global add http-server
+RUN npm install --global http-server
 COPY public /app
 CMD http-server -p 8080
