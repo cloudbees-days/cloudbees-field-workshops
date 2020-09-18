@@ -3,6 +3,7 @@ title: "Pre-Workshop Set-Up"
 chapter: false
 weight: 2
 --- 
+#### <i class="fas fa-clock"></i> The pre-workshop setup should take you approximately 10 minutes to complete.
 
 If you are attending a CloudBees led workshop then these setup steps should be completed before the start of the workshop event.
 

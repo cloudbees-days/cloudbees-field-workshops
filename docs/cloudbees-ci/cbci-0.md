@@ -158,8 +158,8 @@ class: middle, center
 CloudBees CI on Kubernetes
 
 ???
-They dynamic provisioning of a ***managed controller*** provided by CloudBees CI on Kubernetes makes it easy and quick to provide a centrally managed Jenkins instance for every team.
-* **Less downtime:** Liveness and readiness for ***managed controllers*** and Operations Center thanks to Kubernetes Stateful Sets
+They dynamic provisioning of a ***managed controller*** (team specific Jenkins instance) provided by CloudBees CI on Kubernetes makes it easy and quick to provide a centrally managed Jenkins instance for every team.
+* **Less downtime:** Liveness and readiness for *managed controllers* and Operations Center thanks to Kubernetes Stateful Sets
 * **Ephemeral agents:** Agents are deployed as containers via Kubernetes pods. They are created and destroyed during pipeline runs.
 * **Kubernetes agent templates:** Templates can be defined for Kubernetes Pod based agents, shared with the whole cluster or defined at the team level.
 Different Kubernetes clouds can be configured and shared from OC or at the individual team level, enabling hybrid and multi-cloud use cases.
@@ -172,7 +172,7 @@ name: core-overview-scale
 * Curated and verified Jenkins plug-ins with **CloudBees Assurance Program** ensures you are using the most up-to-date and secure versions via monthly security and functionality releases 
 * Configuration as Code for Jenkins and CloudBees CI commercial components
 * Enables Comprehensive Jenkins Team Management including:
-  * Easily provide ***managed controllers*** (Jenkins instance) per team
+  * Easily provide *managed controllers* (Jenkins instance) per team
   * Centrally managed Role Based Access Control (RBAC)
   * Centralized and per team Credentials Management
-  * Manage inbound events across multiple ***managed controllers***
+  * Manage inbound events across multiple *managed controllers*

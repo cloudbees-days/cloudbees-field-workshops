@@ -25,7 +25,9 @@
   --MENU-SECTION-HR-color: #20272b; /* Color of <hr> separator in menu */
   
 }
-
+ i.fas {
+   color: var(--MENU-SEARCH-BOX-color);
+ }
 
 body {
   color: var(--MAIN-TEXT-color) !important;

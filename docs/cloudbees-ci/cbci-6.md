@@ -51,6 +51,6 @@ class: compact
 
 ### Labs - Using Pipeline Templates
 * In the following labs:
-  *  Create a Pipeline from a template and learn how to leverage custom marker files.
+  *  Create a Pipeline from a template and learn how to use custom marker files.
 * The *Using Pipeline Templates* lab instructions are available at: 
   * https://cloudbees-ci.labs.cb-sa.io/module-2/using-pipeline-templates/

@@ -5,7 +5,7 @@ weight: 5
 --- 
 
 ## Forwarding Flag Data to Analytics Platform
-This lab will leverage CloudBees Feature Flags's `impressionHandler` to forward flag information to a more robust analytics platform (we will use Google Analytics for this lab, but the abstracted process remains the same for integration with other tools). We can pass information about feature flags values evaluated on each client back for analysis. We'll set-up the beginning process for A/B testing process.
+This lab will use CloudBees Feature Flags's `impressionHandler` to forward flag information to a more robust analytics platform (we will use Google Analytics for this lab, but the abstracted process remains the same for integration with other tools). We can pass information about feature flags values evaluated on each client back for analysis. We'll set-up the beginning process for A/B testing process.
 
 **NOTE: If you going through these workshops on your own, feel free to create your own Google Analytics dashboard. Use your own UA property tag when necessary.**
 

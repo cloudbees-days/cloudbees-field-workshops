@@ -26,19 +26,9 @@ class: compact
 
 ---
 name: cross-team overview
-class: compact, middle
+class: center
 
-# Cross Team Collaboration
-
-.img-left[
-![Cross Team Collaboration Diagram](img/cross-team-diagram.png)
-]
-
-.no-bullet.img-right[
-* .smaller[CloudBees CI [Cross Team Collaboration](https://docs.cloudbees.com/docs/cloudbees-core/2.204.2.2/cloud-admin-guide/cross-team-collaboration) simplifies the cumbersome and complicated tasks of triggering downstream jobs by eliminating the need to identify and maintain the full path for every downstream job. Prior to this feature, the details of every downstream job had to meticulously specified in the upstream job. If the job name changed, the upstream job had to be refactored, creating a maintenance burden and discouraging the adoption of event-based triggers.]
-* .smaller[Cross Team Collaboration essentially allows a Pipeline to create a notification event to be consumed by other Pipelines waiting on it. It consists of a Publishing Event and a Trigger Condition.]
-* .smaller[The Cross Team Collaboration feature has a configurable router for routing events either across all ***managed controllers*** via CloudBees CI Operations Center or locally within a single ***managed controller***. CloudBees CI Notifications need to be enabled and configured on your team specific ***managed controller*** before you will be able to receive an event published by another Pipeline.] 
-]
+![:scale 70%](img/cbci-eventing.png)
 
 ---
 name: cross-team-publish-types

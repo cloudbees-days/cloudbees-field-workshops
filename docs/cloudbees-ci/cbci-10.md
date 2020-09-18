@@ -45,9 +45,9 @@ class: center
 ---
 name: hibernating-masters-cost-saving
 
-# How Hibernating Managed Controllers Reduce Infrastructure Costs
+# How Hibernating Managed Controllers Optimize Resources
 
-There are several ways that costs may be reduced with ***managed controller*** hibernation:
+There are several ways to optimize continuous integration resources with ***managed controller*** hibernation:
 
 1. When using Kubernetes auto-scaling and a ***managed controller*** is hibernated then the Kubernetes cluster has the potential to scale down by removing a node.
 2. When a ***managed controller*** is hibernated you immediately gain additional CPU and memory on the node where your ***managed controller*** pod was running - this additional capacity is immediately available for Kubernetes based agents reducing the possibility of agents queueing and/or triggering an upscaling of your Kubernetes cluster. 
