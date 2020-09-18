@@ -1,4 +1,4 @@
-FROM node:alpine-lts
+FROM node:lts-alpine
 WORKDIR /app
 RUN yarn global add http-server
 COPY public /app
