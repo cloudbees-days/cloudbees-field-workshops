@@ -10,7 +10,7 @@ pipeline {
     projectName = "cb-workshop-slides"
     gcpProject="core-workshop"
     deployTypePR="managed"
-    gcpRegionPR="us-central-1"
+    gcpRegionPR="us-central1"
   }
   options { 
     buildDiscarder(logRotator(numToKeepStr: '5'))
