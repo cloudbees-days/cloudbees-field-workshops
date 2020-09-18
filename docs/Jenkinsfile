@@ -41,7 +41,7 @@ pipeline {
             sh """
               mkdir -p public
               cp labs/base/Dockerfile Dockerfile
-              cp -r docs/ public/
+              cp -r docs/. public/
             """
             stash name: "slides", includes: "public/**,Dockerfile"
           }
