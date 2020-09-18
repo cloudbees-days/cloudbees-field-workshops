@@ -38,7 +38,11 @@ pipeline {
         stage("Build Slides") {
           steps {
             gitHubDeploy(repoOwner, repo, "", "${projectName} preview", "${githubCredentialId}", "true", "false")
-            sh "mv docs/Dockerfile Dockerfile"
+            sh """
+              mkdir -p public
+              mv docs/Dockerfile Dockerfile
+              cp -r docs/ public/
+            """
             stash name: "docs", includes: "docs/**,Dockerfile"
           }
         }
@@ -46,11 +50,6 @@ pipeline {
           steps {
             containerBuildPushGeneric("${projectName}", "${BRANCH_NAME.toLowerCase()}", "${gcpProject}"){
               unstash "docs"
-              sh """
-                ls -ltr
-                cd docs
-                ls -ltr
-              """
             }
           }
         }
