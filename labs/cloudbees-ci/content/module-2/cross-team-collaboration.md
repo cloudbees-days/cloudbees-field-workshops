@@ -23,7 +23,12 @@ Now that we have configured CloudBees CI Notifications for our ***managed contro
 
 1. In GitHub, navigate to the **Cross Team Collaboration: Add Event Trigger** pull request (#1) in your fork of the **pipeline-template-catalog** repository. ![Event trigger PR](event-trigger-pr.png?width=50pc)
 2. Click on the  **Cross Team Collaboration: Add Event Trigger** pull request link and then click on the **Files changed** tab to see the changes that will be made to the **Maven Pipeline Template**. ![Event trigger changes](event-trigger-changes.png?width=50pc)
-3. We are adding the `eventTrigger` using `jmespathQuery` and adding a new `stage` that will on run when the Pipeline is triggered by an `EventTriggerCause`, and in that `stage` we are using the `getImageBuildEventPayload` Pipeline Shared Library step to extract the event payload. 
+3. We are adding the `eventTrigger` using `jmespathQuery` and adding a new `stage` that will on run when the Pipeline is triggered by an `EventTriggerCause`, and in that `stage` we are using the `getImageBuildEventPayload` Pipeline Shared Library step to extract the event payload.
+```groovy
+  triggers {
+    eventTrigger jmespathQuery("event=='imagePush' && name=='maven'")
+  }
+```
 4. Once you have reviewed the changes, click back on the **Conversation** tab and then click the green **Merge pull request** button, then the **Confirm merge** button and then delete the branch.
 5. Next, to ensure that we are using the updated **Maven Pipeline Template**, we will check the Pipeline Template Catalog **Import Log**. Navigate to the top-level of your CloudBees CI ***managed controller*** and click on **Pipeline Template Catalogs** link in the left menu and then click the **workshopCatalog** link. 
    - ***NOTE:*** *Because the **pipeline-catalog-ops** project is a Multibranch pipeline it will be triggered via a GitHub webhook on all code commits resulting in a re-import of the Pipeline Template Catalog.* ![workshop Catalog link](workshop-catalog-link.png?width=50pc) 
@@ -58,4 +63,4 @@ pipeline {
 2. Once the **publish-event** Pipeline job completes successfully you will see the **master** branch job of the **simple-maven-app** Mutlibranch project triggered.
 3. Once the **master** branch job completes successfully you can see in the logs: `new build image: maven:3.6.3-openjdk-15`, as specified by the event you published above and see that the build was triggered by an **event**. ![Trigger success](triggered-by-event.png?width=50pc)
 
-**For instructor led workshops please <a href="https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-ci/#60">return to the workshop slides</a>**
+**For instructor led workshops please <a href="https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-ci/#collab-lab-overview">return to the workshop slides</a>**

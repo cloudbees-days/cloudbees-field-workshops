@@ -1,0 +1,87 @@
+library 'pipeline-library@master'
+def prNumber
+pipeline {
+  agent { label 'default-jnlp' }
+  environment {
+    repoOwner = "cloudbees-days"
+    repo = "cloudbees-field-workshops"
+    githubCredentialId = "field-workshops-github-app"
+    credId = "field-workshops-github-app"
+    projectName = "cb-workshop-slides"
+    gcpProject="core-workshop"
+    deployTypePR="managed"
+    gcpRegionPR="us-central1"
+  }
+  options { 
+    buildDiscarder(logRotator(numToKeepStr: '5'))
+    skipDefaultCheckout true
+    preserveStashes(buildCount: 2)
+  }
+  triggers {
+    eventTrigger jmespathQuery("action=='closed' && repository.full_name=='cloudbees-days/cloudbees-field-workshops'")
+  }
+  stages {
+    stage("Checkout") {
+      steps {
+        checkout scm
+        gitShortCommit()
+      }
+    } 
+    stage('Preview environment') {
+      when {
+        allOf {
+          not { triggeredBy 'EventTriggerCause' }
+          branch 'pr-*'
+        }
+      }
+      stages {
+        stage("Build Slides") {
+          steps {
+            gitHubDeploy(repoOwner, repo, "", "${projectName} preview", "${githubCredentialId}", "true", "false")
+            sh """
+              mkdir -p public
+              mkdir -p nginx
+              cp labs/base/Dockerfile Dockerfile
+              cp labs/base/nginx/** nginx/
+              cp -r docs/. public/
+            """
+            stash name: "slides", includes: "public/**,Dockerfile,nginx/**"
+          }
+        }
+        stage("Build and push image") {
+          steps {
+            containerBuildPushGeneric("${projectName}", "${BRANCH_NAME.toLowerCase()}", "${gcpProject}"){
+              unstash "slides"
+            }
+          }
+        }
+        stage("Deploy Slides Preview") {
+          steps {
+            cloudRunDeploy(serviceName: "${projectName}-${BRANCH_NAME.toLowerCase()}", image: "gcr.io/${gcpProject}/${projectName}:${BRANCH_NAME.toLowerCase()}", deployType: "${deployTypePR}", region: "${gcpRegionPR}")
+          }
+        }
+      }
+    }
+    stage('PR Delete') {
+      agent {
+        kubernetes {
+          label 'default-jnlp'
+        }
+      }
+      when {
+        beforeAgent true
+        allOf {
+          branch 'main'
+          triggeredBy 'EventTriggerCause' 
+        }
+      }
+      steps {
+        script {
+          def event = currentBuild.getBuildCauses()[0].event
+          prNumber = event.number.toString()
+        }
+        cloudRunDelete(serviceName: "${projectName}-pr-${prNumber}", deployType: "${deployTypePR}", region: "${gcpRegionPR}", clusterName: "${clusterNamePR}", namespace: "${namespacePR}")
+      }
+    }
+  }
+}

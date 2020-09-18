@@ -11,34 +11,31 @@ class: compact
 
 # Agenda
 
-1. Workshop Tools Overview
-2. CloudBees CI Overview
-3. Setup for Labs
-4. Pipeline Manageability & Governance with Templates
-5. Configuration as Code (CasC) with CloudBees CI
-6. Pipeline Manageability & Governance with Policies
-7. A Developer Centric Experience
-8. Using Pipeline Templates
-9. Configuration as Code (CasC) for Developers
+1. <a class="no-style" href="#workshop-tools">Workshop Tools Overview</a>
+2. <a class="no-style" href="#core-overview-title">CloudBees CI Overview</a>
+3. <a class="no-style" href="#core-setup-overview">Setup for Labs</a>
+4. <a class="no-style" href="#pipeline-template-catalog-title">Pipeline Manageability & Governance with Templates</a>
+5. <a class="no-style" href="#casc-title">Configuration as Code (CasC) with CloudBees CI</a>
+6. <a class="no-style" href="#pipeline-policies-title">Pipeline Manageability & Governance with Policies</a>
+7. <a class="no-style" href="#dev-centric-title">A Developer Centric Experience</a>
+8. <a class="no-style" href="#using-templates-title">Using Pipeline Templates</a>
+9. <a class="no-style" href="#casc-dev-title">Configuration as Code (CasC) for Developers</a>
 10. .blue-bold[Contextual Feedback for Pipelines]
-11. Cross Team Collaboration
-12. Hibernating Managed Controllers
+11. <a class="no-style" href="#cross-team-title">Cross Team Collaboration</a>
+12. <a class="no-style" href="#hibernate-title">Hibernating Managed Controllers</a>
 
 ---
 name: contextual-feedback-overview
-class: compact
 
 ### CloudBees SCM Reporting for GitHub 
 
 * The CloudBees SCM Reporting plugin supports detailed commit statuses for GitHub and BitBucket. 
 * As the build runs, CloudBees CI will surface actionable build information directly in your source control tool, in real-time, alleviating the need to switch over to your CloudBees CI ***managed controller*** to get an overview.
-
-#### GitHub App Credential
-Using the GitHub App credential type with the CloudBees SCM Reporting plugin offers the following additional benefits:
-* **Larger rate limits** - The rate limit for a GitHub app scales with your organization size, whereas a user based token has a limit of 5000 regardless of how many repositories you have.
-* **User-independent authentication** - Each GitHub app has its own user-independent authentication. No more need for 'bot' users or figuring out who should be the owner of 2FA or OAuth tokens.
-* **Improved security and tighter permissions** - GitHub Apps offer much finer-grained permissions compared to a service user and its personal access tokens. This lets the Jenkins GitHub app require a much smaller set of privileges to run properly.
-* **GitHub Checks API** - allows the CloudBees SCM Reporting plugin to leverage the GitHub Checks API to create check runs and check suites from Jenkins jobs and provide detailed feedback on commits as well as detailed code annotations.
+* Integrates with GitHub Checks - as seen below.
+<br><br>
+.img-center[
+![:scale 60%](img/pmd-annotations.png)
+]
 
 ---
 name: pipeline-template-catalog-slack

@@ -11,34 +11,24 @@ class: compact
 
 # Agenda
 
-1. Workshop Tools Overview
-2. CloudBees CI Overview
-3. Setup for Labs
-4. Pipeline Manageability & Governance with Templates
-5. Configuration as Code (CasC) with CloudBees CI
-6. Pipeline Manageability & Governance with Policies
-7. A Developer Centric Experience
-8. Using Pipeline Templates
-9. Configuration as Code (CasC) for Developers
-10. Contextual Feedback for Pipelines
+1. <a class="no-style" href="#workshop-tools">Workshop Tools Overview</a>
+2. <a class="no-style" href="#core-overview-title">CloudBees CI Overview</a>
+3. <a class="no-style" href="#core-setup-overview">Setup for Labs</a>
+4. <a class="no-style" href="#pipeline-template-catalog-title">Pipeline Manageability & Governance with Templates</a>
+5. <a class="no-style" href="#casc-title">Configuration as Code (CasC) with CloudBees CI</a>
+6. <a class="no-style" href="#pipeline-policies-title">Pipeline Manageability & Governance with Policies</a>
+7. <a class="no-style" href="#dev-centric-title">A Developer Centric Experience</a>
+8. <a class="no-style" href="#using-templates-title">Using Pipeline Templates</a>
+9. <a class="no-style" href="#casc-dev-title">Configuration as Code (CasC) for Developers</a>
+10. <a class="no-style" href="#contextual-feedback-title">Contextual Feedback for Pipelines</a>
 11. .blue-bold[Cross Team Collaboration]
-12. Hibernating Managed Controllers
+12. <a class="no-style" href="#hibernate-title">Hibernating Managed Controllers</a>
 
 ---
 name: cross-team overview
-class: compact, middle
+class: center
 
-# Cross Team Collaboration
-
-.img-left[
-![Cross Team Collaboration Diagram](img/cross-team-diagram.png)
-]
-
-.no-bullet.img-right[
-* .smaller[CloudBees CI [Cross Team Collaboration](https://docs.cloudbees.com/docs/cloudbees-core/2.204.2.2/cloud-admin-guide/cross-team-collaboration) simplifies the cumbersome and complicated tasks of triggering downstream jobs by eliminating the need to identify and maintain the full path for every downstream job. Prior to this feature, the details of every downstream job had to meticulously specified in the upstream job. If the job name changed, the upstream job had to be refactored, creating a maintenance burden and discouraging the adoption of event-based triggers.]
-* .smaller[Cross Team Collaboration essentially allows a Pipeline to create a notification event to be consumed by other Pipelines waiting on it. It consists of a Publishing Event and a Trigger Condition.]
-* .smaller[The Cross Team Collaboration feature has a configurable router for routing events either across all ***managed controllers*** via CloudBees CI Operations Center or locally within a single ***managed controller***. CloudBees CI Notifications need to be enabled and configured on your team specific ***managed controller*** before you will be able to receive an event published by another Pipeline.] 
-]
+![:scale 60%](img/cbci-eventing.png)
 
 ---
 name: cross-team-publish-types
@@ -104,7 +94,7 @@ ARG BUILD_IMAGE=maven:3-openjdk-8
 
 
 ---
-name: collab-overview
+name: collab-lab-overview
 
 # Cross Team Collaboration Lab Overview
 

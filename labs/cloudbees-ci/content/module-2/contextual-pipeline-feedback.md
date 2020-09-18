@@ -28,4 +28,4 @@ In this lab you will create a PR for your fork of the `simple-java-maven-app` re
 
 In this lab you saw how CloudBees CI contextual feedback allows you to spend more time in the tools you use for development while still having access to important and actionable feedback from your continuous integration pipelines.
 
-**For instructor led workshops please <a href="https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-ci/#54">return to the workshop slides</a>**
+**For instructor led workshops please <a href="https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-ci/#cross-team-title">return to the workshop slides</a>**

@@ -2,12 +2,12 @@ To build and view the labs locally [install Hugo](https://gohugo.io/getting-star
 
 For the CloudBees CI Workshop labs:
 ```sh
-hugo --config ../cloudbees-ci/config.toml --contentDir ../cloudbees-ci/content/
+hugo server --config ../cloudbees-ci/config.toml --contentDir ../cloudbees-ci/content/
 ```
 
 For the CloudBees Feature Flags Workshop labs: 
 ```sh
-hugo --config ../cloudbees-feature-flags/config.toml --contentDir ../cloudbees-feature-flags/content/
+hugo server --config ../cloudbees-feature-flags/config.toml --contentDir ../cloudbees-feature-flags/content/
 ```
 
 If you create a PR in the https://github.com/cloudbees-days/cloudbees-field-workshops/ repository then a preview site will be built and deployed for you with the link provided as a PR comment once the site is ready. 

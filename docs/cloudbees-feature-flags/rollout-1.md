@@ -10,7 +10,7 @@ name: rollout-setup-overview
 # CloudBees Feature Flags Workshop Setup
 
 Setup for this workshop will include:
-* Creating a GitHub Organization where the necessary workshop repositories will be automatically forked
+* Creating a GitHub Organization where the necessary workshop repositories will be automatically copied
 * Creating a CloudBees CI ***managed controller*** (Jenkins instance) to automate the build and deploy of the sample application
 * Creating a CloudBees Feature Flags  account (Or signing into the application if you are an existing customer)
 * Creating a new CloudBees Feature Flags environment
