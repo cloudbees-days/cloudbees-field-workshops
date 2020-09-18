@@ -35,7 +35,7 @@ pipeline {
         }
       }
       stages {
-        stage("Build site") {
+        stage("Build Slides") {
           steps {
             gitHubDeploy(repoOwner, repo, "", "${projectName} preview", "${githubCredentialId}", "true", "false")
             sh "mv docs/Dockerfile Dockerfile"
@@ -49,9 +49,9 @@ pipeline {
             }
           }
         }
-        stage("Deploy Preview") {
+        stage("Deploy Slides Preview") {
           steps {
-            cloudRunDeploy(serviceName: "${projectName}-${BRANCH_NAME.toLowerCase()}", image: "gcr.io/${gcpProject}/${projectName}:${BRANCH_NAME.toLowerCase()}", deployType: "${deployTypePR}", region: "${gcpRegionPR}", clusterName: "${clusterNamePR}", namespace: "${namespacePR}")
+            cloudRunDeploy(serviceName: "${projectName}-${BRANCH_NAME.toLowerCase()}", image: "gcr.io/${gcpProject}/${projectName}:${BRANCH_NAME.toLowerCase()}", deployType: "${deployTypePR}", region: "${gcpRegionPR}")
           }
         }
       }
