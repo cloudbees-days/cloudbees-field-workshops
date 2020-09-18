@@ -46,6 +46,11 @@ pipeline {
           steps {
             containerBuildPushGeneric("${projectName}", "${BRANCH_NAME.toLowerCase()}", "${gcpProject}"){
               unstash "docs"
+              sh """
+                ls -ltr
+                cd docs
+                ls -ltr
+              """
             }
           }
         }
