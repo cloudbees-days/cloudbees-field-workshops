@@ -67,7 +67,7 @@ initRollout().then(function () {
 ### Create a Target Group Based on Custom Properties
 
 1. In the CloudBees Feature Flags dashboard, navigate to the **Target Groups** displayed on the left. Select the **Create a New Group** button in the middle of the resulting page.
-2. We are going to create a new Target Group, _useful when defined by 2 or more `customProperties`_. Enter ***BetaUsers*** **Name** of the new group, a subset that will be defined by the `isLoggedIn` and `betaAccess` properties.
+2. We are going to create a new Target Group, _useful when defined by 2 or more `customProperties`_. Enter ***BetaUsers*** as the **Name** of the new group, a subset that will be defined by the `isLoggedIn` and `betaAccess` properties.
 3. A microblog user is considered part of the **BetaUsers** group when **both** of the following conditions are met:
    * `isLoggedIn` is **True**
    * `hasBetaAccess` is **True**

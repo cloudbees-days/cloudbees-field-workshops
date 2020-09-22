@@ -75,7 +75,7 @@ initRollout().then(function () {
 4. Commit the changes by adding a comment (e.g. "added title flag"), and select the **Commit directly to the `development` branch** radio button. And then click **Commit changes**.
 
 
-### See Deployed Microblog Website
+### See the Deployed Microblog Website
 
 Once you committed the `flags.js` file a job will be triggered on the CloudBees CI ***managed controller*** that was provisioned for you for this workshop. That job will build and deploy your `microblog-frontend` application.
 
@@ -104,4 +104,4 @@ Once you committed the `flags.js` file a job will be triggered on the CloudBees 
 ### Lab 1 Completed!
 Congratulations! You have finished Lab 1 of the CloudBees Feature Flags Workshop.
 
-**For instructor led workshops please return to the workshop slides: https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-feature-flags/#14.**
+**For instructor led workshops please <a href="https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-feature-flags/#gating-code-title">return to the workshop slides</a>**
