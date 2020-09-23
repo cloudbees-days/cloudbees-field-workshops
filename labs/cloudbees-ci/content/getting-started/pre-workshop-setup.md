@@ -10,7 +10,7 @@ If you are attending a CloudBees led workshop then these setup steps should be c
 
 ## Slack
 
-1. Join the CloudBees Workshops Slack workspace with this [invite link](https://join.slack.com/t/cloudbees-workshops/shared_invite/zt-gn9vw4iu-IogkJaiY1Esv6Vcj77RktQ).
+1. Join the CloudBees Workshops Slack workspace with this [invite link](https://join.slack.com/t/cloudbees-workshops/shared_invite/zt-hlh2sp39-KVx9Rb51Rc8r0xCCKK~S~g).
 2. Once you have joined the Slack workspace, feel free to use the `#one-on-one-help-requests` channel if you have any questions before, during or after the workshop. 
 
 ## GitHub Setup
