@@ -8,7 +8,7 @@ As a developer you typically (and shouldn't) have access to makes configuration 
 
 In this lab you will act as developer and CloudBees CI admin, where you will review and merge a pull request to your `cloudbees-ci-config-bundle` repository in your workshop GitHub Organization.
 
->NOTE: Please ensure that you have signed up for the [CloudBees Workshop Slack workspace](https://app.slack.com/client/T010A455W77/) as instructed in the *[Pre-Workshop Setup](https://cloudbees-ci.labs.cb-sa.io/getting-started/pre-workshop-setup/#slack)* before continuing with this lab.
+>NOTE: Please ensure that you have signed up for the [CloudBees Workshops Slack workspace](https://app.slack.com/client/T010A455W77/) as instructed in the *[Pre-Workshop Setup](https://cloudbees-ci.labs.cb-sa.io/getting-started/pre-workshop-setup/#slack)* before continuing with this lab.
 
 1. Navigate to your `cloudbees-ci-config-bundle` repository in GitHub and click on the **Pull requests** link. ![PR link](pr-link.png?width=50pc) 
 2. On the next screen, click on the **CasC for Devs lab updates** pull request (#2) and then click on the **Files changed** tab to review the requested configuration changes. As you can see, we are adding the `cloudbees-slack` plugin and `cloudbees-slack-integration` configuration for your CloudBees CI user. ![PR Files Changed](dev-casc-changes.png?width=50pc)
