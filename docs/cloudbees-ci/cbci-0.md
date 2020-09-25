@@ -47,8 +47,7 @@ name: workshop-tools
 * We highly recommend using Google Chrome as the web browser - other browsers will work, but we have found Chrome to work best with the GitHub editor.
 * We will be using Zoom breakout rooms for the majority of the workshop material.
 * Please use the Zoom chat to introduce yourself and if you have any questions.
-* We will have a short poll where you will be able to assess your experience level in a few technical areas. Based on your responses to the poll question you will be asked to rank your overall experience level as a **1**, **2** or a **3**, and then rename yourself in Zoom by adding that number before your name.
-* After an overview of CloudBees CI you will be grouped by experience level into Zoom breakout rooms where you will complete the workshop.
+* After an overview of CloudBees CI you will be grouped into Zoom breakout rooms where you will complete the workshop labs.
 * Once in the breakout rooms please feel free to ask questions via audio or via the Zoom chat. You may also use the Zoom *Nonverbal* feedback feature to raise your hand or to ask you instructor to slow down or speed up. NOTE: The chat is only broadcast to your breakout room.
 
 ---
