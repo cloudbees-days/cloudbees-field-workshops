@@ -1,7 +1,7 @@
 ---
 title: "Pipeline Policies"
 chapter: false
-weight: 3
+weight: 4
 ---
 
 Pipeline Policies are runtime validations that work for both scripted and declarative pipelines and provide administrators a way to include warnings for or block the execution of pipelines that do not comply with the policies applied to your ***managed controller***.
