@@ -25,17 +25,18 @@ class: compact
 
 # Agenda
 
-1. Workshop Tools Overview
-2. CloudBees CI Overview
-3. Setup for Labs
-4. Pipeline Manageability & Governance with Templates
-5. Configuration as Code (CasC) with CloudBees CI
-6. Pipeline Manageability & Governance with Policies
-7. Using Pipeline Templates
-8. Configuration as Code (CasC) for Developers
-9. Contextual Feedback for Pipelines
-10. Cross Team Collaboration
-11. Hibernating Managed Controllers
+1. <a class="no-style" href="#workshop-tools">Workshop Tools Overview</a>
+2. <a class="no-style" href="#core-overview-title">CloudBees CI Overview</a>
+3. <a class="no-style" href="#core-setup-overview">Setup for Labs</a>
+4. <a class="no-style" href="#pipeline-template-catalog-title">Pipeline Manageability & Governance with Templates</a>
+5. <a class="no-style" href="#casc-title">Configuration as Code (CasC) with CloudBees CI</a>
+6. <a class="no-style" href="#pipeline-policies-title">Pipeline Manageability & Governance with Policies</a>
+7. <a class="no-style" href="#dev-centric-title">A Developer Centric Experience</a>
+8. <a class="no-style" href="#using-templates-title">Using Pipeline Templates</a>
+9. <a class="no-style" href="#casc-dev-title">Configuration as Code (CasC) for Developers</a>
+10. <a class="no-style" href="#contextual-feedback-title">Contextual Feedback for Pipelines</a>
+11. <a class="no-style" href="#cross-team-title">Cross Team Collaboration</a>
+12. <a class="no-style" href="#hibernate-title">Hibernating Managed Controllers</a>
 
 .footnote[.bold[*] Please note, it is unlikely that we will get through all the material. However, all of the lab material is freely available on GitHub and can be self-led. The CloudBees CI lab environment will be available until next Monday if you would like to complete any labs we don't get through.]
 
@@ -46,8 +47,7 @@ name: workshop-tools
 * We highly recommend using Google Chrome as the web browser - other browsers will work, but we have found Chrome to work best with the GitHub editor.
 * We will be using Zoom breakout rooms for the majority of the workshop material.
 * Please use the Zoom chat to introduce yourself and if you have any questions.
-* We will have a short poll where you will be able to assess your experience level in a few technical areas. Based on your responses to the poll question you will be asked to rank your overall experience level as a **1**, **2** or a **3**, and then rename yourself in Zoom by adding that number before your name.
-* After an overview of CloudBees CI you will be grouped by experience level into Zoom breakout rooms where you will complete the workshop.
+* After an overview of CloudBees CI you will be grouped into Zoom breakout rooms where you will complete the workshop labs.
 * Once in the breakout rooms please feel free to ask questions via audio or via the Zoom chat. You may also use the Zoom *Nonverbal* feedback feature to raise your hand or to ask you instructor to slow down or speed up. NOTE: The chat is only broadcast to your breakout room.
 
 ---
@@ -60,9 +60,10 @@ class: center
 name: lab-environment
 # Lab Environment
 * This workshop uses a CloudBees CI cluster, an enterprise version of Jenkins, running on the Google Kubernetes Engine (GKE)
-  * Each attendee will provision their own Jenkins instance, referred to as a ***managed controller***, for the labs by leveraging the scalability of CloudBees CI on Kubernetes
-* All the instructions for the labs and these slides are publicly available in GitHub
+  * Each attendee will have their own Jenkins instance provisioned as if you were a team. We refer to these as a ***managed controller*** since they are dynamical provisioned on Kubernetes and their full lifecycle is **managed** by the CloudBees CI Operations Center.
+* All the instructions for the labs and these slides are publicly available
 * Attendees will be using their own GitHub accounts 
+* **IMPORTANT:** If you haven't already completed the *Pre-Workshop Setup* then do so here: https://cloudbees-ci.labs.cb-sa.io/getting-started/pre-workshop-setup/
 
 ---
 name: core-overview-title
@@ -77,16 +78,22 @@ Notes
 
 ---
 name: agenda-overview
+class: compact
+
 # Agenda
 
-1. Workshop Tools Overview
+1. <a class="no-style" href="#workshop-tools">Workshop Tools Overview</a>
 2. .blue-bold[CloudBees CI Overview]
-3. Setup for Labs
-4. Configuration as Code (CasC) with CloudBees CI
-5. Pipeline Manageability & Governance with Templates and Policies
-6. Contextual Feedback for Pipelines
-7. Cross Team Collaboration
-8. Hibernating Managed Controllers
+3. <a class="no-style" href="#core-setup-overview">Setup for Labs</a>
+4. <a class="no-style" href="#pipeline-template-catalog-title">Pipeline Manageability & Governance with Templates</a>
+5. <a class="no-style" href="#casc-title">Configuration as Code (CasC) with CloudBees CI</a>
+6. <a class="no-style" href="#pipeline-policies-title">Pipeline Manageability & Governance with Policies</a>
+7. <a class="no-style" href="#dev-centric-title">A Developer Centric Experience</a>
+8. <a class="no-style" href="#using-templates-title">Using Pipeline Templates</a>
+9. <a class="no-style" href="#casc-dev-title">Configuration as Code (CasC) for Developers</a>
+10. <a class="no-style" href="#contextual-feedback-title">Contextual Feedback for Pipelines</a>
+11. <a class="no-style" href="#cross-team-title">Cross Team Collaboration</a>
+12. <a class="no-style" href="#hibernate-title">Hibernating Managed Controllers</a>
 
 ---
 name: core-overview-content
@@ -150,8 +157,8 @@ class: middle, center
 CloudBees CI on Kubernetes
 
 ???
-They dynamic provisioning of a ***managed controller*** provided by CloudBees CI on Kubernetes makes it easy and quick to provide a centrally managed Jenkins instance for every team.
-* **Less downtime:** Liveness and readiness for ***managed controllers*** and Operations Center thanks to Kubernetes Stateful Sets
+They dynamic provisioning of a ***managed controller*** (team specific Jenkins instance) provided by CloudBees CI on Kubernetes makes it easy and quick to provide a centrally managed Jenkins instance for every team.
+* **Less downtime:** Liveness and readiness for *managed controllers* and Operations Center thanks to Kubernetes Stateful Sets
 * **Ephemeral agents:** Agents are deployed as containers via Kubernetes pods. They are created and destroyed during pipeline runs.
 * **Kubernetes agent templates:** Templates can be defined for Kubernetes Pod based agents, shared with the whole cluster or defined at the team level.
 Different Kubernetes clouds can be configured and shared from OC or at the individual team level, enabling hybrid and multi-cloud use cases.
@@ -164,7 +171,7 @@ name: core-overview-scale
 * Curated and verified Jenkins plug-ins with **CloudBees Assurance Program** ensures you are using the most up-to-date and secure versions via monthly security and functionality releases 
 * Configuration as Code for Jenkins and CloudBees CI commercial components
 * Enables Comprehensive Jenkins Team Management including:
-  * Easily provide ***managed controllers*** (Jenkins instance) per team
+  * Easily provide *managed controllers* (Jenkins instance) per team
   * Centrally managed Role Based Access Control (RBAC)
   * Centralized and per team Credentials Management
-  * Manage inbound events across multiple ***managed controllers***
+  * Manage inbound events across multiple *managed controllers*

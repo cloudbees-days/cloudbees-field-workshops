@@ -3,13 +3,15 @@ title: "Pre-Workshop Setup"
 chapter: false
 weight: 2
 --- 
+#### <i class="fas fa-clock"></i> The pre-workshop setup should take you approximately 10 minutes to complete.
 
 If you are attending a CloudBees led workshop then these setup steps should be completed before the start of the workshop event.
 
+
 ## Slack
 
-1. Join the CloudBees Workshops Slack workspace with this [invite link](https://join.slack.com/t/cloudbees-workshops/shared_invite/zt-gn9vw4iu-IogkJaiY1Esv6Vcj77RktQ).
-2. Once you have joined the Slack workspace, feel free to use the `#one-on-one-help-requests` channel if you have any questions before the workshop starts. 
+1. Join the CloudBees Workshops Slack workspace with this [invite link](https://join.slack.com/t/cloudbees-workshops/shared_invite/zt-hlh2sp39-KVx9Rb51Rc8r0xCCKK~S~g).
+2. Once you have joined the Slack workspace, feel free to use the `#one-on-one-help-requests` channel if you have any questions before, during or after the workshop. 
 
 ## GitHub Setup
 
@@ -46,3 +48,5 @@ We highly recommend creating a new GitHub Organization for the CloudBees CI Work
    - https://github.com/cloudbees-days/simple-java-maven-app ![GitHub App Installed](forked-repos.png?width=50pc)
 
 >NOTE: These repositories were created from GitHub template repositories in the [CloudBees Field Workshops GitHub Organization](https://github.com/cloudbees-days).
+
+**For instructor led workshops please <a href="https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-ci/#core-overview-title">return to the workshop slides</a>**

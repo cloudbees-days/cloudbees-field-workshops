@@ -30,7 +30,7 @@ name: agenda
 5. CloudBees Feature Flags Configuration as Code
 6. Analytics and A/B testing
 
-**Please note, it is unlikely that we will get through all the material. However, all of the lab material is freely available and can be self-led. The CloudBees CI lab environment will be available until next Monday and the CloudBees Feature Flags trial is available for 14 days if you would like to complete any labs we don't finish today.**
+.footnote[.bold[*] Please note, we may not get through all the material during the workshop today. However, all of the lab material is freely available and can be self-led. The CloudBees CI lab environment will be available until next Monday and the CloudBees Feature Flags trial is available for 14 days if you would like to complete any labs we don't finish today.
 
 ---
 name: workshop-tools
