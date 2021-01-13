@@ -1,7 +1,7 @@
 ---
 title: "Delegating Administration with CloudBees CI RBAC"
 chapter: false
-weight: 3
+weight: 4
 ---
 
 Role-Based Access Control (RBAC) for CloudBees CI provides the ability to restrict access and delegate administration. And when combined with CloudBees CI CasC you have complete audit history of any changes to access control (and other configuration changes) captured by your source control tool, such as Git.
