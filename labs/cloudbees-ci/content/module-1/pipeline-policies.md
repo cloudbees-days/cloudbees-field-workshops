@@ -15,8 +15,10 @@ In this lab you will use CloudBees CI CasC for controllers to create a [Pipeline
 3. Once you have reviewed the changed files, click on the **Conversation** tab, scroll down and click the green **Merge pull request** button and then the **Confirm merge** button.
 4. On the next screen click the **Delete branch** button.
 5. Navigate to the **config-bundle-ops** job under the **template-jobs** folder on your CloudBees CI ***managed controller***.
-6. Shortly after the **master** branch job completes successfully 
-7. Navigate to the top-level of your CloudBees CI ***managed controller*** and click on **Pipeline Policies** in the left menu. ![Pipeline Policies Link](policies-click.png?width=50pc) 
+6. Shortly after the **master** branch job completes successfully navigate to the top-level of your ***managed controller***
+7. Click on the **Manage Jenkins** link in the left navigation menu and then click on the **CloudBees Configuration as Code bundle** configuration link. ![CloudBees Configuration config](config-bundle-system-config.png?width=50pc)
+8.  On the next screen, click on the **Bundle Update** link and you should see that a new version of the configuration bundle is available. Click the **Reload Configuration** button and on the next screen click the **Yes** button to apply the updated configuration bundle. *Note: If you don't see the new version available then click the **Check for Updates** button.* ![Bundle Update](new-bundle-available.png?width=50pc)
+7. Click on **Pipeline Policies** in the left menu. ![Pipeline Policies Link](policies-click.png?width=50pc) 
 8. Next, on the **Pipeline Policies** screen, you will see a policy with the following settings - matching the CasC:
    1. **Name**: ***Timeout policy***
    2. **Action**: ***Fail***
