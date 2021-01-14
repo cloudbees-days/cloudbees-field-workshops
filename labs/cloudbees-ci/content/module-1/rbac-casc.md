@@ -11,9 +11,10 @@ In addition to using CloudBees CI CasC to configure RBAC for your managed contro
 >NOTE: Using CasC for RBAC requires that you allow managed controllers to opt-out of inheriting the Operations Center authorization strategy meaning that the managed controller will not inherit roles or groups from Operations Center.
 
 1. To opt out of the Operations Center authorization strategy click on the **Teams** breadcrumb link in the top navigation.
-2. In the **Teams** folder, expand the contextual menu for your managed controller and click the **Configure** link.
-3. On the **Configure** screen scroll down to the **Security Setting Enforcement**, select the ***Enforce Authentication only*** value from the **Opt-out** select list and then click the **Save** button.
-4. Review `rbac-casc` pull request in GitHub.
+2. In the **Teams** folder, expand the contextual menu for your managed controller and click the **Configure** link. ![Configure controllers](configure-controller.png?width=50pc) 
+3. On the **Configure** screen scroll down to the **Security Setting Enforcement**, select the ***Enforce Authentication only*** value from the **Opt-out** select list and then click the **Save** button. ![Auth Only](auth-only.png?width=50pc) 
+4. Navigate to your `cloudbees-ci-config-bundle` repository in GitHub and click on the **Pull requests** link. 
+5. Review `rbac-casc` pull request in GitHub.
    1. 
 5. Merge the pull request.
 6. After the config bundle job completes, reload the updated configuration bundle.
