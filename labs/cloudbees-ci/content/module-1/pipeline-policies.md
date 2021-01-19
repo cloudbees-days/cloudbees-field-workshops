@@ -11,7 +11,7 @@ Pipeline Policies are runtime validations that work for both scripted and declar
 In this lab you will use CloudBees CI CasC for controllers to create a [Pipeline Policy](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines-user-guide/pipeline-policies) to enforce that all Pipeline jobs that run on your CloudBees CI ***managed controller*** (Jenkins instance) have a maximum 30 minute global `timeout` set.
 
 1. Navigate to your `cloudbees-ci-config-bundle` repository in GitHub and click on the **Pull requests** link. ![PR link](pr-link.png?width=50pc) 
-2. On the next screen, click on the **Pipeline Policies lab updates** pull request and then click on the **Files changed** tab to review the requested configuration changes. Note the addition of the `cloudbees-pipeline-policies` configuration at the top of the `jenkins.yaml` file. We also updated the bundler version and the Jenkins system message. ![PR Files Changed](pr-files-changed.png)
+2. On the next screen, click on the **Pipeline Policies lab updates** pull request and then click on the **Files changed** tab to review the requested configuration changes. Note the addition of the `cloudbees-pipeline-policies` configuration at the top of the `jenkins.yaml` file. We also updated the bundler version and the Jenkins system message. ![PR Files Changed](pr-files-changed.png?width=50pc)
 3. Once you have reviewed the changed files, click on the **Conversation** tab, scroll down and click the green **Merge pull request** button and then the **Confirm merge** button.
 4. On the next screen click the **Delete branch** button.
 5. Navigate to the **config-bundle-ops** job under the **template-jobs** folder on your CloudBees CI managed controller.
