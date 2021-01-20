@@ -1,12 +1,12 @@
-name: cross-team-title
+name: contextual-feedback-title
 class: title, shelf, no-footer, fullbleed
 background-image: linear-gradient(135deg,#279be0,#036eb4)
 count: false
 
-# CloudBees CI<br>Cross Team Collaboration
+# CloudBees CI<br>Contextual Feedback for Pipelines
 
 ---
-name: agenda-templates
+name: agenda-setup
 class: compact
 
 # Agenda
@@ -17,87 +17,50 @@ class: compact
 4. <a class="no-style" href="#pipeline-template-catalog-title">Pipeline Manageability & Governance with Templates</a>
 5. <a class="no-style" href="#casc-title">Configuration as Code (CasC) with CloudBees CI</a>
 6. <a class="no-style" href="#pipeline-policies-title">Pipeline Manageability & Governance with Policies</a>
+7. <a class="no-style" href="#rbac-casc-title">Delegating Administration with RBAC</a>
 7. <a class="no-style" href="#dev-centric-title">A Developer Centric Experience</a>
 8. <a class="no-style" href="#using-templates-title">Using Pipeline Templates</a>
 9. <a class="no-style" href="#casc-dev-title">Configuration as Code (CasC) for Developers</a>
-10. <a class="no-style" href="#contextual-feedback-title">Contextual Feedback for Pipelines</a>
-11. .blue-bold[Cross Team Collaboration]
+10. .blue-bold[Contextual Feedback for Pipelines]
+11. <a class="no-style" href="#cross-team-title">Cross Team Collaboration</a>
 12. <a class="no-style" href="#hibernate-title">Hibernating Managed Controllers</a>
 
 ---
-name: cross-team overview
-class: center
+name: contextual-feedback-overview
 
-![:scale 60%](img/cbci-eventing.png)
+### CloudBees SCM Reporting for GitHub 
 
----
-name: cross-team-publish-types
-
-# Publish Event Types for Cross Team Collaboration
-
-There are two types of events that can be published for the `publishEvent` step:
-* **`simpleEvent`** - a publish event type that only allows including a single string as the event payload. The supplied string value will be dynamically *wrapped* as the value of the `event` JSON key.
-
-```groovy
-publishEvent simpleEvent('helloWorld')
-```
-
-* **`jsonEvent`** - a more complex publish event type, it allows you to specify any valid JSON as the event payload.
-
-```groovy
-publishEvent event: jsonEvent('{"event":"imagePush","name":"node","tag":"14.0.0-alpine3.11"}')
-```
+* The CloudBees SCM Reporting plugin supports detailed commit statuses for GitHub and BitBucket. 
+* As the build runs, CloudBees CI will surface actionable build information directly in your source control tool, in real-time, alleviating the need to switch over to your CloudBees CI ***managed controller*** to get an overview.
+* Integrates with GitHub Checks - as seen below.
+<br><br>
+.img-center[
+![:scale 60%](img/pmd-annotations.png)
+]
 
 ---
-name: cross-team-trigger-types
+name: pipeline-template-catalog-slack
 
-# Event Trigger Types for Cross Team Collaboration
+# CloudBees Slack Plugin 
 
-Just as there are two types of publish events, there are also two corresponding `eventTrigger` types:
-* **`simpleMatch`** - this `eventTrigger` type is used for events that are published as a `simpleEvent` and will only match against simple strings.
+.img-left[
+![CloudBees Slack Message](img/cloudbees-slack-post.png)
+]
 
-```groovy
-pipeline {
-    agent any
-    triggers {
-*       eventTrigger simpleMatch("helloWorld")
-    }
-...
-```
+.img-right[
+* Similar to the CloudBees SCM Reporting plugin, the CloudBees Slack plugin provides actionable build information as Slack messages.
+* After a build runs *for a GitHub Pull Request*, the CloudBees Slack plugin will surface results about the build directly in Slack, alleviating the need to switch over to your CloudBees CI ***managed controller*** (Jenkins instance) to get an overview.
+* The Slack messages are sent directly to individual users based on who committed the code that triggered the CloudBees CI job.
+]
 
-* **`jmespathQuery`** - this `eventTrigger` allows the use of complex queries against JSON event payloads.
-
-```groovy
-pipeline {
-  agent none
-  triggers {
-*   eventTrigger jmespathQuery("event=='imagePush' && name=='node'")
-  }
-```
+.footnote[.bold[*] CloudBees recently released a preview version of our new CloudBees CI Microsoft Teams plugin.]
 
 ---
-name: collab-lab
+name: contextual-feedback-lab-link
 class: compact
 
-# Lab - Triggering Pipelines with Cross Team Collaboration
+# Lab - Configuring and Interacting with Contextual Feedback
 
-* In this lab we will use CloudBees CI cross team collaboration by adding an event trigger listener so that when the job for our build image is complete, it will kick off the template job for the `simple-java-maven-app` application with an event payload that includes the information for the `maven` image to use.
-* First, to figure out what we're dealing with, let's look at the part of the `Dockerfile` for the `simple-java-maven-app` application. By default, it will use the `maven:3-openjdk-8` image:
-
-```Dockerfile
-ARG BUILD_IMAGE=maven:3-openjdk-8
-...
-```
-  * The **Maven Pipeline Template** (and supporting Pipeline Shared Library) will be updated to override the `BUILD_IMAGE` argument with a value from the payload of a published event.
-* The *Triggering Pipelines with Cross Team Collaboration* lab instructions are available at: 
-  * https://cloudbees-ci.labs.cb-sa.io/module-2/cross-team-collaboration/
-
-
----
-name: collab-lab-overview
-
-# Cross Team Collaboration Lab Overview
-
-* Enabled **Notifications** for CloudBees Cross Team Collaboration on your ***managed controller***
-* Updated the **Maven Pipeline Template** of your Pipeline Template Catalog with an event trigger
-* Created a Pipeline job that publishes an event to trigger the jobs based on the **Maven Pipeline Template**
+* In the following lab you will configure and interact with contextual Pipeline feedback for GitHub and Slack.
+* The *Configuring and Interacting with Contextual Feedback* lab instructions are available at: 
+  * https://cloudbees-ci.labs.cb-sa.io/module-2/contextual-pipeline-feedback/

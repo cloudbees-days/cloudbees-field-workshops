@@ -1,12 +1,12 @@
-name: using-templates-title
+name: dev-centric-title
 class: title, shelf, no-footer, fullbleed
 background-image: linear-gradient(135deg,#279be0,#036eb4)
 count: false
 
-# CloudBees CI<br>Using Pipeline Templates
+# CloudBees CI<br>A Developer Centric Experience
 
 ---
-name: agenda-setup
+name: dev-centric-agenda
 class: compact
 
 # Agenda
@@ -17,39 +17,35 @@ class: compact
 4. <a class="no-style" href="#pipeline-template-catalog-title">Pipeline Manageability & Governance with Templates</a>
 5. <a class="no-style" href="#casc-title">Configuration as Code (CasC) with CloudBees CI</a>
 6. <a class="no-style" href="#pipeline-policies-title">Pipeline Manageability & Governance with Policies</a>
-7. <a class="no-style" href="#dev-centric-title">A Developer Centric Experience</a>
-8. .blue-bold[Using Pipeline Templates]
+7. <a class="no-style" href="#rbac-casc-title">Delegating Administration with RBAC</a>
+7. .blue-bold[A Developer Centric Experience]
+8. <a class="no-style" href="#using-templates-title">Using Pipeline Templates</a>
 9. <a class="no-style" href="#casc-dev-title">Configuration as Code (CasC) for Developers</a>
 10. <a class="no-style" href="#contextual-feedback-title">Contextual Feedback for Pipelines</a>
 11. <a class="no-style" href="#cross-team-title">Cross Team Collaboration</a>
 12. <a class="no-style" href="#hibernate-title">Hibernating Managed Controllers</a>
 
 ---
-name: pipeline-template-catalog
+name: cloudbees-ci-overview-dev
 
-# Pipeline Template Catalogs
+# CloudBees CI Overview
 
-Pipeline Template Catalogs provide version controlled parameterized templates for Multibranch and stand-alone Pipeline jobs, and help ensure that Pipeline jobs conform to organizational standards.
-
-Benefits of using Pipeline Template Catalogs include:
-
-* Providing developers with a simplified and directed experience for configuring Pipeline in “domain specific” terms that make sense for an organization. This allows developers to focus on shipping software.
-* Organizing Pipelines per projects and/or teams. Similar-looking jobs that only differ in a few aspects can be easily parameterized on a per job basis. When you change a template, all the jobs created from that template get updated automatically.
-
-
-???
-Pipeline Template Catalogs help ensure that Pipeline jobs conform to organizational standards and when used in combination with Shared Libraries provide reusable Pipelines — boosting cross-team collaborations, saving time and reducing errors.
-
-Pipeline Shared Libraries and Pipeline Template Catalogs can 'live' in the same source code repository.
+ CloudBees CI enables developers to spend less time on admin tasks and more time coding. 
+ 
+ - Increase efficiency and speed to release. Decrease context-switching.  
+ - Provide repeatable components utilizing Configuration as Code. 
+ - Speed your time to build with streamlined and self-service ***managed controller*** ( team specific Jenkins instances) provisioning.  
+ - Dynamically share build agents across many controllers allowing for increased performance with decreased cost.
+ - Reduce infrastructure costs by automatically hibernating idle resources.
 
 ---
-name: dev-casc-overview
+name: dev-centric-lab
 class: compact
 
-# Using Pipeline Templates
+# CloudBees CI: A Developer Centric Experience
 
-### Labs - Using Pipeline Templates
-* In the following labs:
-  *  Create a Pipeline from a template and learn how to use custom marker files.
-* The *Using Pipeline Templates* lab instructions are available at: 
-  * https://cloudbees-ci.labs.cb-sa.io/module-2/using-pipeline-templates/
+### Lab - Module 2 Setup
+* In the following lab:
+  *  You will merge a GitHub pull request to trigger a CloudBees CI CasC update for your ***managed controller***.
+* The *Module 2 Setup* lab instructions are available at: 
+  * https://cloudbees-ci.labs.cb-sa.io/module-2/setup/

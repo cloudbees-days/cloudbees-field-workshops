@@ -17,6 +17,7 @@ class: compact
 4. <a class="no-style" href="#pipeline-template-catalog-title">Pipeline Manageability & Governance with Templates</a>
 5. <a class="no-style" href="#casc-title">Configuration as Code (CasC) with CloudBees CI</a>
 6. .blue-bold[Pipeline Manageability & Governance with Policies]
+7. <a class="no-style" href="#rbac-casc-title">Delegating Administration with RBAC</a>
 7. <a class="no-style" href="#dev-centric-title">A Developer Centric Experience</a>
 8. <a class="no-style" href="#using-templates-title">Using Pipeline Templates</a>
 9. <a class="no-style" href="#casc-dev-title">Configuration as Code (CasC) for Developers</a>
@@ -37,7 +38,7 @@ name: pipeline-policies
   * **PausedActionTimeoutRule** - validates that pipeline steps that require an external condition must be defined within a timeout.
   * **PausedActionInAgentRule** - validates that a paused action step isn’t executed on an agent.
   * **EntirePipelineTimeoutRule** - validates that a timeout period was set for the entire Pipeline execution.
-* CloudBees CI provides a CLI for managing Pipeline Policies as code.
+* CloudBees CI provides [Configuration-as-Code support for Pipeline Policies](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/pipeline-policies#_managing_pipeline_policies_with_configuration_as_code). There is also a [CLI for managing Pipeline Policies in bulk](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/pipeline-policies#_managing_pipeline_policies_in_bulk).
 
 ---
 name: pipeline-policies-lab-link
@@ -46,8 +47,7 @@ class: compact
 # Labs - Enforcing Pipeline Timeouts with Pipeline Policies and GitOps for Pipeline Policies
 
 * In the following labs:
-  *  You will create a Pipeline Policy that will require that all Pipeline jobs on your ***managed controller*** be configured with a 30 minute (or greater) global timeout.
-  *  You will explore GitOps for Pipeline Policies.
+  *  You will use CasC for CloudBees CI to create a Pipeline Policy that will require that all Pipeline jobs on your ***managed controller*** be configured with a 30 minute (or greater) global timeout.
 * The *Enforcing Pipeline Timeouts with Pipeline Policies* lab instructions are available at: 
   * https://cloudbees-ci.labs.cb-sa.io/module-1/pipeline-policies/
 
@@ -57,6 +57,6 @@ name: pipeline-policies-overview
 
 # Pipeline Policies Overview
 
-* Created a Pipeline Policy to enforce a minimum 30 minute global timeout for all Pipeline jobs on your ***managed controller***
+* Used CasC to create a Pipeline Policy to enforce a minimum 30 minute global timeout for all Pipeline jobs on your ***managed controller***
 * Updated the **CloudBees CI Configuration Bundle** template with a time out to validate successfully against the **Timeout policy** you created
-* Created a job to export Pipeline Policies from your ***managed controller*** to source control and to update the Pipeline Policies on your ***managed controller*** from source control.
+

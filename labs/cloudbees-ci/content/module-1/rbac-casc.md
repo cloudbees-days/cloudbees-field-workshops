@@ -25,4 +25,4 @@ In addition to using CloudBees CI CasC to configure RBAC for your managed contro
 9. Once the bundle has finished reloading you will see a *Manage Jenkins* page with fewer items and the left navigation will have fewer items. Also, many of the configuration items that are still available are view only. ![Before and After Delegating Admin](before-after-delegating-admin.png?width=75pc)
 10. Click on **Manage Plugins**, click on the **Available** tab and search for *CloudBees*.  Note that you can see what plugins are available but you cannot install plugins. In order to install or update plugins (or other configuration) you will need to update and reload the CasC bundle for your managed controller. ![View Only Plugin Management](plugins-view-only.png?width=50pc)
 
-**For instructor led workshops please <a href="https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-ci/#pipeline-policies-overview">return to the workshop slides</a>**
+**For instructor led workshops please <a href="https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-ci/#prbac-casc-overview">return to the workshop slides</a>**
