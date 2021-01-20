@@ -39,8 +39,6 @@ class: compact
 11. <a class="no-style" href="#cross-team-title">Cross Team Collaboration</a>
 12. <a class="no-style" href="#hibernate-title">Hibernating Managed Controllers</a>
 
-.footnote[.bold[*] Please note, it is unlikely that we will get through all the material. However, all of the lab material is freely available on GitHub and can be self-led. The CloudBees CI lab environment will be available until next Monday if you would like to complete any labs we don't get through.]
-
 ---
 name: workshop-tools
 # Workshop Tools Overview
@@ -66,6 +64,8 @@ name: lab-environment
 * Attendees will be using their own GitHub accounts 
 * **IMPORTANT:** If you haven't already completed the *Pre-Workshop Setup* then do so here: https://cloudbees-ci.labs.cb-sa.io/getting-started/pre-workshop-setup/
 
+
+.footnote[.bold[*] Please note, it is unlikely that we will get through all the material. However, all of the lab material is freely available on GitHub and can be self-led. The CloudBees CI lab environment will be available until next Monday if you would like to complete any labs we don't get through.]
 ---
 name: core-overview-title
 class: title, shelf, no-footer, fullbleed
