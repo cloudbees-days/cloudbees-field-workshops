@@ -30,7 +30,11 @@ name: rbac-casc
 
 # Delegating Administration with CloudBees CI RBAC
 
-* [Delegating administration with CloudBees CI RBAC](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-secure-guide/delegating-administration-modern) allow organizations to delegate the level of administration avaialbe throught the UI. 
+* [Delegating administration with CloudBees CI RBAC](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-secure-guide/delegating-administration-modern) allows organizations to delegate the level of administration avaialbe through the UI. Two new permissions were introduced in Jenkins v2.222 to allow for a more granual control of permissions allowing different levels of administration versus the previous `Overall/Administration` permission that enabled all permissions.
+* The two new permissions include:
+  * **Overall/Manage:** safely grant a user the ability to manage a subset of CloudBees CI configuration options.
+  * **Overall/SystemRead:** grant a user the ability to view most of CloudBees CI configuration options, but in read only mode.
+* These new permissions are currently *Experimental* and disabled by default. They can be [enabled via corresponding system properties or with corresponding dedicated plugins](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-secure-guide/delegating-administration-modern#_enabling_the_new_permissions). We recommend using the system properties as you never want to install additional plugins if not necessary. 
 
 ---
 name: rbac-casc-lab-link
@@ -39,7 +43,8 @@ class: compact
 # Labs - Delegating Administration with CloudBees CI RBAC
 
 * In the following labs:
-  *  You will use CasC 
+  * You will use CasC to create an RBAC configuration that will reduce the administrative permissions of your user in the UI - delegating you to a *manager* role.
+  * The permission will still allow your user to approve/reload updated configuration bundles.
 * The *Delegating Administration with CloudBees CI RBAC* lab instructions are available at: 
   * https://cloudbees-ci.labs.cb-sa.io/module-1/rbac-casc/
 
