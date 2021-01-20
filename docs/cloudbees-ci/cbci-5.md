@@ -54,4 +54,4 @@ name: rbac-casc-overview
 
 # Delegating Administration with CloudBees CI RBAC Overview
 
-* Used CasC to create
+* CasC was used to create an RBAC configuration for your managed controller that delegated you to a *manager* role that enforces the use of CasC from source control for managing the configuration of your managed controller.
