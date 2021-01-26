@@ -16,7 +16,7 @@ layout: true
 ]
 
 .footer[
-- © 2020 CloudBees, Inc.
+- © 2021 CloudBees, Inc.
 - ![:scale 100%](../img/CloudBees-Submark-Full-Color.svg)
 ]
 ---
@@ -31,14 +31,13 @@ class: compact
 4. <a class="no-style" href="#pipeline-template-catalog-title">Pipeline Manageability & Governance with Templates</a>
 5. <a class="no-style" href="#casc-title">Configuration as Code (CasC) with CloudBees CI</a>
 6. <a class="no-style" href="#pipeline-policies-title">Pipeline Manageability & Governance with Policies</a>
+7. <a class="no-style" href="#rbac-casc-title">Delegating Administration with RBAC</a>
 7. <a class="no-style" href="#dev-centric-title">A Developer Centric Experience</a>
 8. <a class="no-style" href="#using-templates-title">Using Pipeline Templates</a>
 9. <a class="no-style" href="#casc-dev-title">Configuration as Code (CasC) for Developers</a>
 10. <a class="no-style" href="#contextual-feedback-title">Contextual Feedback for Pipelines</a>
 11. <a class="no-style" href="#cross-team-title">Cross Team Collaboration</a>
 12. <a class="no-style" href="#hibernate-title">Hibernating Managed Controllers</a>
-
-.footnote[.bold[*] Please note, it is unlikely that we will get through all the material. However, all of the lab material is freely available on GitHub and can be self-led. The CloudBees CI lab environment will be available until next Monday if you would like to complete any labs we don't get through.]
 
 ---
 name: workshop-tools
@@ -65,6 +64,8 @@ name: lab-environment
 * Attendees will be using their own GitHub accounts 
 * **IMPORTANT:** If you haven't already completed the *Pre-Workshop Setup* then do so here: https://cloudbees-ci.labs.cb-sa.io/getting-started/pre-workshop-setup/
 
+
+.footnote[.bold[*] Please note, it is unlikely that we will get through all the material. However, all of the lab material is freely available on GitHub and can be self-led. The CloudBees CI lab environment will be available until next Monday if you would like to complete any labs we don't get through.]
 ---
 name: core-overview-title
 class: title, shelf, no-footer, fullbleed
@@ -88,6 +89,7 @@ class: compact
 4. <a class="no-style" href="#pipeline-template-catalog-title">Pipeline Manageability & Governance with Templates</a>
 5. <a class="no-style" href="#casc-title">Configuration as Code (CasC) with CloudBees CI</a>
 6. <a class="no-style" href="#pipeline-policies-title">Pipeline Manageability & Governance with Policies</a>
+7. <a class="no-style" href="#rbac-casc-title">Delegating Administration with RBAC</a>
 7. <a class="no-style" href="#dev-centric-title">A Developer Centric Experience</a>
 8. <a class="no-style" href="#using-templates-title">Using Pipeline Templates</a>
 9. <a class="no-style" href="#casc-dev-title">Configuration as Code (CasC) for Developers</a>

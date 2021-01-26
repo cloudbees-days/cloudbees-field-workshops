@@ -1,12 +1,12 @@
-name: dev-centric-title
+name: rbac-casc-title
 class: title, shelf, no-footer, fullbleed
 background-image: linear-gradient(135deg,#279be0,#036eb4)
 count: false
 
-# CloudBees CI<br>A Developer Centric Experience
+# CloudBees CI<br>Delegating Administration with RBAC
 
 ---
-name: dev-centric-agenda
+name: agenda-templates
 class: compact
 
 # Agenda
@@ -17,7 +17,8 @@ class: compact
 4. <a class="no-style" href="#pipeline-template-catalog-title">Pipeline Manageability & Governance with Templates</a>
 5. <a class="no-style" href="#casc-title">Configuration as Code (CasC) with CloudBees CI</a>
 6. <a class="no-style" href="#pipeline-policies-title">Pipeline Manageability & Governance with Policies</a>
-7. .blue-bold[A Developer Centric Experience]
+7. .blue-bold[Delegating Administration with RBAC]
+7. <a class="no-style" href="#dev-centric-title">A Developer Centric Experience</a>
 8. <a class="no-style" href="#using-templates-title">Using Pipeline Templates</a>
 9. <a class="no-style" href="#casc-dev-title">Configuration as Code (CasC) for Developers</a>
 10. <a class="no-style" href="#contextual-feedback-title">Contextual Feedback for Pipelines</a>
@@ -25,26 +26,32 @@ class: compact
 12. <a class="no-style" href="#hibernate-title">Hibernating Managed Controllers</a>
 
 ---
-name: cloudbees-ci-overview-dev
+name: rbac-casc
 
-# CloudBees CI Overview
+# Delegating Administration with CloudBees CI RBAC
 
- CloudBees CI enables developers to spend less time on admin tasks and more time coding. 
- 
- - Increase efficiency and speed to release. Decrease context-switching.  
- - Provide repeatable components utilizing Configuration as Code. 
- - Speed your time to build with streamlined and self-service ***managed controller*** ( team specific Jenkins instances) provisioning.  
- - Dynamically share build agents across many controllers allowing for increased performance with decreased cost.
- - Reduce infrastructure costs by automatically hibernating idle resources.
+* [Delegating administration with CloudBees CI RBAC](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-secure-guide/delegating-administration-modern) allows organizations to delegate the level of administration avaialbe through the UI. Two new permissions were introduced in Jenkins v2.222 to allow for a more granual control of permissions allowing different levels of administration versus the previous `Overall/Administration` permission that enabled all permissions.
+* The two new permissions include:
+  * **Overall/Manage:** safely grant a user the ability to manage a subset of CloudBees CI configuration options.
+  * **Overall/SystemRead:** grant a user the ability to view most of CloudBees CI configuration options, but in read only mode.
+* These new permissions are currently *Experimental* and disabled by default. They can be [enabled via corresponding system properties or with corresponding dedicated plugins](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-secure-guide/delegating-administration-modern#_enabling_the_new_permissions). We recommend using the system properties as you never want to install additional plugins if not necessary. 
 
 ---
-name: dev-centric-lab
+name: rbac-casc-lab-link
 class: compact
 
-# CloudBees CI: A Developer Centric Experience
+# Labs - Delegating Administration with CloudBees CI RBAC
 
-### Lab - Module 2 Setup
-* In the following lab:
-  *  You will merge a GitHub pull request to trigger a CloudBees CI CasC update for your ***managed controller***.
-* The *Module 2 Setup* lab instructions are available at: 
-  * https://cloudbees-ci.labs.cb-sa.io/module-2/setup/
+* In the following labs:
+  * You will use CasC to create an RBAC configuration that will reduce the administrative permissions of your user in the UI - delegating you to a *manager* role.
+  * The permission will still allow your user to approve/reload updated configuration bundles.
+* The *Delegating Administration with CloudBees CI RBAC* lab instructions are available at: 
+  * https://cloudbees-ci.labs.cb-sa.io/module-1/rbac-casc/
+
+
+---
+name: rbac-casc-overview
+
+# Delegating Administration with CloudBees CI RBAC Overview
+
+* CasC was used to create an RBAC configuration for your managed controller that delegated you to a *manager* role that enforces the use of CasC from source control for managing the configuration of your managed controller.

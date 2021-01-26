@@ -13,6 +13,44 @@ This lab will use CloudBees Feature Flags's `impressionHandler` to forward flag 
 ### Adding the ImpressionHandler to Code
 
 1. Switch tabs to bring up the `microblog-frontend` repository. Within the root directory, on the `development` branch, navigate to the public folder. Then select the `index.html` file.
+<<<<<<< HEAD
+2. Google Analytics requires a site tag. Select the pencil icon to edit the `index.html` file, and remove the comments on **Line 5** and **Line 10** so that the `gtag.js` can be seen. If using your own dashboard replace your `UA` property ID where appropriate.
+
+3. Review the edits below in
+<details><summary>Updated <code>index.html</code></summary>
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-165275127-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-165275127-1');
+    </script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title>microblog</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+</head>
+<body>
+<noscript>
+    <strong>We're sorry but microblog-frontend doesn't work properly without JavaScript enabled. Please enable it to
+        continue.</strong>
+</noscript>
+<div id="app"></div>
+<!-- built files will be auto injected -->
+</body>
+</html>
+
+```
+</details>
+=======
 2. Google Analytics requires a site tag. Select the pencil icon to edit the `index.html` file, and remove the comments on **Line 5** and **Line 13** so that the `gtag.js` can be seen. If using your own dashboard replace your `UA` property ID where appropriate.
 3. Review the edits below:
    <details><summary>Updated <code>index.html</code></summary>
@@ -47,6 +85,7 @@ This lab will use CloudBees Feature Flags's `impressionHandler` to forward flag 
    </html>
    ```
    </details>
+>>>>>>> 47983e668a8056471a3c6a41e14efcabb3a581fe
 
 4. Create a commit message (e.g. "insert gtag.js"). Then **Commit changes** directly to `development` branch.
 5. From the microblog's root directory on the `development` branch, navigate to the `flags.js` file (`src/utils/flags.js`).
@@ -96,7 +135,7 @@ export const configurationFetchedHandler = fetcherResults => {
 }
 
 export const impressionHandler = (reporting, experiment) => {
-  if (experiment.name === 'title') {
+  if (experiment.name === 'title) {
     console.log('Title flag, ' + reporting.name + ' ,value is ' + reporting.value)
     window.gtag('event', experiment.name, {
       'event_category': reporting.name,
@@ -106,6 +145,23 @@ export const impressionHandler = (reporting, experiment) => {
     console.log('Not in title experiment. Flag ' + reporting.name + '. default value ' + reporting.value + ' was used')
   }
 }
+<<<<<<< HEAD
+
+async function initRollout () {
+  const options = {
+    configurationFetchedHandler: configurationFetchedHandler,
+    impressionHandler: impressionHandler     
+  }
+  Rox.setCustomBooleanProperty('isLoggedIn', store.getters.isLoggedIn)
+  Rox.setCustomBooleanProperty('hasBetaAccess', betaAccess())
+  Rox.register('default', Flags)
+  await Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options)
+}
+
+initRollout().then(function () {
+  console.log('Done loading Rollout')
+})
+=======
 
 async function initRollout () {
   const options = {
@@ -117,6 +173,7 @@ async function initRollout () {
   Rox.register('default', Flags)
   await Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options)
 }
+>>>>>>> 47983e668a8056471a3c6a41e14efcabb3a581fe
 
 initRollout().then(function () {
   console.log('Done loading Rollout')

@@ -17,6 +17,7 @@ class: compact
 4. <a class="no-style" href="#pipeline-template-catalog-title">Pipeline Manageability & Governance with Templates</a>
 5. .blue-bold[Configuration as Code (CasC) with CloudBees CI]
 6. <a class="no-style" href="#pipeline-policies-title">Pipeline Manageability & Governance with Policies</a>
+7. <a class="no-style" href="#rbac-casc-title">Delegating Administration with RBAC</a>
 7. <a class="no-style" href="#dev-centric-title">A Developer Centric Experience</a>
 8. <a class="no-style" href="#using-templates-title">Using Pipeline Templates</a>
 9. <a class="no-style" href="#casc-dev-title">Configuration as Code (CasC) for Developers</a>
@@ -44,15 +45,18 @@ A good question to ask is if anyone is already using Jenkins Config-as-Code?
 
 ---
 name: core-casc-overview
+class: compact
 
 # CloudBees CI Configuration Bundle
 
-CasC for CloudBees CI consists of a collection of YAML files referred to as a configuration bundle (or CasC bundle) that includes four files:
+CasC for CloudBees CI consists of a collection of YAML files referred to as a configuration bundle (or CasC bundle) that includes six files:
 
 1. `bundle.yaml` - provides a version for the bundle (which must be incremented for bundle updates), and references the other files in the bundle.
 2. `jenkins.yaml` - contains the Jenkins configuration as defined by the OSS [Jenkins CasC plugin](https://github.com/jenkinsci/configuration-as-code-plugin) and supported CloudBees plugins.
-3. `plugin-catalog.yaml` - provides a list of plugins that are **ALLOWED** to be installed on your *managed controllers* that are not already included as part of the CloudBees Assurance Program (CAP) Core plugins.
-4. `plugins.yaml` - contains a list of all plugins that will be **INSTALLED/UPDATED** on the configured *managed controllers* - but plugins can only be installed if included via the `plugin-catalog.yaml` or if they are already included as CloudBees CAP plugins.
+3. `plugin-catalog.yaml` *optional* - provides a list of plugins that are **ALLOWED** to be installed on your *managed controllers* that are not already included as part of the CloudBees Assurance Program (CAP) Core plugins.
+4. `plugins.yaml` *optional* - contains a list of all plugins that will be **INSTALLED/UPDATED** on the configured *managed controllers* - but plugins can only be installed if included via the `plugin-catalog.yaml` or if they are already included as CloudBees CAP plugins.
+5. `rbac.yaml` *optional* - contains RBAC configuration for individual managed controllers.
+6. `items.yaml` *optional* - contains configuration for items to be created on managed controller; currently only supports **folders**.
 
 ---
 name: enable-casc
