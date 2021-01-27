@@ -28,7 +28,7 @@ In this lab you will create a new Multibranch Pipeline job from the **Maven Pipe
        github:
        ...
    ```
-7. Now, in **GitHub**, navigate to your `simple-java-maven-app` repository in the GitHub Organization you created for this workshop, click on the `example.cloudbees-ci.yml` file, then click pencil icon to edit the file and then rename the file by deleting `example.` from the beginning of the file name, leaving just `cloudbees-ci.yml`. ![Rename Marker File](rename-marker-file.png?width=50pc)
+7. Now, in **GitHub**, navigate to your `simple-java-maven-app` repository in the GitHub Organization you created for this workshop, click on the `example.cloudbees-ci.yml` file, then click **pencil** icon to edit the file and then rename the file by deleting `example.` from the beginning of the file name, leaving just `cloudbees-ci.yml`. ![Rename Marker File](rename-marker-file.png?width=50pc)
 8. Scroll to the bottom of the page and click the **Commit changes** *(directly to the `main` branch)* button to commit the renamed `cloudbees-ci.yml` to the **main** branch of your `simple-java-maven-app` repository. 
 9.  Navigate back to the **simple-maven-app** Multibranch Pipeline on your CloudBees CI ***managed controller*** project and you will see that there is now a **main** branch job. ***NOTE: The job will fail and that is expected. We will fix the error in a subsequent lab.*** ![Maven main job](maven-main-job.png?width=50pc)
 
