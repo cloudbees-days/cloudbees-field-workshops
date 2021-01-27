@@ -6,7 +6,7 @@ weight: 3
 
 As a developer you typically (and shouldn't) have access to makes configuration changes to your team's CloudBees CI ***managed controller*** (Jenkins instance). However, developers can take advantage of the GitOps approach to managing the configuration of a CloudBees CI *managed controller* by requesting configuration changes via a GitHub pull requests.
 
-In this lab you will act as developer and CloudBees CI admin, where you will review and merge a pull request to your `cloudbees-ci-config-bundle` repository in your workshop GitHub Organization.
+In this lab you will act as developer and CloudBees CI admin, where you will review and merge a pull request to your `cloudbees-ci-config-bundle` repository in your workshop GitHub Organization and then the CasC bundle will be updated and automatically reloaded by the **config-bundle-ops** job on your managed controller.
 
 >NOTE: Please ensure that you have signed up for the [CloudBees Workshops Slack workspace](https://app.slack.com/client/T010A455W77/) as instructed in the *[Pre-Workshop Setup](https://cloudbees-ci.labs.cb-sa.io/getting-started/pre-workshop-setup/#slack)* before continuing with this lab.
 
