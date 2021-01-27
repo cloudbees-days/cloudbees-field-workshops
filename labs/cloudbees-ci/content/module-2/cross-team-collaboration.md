@@ -9,13 +9,10 @@ weight: 5
 We will utilize CloudBees CI CasC to enable and configure Notifications for Cross Team Collaboration.
 
 1. Navigate to your `cloudbees-ci-config-bundle` repository in GitHub and click on the **Pull requests** link. ![PR link](pr-link.png?width=50pc) 
-2. On the next screen, click on the **Cross Team Collaboration Lab: Enable Notifications** pull request (#3) and then click on the **Files changed** tab to review the requested configuration changes. As you can see, we are adding `notificationConfiguration` for your CloudBees CI ***managed controller***. ![PR Files Changed](collab-casc-changes.png?width=50pc)
+2. On the next screen, click on the **Cross Team Collaboration Lab: Enable Notifications** pull request and then click on the **Files changed** tab to review the requested configuration changes and scroll down to the `jenksin.yaml` file. As you can see, we are adding `notificationConfiguration` for your CloudBees CI ***managed controller***. ![PR Files Changed](collab-casc-changes.png?width=50pc)
 3. Once you have reviewed the changed files, click on the **Conversation** tab, scroll down and click the green **Merge pull request** button and then the **Confirm merge** button.
 4. On the next screen click the **Delete branch** button.
-5. Navigate to the **config-bundle-ops** job under the **template-jobs** folder on your CloudBees CI ***managed controller***. Shortly after the **master** branch job completes successfully you will see a new **monitor alert** at the top of the screen. *(NOTE: You may need to refresh your browser if the alert does not appear after a few minutes.)* ![Monitor alert](monitor-alert.png?width=50pc)
-6. Click on the **monitor** link of your CloudBees CI ***managed controller*** and you will see that a new version of the configuration bundle is available - click on the **Reload Configuration** button and on the next screen click the **Yes** button to apply the updated configuration bundle. NOTE: If you do not see the **Reload Configuration** button then click the **Safe Restart** button. ![Reload CasC](reload-config.png?width=50pc)
-7. Once your ***managed controller*** is finished updating the configuration click on **Configure Notification** under *System Configuration*. ![Notifications config link](notifications-config-link.png?width=50pc)
-8. Note that the **Notification Configuration** is **Enabled** and the **Notification Router Implementation** is set to **Local only**. ![Notifications configured](notifications-configured.png?width=50pc)
+5. Navigate to the **config-bundle-ops** job under the **template-jobs** folder on your CloudBees CI ***managed controller***. After the **master** branch job completes successfully **Cross Team Collaboration** notifications will be enabled for your *managed controller*.
 
 ## Adding an event trigger
 
