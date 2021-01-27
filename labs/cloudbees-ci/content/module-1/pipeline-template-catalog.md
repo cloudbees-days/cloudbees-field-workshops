@@ -13,7 +13,7 @@ Using the provided command-line interface (CLI) allows for automated management 
 This lab will explore how to manage CloudBees CI Pipeline Template Catalogs with the CloudBees CI CLI. 
 
 1. Navigate to the top-level of CloudBees CI Operations Center - **Jenkins** - and click on the link for your ***managed controller*** (it will have the same names as your workshop GitHub Organization). ![Managed Controller link](managed-controller-link.png?width=60pc)
-2. At the top-level of your CloudBees CI ***managed controller*** click on **New Item** in the left menu. ![New Item](create-new-item.png?width=40pc)
+2. At the top-level of your CloudBees CI ***managed controller*** click on **New Item** in the left menu. ![New Item](create-new-item.png?width=60pc)
 3. Enter ***pipeline-catalog-ops*** as the **item name**, select **Multibranch Pipeline** as the item type and the click the **OK** button. ![import-catalog Pipeline](create-pipeline-item.png?width=60pc)
 4. Under **Branch Sources** click on **Add source** and select ***GitHub*** ![Branch Sources Configuration](add-source-github.png?width=40pc)
 5. Under the **GitHub** branch source enter the following:
