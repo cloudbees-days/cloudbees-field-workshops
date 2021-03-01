@@ -15,7 +15,7 @@ In addition to using CloudBees CI CasC to configure RBAC for your managed contro
 3. On the **Configure** screen scroll down to the **Security Setting Enforcement**, select the ***Enforce Authentication only*** value from the **Opt-out** select list and then click the **Save** button. ![Auth Only](auth-only.png?width=50pc) 
 4. Navigate to your `cloudbees-ci-config-bundle` repository in GitHub and click on the **Pull requests** link. 
 5. Click on the **RBAC lab updates** pull request in GitHub and then click on the **Files changed** tab to review the requested configuration changes.
-6. Note the new `rbac.yaml` file that we are adding. We are adding two roles and two groups using those roles. ![RBAC YAML](rbac-yaml.png?width=50pc) 
+6. Note the new `rbac.yaml` file that we are adding. We are adding two roles and two groups using those roles. ![RBAC YAML](rbac-yaml.png?width=40pc) 
 7. Once you have reviewed the changed files, click on the **Conversation** tab, scroll down and click the green **Merge pull request** button and then the **Confirm merge** button.
 8. On the next screen click the **Delete branch** button.
 5. Navigate to the **config-bundle-ops** job under the **template-jobs** folder on your CloudBees CI managed controller.
