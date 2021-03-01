@@ -1,0 +1,33 @@
+- release_tracks: [ALPHA]
+
+  help_text:
+    brief: List Kubernetesedge nodePools.
+    description: |
+      List Kubernetesedge nodePools.
+    examples: |
+      To list the nodePools, run:
+
+        $ {command}
+
+  request:
+    collection: kubernetesedge.projects.locations.clusters.nodePools
+    api_version: v1alpha1
+
+  response:
+    id_field: name
+
+  arguments:
+    resource:
+      help_text: Parent Kubernetesedge location to list all contained Kubernetesedge nodePools.
+      spec: !REF googlecloudsdk.command_lib.edge_container.resources:cluster
+
+  output:
+    format: |
+      table(
+        name,
+        createTime:label=CREATETIME
+        labels:label=LABELS
+        nodeCount:label=NODECOUNT
+        site:label=SITE
+        updateTime:label=UPDATETIME
+      )

@@ -1,0 +1,34 @@
+- release_tracks: [ALPHA]
+
+  help_text:
+    brief: Create a Kubernetesedge node pool.
+    description: |
+      Create a new Kubernetesedge nodePool.
+    examples: |
+      To create a node pool called 'test-nodePool', run:
+
+        $ {command} my-nodePool
+
+  request:
+    collection: kubernetesedge.projects.locations.clusters.nodePools
+    api_version: v1alpha1
+
+  arguments:
+    resource:
+      help_text: Kubernetesedge node pool to create.
+      spec: !REF googlecloudsdk.command_lib.edge_container.resources:nodePool
+
+    params:
+    # TODO(b/176452774)  Generate an argument for the `labels` param.
+    - arg_name: node-count
+      api_field: nodePool.nodeCount
+      required: true
+      help_text: |
+        Default nodeCount used by this node pool.
+    - arg_name: site
+      api_field: nodePool.site
+      required: true
+      help_text: |
+        Default site used by this node pool.
+    labels:
+      api_field: nodePool.labels

@@ -1,0 +1,31 @@
+- release_tracks: [ALPHA]
+
+  help_text:
+    brief: List Kubernetesedge sites.
+    description: |
+      List Kubernetesedge sites.
+    examples: |
+      To list the sites, run:
+
+        $ {command}
+
+  request:
+    collection: kubernetesedge.projects.locations.sites
+    api_version: v1alpha1
+
+  response:
+    id_field: name
+
+  arguments:
+    resource:
+      help_text: Parent Kubernetesedge location to list all contained Kubernetesedge sites.
+      spec: !REF googlecloudsdk.command_lib.edge_container.resources:location
+
+  output:
+    format: |
+      table(
+        name.basename():label=NAME,
+        createTime:label=CREATETIME
+        labels:label=LABELS
+        updateTime:label=UPDATETIME
+      )

@@ -1,0 +1,29 @@
+- release_tracks: [ALPHA]
+
+  help_text:
+    brief: Create a Kubernetesedge cluster.
+    description: |
+      Create a new Kubernetesedge cluster.
+    # TODO(b/176452774) Fill in the example command for all methods and resources.
+    examples: |
+      To create a cluster called 'test-cluster', run:
+
+        $ {command} my-cluster
+
+  request:
+    collection: kubernetesedge.projects.locations.clusters
+    api_version: v1alpha1
+
+  arguments:
+    resource:
+      help_text: Kubernetesedge cluster to create.
+      spec: !REF googlecloudsdk.command_lib.edge_container.resources:cluster
+
+    params:
+    - arg_name: hub-membership
+      api_field: cluster.hub.membership
+      help_text: |
+        Name of the membership resource to use when registering this cluster to GKE
+        Hub e.g. projects/{project}/locations/global/memberships/{membership}.
+    labels:
+      api_field: cluster.labels

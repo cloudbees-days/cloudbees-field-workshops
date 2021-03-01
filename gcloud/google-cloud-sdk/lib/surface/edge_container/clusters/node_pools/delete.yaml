@@ -1,0 +1,19 @@
+- release_tracks: [ALPHA]
+
+  help_text:
+    brief: Delete a Kubernetesedge nodePool.
+    description: |
+      Delete a Kubernetesedge nodePool.
+    examples: |
+      To delete a nodePool called 'test-nodePool', run:
+
+        $ {command} my-nodePool
+
+  request:
+    collection: kubernetesedge.projects.locations.clusters.nodePools
+    api_version: v1alpha1
+
+  arguments:
+    resource:
+      help_text: Kubernetesedge nodePool to delete.
+      spec: !REF googlecloudsdk.command_lib.edge_container.resources:nodePool

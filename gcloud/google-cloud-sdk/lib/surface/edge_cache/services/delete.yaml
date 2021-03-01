@@ -1,0 +1,19 @@
+- release_tracks: [ALPHA]
+  hidden: true
+  help_text:
+    brief: Delete an EdgeCacheService.
+    description: |
+      Delete an EdgeCacheService.
+    examples: |
+      To delete a edgeCacheService called 'my-service', run:
+
+        $ {command} my-service
+
+  request:
+    collection: networkservices.projects.locations.edgeCacheServices
+    api_version: v1alpha1
+
+  arguments:
+    resource:
+      help_text: The EdgeCacheService to delete.
+      spec: !REF googlecloudsdk.command_lib.edge_cache.resources:edgeCacheService

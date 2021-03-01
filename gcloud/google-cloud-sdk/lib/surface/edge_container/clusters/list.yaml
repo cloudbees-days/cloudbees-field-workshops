@@ -1,0 +1,32 @@
+- release_tracks: [ALPHA]
+
+  help_text:
+    brief: List Kubernetesedge clusters.
+    description: |
+      List Kubernetesedge clusters.
+    examples: |
+      To list the clusters, run:
+
+        $ {command}
+
+  request:
+    collection: kubernetesedge.projects.locations.clusters
+    api_version: v1alpha1
+
+  response:
+    id_field: name
+
+  arguments:
+    resource:
+      help_text: Parent Kubernetesedge location to list all contained Kubernetesedge clusters.
+      spec: !REF googlecloudsdk.command_lib.edge_container.resources:location
+
+  output:
+    format: |
+      table(
+        name,
+        createTime,
+        hub:label=HUB,
+        labels:label=LABELS,
+        updateTime:label=UPDATETIME
+      )

@@ -1,0 +1,19 @@
+- release_tracks: [ALPHA]
+
+  help_text:
+    brief: Delete a Kubernetesedge cluster.
+    description: |
+      Delete a Kubernetesedge cluster.
+    examples: |
+      To delete a cluster called 'test-cluster', run:
+
+        $ {command} my-cluster
+
+  request:
+    collection: kubernetesedge.projects.locations.clusters
+    api_version: v1alpha1
+
+  arguments:
+    resource:
+      help_text: Kubernetesedge cluster to delete.
+      spec: !REF googlecloudsdk.command_lib.edge_container.resources:cluster

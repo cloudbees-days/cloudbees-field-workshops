@@ -1,0 +1,18 @@
+release_tracks: [ALPHA]
+
+help_text:
+  brief: Show details about the site.
+  description: Show details about the site.
+  examples: |
+    To show details about a device, run:
+
+      $ {command} my-site --name=my-name
+
+request:
+  collection: kubernetesedge.projects.locations.sites
+  api_version: v1alpha1
+
+arguments:
+  resource:
+    help_text: The site you want to describe.
+    spec: !REF googlecloudsdk.command_lib.edge_container.resources:site
