@@ -57,7 +57,7 @@ pipeline {
 ```
 ![Publish event script](publish-event-script.png?width=50pc)
 4. Click the **Build Now** link in the left menu and then view the logs to see the `Publishing event notification` `Event JSON`.  The `verbose` option on the `publishEvent` steps prints out the JSON being sent by the event in the logs. ![Build publish event log](publish-event-log.png?width=50pc)
-5. Once the **publish-event** Pipeline job completes successfully you will see the **master** branch job of the **simple-maven-app** Mutlibranch project triggered.
-6. Once the **master** branch job completes successfully you can see in the logs: `new build image: maven:3.6.3-openjdk-15`, as specified by the event you published above and see that the build was triggered by an **event**. ![Trigger success](triggered-by-event.png?width=50pc)
+5. Once the **publish-event** Pipeline job completes successfully you will see the **main** branch job of the **simple-maven-app** Mutlibranch project triggered.
+6. Once the **main** branch job completes successfully you can see in the logs: `new build image: maven:3.6.3-openjdk-15`, as specified by the event you published above and see that the build was triggered by an **event**. ![Trigger success](triggered-by-event.png?width=50pc)
 
 **For instructor led workshops please <a href="https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-ci/#collab-lab-overview">return to the workshop slides</a>**
