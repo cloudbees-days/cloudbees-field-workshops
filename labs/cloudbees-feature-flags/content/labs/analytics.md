@@ -5,7 +5,7 @@ weight: 5
 --- 
 
 ## Forwarding Flag Data to Analytics Platform
-This lab will use CloudBees Feature Flags's `impressionHandler` to forward flag information to a more robust analytics platform (we will use Google Analytics for this lab, but the abstracted process remains the same for integration with other tools). We can pass information about feature flags values evaluated on each client back for analysis. We'll set-up the beginning process for A/B testing process.
+This lab will use CloudBees Feature Management's `impressionHandler` to forward flag information to a more robust analytics platform (we will use Google Analytics for this lab, but the abstracted process remains the same for integration with other tools). We can pass information about feature flags values evaluated on each client back for analysis. We'll set-up the beginning process for A/B testing process.
 
 **NOTE: If you going through these workshops on your own, feel free to create your own Google Analytics dashboard. Use your own UA property tag when necessary.**
 
@@ -185,7 +185,7 @@ initRollout().then(function () {
 
 ### Split Based Test for Title Experiment
 
-1. Navigate to the CloudBees Feature Flags dashboard, and bring up the **title** experiment in the **Development** environment.
+1. Navigate to the CloudBees Feature Management dashboard, and bring up the **title** experiment in the **Development** environment.
 2. The premise of this A/B test will be to route 50% of all users to a **True** value and the other 50% to a **False** value. This can be accomplished by changing the **set to** value from **True** to **Split** within the drop down menu. The default split experiment should reflect these weightings to each value.
 3. **Update Audience** to apply the changes made in this experiment. ![Split](images/split.png?width=50pc)
 
@@ -194,4 +194,4 @@ initRollout().then(function () {
 * Open your Google Analytics dashboard, from the **Realtime Reports** panel, select **Events**.
 
 ### Lab 6 Completed!
-You have successfully completed the introductory CloudBees Feature Flags workshop!
+You have successfully completed the introductory CloudBees Feature Management workshop!

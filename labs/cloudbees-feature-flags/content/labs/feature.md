@@ -4,8 +4,8 @@ chapter: false
 weight: 1
 --- 
 
-## Using a Feature Flag with CloudBees Feature Flags
-In this lab, you will *gate* a component behind the `title` feature flag defined in the previous lab by using CloudBees Feature Flags's dashboard. We will then remotely configure the value of the flag to control whether the title element is visible or hidden.
+## Using a Feature Flag with CloudBees Feature Management
+In this lab, you will *gate* a component behind the `title` feature flag defined in the previous lab by using CloudBees Feature Management's dashboard. We will then remotely configure the value of the flag to control whether the title element is visible or hidden.
 
 ### Adding a Title to the Microblog Post
 
@@ -162,7 +162,7 @@ export default {
 
 ### Adding the Configuration Fetched Handler
 
-The **Configurationed Fetch Handler** provides a mechanism to alert the CloudBees Feature Flags SDK in your application when an updated configuration, from local storage or via an asynchronous network call, has loaded. It allows us to control what happens when a new configuration is fetched, and can be used for troubleshooting by logging the `fetchedResults`. For the changes for a client-side feature flags from the new configuration to be applied, an action (like a page refresh) has to take place.
+The **Configurationed Fetch Handler** provides a mechanism to alert the CloudBees Feature Management SDK in your application when an updated configuration, from local storage or via an asynchronous network call, has loaded. It allows us to control what happens when a new configuration is fetched, and can be used for troubleshooting by logging the `fetchedResults`. For the changes for a client-side feature flags from the new configuration to be applied, an action (like a page refresh) has to take place.
 
 1. In Github, navigate to the root directory of the `microblog-frontend` repository on the `development` branch.
 2. Open the `flags.js` file (navigating to `src/utils/flags.js`), and select the pencil icon to edit the file.
