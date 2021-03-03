@@ -7,3 +7,6 @@
 [submodule "labs/base/themes/hugo-theme-learn"]
 	path = labs/base/themes/hugo-theme-learn
 	url = https://github.com/matcornic/hugo-theme-learn.git
+[submodule "labs/cloudbees-ci-pipeline/themes/hugo-theme-learn"]
+	path = labs/cloudbees-ci-pipeline/themes/hugo-theme-learn
+	url = https://github.com/matcornic/hugo-theme-learn/tree/3efb32712c5cc77e644852d13ce3525780374b10
