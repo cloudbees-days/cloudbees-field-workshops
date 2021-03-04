@@ -10,15 +10,8 @@ In this first set exercises we will [create a GitHub Org Folder Pipeline project
 
 In this exercise we are going to create a special type of Jenkins Pipeline project referred to as an [*Organization Folder*](https://jenkins.io/doc/book/pipeline/multibranch/#organization-folders) and sometimes more specifically a *GitHub Organization* project (this type of project is also [available for Bitbucket](https://plugins.jenkins.io/cloudbees-bitbucket-branch-source) and there is [unofficial support for GitLab](https://github.com/Argelbargel/gitlab-branch-source-plugin)). The Jenkins *GitHub Organization* project will scan a GitHub Organization to discover the Organization’s repositories, automatically creating **managed** [*Multibranch Pipeline* jobs](https://jenkins.io/doc/book/pipeline/multibranch/#creating-a-multibranch-pipeline) for any repository with at least one branch containing a *project recognizer* - typically **Jenkinsfile**. We will use the GitHub Organization that you created in **[Setup - Create a GitHub Organization](./Setup.md#create-a-github-organization)**. A Jenkins *GitHub Organization* project will also utilize a GitHub Organization level ***webhook it creates*** to automatically manage Jenkins jobs - both individual branch jobs and Multibranch Pipeline jobs associated to repositories - when a branch or a repository is deleted from or added to the GitHub Organization.
 
-In order to complete the following exercise you should have [forked the following repository](./Setup.md#fork-the-workshop-repository) into the Github Organization you created in **[Setup - Create a GitHub Organization](./Setup.md#create-a-github-organization)**:
-
-* https://github.com/cloudbees-days/helloworld-nodejs  
-
-
-Once that repository is forked:
-
-1. **IMPORTANT** Navigate back to the top-level of your **Team Master** and click on the folder with the same name as your **Team Master**. This is important if you want to use [Blue Ocean](https://jenkins.io/projects/blueocean/) to visualize the Pipeline runs, because only jobs under this folder will show up in Blue Ocean.<p><img src="img/intro/org_folder_team_folder.png" width=850/> 
-2. Click on **New Item** in the left navigation menu - make sure that you are in the folder with the same name as your team, and not at the root of your Team Master  <p><img src="img/intro/org_folder_bluesteel_folder.png" width=850/>
+1. Navigate to the top-level of CloudBees CI Operations Center - **Dashboard** - and click on the link for your ***managed controller*** (it will have the same names as your workshop GitHub Organization). ![Managed Controller link](managed-controller-link.png?width=60pc)
+2. At the top-level of your CloudBees CI ***managed controller*** click on **New Item** in the left menu.  ![New Item](new-item.png?width=50pc) 
 3. Enter your GitHub Organization name as the **Item Name** 
 4. Select **GitHub Organization** as the item type
 5. Click **Ok** <p><img src="img/intro/org_folder_item.png" width=850/>
