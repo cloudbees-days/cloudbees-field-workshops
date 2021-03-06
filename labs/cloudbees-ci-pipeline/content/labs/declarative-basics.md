@@ -4,7 +4,7 @@ chapter: false
 weight: 1
 --- 
 
-In this first set exercises we will [create a GitHub Org Folder Pipeline project](), get an overview of the [basic fundamentals of the Declarative Pipeline syntax](#basic-declarative-syntax-structure), get an [introduction to Kubernetes based agents](#kubernetes-agents-with-cloudbees-core) and learn how to [add conditional logic to a Declarative Pipeline](#conditional-execution-with-when). 
+In this first lab we will [create a GitHub Org Folder Pipeline project](), get an overview of the [basic fundamentals of the Declarative Pipeline syntax](#basic-declarative-syntax-structure), get an [introduction to Kubernetes based agents](#kubernetes-agents-with-cloudbees-core) and learn how to [add conditional logic to a Declarative Pipeline](#conditional-execution-with-when). 
 
 ## Create a GitHub Organization Folder Pipeline Project
 
