@@ -4,7 +4,7 @@ chapter: false
 weight: 2
 --- 
 
-In this lab we will get an introduction to the [Jenkins Kubernetes plugin](https://github.com/jenkinsci/kubernetes-plugin/blob/master/README.md) for running dynamic and ephemeral agents with CloudBees CI on a Kubernetes cluster - [leveraging the scaling abilities of Kubernetes to schedule build agents](https://kurtmadel.com/posts/cicd-with-kubernetes/autoscaling-jenkins-agents-with-kubernetes/).
+In this lab we will get an introduction to the [Jenkins Kubernetes plugin](https://github.com/jenkinsci/kubernetes-plugin/blob/master/README.md) that enables the use of dynamic and ephemeral agents with CloudBees CI on a Kubernetes cluster - allowing you to [leverage the scaling abilities of Kubernetes to schedule build agents](https://kurtmadel.com/posts/cicd-with-kubernetes/autoscaling-jenkins-agents-with-kubernetes/).
 
 CloudBees Core has out-of-the-box support for Kubernetes build agents and allow Kubernetes agent templates - called Pod Templates - to be defined at either [the Operations Center level](https://go.cloudbees.com/docs/cloudbees-core/cloud-admin-guide/agents/#_globally_editing_pod_templates_in_operations_center) to be shared by multipe controllers or at [the Managed Controller level](https://go.cloudbees.com/docs/cloudbees-core/cloud-admin-guide/agents/#_editing_pod_templates_per_team_using_masters). The Kubernetes based agent is contained in a [Kubernetes pod](https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/), where a pod is a group of one or more containers sharing a common storage system and network. A pod is the smallest deployable unit of computing that Kubernetes can create and manage (you can read more about pods in the [Kubernetes documentation](https://kubernetes.io/docs/concepts/workloads/pods/pod/)).
 
@@ -65,7 +65,7 @@ pipeline {
   }
 }
 ```
-8. Commit the changes and the **helloworld-nodejs** job will run and it will complete successfully with the following output: ![Java Error](agent-java-success.png?width=50pc) 
+8. Commit the changes and the **helloworld-nodejs** job will run and it will complete successfully with the following output: ![Agent Success](agent-java-success.png?width=50pc) 
 
 >**NOTE:** The sh 'java -version' step before the `container('nodejs')` completed successfully this time because it used the default `jnlp` container to execute any steps not in the `container` block.
 
