@@ -13,28 +13,27 @@ In this exercise we are going to create a special type of Jenkins Pipeline proje
 1. Navigate to the top-level of CloudBees CI Operations Center - **Dashboard** - and click on the link for your ***managed controller*** (it will have the same names as your workshop GitHub Organization). ![Managed Controller link](managed-controller-link.png?width=60pc)
 2. At the top-level of your CloudBees CI ***managed controller*** click on **New Item** in the left menu.  ![New Item](new-item.png?width=50pc) 
 3. Enter your GitHub Organization name as the **Item Name** 
-4. Select **GitHub Organization** as the item type
-5. Click **Ok** ![New GitHub Organization Folder](github-org-folder-item.png?width=50pc) 
+4. Select **GitHub Organization** as the item type and click the **Ok** button. ![New GitHub Organization Folder](github-org-folder-item.png?width=50pc) 
 6. Select the **CloudBees CI Pipeline Workshop GitHub App** credentials from the **Credentials** drop down, make sure that the **Owner** field matches the name of your workshop GitHub Organization and then click the **Save** button ![Configure and Save GitHub Organization Folder](github-org-folder-save.png?width=50pc) 
-9. Click on the bread-crumb link to go back to your **GitHub Organization** Jenkins Pipeline project folder
+9. After the Organization scan completes, click on the bread-crumb link to go back to your **GitHub Organization** Jenkins Pipeline project folder.
 10. When the scan is complete your **GitHub Organization** Jenkins Pipeline project should be **empty**! ![Empty GitHub Organization Folder](empty-github-org-folder.png?width=50pc) 
-11. However, when the project was created it also should have created a webhook in Github. Verify that the webhook was created in Github by checking the **Webhooks** within your GitHub Organization **Settings**. ![GitHub Organization Webhook](github-org-webhook.png?width=50pc) 
-12. The reason why the scan did not find any repositories is because there were no branches in any repository with a `Jenkinsfile` in it, so let's fix that. Navigate to your forked copy of the **helloworld-nodejs** repository and click on the **Create new  file** button towards the top right of the screen. ![Create Jenkinsfile](create-jenkinsfile.png?width=50pc) 
+11. CloudBees configuration-as-code was used to create a GitHub Organization webhook for your workshop Organization. Verify that the webhook was created in Github by checking the **Webhooks** within your GitHub Organization **Settings**. ![GitHub Organization Webhook](github-org-webhook.png?width=50pc) 
+12. The reason why the scan did not find any repositories is because there were no branches in any repository with a `Jenkinsfile` in it, so let's fix that. Navigate to your copy of the **helloworld-nodejs** repository in your workshop GitHub Organization and click on the **Add file** button towards the top right of the screen and then select **Create new file**. ![Create Jenkinsfile](create-jenkinsfile.png?width=50pc) 
 13. Name the file `Jenkinsfile` and add the following content:
 ```
 pipeline {
 
 }
-```
-14. At the bottom of the screen enter a commit message ***initial Jenkinsfile***, select the **Create a new branch for this commit and start a pull request**, name the branch **development** and click the **Propose new file** button. **IMPORTANT Do Not Create a Pull Request on the next screen after saving** ![Commit Jenkinsfile](commit-jenkinsfile.png?width=50pc) 
-15. Navigate back to your new **GitHub Organization** Jenkins Pipeline project folder on your Team Master and refresh your browser. If you do not have a new **helloworld-nodejs** Multibranch project then click on the **Scan Organization Now** link in the left menu and then refresh your browser. ![Scan Organization Now](scan-org-now.png?width=50pc) 
-16. You should have a new failed job based on the **development** branch you just added the `Jenkinsfile`. ![Job Failed](job-failed.png?width=50pc) 
+``` 
+![Jenkinsfile in GitHub Editor](jenkinsfile-github-editor.png?width=50pc) 
+14. At the bottom of the screen enter a commit message ***initial Jenkinsfile***, select the **Create a new branch for this commit and start a pull request**, name the branch **development** and click the **Propose new file** button. **IMPORTANT Do Not Create a Pull Request on the next screen after saving**. ![Commit Jenkinsfile](commit-jenkinsfile.png?width=50pc) 
+15. Navigate back to your new **GitHub Organization** Jenkins Pipeline project folder on your CloudBees CI managed controller and refresh your browser.  You should have a new failed job based on the **development** branch you just added the `Jenkinsfile`. *NOTE: If you do not have a new **helloworld-nodejs** Multibranch project then click on the **Scan Repository Now** link in the left menu and then refresh your browser.*![Job Failed](job-failed.png?width=50pc) 
 
 ## Basic Declarative Syntax Structure
 
 In the previous lesson your Pipeline ran and will have failed.
 
-In this exercise we will update the Jenkinsfile Declarative Pipeline in your forked copy of the **helloworld-nodejs** repository using the GitHub file editor so that it will run successfully, as opposed to resulting in the following syntax errors:
+In this exercise we will update the Jenkinsfile Declarative Pipeline in your copy of the **helloworld-nodejs** repository using the GitHub file editor so the Pipeline job will complete successfully, as opposed to resulting in the following syntax errors:
 
 ```
 WorkflowScript: 1: Missing required section "stages" @ line 1, column 1.
@@ -50,7 +49,7 @@ WorkflowScript: 1: Missing required section "agent" @ line 1, column 1.
 
 [Declarative Pipelines](https://jenkins.io/doc/book/pipeline/syntax/#declarative-pipeline) must be enclosed within a `pipeline` block - which we have. But Declarative Pipelines must also contain a top-level `agent` declaration, and must contain exactly one `stages` block at the top level. The `stages` block must have at least one `stage` block but can have an unlimited number of additional `stage` blocks. Each `stage` block must have exactly one `steps` block. 
 
-1. We will use the GitHub file editor to update the `Jenkinsfile` file in your forked **helloworld-nodejs** repository. Navigate to the `Jenkinsfile` file in the **development** branch of your forked repository and then click on the pencil icon in the upper right to edit that file. **IMPORTANT Make sure you are editing the `Jenkinsfile` on your development branch** ![Edit Basic Syntac](github-edit-basic-syntax.png?width=50pc) 
+1. We will use the GitHub file editor to update the `Jenkinsfile` file in your copy of the **helloworld-nodejs** repository. Navigate to the `Jenkinsfile` file in the **development** branch of your **helloworld-nodejs** repository and then click on the pencil icon in the upper right to edit that file. **IMPORTANT Make sure you are editing the `Jenkinsfile` on your `development` branch** and **NOT the `main` branch**. ![Edit Basic Syntax](github-edit-basic-syntax.png?width=50pc) 
 2. Replace the contents of that file with the following Declarative Pipeline:
 
 ```groovy
@@ -66,10 +65,10 @@ pipeline {
   }
 }
 ```
-<p><img src="img/intro/basic_snytax_commit_to_development.png" width=850/><p> ![Basic Syntac Commit](basic-syntax-commit.png?width=50pc) 
+![Basic Syntac Commit](basic-syntax-commit.png?width=50pc) 
 
 3. Add a commit description and then click the **Commit Changes** button with the default selection of *Commit directly to the `development` branch* selected.
-4. Navigate back to the **helloworld-nodejs** *development* branch job on your Team Master and the job will complete successfully. Note some things from the log:
+4. Navigate back to the **helloworld-nodejs** *development* branch job on your CloudBees CI Managed Controller and the job will complete successfully. Note some things from the log:
   
    i. The `Jenkinsfile` is being pulled from the **development** branch of your forked **helloworld-nodejs** repository.
    
@@ -89,13 +88,15 @@ pipeline {
   ...
   ```
 
-   iv. The agent has a Java version of `1.8.0_171`:
+   iv. The agent has a Java version of `1.8.0_191`:
 
 ```
 ...
-Running shell script
+[Pipeline] sh
 + java -version
-openjdk version "1.8.0_171"
+openjdk version "1.8.0_191"
+OpenJDK Runtime Environment (IcedTea 3.10.0) (Alpine 8.191.12-r0)
+OpenJDK 64-Bit Server VM (build 25.191-b12, mixed mode)
 ...
 ```
   
