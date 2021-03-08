@@ -4,16 +4,15 @@ chapter: false
 weight: 6
 ---
 
-The [CloudBees CI hibernation for Managed Controllers](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-admin-guide/managing-masters#_hibernation_in_managed_masters) feature takes advantage of running CloudBees CI on Kubernetes by automatically shutting down, or hibernating, CloudBees CI Managed Controller after a specified amount of inactivity. This feature will also automatically un-hibernate a Managed controller for certain events such as GitHub webhooks.
+The [CloudBees CI hibernation for Managed Controllers](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-admin-guide/managing-masters#_hibernation_in_managed_masters) feature takes advantage of running CloudBees CI on Kubernetes by automatically shutting down, or hibernating, a CloudBees CI Managed Controller after a specified amount of inactivity. This feature will also automatically un-hibernate a Managed controller for certain events such as GitHub webhooks.
 
 >NOTE: More specifically, hibernation of Managed Controllers is achieved by setting the number of [Kubernetes replica sets](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/) of the [Kubernetes Statefulset](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/) backing your Managed Controller to zero.
 
-## Configure Hibernation
-Hibernation for CloudBees CI Managed Controllers is managed at the global Jenkins configuration level and was configured in the `jenkins.yaml` file in the CloudBees CI CasC lab.
-
 ## Hibernation Proxy for Webhooks
 
-The hibernating monitor service provides a `POST` proxy for things like GitHub webhooks. In this lab we will add a GitHub webhook to your workshop GitHub Organization that includes the [CloudBees CI hibernation POST queue endpoint](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/managing-masters#post-queue-github).
+The hibernating monitor service provides a `POST` proxy for things like GitHub webhooks. In this lab we will add a GitHub webhook to your workshop GitHub Organization that includes the [CloudBees CI hibernation POST queue endpoint](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/managing-masters#post-queue-github). 
+
+Hibernation for CloudBees CI Managed Controllers is managed at the global Jenkins configuration level and was configured by the `jenkins.yaml` file of your CloudBees CI configuration bundle. We will need to override that vaule, temporarily, to speed up this labe.
 
 1. First, we will update the hibernation grace period of your Managed Controller so we don't have to wait 25 minutes for it to hibernate. To modify the hibernation configuration via the UI you will need to login as an administrator. Click on your CloudBees CI username in the top-right corner of the screen and then select **Log Out** from the drop-down menu. ![Log Out](log-out.png?width=50pc)
 2. Log back in, but append `**-admin**` to the GitHub username you used earlier to login with, the password is the same as before. ![Log In as Admin](log-in-admin.png?width=50pc) 
