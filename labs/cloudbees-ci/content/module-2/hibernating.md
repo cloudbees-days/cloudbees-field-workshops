@@ -6,6 +6,8 @@ weight: 6
 
 The [CloudBees CI hibernation for Managed Controllers](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-admin-guide/managing-masters#_hibernation_in_managed_masters) feature takes advantage of running CloudBees CI on Kubernetes by automatically shutting down, or hibernating, CloudBees CI Managed Controller after a specified amount of inactivity. This feature will also automatically un-hibernate a Managed controller for certain events such as GitHub webhooks.
 
+>NOTE: More specifically, hibernation of Managed Controllers is achieved by setting the number of Kubernetes replica sets of the Statefulset backing your Managed Controller to zero.
+
 ## Configure Hibernation
 Hibernation for CloudBees CI Managed Controllers is managed at the global Jenkins configuration level and was configured in the `jenkins.yaml` file in the CloudBees CI CasC lab.
 
@@ -18,7 +20,7 @@ The hibernating monitor service provides a `POST` proxy for things like GitHub w
 3. Navigate to the top-level of your Managed Controller, click on the **Mange Jenkins** link in the left menu and then click **Configure System**. ![Manage Jenkins](manage-jenkins.png?width=50pc)
 4. Scroll down to the **Automatic hibernation** configuration and update the **Grace period** from *1500* seconds (configured via CasC) to *15* seconds and then click the **Save** button. By the time we are finished with the rest of the steps in this lab your Managed Controller should be hibernating. ![Update Grace period](update-grace-period.png?width=50pc)
 5. Next, navigate to the **Teams** folder on the CloudBees CI Cloud Operations Center and refresh the page untill your Managed Controller is hibernating signified by a *blue pause icon*. ![Hibernating Managed Controller](hibernating-controller.png?width=50pc)
-6. From the **Teams** folder, click on the **Manage** link, signified by the *cog icon*, for your Managed Controller and you will see on the **Manage** screen for your controller that it is **Disconnected (hibernated)**. ![Disconnected Hibernated Controller](disconnected-hibernated-controller.png?width=50pc)
+6. From the **Teams** folder, click on the **Manage** link, signified by the *cog icon*, for your Managed Controller and you will see on the **Manage** screen for your controller that it is **Disconnected (hibernated)** and also note that the **Statefulset** for your Managed Controller has 0 replicas. ![Disconnected Hibernated Controller](disconnected-hibernated-controller.png?width=50pc)
 7. Now goto to your workshiop GitHub Organization and click on the **Settings** link. ![GitHub Organization Settings link](github-org-settings-link.png?width=50pc)
 8. In the **Account settings** left menu click on the **Webhooks** link and then click on the **Edit** button for the Webhook starting with **https://cbci.workshop.cb-sa.io/**. ![Edit CBCI Webhook](edit-webhook-button.png?width=50pc)
 9. Before we update the webhook to use the hibernation proxy, scroll down to **Recent Deliveries**, expand the most recent delivery and click the **Redeliver** button. The *redelivery* will fail. ![Failed Webhook Redelivery](failed-webhook-redelivery.png?width=50pc)
