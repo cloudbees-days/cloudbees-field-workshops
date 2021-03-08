@@ -34,7 +34,7 @@ The hibernating monitor service provides a `POST` proxy for things like GitHub w
 ## Un-hibernate a Managed Controllers via the Operations Center UI
 
 1. Navigate to the classic UI of Operations Center and find your CloudBees CI ***managed controller*** (Jenkins instance) in the list of CloudBees CI ***managed controller***. 
-2. If there is a light blue **pause** icon next to your CloudBees CI ***managed controller*** then it is hibernating. Just click on the link for your ***managed controller*** to **un-hibernate** it. Note that in this list of **managed controllers**, 4 are hibernating. ![Hibernating managed controllers](hibernating-controllers.png?width=50pc)
+2. If there is a light blue **pause** icon next to your CloudBees CI ***managed controller*** then it is hibernating. Just click on the link for your ***managed controller*** to **un-hibernate** it. ![Hibernating managed controllers](hibernating-controller-2.png?width=50pc)
 3. Once you click on your CloudBees CI ***managed controller*** link from the classic UI of Operations Center you will see a screen that shows that it is "getting ready to work". ![Un-hibernate](unhibernate.png?width=50pc)
 4. After a couple of minutes, your CloudBees CI ***managed controller*** will be ready to use and in the same state as it was when it was hibernated.
 
