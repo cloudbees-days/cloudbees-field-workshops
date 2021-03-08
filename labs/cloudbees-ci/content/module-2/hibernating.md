@@ -6,7 +6,7 @@ weight: 6
 
 The [CloudBees CI hibernation for Managed Controllers](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-admin-guide/managing-masters#_hibernation_in_managed_masters) feature takes advantage of running CloudBees CI on Kubernetes by automatically shutting down, or hibernating, CloudBees CI Managed Controller after a specified amount of inactivity. This feature will also automatically un-hibernate a Managed controller for certain events such as GitHub webhooks.
 
->NOTE: More specifically, hibernation of Managed Controllers is achieved by setting the number of Kubernetes replica sets of the Statefulset backing your Managed Controller to zero.
+>NOTE: More specifically, hibernation of Managed Controllers is achieved by setting the number of [Kubernetes replica sets](https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/) of the [Kubernetes Statefulset](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/) backing your Managed Controller to zero.
 
 ## Configure Hibernation
 Hibernation for CloudBees CI Managed Controllers is managed at the global Jenkins configuration level and was configured in the `jenkins.yaml` file in the CloudBees CI CasC lab.
