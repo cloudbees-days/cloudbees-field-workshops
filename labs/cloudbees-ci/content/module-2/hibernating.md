@@ -4,10 +4,10 @@ chapter: false
 weight: 6
 ---
 
-The [CloudBees CI hibernation for Managed Controllers](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-admin-guide/managing-masters#_hibernation_in_managed_masters) feature takes advantage of running CloudBees CI on Kubernetes by automatically shutting down or hibernating CloudBees CI managed controller after a specified amount of time of inactivity. This feature will also automatically un-hibernate a ***managed controller*** for certain events such as GitHub webhooks.
+The [CloudBees CI hibernation for Managed Controllers](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-admin-guide/managing-masters#_hibernation_in_managed_masters) feature takes advantage of running CloudBees CI on Kubernetes by automatically shutting down or hibernating CloudBees CI managed controller after a specified amount of time of inactivity. This feature will also automatically launch a ***managed controller*** for certain events such as GitHub webhooks.
 
 ## Configure Hibernation
-Hibernation for CloudBees CI managed controller is managed at the global Jenkins configuration level and was configured in the `jenkins.yaml` file in the CloudBees CI CasC lab.
+Hibernation is managed at the global Jenkins configuration level and is configured in the `jenkins.yaml` file in the CloudBees CI CasC lab.
 
 ## Hibernation Proxy for Webhooks
 
