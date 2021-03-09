@@ -18,7 +18,7 @@ Feel free to use an existing GitHub.com account or create a new one:
 
 ### Create a GitHub Organization
 
-We highly recommend creating a new GitHub Organization for the CloudBees CI Workshop. We will be using a GitHub App based credential to enable authentication and authorization between your GitHub.com Organization for the workshop and CloudBees CI.
+We highly recommend creating a new GitHub Organization for the CloudBees CI Pipeline Workshop. We will be using a GitHub App based credential to enable authentication and authorization between your GitHub.com Organization for the workshop and CloudBees CI.
 1. Ensure that you are logged into GitHub.com and then navigate to this [link to create a new (and free) GitHub Organization](https://github.com/account/organizations/new?coupon=&plan=team_free). 
 2. Enter a unique ***Organization account name***, a valid ***Contact email***, select **My personal account** for ***This organization belongs to*** and then click on the **Next** button.<p>![GitHub Org Set up](github-org-set-up.png?width=40pc) 
 3. On the **Welcome to GitHub** screen just click the **Complete setup** button.<p>![GitHub Org Set up](github-org-welcome.png?width=50pc) 
@@ -26,9 +26,9 @@ We highly recommend creating a new GitHub Organization for the CloudBees CI Work
 
 >NOTE: Even though you have to provide an email for billing, **you will NOT be charged anything** as long as you choose the free option.
 
-### Install the CloudBees CI Workshop GitHub App
+### Install the CloudBees CI Pipeline Workshop GitHub App
 
-1. Ensure that you are logged into GitHub.com and then navigate to [https://github.com/apps/cloudbees-ci-pipeline-workshop](https://github.com/apps/cloudbees-ci-pipeline-workshop).<p>![GitHub App](cbci-github-app.png?width=60pc)
+1. Ensure that you are logged into GitHub.com and then navigate to [https://github.com/apps/cloudbees-ci-pipeline-workshop](https://github.com/apps/cloudbees-ci-pipeline-workshop).<p>![GitHub App](cbci-pipeline-github-app.png?width=60pc)
 2. Click on the **Install** button.
 3. Next, select the GitHub Organization you created above for the CloudBees CI Pipeline Workshop.<p>![GitHub App](github-app-select-org.png?width=50pc)
 4. On the next screen, select **All repositories** and click the **Install** button.<p>![GitHub App](github-app-install.png?width=50pc)

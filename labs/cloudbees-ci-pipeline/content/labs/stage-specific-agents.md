@@ -22,12 +22,12 @@ Take note of the ***Labels*** field with a value of ***nodejs-app*** and the **C
   agent none
 ```
 
-4. Next, in the **Say Hello** `stage` add the following `agent` section right above the `steps` section so that we will get the Kubernetes Pod Template configured for your Managed Controller with the **Container Template** that includes the `node:8.12.0-alpine` Docker(container) image above: 
+3. Next, in the **Say Hello** `stage` add the following `agent` section right above the `steps` section so that we will get the Kubernetes Pod Template configured for your Managed Controller with the **Container Template** that includes the `node:8.12.0-alpine` Docker(container) image above: 
 ```
     agent { label 'nodejs-app' }
 ```
-5. Commit that change to the `development` branch and navigate to your **helloworld-nodejs** job on your Managed Controller. The build logs should be almost the same as before because we are still using the default `jnlp` container. ![Build with Agent Template](build-agent-template.png?width=50pc) 
-6. Let's change that by replacing the **Say Hello** `stage` with the following **Test** `stage` so the steps run in the **nodejs** `container`. Edit the `Jenkinsfile` file in the **development** branch of your forked **helloworld-nodejs** repository so the entire pipeline looks like the following:
+4. Commit that change to the `development` branch and navigate to your **helloworld-nodejs** job on your Managed Controller. The build logs should be almost the same as before because we are still using the default `jnlp` container. ![Build with Agent Template](build-agent-template.png?width=50pc) 
+5. Let's change that by replacing the **Say Hello** `stage` with the following **Test** `stage` so the steps run in the **nodejs** `container`. Edit the `Jenkinsfile` file in the **development** branch of your forked **helloworld-nodejs** repository so the entire pipeline looks like the following:
 
 ```groovy
 pipeline {
