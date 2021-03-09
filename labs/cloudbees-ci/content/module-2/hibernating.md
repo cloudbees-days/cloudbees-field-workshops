@@ -31,7 +31,7 @@ Hibernation for CloudBees CI Managed Controllers is managed at the global Jenkin
 ## Un-hibernate a Managed Controllers via the Operations Center UI
 
 1. Navigate to the classic UI of Operations Center and find your CloudBees CI Managed Controller (Jenkins instance) in the list of CloudBees CI Managed Controller - typically the only one listed. 
-2. If there is a light blue **pause** icon next to your CloudBees CI Managed Controller then it is hibernating and if there is not a light blue **pause** icon next to your CloudBees CI Managed Controller then refresh your browser until there is one. Just click on the link for your Managed Controller to have its Kubernetes Statefulset replicas scaled up from zeor to one. ![Hibernating managed controllers](hibernating-controller-2.png?width=50pc)
+2. If there is a light blue **pause** icon next to your CloudBees CI Managed Controller then it is hibernating and if there is not a light blue **pause** icon next to your CloudBees CI Managed Controller then refresh your browser until there is one. Just click on the link for your Managed Controller to have its Kubernetes Statefulset replicas scaled up from zero to one. ![Hibernating managed controllers](hibernating-controller-2.png?width=50pc)
 3. Once you click on your CloudBees CI Managed Controller link from the classic UI of Operations Center you will see a screen that shows that it is "getting ready to work". ![Un-hibernate](unhibernate.png?width=50pc)
 4. After a couple of minutes, your CloudBees CI Managed Controller will be ready to use and in the same state as it was when it was hibernated.
 
