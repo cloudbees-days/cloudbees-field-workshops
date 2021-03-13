@@ -5,9 +5,9 @@ count: false
 
 
 # CloudBees CD Workshop
-.one-third-up[![:scale 10%](../img/Rollout-white.svg)]
+.one-third-up[![:scale 10%](../img/CloudBees-Submark-White.svg)]
 ???
-This workshop introduces attendees to the features for CloudBees Flow.
+This workshop introduces attendees to the features for CloudBees CD.
 
 ---
 layout: true
@@ -22,7 +22,7 @@ layout: true
 ---
 name: agenda
 # Agenda
-    
+
     1. CloudBees CD Fundamentals
     2. CloudBees CD Fundamentals : Overview of Release Process
     3. CloudBees CD Fundamentals : Overview of Deployment Automation
@@ -32,4 +32,3 @@ name: agenda
     7. Use Case 2 - Execute a script
     8. Use Case 3 - Integrate JIRA into a task
     9. Use Case 4 - Combine Use case 2 and Use Case 3
-    
