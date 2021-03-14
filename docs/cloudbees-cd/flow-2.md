@@ -21,3 +21,35 @@ name: overview of release process
 various Applications that have interdependencies, and work together to make your business successful.
 
 - So let’s take a look at how those Applications are bundled into a Release.
+---
+name: enterprise releases
+# Enterprise Releases - Multiple Apps
+
+![:scale 100%](../../img/cloudbees-cd/enterprise_releases.png)
+---
+name: commit pipelines
+# Commit Pipelines and how they differ from Releases
+
+They can span different technologies eg:
+- Java, Python, .NET etc
+They can involved multiple tiers
+- Front -end eg :  Webserver
+- Back-end eg : Engine
+- Database
+- Middle-tier systems eg: Business process engines
+- Mainframe
+- etc
+---
+name: more about releases
+# Releases are all about the Business Process
+
+Release Pipelines outline:
+The business process of the Enterprise to release software to production.
+This business process could account for :
+- Sign-offs
+- Change Control Boards
+- Audits
+- Compliance
+- Security
+- Infrastructure/Operations
+- etc
