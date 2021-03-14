@@ -1,4 +1,4 @@
-name: cloudbees cd architecture - local configuration
+name: cloudbees cd architecture local_configuration
 # CloudBees CD/RO Architecture - Local Configuration
 
 - The CloudBees CD/RO server manages resources, issues commands, generates reports.
