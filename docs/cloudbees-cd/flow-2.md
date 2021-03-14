@@ -44,7 +44,6 @@ name: more about releases
 # Releases are all about the Business Process
 
 Release Pipelines outline - The business process of the Enterprise to release software to production.
-
 This business process could account for :
 - Sign-offs
 - Change Control Boards
