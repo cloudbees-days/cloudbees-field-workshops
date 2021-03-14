@@ -41,4 +41,5 @@ layout: true
 ]
 ---
 name: enterprise landscape
+
 ![:scale 100%](../../img/cloudbees-cd/enterprise_application_landscape.png)
