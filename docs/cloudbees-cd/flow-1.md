@@ -4,7 +4,7 @@ name: cloudbees product naming
 
  ##  Cloudbees products have been renamed.
 
- - ElectricCloud ElectricFlow, now called Cloudbees CD
+ - ElectricCloud ElectricFlow, now called Cloudbees CD/RO
 
  - Cloudbees EJC now called Cloudbees CI
 
@@ -23,10 +23,10 @@ layout: true
 ]
 ---
 name: cloudbees cd fundamentals
-# Cloudbees CD Fundamentals
+# Cloudbees CD/RO Fundamentals
 - Overview of Release Orchestration
 - Overview of Deployment Automation
-- Cloudbees CD Architecture Overview
+- Cloudbees CD/RO Architecture Overview
  - Single Server Architecture
  - Clustered Server Architecture
 ---
@@ -39,3 +39,6 @@ layout: true
 - © 2020 CloudBees, Inc.
 - ![:scale 100%](../img/CloudBees-Submark-Full-Color.svg)
 ]
+---
+name: enterprise landscape
+![:scale 100%](../../img/cloudbees-cd/enterprise_application_landscape.png)
