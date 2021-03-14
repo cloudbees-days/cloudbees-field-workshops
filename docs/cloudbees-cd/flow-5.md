@@ -4,10 +4,7 @@ name: cloudbees cd architecture local_configuration
 - The CloudBees CD/RO server manages resources, issues commands, generates reports.
 - An underlying database stores commands and metadata.
 - Agents execute commands, monitor status, and collect results, in parallel across a cluster of servers for rapid throughput.
-
 ![:scale 100%](../../img/cloudbees-cd/local_configuration.png)
-
-
 ---
 layout: true
 
