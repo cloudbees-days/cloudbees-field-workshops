@@ -17,6 +17,7 @@ home = [ "HTML", "RSS", "JSON"]
   showVisitedLinks = true
   # Set this to true to disable copy-to-clipboard button for inline code.
   disableInlineCopyToClipBoard = true
+  disableLandingPageButton = true
 
 [markup]
   [markup.goldmark]
