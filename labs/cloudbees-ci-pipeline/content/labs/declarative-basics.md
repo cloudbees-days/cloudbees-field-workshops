@@ -13,9 +13,9 @@ In this exercise we are going to create a special type of Jenkins Pipeline proje
 1. Navigate to the top-level of the CloudBees CI Operations Center - **Dashboard** - and click on the link for your ***Managed Controller*** (it will have the same names as your workshop GitHub Organization). ![Managed Controller link](managed-controller-link.png?width=60pc)
 2. At the top-level of your CloudBees CI Managed Controller click on **New Item** in the left menu.  ![New Item](new-item.png?width=50pc) 
 3. Enter your GitHub Organization name as the **Item Name** and select **GitHub Organization** as the item type and click the **OK** button. ![New GitHub Organization Folder](github-org-folder-item.png?width=50pc) 
-6. Select the **CloudBees CI Pipeline Workshop GitHub App** credential from the **Credentials** drop down, make sure that the **Owner** field matches the name of your workshop GitHub Organization and then click the **Save** button ![Configure and Save GitHub Organization Folder](github-org-folder-save.png?width=50pc) 
-9. After the Organization scan completes, click on the bread-crumb link to go back to your **GitHub Organization** Jenkins Pipeline project folder. When the scan is complete your **GitHub Organization** Jenkins Pipeline project should be **empty**! ![Empty GitHub Organization Folder](empty-github-org-folder.png?width=50pc) 
-11. CloudBees configuration-as-code was used to create a GitHub Organization webhook for your workshop GitHub Organization. Verify that the webhook was created in Github by checking the **Webhooks** within your GitHub Organization **Settings**. *NOTE: This webhook will be used to automaticall create new branch and Pull Request Pipeline jobs, and trigger those jobs on new commits. ![GitHub Organization Webhook](github-org-webhook.png?width=50pc) 
+4. Select the **CloudBees CI Pipeline Workshop GitHub App** credential from the **Credentials** drop down, make sure that the **Owner** field matches the name of your workshop GitHub Organization and then click the **Save** button ![Configure and Save GitHub Organization Folder](github-org-folder-save.png?width=50pc) 
+5. After the Organization scan completes, click on the bread-crumb link to go back to your **GitHub Organization** Jenkins Pipeline project folder. When the scan is complete your **GitHub Organization** Jenkins Pipeline project should be **empty**! ![Empty GitHub Organization Folder](empty-github-org-folder.png?width=50pc) 
+6. CloudBees configuration-as-code was used to create a GitHub Organization webhook for your workshop GitHub Organization. Verify that the webhook was created in Github by checking the **Webhooks** within your GitHub Organization **Settings**. *NOTE: This webhook will be used to automaticall create new branch and Pull Request Pipeline jobs, and trigger those jobs on new commits. ![GitHub Organization Webhook](github-org-webhook.png?width=50pc) 
 12. The reason why the scan did not find any repositories is because there were no branches in any repository with a `Jenkinsfile` in it, so let's fix that. Navigate to your copy of the **helloworld-nodejs** repository in your workshop GitHub Organization and click on the **Add file** button towards the top right of the screen and then select **Create new file**. ![Create Jenkinsfile](create-jenkinsfile.png?width=50pc) 
 13. Name the file `Jenkinsfile` and add the following content:
 ```
@@ -24,7 +24,7 @@ pipeline {
 }
 ``` 
 ![Jenkinsfile in GitHub Editor](jenkinsfile-github-editor.png?width=50pc) 
-14. At the bottom of the screen enter a commit message, such as ***initial Jenkinsfile***, select the **Create a new branch for this commit and start a pull request**, name the branch **development** and click the **Propose new file** button. **IMPORTANT Do Not Create a Pull Request on the next screen after saving**. ![Commit Jenkinsfile](commit-jenkinsfile.png?width=50pc) 
+14. At the bottom of the screen enter a commit message, such as ***initial Jenkinsfile***, select the **Create a new branch for this commit and start a pull request**, name the branch **development** and click the **Propose new file** button. **IMPORTANT: Do Not Create a Pull Request on the next screen after saving**. ![Commit Jenkinsfile](commit-jenkinsfile.png?width=50pc) 
 15. Navigate back to your new **GitHub Organization** Jenkins Pipeline project folder on your CloudBees CI Managed Controller and refresh your browser.  You should have a new failed job based on the **development** branch you just added the `Jenkinsfile`. *NOTE: If you do not have a new **helloworld-nodejs** Multibranch project then click on the **Scan Repository Now** link in the left menu and then refresh your browser.*![Job Failed](job-failed.png?width=50pc) 
 
 ## Basic Declarative Syntax Structure
@@ -74,7 +74,7 @@ pipeline {
 
   ```
   ...
-  Agent default-jnlp-0p189 is provisioned from template Kubernetes Pod Template
+  Agent default-jnlp-sx8fz is provisioned from template default-jnlp
   ...
   ```
 
