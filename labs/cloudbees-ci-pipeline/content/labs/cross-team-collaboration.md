@@ -1,7 +1,7 @@
 ---
 title: "CloudBees Cross Team Collaboration"
 chapter: false
-weight: 5
+weight: 6
 --- 
 
 In this lab we will explore the [CloudBees Core Cross Team Collaboration feature](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/cross-team-collaboration). Cross Team Collaboration simplifies the cumbersome and complicated tasks of triggering downstream jobs by eliminating the need to identify and maintain the full path for every downstream job. Simply put it, this proprietary feature connects pipelines, increasing automation and collaboration. Prior to this feature, the details of every downstream job (Jenkins instance ID, full job name, Git branch name) all had to be meticulously specified in the upstream job. If the job name changed, the upstream job had to be refactored, creating a maintenance burden and discouraging the adoption of event-based triggers.

@@ -1,7 +1,7 @@
 ---
 title: "Introduction to Declarative Pipelines with CloudBees CI"
 chapter: false
-weight: 1
+weight: 2
 --- 
 
 In this first lab we will [create a GitHub Org Folder Pipeline project]() and get an overview of the [basic fundamentals of the Declarative Pipeline syntax](#basic-declarative-syntax-structure). 
