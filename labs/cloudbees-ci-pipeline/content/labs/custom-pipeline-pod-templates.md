@@ -8,7 +8,7 @@ weight: 4
 
 In this lab we will create a custom Kubernetes Pod Template containing a NodeJS **container** and an additional Docker **container** for executing tests. We also want to use a different version of the **node** container than the one provided by the CloudBees CI Managed Controller configured Pod Template which is `node:8.12.0-alpine`. So far we have been using the **nodejs-app** [Kubernetes *Pod Template* defined for us at our Managed Controller level](https://go.cloudbees.com/docs/cloudbees-core/cloud-admin-guide/agents/#_editing_pod_templates_per_team_using_masters). In order to be able to control what `containers` and what container `image` version we use in our Pipeline we will update the **Jenkinsfile** Pipeline script with a [Kubernetes Pod Template definition](https://github.com/jenkinsci/kubernetes-plugin#declarative-pipeline).
 
-1. The [Jenkins Kubernetes plugin allows you to use standard Kubernetes Pod yaml configuration](https://github.com/jenkinsci/kubernetes-plugin#using-yaml-to-define-pod-templates) to define Pod Templates directly in your Pipeline script. We will do just that in a new `nodejs-pod.yaml` file. The `yamlFile` parameter value of the `kubernetes` agent definition is a repository relative path to a yaml file representing the [Pod spec](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.11/#pod-v1-core) you want to use as an agent Pod Template. Navigate to your workshop **helloworld-nodejs** repository in your workshop GitHub Organization, make sure you are on the `main` branch, then click the **Add file** button towards the top right of the screen and then select **Create new file**. ![Create Pod Template File](create-pod-template-file.png?width=50pc)
+1. The [Jenkins Kubernetes plugin](https://github.com/jenkinsci/kubernetes-plugin#using-yaml-to-define-pod-templates) allows you to use standard Kubernetes Pod yaml configuration to define Pod Templates directly in your Pipeline script. We will do just that in a new `nodejs-pod.yaml` file. The `yamlFile` parameter value of the `kubernetes` agent definition is a repository relative path to a yaml file representing the [Pod spec](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.11/#pod-v1-core) you want to use as an agent Pod Template. Navigate to your workshop **helloworld-nodejs** repository in your workshop GitHub Organization, make sure you are on the `main` branch, then click the **Add file** button towards the top right of the screen and then select **Create new file**. ![Create Pod Template File](create-pod-template-file.png?width=50pc)
 2. Name the file `nodejs-pod.yaml` and add the following content:
 ```
 kind: Pod
@@ -33,7 +33,6 @@ spec:
 3. At the bottom of the screen enter a commit message, leave **Commit directly to the `main` branch** selected and click the **Commit new file** button.
 4. Now we need to update our Pipeline to use that file. Open the GitHub editor for the **Jenkinsfile** Pipeline script in the **main** branch of your workshop **helloworld-nodejs** repository. ![Update Jenkinsfile](update-jenkinsfile.png?width=50pc)
 5. Replace the `agent` section of the **Test** `stage` with the following - note that the value of the `yamlFile` parameter is the name of the pod template file we created:
-
 ```
       agent {
         kubernetes {
@@ -42,16 +41,12 @@ spec:
       }
 ```
 
-12. Commit the changes and then navigate to the **main** branch of your **helloworld-nodejs** job on your CloudBees CI Managed Controller. The job will run successfully. Also, note the output of the `sh 'node --version'` step - it is `v15.10.0` instead of `v8.12.0`: ![Update Node Container Tag](pod-template-update-image-tag.png?width=50pc)
+6. Commit the changes and then navigate to the **main** branch of your **helloworld-nodejs** job on your CloudBees CI Managed Controller. The job will run successfully. Also, note the output of the `sh 'node --version'` step - it is `v15.10.0` instead of `v8.12.0`: ![Update Node Container Tag](pod-template-update-image-tag.png?width=50pc)
 
 ### Finished Jenkinsfile for *Custom Pipeline Pod Templates*
 ```
 pipeline {
   agent none
-  options { 
-    buildDiscarder(logRotator(numToKeepStr: '2'))
-    skipDefaultCheckout true
-  }
   stages {
     stage('Test') {
       agent {
@@ -60,7 +55,6 @@ pipeline {
         }
       }
       steps {
-        checkout scm
         container('nodejs') {
           echo 'Hello World!'   
           sh 'node --version'
