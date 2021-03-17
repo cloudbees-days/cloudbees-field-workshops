@@ -1,7 +1,7 @@
 ---
 title: "CloudBees Pipeline Template Catalogs"
 chapter: false
-weight: 5
+weight: 7
 --- 
 
 Pipeline Template Catalogs provide version controlled paramaterized templates for Multibranch and stand-alone Pipeline jobs. In this exercise we will use [Pipeline Template Catalogs](https://github.com/cloudbees-days/pipeline-template-catalog/tree/master/templates/nodejs-app) to create a templatized Multibranch Pipeline project of your workshop copy of the **helloworld-nodejs** repository. All you will need to do is fill in a few simple parameters and you will end up with a complete end-to-end CI/CD Pipeline for the **helloworld-nodejs** application - and it won't be using the `Jenkinsfile` from your repository.
@@ -32,16 +32,9 @@ Executing [Testcafe](http://devexpress.github.io/testcafe/) driven browser tests
 ## Deploy to Staging
 Now that you have fixed the small bug in the **helloworld-nodejs** application, we will create a Pull Request and merge the change to the **master** branch of your forked copy of the **helloworld-nodejs** repository.
 
-1. Navigate to your forked **helloworld-nodejs** repository in GitHub - click on the **New pull request** button <p><img src="img/intro/conditional_new_pull_request.png" width=800/>
-2. Change the **base repository** to the **master** branch of your forked **helloworld-nodejs** repository (not the **cloudbees-days** repository), add a comment and then click the **Create pull request** button
-3. A job will be created for the pull request and once it has completed successfully your pull request will show that **All checks have passed**. Go ahead and click the **Merge pull request** button and then click the **Confirm merge** button but **DO NOT DELETE** the **development** branch
-4. Navigate to the **helloworld-nodejs** Pipeline Template Catalog job in Blue Ocean on your Team Master and the job for the **master** branch should be running or queued to run
+1. Navigate to your forked **helloworld-nodejs** repository in GitHub - click on the **New pull request** button. ![Test Passed](new-pull-request.png?width=50pc)
+2. On the next screen add a comment and then click the **Create pull request** button.
+3. A job will be created for the pull request and once it has completed successfully your pull request will show that **All checks have passed**. Go ahead and click the **Merge pull request** button and then click the **Confirm merge** button but **DO NOT DELETE** the **development** branch. ![Merge PR](merge-pr.png?width=50pc)
+4. Navigate to the **helloworld-nodejs** Pipeline Template Catalog job on your Managed Controller and the job for the **main** branch should be running or queued to run.
 5. The templated job will build a Docker image for your **helloworld-nodejs** application, push the image to the Google Container Registry (GCR), and then deploy your containerized application to a staging environment in Kubernetes - a link to your application will be available in the logs of your job. 
 
-### GitOps with Core v2
-As part of the deployment to *staging* the Pipeline Template Catalog job will create a new **environment-staging** repository in your workshop GitHub Organization with the generated Kubernetes deployment yaml used for the deployment to the K8s *staging* environment.
-
-~~### Cross Team Collaboration
-In addition to deploying to the *staging* environment, the Pipeline Template will also pubslish a Cross Team Collaboration event `containerImagePush` that the Core Workshop security team is listening for - anytime that this event is publish a job will be triggered on the **team-sec** Team Master to scan the image you just published with [Anchore](https://anchore.com/). Your application will not be deployed to production unless it passes this scan.~~
-
-You may proceed to the next lab [*Lab 6 - Cross Team Collaboration*](./cross-team-collaboration.md) or head back to the main list of the [**labs**](./README.md#workshop-labs) when you are ready.

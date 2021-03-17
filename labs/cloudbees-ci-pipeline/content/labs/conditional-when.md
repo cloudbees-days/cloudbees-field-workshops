@@ -1,10 +1,10 @@
 ---
-title: "Conditional Execution using the <code>when</code> directive"
+title: "Conditional Execution using the when directive"
 chapter: false
 weight: 3
 --- 
 
-In this lab we will edit the `Jenkinsfile` file in your **helloworld-nodejs** repository with conditional execution using the [<code>when</code> directive](https://jenkins.io/doc/book/pipeline/syntax/#when). We will accomplish this by adding a branch specific `stage` to the `Jenkinsfile` in your **helloworld-nodejs** repository.
+In this lab we will edit the `Jenkinsfile` file in your **helloworld-nodejs** repository with conditional execution using the [when directive](https://jenkins.io/doc/book/pipeline/syntax/#when). We will accomplish this by adding a branch specific `stage` to the `Jenkinsfile` in your **helloworld-nodejs** repository.
 
 1. Navigate to and open the GitHub editor for the `Jenkinsfile` file in the **development** branch of your **helloworld-nodejs** repository.
 2. Insert the ***Build and Push Image*** stage after the existing **Test** stage and note the `beforeAgent true` option - this setting will result in the `when` condition being evaluated before acquiring and using a `stage` specific `agent`. The `branch` condition is a built-in condition that allows executing stages only for specific branches - in this case the ***Build and Push Image*** `stage` will only execute for the **main** branch. The entire Pipeline shoud match what is below:

@@ -1,7 +1,7 @@
 ---
 title: "Pipelines with Interactive Input"
 chapter: false
-weight: 7
+weight: 8
 --- 
 
 In this exercise, we will see how you can capture interactive input in your Jenkins Pipeline while it is running.
