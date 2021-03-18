@@ -1,7 +1,7 @@
 ---
 title: "CloudBees Pipeline Template Catalogs"
 chapter: false
-weight: 7
+weight: 8
 --- 
 
 Pipeline Template Catalogs provide version controlled paramaterized templates for Multibranch and stand-alone Pipeline jobs. In this exercise we will use [Pipeline Template Catalogs](https://github.com/cloudbees-days/pipeline-template-catalog/tree/master/templates/nodejs-app) to create a templatized Multibranch Pipeline project of your workshop copy of the **helloworld-nodejs** repository. All you will need to do is fill in a few simple parameters and you will end up with a complete end-to-end CI/CD Pipeline for the **helloworld-nodejs** application - and it won't be using the `Jenkinsfile` from your repository.
