@@ -4,16 +4,16 @@ chapter: false
 weight: 7
 --- 
 
-In this exercise, we will see how you can capture interactive input in your Jenkins Pipeline while it is running.
+In this lab, we will see how you can capture interactive input in your Jenkins Pipeline while it is running and some pitfalls you will want to avoid when using the `input` step.
 
-1. Use the GitHub file editor to update the **Jenkinsfile** file in the **master** branch of your forked **helloworld-nodejs** repository - adding the following `stage` to your Pipeline after the ***Build and Push Image*** `stage` and commit the changes:
+1. Use the GitHub file editor to update the **Jenkinsfile** file in the **main** branch of your copy of the **helloworld-nodejs** repository - adding the following `stage` to your Pipeline after the ***Build and Push Image*** `stage` and commit the changes:
 
 ```
     stage('Deploy') {
       when {
         beforeAgent true
         beforeInput true
-        branch 'master'
+        branch 'main'
       }
       input {
         message "Should we continue?"
@@ -24,18 +24,18 @@ In this exercise, we will see how you can capture interactive input in your Jenk
     }
 ```
 
-|NOTE: We added the the `beforeInput` option set to `true` so that the `when` condition will be checked before the `input` - if we didn't add that option then the `input` would be executed before the `when` condition and it would execute for all branches, not just the `master` branch.
+>**IMPORTANT TIP** We added the the `beforeInput` option set to `true` so that the `when` condition will be checked before the `input` - if we didn't add that option then the `input` would be executed before the `when` condition and it would execute for all branches, not just the `main` branch.
 
-2. Navigate to the **helloworld-nodejs** job in Blue Ocean on your Team Master and the job for the **master** branch should be running or queued to run. Note the `input` prompt during the `Deploy` stage. Go ahead and click the **Proceed** button and the job will complete successfully.  *The `input` prompt is also available in the Console log and classic Stage View.* <p><img src="img/input/input_basic.png" width=800/>
+2. Navigate to the **helloworld-nodejs** job on your Managed Controller and the job for the **master** branch should be running or queued to run. Note the `input` prompt during the `Deploy` stage. Go ahead and click the **Proceed** button and the job will complete successfully.  *The `input` prompt is also available in the Console log and classic Stage View.* <p><img src="img/input/input_basic.png" width=800/>
 
-3. If you hadn't clicked on either the **Proceed** or **Abort** button in the `input` prompt then your Team Master would haved waited indefinitely for a user response. Let's fix that by setting a timeout. Earlier we used `options` at the global `pipeline` level to set the ***Discard old builds*** strategy for your Team Master with the `buildDiscarder` `option`. Now we will configure `options` at the `stage` level. We will add a `timeout` `option` for the **Deploy** `stage` using the [`stage` `options` directive](https://jenkins.io/doc/book/pipeline/syntax/#stage-options). Update the **Deploy** `stage` to match the following in the **master** branch and then commit the changes:
+3. If you hadn't clicked on either the **Proceed** or **Abort** button in the `input` prompt Managed Controller would haved waited indefinitely for a user response. Let's fix that by setting a timeout. Earlier we used `options` at the global `pipeline` level to set the ***Discard old builds*** strategy for your Managed Controller with the `buildDiscarder` `option`. Now we will configure `options` at the `stage` level. We will add a `timeout` `option` for the **Deploy** `stage` using the [`stage` `options` directive](https://jenkins.io/doc/book/pipeline/syntax/#stage-options). Update the **Deploy** `stage` to match the following in the **main** branch and then commit the changes:
 
 ```
     stage('Deploy') {
       when {
         beforeAgent true
         beforeInput true
-        branch 'master'
+        branch 'main'
       }
       options {
         timeout(time: 30, unit: 'SECONDS') 
@@ -49,17 +49,13 @@ In this exercise, we will see how you can capture interactive input in your Jenk
     }
 ```
 
-4. Navigate to the **helloworld-nodejs** job in Blue Ocean and wait at least 30 seconds after the 'Deploy' `stage` starts. Your pipeline will be automatically **aborted** 30 seconds after the 'Deploy' `stage` starts.<p><img src="img/input/input_timeout.png" width=800/> <p>Run it again if you would like - but this time click the **Proceed** button before 30 seconds expires - the job will complete successfully.
+4. Navigate to the **helloworld-nodejs** job on your Managed Controller and wait at least 30 seconds after the 'Deploy' `stage` starts. Your pipeline will be automatically **aborted** 30 seconds after the 'Deploy' `stage` starts.<p><img src="img/input/input_timeout.png" width=800/> <p>Run it again if you would like - but this time click the **Proceed** button before 30 seconds expires - the job will complete successfully.
 
 ## Input Approval for Team Members
 
-The `input` directive supports a [number of interesting configuration options](https://jenkins.io/doc/book/pipeline/syntax/#configuration-options). In this exercise we are going to use the `submitter` option to control what Team Master member is allowed to submit the `input` directive. But first you need to add another member to your CloudBees Team Master. Team Masters provide an easy to use authorization model right out-of-the-box. The following roles are available ([there is a CLI to add or modify roles](https://go.cloudbees.com/docs/cloudbees-core/cloud-admin-guide/cje-ux/#_team_roles)):
+The `input` directive supports a [number of interesting configuration options](https://jenkins.io/doc/book/pipeline/syntax/#configuration-options). In this exercise we are going to use the `submitter` option to control what team member is allowed to submit the `input` directive. But first you need to provide access to your Managed Controller and the **helloworld-nodejs** job. 
 
-- **Team Admin:** administrator of the Team Master.
-- **Team Member:** read, write and execute permission on the pipelines.
-- **Team Guest:** read only.
-
-We want to add a **Team Guest** to our Team Masters and then set that Team member as the `submitter` for our `input` directive. Before you begin, pick a person near you to pair up with. The two of you will share each other's Jenkins account names. You will use that account name when adding a new member to your Team Master below:
+We want to add a deployment approver to our Managed Controllers and then set that approver as the `submitter` for our `input` directive. Before you begin, pick a person to pair up with. The two of you will share each other's Jenkins account names. You will use that account name when adding a new member to the **Approvers** Group on your Managed Controller below:
 
 1. On your Team Master, navigate to the Team list by clicking on the ***Administration*** link on the top right (this link is available on all Blue Ocean pages except for the [Pipeline Run Details view](https://jenkins.io/doc/book/blueocean/pipeline-run-details/#pipeline-run-details-view)). <p><img src="img/input/input_submitter_admin_link.png" width=800/>
 2. Next, click on the cog icon for your team.  <p><img src="img/input/input_submitter_team_cog.png" width=800/>

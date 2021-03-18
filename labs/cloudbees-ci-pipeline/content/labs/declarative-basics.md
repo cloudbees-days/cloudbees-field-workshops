@@ -25,7 +25,7 @@ pipeline {
 ``` 
 ![Jenkinsfile in GitHub Editor](jenkinsfile-github-editor.png?width=50pc) 
 9. At the bottom of the screen enter a commit message, such as ***initial Jenkinsfile***, select the **Create a new branch for this commit and start a pull request**, name the branch **development** and click the **Propose new file** button. **IMPORTANT: Do Not Create a Pull Request on the next screen after saving**. ![Commit Jenkinsfile](commit-jenkinsfile.png?width=50pc) 
-10. Navigate back to your new **GitHub Organization** Jenkins Pipeline project folder on your CloudBees CI Managed Controller and refresh your browser.  You should have a new failed job based on the **development** branch you just added the `Jenkinsfile`. *NOTE: If you do not have a new **helloworld-nodejs** Multibranch project then click on the **Scan Repository Now** link in the left menu and then refresh your browser.*![Job Failed](job-failed.png?width=50pc) 
+10. Navigate back to your new **GitHub Organization** Jenkins Pipeline project folder on your CloudBees CI Managed Controller and refresh your browser.  You should now have a Pipeline Multi-branch project for your **helloworld-nodejs** repository and a new failed job for the **development** branch you just added the `Jenkinsfile`. Don't worry that it failed, that is expected and something we will fix in the next lab. *NOTE: If you do not have a new **helloworld-nodejs** Multibranch project then click on the **Scan Repository Now** link in the left menu and then refresh your browser.*![Job Failed](job-failed.png?width=50pc) 
 
 ## Basic Declarative Syntax Structure
 
@@ -47,7 +47,7 @@ WorkflowScript: 1: Missing required section "agent" @ line 1, column 1.
 
 [Declarative Pipelines](https://jenkins.io/doc/book/pipeline/syntax/#declarative-pipeline) must be enclosed within a `pipeline` block - which we have. But Declarative Pipelines must also contain a top-level `agent` declaration, and must contain exactly one `stages` block at the top level. The `stages` block must have at least one `stage` block but can have an unlimited number of additional `stage` blocks. Each `stage` block must have exactly one `steps` block. 
 
-1. We will use the GitHub file editor to update the `Jenkinsfile` file in your copy of the **helloworld-nodejs** repository. Navigate to the `Jenkinsfile` file in the **development** branch of your **helloworld-nodejs** repository and then click on the pencil icon in the upper right to edit that file. **IMPORTANT Make sure you are editing the `Jenkinsfile` on your `development` branch** and **NOT the `main` branch**. ![Edit Basic Syntax](github-edit-basic-syntax.png?width=50pc) 
+1. We will use the GitHub file editor to update the `Jenkinsfile` file in your copy of the **helloworld-nodejs** repository. Navigate to the `Jenkinsfile` file in the **development** branch of your **helloworld-nodejs** repository and then click on the pencil icon in the upper right to edit that file. **IMPORTANT:** Make sure you are editing the `Jenkinsfile` on your `development` branch** and **NOT the `main` branch**. ![Edit Basic Syntax](github-edit-basic-syntax.png?width=50pc) 
 2. Replace the contents of that file with the following Declarative Pipeline:
 
 ```groovy
