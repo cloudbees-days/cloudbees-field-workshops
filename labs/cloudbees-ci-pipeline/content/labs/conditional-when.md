@@ -4,6 +4,8 @@ chapter: false
 weight: 3
 --- 
 
+## Conditional Stages Using the When Directive
+
 In this lab we will edit the `Jenkinsfile` file in your **helloworld-nodejs** repository with conditional execution using the [when directive](https://jenkins.io/doc/book/pipeline/syntax/#when). We will accomplish this by adding a branch specific `stage` to the `Jenkinsfile` in your **helloworld-nodejs** repository.
 
 1. Navigate to and open the GitHub editor for the `Jenkinsfile` file in the **development** branch of your **helloworld-nodejs** repository.
@@ -54,6 +56,54 @@ Note the `beforeAgent true` option - this setting will result in the `when` cond
 4. A job will be created for the pull request and once it has completed successfully your pull request will show that **All checks have passed**. Go ahead and click the **Merge pull request** button and then click the **Confirm merge** button but **DO NOT** delete the **development** branch. ![Merge Pull request](merge-pr.png?width=50pc)
 5. Navigate to the **helloworld-nodejs** job on your CloudBees CI Managed Controller and the job for the **main** branch should be running or queued to run. Click on the run and after it has completed notice that the ***Build and Push Image*** stage was not skipped. ![Stage Not Skipped](stage-not-skipped.png?width=50pc)
 
+## Using the When Directive with Nested Stages
+
+In this lab we will learn how you can combine nested stages with the when directive so that you don't have repeat a when condition for every stage it applies. We will also update the ***Test*** stage so it will only execute when the condition is false.
+
+1. Navigate to and open the GitHub editor for the `Jenkinsfile` file in the **main** branch of your **helloworld-nodejs** repository.
+2. Replace the entire pipeline with the following:
+```
+pipeline {
+  agent none
+  stages {
+    stage('Test') {
+      when {
+        beforeAgent true
+        not { branch 'main' }
+      }
+      agent { label 'nodejs-app' }
+      steps {
+        container('nodejs') {
+          echo 'Hello World!'   
+          sh 'node --version'
+        }
+      }
+    }
+    stage('Main Branch Stages') {
+      when {
+        beforeAgent true
+        branch 'main'
+      }
+      stages {
+        stage('Build and Push Image') {
+          steps {
+            echo "TODO - build and push image"
+          }
+        }
+        stage('Deploy') {
+          steps {
+            echo "TODO - deploy"
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+By wrapping the ***Build and Push Image*** and ***Deploy*** stages in the ***Main Branch Stages*** the `when` directive for the `main` branch only has to be specified once. Also, by using the `not` nesting condition the ***Test*** stage will only be executed when the branch being processed in **not** the `main` branch.
+3. Commit the changes and then navigate to the **helloworld-nodejs** job on your Managed Controller and the job for the **main** branch should be running or queued to run. Once the run completes you will see that the ***Test*** `stage` was skipped but the ***Main Branc Stages** were not. ![Conditional Nested Stage](conditional-nested-stage.png?width=50pc) 
+
 ## Next Lesson
 
 Before moving on to the next lesson make sure that your **Jenkinsfile** Pipeline script on the **main** branch of your forked **helloworld-nodejs** repository matches the one from below:
@@ -64,6 +114,10 @@ pipeline {
   agent none
   stages {
     stage('Test') {
+      when {
+        beforeAgent true
+        not { branch 'main' }
+      }
       agent { label 'nodejs-app' }
       steps {
         container('nodejs') {
@@ -72,13 +126,22 @@ pipeline {
         }
       }
     }
-    stage('Build and Push Image') {
+    stage('Main Branch Stages') {
       when {
         beforeAgent true
         branch 'main'
       }
-      steps {
-        echo "TODO - build and push image"
+      stages {
+        stage('Build and Push Image') {
+          steps {
+            echo "TODO - build and push image"
+          }
+        }
+        stage('Deploy') {
+          steps {
+            echo "TODO - deploy"
+          }
+        }
       }
     }
   }
