@@ -8,11 +8,37 @@ The Declarative Pipeline syntax provides an [environment directive](https://www.
 
 ## Global and Stage Pipeline Environment Variables
 
-1. We will add a global environment variable that will be accessible by all the stages of our Jenkins Pipeline. Navigate to and open the GitHub editor for the `Jenkinsfile` file in the **development** branch of your **helloworld-nodejs** repository.  ![Edit Jenkinsfile](edit-jenksinfile.png?width=50pc) 
-2. First we will update the `development` branch Jenksinfile to match the `main` branch Jenkinsfile by replacing the entire `development` branch Jenksinfile with the following:
+1. We will add a global environment variable that will be accessible by all the stages of our Jenkins Pipeline. Navigate to and open the GitHub editor for the `Jenkinsfile` file in the **main** branch of your **helloworld-nodejs** repository.  ![Edit Jenkinsfile](edit-jenksinfile.png?width=50pc) 
+2. Next, at the global `pipeline` level, add the following `environment` block under the `agent none` directive:
+```
+  environment {
+    FAVORITE_COLOR = 'RED'
+  }
+```
+3. Add the following `echo` righ before the existing `echo` step in the **Build and Push Image** stage.
+```
+          echo "FAVORITE_COLOR is $FAVORITE_COLOR"
+```
+
+5. Next, we will override the `FAVORITE_COLOR` variable for the **Deploy** stage and adding an `echo` step. Replace the entire **Deploy** stage with the following:
+```
+        stage('Deploy') {
+          environment {
+            FAVORITE_COLOR = 'BLUE'
+          }
+          steps {
+            echo "TODO - deploy to $FAVORITE_COLOR"
+          }
+        }
+```
+
+The complete Pipeline should match the following:
 ```
 pipeline {
   agent none
+  environment {
+    FAVORITE_COLOR = 'RED'
+  }
   stages {
     stage('Test') {
       when {
@@ -25,8 +51,7 @@ pipeline {
         }
       }
       steps {
-        container('nodejs') {
-          echo 'Hello World!'   
+        container('nodejs') { 
           sh 'node --version'
         }
       }
@@ -39,12 +64,16 @@ pipeline {
       stages {
         stage('Build and Push Image') {
           steps {
+            echo "FAVORITE_COLOR is $FAVORITE_COLOR"  
             echo "TODO - build and push image"
           }
         }
         stage('Deploy') {
+          environment {
+            FAVORITE_COLOR = 'BLUE'
+          }
           steps {
-            echo "TODO - deploy"
+            echo "TODO - deploy to $FAVORITE_COLOR"
           }
         }
       }
@@ -53,14 +82,14 @@ pipeline {
 }
 ```
 
-3. Next, at the global `pipeline` level, add the following `environment` block under the `agent none` directive:
-```
-  environment {
-    DEPLOYMENT_ENVIRONMENT = 'PREVIEW'
-  }
-```
+6. At the bottom of the screen enter a commit message, leave **Commit directly to the `main` branch** selected and click the **Commit new file** button.
+7. Navigate to the **main** branch job of the **helloworld-nodejs** project on your Managed Controller and the job should be running or queued to run. Once it completes you should see the value for the **FAVORITE_COLOR** variable printed out in the logs and it should have a different value . ![Variable in Test Stage](favorit-color-red-or-blue.png?width=50pc) 
 
-3. Next, we will override the `DEPLOYMENT_ENVIRONMENT` variable.
-3. At the bottom of the screen enter a commit message, leave **Commit directly to the `main` branch** selected and click the **Commit new file** button.
-4. 
+
+## Credentials as Environment Variables
+
+In this lab we will use the `environment` directive to inject a username/password credential into are Jenkins Pipeline. We will also explore some best practices around injecting sensitive envrionmental variables into a Jenkins Pipeline.
+
+1. Navigate to and open the GitHub editor for the `Jenkinsfile` file in the **main** branch of your **helloworld-nodejs** repository.  ![Edit Jenkinsfile](edit-jenksinfile.png?width=50pc) 
+2. 
 
