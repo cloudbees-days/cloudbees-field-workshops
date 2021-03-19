@@ -106,6 +106,6 @@ In this lab we will use the `environment` directive to inject a username/passwor
 
 3. At the bottom of the screen enter a commit message, leave **Commit directly to the `main` branch** selected and click the **Commit new file** button.
 4. Navigate to the **main** branch job of the **helloworld-nodejs** project on your Managed Controller and the job should be running or queued to run. Once it completes, review the logs for the **Deploy** stage. ![Deploy Stage Logs with Secret Warning](deploy-logs-secret-warning.png?width=50pc) 
-Note that there is a warning regarding *Groovy String interpolation* for the **SERVICE_CREDS** environment variable. 
-5. 
+Note that there is a warning regarding *Groovy String interpolation* for the **SERVICE_CREDS** environment variable; meaning that the environment variable’s value could be made available earlier than intended, resulting in sensitive data leaking in various contexts.
+5. Navigate back to and open the GitHub editor for the `Jenkinsfile` file in the **main** branch of your **helloworld-nodejs** repository.  ![Edit Jenkinsfile](edit-jenksinfile.png?width=50pc) 
 
