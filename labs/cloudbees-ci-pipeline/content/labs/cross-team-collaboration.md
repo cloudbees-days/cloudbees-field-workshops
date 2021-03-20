@@ -8,14 +8,14 @@ In this lab we will explore the [CloudBees Core Cross Team Collaboration feature
 
 ## Cross Team Collaboration Events
 
-The [Cross Team Collaboration feature](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/cross-team-collaboration) is designed to greatly improve team collaboration by connecting team Pipelines to deliver software faster. It essentially allows a Pipeline to create a notification event which will be consumed by other Pipelines waiting on it. It consists of a [**Publishing Event**](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/cross-team-collaboration#cross-team-event-publishers) and a [**Trigger Condition**](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/cross-team-collaboration#cross-team-event-triggers).
+The [Cross Team Collaboration feature](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/cross-team-collaboration) is designed to greatly improve team collaboration by connecting team Pipelines to deliver software faster. It essentially allows a Pipeline to create a notification event which will be consumed by other Pipelines waiting on it. It consists of a **[Publishing Event](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/cross-team-collaboration#cross-team-event-publishers)** and a **[Trigger Condition](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/cross-team-collaboration#cross-team-event-triggers)**.
 
 The Cross Team Collaboration feature has a configurable router for routing events and it needs to be configured on your Managed Controllers before you will be able to receive the event published by another Managed Controller. Once again, CasC was used to pre-configure this for everyone, but you can still review the configuration by going to the top-level of your Managed Controller in the classic UI andclicking on **Manage Jenkins** and then click on **Configure Notification**. ![Configure Notification Link](config-notification-link.png?width=50pc)
 
  You should see the following configuration: ![Notification Configuration](notification-config.png?width=50pc)
 
 
-1. Now our pipeline must must be updated to listen for a notification event to be published by the upstream job. We will do that by adding a `trigger` to your **Jenkinsfile** Pipeline script.
+1. To use Cross Team Collaboration Now we will need to update the pipeline to listen for a notification event to be published by the upstream job. We will do that by adding a `trigger` directive to your **Jenkinsfile** Pipeline script.
 2. Open the GitHub editor for the **Jenkinsfile** file in the **main** branch of your copy of the **helloworld-nodejs** repository.
 3. Add the following `trigger` block just above the top-level `stages` block:
 
@@ -25,59 +25,93 @@ The Cross Team Collaboration feature has a configurable router for routing event
   }
 ```
 
-4. Commit the changes and then navigate to the **main** branch of your **helloworld-nodejs** job on your Managed Controller and view the c. 
-
->**NOTE:**After first adding a new `trigger` you must run the job at least once so that the `trigger` is saved to the Jenkins job configuration (similar to what was necessary for the `buildDiscarder` `option` earlier). <p><img src="img/cross-team/cross_team_trigger_configured.png" width=850/>
-
-Next, your instructor will set up a Multibranch Pipeline project for the https://github.com/cloudbees-days/helloworld-api repository and add the following [simple event](https://go.cloudbees.com/docs/cloudbees-core/cloud-admin-guide/cross-team-collaboration/#cross-team-event-types) to the **Deploy** stage of the **helloworld-api** `Jenkinsfile` : 
+4. Commit the changes and then navigate to the **main** branch of your **helloworld-nodejs** project on your Managed Controller and view the configuration for that job by click the **View Configuration** link on the **Branch main** job page. ![View Configuration Link](view-config-link.png?width=50pc)
+5. Click on the **Build Triggers** tab on the job configuration page for the **main** branch job and you will the **Build whenever the specified event is seen** trigger is checked and configured with a **Simple Event**. ![View Configuration Link](event-trigger-config.png?width=50pc)
+>**NOTE:**After first adding a new `trigger` you must run the job at least once so that the `trigger` is saved to the Jenkins job configuration (similar to setting the `buildDiscarder` `option`).
+6. Next, your instructor will set up a Pipeline project with the following **[simple event](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/cross-team-collaboration#cross-team-event-types)**: 
 
 ```
 publishEvent simpleEvent('hello-api-deploy-event')
 ```
 
-That event will be published **across all Managed Controllers in the Workshop cluster** via the CloudBees Operations Center event router triggering everyones' **helloworld-nodejs** Pipelines to run. 
+The entire Jenkins Pipeline containing the publishing event:
+```
+pipeline {
+  agent none
+  stages {
+    stage('Build') {
+      steps {
+        echo 'build'
+      }
+    }
+    stage('Deploy') {
+      steps {
+        echo 'deploy'
+        publishEvent simpleEvent('hello-api-deploy-event')
+      }
+    }
+  }
+}
+```
 
-Now, once that change is committed, and the **helloworld-api** job runs, everyone will see the **main** branch of their **helloworld-nodejs** job triggered. <p><img src="img/cross-team/cross_team_triggered_by_event.png" width=850/>
+That event will be published **across all Managed Controllers in the Workshop cluster** via the CloudBees CI Cloud Operations Center event router triggering everyones' **helloworld-nodejs** Pipelines to run. 
+
+7. Now, once that change is committed, and the **helloworld-api** job runs, everyone will see the **main** branch of their **helloworld-nodejs** job triggered by the `hello-api-deploy-event` simple event. ![View Configuration Link](triggered-by-event.png?width=50pc)
 
 
 ## Next Lesson
 
 Before moving on to the next lesson make sure that your **Jenkinsfile** Pipeline script on the **main** branch of your forked **helloworld-nodejs** repository matches the one from [below](#finished-jenkinsfile-for-pipeline-pod-templates-and-cross-team-collaboration).
 
-### Finished Jenkinsfile for *Pipeline Pod Templates and Cross Team Collaboration*
+### Finished Jenkinsfile for *Pipeline Pod Templates and Cross Team Collaboration* Lab
 ```
 pipeline {
   agent none
-  options { 
-    buildDiscarder(logRotator(numToKeepStr: '2'))
-    skipDefaultCheckout true
-  }
+  environment {
+    FAVORITE_COLOR = 'RED'
+  }  
   triggers {
     eventTrigger simpleMatch('hello-api-deploy-event')
   }
   stages {
     stage('Test') {
+      when {
+        beforeAgent true
+        not { branch 'main' }
+      }
       agent {
         kubernetes {
-          label 'nodejs-app-pod'
           yamlFile 'nodejs-pod.yaml'
         }
       }
       steps {
-        checkout scm
-        container('nodejs') {
-          echo 'Hello World!'   
+        container('nodejs') { 
           sh 'node --version'
         }
       }
     }
-    stage('Build and Push Image') {
+    stage('Main Branch Stages') {
       when {
         beforeAgent true
         branch 'main'
       }
-      steps {
-        echo "TODO - build and push image"
+      stages {
+        stage('Build and Push Image') {
+          steps {
+            echo "FAVORITE_COLOR is $FAVORITE_COLOR"  
+            echo "TODO - build and push image"
+          }
+        }
+        stage('Deploy') {
+          agent any
+          environment {
+            FAVORITE_COLOR = 'BLUE'
+            SERVICE_CREDS = credentials('example-service-username-password')
+          }
+          steps {
+            sh 'echo TODO - deploy to $FAVORITE_COLOR with SERVICE_CREDS: username=$SERVICE_CREDS_USR password=$SERVICE_CREDS_PSW'
+          }
+        }
       }
     }
   }

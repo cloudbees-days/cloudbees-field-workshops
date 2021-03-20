@@ -128,9 +128,9 @@ By replacing the `echo` step with an `sh` step the executes **echo** on the agen
 8. Navigate to the **main** branch job of the **helloworld-nodejs** project on your Managed Controller and the job should be running or queued to run. Once it completes, review the logs for the **Deploy** stage. ![Deploy Stage Logs No Secret Warning](deploy-logs-no-secret-warning.png?width=50pc) 
 
 There should no longer be a warning regarding *Groovy String interpolation*.
->NOTE: By default warnings are configured to be displayed on the build and log pages when there might be insecure interpolation. To configure these warnings set `org.jenkinsci.plugins.workflow.cps.DSL.UNSAFE_GROOVY_INTERPOLATION` to the following values:
-- `ignore`: no warnings will be displayed on the log or build page.
-- `fail`: build failure when the build encounters the first interpolated groovy string that contains a secret.
+
+
+>NOTE: By default warnings are configured to be displayed on the build and log pages when there might be insecure interpolation. To configure these warnings set `org.jenkinsci.plugins.workflow.cps.DSL.UNSAFE_GROOVY_INTERPOLATION` to the following values: 1) `ignore`: no warnings will be displayed on the log or build page. 2) `fail`: build failure when the build encounters the first interpolated groovy string that contains a secret.
 
 ### Finished Jenkinsfile for the *Environment Variables and Credentials* Lab
 ```
