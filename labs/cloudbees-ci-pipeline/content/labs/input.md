@@ -18,6 +18,7 @@ In this lab, we will see how you can capture interactive input in your Jenkins P
 ```
 
 Note that we added a new `when` condition that will result in the **Deploy** stage being skipped. We also added an `input` directive insteat of an `input` step in the `steps` block. This ensures that the `input` will be displayed before the agent is used. *Also note that even though we are setting the `FAVORITE_COLOR` environment variable value to `BLUE` in the **Deploy** stage that does not get executed until after the `when` condition is checked; so the value is still `RED` for the `when` condition.* 
+
 2. Commit the changes and then navigate to the **main** branch of your **helloworld-nodejs** project on your Managed Controller.
 3. There will be an `input` prompt for the `Deploy` stage (*the `input` prompt is also available in the Console log*). ![Configure Notification Link](input-prompt.png?width=50pc) Go ahead and click the **Proceed** button and you will see that the **Deploy** stage is skipped. 
 4. Return to the the **Jenkinsfile** file in the **main** branch of your copy of the **helloworld-nodejs** repository in GitHub and use the GitHub file editor to update the **Deploy** `stage` by adding a special `[beforeInput](https://www.jenkins.io/doc/book/pipeline/syntax/#evaluating-when-before-the-input-directive)` `when` condition set to `true` after the `environment` condition. The updated `when` directive should match the following:
@@ -28,8 +29,9 @@ Note that we added a new `when` condition that will result in the **Deploy** sta
           }
 ```
 
-4. Commit the changes and then navigate to the **main** branch of your **helloworld-nodejs** project on your Managed Controller. The **Deploy** stage will not be skipped before prompting for input.
-6. If you hadn't clicked on either the **Proceed** or **Abort** button in the `input` prompt Managed Controller would haved waited indefinitely for a user response. Let's fix that by setting a timeout. Earlier we used `options` at the global `pipeline` level to set the ***Discard old builds*** strategy for your Managed Controller with the `buildDiscarder` `option`. Now we will configure `options` at the `stage` level. We will add a `timeout` `option` for the **Deploy** `stage` using the [`stage` `options` directive](https://jenkins.io/doc/book/pipeline/syntax/#stage-options). Update the **Deploy** `stage` to match the following in the **main** branch and then commit the changes:
+5. Commit the changes and then navigate to the **main** branch of your **helloworld-nodejs** project on your Managed Controller. The **Deploy** stage will not be skipped before prompting for input.
+6. 
+7. If you hadn't clicked on either the **Proceed** or **Abort** button in the `input` prompt Managed Controller would haved waited indefinitely for a user response. Let's fix that by setting a timeout. Earlier we used `options` at the global `pipeline` level to set the ***Discard old builds*** strategy for your Managed Controller with the `buildDiscarder` `option`. Now we will configure `options` at the `stage` level. We will add a `timeout` `option` for the **Deploy** `stage` using the [`stage` `options` directive](https://jenkins.io/doc/book/pipeline/syntax/#stage-options). Update the **Deploy** `stage` to match the following in the **main** branch and then commit the changes:
 
 ```
     stage('Deploy') {
@@ -50,23 +52,20 @@ Note that we added a new `when` condition that will result in the **Deploy** sta
     }
 ```
 
-4. Navigate to the **helloworld-nodejs** job on your Managed Controller and wait at least 30 seconds after the 'Deploy' `stage` starts. Your pipeline will be automatically **aborted** 30 seconds after the 'Deploy' `stage` starts.<p><img src="img/input/input_timeout.png" width=800/> <p>Run it again if you would like - but this time click the **Proceed** button before 30 seconds expires - the job will complete successfully.
+7. Navigate to the **helloworld-nodejs** job on your Managed Controller and wait at least 30 seconds after the 'Deploy' `stage` starts. Your pipeline will be automatically **aborted** 30 seconds after the 'Deploy' `stage` starts.<p><img src="img/input/input_timeout.png" width=800/> <p>Run it again if you would like - but this time click the **Proceed** button before 30 seconds expires - the job will complete successfully.
 
 ## Input Approval for Team Members
 
 The `input` directive supports a [number of interesting configuration options](https://jenkins.io/doc/book/pipeline/syntax/#configuration-options). In this exercise we are going to use the `submitter` option to control what team member is allowed to submit the `input` directive. But first you need to provide access to your Managed Controller and the **helloworld-nodejs** job. 
 
-We want to add a deployment approver to our Managed Controllers and then set that approver as the `submitter` for our `input` directive. Before you begin, pick a person to pair up with. The two of you will share each other's Jenkins account names. You will use that account name when adding a new member to the **Approvers** Group on your Managed Controller below:
+We want to add a deployment approver to our Managed Controllers and then set that approver as the `submitter` for our `input` directive. Before you begin, pick a person to pair up with. The two of you will share each other's Jenkins account names (your GitHub username). You will use that account name when adding a new member to the **Approvers** Group on your Managed Controller. **NOTE:** If you don't have another person to pair up with then you can use the admin user that was created for you. It will be your GitHub username with the suffix `-admin` and the password will be the same, just use that in place of the approvers account username.
 
-1. On your Team Master, navigate to the Team list by clicking on the ***Administration*** link on the top right (this link is available on all Blue Ocean pages except for the [Pipeline Run Details view](https://jenkins.io/doc/book/blueocean/pipeline-run-details/#pipeline-run-details-view)). <p><img src="img/input/input_submitter_admin_link.png" width=800/>
-2. Next, click on the cog icon for your team.  <p><img src="img/input/input_submitter_team_cog.png" width=800/>
+1. Go to the top-level of your Managed Controller and click on the **Groups** link in the left menu. ![Groups Link](groups-link.png?width=50pc)
+2. On the next screen
 3. Click on the ***Members*** link in the left menu and then click on the ***Add a user or group*** link. <p><img src="img/input/input_submitter_members_link.png" width=800/>
 4. Select **Team Guest** from the role drop-down, enter the account name for the person next to you in the ***Add user or group*** input (I will use **beedemo-ops**), press your ***enter/return*** key, and then click the **Save changes** button.  <p><img src="img/input/input_submitter_add_team_guest.png" width=600/>
 5. Click on the ***Pipelines*** link in the top menu. <p><img src="img/input/input_submitter_pipelines_link.png" width=600/>
-
-Now that we all have a new team member, you can add them as a `submitter` for the `input` directive in your `Jenkinsfile` Pipeline script.
-
-1. Use the GitHub file editor to update the **Jenkinsfile** file in the **master** branch of your forked **helloworld-nodejs** repository - updating the `input` directive of the **Deploy** `stage` with the following changes (replacing **beedemo-ops** with Jenkins username of your new **Team Guest** member). Also, update the `timeout` duration to give your approver plenty of time to submit the `input`:
+6Now that we all have a new team member, you can add them as a `submitter` for the `input` directive in your `Jenkinsfile` Pipeline script. Use the GitHub file editor to update the **Jenkinsfile** file in the **main** branch of your copy of the **helloworld-nodejs** repository - updating the `input` directive of the **Deploy** `stage` with the following changes (replacing **beedemo-dev-admin** with the Jenkins username of your approver). Also, update the `timeout` duration to give your approver plenty of time to submit the `input`:
 
 ```
       options {
