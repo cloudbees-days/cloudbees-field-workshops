@@ -4,31 +4,32 @@ chapter: false
 weight: 7
 --- 
 
-In this lab, we will see how you can capture interactive input in your Jenkins Pipeline while it is running and some pitfalls you will want to avoid when using the `input` step.
+In this lab, we will see how you can capture interactive input in your Jenkins Pipeline while it is running by using the `input` step and some pitfalls you will want to avoid when using the `input` step.
 
-1. Use the GitHub file editor to update the **Jenkinsfile** file in the **main** branch of your copy of the **helloworld-nodejs** repository - adding the following `stage` to your Pipeline after the ***Build and Push Image*** `stage` and commit the changes:
+1. Use the GitHub file editor to update the **Jenkinsfile** file in the **main** branch of your copy of the **helloworld-nodejs** repository and update the **Deploy** `stage` by adding the following between `environment` directive and `steps` block:
 
 ```
-    stage('Deploy') {
-      when {
-        beforeAgent true
-        beforeInput true
-        branch 'main'
-      }
-      input {
-        message "Should we continue?"
-      }
-      steps {
-        echo "Continuing with deployment"
-      }
-    }
+          when {
+            environment name: 'FAVORITE_COLOR', value: 'BLUE'
+          }
+          input {
+            message "Should we continue with deployment?"
+          }
 ```
 
->**IMPORTANT TIP** We added the the `beforeInput` option set to `true` so that the `when` condition will be checked before the `input` - if we didn't add that option then the `input` would be executed before the `when` condition and it would execute for all branches, not just the `main` branch.
+Note that we added a new `when` condition that will result in the **Deploy** stage being skipped. We also added an `input` directive insteat of an `input` step in the `steps` block. This ensures that the `input` will be displayed before the agent is used. *Also note that even though we are setting the `FAVORITE_COLOR` environment variable value to `BLUE` in the **Deploy** stage that does not get executed until after the `when` condition is checked; so the value is still `RED` for the `when` condition.* 
+2. Commit the changes and then navigate to the **main** branch of your **helloworld-nodejs** project on your Managed Controller.
+3. There will be an `input` prompt for the `Deploy` stage (*the `input` prompt is also available in the Console log*). ![Configure Notification Link](input-prompt.png?width=50pc) Go ahead and click the **Proceed** button and you will see that the **Deploy** stage is skipped. 
+4. Return to the the **Jenkinsfile** file in the **main** branch of your copy of the **helloworld-nodejs** repository in GitHub and use the GitHub file editor to update the **Deploy** `stage` by adding a special `[beforeInput](https://www.jenkins.io/doc/book/pipeline/syntax/#evaluating-when-before-the-input-directive)` `when` condition set to `true` after the `environment` condition. The updated `when` directive should match the following:
+```
+          when {
+            environment name: 'FAVORITE_COLOR', value: 'BLUE'
+            beforeInput true
+          }
+```
 
-2. Navigate to the **helloworld-nodejs** job on your Managed Controller and the job for the **master** branch should be running or queued to run. Note the `input` prompt during the `Deploy` stage. Go ahead and click the **Proceed** button and the job will complete successfully.  *The `input` prompt is also available in the Console log and classic Stage View.* <p><img src="img/input/input_basic.png" width=800/>
-
-3. If you hadn't clicked on either the **Proceed** or **Abort** button in the `input` prompt Managed Controller would haved waited indefinitely for a user response. Let's fix that by setting a timeout. Earlier we used `options` at the global `pipeline` level to set the ***Discard old builds*** strategy for your Managed Controller with the `buildDiscarder` `option`. Now we will configure `options` at the `stage` level. We will add a `timeout` `option` for the **Deploy** `stage` using the [`stage` `options` directive](https://jenkins.io/doc/book/pipeline/syntax/#stage-options). Update the **Deploy** `stage` to match the following in the **main** branch and then commit the changes:
+4. Commit the changes and then navigate to the **main** branch of your **helloworld-nodejs** project on your Managed Controller. The **Deploy** stage will not be skipped before prompting for input.
+6. If you hadn't clicked on either the **Proceed** or **Abort** button in the `input` prompt Managed Controller would haved waited indefinitely for a user response. Let's fix that by setting a timeout. Earlier we used `options` at the global `pipeline` level to set the ***Discard old builds*** strategy for your Managed Controller with the `buildDiscarder` `option`. Now we will configure `options` at the `stage` level. We will add a `timeout` `option` for the **Deploy** `stage` using the [`stage` `options` directive](https://jenkins.io/doc/book/pipeline/syntax/#stage-options). Update the **Deploy** `stage` to match the following in the **main** branch and then commit the changes:
 
 ```
     stage('Deploy') {
@@ -150,8 +151,3 @@ pipeline {
   }
 }
 ```
-
-You've reached the end of the CloudBees CI Pipeline Workshop! Click here to head back to the main list of [**labs**](./README.md#workshop-labs).
-
-
-You may also check out the other labs offered by us here: [CloudBees Field Workshops](https://github.com/cloudbees-days).
