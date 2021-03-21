@@ -48,7 +48,7 @@ Note that we added a new `when` condition that will result in the **Deploy** sta
 ```
 
 7. Commit the changes, navigate to the **main** branch of your **helloworld-nodejs** project on your Managed Controller and you will eventually see a `input` prompt for the `Deploy` stage.
-8. If you don't click on either the **Proceed** or **Abort** button in the `input` prompt, the Managed Controller would have waited indefinitely for a user response. Let's fix that by setting a timeout for the **Deploy** stage. We will add a `timeout` `option` for the **Deploy** `stage` using the [`stage` `options` directive](https://jenkins.io/doc/book/pipeline/syntax/#stage-options). Update the **Deploy** `stage` to match the following in the **main** branch and then commit the changes:
+8. If you don't click on either the **Proceed** or **Abort** button in the `input` prompt, the Managed Controller would have waited indefinitely for a user response. Let's fix that by setting a timeout for the **Deploy** stage. We will add a `timeout` `option` for the **Deploy** `stage` using the [stage options directive](https://jenkins.io/doc/book/pipeline/syntax/#stage-options). Update the **Deploy** `stage` to match the following in the **main** branch and then commit the changes:
 
 ```
         stage('Deploy') {

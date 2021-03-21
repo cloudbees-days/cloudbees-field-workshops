@@ -1,7 +1,7 @@
 ---
 title: "Conditional Execution using the when directive"
 chapter: false
-weight: 3
+weight: 4
 --- 
 
 ## Conditional Stages Using the When Directive
@@ -107,7 +107,7 @@ By wrapping the ***Build and Push Image*** and ***Deploy*** stages in the ***Mai
 
 ## Next Lesson
 
-Before moving on to the next lesson make sure that your **Jenkinsfile** Pipeline script on the **main** branch of your forked **helloworld-nodejs** repository matches the one from below:
+Before moving on to the next lesson make sure that your **Jenkinsfile** Pipeline script on the **main** branch of your copy of the **helloworld-nodejs** repository matches the one from below:
 
 ### Finished Jenkinsfile for *Conditional Execution using the `when` directive* lab
 ```

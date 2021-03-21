@@ -78,11 +78,11 @@ pipeline {
   ...
   ```
 
-   iii. Your fork of the **helloworld-nodejs** repository is being checked out, even though you did not put any steps in the `Jenkinsfile` to do so:
+   iii. Your copy of the **helloworld-nodejs** repository is being checked out, even though you did not put any steps in the `Jenkinsfile` to do so:
 
   ```
   ...
-  Cloning repository https://github.com/cd-accel-beedemo/helloworld-nodejs.git
+  Cloning repository https://github.com/cbci-pipeline/helloworld-nodejs.git
   ...
   ```
 
@@ -102,7 +102,7 @@ OpenJDK 64-Bit Server VM (build 25.191-b12, mixed mode)
 
 ## Next Lesson
 
-Before moving on to the next lesson make sure that your **Jenkinsfile** Pipeline script on the **development** branch of your forked **helloworld-nodejs** repository matches the one from [below](#finished-jenkinsfile-for-introduction-to-pipelines-with-cloudbees-core).
+Before moving on to the next lesson make sure that your **Jenkinsfile** Pipeline script on the **development** branch of your copy **helloworld-nodejs** repository matches the one from below.
 
 
 ### Finished Jenkinsfile for *Introduction to Pipelines with CloudBees Core*

@@ -15,8 +15,8 @@ Pipeline Template Catalogs provide version controlled parameterized templates fo
    1. **Repository Owner**: the GitHub Organization your created for the CloudBees CI Pipeline Workshop.
    2. Use the default values for the rest of the parameters.
    3. Click the **Save** button. ![Template Parameters](template-parameters.png?width=50pc)
-4. The initial scan won't find any branches because you have to add the [custom markerfile](https://go.cloudbees.com/docs/cloudbees-core/cloud-admin-guide/pipeline/#_multibranch_pipeline_options_in_template_yaml) `.nodejs-app` to any branch that you want a job to be created. The [template we are using has a `markerFile` parameter set to `.nodejs-app`](https://github.com/cloudbees-days/pipeline-template-catalog/blob/master/templates/nodejs-app/template.yaml#L29), so we need to add that file to at least one branch of your copy of the **helloworld-nodejs** repository.
-5. Make sure you are on the **development** branch and click on the **Create new  file** button towards the top right of the screen. 
+4. The initial scan won't find any branches because you have to add the [custom markerfile](https://go.cloudbees.com/docs/cloudbees-core/cloud-admin-guide/pipeline/#_multibranch_pipeline_options_in_template_yaml) `.nodejs-app` to any branch that you want a job to be created. The [template we are using has a markerFile parameter set to .nodejs-app](https://github.com/cloudbees-days/pipeline-template-catalog/blob/master/templates/nodejs-app/template.yaml#L29), so we need to add that file to at least one branch of your copy of the **helloworld-nodejs** repository.
+5. Make sure you are on the **development** branch and click on the **Create new file** button towards the top right of the screen. 
 6. Name the file `.nodejs-app` and commit the empty file to your **development** branch.
 7. You may need to refresh the Multibranch job screen, but you should eventually have **one** job - for the **development** branch. ![One Job](one-job.png?width=50pc)
 
@@ -30,11 +30,12 @@ Executing [Testcafe](http://devexpress.github.io/testcafe/) driven browser tests
 4. Navigate to the **development** branch of your **helloworld-nodejs** job on your Managed Controller and your job should already be running as a GitHub webhook triggered it when you committed the changes for the `hello.js` file in the **helloworld-nodejs** repository. The tests should pass and the job should complete successfully. ![Test Passed](test-passed.png?width=50pc)
 
 ## Deploy to Staging
-Now that you have fixed the small bug in the **helloworld-nodejs** application, we will create a Pull Request and merge the change to the **master** branch of your forked copy of the **helloworld-nodejs** repository.
+Now that you have fixed the small bug in the **helloworld-nodejs** application, we will create a Pull Request and merge the change to the **main** branch of your copy of the **helloworld-nodejs** repository.
 
-1. Navigate to your forked **helloworld-nodejs** repository in GitHub - click on the **New pull request** button. ![Test Passed](new-pull-request.png?width=50pc)
+1. Navigate to your copy of the **helloworld-nodejs** repository in GitHub - click on the **New pull request** button. ![Test Passed](new-pull-request.png?width=50pc)
 2. On the next screen add a comment and then click the **Create pull request** button.
 3. A job will be created for the pull request and once it has completed successfully your pull request will show that **All checks have passed**. Go ahead and click the **Merge pull request** button and then click the **Confirm merge** button but **DO NOT DELETE** the **development** branch. ![Merge PR](merge-pr.png?width=50pc)
 4. Navigate to the **helloworld-nodejs** Pipeline Template Catalog job on your Managed Controller and the job for the **main** branch should be running or queued to run.
-5. The templated job will build a Docker image for your **helloworld-nodejs** application, push the image to the Google Container Registry (GCR), and then deploy your containerized application to a staging environment in Kubernetes - a link to your application will be available in the logs of your job. 
+5. The templated job will build a Docker image for your **helloworld-nodejs** application, push the image to the Google Container Registry (GCR), and then deploy your containerized application to a staging environment in Kubernetes - a link to your application will be available in the logs of your job. All of this after only filling in a few parameters to create the job in CloudBees CI.
+
 

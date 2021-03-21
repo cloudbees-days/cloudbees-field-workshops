@@ -1,7 +1,7 @@
 ---
 title: "Custom Pipeline Pod Templates"
 chapter: false
-weight: 4
+weight: 3
 --- 
 
 ## Kubernetes Pod Templates Defined in Pipeline Script
@@ -173,7 +173,7 @@ spec:
 
 ```
 
-### Finished Jenkinsfile for *Custom Pipeline Pod Templates*
+### Finished Jenkinsfile for *Custom Pipeline Pod Templates* Lab
 ```
 pipeline {
   agent none
