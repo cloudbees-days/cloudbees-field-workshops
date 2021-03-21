@@ -1,5 +1,5 @@
 ---
-title: "Conditional Execution using the when directive"
+title: "Conditional Execution Using the when Directive"
 chapter: false
 weight: 4
 --- 
