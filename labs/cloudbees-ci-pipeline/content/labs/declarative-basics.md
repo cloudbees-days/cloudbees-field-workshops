@@ -63,7 +63,7 @@ pipeline {
   }
 }
 ```
-![Basic Syntac Commit](basic-syntax-commit.png?width=50pc) 
+![Basic Syntax Commit](basic-syntax-commit.png?width=50pc) 
 
 3. Add a commit description and then click the **Commit Changes** button with the default selection of *Commit directly to the `development` branch* selected.
 4. Navigate back to the **helloworld-nodejs** *development* branch job on your CloudBees CI Managed Controller and the job will complete successfully. Note some things from the log:
@@ -119,5 +119,3 @@ pipeline {
   }
 }
 ```
-
-You may proceed to the next lab [*Lab 2 - Stage specific agents*](./stage-specific-agents.md) or head back to the main list of the [**labs**](./README.md#workshop-labs) when you are ready.

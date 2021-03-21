@@ -22,7 +22,7 @@ In this lab we will edit the `Jenkinsfile` file in your **helloworld-nodejs** re
       }
 ```
 
-Note the `beforeAgent true` option - this setting will result in the `when` condition being evaluated before acquiring and using a `stage` specific `agent`. The `branch` condition is a built-in condition that allows executing stages only for specific branches - in this case the ***Build and Push Image*** `stage` will only execute for the **main** branch. The entire Pipeline shoud match what is below:
+Note the `beforeAgent true` option - this setting will result in the `when` condition being evaluated before acquiring and using a `stage` specific `agent`. The `branch` condition is a built-in condition that allows executing stages only for specific branches - in this case the ***Build and Push Image*** `stage` will only execute for the **main** branch. The entire Pipeline should match what is below:
 
   ```
   pipeline {
@@ -103,7 +103,7 @@ pipeline {
 
 By wrapping the ***Build and Push Image*** and ***Deploy*** stages in the ***Main Branch Stages*** the `when` directive for the `main` branch only has to be specified once. Also, by using the `not` nesting condition the ***Test*** stage will only be executed when the branch being processed in **not** the `main` branch.
 
-3. Commit the changes and then navigate to the **helloworld-nodejs** job on your Managed Controller and the job for the **main** branch should be running or queued to run. Once the run completes you will see that the ***Test*** `stage` was skipped but the ***Main Branc Stages** were not. ![Conditional Nested Stage](conditional-nested-stage.png?width=50pc) 
+3. Commit the changes and then navigate to the **helloworld-nodejs** job on your Managed Controller and the job for the **main** branch should be running or queued to run. Once the run completes you will see that the ***Test*** `stage` was skipped but the ***Main Branch Stages** were not. ![Conditional Nested Stage](conditional-nested-stage.png?width=50pc) 
 
 ## Next Lesson
 

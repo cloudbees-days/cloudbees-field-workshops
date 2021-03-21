@@ -15,7 +15,7 @@ The Declarative Pipeline syntax provides an [environment directive](https://www.
     FAVORITE_COLOR = 'RED'
   }
 ```
-3. Add the following `echo` righ before the existing `echo` step in the **Build and Push Image** stage.
+3. Add the following `echo` step right before the existing `echo` step in the **Build and Push Image** stage.
 ```
           echo "FAVORITE_COLOR is $FAVORITE_COLOR"
 ```
@@ -88,7 +88,7 @@ pipeline {
 
 ## Credentials as Environment Variables
 
-In this lab we will use the `environment` directive to inject a username/password credential into are Jenkins Pipeline. We will also explore some best practices around injecting sensitive envrionmental variables into a Jenkins Pipeline.
+In this lab we will use the `environment` directive to inject a username/password credential into are Jenkins Pipeline. We will also explore some best practices around injecting sensitive environmental variables into a Jenkins Pipeline.
 
 1. Navigate to and open the GitHub editor for the `Jenkinsfile` file in the **main** branch of your **helloworld-nodejs** repository.  ![Edit Jenkinsfile](edit-jenksinfile.png?width=50pc) 
 2. We will add another environment variable to the `environment` directive of the **Deploy** stage, but this time we will use the special helper method `credentials()` to create an environment variable from a username/password credential and we will then update the `echo` step to print out the values of the variable. Replace the entire **Deploy** stage with the following:
