@@ -15,4 +15,3 @@ This repository contains instructions and learning materials for the workshop th
   * How reusable templates for Jenkins Declarative Pipelines can increase developer productivity?
   * What are the key features of Declarative Pipelines?
 
-#### <a href="https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-ci-pipeline/">CloudBees CI Pipeline Workshop Slides</a>
