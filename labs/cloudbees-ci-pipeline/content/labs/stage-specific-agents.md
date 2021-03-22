@@ -24,10 +24,27 @@ Take note of the ***Labels*** field with a value of ***nodejs-app*** and the **C
 ```
     agent { label 'nodejs-app' }
 ```
+{{%expand "expand for complete Jenkinsfile" %}}
+```
+pipeline {
+  agent none
+  stages {
+    stage('Say Hello') {
+      agent { label 'nodejs-app' }
+      steps {
+        echo 'Hello World!'   
+        sh 'java -version'
+      }
+    }
+  }
+}
+```
+{{% /expand%}}
+
 5. Commit that change to the `development` branch and navigate to your **helloworld-nodejs** job on your Managed Controller. The build logs should be almost the same as before because we are still using the default `jnlp` container. ![Build with Agent Template](build-agent-template.png?width=50pc) 
 6. Let's change that by replacing the **Say Hello** `stage` with the following **Test** `stage` so the steps run in the **nodejs** `container`. Edit the `Jenkinsfile` file in the **development** branch of your forked **helloworld-nodejs** repository so the entire pipeline looks like the following:
 
-```groovy
+```
 pipeline {
   agent none
   stages {

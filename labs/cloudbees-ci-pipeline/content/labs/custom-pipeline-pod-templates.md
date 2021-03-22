@@ -59,15 +59,6 @@ pipeline {
         }
       }
     }
-    stage('Build and Push Image') {
-      when {
-        beforeAgent true
-        branch 'main'
-      }
-      steps {
-        echo "TODO - build and push image"
-      }
-    }
   }
 }
 ```
@@ -189,15 +180,6 @@ pipeline {
           echo 'Hello World!'   
           sh 'node --version'
         }
-      }
-    }
-    stage('Build and Push Image') {
-      when {
-        beforeAgent true
-        branch 'master'
-      }
-      steps {
-        echo "TODO - build and push image"
       }
     }
   }
