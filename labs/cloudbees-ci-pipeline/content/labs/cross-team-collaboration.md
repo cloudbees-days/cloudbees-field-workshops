@@ -4,7 +4,7 @@ chapter: false
 weight: 6
 --- 
 
-In this lab we will explore the [CloudBees Core Cross Team Collaboration feature](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/cross-team-collaboration). Cross Team Collaboration simplifies the cumbersome and complicated tasks of triggering downstream jobs by eliminating the need to identify and maintain the full path for every downstream job. Simply put it, this proprietary feature connects pipelines, increasing automation and collaboration. Prior to this feature, the details of every downstream job (Jenkins instance ID, full job name, Git branch name) all had to be meticulously specified in the upstream job. If the job name changed, the upstream job had to be refactored, creating a maintenance burden and discouraging the adoption of event-based triggers.
+In this lab we will explore the [CloudBees CI Cross Team Collaboration feature](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/cross-team-collaboration). Cross Team Collaboration simplifies the cumbersome and complicated tasks of triggering downstream jobs by eliminating the need to identify and maintain the full path for every downstream job. Simply put it, this proprietary feature connects pipelines, increasing automation and collaboration. Prior to this feature, the details of every downstream job (Jenkins instance ID, full job name, Git branch name) all had to be meticulously specified in the upstream job. If the job name changed, the upstream job had to be refactored, creating a maintenance burden and discouraging the adoption of event-based triggers.
 
 ## Cross Team Collaboration Events
 
@@ -15,7 +15,7 @@ The Cross Team Collaboration feature has a configurable router for routing event
  You should see the following configuration: ![Notification Configuration](notification-config.png?width=50pc)
 
 
-1. To use Cross Team Collaboration Now we will need to update the pipeline to listen for a notification event to be published by the upstream job. We will do that by adding a `trigger` directive to your **Jenkinsfile** Pipeline script.
+1. To use Cross Team Collaboration we will need to update the **helloworld-nodejs** Jenkinsfile to listen for a notification event to be published by the upstream, or publishing, job. We will do that by adding a `trigger` directive to your **Jenkinsfile** Pipeline script.
 2. Open the GitHub editor for the **Jenkinsfile** file in the **main** branch of your copy of the **helloworld-nodejs** repository.
 3. Add the following `trigger` block just above the top-level `stages` block:
 

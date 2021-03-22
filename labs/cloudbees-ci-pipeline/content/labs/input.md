@@ -21,7 +21,7 @@ Note that we added a new `when` condition that will result in the **Deploy** sta
 
 2. Commit the changes and then navigate to the **main** branch of your **helloworld-nodejs** project on your Managed Controller.
 3. There will be an `input` prompt for the `Deploy` stage (*the `input` prompt is also available in the Console log*). ![Configure Notification Link](input-prompt.png?width=50pc) Go ahead and click the **Proceed** button and you will see that the **Deploy** stage is skipped. 
-4. Return to the the **Jenkinsfile** file in the **main** branch of your copy of the **helloworld-nodejs** repository in GitHub and use the GitHub file editor to update the **Deploy** `stage` by adding a special `[beforeInput](https://www.jenkins.io/doc/book/pipeline/syntax/#evaluating-when-before-the-input-directive)` `when` condition set to `true` after the `environment` condition. The updated `when` directive should match the following:
+4. Return to the the **Jenkinsfile** file in the **main** branch of your copy of the **helloworld-nodejs** repository in GitHub and use the GitHub file editor to update the **Deploy** `stage` by adding a special [beforeInput](https://www.jenkins.io/doc/book/pipeline/syntax/#evaluating-when-before-the-input-directive) `when` condition set to `true` after the `environment` condition. The updated `when` directive should match the following:
 ```
           when {
             environment name: 'FAVORITE_COLOR', value: 'BLUE'
@@ -75,51 +75,57 @@ Note that we added a new `when` condition that will result in the **Deploy** sta
 ```
 pipeline {
   agent none
-  options { 
-    buildDiscarder(logRotator(numToKeepStr: '2'))
-    skipDefaultCheckout true
+  environment {
+    FAVORITE_COLOR = 'RED'
+  }  
+  triggers {
+    eventTrigger simpleMatch('hello-api-deploy-event')
   }
   stages {
     stage('Test') {
+      when {
+        beforeAgent true
+        not { branch 'main' }
+      }
       agent {
         kubernetes {
-          label 'nodejs-app-pod-2'
           yamlFile 'nodejs-pod.yaml'
         }
       }
       steps {
-        checkout scm
-        container('nodejs') {
-          echo 'Hello World!'   
+        container('nodejs') { 
           sh 'node --version'
         }
       }
     }
-    stage('Build and Push Image') {
+    stage('Main Branch Stages') {
       when {
         beforeAgent true
-        beforeInput true
-        branch 'master'
+        branch 'main'
       }
-      steps {
-        echo "TODO - build and push image"
-      }
-    }
-    stage('Deploy') {
-      when {
-        beforeAgent true
-        branch 'master'
-      }
-      options {
-        timeout(time: 60, unit: 'SECONDS') 
-      }
-      input {
-        message "Should we deploy?"
-        submitter "beedemo-ops"
-        submitterParameter "APPROVER"
-      }
-      steps {
-        echo "Continuing with deployment - approved by ${APPROVER}"
+      stages {
+        stage('Build and Push Image') {
+          steps {
+            echo "FAVORITE_COLOR is $FAVORITE_COLOR"  
+            echo "TODO - build and push image"
+          }
+        }
+        stage('Deploy') {
+          agent any
+          environment {
+            FAVORITE_COLOR = 'BLUE'
+            SERVICE_CREDS = credentials('example-service-username-password')
+          }
+          options {
+            timeout(time: 30, unit: 'SECONDS') 
+          }
+          input {
+            message "Should we continue with deployment?"
+          }
+          steps {
+            sh 'echo TODO - deploy to $FAVORITE_COLOR with SERVICE_CREDS: username=$SERVICE_CREDS_USR password=$SERVICE_CREDS_PSW'
+          }
+        }
       }
     }
   }
