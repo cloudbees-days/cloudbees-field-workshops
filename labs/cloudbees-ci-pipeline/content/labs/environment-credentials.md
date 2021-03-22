@@ -105,10 +105,12 @@ In this lab we will use the `environment` directive to inject a username/passwor
 ```
 
 Note that the `credentials` helper automatically creates two environment variables use the variable name we provided as a prefix and add `_USR` for the credential username and `_PSW` for the credential password. The credential variable without either suffix will provide the value in the format `username:password`.
+
 3. At the bottom of the screen enter a commit message, leave **Commit directly to the `main` branch** selected and click the **Commit new file** button.
 4. Navigate to the **main** branch job of the **helloworld-nodejs** project on your Managed Controller and the job should be running or queued to run. Once it completes, review the logs for the **Deploy** stage. ![Deploy Stage Logs with Secret Warning](deploy-logs-secret-warning.png?width=50pc) 
-Note that there is a warning regarding *Groovy String interpolation* for the **SERVICE_CREDS** environment variable. This is referring to the fact that the the sensitive environment variable will be interpolated during Groovy evaluation and the value could be made available earlier than intended, resulting in sensitive data leaking in various contexts. But we can fix that.
-5. Navigate back to and open the GitHub editor for the `Jenkinsfile` file in the **main** branch of your **helloworld-nodejs** repository.  ![Edit Jenkinsfile](edit-jenksinfile.png?width=50pc) 
+Note that there is a warning regarding *Groovy String interpolation* for the **SERVICE_CREDS** environment variable. This is referring to the fact that the the sensitive environment variable will be interpolated during Groovy evaluation and the value could be made available earlier than intended, resulting in sensitive data leaking in various contexts.
+
+5. To fix this, navigate back to and open the GitHub editor for the `Jenkinsfile` file in the **main** branch of your **helloworld-nodejs** repository.  ![Edit Jenkinsfile](edit-jenksinfile.png?width=50pc) 
 6. We will update the `echo` step of the **Deploy** stage so it does not use Groovy String interpolation to inject the username/password credential. Replace the entire **Deploy** stage with the following:
 ```
         stage('Deploy') {
@@ -123,14 +125,16 @@ Note that there is a warning regarding *Groovy String interpolation* for the **S
         }
 ```
 
-By replacing the `echo` step with an `sh` step the executes **echo** on the agent and replacing the double-quotes with single-quotes so no Groovy String interpolation is performed on the controller. We also had to add an `agent` because the `sh` step requires an agent to run on.
+We were able to remove Groovy String interpolation on the controller by replacing the `echo` step with an `sh` step that executes **echo** on the agent and replacing the double-quotes with single-quotes so no Groovy String interpolation. We also had to add an `agent` because the `sh` step requires an agent to run on.
 7. At the bottom of the screen enter a commit message, leave **Commit directly to the `main` branch** selected and click the **Commit new file** button.
 8. Navigate to the **main** branch job of the **helloworld-nodejs** project on your Managed Controller and the job should be running or queued to run. Once it completes, review the logs for the **Deploy** stage. ![Deploy Stage Logs No Secret Warning](deploy-logs-no-secret-warning.png?width=50pc) 
 
 There should no longer be a warning regarding *Groovy String interpolation*.
 
 
->NOTE: By default warnings are configured to be displayed on the build and log pages when there might be insecure interpolation. To configure these warnings set `org.jenkinsci.plugins.workflow.cps.DSL.UNSAFE_GROOVY_INTERPOLATION` to the following values: 1) `ignore`: no warnings will be displayed on the log or build page. 2) `fail`: build failure when the build encounters the first interpolated groovy string that contains a secret.
+>NOTE: By default warnings are configured to be displayed on the build and log pages when there might be insecure interpolation. To configure these warnings set `org.jenkinsci.plugins.workflow.cps.DSL.UNSAFE_GROOVY_INTERPOLATION` to the following values: 
+>1) `ignore`: no warnings will be displayed on the log or build page. 
+>2) `fail`: build failure when the build encounters the first interpolated groovy string that contains a secret.
 
 ### Finished Jenkinsfile for the *Environment Variables and Credentials* Lab
 ```
