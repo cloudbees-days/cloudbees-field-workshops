@@ -1,4 +1,4 @@
-Management---
+---
 title: "CloudBees Feature Management Workshop"
 chapter: true
 weight: 1
