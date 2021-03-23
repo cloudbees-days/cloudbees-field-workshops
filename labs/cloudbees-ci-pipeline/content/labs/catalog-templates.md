@@ -4,7 +4,7 @@ chapter: false
 weight: 8
 --- 
 
-Pipeline Template Catalogs provide version controlled parameterized templates for Multi-branch and stand-alone Pipeline jobs. In this exercise we will use [Pipeline Template Catalogs](https://github.com/cloudbees-days/pipeline-template-catalog/tree/master/templates/nodejs-app) to create a templatized Multibranch Pipeline project of your workshop copy of the **helloworld-nodejs** repository. All you will need to do is fill in a few simple parameters and you will end up with a complete end-to-end CI/CD Pipeline for the **helloworld-nodejs** application - and it won't be using the `Jenkinsfile` from your repository.
+Pipeline Template Catalogs provide version controlled parameterized templates for Multibranch and stand-alone Pipeline jobs. In this exercise we will use [Pipeline Template Catalogs](https://github.com/cloudbees-days/pipeline-template-catalog/tree/master/templates/nodejs-app) to create a templatized Multibranch Pipeline project of your workshop copy of the **helloworld-nodejs** repository. All you will need to do is fill in a few simple parameters and you will end up with a complete end-to-end CI/CD Pipeline for the **helloworld-nodejs** application - and it won't be using the `Jenkinsfile` from your repository.
 
 ## Create a Multibranch Project from a Pipeline Template Catalog
 [Jenkins Configurations as Code](https://wiki.jenkins.io/display/JENKINS/Configuration+as+Code+Plugin) (JCasC) was used to pre-configure a Pipeline Template Catalog on everyone's Managed Controller and there is a **template-jobs** folder on your Managed Controller that has been configured with [CloudBees Folders Plus folder item filtering](https://go.cloudbees.com/docs/plugins/folders-plus/#folders-plus-sect-restrict) to only allow the creation of certain job types. Now we will create a templatized end-to-end CI/CD Pipeline Multibranch project for your copy of the **helloworld-nodejs** repository.
@@ -17,7 +17,7 @@ Pipeline Template Catalogs provide version controlled parameterized templates fo
    3. Click the **Save** button. ![Template Parameters](template-parameters.png?width=50pc)
 4. The initial scan won't find any branches because you have to add the [custom markerfile](https://go.cloudbees.com/docs/cloudbees-core/cloud-admin-guide/pipeline/#_multibranch_pipeline_options_in_template_yaml) `.nodejs-app` to any branch that you want a job to be created. The [template we are using has a markerFile parameter set to .nodejs-app](https://github.com/cloudbees-days/pipeline-template-catalog/blob/master/templates/nodejs-app/template.yaml#L29), so we need to add that file to at least one branch of your copy of the **helloworld-nodejs** repository.
 5. Make sure you are on the **development** branch and click on the **Create new file** button towards the top right of the screen. 
-6. Name the file `.nodejs-app` and commit the empty file to your **development** branch.
+6. Name the file `.nodejs-app` and commit the empty file to your **development** branch. ![Create Marker File](create-marker-file.png?width=50pc)
 7. You may need to refresh the Multibranch job screen, but you should eventually have **one** job - for the **development** branch. ![One Job](one-job.png?width=50pc)
 
 ## Web Browser Tests with Testcafe

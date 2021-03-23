@@ -38,8 +38,7 @@ We highly recommend creating a new GitHub Organization for the CloudBees CI Pipe
    - https://github.com/cloudbees-days/cloudbees-ci-config-bundle
    - https://github.com/cloudbees-days/pipeline-library
    - https://github.com/cloudbees-days/pipeline-template-catalog
-   - https://github.com/cloudbees-days/node-js ![GitHub App Installed](forked-repos.png?width=50pc)
+   - https://github.com/cloudbees-days/helloworld-nodejs ![GitHub App Installed](forked-repos.png?width=50pc)
 
 >NOTE: These repositories were created from GitHub template repositories in the [CloudBees Field Workshops GitHub Organization](https://github.com/cloudbees-days).
 
-**For instructor led workshops please <a href="https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-ci/#core-overview-title">return to the workshop slides</a>**
