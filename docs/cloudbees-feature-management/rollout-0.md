@@ -30,7 +30,7 @@ name: agenda
 5. CloudBees Feature Management Configuration as Code
 6. Analytics and A/B testing
 
-.footnote[.bold[*]] Please note, we may not get through all the material during the workshop today. However, all of the lab material is freely available and can be self-led. The CloudBees CI lab environment will be available until next Monday and the CloudBees Feature Management trial is available for 14 days if you would like to complete any labs we don't finish today.
+.footnote[.bold[*] Please note, we may not get through all the material during the workshop today. However, all of the lab material is freely available and can be self-led. The CloudBees CI lab environment will be available until next Monday and the CloudBees Feature Management trial is available for 14 days if you would like to complete any labs we don't finish today.]
 
 ---
 name: workshop-tools
@@ -68,10 +68,12 @@ class: title, shelf, no-footer, fullbleed
 background-image: linear-gradient(135deg,#279be0,#036eb4)
 count: false
 
-# CloudBees Feature Management Overview
+# CloudBees Feature Management<br>Overview
 
 ---
 name: feature-flag-background
+class: compact
+
 # What is Feature Flagging?
 
 At its most simplistic, feature flagging is a practice of wrapping new functionality in conditional code blocks.
