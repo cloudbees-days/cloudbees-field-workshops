@@ -5,7 +5,7 @@ count: false
 
 
 # CloudBees Feature Management Workshop
-.one-third-up[![:scale 10%](../img/Rollout-white.svg)]
+
 ???
 This workshop introduces attendees to the features for CloudBees Rollout.
 
@@ -16,7 +16,7 @@ layout: true
 ]
 
 .footer[
-- © 2020 CloudBees, Inc.
+- © 2021 CloudBees, Inc.
 - ![:scale 100%](../img/CloudBees-Submark-Full-Color.svg)
 ]
 ---
@@ -77,7 +77,7 @@ name: feature-flag-background
 At its most simplistic, feature flagging is a practice of wrapping new functionality in conditional code blocks.
 <br/>
 <br/>
-Feature Management are used to hide, enable or disable features during runtime. With Feature Management, a software feature can be tested even before it is completed and ready for release.  For example, during the development process, a developer can enable the feature for local testing and disable it for all other users. Feature flagging also provides an alternative to maintaining multiple feature branches in source code.
+Feature flags are used to hide, enable or disable features during runtime. With Feature Management, a software feature can be tested even before it is completed and ready for release.  For example, during the development process, a developer can enable the feature for local testing and disable it for all other users. Feature flagging also provides an alternative to maintaining multiple feature branches in source code.
 <br/>
 <br/>
 This technique offers many other benefits and will be discussed in greater detail in this workshop.
