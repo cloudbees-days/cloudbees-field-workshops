@@ -4,9 +4,9 @@ chapter: false
 weight: 2
 --- 
 
-In this lab, you will use the CloudBees Feature Management dashboard to remotely configure the values of the `title` and `sidebar` feature flags. We will also introduce the [Flags Override tool](https://docs.beescloud.com/docs/cloudbees-feature-flags/latest/debugging/override-view#_using_the_flags_override_view), and walk through a scenario where developers may need to alter the values of flags for local testing without affecting the values for others.
+In this lab, you will use the CloudBees Feature Management dashboard to remotely configure the values of the `title` and `sidebar` feature flags. We will also introduce the [Flags Override tool](https://docs.beescloud.com/docs/cloudbees-feature-flags/latest/debugging/override-view#_using_the_flags_override_view), and walk through a scenario where developers may need to alter the values of flags for local testing without affecting the values for others. 
 
-### Creating a CloudBees Feature Management Experiment
+### Creating a CloudBees Feature Management Configuration
 
 1. Switch tabs to bring up the CloudBees Feature Management Dashboard.
 2. On the left-hand side of the screen, click to expand **Flags in environment** then select the **Development** environment to display the configurations available.
