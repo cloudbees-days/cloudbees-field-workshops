@@ -10,7 +10,7 @@ In this lab, you will use the CloudBees Feature Management dashboard to remotely
 
 1. Switch tabs to bring up the CloudBees Feature Management Dashboard.
 2. On the left-hand side of the screen, click to expand **Flags in environment** then select the **Development** environment to display the configurations available.
-3. Select the **default.title** flag. To set up the experiment, choose the **Set Audience** button.
+3. Select the **default.title** configuration.
 4. Right now, the new title is hidden for all as we can see the targeting is off for this configuration.
 5. Let's change and activate the targeting so the flag's configuration will reflect all users should see a true value, and this new configuration should be enabled. Click the current **False** behavior value, and from the drop-down menu, choose **True** to edit the `title` flag experiment.
 6. When changes to a configuration are applied, a new configuration file is written and delivered to the devices when the targeting is activated. Click the arrow next to **Save Targeting** button and select Save & Activate Targeting to send the new configuration with its updated `title` flag value. You should see the targeting switch move to the **On** position. ![Title true](images/setTitleTrue.png?width=50pc)
