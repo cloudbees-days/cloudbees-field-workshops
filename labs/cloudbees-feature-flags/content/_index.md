@@ -1,10 +1,10 @@
 ---
-title: "CloudBees Feature Flags Workshop"
+title: "CloudBees Feature Management Workshop"
 chapter: true
 weight: 1
 ---
 
-# CloudBees Feature Flags Workshop
+# CloudBees Feature Management Workshop
 
 Put simply, feature flagging is a practice of wrapping new functionality in conditional code blocks.
 
@@ -12,4 +12,4 @@ Feature flags are used to hide, enable or disable features during runtime. With 
 
 This technique offers many other benefits and will be discussed in greater detail in this workshop.
 
-#### <a href="https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-feature-flags/">CloudBees Feature Flags Workshop Slides</a>
+#### <a href="https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-feature-flags/">CloudBees Feature Management Workshop Slides</a>

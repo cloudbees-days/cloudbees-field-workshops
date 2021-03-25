@@ -4,8 +4,8 @@ chapter: false
 weight: 1
 --- 
 
-## Using a Feature Flag with CloudBees Feature Flags
-In this lab, you will *gate* a component behind the `title` feature flag defined in the previous lab by using CloudBees Feature Flags's dashboard. We will then remotely configure the value of the flag to control whether the title element is visible or hidden.
+## Using a Feature Flag with CloudBees Feature Management
+In this lab, you will *gate* a component behind the `title` feature flag defined in the previous lab by using CloudBees Feature Management's dashboard. We will then remotely configure the value of the flag to control whether the title element is visible or hidden.
 
 ### Adding a Title to the Microblog Post
 
@@ -158,11 +158,11 @@ export default {
 ```
 </details>
 
-7. Create a commit message (e.g. "Added new title feature") and select the **Commit directly to the `development` branch** radio button. Click **Commit changes**.
+7. Create a commit message (e.g. "Gating new title feature") and select the **Commit directly to the `development` branch** radio button. Click **Commit changes**.
 
 ### Adding the Configuration Fetched Handler
 
-The **Configurationed Fetch Handler** provides a mechanism to alert the CloudBees Feature Flags SDK in your application when an updated configuration, from local storage or via an asynchronous network call, has loaded. It allows us to control what happens when a new configuration is fetched, and can be used for troubleshooting by logging the `fetchedResults`. For the changes for a client-side feature flags from the new configuration to be applied, an action (like a page refresh) has to take place.
+The **Configurationed Fetch Handler** provides a mechanism to alert the CloudBees Feature Management SDK in your application when an updated configuration, from local storage or via an asynchronous network call, has loaded. It allows us to control what happens when a new configuration is fetched, and can be used for troubleshooting by logging the `fetchedResults`. For the changes in a client-side defined feature flag, an action has to take place (like a page refresh) in order for the new configuration to be applied.
 
 1. In Github, navigate to the root directory of the `microblog-frontend` repository on the `development` branch.
 2. Open the `flags.js` file (navigating to `src/utils/flags.js`), and select the pencil icon to edit the file.
@@ -185,24 +185,24 @@ export const configurationFetchedHandler = fetcherResults => {
   }
 }
 
-async function initRollout () {
+async function initCloudBees () {
   const options = {
     configurationFetchedHandler: configurationFetchedHandler
   }
 
   Rox.register('default', Flags)
-  await Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options)
+  await Rox.setup(process.env.VUE_APP_CLOUDBEES_KEY, options)
 }
 
-initRollout().then(function () {
-  console.log('Done loading Rollout')
+initCloudBees().then(function () {
+  console.log('Done loading CloudBees Feature Management')
 })
 ```
 4. Enter a commit message (e.g. "Inserted configurationFetchedHandler"), select **Commit directly to the `development` branch** radio button and click **Commit changes**.
 
 ### Checking Microblog Website
 
-1. Navigate back to the **New Feature** pull request and once the build has finished successfully you will see the branch deployed to the *staging* environment, click on the **View deployment** button.
+1. Navigate back to the **New Feature** pull request and once the build has finished successfully you will see the branch deployed to the *development* environment, click on the **View deployment** button.
 2. On the microblog website, refresh the page, and then open the console from your browser's developer tools. Check the log to view the messages from the `configurationFetchedHandler`.
 
 **For instructor led workshops please <a href="https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-feature-flags/#18">return to the workshop slides</a>**

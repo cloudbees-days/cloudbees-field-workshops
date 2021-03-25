@@ -10,4 +10,4 @@ After you have successfully registered please continue to the workshop you are d
 
 **[CloudBees CI Workshop](../core-workshop-setup/workshop-setup.md)**
 
-**[CloudBees Feature Flags Workshop](../rolloutSetup/rolloutSetup.md)**
+**[CloudBees Feature Management Workshop](../rolloutSetup/rolloutSetup.md)**

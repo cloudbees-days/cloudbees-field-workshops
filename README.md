@@ -1,5 +1,5 @@
 # <img src="https://mms.businesswire.com/media/20191204005250/en/760213/23/Logo_-_Stacked_-_Full_Color%402x.jpg" width="100" align="top"> CloudBees Field Workshops
-These workshops demonstrate how to  effectively use CI/CD practices, manage feature flags, and orchestrating releases with CloudBees CI, CloudBees Feature Flags, and CloudBees CD products.
+These workshops demonstrate how to  effectively use CI/CD practices, manage feature flags, and orchestrating releases with CloudBees CI, CloudBees Feature Management, and CloudBees CD products.
 
 # Workshop Prerequisites
 
@@ -32,7 +32,7 @@ https://cloudbees-ci.labs.cb-sa.io/
 
 >NOTE: If you are returning to the workshop cluster to complete a lab please review this lab on [**Un-hibernating a Managed Controller**](labs/hibernating/hibernating.md#un-hibernate-a-managed-jenkins-instance).
 
-## CloudBees Feature Flags:
+## CloudBees Feature Management:
 
 ### Slides
 https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-feature-flags/

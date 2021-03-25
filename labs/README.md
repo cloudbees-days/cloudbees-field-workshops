@@ -5,7 +5,7 @@ For the CloudBees CI Workshop labs:
 hugo server --config ../cloudbees-ci/config.toml --contentDir ../cloudbees-ci/content/
 ```
 
-For the CloudBees Feature Flags Workshop labs: 
+For the CloudBees Feature Management Workshop labs: 
 ```sh
 hugo server --config ../cloudbees-feature-flags/config.toml --contentDir ../cloudbees-feature-flags/content/
 ```

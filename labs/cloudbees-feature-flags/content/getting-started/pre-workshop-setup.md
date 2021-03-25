@@ -18,7 +18,7 @@ Feel free to use an existing GitHub.com account or create a new one:
 
 ### Create a GitHub Organization
 
-We highly recommend creating a new GitHub Organization for the CloudBees Feature Flags Workshop. We will be using a GitHub App based credential to enable authentication and authorization between your GitHub.com Organization for the workshop and [CloudBees CI](https://docs.beescloud.com/docs/cloudbees-ci/latest/) for building and deploying the `microblog-frontend` application.
+We highly recommend creating a new GitHub Organization for the CloudBees Feature Management Workshop. We will be using a GitHub App based credential to enable authentication and authorization between your GitHub.com Organization for the workshop and [CloudBees CI](https://docs.beescloud.com/docs/cloudbees-ci/latest/) for building and deploying the `microblog-frontend` application.
 1. Ensure that you are logged into GitHub.com and then navigate to this [link to create a new (and free) GitHub Organization](https://github.com/account/organizations/new?coupon=&plan=team_free). 
 2. Enter a unique ***Organization account name***, a valid ***Contact email***, select **My personal account** for ***This organization belongs to*** and then click on the **Next** button. ![GitHub Org Set up](github-org-set-up.png?width=40pc) 
 3. On the **Welcome to GitHub** screen just click the **Complete setup** button. ![GitHub Org Set up](github-org-welcome.png?width=50pc) 
@@ -26,12 +26,12 @@ We highly recommend creating a new GitHub Organization for the CloudBees Feature
 
 >NOTE: Even though you have to provide an email for billing, **you will NOT be charged anything** as long as you choose the free option.
 
-### Install the CloudBees Feature Flags Workshop GitHub App
+### Install the CloudBees Feature Management Workshop GitHub App
 
-1. Ensure that you are logged into GitHub.com and then navigate to [https://github.com/apps/cloudbees-feature-flags-workshop](https://github.com/apps/cloudbees-feature-flags-workshop). ![GitHub App](cbff-github-app.png?width=60pc)
+1. Ensure that you are logged into GitHub.com and then navigate to [https://github.com/apps/cloudbees-feature-management-ws](https://github.com/apps/cloudbees-feature-management-ws). ![GitHub App](cbfm-github-app.png?width=60pc)
 2. Click on the **Install** button.
-3. Next, select the GitHub Organization you created above for the CloudBees Feature Flags Workshop. ![GitHub App](github-app-select-org.png?width=50pc)
+3. Next, select the GitHub Organization you created above for the CloudBees Feature Management Workshop. ![GitHub App](github-app-select-org.png?width=50pc)
 4. On the next screen, ensure that **All repositories** is selected and click the **Install** button. ![GitHub App](github-app-install.png?width=50pc)
-5. You may be prompted for your GitHub password. Enter your GitHub.com password, for the GitHub account you are using for this workshop, to complete the installation of the CloudBees Feature Flags Workshop GitHub App into your workshop specific GitHub Organization.
-6. The CloudBees Feature Flags Workshop GitHub App is now installed on your workshop GitHub Organization. ![GitHub App Installed](installed-now.png?width=50pc)
+5. You may be prompted for your GitHub password. Enter your GitHub.com password, for the GitHub account you are using for this workshop, to complete the installation of the CloudBees Feature Management Workshop GitHub App into your workshop specific GitHub Organization.
+6. The CloudBees Feature Management Workshop GitHub App is now installed on your workshop GitHub Organization. ![GitHub App Installed](installed-now.png?width=50pc)
 

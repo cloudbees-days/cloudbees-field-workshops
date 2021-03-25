@@ -6,4 +6,4 @@ weight: 2
 
 # Labs
 
-CloudBees Feature Flags workshop labs.
+CloudBees Feature Management workshop labs.
