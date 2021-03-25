@@ -187,6 +187,7 @@ export const configurationFetchedHandler = fetcherResults => {
 
 async function initCloudBees () {
   const options = {
+    configurationFetchedHandler: configurationFetchedHandler
   }
 
   Rox.register('default', Flags)
