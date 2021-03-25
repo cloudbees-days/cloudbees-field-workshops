@@ -45,24 +45,25 @@ export const configurationFetchedHandler = fetcherResults => {
   }
 }
 
-async function initRollout () {
+async function initCloudBees () {
     const options = {
     configurationFetchedHandler: configurationFetchedHandler
   }
   Rox.setCustomBooleanProperty('isLoggedIn', store.getters.isLoggedIn)
   Rox.setCustomBooleanProperty('hasBetaAccess', betaAccess())
   Rox.register('default', Flags);
-  await Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options);
+  await Rox.setup(process.env.VUE_APP_CLOUDBEES_KEY, options);
 }
 
-initRollout().then(function () {
-  console.log('Done loading Rollout')
+initCloudBees().then(function () {
+  console.log('Done loading CloudBees Feature Management')
 })
 
 ```
 </details>
 
 5. Create a commit message (e.g. "Added setCustomBooleanProperty"). **Commit changes** directly to the `development` branch.
+6. Open the new deployment URL, so that the properties can be created to the dashboard.
 
 ### Create a Target Group Based on Custom Properties
 
@@ -73,20 +74,20 @@ initRollout().then(function () {
    * `hasBetaAccess` is **True**
    * Reflect this logic in the **BetaUsers** Target Group Window be defining the first **Condition** as `isLoggedIn` **Is True**. Then, **Add a New Condition**, select the ***Matches All Conditions*** option, and the select the `betaAccess` **Property** as **Is True**.
 
-4. Once your **BetaUsers** **New Target Group** definition looks similar to screenshot below click **Create Group** button so it can be used in experiments. ![New target group](images/new-target-group.png?width=50pc)
+4. Once your **BetaUsers** New Target Group definition looks similar to screenshot below click **Create Group** button so it can be used in experiments. ![New target group](images/new-target-group.png?width=50pc)
 
 
-### Using a Target Group in an Experiment
+### Using a Target Group in a Configuration
 
-1. Within the CloudBees Feature Management dashboard, navigate to the **Development** **Experiments**, and click on the **sidebar** experiment.
+1. Within the CloudBees Feature Management dashboard, navigate to the **Development** environment, and click on the **sidebar** configuration.
 2. Create a new condition by selecting **Add New Condition**. Within the new condition, change the audience selection from **All Users** to **Target Group**. Edit the remainder of the `if` condition block so that _for a Target Group that matches any of BetaUsers, the sidebar flag value is ***True***.
-3. Edit the older condition that became the `else` block such that the sidebar flag value will be **False**. The experiment modifications should match the following screenshot. ![Update sidebar experiment](images/update-sidebar-experiment.png?width=50pc)
-4. Apply the experimentation changes by clicking **Update Audience**.
+3. Edit the older condition that became the `else` block such that the sidebar flag value will be **False**. The configuration modifications should match the following screenshot. ![Update sidebar experiment](images/update-sidebar-experiment.png?width=50pc)
+4. Apply the configuration changes by clicking **Save Targeting**.
 5. Navigate to the microblog website to test the configuration logic.
    * Log in with the username `admin` and the password `admin` and then navigate back to the homepage. The sidebar should be hidden!
    * Log out, and sign in with the username `betauser` and `betauser` password. Upon, navigating back to the homepage the sidebar is now displayed (you may need to refresh the browser page), as we configured it to be _only for Beta Users_.
 
-### Lab 4 Completed!
-Congratulations! You have finished Lab 4 of the CloudBees Feature Management Workshop.
+### Lab 3 Completed!
+Congratulations! You have finished Lab 3 of the CloudBees Feature Management Workshop.
 
 **For instructor led workshops please <a href="https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-feature-flags/#27">return to the workshop slides</a>**
