@@ -12,17 +12,18 @@ In this lab, you will set up a CloudBees Feature Management account and use it t
 
 1. Open the CloudBees Feature Management [sign-up form](https://rollout.io/sign-up/) in a _new tab_ within your browser. If you already have a CloudBees Feature Management account the [click here to login to your account](https://app.rollout.io/login) and proceed to step 3.
 2. Fill out the form with your name, email, and a created password. After confirming your password, check the box agreeing to CloudBees Feature Management' Terms of Service (which can be viewed [here](https://docs.cloudbees.com/docs/cloudbees-common/latest/subscription-agreement/)), and click **Sign Up**.
-3. After you have successfully created an account, the CloudBees Feature Management dashboard will be displayed. On the far left side of the dashboard, click the **App Settings** panel. From the resulting page, select the **Environments** tab.
-4. Click **Add New Environment** and name it **Development**. Then click **Generate Key**.
-5. **Close** the subsequent **Development Key** pop-up window so that both _Production_ and _Development_ keys are displayed. Leave this CloudBees Feature Management dashboard tab open in the browser. Both keys will be referenced later in this lab.
+3. After you have successfully created an account, the CloudBees Feature Management dashboard will be displayed. Create a new application by clicking the blue panel in the top left corner of the screen. 
+4. After creating a new application in the dashboard, click the **App Settings** panel seen on the left hand menu. From the resulting page, select the **Environments** tab.
+5. Click **Add New Environment** and name it **Development**. Then click **Generate Key**.
+6. **Close** the subsequent **Development Key** pop-up window so that both _Production_ and _Development_ keys are displayed. Leave this CloudBees Feature Management dashboard tab open in the browser. Both keys will be referenced later in this lab.
 ![Environment Key](images/CBFMEnvKey.png?width=50pc)
 
 ### API Key Environment Variable
 
-The CloudBees CI Pipeline that will automatically build and deploy your `mircroblog-frontend` application uses a different CloudBees Feature Management environment key depending on which branch is deployed. Later in the workshop, we'll learn how these separate environment keys can be used to apply the multi-environment view of the CloudBees Feature Management dashboard. This will allow a flag to have a particular *Production* configuration, while using a completely different ruleset for the code connected to the *Development* environment. However, in this lab we will update a GitHub pull request between the `development` and `main` branch of your  `mircroblog-frontend` repository.
+The CloudBees CI Pipeline that will automatically build and deploy your `mircroblog-frontend` application uses a different CloudBees Feature Management environment key depending on which branch is deployed. Later in the workshop, we'll learn how these separate environment keys can be used to apply the multi-environment view of the CloudBees Feature Management dashboard. This will allow a flag to have a separate and unique *Production* configuration from its *Development* environment counterpart. However, in this lab we will update a GitHub pull request between the `development` and `main` branch of your  `mircroblog-frontend` repository.
 
 1. Open your browser to the Github Organization you created for the workshop and navigate to the `microblog-frontend` repository.
-2. Change the branch from `main` to `development`. All work, until some components of Lab 5, will take place on the `development` branch. After changing branches to the `development` branch, click on the `.env.production` file.
+2. Change the branch from `main` to `development`. After changing branches to the `development` branch, click on the `.env.production` file.
 3. Click the pencil icon to edit the file - again, making sure you are on the `development` branch. ![GitHub edit file](images/pencilEdit.png?width=50pc)
 1. Switch back to the CloudBees Feature Management dashboard. Copy the environment **Key** for the **Production** environment by clicking on the **Key** value for that environment. ![Copy key](images/copy-key.png?width=50pc)
 2. Navigate back to the Github tab with the `.env.production` file being edited.
@@ -58,16 +59,16 @@ export const Flags = {
   title: new Rox.Flag(false)
 }
 
-async function initRollout () {
+async function initCloudBees () {
   const options = {
   }
 
   Rox.register('default', Flags)
-  await Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options)
+  await Rox.setup(process.env.VUE_APP_CLOUDBEES_KEY, options)
 }
 
-initRollout().then(function () {
-  console.log('Done loading Rollout')
+initCloudBees().then(function () {
+  console.log('Done loading CloudBees Feature Management')
 })
 ```
 </details>
@@ -97,11 +98,11 @@ Once you committed the `flags.js` file a job will be triggered on the CloudBees 
 ### Checking Communication with CloudBees Feature Management
 
 1. In your browser, switch to CloudBees Feature Management dashboard.
-2. On the left-hand side of the dashboard, click the **Development** panel and then select the **Audit Logs** view from the drop down options.
-3. You should see both the `default.title` and the `default.sidebar` flags added from the code are available for remote configuration in the dashboard! There are also some default properties that have been added, but we'll add more to use in a future lab. ![Audit logs](images/auditLogs.png?width=50pc)
-4. Finally, click on **Flags** in the left menu and you will see the two flags from your `flag.js` file. ![Flags](images/dashboard-flags.png?width=50pc)
+2. On the left-hand side of the dashboard, select the **Audit Logs** view.
+3. You should see both the `title` and `sidebar` flags have been added to the `default` namespace and communicated from the `development` code. This means they are available for remote configuration in the dashboard! There are also some default properties that have been added, but we'll add more in a future lab. ![Audit logs](images/auditLogs.png?width=50pc)
+4. Finally, click on **Flags overview** in the left menu and you will see the two flags from your `flag.js` file, and an outline of their configurations (though we have none yet) defined across all environments. ![Flags](images/dashboard-flags.png?width=50pc)
 
-### Lab 1 Completed!
-Congratulations! You have finished Lab 1 of the CloudBees Feature Management Workshop.
+### Setup Completed!
+Congratulations! You have finished the setup of the CloudBees Feature Management Workshop.
 
 **For instructor led workshops please <a href="https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-feature-flags/#gating-code-title">return to the workshop slides</a>**
