@@ -56,7 +56,7 @@ This lab will use CloudBees Feature Management's `impressionHandler` to forward 
 export const impressionHandler = (reporting, experiment) => {
   if (experiment) {
     console.log('Flag is ' + reporting.name + ', and value is ' + reporting.value)
-    gtag('event', reporting.name, {
+    window.gtag('event', reporting.name, {
       'event_category': reporting.name,
       'event_label': reporting.value
     })
@@ -97,7 +97,7 @@ export const configurationFetchedHandler = fetcherResults => {
 export const impressionHandler = (reporting, experiment) => {
   if (experiment) {
     console.log('Flag is ' + reporting.name + ', and value is ' + reporting.value)
-    gtag('event', reporting.name, {
+    windowgtag('event', reporting.name, {
       'event_category': reporting.name,
       'event_label': reporting.value
     })
@@ -126,8 +126,8 @@ initCloudBees().then(function () {
 ### Split Based Test for Title Experiment
 
 1. Navigate to the CloudBees Feature Management dashboard, and bring up the **title** configuration in the **Development** environment.
-2. The premise of this A/B test will be to route 50% of all users to a **True** value and the other 50% to a **False** value. This can be accomplished by changing the **set to** value from **True** to **Split** within the drop down menu. The default split experiment should reflect these weightings to each value.
-3. **Update Audience** to apply the changes made in this experiment. ![Split](images/split.png?width=50pc)
+2. The premise of this A/B test will be to route 50% of all users to a **True** value and the other 50% to a **False** value. This can be accomplished by changing the **set to** value from **True** to **Split** within the drop down menu. The default split configuration should reflect these weightings to each value.
+3. **Save Targeting** to apply the changes made in this configuration. ![Split](images/split.png?width=50pc)
 
 ### Google Analytics Dashboard
 
