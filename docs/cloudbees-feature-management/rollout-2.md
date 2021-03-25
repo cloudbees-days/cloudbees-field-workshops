@@ -3,13 +3,13 @@ class: title, shelf, no-footer, fullbleed
 background-image: linear-gradient(135deg,#279be0,#036eb4)
 count: false
 
-# CloudBees Feature Flags<br>Gating Code
+# CloudBees Feature Management<br>Gating Code
 
 ---
 name: rollout-sidebar-overview
-# Gating Code with CloudBees Feature Flags
+# Gating Code with CloudBees Feature Management
 
-Feature flags allow you to put gates around new feature code.
+Feature Management allow you to put gates around new feature code.
 
 * Flags are added to the source code of an application.
 * A flag is then used to wrap the code of a new feature.
@@ -36,17 +36,17 @@ You can identify when Rollout SDK has loaded configuration from local storage or
 ---
 name: rollout-sidebar-lab
 
-# Lab - Gating Code with CloudBees Feature Flags
+# Lab - Gating Code with CloudBees Feature Management
 
 * In this lab, you will create a title component and add it to the **microblog-frontend** sample application. Since this component is *experimental*, we will gate it behind our previously created feature flag (`title: new Rox.flag(false)`) that will initially hide it.
-* Using the CloudBees Feature Flags dashboard, we will remotely configure the value of the flag, enabling the title.
-* The *Gating Code with CloudBees Feature Flags* lab instructions are available at:
+* Using the CloudBees Feature Management dashboard, we will remotely configure the value of the flag, enabling the title.
+* The *Gating Code with CloudBees Feature Management* lab instructions are available at:
   * https://cloudbees-feature-flags.labs.cb-sa.io/labs/feature/ 
 
 ---
 name: rollout-sidebar-review
 
-# Gating Code with CloudBees Feature Flags Lab Review
+# Gating Code with CloudBees Feature Management Lab Review
 
 * You created an experimental component.
 * You created a `show_title` function that returned the boolean value assigned to our `title` feature flag.

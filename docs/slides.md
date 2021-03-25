@@ -16,7 +16,7 @@ layout: true
 ]
 
 .footer[
-- © 2020 CloudBees, Inc.
+- © 2021 CloudBees, Inc.
 - ![:scale 100%](img/CloudBees-Submark-Full-Color.svg)
 ]
 ---
@@ -29,4 +29,4 @@ The CloudBees field workshops provide a hands-on overview of CloudBees' products
 
 ### [CloudBees CI](cloudbees-ci/)
 
-### [CloudBees Feature Flags](cloudbees-feature-flags/)
+### [CloudBees Feature Management](cloudbees-feature-management/)

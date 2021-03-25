@@ -4,8 +4,8 @@ background-image: linear-gradient(135deg,#279be0,#036eb4)
 count: false
 
 
-# CloudBees Feature Flags Workshop
-.one-third-up[![:scale 10%](../img/Rollout-white.svg)]
+# CloudBees Feature Management Workshop
+
 ???
 This workshop introduces attendees to the features for CloudBees Rollout.
 
@@ -16,21 +16,21 @@ layout: true
 ]
 
 .footer[
-- © 2020 CloudBees, Inc.
+- © 2021 CloudBees, Inc.
 - ![:scale 100%](../img/CloudBees-Submark-Full-Color.svg)
 ]
 ---
 name: agenda
 # Agenda
 
-1. CloudBees Feature Flags Workshop Setup
+1. CloudBees Feature Management Workshop Setup
 2. Adding a Title to the Microblog
 3. Controlling the Value of a Feature Flag
 4. User Targeting
-5. CloudBees Feature Flags Configuration as Code
+5. CloudBees Feature Management Configuration as Code
 6. Analytics and A/B testing
 
-.footnote[.bold[*] Please note, we may not get through all the material during the workshop today. However, all of the lab material is freely available and can be self-led. The CloudBees CI lab environment will be available until next Monday and the CloudBees Feature Flags trial is available for 14 days if you would like to complete any labs we don't finish today.
+.footnote[.bold[*] Please note, we may not get through all the material during the workshop today. However, all of the lab material is freely available and can be self-led. The CloudBees CI lab environment will be available until next Monday and the CloudBees Feature Management trial is available for 14 days if you would like to complete any labs we don't finish today.]
 
 ---
 name: workshop-tools
@@ -40,7 +40,7 @@ name: workshop-tools
 * We will be using Zoom breakout rooms for the majority of the workshop material.
 * Please use the Zoom chat to introduce yourself and if you have any questions.
 * We will be grouping attendees in Zoom breakout rooms based on if you did the CloudBees CI workshop just before this one. If you did the CloudBees CI workshop rename yourself in Zoom by adding the number **1** before your name.
-* After an overview of CloudBees Feature Flags you will be grouped into Zoom breakout rooms where you will complete the workshop.
+* After an overview of CloudBees Feature Management you will be grouped into Zoom breakout rooms where you will complete the workshop.
 * Once in the breakout rooms please feel free to ask questions via audio or via the Zoom chat. You may also use the Zoom *Nonverbal* feedback feature to raise your hand or to ask you instructor to slow down or speed up. NOTE: The chat is only broadcast to your breakout room.
 
 ---
@@ -53,9 +53,9 @@ class: center
 name: rollout-lab-environment
 # Lab Environment
 
-* This workshop uses CloudBees Feature Flags SaaS version running on AWS
-  * Each attendee will sign up for a CloudBees Feature Flags account
-  * If you are already a CloudBees Feature Flags customer, simply sign in as usual
+* This workshop uses CloudBees Feature Management SaaS version running on AWS
+  * Each attendee will sign up for a CloudBees Feature Management account
+  * If you are already a CloudBees Feature Management customer, simply sign in as usual
 * This workshop also will use a CloudBees CI cluster, an enterprise version of Jenkins, running on the Google Kubernetes Engine (GKE) to provide automated build and deploy for everyones' sample applications
   * Each attendee will provision their own ***managed controller*** (team specific Jenkins instance) for the labs by leveraging the scalability of CloudBees CI on Kubernetes
 * All the instructions for the labs and these slides are publicly available in GitHub
@@ -68,16 +68,18 @@ class: title, shelf, no-footer, fullbleed
 background-image: linear-gradient(135deg,#279be0,#036eb4)
 count: false
 
-# CloudBees Feature Flags Overview
+# CloudBees Feature Management<br>Overview
 
 ---
 name: feature-flag-background
+class: compact
+
 # What is Feature Flagging?
 
 At its most simplistic, feature flagging is a practice of wrapping new functionality in conditional code blocks.
 <br/>
 <br/>
-Feature flags are used to hide, enable or disable features during runtime. With feature flags, a software feature can be tested even before it is completed and ready for release.  For example, during the development process, a developer can enable the feature for local testing and disable it for all other users. Feature flagging also provides an alternative to maintaining multiple feature branches in source code.
+Feature flags are used to hide, enable or disable features during runtime. With Feature Management, a software feature can be tested even before it is completed and ready for release.  For example, during the development process, a developer can enable the feature for local testing and disable it for all other users. Feature flagging also provides an alternative to maintaining multiple feature branches in source code.
 <br/>
 <br/>
 This technique offers many other benefits and will be discussed in greater detail in this workshop.
@@ -86,7 +88,7 @@ This technique offers many other benefits and will be discussed in greater detai
 name: rollout-overview-content
 
 .italic[
-  *95% of respondent's organizations have implemented, begun implementing, or plan to implement feature flags in the future* - Atlassian / CloudBees Feature Flags market research report 2018
+  *95% of respondent's organizations have implemented, begun implementing, or plan to implement Feature Management in the future* - Atlassian / CloudBees Feature Management market research report 2018
 ]
 
 # Feature Flag Management
@@ -102,7 +104,7 @@ name: rollout-overview-value
 # CloudBees Feature Management Solution
 
 .italic[
-*CloudBees Feature Flags is a multi-platform, Infrastructure as Code,
+*CloudBees Feature Management is a multi-platform, Infrastructure as Code,
 SaaS feature management and remote configuration solution.*
 ]
 
@@ -130,16 +132,16 @@ Customization
 name: rollout-overview-architecture
 class: middle, center
 
-# CloudBees Feature Flags Flag Update Process
+# CloudBees Feature Management Flag Update Process
 ![:scale 75%](img/rollout_saas_arch.jpg)
 
 ???
-Starting from dashboard on bottom left, we process configuration on the CloudBees Feature Flags server to generate a JSON config file and we sign that JSON file with a public and private key and save the file to a cloud service, specifically amazon s3.
+Starting from dashboard on bottom left, we process configuration on the CloudBees Feature Management server to generate a JSON config file and we sign that JSON file with a public and private key and save the file to a cloud service, specifically amazon s3.
 
 And then the Client side SDKs (mobile, web, backend service etc) download that JSON file so all the processing and all the decision points happen on the target device itself.
 
 The entire architecture is stateless, for 2 main reasons
-1. privacy and security: we do not want you to share your user info with us. All we know are experiment names, target group names, feature flags name, but we do not know user information.
-2. we want to ensure there is no impact to your services. Even if we have an outage and our servers are down, at maximum you will not be able to make a configuration change via the dashboard. Your service will not be impacted because at the end you are just reading a JSON file. We also try to mitigate service issues during network outages because our feature flags always have default values, we also use local caching on the device and other mechanisms to ensure there is no impact if CloudBees Feature Flags has a problem.
+1. privacy and security: we do not want you to share your user info with us. All we know are experiment names, target group names, Feature Management name, but we do not know user information.
+2. we want to ensure there is no impact to your services. Even if we have an outage and our servers are down, at maximum you will not be able to make a configuration change via the dashboard. Your service will not be impacted because at the end you are just reading a JSON file. We also try to mitigate service issues during network outages because our Feature Management always have default values, we also use local caching on the device and other mechanisms to ensure there is no impact if CloudBees Feature Management has a problem.
 
 Lastly, we are using Server sent event protocol to notify the SDKs that they need to download a JSON file when there is a change in the dashboard. The idea is to ensure that every change to the dashboard is received as fast as possible on the end devices.

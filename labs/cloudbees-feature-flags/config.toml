@@ -17,6 +17,8 @@ home = [ "HTML", "RSS", "JSON"]
   showVisitedLinks = true
   # Set this to true to disable copy-to-clipboard button for inline code.
   disableInlineCopyToClipBoard = true
+  # If set to false, a Home button will appear below the search bar on the menu.
+  disableLandingPageButton = true
 
 [markup]
   [markup.goldmark]
