@@ -158,11 +158,11 @@ export default {
 ```
 </details>
 
-7. Create a commit message (e.g. "Added new title feature") and select the **Commit directly to the `development` branch** radio button. Click **Commit changes**.
+7. Create a commit message (e.g. "Gating new title feature") and select the **Commit directly to the `development` branch** radio button. Click **Commit changes**.
 
 ### Adding the Configuration Fetched Handler
 
-The **Configurationed Fetch Handler** provides a mechanism to alert the CloudBees Feature Management SDK in your application when an updated configuration, from local storage or via an asynchronous network call, has loaded. It allows us to control what happens when a new configuration is fetched, and can be used for troubleshooting by logging the `fetchedResults`. For the changes for a client-side feature flags from the new configuration to be applied, an action (like a page refresh) has to take place.
+The **Configurationed Fetch Handler** provides a mechanism to alert the CloudBees Feature Management SDK in your application when an updated configuration, from local storage or via an asynchronous network call, has loaded. It allows us to control what happens when a new configuration is fetched, and can be used for troubleshooting by logging the `fetchedResults`. For the changes in a client-side defined feature flag, an action has to take place (like a page refresh) in order for the new configuration to be applied.
 
 1. In Github, navigate to the root directory of the `microblog-frontend` repository on the `development` branch.
 2. Open the `flags.js` file (navigating to `src/utils/flags.js`), and select the pencil icon to edit the file.
@@ -185,17 +185,16 @@ export const configurationFetchedHandler = fetcherResults => {
   }
 }
 
-async function initRollout () {
+async function initCloudBees () {
   const options = {
-    configurationFetchedHandler: configurationFetchedHandler
   }
 
   Rox.register('default', Flags)
-  await Rox.setup(process.env.VUE_APP_ROLLOUT_KEY, options)
+  await Rox.setup(process.env.VUE_APP_CLOUDBEES_KEY, options)
 }
 
-initRollout().then(function () {
-  console.log('Done loading Rollout')
+initCloudBees().then(function () {
+  console.log('Done loading CloudBees Feature Management')
 })
 ```
 4. Enter a commit message (e.g. "Inserted configurationFetchedHandler"), select **Commit directly to the `development` branch** radio button and click **Commit changes**.
