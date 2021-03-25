@@ -202,7 +202,7 @@ initCloudBees().then(function () {
 
 ### Checking Microblog Website
 
-1. Navigate back to the **New Feature** pull request and once the build has finished successfully you will see the branch deployed to the *staging* environment, click on the **View deployment** button.
+1. Navigate back to the **New Feature** pull request and once the build has finished successfully you will see the branch deployed to the *development* environment, click on the **View deployment** button.
 2. On the microblog website, refresh the page, and then open the console from your browser's developer tools. Check the log to view the messages from the `configurationFetchedHandler`.
 
 **For instructor led workshops please <a href="https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-feature-flags/#18">return to the workshop slides</a>**
