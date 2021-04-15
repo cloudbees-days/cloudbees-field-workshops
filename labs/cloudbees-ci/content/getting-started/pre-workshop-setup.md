@@ -5,12 +5,12 @@ weight: 2
 --- 
 #### <i class="fas fa-clock"></i> The pre-workshop setup should take you approximately 10 minutes to complete.
 
-If you are attending a CloudBees led workshop then these setup steps should be completed before the start of the workshop event.
+If you are attending a CloudBees led workshop then these setup steps should be completed before the start of the workshop event - unless otherwise instructed.
 
 
 ## Slack
 
-1. Join the CloudBees Workshops Slack workspace with this [invite link](https://join.slack.com/t/cloudbees-workshops/shared_invite/zt-nevvscmb-FgjhHSmOhXE6rkyphRsuLg).
+1. Join the CloudBees Workshops Slack workspace with this [invite link](https://join.slack.com/t/cloudbees-workshops/shared_invite/zt-p1qem1x0-T_fPXIk3kvIS0Q1qEfe8Sw).
 2. Once you have joined the Slack workspace, feel free to use the `#one-on-one-help-requests` channel if you have any questions before, during or after the workshop. 
 
 ## GitHub Setup
