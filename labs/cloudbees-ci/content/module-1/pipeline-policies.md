@@ -22,9 +22,7 @@ In this lab you will use CloudBees CI CasC for controllers to create a [Pipeline
 10. Next, on the **Pipeline Policies** screen, you will see a policy with the following settings - matching the configuration from the updated CasC bundle:
    1. **Name**: ***Timeout policy***
    2. **Action**: ***Fail***
-   3. Click on **Add Rule** button: 
-      1. Select **Pipeline Timeout**
-      2. **Timeout**: 30 MINUTES
+   3. A **Rule** with a **Pipeline Timeout** of 30 MINUTES
    ![Create Policy](policy-timeout-form.png?width=50pc) 
 11. Navigate to the **config-bundle-ops** Mutlibranch project in the **template-jobs** folder, click on the **master** branch job and then click the **Build Now** link in the left menu. ![Build with Policy](build-with-policy.png?width=50pc) 
 12. Navigate to the logs for that build and you will see that the build failed due to **Validation Errors**. ![Policy Error](pipeline-policy-error.png?width=50pc) 
