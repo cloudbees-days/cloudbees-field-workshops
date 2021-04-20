@@ -15,7 +15,7 @@ Hibernation for CloudBees CI Managed Controllers is managed at the global Jenkin
 1. First, we will update the hibernation grace period of your Managed Controller so we don't have to wait 25 minutes for it to hibernate (gracefully shut down). To modify the hibernation configuration via the UI you will need to login as an administrator. Click on your CloudBees CI username in the top-right corner of the screen and then select **Log Out** from the drop-down menu. ![Log Out](log-out.png?width=50pc)
 2. Log back in, but append **`-admin`** to the GitHub username you used earlier to login with, the password is the same as before. ![Log In as Admin](log-in-admin.png?width=50pc) 
 3. Navigate to the top-level of your Managed Controller, click on the **Mange Jenkins** link in the left menu and then click **Configure System**. ![Manage Jenkins](manage-jenkins.png?width=50pc)
-4. Scroll down to the **Automatic hibernation** configuration and update the **Grace period** from *1500* seconds (configured via CasC) to *10* seconds and then click the **Save** button. By the time we are finished with the rest of the steps in this lab your Managed Controller should be hibernating. ![Update Grace period](update-grace-period.png?width=50pc)
+4. Scroll down to the **Automatic hibernation** configuration and update the **Grace period** from *1500* seconds (configured via CasC) to *10* seconds and then click the **Save** button. ![Update Grace period](update-grace-period.png?width=50pc)
 5. Next, navigate to the **Teams** folder on the CloudBees CI Cloud Operations Center and refresh the page untill your Managed Controller is hibernating signified by a *blue pause icon*. ![Hibernating Managed Controller](hibernating-controller.png?width=50pc)
 6. From the **Teams** folder, click on the **Manage** link, signified by the *cog icon*, for your Managed Controller and on the **Manage** screen for your controller you will see that your Managed Controller is **Disconnected (hibernated)** and also note that the **Statefulset** for your Managed Controller has 0 replicas - that is no pods using any cluster resources. ![Disconnected Hibernated Controller](disconnected-hibernated-controller.png?width=50pc)
 7. Now goto to your workshop GitHub Organization and click on the **Settings** link. ![GitHub Organization Settings link](github-org-settings-link.png?width=50pc)
@@ -30,7 +30,9 @@ Hibernation for CloudBees CI Managed Controllers is managed at the global Jenkin
 
 ## Un-hibernate a Managed Controllers via the Operations Center UI
 
-1. Navigate to the classic UI of Operations Center and find your CloudBees CI Managed Controller (Jenkins instance) in the list of CloudBees CI Managed Controller - typically the only one listed. 
+These instructions are intended to be used when returning to use your CloudBees CI Workshop Managed Controller after it has been idle for 25 minutes or more.
+
+1. Navigate to the **Teams** folder on Operations Center and find your CloudBees CI Managed Controller (Jenkins instance) in the list of CloudBees CI Managed Controllers - typically the only one listed. 
 2. If there is a light blue **pause** icon next to your CloudBees CI Managed Controller then it is hibernating and if there is not a light blue **pause** icon next to your CloudBees CI Managed Controller then refresh your browser until there is one. Just click on the link for your Managed Controller to have its Kubernetes Statefulset replicas scaled up from zero to one. ![Hibernating managed controllers](hibernating-controller-2.png?width=50pc)
 3. Once you click on your CloudBees CI Managed Controller link from the classic UI of Operations Center you will see a screen that shows that it is "getting ready to work". ![Un-hibernate](unhibernate.png?width=50pc)
 4. After a couple of minutes, your CloudBees CI Managed Controller will be ready to use and in the same state as it was when it was hibernated.
