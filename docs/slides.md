@@ -29,4 +29,6 @@ The CloudBees field workshops provide a hands-on overview of CloudBees' products
 
 ### [CloudBees CI](cloudbees-ci/)
 
+### [CloudBees CI Declarative Pipeline](cloudbees-ci-pipeline/)
+
 ### [CloudBees Feature Management](cloudbees-feature-management/)
