@@ -1,11 +1,11 @@
-name: core-title-slide
+name: cbci-pipeline-title-slide
 class: title, shelf, no-footer, fullbleed
 background-image: linear-gradient(135deg,#279be0,#036eb4)
 count: false
 
 
 # Introduction to Declarative Pipelines<br/>with CloudBees CI
-.one-third-up[![:scale 10%](../img/CloudBees-Submark-White.svg)]
+.one-third-up-multi-line-title[![:scale 10%](../img/CloudBees-Submark-White.svg)]
 ???
 This workshop introduces attendees to Declarative Pipelines for Jenkins.
 

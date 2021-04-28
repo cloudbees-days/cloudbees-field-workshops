@@ -460,6 +460,9 @@ span.footnote {
 .one-third-up img {
   margin-top: 30%;
 }
+.one-third-up-multi-line-title img {
+  margin-top: 35%;
+}
 .remark-slide-content .remark-slide-number, .remark-slide-content .footer li {
   font-size: 0.9rem;
 }
