@@ -46,11 +46,10 @@ While Declarative Pipelines use the same execution engine as Scripted pipelines,
 name: multibranch-pipeline
 
 # What is a Multibranch Pipeline?
-
-The **Multibranch Pipeline** project type enables you to implement different Jenkinsfiles for different branches of the same project. In a Multibranch Pipeline project, Jenkins **automatically discovers, manages and executes** Pipelines for branches which contain a Jenkinsfile in source control.
-
-A Github Organization or Bitbucket Project Pipeline Project scans for repositories that have a Jenkinsfile and creates a Multibranch Pipeline project for each one it finds.
- 
+.no-bullet[
+* The **Multibranch Pipeline** project type enables you to implement different Jenkinsfiles for different branches of the same project. In a Multibranch Pipeline project, Jenkins **automatically discovers, manages and executes** Pipelines for branches which contain a Jenkinsfile in source control.
+* A Github Organization or Bitbucket Project Pipeline Project scans for repositories that have a Jenkinsfile and creates a Multibranch Pipeline project for each one it finds.
+]
 ---
 name: pipeline-template-catalogs
 
