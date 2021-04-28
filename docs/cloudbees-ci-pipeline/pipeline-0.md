@@ -4,7 +4,7 @@ background-image: linear-gradient(135deg,#279be0,#036eb4)
 count: false
 
 
-# CloudBees CI Workshop
+# Introduction to Declarative Pipelines<br/>with CloudBees CI
 .one-third-up[![:scale 10%](../img/CloudBees-Submark-White.svg)]
 ???
 This workshop introduces attendees to Declarative Pipelines for Jenkins.

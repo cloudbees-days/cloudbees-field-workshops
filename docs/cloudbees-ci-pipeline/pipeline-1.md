@@ -45,12 +45,23 @@ While Declarative Pipelines use the same execution engine as Scripted pipelines,
 ---
 name: multibranch-pipeline
 
-#  What is a Multibranch Pipeline?
+# What is a Multibranch Pipeline?
 
 The **Multibranch Pipeline** project type enables you to implement different Jenkinsfiles for different branches of the same project. In a Multibranch Pipeline project, Jenkins **automatically discovers, manages and executes** Pipelines for branches which contain a Jenkinsfile in source control.
 
 A Github Organization or Bitbucket Project Pipeline Project scans for repositories that have a Jenkinsfile and creates a Multibranch Pipeline project for each one it finds.
  
- 
+---
+name: pipeline-template-catalogs
+
+# CloudBees CI Pipeline Template Catalogs
+
+[CloudBees CI Pipeline Template Catalogs](https://docs.cloudbees.com/docs/admin-resources/latest/pipeline-templates-user-guide/setting-up-a-pipeline-template-catalog) provide version controlled, parameterized templates for Multibranch and stand-alone Pipeline jobs, and help ensure that Pipeline jobs conform to organizational standards.
+
+Benefits of using Pipeline Template Catalogs include:
+
+* Providing developers with a simplified and directed experience for configuring Pipeline in “domain specific” terms that make sense for an organization. This allows developers to focus on shipping software.
+* Organizing Pipelines per projects and/or teams. Similar-looking jobs that only differ in a few aspects can be easily parameterized on a per job basis. When you change a template, all the jobs created from that template get updated automatically.
+* Templates from Pipeline Catalogs are more secure as they don't allow [Pipeline Replay](https://www.jenkins.io/doc/book/pipeline/development/#replay). Anyone with build permissions on a Pipeline Job Template or Custom Pipeline as Code Script based job can Replay it and make changes to the Pipeline script.
  
  
