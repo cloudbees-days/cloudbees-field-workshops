@@ -4,12 +4,12 @@ name: freestyle-vs-pipeline
 
 While the Freestyle job type has served the Jenkins community well for years it has some major issues including:
 
-* UI Bound - The configuration of a job is limited to what can be expressed via the limits of the Jenkins’ UI and doesn’t allow for building complicated workflows with features like:
+* **UI Bound** - The configuration of a job is limited to what can be expressed via the limits of the Jenkins’ UI and doesn’t allow for building complicated workflows with features like:
     * Control over where builds are executed
     * Flow control (if-then-else, when, try-catch-finally) 
     * Ability to run steps on multiple agents
     * Ability to run steps in parallel
-* Not Auditable - The creation and editing of jobs isn’t auditable without using additional plugins
+* **Not Auditable** - The creation and editing of jobs isn’t auditable without using additional plugins
 
 ---
 name: jenkins-pipeline-intro
@@ -20,13 +20,14 @@ Jenkins Pipeline (formerly known as Workflow) was introduced in 2014 and built i
 
 Pipelines are:
 
-* A Job type - The configuration of the job and steps to execute are defined in a script (Groovy or Declarative based with a Domain Specific Language) that can be stored in an external SCM
-* Auditable - changes can be easily audited via your SCM
-* Durable - can keep running even if the master fails
-* Distributable - pipelines can be run across multiple agents including
-execution of steps in parallel
-* Pausable - can wait for user input before proceeding
-* Visualizable - enables status-at-a-glance dashboards like the built in
+* **A Job type** - The configuration of the job and steps to execute are defined in a script (Groovy or Declarative based with a Domain Specific Language) that can be stored in an external SCM
+* **Auditable** - the Jenkinsfile can be managed in source control and changes can be easily audited via your SCM
+* **Durable** - can keep running even if the master fails
+* **Versatile** - Pipelines support complex real-world CD requirements, including the ability to fork/join, loop, and perform work in parallel.
+* **Distributable** - pipelines can be run across multiple agents including
+execution of steps in parallel across multiple agents
+* **Pausable** - can wait for user input before proceeding
+* **Visualizable** - enables status-at-a-glance dashboards like the built in
 Pipeline Stage View and Blue Ocean
 
 ---
@@ -36,9 +37,9 @@ name: declarative-vs-scripted
 
 While Declarative Pipelines use the same execution engine as Scripted pipelines,  Declarative adds the following benefits:
 
-* Easier to Learn - the Declarative Pipeline DSL (Domain Specific Language) is more approachable than Groovy making it quicker to get started
-* Richer Syntax - Declarative provides richer syntactical features over Scripted Pipeline syntax
-* Syntax Checking - Declarative syntax adds the following types of syntax checking that don’t exist for Scripted pipelines:
+* **Easier to Learn** - the Declarative Pipeline DSL (Domain Specific Language) is more approachable than Groovy making it quicker to get started
+* **Richer Syntax** - Declarative provides richer syntactical features over Scripted Pipeline syntax
+* **Syntax Checking** - Declarative syntax adds the following types of syntax checking that don’t exist for Scripted pipelines:
     * Immediate runtime syntax checking with explicit error messages.
     * API and CLI based file linting
 
