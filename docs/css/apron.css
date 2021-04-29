@@ -22,6 +22,10 @@ h2, h3 {
   font-weight: 400;
 }
 
+h4 {
+  margin-block-end: .9em;
+}
+
 a.no-style {
   text-decoration: none;
   color: #4D545D;
