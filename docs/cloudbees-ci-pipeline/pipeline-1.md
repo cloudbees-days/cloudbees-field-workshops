@@ -13,6 +13,7 @@ While the Freestyle job type has served the Jenkins community well for years it 
 
 ---
 name: jenkins-pipeline-intro
+class: compact
 
 # What is a Jenkins Pipeline?
 
