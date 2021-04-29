@@ -17,9 +17,10 @@ class: compact
 
 # What is a Jenkins Pipeline?
 
-Jenkins Pipeline (formerly known as Workflow) was introduced in 2014 and built into Jenkins 2.0 when it was released.
-
-Pipelines are:
+.no-bullet[
+* Jenkins Pipeline (formerly known as Workflow) was introduced in 2014 and built into Jenkins 2.0 when it was released.
+* Pipelines are:
+]
 
 * **A Job type** - The configuration of the job and steps to execute are defined in a script (Groovy or Declarative based with a Domain Specific Language) that can be stored in an external SCM
 * **Auditable** - the Jenkinsfile can be managed in source control and changes can be easily audited via your SCM
