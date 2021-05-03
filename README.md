@@ -63,9 +63,11 @@ The workshop contains instructions and learning materials that are designed to t
 * A basic understanding of Kubernetes: https://kubernetes.io/docs/tutorials/kubernetes-basics/
 * A basic understanding of Jenkins Pipelines: https://jenkins.io/doc/book/pipeline/getting-started/
 
+### Slides
+https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-ci-pipeline/
+
 ### Labs
 https://cloudbees-ci-pipeline.labs.cb-sa.io/
-
 
 ## CloudBees CD:
 Coming soon...

@@ -22,6 +22,10 @@ h2, h3 {
   font-weight: 400;
 }
 
+h4 {
+  margin-block-end: .9em;
+}
+
 a.no-style {
   text-decoration: none;
   color: #4D545D;
@@ -459,6 +463,9 @@ span.footnote {
 }
 .one-third-up img {
   margin-top: 30%;
+}
+.one-third-up-multi-line-title img {
+  margin-top: 35%;
 }
 .remark-slide-content .remark-slide-number, .remark-slide-content .footer li {
   font-size: 0.9rem;
