@@ -107,7 +107,7 @@ OpenJDK 64-Bit Server VM (build 25.191-b12, mixed mode)
 Before moving on to the next lesson make sure that your **Jenkinsfile** Pipeline script on the **development** branch of your copy **helloworld-nodejs** repository matches the one from below.
 
 
-### Finished Jenkinsfile for *Introduction to Pipelines with CloudBees Core*
+### Finished Jenkinsfile for *Introduction to Declarative Pipelines with CloudBees CI*
 ```
 pipeline {
   agent any
