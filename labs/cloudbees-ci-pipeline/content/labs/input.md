@@ -1,5 +1,5 @@
 ---
-title: "Pipelines with Interactive Input"
+title: "Declarative Pipelines with Interactive Input"
 chapter: false
 weight: 7
 --- 
@@ -71,7 +71,7 @@ Note that we added a new `when` condition that will result in the **Deploy** sta
 
 9. Navigate to the **main** branch of your **helloworld-nodejs** project on your Managed Controller and wait at least 30 seconds after the 'Deploy' `stage` starts. Your pipeline will be automatically **aborted** 30 seconds after the 'Deploy' `stage` starts. ![Input Timeout](input-timeout.png?width=50pc)
 
-### Finished Jenkinsfile for *Pipeline Approvals with Interactive Input* Lab
+### Finished Jenkinsfile for *Declarative Pipelines with Interactive Input* Lab
 ```
 pipeline {
   agent none
