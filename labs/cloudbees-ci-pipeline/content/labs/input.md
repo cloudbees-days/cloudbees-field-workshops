@@ -26,18 +26,21 @@ Note that we added a new `when` condition that will result in the **Deploy** sta
           when {
             environment name: 'FAVORITE_COLOR', value: 'BLUE'
             beforeInput true
-            beforeAgent true
           }
 ```
 
 5. Commit the changes and then navigate to the **main** branch of your **helloworld-nodejs** project on your Managed Controller. The **Deploy** stage will be skipped before prompting for input.
-6. Return to the the **Jenkinsfile** file in the **main** branch of your copy of the **helloworld-nodejs** repository in GitHub and use the GitHub file editor to update the **Deploy** `stage`. Replace the entire **Deploy** stage with the following:
+6. Return to the the **Jenkinsfile** file in the **main** branch of your copy of the **helloworld-nodejs** repository in GitHub and use the GitHub file editor to update the **Deploy** `stage` to remove the `beforeInput true` directive on our `when` condition. Replace the entire **Deploy** stage with the following:
 ```
         stage('Deploy') {
           agent any
           environment {
             FAVORITE_COLOR = 'BLUE'
             SERVICE_CREDS = credentials('example-service-username-password')
+          }
+          when {
+            environment name: 'FAVORITE_COLOR', value: 'BLUE'
+            beforeInput true
           }
           input {
             message "Should we continue with deployment?"
