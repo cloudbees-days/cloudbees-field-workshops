@@ -4,7 +4,7 @@ chapter: false
 weight: 7
 --- 
 
-In this lab, we will see how you can capture interactive input in your Jenkins Pipeline while it is running by using the `input` step and some pitfalls you will want to avoid when using the `input` step.
+In this lab, we will see how you can capture interactive input in your Jenkins Pipeline while it is running by using the `input` step and will explore some pitfalls you will want to avoid when using the `input` step.
 
 1. Use the GitHub file editor to update the **Jenkinsfile** file in the **main** branch of your copy of the **helloworld-nodejs** repository and update the **Deploy** `stage` by adding the following between `environment` directive and `steps` block:
 
@@ -21,11 +21,12 @@ Note that we added a new `when` condition that will result in the **Deploy** sta
 
 2. Commit the changes and then navigate to the **main** branch of your **helloworld-nodejs** project on your Managed Controller.
 3. There will be an `input` prompt for the `Deploy` stage (*the `input` prompt is also available in the Console log*). ![Configure Notification Link](input-prompt.png?width=50pc) Go ahead and click the **Proceed** button and you will see that the **Deploy** stage is skipped. 
-4. Return to the the **Jenkinsfile** file in the **main** branch of your copy of the **helloworld-nodejs** repository in GitHub and use the GitHub file editor to update the **Deploy** `stage` by adding a special [beforeInput](https://www.jenkins.io/doc/book/pipeline/syntax/#evaluating-when-before-the-input-directive) `when` condition set to `true` after the `environment` condition. The updated `when` directive should match the following:
+4. Return to the the **Jenkinsfile** file in the **main** branch of your copy of the **helloworld-nodejs** repository in GitHub and use the GitHub file editor to update the **Deploy** `stage` by adding a special [beforeInput](https://www.jenkins.io/doc/book/pipeline/syntax/#evaluating-when-before-the-input-directive) `when` condition set to `true` after the `environment` condition. We will also add the `beforeAgent` option set to `true` so we don't spin up an agent when the `stage` will be skipped. The updated `when` directive should match the following:
 ```
           when {
             environment name: 'FAVORITE_COLOR', value: 'BLUE'
             beforeInput true
+            beforeAgent true
           }
 ```
 
