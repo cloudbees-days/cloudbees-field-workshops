@@ -13,7 +13,9 @@ In this exercise we are going to create a special type of Jenkins Pipeline proje
 1. Navigate to the top-level of the CloudBees CI Operations Center - **Dashboard** - and click on the link for your ***Managed Controller*** (it will have the same names as your workshop GitHub Organization). ![Managed Controller link](managed-controller-link.png?width=60pc)
 2. At the top-level of your CloudBees CI Managed Controller click into the **pipelines** folder and then click on **New Item** in the left menu. Make sure you are in the **pipelines** folder.
 
->NOTE: It is considered a best practice to create and manage all of your CloudBees CI jobs in folders.  ![New Item](new-item.png?width=50pc) 
+>NOTE: It is considered a best practice to create and manage all of your CloudBees CI jobs in folders.  
+
+![New Item](new-item.png?width=50pc) 
 
 3. Enter **helloworld-nodejs** as the **Item Name** and select **Multibranch Pipeline** as the item type and click the **OK** button - again, make sure you are in your **pipelines** folder. ![New GitHub Multibranch Pipeline](github-multibranch-item.png?width=50pc) 
 4. On the Multibranch Pipeline configuration page scroll down to **Branch Sources**, click the **Add source** button and then select **GitHub** from the dropdown. ![Set Branch Source](branch-source.png?width=50pc) 
