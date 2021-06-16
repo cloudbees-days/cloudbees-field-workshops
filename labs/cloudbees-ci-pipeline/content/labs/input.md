@@ -26,10 +26,11 @@ Note that we added a new `when` condition that will result in the **Deploy** sta
           when {
             environment name: 'FAVORITE_COLOR', value: 'BLUE'
             beforeInput true
+            beforeAgent true
           }
 ```
 
-5. Commit the changes and then navigate to the **main** branch of your **helloworld-nodejs** project on your Managed Controller. The **Deploy** stage will be skipped before prompting for input.
+5. Commit the changes and then navigate to the **main** branch of your **helloworld-nodejs** project on your Managed Controller. The **Deploy** stage will be skipped and will not prompt for input.
 6. Return to the the **Jenkinsfile** file in the **main** branch of your copy of the **helloworld-nodejs** repository in GitHub and use the GitHub file editor to update the **Deploy** `stage` to remove the `beforeInput true` directive on our `when` condition. Replace the entire **Deploy** stage with the following:
 ```
         stage('Deploy') {
@@ -40,7 +41,7 @@ Note that we added a new `when` condition that will result in the **Deploy** sta
           }
           when {
             environment name: 'FAVORITE_COLOR', value: 'BLUE'
-            beforeInput true
+            beforeAgent true
           }
           input {
             message "Should we continue with deployment?"
@@ -51,7 +52,7 @@ Note that we added a new `when` condition that will result in the **Deploy** sta
         }
 ```
 
-7. Commit the changes, navigate to the **main** branch of your **helloworld-nodejs** project on your Managed Controller and you will eventually see a `input` prompt for the `Deploy` stage.
+7. Commit the changes, navigate to the **main** branch of your **helloworld-nodejs** project on your Managed Controller and you will eventually see a `input` prompt for the `Deploy` stage.  Go ahead and click the **Proceed** button and you will see that the **Deploy** stage is still skipped. 
 8. If you don't click on either the **Proceed** or **Abort** button in the `input` prompt, the Managed Controller would have waited indefinitely for a user response. Let's fix that by setting a timeout for the **Deploy** stage. We will add a `timeout` `option` for the **Deploy** `stage` using the [stage options directive](https://jenkins.io/doc/book/pipeline/syntax/#stage-options). Update the **Deploy** `stage` to match the following in the **main** branch and then commit the changes:
 
 ```
