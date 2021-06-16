@@ -17,5 +17,5 @@ The labs covered in this workshop are:
 5. Environment Variables and Credentials
 6. CloudBees Cross Team Collaboration
 7. Pipelines with Interactive Input
-8. CloudBees Pipeline Template Catalogs
+
 
