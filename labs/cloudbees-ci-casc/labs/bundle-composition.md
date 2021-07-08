@@ -12,7 +12,7 @@ This lab will explore the composition of a CloudBees CI configuration bundle to 
 
 A configuration bundle may consist of the following YAML file types:
 
-- **bundle** (required) - This file is an index file that describes the bundle, references the other files in the bundle and must be named `bundle.yaml`.
+- **bundle** (required) - This file is an index file that describes the bundle, references the other files in the bundle and must be named `bundle.yaml`. Any files not listed in this file will not be included in the controller bundle.
 - **jcasc** (optional) - This file contains the Jenkins configuration (global configuration, credentials), as defined by the Jenkins [Configuration as Code plugin](https://github.com/jenkinsci/configuration-as-code-plugin).
 - **plugins** (optional) - This file contains a list of all the plugins that should be installed on the controller. Plugins that are not in the CloudBees Assurance Program (CAP) should be added via a Plugin Catalog.
 - **catalog** (optional) - This file defines the catalog of versioned plugins outside of the CloudBees Assurance Program (CAP) that are available for installation on the controller. An optional location can also be specified for plugins that are not available in the standard update centers.
@@ -146,8 +146,10 @@ configurations:
 13. Click on the branch selector and switch to the branch with the same name as your Ops controller. ![Select Ops Controller Branch](select-ops-controller-branch.png?width=50pc) 
 14. Next click on the **Add file** button and then select **Create new file**. ![Create new file in GitHub](github-create-new-file.png?width=50pc)
 15. On the next screen, name the new file `plugin-catalog.yaml`, enter the contents from the `plugin-catalog.yaml` export (same as above) and then commit directly to your Ops controller branch. ![Commit plugin-catalog.yaml](commit-plugin-catalog.png?width=50pc)
-16. Next, back on the **CloudBees Configuration as Code bundle** page of your Ops controller, click on the *visualize* link for the `items.yaml` **Filename**. ![Items visualize link](items-visualize-link.png?width=50pc) 
-11. A new browser page will open in a new tab or window with the auto-generated `items.yaml` with the following contents:
+16. Plugins in the `plugin-catalog.yaml` are not actually installed on a controller, rather they just extend what can be installed outside of CAP. In order for a plugin to be installed via a configuration bundle you must add it to the `plugins.yaml`. On the branch with the same name as your Ops controller click on the `plugins.yaml` file and then click on the ***Edit this file*** pencil button. ![Edit plugins file GitHub](github-edit-plugins-file.png?width=50pc)
+17. In the GitHub file editor, add `- id: pipeline-utility-steps` under the line containing the content `- id: pipeline-stage-view`, and then commit directly to your Ops controller branch. ![Commit plugins.yaml](commit-plugins.png?width=50pc)
+18. Next, back on the **CloudBees Configuration as Code bundle** page of your Ops controller, click on the *visualize* link for the `items.yaml` **Filename**. ![Items visualize link](items-visualize-link.png?width=50pc) 
+19. A new browser page will open in a new tab or window with the auto-generated `items.yaml` with the following contents:
 ```yaml
 removeStrategy:
   rbac: SYNC
@@ -158,8 +160,19 @@ items:
   description: ''
   properties:
   - {}
-  ```
-  >NOTE: Currently only folder items are supported and only some folder properties are supported. 
-  12. Copy the contents of the auto-generated `items.yaml` and then navigate to the top-level of the branch with the same name as your Ops controller in the `configuration-bundles` repository in your workshop GitHub Organization.
-  13. Next click on the **Add file** button and then select **Create new file**. ![Create new file in GitHub](github-create-new-file.png?width=50pc)
-  14. On the next screen, name the new file `items.yaml`, enter the contents from the `items.yaml` export (same as above) and then commit directly to your Ops controller branch. ![Commit items.yaml](commit-items.png?width=50pc)
+```
+>NOTE: Currently only folder items are supported and only some folder properties are supported. 
+20. Copy the contents of the auto-generated `items.yaml` and then navigate to the top-level of the branch with the same name as your Ops controller in the `configuration-bundles` repository in your workshop GitHub Organization.
+21. Next click on the **Add file** button and then select **Create new file**. ![Create new file in GitHub](github-create-new-file.png?width=50pc)
+22. On the next screen, name the new file `items.yaml`, enter the contents from the `items.yaml` export (same as above) and then commit directly to your Ops controller branch. ![Commit items.yaml](commit-items.png?width=50pc)
+23. So in addition to updating the `plugins.yaml`, we also added two new files: `plugin-catalog.yaml` and `items.yaml`. However, those files are not listed in the `bundles.yaml`. In order to include those files in the controller bundle we need to add them to the `bundle.yaml` file, so c lick on the `bundles.yaml` file and then click on the ***Edit this file*** pencil button.
+24. In the GitHub file editor, add the following configuration to the end of the `bundle.yaml` file:
+```yaml
+catalog:
+  - "plugin-catalog.yaml"
+items:
+ - "items.yaml"
+```
+25. Commit the `bundle.yaml` file directly to your Ops controller branch. ![Commit bundle.yaml](commit-bundle.png?width=50pc)
+
+So now we have an updated configuration bundle based on a bundle export from our Ops controller. In the next lab we will set up a job to actually update
