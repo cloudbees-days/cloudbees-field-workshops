@@ -120,14 +120,15 @@ plugins:
 ## Creating a Configuration Bundle from a Bundle Export
 As you can see from composition overview above, the YAML in the different configuration files can be somewhat complicated, and that is only with a few of the bundle file types and a fairly simple set of configurations. Luckily, the CloudBees CI CasC supports an export capability that allows you export the current configuration from an existing controller. In this lab you will make configurations changes on your Ops controller and then use the export feature to copy new or updated configuration to the files in the Ops controller branch of your `configuration-bundles` repository.
 
-1. Navigate to the top-level of your Ops controller - it will be in the Operations Center **operations** folder and have the same name as your workshop GitHub Organization name (lower-cased) and prefixed with **ops-**.
-2. At the top-level of your Ops controller, click on the **Mange Jenkins** link in the left menu. ![Manage Jenkins link](manage-jenkins-link.png?width=50pc) 
+1. Navigate to the top level of your Ops controller - it will be in the Operations Center **operations** folder and have the same name as your workshop GitHub Organization name (lower-cased) and prefixed with **ops-**.
+2. At the top level of your Ops controller, click on the **Mange Jenkins** link in the left menu. ![Manage Jenkins link](manage-jenkins-link.png?width=50pc) 
 3. On the **Manage Jenkins** page click on **Manage Plugins** under the **System Configuration** section. ![Manage Plugins link](manage-plugins-link.png?width=50pc) 
 4. On the **Plugin Manager** screen, click on the **Available** tab and enter ***Pipeline Util*** into the search box. Then check the **Install** checkbox for the **Pipeline Utility Steps** plugin and then click the the **Install without restart** button. ![Search for Pipeline Util](search-pipeline-util.png?width=50pc) 
 5. Once the **Pipeline Utility Steps** plugin is successfully installed return to the top-level of your Ops controller. ![Install plugin](install-plugin.png?width=50pc) 
-6. At the top-level of your Ops controller, click on **Create a job** link.  ![Create a job](create-job-link.png?width=50pc) 
-7. On the job creation screen, enter ***controller-automation*** as the name, select **Folder** as the type and then click the **OK** button. ![Create folder](create-folder.png?width=50pc) 
-8. On the next screen click the **Save** button to create the **controller-automation** folder and then navigate back to the top-level of your Ops controller. ![Folder created](folder-created.png?width=50pc) 
+6. At the top level of your Ops controller, click on **Create a job** link.  ![Create a job](create-job-link.png?width=50pc) 
+7. On the item creation screen, enter ***controller-automation*** as the name, select **Folder** as the type and then click the **OK** button. ![Create folder](create-folder.png?width=50pc) 
+8. On the next screen click on the **Properties** tab, then enter `GITHUB_ORGANIZATION={YOUR_WORKSHOP_GITHUB_ORGANIZATION}` in the **Environment Variables** text area, and then click the **Save** button. ![Configure folder](configure-folder.png?width=50pc) 
+9. Navigate back to the top-level of your Ops controller and you should see the new **controller-automation** folder. ![Folder created](folder-created.png?width=50pc) 
 9. On the **Manage Jenkins** page click on **CloudBees Configuration as Code bundle** under the **System Configuration** section. ![CloudBees CasC link](cloudbees-casc-link.png?width=50pc) 
 10. Next, on the **CloudBees Configuration as Code bundle** page, click on the *visualize* link for the `plugin-catalog.yaml` **Filename**. A [plugin catalog](https://docs.cloudbees.com/docs/admin-resources/latest/plugin-management/configuring-plugin-catalogs) is used to widen the acceptable scope of plugins beyond those defined by the CloudBees Assurance Program (CAP) and since the **Pipeline Utility Steps** is not in CAP we must create a plugin catalog that includes that plugin so we may install it on our controller. ![Plugin Catalog visualize link](plugin-catalog-visualize-link.png?width=50pc) 
 11. A new browser page will open in a new tab or window with the auto-generated contents of a Plugin Catalog with the following contents:
@@ -154,12 +155,14 @@ removeStrategy:
   items: NONE
 items:
 - kind: folder
-  name: controller-automation
+  name: configuration-automation
   description: ''
   properties:
-  - {}
+  - kind: envVars
+    vars:
+      GITHUB_ORGANIZATION: cbci-casc-workshop
 ```
->NOTE: Currently only folder items are supported and only some folder properties are supported. 
+>NOTE: Currently only folder items are supported and only `envVars` folder properties are supported. 
 20. Copy the contents of the auto-generated `items.yaml` and then navigate to the `configuration-bundles` repository in your workshop GitHub Organization.
 21. Next click on the **Add file** button and then select **Create new file**. ![Create new file in GitHub](github-create-new-file.png?width=50pc)
 22. On the next screen, name the new file `items.yaml`, enter the contents from the `items.yaml` export (same as above) and then commit directly to your Ops controller branch. ![Commit items.yaml](commit-items.png?width=50pc)

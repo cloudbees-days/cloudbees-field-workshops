@@ -66,6 +66,12 @@ pipeline {
 }
 ```
 4. On the first line you will see that we are using the Pipeline shared library defined in your Ops controller configuration bundle. The Pipeline shared library contains a number of Jenkins Kubernetes Pod templates that can be leveraged across all the controllers. We are utilizing the `kubectl.yml` Pod template so we can use the `kubectl cp` command to copy the Ops controller configuration bundle files into the `jcasc-bundles-store` directory on Operations Center. Once you have finished reviewing the `Jenkinsfile` contents, commit directly to your Ops controller branch. ![Commit Jenkinsfile](commit-jenkinsfile.png?width=50pc)
-5. Navigate to the top-level of your Ops controller and click the **Create a job** link. ![Create job link](create-job-link.png?width=50pc)
-6. Name the project **configuration-bundles**, select **Mulitbranch Pipeline** as the project type and click the **OK** button.
-7. On the Multibranch project configuration page enter the url for your copy of the **configuration-bundles** repository in your workshop GitHub Organization, select the GitHub App credential and then click the **Save** button.
+5. Navigate to the top level of your Ops controller and click the **Create a job** link. ![Create job link](create-job-link.png?width=50pc)
+6. Name the project **configuration-bundles**, select **Mulitbranch Pipeline** as the project type and then click the **OK** button. ![Create job](create-job.png?width=50pc)
+7. On the Multibranch project configuration page click on the **Branch Sources** tab and then select **GitHub** from the **Add source** drop-down. ![Select branch source](select-branch-source.png?width=50pc)
+8. Under the **GitHub** branch source enter the following:
+   - Select ***CloudBees CI Workshop GitHub App credential*** for the **Credentials** value. 
+   - Enter the URL for your copy of the `configuration-bundles` as the value for the **Repository HTTPS URL** - ***https:\//github.com/{YOUR_WORKSHOP_GITHUB_ORGANIZATION}/configuration-bundles.git***
+     - TIP: If you navigate to your GitHub `configuration-bundles` repository, and click on the **Code** button, you can then click on the *clipboard* icon to copy the Git URL for your repository. ![Copy Repo Git URL](copy-repo-url.png?width=40pc)
+   - The rest of the default values are sufficient so click the **Validate** button and then click the **Save** button. ![Branch Sources Configuration](branch-source-config.png?width=50pc)
+9. Once the repository scan is complete click on the 
