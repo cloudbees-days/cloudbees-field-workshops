@@ -155,7 +155,7 @@ removeStrategy:
   items: NONE
 items:
 - kind: folder
-  name: configuration-automation
+  name: controller-automation
   description: ''
   properties:
   - kind: envVars
