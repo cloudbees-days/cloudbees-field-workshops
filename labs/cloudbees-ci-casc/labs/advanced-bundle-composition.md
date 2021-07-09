@@ -12,4 +12,5 @@ This lab will explore more advanced aspects of bundle composition to include bun
 
 Bundle inheritance allows you to easily share common configuration across numerous controllers. In this lab we will create a new base bundle with common configuration and plugins to be shared across all of your organizations controllers.
 
-1. 
+1. Overview of base bundle.
+2. Add parent field.
