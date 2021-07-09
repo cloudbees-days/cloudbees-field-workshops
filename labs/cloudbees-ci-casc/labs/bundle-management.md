@@ -14,12 +14,8 @@ The labs in this section will explore:
 - setting a default bundle
 - using the CasC HTTP API with GitOps for CloudBees CI configuration bundles
 
-## Operations Center Configuration Bundle UI Based Management
-As workshop attendees don't have administrative access to the CloudBees CI Operations Center this lab will be an instructor led overview rather than hands-on.
-
-
-
 ## GitOps for CloudBees CI Configuration Bundles
-
+ 
 1. Navigate to the top-level of your operations controller - it will be in the Operations Center **operations** folder and have the same name as your workshop GitHub Organization name (lower-cased) and prefixed with **ops-**.
-2. 
+2. Create a Mulitbranch project.
+3. Configure Multibranch project.
