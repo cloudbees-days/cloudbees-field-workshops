@@ -11,20 +11,20 @@ CloudBees CI configuration bundles are centrally managed and stored in the `jcas
 The labs in this section will explore:
 
 - storing configuration bundles on Operations Center
-- setting a default bundle
+- setting a default configuration bundle
 - setting up GitOps for automating CloudBees CI configuration bundle updates
 
 ## Managing Configuration Bundles on Operations Center
 
 This lab will provide an overview of how configuration bundles are managed via the Operations Center UI and how to manually apply a configuration bundle to a controller. The first part of the overview will be on the Operations Center **Configuration as Code bundles** settings page that is only accessible by workshop instructors. Therefore the first part of this lab will explore the 3 major components on the Operations Center **Configuration as Code bundles** settings page without attendees following along.
 
-![Operations Center Configuration as Code bundles settings pag](ops-center-config-bundle-settings.png?width=50pc)
+![Operations Center Configuration as Code bundles settings pag](ops-center-config-bundle-settings.png?width=70pc)
 
 1. By checking the **Availability pattern** checkbox, any configuration bundle that has an empty **Availability pattern** can be used by any controller.
 2. The **Default bundle** drop-down allows you to automatically apply a default configuration bundle to any controller that does not specify a different configuration bundle. However, the **Availability pattern** checkbox must be checked for this feature to work.
 3. The configuration bundle **Availability pattern** allows assigning regular expressions that must match the full path to one or more controllers in order to use that bundle. For the `base` bundle the **Availability pattern** is empty and this typically would not match any path, but since the **Availability pattern** checkbox is checked it is available to all controllers.
 4. For the `ops` bundle the **Availability pattern** is set to `operations/ops` so that means only a controller with the name **ops** in the **operations** folder can use this bundle. If the **Availability pattern** were set to `operations/*` then any controller in the **operations** folder could use this bundle.
-5. To actually apply a bundle to a controller you must select the bundle from the **Bundle** drop-down on the controller configuration page. To do this navigate to the top level of Operations Center and click on the **Manage** icon for your Ops controller. ![Manage controller link](manage-controller-link.png?width=50pc)
+5. To actually apply a bundle to a controller you must select the bundle from the **Bundle** drop-down on the controller configuration page. To do this navigate to the top level of Operations Center and click on the **Manage** icon for your Ops controller. ![Manage controller link](manage-controller-link.png?width=60pc)
 6. On the controller manage screen click on the **Configure** link in the left menu. ![Configure controller link](configure-controller-link.png?width=50pc)
 7. On the configure controller screen, scroll down to the **Configuration as Code (CasC)** section and expand the **Bundle** drop down. ![Bundle dropdown](bundle-dropdown.png?width=50pc)
 8. Note that the bundle matching the name of your Ops controller is selected and the `base` bundle is also available, but the `ops` bundle is not available to select. ![Bundle dropdown expanded](bundle-dropdown-expanded.png?width=50pc)
@@ -37,7 +37,7 @@ In this lab we will create a Jenkins Pipeline to automatically update our contro
 1. Navigate to the `ops-controller` repository in your workshop GitHub Organization.
 2. Next click on the **Add file** button and then select **Create new file**. ![Create new file in GitHub](github-create-new-file.png?width=50pc)
 3. On the next screen name the new file `Jenkinsfile` and enter the following contents:
-```yaml
+```groovy
 library 'pipeline-library'
 pipeline {
   agent {
@@ -52,13 +52,15 @@ pipeline {
     stage('Update Config Bundle') {
       when {
         beforeAgent true
+        branch 'main'
         not { triggeredBy 'UserIdCause' }
       }
       steps {
+        gitHubParseOriginUrl()
         container("kubectl") {
-          sh "mkdir -p ${BRANCH_NAME}"
-          sh "cp *.yaml ${BRANCH_NAME}"
-          sh "kubectl cp --namespace sda ${BRANCH_NAME} cjoc-0:/var/jenkins_home/jcasc-bundles-store/ -c jenkins"
+          sh "mkdir -p ${GITHUB_ORG}-${GITHUB_REPO}"
+          sh "cp *.yaml ${GITHUB_ORG}-${GITHUB_REPO}"
+          sh "kubectl cp --namespace sda ${GITHUB_ORG}-${GITHUB_REPO} cjoc-0:/var/jenkins_home/jcasc-bundles-store/ -c jenkins"
         }
       }
     }
