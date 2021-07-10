@@ -12,7 +12,7 @@ The labs in this section will explore:
 
 - storing configuration bundles on Operations Center
 - setting a default bundle
-- using the CasC HTTP API with GitOps for CloudBees CI configuration bundles
+- setting up GitOps for automating CloudBees CI configuration bundle updates
 
 ## Managing Configuration Bundles on Operations Center
 
@@ -80,6 +80,6 @@ pipeline {
 12. Click on the **Reload Configuration** button and then on the next screen click the **Yes** button to apply the bundle update. ![CasC bundle apply](casc-bundle-apply.png?width=50pc)
 13. After the updated configuration bundle is finished being applied return to the top level of your Ops controller and you will see that the **configuration-automation** folder has been added back. ![CasC bundle apply](casc-bundle-apply.png?width=50pc)
 14. Besides being an example of configuration bundle `items` configuration, another reason we created a folder is because it is considered a best practices to keep all of your Jenkins jobs organized with folders - some of the advantages of folders include fine grained access control and credentials, folder specific environment variables, the ability to restrict job types that can be create and easily moving jobs across controllers. Therefore we will move the **configuration-bundles** Multibranch project into the **controller-automation** folder. To do so click on the **configuration-bundles** Multibranch project and then click the **Move/Copy/Promote** link in the left menu. ![Move multibranch job](move-multibranch-job.png?width=50pc)
-15. On the **Move/Copy/Promote** place your mouse cursor in the **Destination** select box next to **ops-cbci-casc-workshop**, select **controller-automation** from the drop down and then click the **Move** button. ![Select folder and move](select-folder-move.png?width=50pc)
+15. On the **Move/Copy/Promote** place your mouse cursor in the **Destination** select box next to **ops-controller**, select **controller-automation** from the drop down and then click the **Move** button. ![Select folder and move](select-folder-move.png?width=50pc)
 16. Once the move has completed successfully click on the **Close** button. ![Move close](move-close.png?width=50pc)
 
