@@ -16,7 +16,7 @@ The labs in this section will explore:
 
 ## Managing Configuration Bundles on Operations Center
 
-This lab will provide an overview of how configuration bundles are managed via the Operations Center UI and how to manually apply a configuration bundle to a controller. The first part of the overview will be on the Operations Center **Configuration as Code bundles** settings page that attendees don't have access. Therefore the first part of this lab will explore the 3 major components on the Operations Center **Configuration as Code bundles** settings page without attendees following along.
+This lab will provide an overview of how configuration bundles are managed via the Operations Center UI and how to manually apply a configuration bundle to a controller. The first part of the overview will be on the Operations Center **Configuration as Code bundles** settings page that is only accessible by workshop instructors. Therefore the first part of this lab will explore the 3 major components on the Operations Center **Configuration as Code bundles** settings page without attendees following along.
 
 ![Operations Center Configuration as Code bundles settings pag](ops-center-config-bundle-settings.png?width=50pc)
 
@@ -34,7 +34,7 @@ This lab will provide an overview of how configuration bundles are managed via t
 
 In this lab we will create a Jenkins Pipeline to automatically update our controllers' configuration bundles whenever any changes are committed to the GitHub branch for the controller's configuration bundle.
  
-1. Navigate to the `configuration-bundles` repository in your workshop GitHub Organization.
+1. Navigate to the `ops-controller` repository in your workshop GitHub Organization.
 2. Next click on the **Add file** button and then select **Create new file**. ![Create new file in GitHub](github-create-new-file.png?width=50pc)
 3. On the next screen name the new file `Jenkinsfile` and enter the following contents:
 ```yaml
@@ -65,7 +65,7 @@ pipeline {
   }
 }
 ```
-4. On the first line you will see that we are using the Pipeline shared library defined in your Ops controller configuration bundle. The Pipeline shared library contains a number of Jenkins Kubernetes Pod templates that can be leveraged across all the controllers. We are utilizing the `kubectl.yml` Pod template so we can use the `kubectl cp` command to copy the Ops controller configuration bundle files into the `jcasc-bundles-store` directory on Operations Center. Once you have finished reviewing the `Jenkinsfile` contents, commit directly to your Ops controller branch. ![Commit Jenkinsfile](commit-jenkinsfile.png?width=50pc)
+4. On the first line you will see that we are using the Pipeline shared library defined in your Ops controller configuration bundle. The Pipeline shared library contains a number of Jenkins Kubernetes Pod templates that can be leveraged across all the controllers. We are utilizing the `kubectl.yml` Pod template so we can use the `kubectl cp` command to copy your `ops-controller` configuration bundle files into the `jcasc-bundles-store` directory on Operations Center. Once you have finished reviewing the `Jenkinsfile` contents, commit directly to your Ops controller branch. ![Commit Jenkinsfile](commit-jenkinsfile.png?width=50pc)
 5. Navigate to the top level of your Ops controller and click the **Create a job** link. ![Create job link](create-job-link.png?width=50pc)
 6. Name the project **configuration-bundles**, select **Mulitbranch Pipeline** as the project type and then click the **OK** button. ![Create job](create-job.png?width=50pc)
 7. On the Multibranch project configuration page click on the **Branch Sources** tab and then select **GitHub** from the **Add source** drop-down. ![Select branch source](select-branch-source.png?width=50pc)

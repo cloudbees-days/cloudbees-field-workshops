@@ -26,20 +26,20 @@ A configuration bundle may consist of the following YAML file types:
 
 In this lab we will explore the configuration bundle assigned to your Ops controller when it was dynamically provisioned.
 
-1. Navigate to the `configuration-bundles` repository in your workshop GitHub Organization. If you see a notice that the default branch has been renamed, then just click the **OK, got it** button and note that the name was updated to match the name of your workshop Ops controller.  ![Default branch renamed](default-branch-renamed.png?width=50pc)
-2. Notice that the branch is the name of your workshop GitHub Organization prefixed with **ops** - the same as your CloudBees CI Ops controller. Click on the `bundle.yaml` file. Its contents will mostly match the following (the `id` and `description` will include your unique Ops controller name):
+1. Navigate to the `ops-controller` repository in your workshop GitHub Organization. If you see a notice that the default branch has been renamed, then just click the **OK, got it** button and note that the name was updated to match the name of your workshop Ops controller.  ![Default branch renamed](default-branch-renamed.png?width=50pc)
+2. Click on the `bundle.yaml` file. Its contents will mostly match the following (the `id` and `description` will include your workshop GitHub Organization name):
 ```yaml
 apiVersion: "1"
 version: "1"
-id: "cloudbees-ci-casc-ops-cbci-casc-workshop"
-description: "CloudBees CI configuration bundle for the CloudBees CI CasC Workshop ops-cbci-casc-workshop Controller"
+id: "cbci-casc-workshop-ops-controller"
+description: "CloudBees CI configuration bundle for the cbci-casc-workshop ops-controller Controller"
 jcasc:
   - "jenkins.yaml"
 plugins:
   - "plugins.yaml"
 ``` 
 >NOTE: It is important that the bundle file is named exactly `bundle.yaml` otherwise the bundle will not be useable.
-4. Return to the top level of your Ops controller branch and click on the `jenkins.yaml` file. The name of this file must match the file name listed under `jcasc` in the `bundle.yaml` file. Its contents will mostly match the following, except for the `repoOwner` field for the **pipeline-library** which will match your workshop GitHub Organization name, as will the `owner` field for the `gitHubApp` credential:
+4. Return to the top level of your `ops-controller` repository and click on the `jenkins.yaml` file. The name of this file must match the file name listed under `jcasc` in the `bundle.yaml` file. Its contents will mostly match the following, except for the `repoOwner` field for the **pipeline-library** which will match your workshop GitHub Organization name, as will the `owner` field for the `gitHubApp` credential:
 ```yaml
 jenkins:
   quietPeriod: 0
@@ -87,8 +87,8 @@ credentials:
           privateKey: "${gitHubAppPrivateKey}"
 ```
 >NOTE: Setting up an initial Ops controller is a bit like the chicken and the egg conundrum. There will typically be some required manual steps to bootstrap the initial automation. In the case of this workshop, we have our own Ops controller that is used to dynamically provision each attendees Ops controller with a dynamically generated configuration bundle when you installed the CloudBees CI CasC Workshop GitHub App into your workshop GitHub Organization.
-5. As mentioned above, the `gitHubApp` credential is unique to your workshop GitHub Organization. But also notice the variable substitution for the `privateKey` field of that credential - the value in the `jenkins.yaml` file is `${gitHubAppPrivateKey}`. Of course you wouldn't want to store a secure secret directly in a JCasC yaml file, especially if it is to be store in source control. Luckily JCasC supports several ways to [pass secrets more securely](https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/features/secrets.adoc). For this workshop we are passing secrets through variables using the [Kubernetes Secrets Store CSI driver](https://secrets-store-csi-driver.sigs.k8s.io/introduction.html) with the [Google Secret Manager provider](https://github.com/GoogleCloudPlatform/secrets-store-csi-driver-provider-gcp). This allows us to manage secrets with the Google Secret Manager in GCP and to mount those secrets as files in the directory on your controller configured for JCasC to read secret variables with the file name being the variable name and the file contents being the secret value.
-6. Return again to the top level of your Ops controller branch and click on the `plugins.yaml` file. The name of this file must match the file name listed under `plugins` in the `bundle.yaml` file. Its contents will match the following:
+5. As mentioned above, the `gitHubApp` credential is unique to your workshop GitHub Organization. But also notice the variable substitution for the `privateKey` field of that credential - the value in the `jenkins.yaml` file is the `${gitHubAppPrivateKey}` variable. Of course you wouldn't want to store a secure secret directly in a JCasC yaml file, especially if it is to be store in source control. Luckily JCasC supports several ways to [pass secrets more securely](https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/features/secrets.adoc). For this workshop we are passing secrets through variables using the [Kubernetes Secrets Store CSI driver](https://secrets-store-csi-driver.sigs.k8s.io/introduction.html) with the [Google Secret Manager provider](https://github.com/GoogleCloudPlatform/secrets-store-csi-driver-provider-gcp). This allows us to manage secrets with the Google Secret Manager in GCP and to mount those secrets as files in the directory on your controller configured for JCasC to read secret variables with the file name being the variable name and the file contents being the secret value.
+6. Return to the top level of your `ops-controller` repository and click on the `plugins.yaml` file. The name of this file must match the file name listed under `plugins` in the `bundle.yaml` file. Its contents will match the following:
 ```yaml
 plugins:
 - id: antisamy-markup-formatter
@@ -118,9 +118,9 @@ plugins:
 - id: workflow-cps-checkpoint
 ```
 ## Creating a Configuration Bundle from a Bundle Export
-As you can see from composition overview above, the YAML in the different configuration files can be somewhat complicated, and that is only with a few of the bundle file types and a fairly simple set of configurations. Luckily, the CloudBees CI CasC supports an export capability that allows you export the current configuration from an existing controller. In this lab you will make configurations changes on your Ops controller and then use the export feature to copy new or updated configuration to the files in the Ops controller branch of your `configuration-bundles` repository.
+As you can see from the composition overview above, the YAML in the different configuration files can be somewhat complicated, and that is only with a few of the bundle file types and a fairly simple set of configurations. Luckily, CloudBees CI Configuration as Code (CasC) for Controllers supports an export capability that allows you to export the current configuration from an existing controller. In this lab you will make configurations changes on your Ops controller and then use the export feature to copy new or updated configuration to the files in the Ops controller branch of your `configuration-bundles` repository.
 
-1. Navigate to the top level of your Ops controller - it will be in the Operations Center **operations** folder and have the same name as your workshop GitHub Organization name (lower-cased) and prefixed with **ops-**.
+1. Navigate to the top level of your Ops controller - it will be in the folder with the same name as your workshop GitHub Organization name (lower-cased).
 2. At the top level of your Ops controller, click on the **Mange Jenkins** link in the left menu. ![Manage Jenkins link](manage-jenkins-link.png?width=50pc) 
 3. On the **Manage Jenkins** page click on **Manage Plugins** under the **System Configuration** section. ![Manage Plugins link](manage-plugins-link.png?width=50pc) 
 4. On the **Plugin Manager** screen, click on the **Available** tab and enter ***Pipeline Util*** into the search box. Then check the **Install** checkbox for the **Pipeline Utility Steps** plugin and then click the the **Install without restart** button. ![Search for Pipeline Util](search-pipeline-util.png?width=50pc) 
@@ -174,8 +174,8 @@ catalog:
 items:
  - "items.yaml"
 ```
->NOTE: In previous versions of CloudBees CI Configuration as Code (CasC) for Controllers the `version` field of the `bundle.yaml` file had to be modified in order for a controller to get the updated bundle. This is no longer required as any change in any file will trigger a bundle update for any controllers using the updated bundle. However, it is still considered a best practice to increment the bundle version.
-25. Commit the `bundle.yaml` file directly to your Ops controller branch. ![Commit bundle.yaml](commit-bundle.png?width=50pc)
+>NOTE: In previous versions of CloudBees CI Configuration as Code (CasC) for Controllers the `version` field of the `bundle.yaml` file had to be modified in order for an update to be triggered for controllers using that bundle. This is no longer required as any change in any file in a bundle will trigger a bundle update for any controllers using the updated bundle. However, it is still considered a best practice to increment the bundle version.
+25. Commit the `bundle.yaml` file directly to the `main` branch of your `ops-controller` repository. ![Commit bundle.yaml](commit-bundle.png?width=50pc)
 26. Finally, navigate back to the top level of your Ops controller, click on the **controller-automation** folder and then click **Delete Folder** in the left menu. Now when we apply the updated configuration bundle it will add the folder back. ![Delete folder](delete-folder.png?width=50pc)
 
 So now we have an updated configuration bundle based on a bundle export from our Ops controller but the bundle hasn't actually been applied to the controller. In the next lab we will set up a job to actually update the bundle files on Operations Center.
