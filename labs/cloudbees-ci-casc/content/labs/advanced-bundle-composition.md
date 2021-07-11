@@ -1,5 +1,5 @@
 ---
-title: "Advanced CloudBees CI Configuration Bundle Composition"
+title: "CloudBees CI Configuration Bundle Inheritance and Advanced Structure"
 chapter: false
 weight: 4
 --- 
@@ -10,7 +10,7 @@ This lab will explore more advanced aspects of bundle composition to include bun
 
 ## Bundle Inheritance
 
-Bundle inheritance allows you to easily share common configuration across numerous controllers. In this lab we will update your Ops controller bundle to extend a parent bundle with common configuration and plugins to be shared across all of your organizations controllers. First we will review the contents of the parent `base` bundle that has already been created and then we will update your Ops controller bundle to use the `base` bundle as a parent bundle. The `base` bundle will include Jenkins configuration that enforces best practices across all of the controllers in the CloudBees CI cluster and a common set of plugins to be used across all controllers.
+Bundle inheritance allows you to easily share common configuration across numerous controllers. In this lab we will update your Ops controller bundle to extend a parent bundle providing common configuration and plugins to be shared across all of your organizations controllers. First we will review the contents of the parent `base` bundle that has already and then we will update your Ops controller bundle to use the `base` bundle as a parent bundle. The `base` bundle will include Jenkins configuration that enforces best practices across all of the controllers in the CloudBees CI cluster and a common set of plugins to be used across all controllers.
 
 1. First we will take a look at the `bundle.yaml` for the `base` bundle (also available on GitHub at https://github.com/cloudbees-days/parent-configuration-bundle/blob/main/bundle.yaml):
 ```yaml
@@ -65,6 +65,14 @@ unclassified:
               credentialsId: "cloudbees-ci-workshop-github-app"
               repoOwner: "cbci-casc-workshop"
               repository: "pipeline-library"
+cloudbees-pipeline-policies:
+  config:
+    policies:
+    - action: "fail"
+      name: "Timeout policy"
+      rules:
+      - entirePipelineTimeoutRule:
+          maxTime: 30
   hibernationConfiguration:
     activities:
     - "build"
@@ -72,11 +80,47 @@ unclassified:
     enabled: true
     gracePeriod: 2400
 ```
-3. Finally, let's review the `plugins.yaml` that will provide a base set of plugins for all the controllers in our CloudBees CI cluster:
-```yaml
+3. In addition to providing a common Jenkins pipeline shared library across all controllers, the parent `jenkins.yaml` enforces best practices to include: 
+  - Setting the number of executors to 0 on controllers, as you should never execute jobs directly on controller, rather you should always use agents.
+  - Enforcing a project naming strategy.
+  - Setting the quite period to 0 to maximize speed of builds and utilization of ephemeral Kubernetes agents.
+  - Configuring a global build discard policy to reduce controller disk usage. Read more about [best strategies for disk space management](https://support.cloudbees.com/hc/en-us/articles/215549798-Best-Strategy-for-Disk-Space-Management-Clean-Up-Old-Builds).
+  - Enabling CloudBees SCM Reporting notifications.
+  - Setting Pipeline performance.
+  - Providing a standard Pipeline shared library across all controllers.
+  - Enforcing a standard global Pipeline timeout using [CloudBees Pipeline Policies](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/pipeline-policies).
+  - Enabling [controller hibernation](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/managing-masters#_hibernation_in_managed_masters) to reduce infrastructure costs - controllers will only run when they need to.
 
+4. Finally, let's review the `plugins.yaml` that will provide a base set of plugins for all the controllers in our CloudBees CI cluster:
+```yaml
+plugins:
+- id: antisamy-markup-formatter
+- id: cloudbees-casc-api
+- id: cloudbees-github-reporting
+- id: cloudbees-groovy-view
+- id: cloudbees-monitoring
+- id: cloudbees-pipeline-policies
+- id: cloudbees-prometheus
+- id: cloudbees-slack
+- id: cloudbees-template
+- id: cloudbees-view-creation-filter
+- id: cloudbees-workflow-template
+- id: cloudbees-workflow-ui
+- id: configuration-as-code
+- id: git
+- id: github-branch-source
+- id: managed-master-hibernation
+- id: notification-api
+- id: operations-center-cloud
+- id: operations-center-notification
+- id: pipeline-event-step
+- id: pipeline-model-extensions
+- id: pipeline-stage-view
+- id: warnings-ng
+- id: workflow-aggregator
+- id: workflow-cps-checkpoint
 ```
-4. Now that we have reviewed the contents of the `base` bundle we will update your Ops controller bundle to use it as a parent bundle. First 
+5. Now that we have reviewed the contents of the `base` bundle we will update your Ops controller bundle to use it as a parent bundle. However 
 
 ## Organizing Configuration Bundles with Folder and Multiple Files
 
