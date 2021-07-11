@@ -56,7 +56,7 @@ unclassified:
     durabilityHint: PERFORMANCE_OPTIMIZED
   globallibraries:
     libraries:
-    - defaultVersion: "master"
+    - defaultVersion: "main"
       name: "pipeline-library"
       retriever:
         modernSCM:
@@ -81,15 +81,15 @@ cloudbees-pipeline-policies:
     gracePeriod: 2400
 ```
 3. In addition to providing a common Jenkins pipeline shared library across all controllers, the parent `jenkins.yaml` enforces best practices to include: 
-  - Setting the number of executors to 0 on controllers, as you should never execute jobs directly on controller, rather you should always use agents.
-  - Enforcing a project naming strategy.
-  - Setting the quite period to 0 to maximize speed of builds and utilization of ephemeral Kubernetes agents.
-  - Configuring a global build discard policy to reduce controller disk usage. Read more about [best strategies for disk space management](https://support.cloudbees.com/hc/en-us/articles/215549798-Best-Strategy-for-Disk-Space-Management-Clean-Up-Old-Builds).
-  - Enabling CloudBees SCM Reporting notifications.
-  - Setting Pipeline performance.
-  - Providing a standard Pipeline shared library across all controllers.
-  - Enforcing a standard global Pipeline timeout using [CloudBees Pipeline Policies](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/pipeline-policies).
-  - Enabling [controller hibernation](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/managing-masters#_hibernation_in_managed_masters) to reduce infrastructure costs - controllers will only run when they need to.
+    - Setting the number of executors to 0 on controllers, as you should never execute jobs directly on controller, rather you should always use agents.
+    - Enforcing a project naming strategy.
+    - Setting the quite period to 0 to maximize speed of builds and utilization of ephemeral Kubernetes agents.
+    - Configuring a global build discard policy to reduce controller disk usage. Read more about [best strategies for disk space management](https://support.cloudbees.com/hc/en-us/articles/215549798-Best-Strategy-for-Disk-Space-Management-Clean-Up-Old-Builds).
+    - Enabling CloudBees SCM Reporting notifications.
+    - Setting Pipeline performance.
+    - Providing a standard Pipeline shared library across all controllers.
+    - Enforcing a standard global Pipeline timeout using [CloudBees Pipeline Policies](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/pipeline-policies).
+    - Enabling [controller hibernation](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/managing-masters#_hibernation_in_managed_masters) to reduce infrastructure costs - controllers will only run when they need to.
 
 4. Finally, let's review the `plugins.yaml` that will provide a base set of plugins for all the controllers in our CloudBees CI cluster:
 ```yaml
@@ -120,7 +120,8 @@ plugins:
 - id: workflow-aggregator
 - id: workflow-cps-checkpoint
 ```
-5. Now that we have reviewed the contents of the `base` bundle we will update your Ops controller bundle to use it as a parent bundle. However 
+5. Now that we have reviewed the contents of the `base` bundle we will update your Ops controller bundle to use it as a parent bundle. However, there is currently one major limitation with inheritance for the JCasC configuration file (typically `jenkins.yaml` as above). All JCasC configuration **MUST** be supplementary, meaning that a child bundle cannot overwrite any of the parent configuration values. Otherwise there will be a `ConfiguratorException` and the controller will not startup. Therefore, before we update the `ops-controller` configuration bundle we must ensure that it does not overwrite any of the parent bundle’s configuration elements. Navigate to the `ops-controller` repository in your workshop GitHub Organization.
+6. Click on the `jenkins.yaml` file and then click on the ***Edit this file*** pencil button. 
 
 ## Organizing Configuration Bundles with Folder and Multiple Files
 
