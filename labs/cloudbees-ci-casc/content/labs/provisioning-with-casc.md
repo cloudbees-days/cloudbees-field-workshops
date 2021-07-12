@@ -4,11 +4,14 @@ chapter: false
 weight: 5
 --- 
 
-While the default bundle we explored in a previous lab would allow you to easily manage configuration across all of your organization's controllers, it does not allow for any differences in configuration bundles between controllers. Also, the number of manual steps to configure and apply controller specific bundles to a larger number of controllers wastes time and is prone to errors. 
+While the default bundle we explored in the previous lab would allow you to easily manage configuration across all of your organization's controllers, it does not allow for any differences in configuration bundles between controllers. Also, the number of manual steps to provision a controller and apply controller specific bundles to numerous controllers wastes time and is prone to errors. And imagine if you had dozens or hundreds of controllers (like we do in this workshop), things would quickly become very difficult to manage.
 
-In this lab we will explore the manual process for configuring and applying controller specific configuration bundles, taking advantage of bundle inheritance to reduce the complexity and size of controller specific bundles, and then we will look at a GitOps approach for automating the process of provisioning a controller to include automating the configuration and application of a controller specific configuration bundle.
+In this lab we will explore  a GitOps approach for automating the process of provisioning a controller to include automating the configuration and application of a controller specific configuration bundle. This approach is based on individual repositories representing individual controllers and takes advantage of the Jenkins GitHub Organization project type and CloudBees CI custom marker file. After we are done setting up the job configuration on your Ops controller then any time you add a new GitHub repository with a `bundle.yaml` file in it a new controller, with the same name as the repository, will be provisioned with the configuration bundle from the associated GitHub repository.
 
+>**NOTE:** Another GitOps type approach you may be interested in is using one repository to declaratively represent an entire CloudBees CI cluster as explained here https://github.com/kyounger/cbci-helmfile. 
 
-We will be using GitHub branches in the `configuration-bundles` repository to represent individual controllers. You may decide that it makes more sense to use individual repositories or folders within one repository to manage the configuration bundles across multiple controllers. However, by using Git branches we can easily leverage the Jenkins Mulitbranch pipeline project type to automatically manage the Pipeline jobs to automate controller provisioning with unique bundles and automate the updating of bundles as we have already done for your Ops controller.
+## GitOps for Controller Provisioning with CloudBees CI Configuration Bundles
 
-1. 
+Currently, programmatic provisioning of a managed controller requires running a Groovy script on CloudBees CI Operations Center and requires. This can easily be done from a Jenkins Pipeline by leveraging the Jenkins CLI and API tokens. However, for the purposes of the shared workshop environment we will be running the provisioning job from the workshop Ops controller and will leverage CloudBees CI Cross Team Collaboration to trigger that job with the required payload from your Ops controller.
+
+1. First, lets take a look at the 
