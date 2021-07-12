@@ -42,6 +42,13 @@ plugins:
 3. Return to the top level of your `ops-controller` repository and click on the `jenkins.yaml` file. The name of this file must match the file name listed under `jcasc` in the `bundle.yaml` file. Its contents will mostly match the following, except for the `repoOwner` field for the **pipeline-library** which will match your workshop GitHub Organization name, as will the `owner` field for the `gitHubApp` credential:
 ```yaml
 jenkins:
+  globalNodeProperties:
+  - envVars:
+      env:
+      - key: GITHUB_ORGANIZATION
+        value: 
+      - key: GITHUB_REPOSITORY
+        value: ops-controller
   quietPeriod: 0
   systemMessage: 'Jenkins configured using CloudBees CI CasC'
 unclassified:
@@ -118,7 +125,7 @@ plugins:
 - id: workflow-cps-checkpoint
 ```
 ## Creating a Configuration Bundle from a Bundle Export
-As you can see from the composition overview above, the YAML in the different configuration files can be somewhat complicated, and that is only with a few of the bundle file types and a fairly simple set of configurations. Luckily, CloudBees CI Configuration as Code (CasC) for Controllers supports an export capability that allows you to export the current configuration from an existing controller. In this lab you will make configurations changes on your Ops controller and then use the export feature to copy new or updated configuration to the files in the Ops controller branch of your `configuration-bundles` repository.
+As you can see from the composition overview above, the YAML in the different configuration files can be somewhat complicated, and that is only with a few of the bundle file types and a fairly simple set of configurations. Luckily, CloudBees CI Configuration as Code (CasC) for Controllers supports an export capability that allows you to export the current configuration from an existing controller. In this lab you will make configurations changes on your Ops controller and then use the export feature to copy new or updated configuration to the files in the Ops controller branch of your `ops-controller` repository.
 
 1. Navigate to the top level of your Ops controller - it will be in the folder with the same name as your workshop GitHub Organization name (lower-cased).
 2. At the top level of your Ops controller, click on the **Mange Jenkins** link in the left menu. ![Manage Jenkins link](manage-jenkins-link.png?width=50pc) 
@@ -142,7 +149,7 @@ configurations:
   includePlugins:
     pipeline-utility-steps: {version: 2.8.0}
 ```
-13. Copy the contents of the auto-generated `plugin-catalog.yaml` and then navigate to the `configuration-bundles` repository in your workshop GitHub Organization.
+13. Copy the contents of the auto-generated `plugin-catalog.yaml` and then navigate to the `ops-controller` repository in your workshop GitHub Organization.
 14. Next click on the **Add file** button and then select **Create new file**. ![Create new file in GitHub](github-create-new-file.png?width=50pc)
 15. On the next screen, name the new file `plugin-catalog.yaml`, enter the contents from the `plugin-catalog.yaml` export (same as above) and then commit directly to the `main` branch. ![Commit plugin-catalog.yaml](commit-plugin-catalog.png?width=50pc)
 16. Plugins in the `plugin-catalog.yaml` are not actually installed on a controller, rather they just extend what can be installed outside of CAP. In order for a plugin to be installed via a configuration bundle you must add it to the `plugins.yaml`. Click on the `plugins.yaml` file and then click on the ***Edit this file*** pencil button. ![Edit plugins file GitHub](github-edit-plugins-file.png?width=50pc)
@@ -194,6 +201,7 @@ items:
 
 > **NOTE:** In previous versions of CloudBees CI Configuration as Code (CasC) for Controllers the `version` field of the `bundle.yaml` file had to be modified in order for an update to be triggered for controllers using that bundle. This is no longer required as any change in any file in a bundle will trigger a bundle update for any controllers using the updated bundle. However, it is still considered a best practice to increment the bundle version.
 25. Commit the `bundle.yaml` file directly to the `main` branch of your `ops-controller` repository. ![Commit bundle.yaml](commit-bundle.png?width=50pc)
-26. Finally, navigate back to the top level of your Ops controller, click on the **controller-automation** folder and then click **Delete Folder** in the left menu. When the updated configuration bundle is applied to your Ops controller it will add the `controller-automation` folder back. ![Delete folder](delete-folder.png?width=50pc)
+26. The contents of your copy of the `ops-controller` repository in your workshop GitHub Organization should match the following screenshot: ![Repository contents](repository-contents.png?width=50pc)
+27. Finally, navigate back to the top level of your Ops controller, click on the **controller-automation** folder and then click **Delete Folder** in the left menu. When the updated configuration bundle is applied to your Ops controller it will add the `controller-automation` folder back. ![Delete folder](delete-folder.png?width=50pc)
 
 So now we have an updated configuration bundle based on a bundle export from our Ops controller but the bundle hasn't actually been applied to the controller. In the next lab we will set up a job to actually update the bundle files on Operations Center any time there is a commit to the `main` branch of your `ops-controller` repository.
