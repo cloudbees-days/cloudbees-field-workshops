@@ -36,7 +36,7 @@ In this lab we will create a Jenkins Pipeline to automatically update our contro
  
 1. Navigate to the `ops-controller` repository in your workshop GitHub Organization.
 2. Next click on the **Add file** button and then select **Create new file**. ![Create new file in GitHub](github-create-new-file.png?width=50pc)
-3. On the next screen name the new file `update-config-bundle` and enter the following contents:
+3. On the next screen name the new file `controller-casc-automation` and enter the following contents:
 ```groovy
 library 'pipeline-library'
 pipeline {
@@ -58,7 +58,7 @@ pipeline {
       steps {
         gitHubParseOriginUrl()
         container("kubectl") {
-          sh "mkdir -p ${GITHUB_ORGANIZATION}-${GITHUB_REPOSITORY}"
+          sh "mkdir -p ${GITHUB_ORG}-${GITHUB_REPO}"
           sh "cp *.yaml ${GITHUB_ORG}-${GITHUB_REPO}"
           sh "kubectl cp --namespace sda ${GITHUB_ORG}-${GITHUB_REPO} cjoc-0:/var/jenkins_home/jcasc-bundles-store/ -c jenkins"
         }
@@ -67,7 +67,7 @@ pipeline {
   }
 }
 ```
-4. On the first line you will see that we are using the Pipeline shared library defined in your Ops controller configuration bundle. The Pipeline shared library contains a number of Jenkins Kubernetes Pod templates that can be leveraged across all the controllers. We are utilizing the `kubectl.yml` Pod template so we can use the `kubectl cp` command to copy your `ops-controller` configuration bundle files into the `jcasc-bundles-store` directory on Operations Center. Once you have finished reviewing the `update-config-bundle` pipeline contents, commit directly to your Ops controller branch. ![Commit Jenkinsfile](commit-jenkinsfile.png?width=50pc)
+4. On the first line you will see that we are using the Pipeline shared library defined in your Ops controller configuration bundle. The Pipeline shared library contains a number of Jenkins Kubernetes Pod templates that can be leveraged across all the controllers. We are utilizing the `kubectl.yml` Pod template so we can use the `kubectl cp` command to copy your `ops-controller` configuration bundle files into the `jcasc-bundles-store` directory on Operations Center. Once you have finished reviewing the `controller-casc-automation` pipeline contents, commit directly to your Ops controller branch. ![Commit Jenkinsfile](commit-jenkinsfile.png?width=50pc)
 5. Navigate to the top level of your Ops controller and click the **Create a job** link. ![Create job link](create-job-link.png?width=50pc)
 6. Name the project the sames as your workshop GitHub Organization, select **GitHub Organization** as the project type and then click the **OK** button. ![Create job](create-job.png?width=50pc)
 7. On the GitHub Organization project configuration page click on the **Projects** tab and select ***CloudBees CI CasC Workshop GitHub App credential*** for the **Credentials** value. Note that the **Owner** input should match your workshop GitHub Organization name. ![Select GitHub App credentials](select-credentials.png?width=50pc)
@@ -76,7 +76,7 @@ pipeline {
 10. For the **Definition** of the **Pipeline** select ***Pipeline script from SCM*** and then select ***Git*** as the **SCM**
 11. Enter the URL for your copy of the `ops-controller` repository in your workshop GitHub Organization as the **Repository URL** and select ***CloudBees CI CasC Workshop GitHub App credential*** for the **Credentials**. **TIP:** If you navigate to your GitHub `ops-controller` repository in your workshop GitHub Organization, and click on the Code button, you can then click on the clipboard icon to copy the Git URL for your repository. ![GitHub copy repo url](github-copy-repo-url.png?width=50pc)
 12. Under **Branches to build** change ***master*** to ***main*** for the **Branch Specifier**. 
-13. For the **Script Path** replace `Jenkinsfile` with `update-config-bundle`. All of the rest of the default values are fine, so click the **Save** button.
+13. For the **Script Path** replace `Jenkinsfile` with `controller-casc-automation`. All of the rest of the default values are fine, so click the **Save** button.
 14. Once the GitHub Organization scan is complete click on the the **Status** link in the left menu and you will see a Multibranch pipeline project for your `ops-controller` repository. ![Ops controller Multibranch pipeline](ops-controller-multibranch-job.png?width=50pc)
 15. Click on the `ops-controller` Multibranch pipeline project and you will see a pipeline job for the `main` branch of your `ops-controller` repository. ![Ops controller job](ops-controller-job.png?width=50pc)
 16. After the job has completed successfully, navigate to the top level of your Ops controller, click on the **Manage Jenkins** link in the left menu, and then click on the **CloudBees Configuration as Code bundle** **System Configuration** item. ![CasC Configuration link](casc-config-link.png?width=50pc)
