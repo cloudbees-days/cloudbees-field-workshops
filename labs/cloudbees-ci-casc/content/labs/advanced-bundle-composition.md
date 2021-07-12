@@ -197,7 +197,7 @@ plugins:
 - id: workflow-cps-checkpoint
 ```
 5. Now that we have reviewed the contents of the `base` bundle we will update your Ops controller bundle to use it as a parent bundle. However, before we do that it is important to understand how JCasC files are processed. All JCasC configuration **MUST** be supplementary, meaning that a child bundle cannot overwrite any of the parent configuration values. Otherwise there will be a `ConfiguratorException` and the controller will not startup. Therefore, before we update the `ops-controller` configuration bundle we must ensure that it does not overwrite any of the parent bundle’s configuration elements. Navigate to the `ops-controller` repository in your workshop GitHub Organization. Anything that may need to be unique between different controllers should be configured at the controller level; at least until other [JCasC YAML merge strategies become available](https://github.com/jenkinsci/configuration-as-code-plugin/pull/1218).
-6. Click on the `jenkins.yaml` file and then click on the ***Edit this file*** pencil button.
+6. Navigate to the `jcasc` folder of your controller and click on the `jenkins.yaml` file and then click on the ***Edit this file*** pencil button.
 7. Now we will delete all the configuration that will be provided by the parent bundle:
    - Delete the entire `jenkins` section.
    - Under the `unclassified` section delete everything except for the `globallibraries` section.
