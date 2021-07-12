@@ -35,15 +35,14 @@ We highly recommend creating a new GitHub Organization for the CloudBees CI Pipe
 
 1. Ensure that you are logged into GitHub.com and then navigate to [https://github.com/apps/cloudbees-ci-casc-workshop](https://github.com/apps/cloudbees-ci-casc-workshop).<p>![GitHub App](cbci-pipeline-github-app.png?width=60pc)
 2. Click on the **Install** button.
-3. Next, select the GitHub Organization you created above for the CloudBees CI CasC Workshop.<p>![GitHub App](github-app-select-org.png?width=50pc)
+3. Next, select the GitHub Organization you created above for this CloudBees CI CasC Workshop.<p>![GitHub App](github-app-select-org.png?width=50pc)
 4. On the next screen, select **All repositories** and click the **Install** button.<p>![GitHub App](github-app-install.png?width=50pc)
 5. You may be prompted for your GitHub password. Enter your GitHub.com password, for the GitHub account you are using for this workshop, to complete the installation of the CloudBees CI CasC Workshop GitHub App into your workshop specific GitHub Organization.
 6. The CloudBees CI CasC Workshop GitHub App is now installed on your workshop GitHub Organization. <p>![GitHub App Installed](installed-now.png?width=50pc)
-7. A few minutes after you install the CloudBees CI CasC Workshop GitHub App you should see the following repositories created in your workshop GitHub Organization.
-   - https://github.com/cloudbees-days/cloudbees-ci-config-bundle
-   - https://github.com/cloudbees-days/pipeline-library
-   - https://github.com/cloudbees-days/pipeline-template-catalog
-   - https://github.com/cloudbees-days/helloworld-nodejs ![GitHub App Installed](forked-repos.png?width=50pc)
+7. A few minutes after you install the CloudBees CI CasC Workshop GitHub App you should see the following repositories copied into your workshop GitHub Organization.
+   - ops-controller
+   - pipeline-library
+   - pipeline-template-catalog ![GitHub App Installed](copied-repos.png?width=50pc)
 
 >NOTE: These repositories were created from GitHub template repositories in the [CloudBees Field Workshops GitHub Organization](https://github.com/cloudbees-days).
 
