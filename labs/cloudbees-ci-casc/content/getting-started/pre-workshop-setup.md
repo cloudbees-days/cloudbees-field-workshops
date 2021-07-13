@@ -40,6 +40,7 @@ We highly recommend creating a new GitHub Organization for the CloudBees CI Pipe
 5. You may be prompted for your GitHub password. Enter your GitHub.com password, for the GitHub account you are using for this workshop, to complete the installation of the CloudBees CI CasC Workshop GitHub App into your workshop specific GitHub Organization.
 6. The CloudBees CI CasC Workshop GitHub App is now installed on your workshop GitHub Organization. <p>![GitHub App Installed](installed-now.png?width=50pc)
 7. A few minutes after you install the CloudBees CI CasC Workshop GitHub App you should see the following repositories copied into your workshop GitHub Organization.
+   - dev-controller
    - ops-controller
    - pipeline-library
    - pipeline-template-catalog ![GitHub App Installed](copied-repos.png?width=50pc)
