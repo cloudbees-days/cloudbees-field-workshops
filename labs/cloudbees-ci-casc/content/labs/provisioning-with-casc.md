@@ -14,4 +14,5 @@ In this lab we will explore  a GitOps approach for automating the process of pro
 
 Currently, programmatic provisioning of a managed controller requires running a Groovy script on CloudBees CI Operations Center and requires. This can easily be done from a Jenkins Pipeline by leveraging the Jenkins CLI and API tokens. However, for the purposes of the shared workshop environment we will be running the provisioning job from the workshop Ops controller and will leverage CloudBees CI Cross Team Collaboration to trigger that job with the required payload from your Ops controller.
 
-1. First, lets take a look at the 
+1. Dynamically or programmatically creating a managed controller requires executing a Groovy script on CloudBees CI Cloud Operations Center and requires a Jenkins user API token that has administrative privileges. 
+2.  
