@@ -76,20 +76,23 @@ id: "cbci-casc-workshop-ops-controller"
 description: "CloudBees CI configuration bundle for the cbci-casc-workshop ops-controller Controller"
 jcasc:
   - "jcasc/credentials.yaml"
-  - "jcasc/unclassified.yaml"
+  - "jcasc/jenkins.yaml"
 plugins:
   - "plugins.yaml"
+catalog:
+  - "plugin-catalog.yaml"
 items:
   - "items.yaml"
 ```
 12. After you have made the changes, ensure that you are committing to the `jcasc-subfolder` branch and then click the **Commit changes** button. ![Commit jcasc folder bundle.yaml](github-commit-jcasc-folder-bundle-yaml.png?width=50pc)
 13. We have now made all the necessary changes and can now merge the pull request to the `main` branch. In GitHub, click on the **Pull requests** tab and then click on the link for the **Create credentials.yaml** pull request. ![jcasc pull request link](github-jcasc-pr-link.png?width=50pc)
 14. On the **Create credentials.yaml #2** pull request page, click the **Merge pull request** button, then click the **Confirm merge** button and then click the **Delete branch** button.
-15. Navigate to the `ops-controller` Multibranch pipeline project on your Ops controller. ![ops-controller Mulitbranch](ops-controller-multibranch-jcasc.png?width=50pc)
+15. Navigate to the `main` branch job of the `ops-controller` Multibranch pipeline project on your Ops controller. ![ops-controller Mulitbranch](ops-controller-multibranch-jcasc.png?width=50pc)
 16. After the the `main` branch job has completed successfully, navigate to the top level of your Ops controller, click on the **Manage Jenkins** link in the left menu, and then click on the **CloudBees Configuration as Code bundle** **System Configuration** item. ![CasC Configuration link](casc-config-link.png?width=50pc) 
 17. On the **CloudBees Configuration as Code bundle** click on the **Bundle update** tab and you should see that there is a bundle update available. ![CasC bundle update](casc-bundle-update.png?width=50pc)
 18. Click on the **Reload Configuration** button and then on the next screen click the **Yes** button to apply the bundle update. ![CasC bundle apply](casc-bundle-apply.png?width=50pc)
-19. After the updated configuration bundle is finished being applied return to the **CloudBees Configuration as Code bundle** configuration page and click on the **Original Bundle** tab. 
+19. After the updated configuration bundle is finished being applied return to the **CloudBees Configuration as Code bundle** configuration page and click on the **Original Bundle** tab. ![Original bundle with folder](original-bundle-folder.png?width=50pc)
+20. Notice that there are now two *Jenkins configuration as defined by OSS CasC* files - `jcasc/cbci-casc-workshop-ops-controller.credentials.yaml` and `jcasc/cbci-casc-workshop-ops-controller.jenkins.yaml`. Note how both the JCasC files just added are both prefixed with the `id` of your bundle. This is done to support bundle inheritance as we will see next.
 
 ## Bundle Inheritance
 
@@ -218,7 +221,7 @@ description: "CloudBees CI configuration bundle for the cbci-casc-workshop ops-c
 parent: "base"
 jcasc:
   - "jcasc/credentials.yaml"
-  - "jcasc/unclassified.yaml"
+  - "jcasc/jenkins.yaml"
 plugins:
   - "plugins.yaml"
 items:
