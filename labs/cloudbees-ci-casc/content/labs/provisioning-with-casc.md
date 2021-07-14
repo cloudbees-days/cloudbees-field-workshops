@@ -12,7 +12,59 @@ In this lab we will explore  a GitOps approach for automating the process of pro
 
 ## GitOps for Controller Provisioning with CloudBees CI Configuration Bundles
 
-Currently, programmatic provisioning of a managed controller requires running a Groovy script on CloudBees CI Operations Center and requires. This can easily be done from a Jenkins Pipeline by leveraging the Jenkins CLI and API tokens. However, for the purposes of the shared workshop environment we will be running the provisioning job from the workshop Ops controller and will leverage CloudBees CI Cross Team Collaboration to trigger that job with the required payload from your Ops controller.
+Currently, programmatic provisioning of a managed controller requires running a Groovy script on CloudBees CI Operations Center and requires. This can easily be done from a Jenkins Pipeline by leveraging the Jenkins CLI and API tokens. However, for the purposes of the shared workshop environment we will be running the provisioning job from the workshop Ops controller and will leverage [CloudBees CI Cross Team Collaboration](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/cross-team-collaboration) to trigger that job with the required payload from your Ops controller.
 
-1. Dynamically or programmatically creating a managed controller requires executing a Groovy script on CloudBees CI Cloud Operations Center and requires a Jenkins user API token that has administrative privileges. 
-2.  
+>**NOTE:** Dynamically (or programmatically) creating a managed controller requires executing a Groovy script on CloudBees CI Cloud Operations Center and requires a Jenkins user API token that has administrative privileges. For the purpose of this workshop we will utilize the workshop Ops controller to execute the necessary CLI commands against the Operations Center to limit the exposure of the Operations Center administrator API token needed.
+
+1. First we will examine the Jenkins declarative pipeline job that will be triggered by your Ops controller on the workshop Ops controller using CloudBees CI Cross Team Collaboration. 
+```groovy
+def event = currentBuild.getBuildCauses()[0].event
+pipeline {
+  agent none
+  options { timeout(time: 10, unit: 'MINUTES') }
+  triggers {
+    eventTrigger jmespathQuery("controller.action=='provision'")
+  }
+  stages {
+    stage('Provision Managed Controller') {
+      agent  { label 'default-jnlp' }
+      environment {
+        PROVISION_SECRET = credentials('casc-workshop-controller-provision-secret')
+        ADMIN_CLI_TOKEN = credentials('admin-cli-token')
+        GITHUB_ORGANIZATION = event.github.organization.toString().replaceAll(" ", "-")
+        GITHUB_REPOSITORY = event.github.repository.toString().toLowerCase()
+        CONTROLLER_FOLDER = GITHUB_ORGANIZATION.toLowerCase()
+        BUNDLE_ID = "${GITHUB_ORGANIZATION}-${GITHUB_REPOSITORY}"
+        AVAILABILITY_PATTERN = "${GITHUB_ORGANIZATION}/${GITHUB_REPOSITORY}"
+      }
+      when {
+        beforeAgent true
+        allOf {
+          triggeredBy 'EventTriggerCause'
+          environment name: 'PROVISION_SECRET', value: event.controller.action.secret.toString()
+        }
+      }
+      steps {
+        sh '''
+          curl -O http://cjoc/cjoc/jnlpJars/jenkins-cli.jar
+          alias cli='java -jar jenkins-cli.jar -s http://cjoc/cjoc/ -webSocket -auth $ADMIN_CLI_TOKEN_USR:$ADMIN_CLI_TOKEN_PSW'
+          cli casc-bundle-set-availability-pattern --bundle-id $BUNDLE_ID --availability-pattern $AVAILABILITY_PATTERN
+          cli groovy =<casc-workshop-provision-controller-with-casc.groovy $GITHUB_ORGANIZATION $GITHUB_REPOSITORY $CONTROLLER_FOLDER
+        '''
+      }
+    }
+  }
+}
+```
+  1. The first step is to get the event payload and assign it to a global object available to the rest of the `pipeline`: `def event = currentBuild.getBuildCauses()[0].event`. We do this outside of the declarative `pipeline` block because you cannot assign objects to variables in declarative pipeline and we need the values before we can execute a `script` block in a `stage`.
+  2. There is no `agent` at the global level as it will result in the unnecessary provisioning of an agent if the `when` conditions are not met.
+  3. An `eventTrigger` is configured to only match a JSON payload containing `controller.action=='provision'`. We wil come back to this when we update the `controller-casc-automation` pipeline for your Ops controller.
+  4. An agent is defined for the **Provision Managed Controller** `stage` as the `sh` steps require a normal (some times referred to as heavy-weight) executor (meaning it must be run on an agent since all managed controllers our configured with 0 executors): `agent { label 'default-jnlp' }`
+  5. The declarative `environment` directive is used to capture values published by the Cross Team Collaboration `event`, to retrieve the controller provisioning secret value from the workshop Ops controller and to retrieve the Operations Center admin API token credential.
+  6. Multiple `when` conditions are configured so the **Provision Managed Controller** `stage` will only run if the job is triggered by an `EventTriggerCause` and if the `PROVISION_SECRET` matches the event payload secret.
+  7. Finally, the actual steps to provision a managed controller:
+    - The `curl` command is used to download the `jenkins-cli.jar` from the Operations Center. A Docker container image could be used instead, but correct compatible version is guaranteed by downloading it every time.
+    - An `alias` is created for the the Jenkins CLI connection command. This makes the pipeline more readable and allows reuse for multiple CLI commands.
+    - Next, the CloudBees CI Configuration as Code (CasC) for Controllers `casc-bundle-set-availability-pattern` command is used to set the configuration bundle availability pattern for the provisioned controller's bundle.
+    - Finally, a custom Groovy script, `casc-workshop-provision-controller-with-casc.groovy`, is executed on the Operations Center.
+2. 
