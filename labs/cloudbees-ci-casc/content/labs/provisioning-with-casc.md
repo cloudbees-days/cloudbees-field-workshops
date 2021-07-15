@@ -17,46 +17,45 @@ Currently, programmatic provisioning of a managed controller requires running a 
 >**NOTE:** Dynamically (or programmatically) creating a managed controller requires executing a Groovy script on CloudBees CI Cloud Operations Center and requires a Jenkins user API token that has administrative privileges. For the purpose of this workshop we will utilize the workshop Ops controller to execute the necessary CLI commands against the Operations Center to limit the exposure of the Operations Center administrator API token needed.
 
 1. First we will examine the Jenkins declarative pipeline job that will be triggered by your Ops controller on the workshop Ops controller using CloudBees CI Cross Team Collaboration. 
-```groovy
-def event = currentBuild.getBuildCauses()[0].event
-pipeline {
-  agent none
-  options { timeout(time: 10, unit: 'MINUTES') }
-  triggers {
-    eventTrigger jmespathQuery("controller.action=='provision'")
-  }
-  stages {
-    stage('Provision Managed Controller') {
-      agent  { label 'default-jnlp' }
-      environment {
-        PROVISION_SECRET = credentials('casc-workshop-controller-provision-secret')
-        ADMIN_CLI_TOKEN = credentials('admin-cli-token')
-        GITHUB_ORGANIZATION = event.github.organization.toString().replaceAll(" ", "-")
-        GITHUB_REPOSITORY = event.github.repository.toString().toLowerCase()
-        CONTROLLER_FOLDER = GITHUB_ORGANIZATION.toLowerCase()
-        BUNDLE_ID = "${GITHUB_ORGANIZATION}-${GITHUB_REPOSITORY}"
-        AVAILABILITY_PATTERN = "${GITHUB_ORGANIZATION}/${GITHUB_REPOSITORY}"
-      }
-      when {
-        beforeAgent true
-        allOf {
-          triggeredBy 'EventTriggerCause'
-          environment name: 'PROVISION_SECRET', value: event.controller.action.secret.toString()
-        }
-      }
-      steps {
-        sh '''
-          curl -O http://cjoc/cjoc/jnlpJars/jenkins-cli.jar
-          alias cli='java -jar jenkins-cli.jar -s http://cjoc/cjoc/ -webSocket -auth $ADMIN_CLI_TOKEN_USR:$ADMIN_CLI_TOKEN_PSW'
-          cli casc-bundle-set-availability-pattern --bundle-id $BUNDLE_ID --availability-pattern $AVAILABILITY_PATTERN
-          cli groovy =<casc-workshop-provision-controller-with-casc.groovy $GITHUB_ORGANIZATION $GITHUB_REPOSITORY $CONTROLLER_FOLDER
-        '''
-      }
+    ```groovy
+    def event = currentBuild.getBuildCauses()[0].event
+    pipeline {
+    agent none
+    options { timeout(time: 10, unit: 'MINUTES') }
+    triggers {
+        eventTrigger jmespathQuery("controller.action=='provision'")
     }
-  }
-}
-```
-
+    stages {
+        stage('Provision Managed Controller') {
+        agent  { label 'default-jnlp' }
+        environment {
+            PROVISION_SECRET = credentials('casc-workshop-controller-provision-secret')
+            ADMIN_CLI_TOKEN = credentials('admin-cli-token')
+            GITHUB_ORGANIZATION = event.github.organization.toString().replaceAll(" ", "-")
+            GITHUB_REPOSITORY = event.github.repository.toString().toLowerCase()
+            CONTROLLER_FOLDER = GITHUB_ORGANIZATION.toLowerCase()
+            BUNDLE_ID = "${GITHUB_ORGANIZATION}-${GITHUB_REPOSITORY}"
+            AVAILABILITY_PATTERN = "${GITHUB_ORGANIZATION}/${GITHUB_REPOSITORY}"
+        }
+        when {
+            beforeAgent true
+            allOf {
+            triggeredBy 'EventTriggerCause'
+            environment name: 'PROVISION_SECRET', value: event.controller.action.secret.toString()
+            }
+        }
+        steps {
+            sh '''
+            curl -O http://cjoc/cjoc/jnlpJars/jenkins-cli.jar
+            alias cli='java -jar jenkins-cli.jar -s http://cjoc/cjoc/ -webSocket -auth $ADMIN_CLI_TOKEN_USR:$ADMIN_CLI_TOKEN_PSW'
+            cli casc-bundle-set-availability-pattern --bundle-id $BUNDLE_ID --availability-pattern $AVAILABILITY_PATTERN
+            cli groovy =<casc-workshop-provision-controller-with-casc.groovy $GITHUB_ORGANIZATION $GITHUB_REPOSITORY $CONTROLLER_FOLDER
+            '''
+        }
+        }
+    }
+    }
+    ```
     1. The first step is to get the event payload and assign it to a global object available to the rest of the `pipeline`: `def event = currentBuild.getBuildCauses()[0].event`. We do this outside of the declarative `pipeline` block because you cannot assign objects to variables in declarative pipeline and we need the values before we can execute a `script` block in a `stage`.
     2. There is no `agent` at the global level as it will result in the unnecessary provisioning of an agent if the `when` conditions are not met.
     3. An `eventTrigger` is configured to only match a JSON payload containing `controller.action=='provision'`. We wil come back to this when we update the `controller-casc-automation` pipeline for your Ops controller.
@@ -68,7 +67,6 @@ pipeline {
         - An `alias` is created for the the Jenkins CLI connection command. This makes the pipeline more readable and allows reuse for multiple CLI commands.
         - Next, the `casc-bundle-set-availability-pattern` command of the [CLI for CloudBees CI Configuration as Code (CasC) for Controllers](https://docs.cloudbees.com/docs/admin-resources/latest/cli-guide/casc-bundle-management) is used to set the configuration bundle availability pattern for the provisioned controller's bundle.
         - Finally, a custom Groovy script, `casc-workshop-provision-controller-with-casc.groovy`, is executed on the Operations Center.
-
 2. The `casc-workshop-provision-controller-with-casc.groovy` script is based on the Groovy script mentioned in this CloudBees Knowledge Base article *[How to create a Kubernetes Managed Master programmatically](https://support.cloudbees.com/hc/en-us/articles/360035632851-How-to-create-a-Kubernetes-Managed-Master-programmatically)* and can be found in the [CloudBees `jenkins-scripts` public repository](https://github.com/cloudbees/jenkins-scripts/blob/master/createManagedMasterK8s.groovy). The script we are using in the workshop differs in a few ways:
     1. The workshop script defines the controller provision properties as YAML instead of using Java setters. These properties include mounting a volume for the Container Storage Interface secrets and the `GITHUB_ORGANIZATION` environment variable used by the workshop configuration bundles:
     ```yaml
@@ -118,3 +116,4 @@ pipeline {
     controller.properties.replace(new ConnectedMasterTokenProperty(hudson.util.Secret.fromString(UUID.randomUUID().toString())))
     controller.properties.replace(new ConnectedMasterCascProperty("$controllerFolderName-$controllerName"))
     ```
+3. 
