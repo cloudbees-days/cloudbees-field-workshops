@@ -56,16 +56,16 @@ pipeline {
   }
 }
 ```
-   1. The first step is to get the event payload and assign it to a global object available to the rest of the `pipeline`: `def event = currentBuild.getBuildCauses()[0].event`. We do this outside of the declarative `pipeline` block because you cannot assign objects to variables in declarative pipeline and we need the values before we can execute a `script` block in a `stage`.
-   2. There is no `agent` at the global level as it will result in the unnecessary provisioning of an agent if the `when` conditions are not met.
-   3. An `eventTrigger` is configured to only match a JSON payload containing `controller.action=='provision'`. We wil come back to this when we update the `controller-casc-automation` pipeline for your Ops controller.
-   4. An agent is defined for the **Provision Managed Controller** `stage` as the `sh` steps require a normal (some times referred to as heavy-weight) executor (meaning it must be run on an agent since all managed controllers our configured with 0 executors): `agent { label 'default-jnlp' }`
-   5. The declarative `environment` directive is used to capture values published by the Cross Team Collaboration `event`, to retrieve the controller provisioning secret value from the workshop Ops controller and to retrieve the Operations Center admin API token credential.
-   6. Multiple `when` conditions are configured so the **Provision Managed Controller** `stage` will only run if the job is triggered by an `EventTriggerCause` and if the `PROVISION_SECRET` matches the event payload secret.
-   7. Finally, the actual steps to provision a managed controller:
+    1. The first step is to get the event payload and assign it to a global object available to the rest of the `pipeline`: `def event = currentBuild.getBuildCauses()[0].event`. We do this outside of the declarative `pipeline` block because you cannot assign objects to variables in declarative pipeline and we need the values before we can execute a `script` block in a `stage`.
+    2. There is no `agent` at the global level as it will result in the unnecessary provisioning of an agent if the `when` conditions are not met.
+    3. An `eventTrigger` is configured to only match a JSON payload containing `controller.action=='provision'`. We wil come back to this when we update the `controller-casc-automation` pipeline for your Ops controller.
+    4. An agent is defined for the **Provision Managed Controller** `stage` as the `sh` steps require a normal (some times referred to as heavy-weight) executor (meaning it must be run on an agent since all managed controllers our configured with 0 executors): `agent { label 'default-jnlp' }`
+    5. The declarative `environment` directive is used to capture values published by the Cross Team Collaboration `event`, to retrieve the controller provisioning secret value from the workshop Ops controller and to retrieve the Operations Center admin API token credential.
+    6. Multiple `when` conditions are configured so the **Provision Managed Controller** `stage` will only run if the job is triggered by an `EventTriggerCause` and if the `PROVISION_SECRET` matches the event payload secret.
+    7. Finally, the actual steps to provision a managed controller:
      - The `curl` command is used to download the `jenkins-cli.jar` from the Operations Center. A Docker container image could be used instead, but correct compatible version is guaranteed by downloading it every time.
      - An `alias` is created for the the Jenkins CLI connection command. This makes the pipeline more readable and allows reuse for multiple CLI commands.
-     - Next, the CloudBees CI Configuration as Code (CasC) for Controllers `casc-bundle-set-availability-pattern` command is used to set the configuration bundle availability pattern for the provisioned controller's bundle.
+     - Next, the `casc-bundle-set-availability-pattern` command of the [CLI for CloudBees CI Configuration as Code (CasC) for Controllers](https://docs.cloudbees.com/docs/admin-resources/latest/cli-guide/casc-bundle-management) is used to set the configuration bundle availability pattern for the provisioned controller's bundle.
      - Finally, a custom Groovy script, `casc-workshop-provision-controller-with-casc.groovy`, is executed on the Operations Center.
 2. The `casc-workshop-provision-controller-with-casc.groovy` script is based on the Groovy script mentioned in this CloudBees Knowledge Base article *[How to create a Kubernetes Managed Master programmatically](https://support.cloudbees.com/hc/en-us/articles/360035632851-How-to-create-a-Kubernetes-Managed-Master-programmatically)* and can be found in the [CloudBees `jenkins-scripts` public repository](https://github.com/cloudbees/jenkins-scripts/blob/master/createManagedMasterK8s.groovy). The script we are using in the workshop differs in a few ways:
    1. The workshop script defines the controller provision properties as YAML instead of using Java setters. These properties include mounting a volume for the Container Storage Interface secrets and the `GITHUB_ORGANIZATION` environment variable used by the workshop configuration bundles:
@@ -104,8 +104,9 @@ pipeline {
                   volumeAttributes:
                     secretProviderClass: "cbci-mc-secret-provider"
     ```
-  2. The next difference is that workshop controllers are created in a folder that matches the name of your workshop GitHub Organization. This makes it easier to configure RBAC across multiple controllers.
-  ```groovy
-  def controllerFolder = Jenkins.instance.getItem(controllerFolderName) 
-  ManagedMaster controller = controllerFolder.createProject(ManagedMaster.class, controllerName)
-  ```
+   2. The next difference is that workshop controllers are created in a folder that matches the name of your workshop GitHub Organization. This makes it easier to configure RBAC across multiple controllers.
+    ```groovy
+    def controllerFolder = Jenkins.instance.getItem(controllerFolderName) 
+    ManagedMaster controller = controllerFolder.createProject(ManagedMaster.class, controllerName)
+    ```
+   3.  
