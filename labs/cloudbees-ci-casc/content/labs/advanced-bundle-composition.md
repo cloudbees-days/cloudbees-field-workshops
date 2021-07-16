@@ -216,11 +216,10 @@ configurations:
     pipeline-utility-steps: {version: '2.8.0'}
 ```
 6. Now that we have reviewed the contents of the `base` bundle we will update your Ops controller bundle to use it as a parent bundle. However, before we do that it is important to understand how JCasC files are processed. All JCasC configuration **MUST** be supplementary, meaning that a child bundle cannot overwrite any of the parent configuration values. Otherwise there will be a `ConfiguratorException` and the controller will not startup. Therefore, before we update the `ops-controller` configuration bundle we must ensure that it does not overwrite any of the parent bundle’s configuration elements. Navigate to the `ops-controller` repository in your workshop GitHub Organization. Anything that may need to be unique between different controllers should be configured at the controller level; at least until other [JCasC YAML merge strategies become available](https://github.com/jenkinsci/configuration-as-code-plugin/pull/1218).
-7. Navigate to the `jcasc` folder of your controller and click on the `jenkins.yaml` file and then click on the ***Edit this file*** pencil button.
+7. Navigate to the `jcasc` folder of your copy of the `ops-controller` repository and click on the `jenkins.yaml` file and then click on the ***Edit this file*** pencil button.
 8. Now we will delete all the configuration that will be provided by the parent bundle:
-   - Delete the entire `jenkins` section.
+   - Delete the `quietPeriod` and the `systemMessage` sections under `jenkins`.
    - Under the `unclassified` section delete everything except for the `globallibraries` section.
-   - Leave the entire `credentials` section.
 9. Next, because we have other changes we need to make before we trigger a bundle update, select the option to **"Create a new branch for this commit and start a pull request"**, name the branch `add-parent-bundle` and then click the **Propose changes** button. ![Commit jenkins.yaml](github-commit-jenkins-yaml.png?width=50pc)
 10. On the next screen click the **Create pull request** button to create a pull request to merge to the `main` branch when are done updating your `ops-controller` configuration bundle. ![Create pull request](github-create-pr.png?width=50pc)
 11. Next, navigate to the **Code** tab of your `ops-controller` repository and select the `add-parent-bundle` branch from the branch drop down. ![Select add-parent-bundle branch](github-select-branch.png?width=50pc)
