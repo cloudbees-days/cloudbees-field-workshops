@@ -157,11 +157,10 @@ credentials:
 5. Commit the `jcasc/credentials.yaml` file directly to the `main` branch of your `ops-controller` repository. ![Commit credentials.yaml](commit-credentials.png?width=50pc)
 6. Navigate to the `main` branch job of the `ops-controller` Multibranch pipeline project on your Ops controller. ![ops-controller Mulitbranch](ops-controller-multibranch-jcasc.png?width=50pc)
 7. After the the `main` branch job has completed successfully, navigate to the top level of your Ops controller, click on the **Manage Jenkins** link in the left menu, and then click on the **CloudBees Configuration as Code bundle** **System Configuration** item. ![CasC Configuration link](casc-config-link.png?width=50pc)
-8. 
-9. On the **CloudBees Configuration as Code bundle** click on the **Bundle update** tab and you should see that there is a bundle update available. ![CasC bundle update](casc-bundle-update.png?width=50pc)
-10. Click on the **Reload Configuration** button and then on the next screen click the **Yes** button to apply the bundle update. ![CasC bundle apply](casc-bundle-apply.png?width=50pc)
-11. After the updated configuration bundle is finished being applied return to your copy of the `ops-controller` repository and click on the `controller-casc-automation` pipeline script and then click on the ***Edit this file*** pencil button.
-3. Add the following `stage` after the existing **Update Config Bundle** `stage`. It is important that the **Publish Provision Controller Event** `stage` comes after the **Update Config Bundle** `stage` as the managed controller's configuration bundle must exist before it can be provisioned with a configuration bundle. Also recall from the review above that the target job's `eventTrigger` is looking to match `controller.action=='provision'`.
+8. On the **CloudBees Configuration as Code bundle** click on the **Bundle update** tab and you should see that there is a bundle update available. ![CasC bundle update](casc-bundle-update.png?width=50pc)
+9. Click on the **Reload Configuration** button and then on the next screen click the **Yes** button to apply the bundle update. ![CasC bundle apply](casc-bundle-apply.png?width=50pc)
+10. After the updated configuration bundle is finished being applied return to your copy of the `ops-controller` repository and click on the `controller-casc-automation` pipeline script and then click on the ***Edit this file*** pencil button.
+11. Add the following `stage` after the existing **Update Config Bundle** `stage`. It is important that the **Publish Provision Controller Event** `stage` comes after the **Update Config Bundle** `stage` as the managed controller's configuration bundle must exist before it can be provisioned with a configuration bundle. Also recall from the review above that the target job's `eventTrigger` is looking to match `controller.action=='provision'`.
 ```groovy
     stage('Publish Provision Controller Event') {
       when {
@@ -220,8 +219,9 @@ pipeline {
 }
 ```
 {{% /expand%}}
-4. Commit the changes directly to the `main` branch.
-5. After you commit the file, your GitHub Organization pipeline job for the `main` branch of your `ops-controller` repository will be triggered. However, nothing will actually be updates or created because your Ops controller already exists.
+
+12. Commit the changes directly to the `main` branch.
+13. After you commit the file, your GitHub Organization pipeline job for the `main` branch of your `ops-controller` repository will be triggered. However, nothing will actually be updates or created because your Ops controller already exists.
 
 ### Create a new managed controller repository
 In the previous section you updated your Ops controller `controller-casc-automation` pipeline script to publish an event to trigger the provisioning of a managed controller with a configuration bundle. Now you will triggers the provisioning of a managed controller by creating a new GitHub repository in your workshop GitHub Organization and adding a `bundle.yaml` file to it.
