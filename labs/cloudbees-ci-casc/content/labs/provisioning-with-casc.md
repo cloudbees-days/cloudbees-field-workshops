@@ -162,7 +162,7 @@ credentials:
 10. After the updated configuration bundle is finished being applied click on the **Manage Credentials** link. ![Manage Credentials link](manage-credentials-link.png?width=50pc)
 11. On the **Credentials** management page you will see a new **CasC Workshop Controller Provision Secret** credential.  ![New Credential](new-credential.png?width=50pc)
 11. Return to your copy of the `ops-controller` repository, click on the `controller-casc-automation` pipeline script and then click on the ***Edit this file*** pencil button.
-11. Add the following `stage` after the existing **Update Config Bundle** `stage`. It is important that the **Publish Provision Controller Event** `stage` comes after the **Update Config Bundle** `stage` as the managed controller's configuration bundle must exist before it can be provisioned with a configuration bundle. Also recall from the review above that the target job's `eventTrigger` is looking to match `controller.action=='provision'`.
+11. Add the following `stage` after the existing **Update Config Bundle** `stage`. It is important that the **Publish Provision Controller Event** `stage` comes after the **Update Config Bundle** `stage` as the managed controller's configuration bundle must exist before it can be provisioned with a configuration bundle. Also recall from the review above that the target job's `eventTrigger` is looking to match `controller.action=='provision'` and will validate the `PROVISION_SECRET` we are passing in.
 ```groovy
     stage('Publish Provision Controller Event') {
       when {
@@ -228,5 +228,14 @@ pipeline {
 ### Create a new managed controller repository
 In the previous section you updated your Ops controller `controller-casc-automation` pipeline script to publish an event to trigger the provisioning of a managed controller with a configuration bundle. Now you will triggers the provisioning of a managed controller by creating a new GitHub repository in your workshop GitHub Organization and adding a `bundle.yaml` file to it.
 
-1. At the top level of your GitHub Organization click on the **New** button. ![Create new repository](github-new-repo.png?width=50pc)
-2. Select **repository**
+1. At the top level of your GitHub Organization click on the link for the **dev-controller** repository. ![dev-controller repo link](github-dev-controller-repo-link.png?width=50pc)
+2. Next click on the **Add file** button and then select **Create new file**. ![Create new file in GitHub](github-create-new-file.png?width=50pc)
+3. On the next screen, name the new file `bundle.yaml`, enter the contents from below and then commit directly to the `main` branch of your **dev-controller** GitHub repository. ![Commit bundle.yaml](commit-bundle.png?width=50pc)
+```yaml
+apiVersion: "1"
+version: "1"
+id: "cbci-casc-workshop-dev-controller"
+description: "CloudBees CI configuration bundle for the cbci-casc-workshop dev-controller Controller"
+parent: "base"
+```
+4. 
