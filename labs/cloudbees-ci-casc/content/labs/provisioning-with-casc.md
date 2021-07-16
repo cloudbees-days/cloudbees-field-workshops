@@ -18,42 +18,43 @@ Currently, programmatic provisioning of a managed controller requires running a 
 
 ### Review the Jenkins declarative pipeline job that will be triggered by your Ops controller on the workshop Ops controller using CloudBees CI Cross Team Collaboration. 
 ```groovy
+
 def event = currentBuild.getBuildCauses()[0].event
 pipeline {
-agent none
-options { timeout(time: 10, unit: 'MINUTES') }
-triggers {
+  agent none
+  environment {
+    PROVISION_SECRET = credentials('casc-workshop-controller-provision-secret')
+    PUBLISHED_SECRET = event.secret.toString()
+  }
+  options { timeout(time: 10, unit: 'MINUTES') }
+  triggers {
     eventTrigger jmespathQuery("controller.action=='provision'")
-}
-stages {
+  }
+  stages {
     stage('Provision Managed Controller') {
-    agent  { label 'default-jnlp' }
-    environment {
-        PROVISION_SECRET = credentials('casc-workshop-controller-provision-secret')
+      agent  { label 'default-jnlp' }
+      environment {
         ADMIN_CLI_TOKEN = credentials('admin-cli-token')
         GITHUB_ORGANIZATION = event.github.organization.toString().replaceAll(" ", "-")
         GITHUB_REPOSITORY = event.github.repository.toString().toLowerCase()
         CONTROLLER_FOLDER = GITHUB_ORGANIZATION.toLowerCase()
-        BUNDLE_ID = "${GITHUB_ORGANIZATION}-${GITHUB_REPOSITORY}"
+        BUNDLE_ID = "${CONTROLLER_FOLDER}-${GITHUB_REPOSITORY}"
         AVAILABILITY_PATTERN = "${GITHUB_ORGANIZATION}/${GITHUB_REPOSITORY}"
-    }
-    when {
-        beforeAgent true
-        allOf {
+      }
+      when {
         triggeredBy 'EventTriggerCause'
-        environment name: 'PROVISION_SECRET', value: event.controller.action.secret.toString()
-        }
-    }
-    steps {
+        environment name: 'PUBLISHED_SECRET', value: "${PROVISION_SECRET}"
+      }
+      steps {
         sh '''
-        curl -O http://cjoc/cjoc/jnlpJars/jenkins-cli.jar
-        alias cli='java -jar jenkins-cli.jar -s http://cjoc/cjoc/ -webSocket -auth $ADMIN_CLI_TOKEN_USR:$ADMIN_CLI_TOKEN_PSW'
-        cli casc-bundle-set-availability-pattern --bundle-id $BUNDLE_ID --availability-pattern $AVAILABILITY_PATTERN
-        cli groovy =<casc-workshop-provision-controller-with-casc.groovy $GITHUB_ORGANIZATION $GITHUB_REPOSITORY $CONTROLLER_FOLDER
+          curl -O http://cjoc/cjoc/jnlpJars/jenkins-cli.jar
+          alias cli='java -jar jenkins-cli.jar -s http://cjoc/cjoc/ -webSocket -auth $ADMIN_CLI_TOKEN_USR:$ADMIN_CLI_TOKEN_PSW'
+          cli casc-bundle-set-availability-pattern --bundle-id $BUNDLE_ID --availability-pattern $AVAILABILITY_PATTERN
+          cli groovy =<casc-workshop-provision-controller-with-casc.groovy $GITHUB_ORGANIZATION $GITHUB_REPOSITORY $CONTROLLER_FOLDER
         '''
+      }
     }
-    }
-}
+  }
 }
 ```
 1. The first step is to get the event payload and assign it to a global object available to the rest of the `pipeline`: `def event = currentBuild.getBuildCauses()[0].event`. We do this outside of the declarative `pipeline` block because you cannot assign objects to variables in declarative pipeline and we need the values before we can execute a `script` block in a `stage`.
@@ -119,7 +120,109 @@ controller.properties.replace(new ConnectedMasterTokenProperty(hudson.util.Secre
 controller.properties.replace(new ConnectedMasterCascProperty("$controllerFolderName-$controllerName"))
 ```
 
-### Add Event Publishing Step to your Ops controller `controller-casc-automation` pipeline script
+### Add Event Publishing Stage to your Ops controller `controller-casc-automation` pipeline script
 Now that we have reviewed the pipeline and Groovy script for the workshop provisioning of managed controllers with configuration bundles we need to publish a Cross Team Collaboration event in the `controller-casc-automation` pipeline script.
 
-1. 
+1. Navigate to your copy of the `ops-controller` repository in your workshop GitHub Organization.
+2. Part of the JSON payload that we need to send to the workshop Ops controllers is a provisioning secret. We need to add a new **secret text** credential type to your `jcasc/credentials.yaml` and then apply the updated configuration bundle to your Ops controller.
+3. Click on the `jcasc/credentials.yaml` and then click on the ***Edit this file*** pencil button.
+4. Add the following new `credential`:
+```yaml
+      - string:
+          description: "CasC Workshop Controller Provision Secret"
+          id: "casc-workshop-controller-provision-secret"
+          secret: "${cbciCascWorkshopControllerProvisionSecret}"
+```
+
+{{%expand "expand for complete jcasc/credentials.yaml file" %}}
+```yaml
+credentials:
+  system:
+    domainCredentials:
+    - credentials:
+      - string:
+          description: "Webhook secret for CloudBees CI Workshop GitHub App"
+          id: "cloudbees-ci-workshop-github-webhook-secret"
+          scope: SYSTEM
+          secret: "${gitHubWebhookSecret}"
+      - gitHubApp:
+          apiUri: "https://api.github.com"
+          appID: "${cbciCascWorkshopGitHubAppId}"
+          description: "CloudBees CI CasC Workshop GitHub App credential"
+          id: "cloudbees-ci-casc-workshop-github-app"
+          owner: "${GITHUB_ORGANIZATION}"
+          privateKey: "${cbciCascWorkshopGitHubAppPrivateKey}"
+      - string:
+          description: "CasC Workshop Controller Provision Secret"
+          id: "casc-workshop-controller-provision-secret"
+          secret: "${cbciCascWorkshopControllerProvisionSecret}"
+```
+{{% /expand%}}
+2. Next, click on the `controller-casc-automation` pipeline script and then click on the ***Edit this file*** pencil button.
+3. Add the following `stage` after the existing **Update Config Bundle** `stage`. It is important that the **Publish Provision Controller Event** as the managed controller's configuration bundle must exist before it can be provisioned with a configuration bundle. Remember the `eventTrigger` above is looking to match `controller.action=='provision'`.
+```groovy
+    stage('Publish Provision Controller Event') {
+      when {
+        branch 'main'
+      }
+      environment { PROVISION_SECRET = credentials('casc-workshop-controller-provision-secret') }
+      steps {
+        publishEvent event:jsonEvent("""
+          {'controller':{'name':'${GITHUB_REPO}','action':'provision'},'github':{'organization':'${GITHUB_ORG}','repository':'${GITHUB_REPO}','user':'${GITHUB_USER}'},'secret':'${PROVISION_SECRET}'}
+        """), verbose: true
+      }
+    }
+  }
+```
+
+{{%expand "expand for complete controller-casc-automation pipeline file" %}}
+```groovy
+library 'pipeline-library'
+pipeline {
+  agent {
+    kubernetes {
+      yaml libraryResource ('podtemplates/kubectl.yml')
+    }
+  }
+  options {
+    timeout(time: 10, unit: 'MINUTES')
+  }
+  stages {
+    stage('Update Config Bundle') {
+      when {
+        beforeAgent true
+        branch 'main'
+        not { triggeredBy 'UserIdCause' }
+      }
+      steps {
+        gitHubParseOriginUrl()
+        container("kubectl") {
+          sh "mkdir -p ${GITHUB_ORG}-${GITHUB_REPO}"
+          sh "find -name '*.yaml' | xargs cp --parents -t ${GITHUB_ORG}-${GITHUB_REPO}"
+          sh "kubectl cp --namespace sda ${GITHUB_ORG}-${GITHUB_REPO} cjoc-0:/var/jenkins_home/jcasc-bundles-store/ -c jenkins"
+        }
+      }
+    }
+    stage('Publish Provision Controller Event') {
+      when {
+        branch 'main'
+      }
+      environment { PROVISION_SECRET = credentials('casc-workshop-controller-provision-secret') }
+      steps {
+        publishEvent event:jsonEvent("""
+          {'controller':{'name':'${GITHUB_REPO}','action':'provision'},'github':{'organization':'${GITHUB_ORG}','repository':'${GITHUB_REPO}','user':'${GITHUB_USER}'},'secret':'${PROVISION_SECRET}'}
+        """), verbose: true
+      }
+    }
+  }
+}
+```
+{{% /expand%}}
+4. Commit the changes directly to the `main` branch.
+5. After you commit the file, your GitHub Organization pipeline job for the `main` branch of your `ops-controller` repository will be triggered. However, nothing will actually be updates or created because your Ops controller already exists.
+
+### Create a new managed controller repository
+In the previous section you updated your Ops controller `controller-casc-automation` pipeline script to publish an event to trigger the provisioning of a managed controller with a configuration bundle. Now you will triggers the provisioning of a managed controller by creating a new GitHub repository in your workshop GitHub Organization and adding a `bundle.yaml` file to it.
+
+1. At the top level of your GitHub Organization click on the **New** button.
+2. Select **repository**
