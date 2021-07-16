@@ -74,37 +74,32 @@ The `casc-workshop-provision-controller-with-casc.groovy` script is based on the
 1. The workshop script defines the controller provision properties as YAML instead of using Java setters. These properties include mounting a volume for the Container Storage Interface secrets and the `GITHUB_ORGANIZATION` environment variable used by the workshop configuration bundles:
 ```yaml
 provisioning:
-    cpus: 1
-    disk: 20
-    memory: 4000
-    yaml: |
-    kind: Service
-    metadata:
-        annotations:
-        prometheus.io/scheme: 'http'
-        prometheus.io/path: '/${controllerFolderName}-${controllerName}/prometheus'
-        prometheus.io/port: '8080'
-        prometheus.io/scrape: 'true'
+  cpus: 1
+  disk: 20
+  memory: 4000
+  yaml: |
     kind: "StatefulSet"
     spec:
-        template:
+      template:
         spec:
-            containers:
-            - name: "jenkins"
+          containers:
+          - name: "jenkins"
             env:
             - name: "SECRETS"
-                value: "/var/jenkins_home/jcasc_secrets"
+              value: "/var/jenkins_home/jcasc_secrets"
             - name: "GITHUB_ORGANIZATION"
-                value: "/${gitHubOrganization}"
+              value: "/${gitHubOrganization}"
+            - name: "GITHUB_USER"
+              value: "/${gitHubUser}"
             volumeMounts:
             - name: "jcasc-secrets"
-                mountPath: "/var/jenkins_home/jcasc_secrets"
-            volumes:
-            - name: "jcasc-secrets"
+              mountPath: "/var/jenkins_home/jcasc_secrets"
+          volumes:
+          - name: "jcasc-secrets"
             csi:
-                driver: secrets-store.csi.k8s.io
-                readOnly: true
-                volumeAttributes:
+              driver: secrets-store.csi.k8s.io
+              readOnly: true
+              volumeAttributes:
                 secretProviderClass: "cbci-mc-secret-provider"
 ```
 2. The next difference is that workshop controllers are created in a folder that matches the name of your workshop GitHub Organization. This makes it easier to configure RBAC across multiple controllers in the same folder.
