@@ -97,7 +97,7 @@ items:
 17. On the **CloudBees Configuration as Code bundle** click on the **Bundle update** tab and you should see that there is a bundle update available. ![CasC bundle update](casc-bundle-update.png?width=50pc)
 18. Click on the **Reload Configuration** button and then on the next screen click the **Yes** button to apply the bundle update. ![CasC bundle apply](casc-bundle-apply.png?width=50pc)
 19. After the updated configuration bundle is finished being applied return to the **CloudBees Configuration as Code bundle** configuration page and click on the **Original Bundle** tab. ![Original bundle with folder](original-bundle-folder.png?width=50pc)
-20. Notice that there are now two *Jenkins configuration as defined by OSS CasC* files - `jcasc/cbci-casc-workshop-ops-controller.credentials.yaml` and `jcasc/cbci-casc-workshop-ops-controller.jenkins.yaml`; and both prefixed with the `id` of your bundle. This is done to support bundle inheritance as we will see in the next section.
+20. The **Original Bundle** view will show you what configuration is being managed by the configuration bundle assigned to your controller. Notice that there are now two *Jenkins configuration as defined by OSS CasC* files - `jcasc/cbci-casc-workshop-ops-controller.credentials.yaml` and `jcasc/cbci-casc-workshop-ops-controller.jenkins.yaml`; and both prefixed with the `id` of your bundle. This is done to support bundle inheritance as we will see in the next section.
 
 ## Bundle Inheritance
 

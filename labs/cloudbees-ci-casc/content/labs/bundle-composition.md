@@ -124,7 +124,7 @@ plugins:
 - id: workflow-aggregator
 - id: workflow-cps-checkpoint
 ```
-## Creating a Configuration Bundle from a Bundle Export
+## Creating/Updating a Configuration Bundle from a Bundle Export
 As you can see from the composition overview above, the YAML in the different configuration files can be somewhat complicated, and that is only with a few of the bundle file types and a fairly simple set of configurations. Luckily, CloudBees CI Configuration as Code (CasC) for Controllers supports an export capability that allows you to export the current configuration from an existing controller. In this lab you will make configurations changes on your Ops controller and then use the export feature to copy new or updated configuration to the files in the Ops controller branch of your `ops-controller` repository.
 
 1. Navigate to the top level of your Ops controller - it will be in the folder with the same name as your workshop GitHub Organization name (lower-cased).
@@ -154,6 +154,39 @@ configurations:
 15. On the next screen, name the new file `plugin-catalog.yaml`, enter the contents from the `plugin-catalog.yaml` export but **make sure your put single quotes around the plugin version**. Then commit directly to the `main` branch. ![Commit plugin-catalog.yaml](commit-plugin-catalog.png?width=50pc)
 16. Plugins in the `plugin-catalog.yaml` are not actually installed on a controller, rather they just extend what can be installed outside of CAP. In order for a plugin to be installed via a configuration bundle you must add it to the `plugins.yaml`. Click on the `plugins.yaml` file and then click on the ***Edit this file*** pencil button. ![Edit plugins file GitHub](github-edit-plugins-file.png?width=50pc)
 17. In the GitHub file editor, add `- id: pipeline-utility-steps` under the line containing the content `- id: pipeline-stage-view`, and then commit directly to the `main` branch. ![Commit plugins.yaml](commit-plugins.png?width=50pc)
+
+{{%expand "expand for complete updated plugins.yaml file" %}}
+```yaml
+plugins:
+- id: antisamy-markup-formatter
+- id: cloudbees-casc-api
+- id: cloudbees-github-reporting
+- id: cloudbees-groovy-view
+- id: cloudbees-monitoring
+- id: cloudbees-pipeline-policies
+- id: cloudbees-prometheus
+- id: cloudbees-slack
+- id: cloudbees-template
+- id: cloudbees-view-creation-filter
+- id: cloudbees-workflow-template
+- id: cloudbees-workflow-ui
+- id: configuration-as-code
+- id: git
+- id: github-branch-source
+- id: managed-master-hibernation
+- id: notification-api
+- id: operations-center-cloud
+- id: operations-center-notification
+- id: pipeline-event-step
+- id: pipeline-model-extensions
+- id: pipeline-stage-view
+- id: pipeline-utility-steps
+- id: warnings-ng
+- id: workflow-aggregator
+- id: workflow-cps-checkpoint
+```
+{{% /expand%}}
+
 18. Next, back on the **CloudBees Configuration as Code bundle** page of your Ops controller, click on the *visualize* link for the `items.yaml` **Filename**. ![Items visualize link](items-visualize-link.png?width=50pc) 
 19. A new browser page will open in a new tab or window with the auto-generated `items.yaml` with the following contents:
 ```yaml
