@@ -34,6 +34,24 @@ https://cloudbees-ci.labs.cb-sa.io/
 
 >NOTE: If you are returning to the workshop cluster to complete a lab please review this lab on [**Un-hibernating a Managed Controller**](labs/hibernating/hibernating.md#un-hibernate-a-managed-jenkins-instance).
 
+## CloudBees CI Configuration as Code (CasC) Workshop
+
+These labs will provide hands-on examples demonstrating how CloudBees CI CasC enables shared services teams and Jenkins admins to provide easily manageable, auditable and scalable configuration for any number of controllers. The workshop will provide the opportunity to learn how to leverage CloudBees CI to automate the process of managing CasC at scale. Specifically, we'll cover how to leverage the unique features of CasC for CloudBees CI to:
+
+- Deploy configuration-as-code at scale by using inheritance and automating the provisioning of controllers
+- Configure full environments for controllers using human-readable YAML files
+- Apply best practices to better control security, plugins and share configurations across any number of controllers
+
+### Workshop Prerequisites
+
+* A basic understanding of Docker: https://docs.docker.com/get-started/
+* A basic understanding of Kubernetes: https://kubernetes.io/docs/tutorials/kubernetes-basics/
+* A basic understanding of Jenkins Pipelines: https://jenkins.io/doc/book/pipeline/getting-started/
+* A basic understanding of Jenkins Configuration-as-Code (JCasC): https://github.com/jenkinsci/configuration-as-code-plugin
+
+### Labs
+https://cloudbees-ci-casc.labs.cb-sa.io/
+
 ## CloudBees Feature Management Workshop
 
 ### Workshop Prerequisites
