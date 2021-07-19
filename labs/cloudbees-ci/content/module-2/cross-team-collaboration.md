@@ -12,7 +12,7 @@ We will utilize CloudBees CI CasC to enable and configure Notifications for Cros
 2. On the next screen, click on the **Cross Team Collaboration Lab: Enable Notifications** pull request and then click on the **Files changed** tab to review the requested configuration changes and scroll down to the `jenksin.yaml` file. As you can see, we are adding `notificationConfiguration` for your CloudBees CI Managed Controller. ![PR Files Changed](collab-casc-changes.png?width=50pc)
 3. Once you have reviewed the changed files, click on the **Conversation** tab, scroll down and click the green **Merge pull request** button and then the **Confirm merge** button.
 4. On the next screen click the **Delete branch** button.
-5. Navigate to the **config-bundle-ops** job under the **template-jobs** folder on your CloudBees CI Managed Controller. After the **master** branch job completes successfully **Cross Team Collaboration** notifications will be enabled for your *managed controller*.
+5. Navigate to the **config-bundle-ops** job under the **template-jobs** folder on your CloudBees CI Managed Controller. After the **main** branch job completes successfully **Cross Team Collaboration** notifications will be enabled for your *managed controller*.
 
 ## Adding an event trigger
 
