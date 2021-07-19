@@ -119,6 +119,7 @@ catalog:
 2. Next let's take a detailed look at the `base` bundle `jenkins.yaml` (also available on GitHub at https://github.com/cloudbees-days/parent-configuration-bundle/blob/main/jenkins.yaml):
 ```yaml
 jenkins:
+  authorizationStrategy: "cloudBeesRoleBasedAccessControl"
   markupFormatter:
     rawHtml:
       disableSyntaxHighlighting: false
@@ -163,7 +164,7 @@ notificationConfiguration:
   enabled: true
   router: "operationsCenter"
 ```
-3. In addition to providing a common Jenkins pipeline shared library across all controllers, the parent `jenkins.yaml` enforces best practices to include: 
+3. The parent `jenkins.yaml` enforces a number of best practices across all managed controllers to include: 
     - Setting the number of executors to 0 on controllers, as you should never execute jobs directly on controller, rather you should always use agents.
     - Enforcing a project naming strategy to maintain clean job URLs and directory paths in the Jenkins home.
     - Setting the quite period to 0 to maximize speed of builds and utilization of ephemeral Kubernetes agents.
