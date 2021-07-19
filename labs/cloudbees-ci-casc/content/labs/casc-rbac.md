@@ -112,7 +112,7 @@ items:
            propagates: "true"
 ```
 2. Name the new file `folders.yaml`, copy the `items` configuration from above and paste it into the GitHub file editor. Then select the option to **"Create a new branch for this commit and start a pull request"**, name the branch `add-folder` and then click the **Propose changes** button. ![Create folders.yaml](github-commit-folders-yaml.png?width=50pc)
-3. On the next screen click the **Create pull request** button to create a pull request to merge to the `main` branch when you are done updating your `dev-controller` configuration bundle. ![Create RBAC pull request](github-create-rbac-pr.png?width=50pc)
+3. On the next screen click the **Create pull request** button to create a pull request to merge to the `main` branch when you are done updating your `dev-controller` configuration bundle. ![Create folder pull request](github-create-folder-pr.png?width=50pc)
 4. Now we must add the new `job-manager` role to your `rbac.yaml`. Navigate back to the top level of your `dev-controller` repository and ensuring that you are on the ` add-folder` branch, click on the `rbac.yaml` file and then click on the ***Edit this file*** pencil button to edit the file.
 5. Add the following `job-manager` section after the current `manager` role:
 ```yaml
@@ -203,10 +203,10 @@ items:
 9. On the **Create folders.yaml #1** pull request page, click the **Merge pull request** button, then click the **Confirm merge** button and then click the **Delete branch** button.
 10. Navigate to the `main` branch job of the `dev-controller` Multibranch pipeline project **on your Ops controller**. ![dev-controller Mulitbranch](dev-controller-multibranch-jcasc.png?width=50pc)
 11. After the the `main` branch job has completed successfully, navigate to the top level of your **dev controller**, click on the **Manage Jenkins** link in the left menu, and then click on the **CloudBees Configuration as Code bundle** **System Configuration** item. ![CasC Configuration link](dev-casc-config-link.png?width=50pc) 
-12. On the **CloudBees Configuration as Code bundle** click on the **Bundle update** tab and you should see that there is a bundle update available. ![CasC bundle update](casc-bundle-update.png?width=50pc)
+12. On the **Bundle update** page, you should see that there is a bundle update available. Also note that without `administrator` permissions on this page, you cannot see the other tabs. ![CasC bundle update](casc-bundle-update-manager.png?width=50pc)
 13. Click on the **Reload Configuration** button and then on the next screen click the **Yes** button to apply the bundle update. ![CasC bundle apply](casc-bundle-apply.png?width=50pc)
-14. Navigate back to the top level of your dev controller and there will be a new **controller-jobs** folder.
-15. Click on the **controller-jobs** folder and you will see that you are able to create new items in that folder.
+14. Navigate back to the top level of your dev controller and there will be a new **controller-jobs** folder. ![New folder](new-jobs-folder.png?width=50pc)
+15. Click on the **controller-jobs** folder and you will see that you are able to create new jobs in that folder. ![Create jobs](create-job.png?width=50pc)
 
 
 
