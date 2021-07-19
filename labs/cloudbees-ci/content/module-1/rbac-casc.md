@@ -11,7 +11,7 @@ In addition to using CloudBees CI CasC to configure RBAC for your Managed Contro
 >NOTE: Using CasC for RBAC requires that you allow Managed Controllers to opt-out of inheriting the Operations Center authorization strategy meaning that the Managed Controller will not inherit roles or groups from Operations Center.
 
 1. To opt out of the Operations Center authorization strategy click on the **Teams** breadcrumb link in the top navigation.
-2. In the **Teams** folder, expand the contextual menu for your Managed Controller and click the **Configure** link. ![Configure controllers](configure-controller.png?width=50pc) 
+2. Navigate to the folder with the same name as your workshop GitHub Organization, expand the contextual menu for your managed controller and click the **Configure** link. ![Configure controllers](configure-controller.png?width=50pc) 
 3. On the **Configure** screen scroll down to the **Security Setting Enforcement**, select the ***Enforce Authentication only*** value from the **Opt-out** select list and then click the **Save** button. ![Auth Only](auth-only.png?width=50pc) 
 4. Navigate to your `cloudbees-ci-config-bundle` repository in GitHub and click on the **Pull requests** link. 
 5. Click on the **RBAC lab updates** pull request in GitHub and then click on the **Files changed** tab to review the requested configuration changes.
@@ -19,7 +19,7 @@ In addition to using CloudBees CI CasC to configure RBAC for your Managed Contro
 7. Once you have reviewed the changed files, click on the **Conversation** tab, scroll down and click the green **Merge pull request** button and then the **Confirm merge** button.
 8. On the next screen click the **Delete branch** button.
 5. Navigate to the **config-bundle-ops** job under the **template-jobs** folder on your CloudBees CI Managed Controller.
-6. Shortly after the **master** branch job completes successfully, navigate to the top-level of your Managed Controller.
+6. Shortly after the **main** branch job completes successfully, navigate to the top-level of your Managed Controller.
 7. Click on the **Manage Jenkins** link in the left navigation menu and then click on the **CloudBees Configuration as Code bundle** link. ![CloudBees Configuration config](config-bundle-system-config.png?width=50pc)
 8. On the next screen, click on the Bundle Update link and you should see that a new version of the configuration bundle is available. Click the **Reload Configuration** button and on the next screen click the **Yes** button to apply the updated configuration bundle. *Note: If you don't see the new version available then click the **Check for Updates** button.* ![Bundle Update](new-bundle-available.png?width=50pc)
 9. Once the bundle has finished reloading you will see a *Manage Jenkins* page with fewer items and the left navigation will have fewer items. Also, many of the configuration items that are still available are view only. ![Before and After Delegating Admin](before-after-delegating-admin.png?width=85pc)
