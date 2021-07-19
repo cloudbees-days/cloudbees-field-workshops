@@ -10,7 +10,7 @@ In this lab we will setup [GitOps](https://www.gitops.tech/) for [CloudBees CI C
 
 In this lab you will:
 * Create a job from a Pipeline template on your CloudBees CI ***managed controller*** to automatically update the [CloudBees CI configuration bundle](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/ci-casc-modern#_creating_a_configuration_bundle) for your CloudBees CI ***managed controller***. 
-* Update the CloudBees CI configuration bundle in your forked `cloudbees-ci-config-bundle` repository and then commit the changes to the **master** branch of your `cloudbees-ci-config-bundle` repository that will in turn trigger the Pipeline template job.
+* Update the CloudBees CI configuration bundle in your forked `cloudbees-ci-config-bundle` repository and then commit the changes to the **main** branch of your `cloudbees-ci-config-bundle` repository that will in turn trigger the Pipeline template job.
 
 1. Navigation into the **template-jobs** folder on your ***managed controller***.
 2. Click on the **New Item** link in the left navigation menu.
