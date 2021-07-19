@@ -37,7 +37,7 @@ This lab will explore how to manage CloudBees CI Pipeline Template Catalogs with
      ]
      ```
 6. A Pipeline job will be created for the `main` branch of your `pipeline-template-catalog` repository and once the job is complete you should see the following success message in the build logs: ![Catalog Imported](catalog-imported.png?width=50pc)
-7. Navigate to the top-level of your Managed Controller and then click on the **Pipeline Template Catalogs** link in the menu on the left. ![Pipeline Template Catalogs link](catalog-link.png?width=40pc)
+7. Navigate to the top-level of your managed controller and then click on the **Pipeline Template Catalogs** link in the menu on the left. ![Pipeline Template Catalogs link](catalog-link.png?width=40pc)
 8. On the **Pipeline Template Catalogs** page ensure that the **workshopCatalog** catalog's **Status** is ***Healthy*** and then click on the **workshopCatalog** link. <p>![workshopCatalog link](workshopcatalog-link.png?width=50pc)
 9.  On the **CloudBees CI Workshop Template Catalog** screen you will see the following templates listed: ![Template List](workshop-template-list.png?width=50pc)
 
