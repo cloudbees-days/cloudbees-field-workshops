@@ -116,7 +116,7 @@ plugins:
 catalog:
   - "plugin-catalog.yaml"
 ```
-2. Next let's take a detailed look at the `base` bundle `jenkins.yaml` (also available on GitHub at https://github.com/cloudbees-days/parent-configuration-bundle/blob/main/jenkins.yaml):
+2. Next let's take a detailed look at the `base` bundle `jenkins.yaml` (also available on GitHub at https://github.com/cloudbees-days/parent-configuration-bundle/blob/main/jenkins.yaml) :
 ```yaml
 jenkins:
   authorizationStrategy: "cloudBeesRoleBasedAccessControl"
