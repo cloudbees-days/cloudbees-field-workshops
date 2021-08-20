@@ -98,6 +98,8 @@ credentials:
 5. Return to the top level of your `ops-controller` repository and click on the `plugins.yaml` file. The name of this file must match the file name listed under `plugins` in the `bundle.yaml` file. Its contents will match the following:
 ```yaml
 plugins:
+
+# In CloudBees Assurance Program
 - id: antisamy-markup-formatter
 - id: cloudbees-casc-api
 - id: cloudbees-github-reporting
@@ -123,6 +125,8 @@ plugins:
 - id: warnings-ng
 - id: workflow-aggregator
 - id: workflow-cps-checkpoint
+
+# Not in CAP (see plugin-catalog.yaml)
 ```
 ## Creating/Updating a Configuration Bundle from a Bundle Export
 As you can see from the composition overview above, the YAML in the different configuration files can be somewhat complicated, and that is only with a few of the bundle file types and a fairly simple set of configurations. Luckily, CloudBees CI Configuration as Code (CasC) for Controllers supports an export capability that allows you to export the current configuration from an existing controller. In this lab you will make configurations changes on your Ops controller and then use the export feature to copy new or updated configuration to the files in the Ops controller branch of your `ops-controller` repository.
@@ -153,11 +157,13 @@ configurations:
 14. Next click on the **Add file** button and then select **Create new file**. ![Create new file in GitHub](github-create-new-file.png?width=50pc)
 15. On the next screen, name the new file `plugin-catalog.yaml`, enter the contents from the `plugin-catalog.yaml` export but **make sure your put single quotes around the plugin version**. Then commit directly to the `main` branch. ![Commit plugin-catalog.yaml](commit-plugin-catalog.png?width=50pc)
 16. Plugins in the `plugin-catalog.yaml` are not actually installed on a controller, rather they just extend what can be installed outside of CAP. In order for a plugin to be installed via a configuration bundle you must add it to the `plugins.yaml`. Click on the `plugins.yaml` file and then click on the ***Edit this file*** pencil button. ![Edit plugins file GitHub](github-edit-plugins-file.png?width=50pc)
-17. In the GitHub file editor, add `- id: pipeline-utility-steps` under the line containing the content `- id: pipeline-stage-view`, and then commit directly to the `main` branch. ![Commit plugins.yaml](commit-plugins.png?width=50pc)
+17. In the GitHub file editor, add `- id: pipeline-utility-steps` under the commented line containing the content `# Not in CAP (see plugin-catalog.yaml)`, and then commit directly to the `main` branch. ![Commit plugins.yaml](commit-plugins.png?width=50pc)
 
 {{%expand "expand for complete updated plugins.yaml file" %}}
 ```yaml
 plugins:
+
+# In CloudBees Assurance Program (CAP)
 - id: antisamy-markup-formatter
 - id: cloudbees-casc-api
 - id: cloudbees-github-reporting
@@ -180,10 +186,12 @@ plugins:
 - id: pipeline-event-step
 - id: pipeline-model-extensions
 - id: pipeline-stage-view
-- id: pipeline-utility-steps
 - id: warnings-ng
 - id: workflow-aggregator
 - id: workflow-cps-checkpoint
+
+# Not in CAP (see plugin-catalog.yaml)
+- id: pipeline-utility-steps
 ```
 {{% /expand%}}
 
