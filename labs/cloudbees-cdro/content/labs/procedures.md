@@ -23,12 +23,12 @@ Before you create a procedure, you need to create a container for the procedure,
 
 To create a project:
 
-1. Select the CloudBees CD/RO main menu. ![CD/RO main menu](te-cdro-main-menu-icon.png?width=50pc) 
-2. Navigate to **DevOps Essentials Projects**. The project list appears. ![Project list](te-main-menu-select-devops-projects.png?width=50pc) 
+1. Select the CloudBees CD/RO main menu. ![CD/RO main menu](te-cdro-main-menu-icon.png?width=25pc) 
+2. Navigate to **DevOps Essentials Projects**. The project list appears. ![Project list](te-main-menu-select-devops-projects.png?width=40pc) 
 3. Select **New+** in the upper right. The New Project dialog appears.
 4. Select **Create New**.
 5. Enter the project name *Trial Guide* (or similar name) and then select **OK**. You will not be using credentials (secrets), so when asked if you want to create or edit credentials, select **No**.  
-6. After the project is created, search for it by name. When it is displayed, select the menu under **Actions** to access the project’s attributes. ![Search project](te-project-list.png?width=50pc) 
+6. After the project is created, search for it by name. When it is displayed, select the menu under **Actions** to access the project’s attributes. ![Search project](te-project-list.png?width=70pc) 
 
 ## Create a procedure
 
@@ -37,8 +37,8 @@ Now that you have a project to contain objects, do the following to create a pro
 1. From the CloudBees CD/RO main menu, navigate to **DevOps > Essentials Procedures**. The list of procedure objects displays.
 2. Select **New+** in the upper right to add a procedure. The New Procedure dialog displays.
 3. Select **Create New**.
-4. Enter a procedure name such as Trial Procedure. Select the target project that you created above (for example, Trial Guide) and then select **OK**. ![create procedure](te-add-procedure.png?width=50pc) 
-5. You are now in a procedure. The Hierarchy Menu on the left appears, as well as a Procedure menu on the right. ![procedures menu](te-procedures-menus.png?width=50pc) 
+4. Enter a procedure name such as Trial Procedure. Select the target project that you created above (for example, Trial Guide) and then select **OK**. ![create procedure](te-add-procedure.png?width=70pc) 
+5. You are now in a procedure. The Hierarchy Menu on the left appears, as well as a Procedure menu on the right. ![procedures menu](te-procedures-menus.png?width=70pc) 
 
 ## Add a procedure step
 
@@ -49,27 +49,27 @@ When a procedure is first created, it has no steps to execute, so you must add s
 3. Provide a name, *Hello World*, and a description for the step — *A step to echo out a simple message*.
 4. Select **Definition** in the upper right of the dialog to define the functionality of the step.
 5. In the Command field, enter this command to be run: `echo "Hello world"`.
-6. Select **OK**. ![Add a new step to the procedure](te-new-procedure-step.png?width=50pc) 
+6. Select **OK**. ![Add a new step to the procedure](te-new-procedure-step.png?width=70pc) 
 7. Your *Hello World* step is displayed in the list of steps.
 
 ## Run the procedure for the first time
 
 1. Select the Run Procedure icon (green arrow) on the right, and then select **New Run**. The Run Procedure dialog box appears. Select **OK**. Note the job’s progress.
 2. View the job details by selecting **Procedure Runs** at the top of the page, then selecting the job number. Select the job once again to be able to view the log.
-3. Select the icon under **Log** to view the job output. ![View the log after running a procedure](te-log-details-procedure.png?width=50pc)
+3. Select the icon under **Log** to view the job output. ![View the log after running a procedure](te-log-details-procedure.png?width=30pc)
 4. You will now see the *Hello world* message.
 5. Close the job dialog.
 
 ## Add a parameter
 
 1. From the breadcrumb at the top of the window, return to the procedure by selecting **Trial Procedure**.
-2. Open the Procedure menu on the right and then select **Parameters**. ![Procedures menu](te-procedure-menu.png?width=50pc)
+2. Open the Procedure menu on the right and then select **Parameters**. ![Procedures menu](te-procedure-menu.png?width=30pc)
 3. Add a parameter by selecting **There are no Parameters. Add one +**. The New Input Parameter dialog appears.
 4. Provide the the following values:
     - **Name** - *greetName*
     - **Description** - *Name to use for the "Hello" greeting*
     - **Label** - *Greet Name*
-5. Select **Custom Validation** to enter a validation script. ![New input parameter](te-new-input-param.png?width=50pc)
+5. Select **Custom Validation** to enter a validation script. ![New input parameter](te-new-input-param.png?width=70pc)
 6. In the **Provide DSL** box, enter the following DSL code. This code prevents entries that include the space character.
 ```groovy
 if(args.parameters['greetName']?.contains(" "))
@@ -129,7 +129,7 @@ def options = new FormalParameterOptionsResult()
 getUsers().users.each { aUser -> options.add(aUser.userName, aUser.fullUserName)}
 return options
 ```
-![New input parameter](te-input-param-cdUser.png?width=50pc)
+![New input parameter](te-input-param-cdUser.png?width=70pc)
 
 6. When the script is saved, CloudBees CD/RO runs the DSL script to validate it. You can use the DSL IDE to create and debug them. If there are dependencies on other parameters, you’ll need to include their definitions in the test script. For example:
 ```groovy
@@ -151,7 +151,7 @@ Duplicate the second step and modify it to use the new parameter.
 ### Rerun the procedure
 
 1. Select the Run button (green arrow) and then select **Last Run**.
-2. Fill in the parameter values. The pull-down options are populated with a list of users that have been defined in your CloudBees CD/RO instance. ![Rerun procedure with parameter values](te-run-cduser.png?width=50pc)
+2. Fill in the parameter values. The pull-down options are populated with a list of users that have been defined in your CloudBees CD/RO instance. ![Rerun procedure with parameter values](te-run-cduser.png?width=60pc)
 3. To view the step log for the Hello CD User step, select **Job Details** from the **Actions** menu, then select the **View Log** icon in the upper right. You should see your "Hello" text displayed.
 
 ## Customize the job name and job step summary
@@ -176,7 +176,7 @@ ectool setProperty /myJobStep/summary "Hello $[cdUser]"
 Navigate to the Trial procedure to create an output parameter.
 
 1. From the Trial procedure, select the Procedure menu on the right, and then select **Parameters**. The Parameters dialog appears.
-2. Select the **Output Parameters** tab and add an output parameter called **whoRanMe**. ![Add an output parameter](te-add-output-param.png?width=50pc)
+2. Select the **Output Parameters** tab and add an output parameter called **whoRanMe**. ![Add an output parameter](te-add-output-param.png?width=30pc)
 3. Add a new procedure step and name it *Set output parameter*.
 
 {{% notice tip %}}
@@ -205,4 +205,4 @@ $[/javascript myProcedure.count > 5]
 6. Select **Rerun** a few more times.
 
 Note that the *Hello World* step runs after the count property exceeds five. Here is an example of the results after eight runs.
-![Example after eight runs](te-trial-procedure-run-count.png?width=50pc)
+![Example after eight runs](te-trial-procedure-run-count.png?width=70pc)
