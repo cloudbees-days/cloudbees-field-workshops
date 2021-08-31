@@ -44,6 +44,7 @@ In this lab, you create an application model that runs a Helm chart deployment.
 {{% notice tip %}}
 If the **Deploy** button is not activated, make sure the microservice is mapped to the new environment. Select the **freshrss** Helm component menu and select **Add Mapping**. Drag the end point to the **RSS - UAT** environment.
 {{% /notice %}}
+
 ![Mapped RSS-UAT environment](te-helm-mapped-rss-uat.png?width=40pc)
 14. Select **Deploy Application** and **RSS - QA** as the target environment.
 15. To view the inventory, select the **RSS - QA** link from the bread crumb, then select Inventory.
