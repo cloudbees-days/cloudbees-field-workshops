@@ -6,4 +6,4 @@ weight: 1
 
 # CloudBees CD/RO Workshop
 
-The step-by-step labs are provided to introduce you to the key features and applications of CloudBees CD/RO. The instructions are self-contained and can be performed with no further background so that you can be successful right away.
+This workshop will familiarize you with CloudBees Software Delivery Automation and CloudBees CD/RO. Complete the hands-on labs to explore the features and technical advantages of the software.
