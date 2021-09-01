@@ -14,12 +14,12 @@ The deployment examples make use of public content hosted on GitHub. These inclu
 
 It is also recommended that you read the product features pages in the [CloudBees CD/RO documentation](https://docs.cloudbees.com/docs/cloudbees-cd/latest/) so you can get a practical understanding of the software. You can do this before or after you complete the examples.
 
-Labs include:
+Workshop Labs:
 
 1. Creating and Running Procedures
 2. Creating a Service Catalog Item
 3. Deploying a Tomcat Application
 4. Running a Helm Chart Deployment
 5. Running a Release Pipeline
-6. Exploring DSL
+6. Exploring the CloudBees CD/RO DSL
 7. Viewing Deployment and Release Dashboards
