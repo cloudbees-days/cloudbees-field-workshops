@@ -1,14 +1,16 @@
 ---
 title: "Provisioning Controllers with CloudBees CI Configuration Bundles"
 chapter: false
-weight: 5
+weight: 6
 --- 
 
 While the parent `base` bundle we explored in the previous lab is also configured to be the default bundle and would allow you to easily manage configuration across all of your organization's controllers, it does not allow for any differences in configuration bundles between controllers. Also, the number of manual steps to provision a controller and apply controller specific bundles to numerous controllers wastes time and is error prone. Imagine if you had dozens or even hundreds of controllers (like we do in this workshop), things would quickly become very difficult to manage.
 
 In this lab we will explore  a GitOps approach for automating the process of provisioning a controller to include automating the configuration and application of a controller specific configuration bundle. This approach is based on individual repositories representing individual controllers and takes advantage of the Jenkins GitHub Organization project type and CloudBees CI custom marker file we setup earlier. After we are done updating the `controller-casc-automation` Jenkins pipeline script in our copy of the `ops-controller` repository, a new controller will be provisioned any time you add a new GitHub repository with a `bundle.yaml` file to your workshop GitHub Organization. The managed controller will have the same name as the repository and will be provisioned with the configuration bundle from the associated GitHub repository.
 
->**NOTE:** Another GitOps type approach you may be interested in is using one repository to declaratively represent an entire CloudBees CI cluster as explained here https://github.com/kyounger/cbci-helmfile. 
+{{% notice note %}}
+Another GitOps type approach you may be interested in is using one repository to declaratively represent an entire CloudBees CI cluster as explained here https://github.com/kyounger/cbci-helmfile. 
+{{% /notice %}} 
 
 ## GitOps for Controller Provisioning with CloudBees CI Configuration Bundles
 

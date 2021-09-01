@@ -1,7 +1,7 @@
 ---
 title: "CloudBees CI Configuration Bundle Inheritance and Advanced File Structure"
 chapter: false
-weight: 4
+weight: 5
 --- 
 
 This lab will explore more advanced aspects of bundle composition to include bundle inheritance and using folders with multiple files. Both of which make it easier to manage configuration bundles at scale.

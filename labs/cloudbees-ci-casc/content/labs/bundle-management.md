@@ -6,7 +6,9 @@ weight: 3
 
 CloudBees CI configuration bundles are centrally managed and stored in the `jcasc-bundles-store` directory in the Operations Center Jenkins home directory. In order to make a bundle available for a controller or to update an existing bundle the bundle files must be copied to the `jcasc-bundles-store` directory.
 
->NOTE: While Operations Center simplifies the management of bundles, it is possible to configure a controller with a bundle without Operations Center using the `-Dcore.casc.config.bundle=/path/to/casc-bundle` Java system property.
+{{% notice note %}}
+While Operations Center simplifies the management of bundles, it is possible to configure a controller with a bundle without Operations Center using the `-Dcore.casc.config.bundle=/path/to/casc-bundle` Java system property.
+{{% /notice %}}
 
 The labs in this section will explore:
 
@@ -16,7 +18,7 @@ The labs in this section will explore:
 
 ## Managing Configuration Bundles on Operations Center
 
-This lab will provide an overview of how configuration bundles are managed via the Operations Center UI and how to manually apply a configuration bundle to a controller. The first part of the overview will be on the Operations Center **Configuration as Code bundles** settings page that is only accessible by workshop instructors. Therefore the first part of this lab will explore the 3 major components on the Operations Center **Configuration as Code bundles** settings page without attendees following along.
+This lab will provide an overview of how configuration bundles are managed via the Operations Center UI and how to manually apply a configuration bundle to a controller. The first part of the overview will be on the Operations Center **Configuration as Code bundles** settings page that is only accessible by workshop instructors. Therefore the first part of this lab will explore the 3 major components on the Operations Center **Configuration as Code bundles** settings page.
 
 ![Operations Center Configuration as Code bundles settings pag](ops-center-config-bundle-settings.png?width=70pc)
 
@@ -74,17 +76,22 @@ pipeline {
 8. Next, scroll down to the **Project Recognizers** section and delete the **Pipeline Jenkinsfile** project recognizer. Then click the **Add** button and select **Custom script** as the project recognizer. ![Delete Jenkinsfile project recognizer](delete-project-recognizer.png?width=50pc)
 9. For the **Custom script** configuration enter `bundle.yaml` as the **Marker file** so pipeline jobs will only be created for repository branches with a `bundle.yaml` file. ![Custom script config](custom-script-config.png?width=50pc)
 10. For the **Definition** of the **Pipeline** select ***Pipeline script from SCM*** and then select ***Git*** as the **SCM**
-11. Enter the URL for your copy of the `ops-controller` repository in your workshop GitHub Organization as the **Repository URL** and select ***CloudBees CI CasC Workshop GitHub App credential*** for the **Credentials**. **TIP:** If you navigate to your GitHub `ops-controller` repository in your workshop GitHub Organization, and click on the Code button, you can then click on the clipboard icon to copy the Git URL for your repository. ![GitHub copy repo url](github-copy-repo-url.png?width=50pc)
+11. Enter the URL for your copy of the `ops-controller` repository in your workshop GitHub Organization as the **Repository URL** and select ***CloudBees CI CasC Workshop GitHub App credential*** for the **Credentials**. 
+
+{{% notice tip %}}
+If you navigate to your GitHub `ops-controller` repository in your workshop GitHub Organization, and click on the Code button, you can then click on the clipboard icon to copy the Git URL for your repository. ![GitHub copy repo url](github-copy-repo-url.png?width=50pc)
+{{% /notice %}}
+
 12. Under **Branches to build** change ***master*** to ***main*** for the **Branch Specifier**. 
 13. For the **Script Path** replace `Jenkinsfile` with `controller-casc-automation`. All of the rest of the default values are fine, so click the **Save** button.
 14. Once the GitHub Organization scan is complete click on the the **Status** link in the left menu and you will see a Multibranch pipeline project for your `ops-controller` repository. ![Ops controller Multibranch pipeline](ops-controller-multibranch-job.png?width=50pc)
 15. Click on the `ops-controller` Multibranch pipeline project and then click on the pipeline job for the `main` branch of your `ops-controller` repository. ![Ops controller job](ops-controller-job.png?width=50pc)
 16. On the **Branch main** screen wait for the job to complete. ![Ops controller main branch job](ops-controller-main-branch-job.png?width=50pc)
 17. After the job has completed successfully, navigate to the top level of your Ops controller, click on the **Manage Jenkins** link in the left menu, and then click on the **CloudBees Configuration as Code bundle** **System Configuration** item. ![CasC Configuration link](casc-config-link.png?width=50pc)
-18. On the **CloudBees Configuration as Code bundle** click on the **Bundle update** tab and you should see that there is a bundle update available. ![CasC bundle update](casc-bundle-update.png?width=50pc)
+18. On the **CloudBees Configuration as Code bundle** click on the **Bundle update** tab and you should see that a *new version of the Configuration Bundles is available*. ![CasC bundle update](casc-bundle-update.png?width=50pc)
 19. Click on the **Reload Configuration** button and then on the next screen click the **Yes** button to apply the bundle update. ![CasC bundle apply](casc-bundle-apply.png?width=50pc)
 20. After the updated configuration bundle is finished being applied return to the top level of your Ops controller and you will see that the **configuration-automation** folder has been added back. ![CasC bundle updated](casc-bundle-updated.png?width=50pc)
-21. Besides being an example of configuration bundle `items` configuration, another reason we created a folder is because it is considered a best practice to keep all of your Jenkins jobs organized with folders - some of the advantages of folders include fine grained access control and credentials, folder specific environment variables, the ability to restrict job types that can be create and easily moving or copying jobs across controllers. Therefore we will move your GitHub Organization project into the **controller-automation** folder. To do so click on your GitHub Organization project and then click the **Move/Copy/Promote** link in the left menu. ![Move multibranch job](move-github-org-job.png?width=50pc)
+21. Besides being an example of configuration bundle `items` configuration, another reason we created a folder is because it is considered a best practice to keep all of your Jenkins jobs organized with folders - some of the advantages of folders include fine grained access control and credentials, folder specific environment variables, the ability to restrict job types that can be created and easily moving or copying jobs across controllers or to other folders. Therefore we will move your GitHub Organization project into the **controller-automation** folder. To do so click on your GitHub Organization project and then click the **Move/Copy/Promote** link in the left menu. ![Move multibranch job](move-github-org-job.png?width=50pc)
 22. On the **Move/Copy/Promote** place your mouse cursor in the **Destination** select box next to **ops-controller**, select **controller-automation** from the drop down and then click the **Move** button. ![Select folder and move](select-folder-move.png?width=50pc)
 23. Once the move has completed successfully click on the **Close** button. ![Move close](move-close.png?width=50pc)
 
