@@ -29,7 +29,7 @@ credentials:
           owner: "${GITHUB_ORGANIZATION}"
           privateKey: "${cbciCascWorkshopGitHubAppPrivateKey}"
 ```
-2. Name the new file `jcasc/credentials.yaml`, copy the `credentials` section from above and paste it into the GitHub file editor. Then select the option to **"Create a new branch for this commit and start a pull request"**, name the branch `jcasc-subfolder` and finally click the **Propose changes** button. ![Create credentials.yaml in jcasc folder](github-commit-credentials-yaml.png?width=50pc)
+2. Name the new file `jcasc/credentials.yaml`, copy the `credentials` section from above and paste it into the GitHub file editor. Then select the option to **"Create a new branch for this commit and start a pull request"**, name the branch `jcasc-subfolder` and finally click the **Propose new file** button. ![Create credentials.yaml in jcasc folder](github-commit-credentials-yaml.png?width=50pc)
 3. On the next screen click the **Create pull request** button to create a pull request to merge to the `main` branch when you are done updating your `ops-controller` configuration bundle. ![Create sub-folder pull request](github-create-subfolder-pr.png?width=50pc)
 4. Next, navigate back to the **Code** tab of your `ops-controller` repository and select the `jcasc-subfolder` branch from the branch drop down. ![Select jcasc-subfolder branch](github-select-jcasc-subfolder-branch.png?width=50pc)
 5. Back at the top level of your `ops-controller` repository, click on the `jcasc` folder and then click on the **Add file** button and then select **Create new file**. ![Create new unclassified in GitHub](github-create-unclassified-file.png?width=50pc)
