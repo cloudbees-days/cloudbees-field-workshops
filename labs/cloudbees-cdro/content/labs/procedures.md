@@ -34,8 +34,8 @@ To create a project:
 
 Now that you have a project to contain objects, do the following to create a procedure.
 
-1. From the CloudBees CD/RO main menu, navigate to **DevOps > Essentials Procedures**. The list of procedure objects displays.
-2. Select **New+** in the upper right to add a procedure. The New Procedure dialog displays.
+1. From the CloudBees CD/RO main menu, navigate to **DevOps Essentials > Procedures**. The list of procedure objects displays.
+2. Select **New +** in the upper right to add a procedure. The New Procedure dialog displays.
 3. Select **Create New**.
 4. Enter a procedure name such as Trial Procedure. Select the target project that you created above (for example, Trial Guide) and then select **OK**. ![create procedure](te-add-procedure.png?width=70pc) 
 5. You are now in a procedure. The Hierarchy Menu on the left appears, as well as a Procedure menu on the right. ![procedures menu](te-procedures-menus.png?width=70pc) 
