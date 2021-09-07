@@ -149,7 +149,7 @@ As you can see from the composition overview above, the YAML in the different co
 6. At the top level of your Ops controller, click on **Create a job** link.  ![Create a job](create-job-link.png?width=50pc) 
 7. On the item creation screen, enter ***controller-jobs*** as the name, select **Folder** as the type and then click the **OK** button. ![Create folder](create-folder.png?width=50pc) 
 8. On the next screen click on the **Properties** tab, then enter `GITHUB_ORGANIZATION=${GITHUB_ORGANIZATION}` in the **Environment Variables** text area, 
-9. Next, click on the **Restrict the kind of children in this folder**, then check the **Pipeline**, **GitHub Organization** and **Multibranch Pipeline** items; and then click the **Save** button. ![Configure folder](configure-folder.png?width=50pc) 
+9. Next, click on the **Restrict the kind of children in this folder**, then check the **Pipeline** and **Multibranch Pipeline** items; and then click the **Save** button. ![Configure folder](configure-folder.png?width=50pc) 
 10. Navigate back to the top-level of your Ops controller and you should see the new **controller-jobs** folder. Click on the **Manage Jenkins** link in the left menu. ![Folder created](folder-created.png?width=50pc) 
 11. On the **Manage Jenkins** page click on **CloudBees Configuration as Code bundle** under the **System Configuration** section. ![CloudBees CasC link](cloudbees-casc-link.png?width=50pc) 
 12. Next, on the **CloudBees Configuration as Code bundle** page under the **Current configuration** tab, click on the *visualize* link for the `plugin-catalog.yaml` **Filename**. A [plugin catalog](https://docs.cloudbees.com/docs/admin-resources/latest/plugin-management/configuring-plugin-catalogs) is used to include plugins that are not in the CloudBees Assurance Program (CAP); tested and used by your software delivery workloads. Since the **Pipeline Utility Steps** is not in CAP we must create a plugin catalog that includes that plugin so we may install it on a controller. ![Plugin Catalog visualize link](plugin-catalog-visualize-link.png?width=50pc) 
@@ -223,6 +223,7 @@ items:
       - org.jenkinsci.plugins.workflow.job.WorkflowJob
       - org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject
       - jenkins.branch.OrganizationFolder.org.jenkinsci.plugins.github_branch_source.GitHubSCMNavigator
+      - jenkins.branch.OrganizationFolder
       filter: true
 ```
 20. Copy the contents of the auto-generated `items.yaml` and then navigate to the top level of your copy of the `ops-controller` repository in your workshop GitHub Organization.

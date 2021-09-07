@@ -6,7 +6,7 @@ weight: 3
 
 CloudBees CI configuration bundles are centrally managed and stored in the `jcasc-bundles-store` directory in the Operations Center Jenkins home directory. In order to make a bundle available for a controller or to update an existing bundle the bundle files must be copied to the `jcasc-bundles-store` directory.
 
-{{% notice note %}}
+{{% notice tip %}}
 While Operations Center simplifies the management of bundles, it is possible to configure a controller with a bundle without Operations Center using the `-Dcore.casc.config.bundle=/path/to/casc-bundle` Java system property.
 {{% /notice %}}
 
@@ -92,6 +92,6 @@ If you navigate to your GitHub `ops-controller` repository in your workshop GitH
 19. Click on the **Reload Configuration** button and then on the next screen click the **Yes** button to apply the bundle update. ![CasC bundle apply](casc-bundle-apply.png?width=50pc)
 20. After the updated configuration bundle is finished being applied return to the top level of your Ops controller and you will see that the **configuration-automation** folder has been added back. ![CasC bundle updated](casc-bundle-updated.png?width=50pc)
 21. Besides being an example of configuration bundle `items` configuration, another reason we created a folder is because it is considered a best practice to keep all of your Jenkins jobs organized with folders - some of the advantages of folders include fine grained access control and credentials, folder specific environment variables, the ability to restrict job types that can be created and easily moving or copying jobs across controllers or to other folders. Therefore we will move your GitHub Organization project into the **controller-automation** folder. To do so click on your GitHub Organization project and then click the **Move/Copy/Promote** link in the left menu. ![Move multibranch job](move-github-org-job.png?width=50pc)
-22. On the **Move/Copy/Promote** place your mouse cursor in the **Destination** select box next to **ops-controller**, select **controller-automation** from the drop down and then click the **Move** button. ![Select folder and move](select-folder-move.png?width=50pc)
-23. Once the move has completed successfully click on the **Close** button. ![Move close](move-close.png?width=50pc)
-
+ 22. On the **Move/Copy/Promote** place your mouse cursor in the **Destination** select box next to **ops-controller**, select **controller-automation** from the drop down and then click the **Move** button. ![Select folder and move](select-folder-move.png?width=50pc)
+ 23. Once the move has completed successfully click on the **Close** button. ![Move close](move-close.png?width=50pc)
+ 
