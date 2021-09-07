@@ -24,8 +24,8 @@ Before you create a procedure, you need to create a container for the procedure,
 To create a project:
 
 1. Select the CloudBees CD/RO main menu. ![CD/RO main menu](te-cdro-main-menu-icon.png?width=25pc) 
-2. Navigate to **DevOps Essentials Projects**. The project list appears. ![Project list](te-main-menu-select-devops-projects.png?width=40pc) 
-3. Select **New+** in the upper right. The New Project dialog appears.
+2. Navigate to **DevOps Essentials Projects** and select the **Projects** menu item. The project list appears. ![Project list](te-main-menu-select-devops-projects.png?width=40pc) 
+3. Select **New +** in the upper right. The **New Project** dialog appears.
 4. Select **Create New**.
 5. Enter the project name *Trial Guide* (or similar name) and then select **OK**. You will not be using credentials (secrets), so when asked if you want to create or edit credentials, select **No**.  
 6. After the project is created, search for it by name. When it is displayed, select the menu under **Actions** to access the project’s attributes. ![Search project](te-project-list.png?width=70pc) 
