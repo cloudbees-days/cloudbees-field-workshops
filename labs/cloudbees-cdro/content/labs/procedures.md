@@ -24,7 +24,7 @@ Before you create a procedure, you need to create a container for the procedure,
 To create a project:
 
 1. Select the CloudBees CD/RO main menu. ![CD/RO main menu](te-cdro-main-menu-icon.png?width=25pc) 
-2. Navigate to **DevOps Essentials Projects** and select the **Projects** menu item. The project list appears. ![Project list](te-main-menu-select-devops-projects.png?width=40pc) 
+2. Navigate to **DevOps Essentials > Projects**. The project list appears. ![Project list](te-main-menu-select-devops-projects.png?width=40pc) 
 3. Select **New +** in the upper right. The **New Project** dialog appears.
 4. Select **Create New**.
 5. Enter the project name *Trial Guide* (or similar name) and then select **OK**. You will not be using credentials (secrets), so when asked if you want to create or edit credentials, select **No**.  
@@ -37,14 +37,14 @@ Now that you have a project to contain objects, do the following to create a pro
 1. From the CloudBees CD/RO main menu, navigate to **DevOps Essentials > Procedures**. The list of procedure objects displays.
 2. Select **New +** in the upper right to add a procedure. The New Procedure dialog displays.
 3. Select **Create New**.
-4. Enter a procedure name such as Trial Procedure. Select the target project that you created above (for example, Trial Guide) and then select **OK**. ![create procedure](te-add-procedure.png?width=70pc) 
+4. Enter a procedure name such as *Trial Procedure*. Select the target project that you created above (for example, Trial Guide) and then select **OK**. ![create procedure](te-add-procedure.png?width=70pc) 
 5. You are now in a procedure. The Hierarchy Menu on the left appears, as well as a Procedure menu on the right. ![procedures menu](te-procedures-menus.png?width=70pc) 
 
 ## Add a procedure step
 
 When a procedure is first created, it has no steps to execute, so you must add steps.
 
-1. Select **There are no Steps. Add one +** to begin adding a step. The **New Procedure Step** dialog appears.
+1. Select the **There are no Steps. Add one +** link to begin adding a step. The **New Procedure Step** dialog appears.
 2. Select **Create New**.
 3. Provide a name, *Hello World*, and a description for the step — *A step to echo out a simple message*.
 4. Select **Definition** in the upper right of the dialog to define the functionality of the step.
@@ -170,6 +170,11 @@ $[/myProcedure]-$[/increment /myProcedure/count]
 ectool setProperty /myJobStep/summary "Hello $[cdUser]"
 ```
 ![Edit step command](te-edit-hello-command.png?width=50pc)
+
+## Run the procedure with the new job name
+
+1. Select the Run button and select **Last Run**. Note the new job name format.
+2. Navigate to the job details and note the new job step summary value.
 
 ## Create and use an output parameter
 
