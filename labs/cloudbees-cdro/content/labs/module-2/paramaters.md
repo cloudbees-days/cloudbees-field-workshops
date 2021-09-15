@@ -1,64 +1,19 @@
 ---
-title: "Creating and Running Procedures"
+title: "Parameters for Procedures"
 chapter: false
-weight: 2
+weight: 5
 --- 
 
-Procedures are the basic automation objects in CloudBees CD/RO. They are used to implement tool integrations and can be used for almost any automation task, such as running scripts and command line actions.
+Each procedure can define parameters, which are values provided to the procedure when it is invoked. Each parameter value is placed in a property associated with the job and the procedure can use the property to control its execution. For example, a parameter might specify a particular branch of a product to build; another parameter might indicate whether unit tests should be run during this build.
 
-Procedures are made up of steps. A command step invokes a block of shell or script commands on a CloudBees CD/RO agent.
-In this example, you create a simple procedure that:
+When you define a parameter, indicate whether the parameter is required (meaning the procedure will not run unless a value is provided for the parameter). Also, you can provide a default parameter value and a description to help callers understand how to use the parameter.
 
-- Produces standard I/O output from a CloudBees CD/RO agent machine.
+In this lab you will update the procedure you created in *Module 1* by adding different types of parameters to include:
+
 - Accepts input from parameters (both static and dynamic).
 - Runs steps conditionally.
 
 You also customize the runtime job name and step summaries.
-
-Because procedures run inside of projects, you must create a project first.
-
-## Create a Project
-
-Before you create a procedure, you need to create a container for the procedure, which is called a project. Projects are root-level objects that can contain procedures, pipelines, releases, applications, and other modeling objects. For more information about objects, see [Understanding CloudBees CD/RO objects](https://docs.cloudbees.com/docs/cloudbees-cdro-eval/latest/eval/objects).
-
-To create a project:
-
-1. Select the CloudBees CD/RO main menu. ![CD/RO main menu](te-cdro-main-menu-icon.png?width=25pc) 
-2. Navigate to **DevOps Essentials > Projects**. The project list appears. ![Project list](te-main-menu-select-devops-projects.png?width=40pc) 
-3. Select **New +** in the upper right. The **New Project** dialog appears.
-4. Select **Create New**.
-5. Enter the project name *Trial Guide* (or similar name) and then select **OK**. You will not be using credentials (secrets), so when asked if you want to create or edit credentials, select **No**.  
-6. After the project is created, search for it by name. When it is displayed, select the menu under **Actions** to access the project’s attributes. ![Search project](te-project-list.png?width=70pc) 
-
-## Create a procedure
-
-Now that you have a project to contain objects, do the following to create a procedure.
-
-1. From the CloudBees CD/RO main menu, navigate to **DevOps Essentials > Procedures**. The list of procedure objects displays.
-2. Select **New +** in the upper right to add a procedure. The New Procedure dialog displays.
-3. Select **Create New**.
-4. Enter a procedure name such as *Trial Procedure*. Select the target project that you created above (for example, Trial Guide) and then select **OK**. ![create procedure](te-add-procedure.png?width=70pc) 
-5. You are now in a procedure. The Hierarchy Menu on the left appears, as well as a Procedure menu on the right. ![procedures menu](te-procedures-menus.png?width=70pc) 
-
-## Add a procedure step
-
-When a procedure is first created, it has no steps to execute, so you must add steps.
-
-1. Select the **There are no Steps. Add one +** link to begin adding a step. The **New Procedure Step** dialog appears.
-2. Select **Create New**.
-3. Provide a name, *Hello World*, and a description for the step — *A step to echo out a simple message*.
-4. Select **Definition** in the upper right of the dialog to define the functionality of the step.
-5. In the Command field, enter this command to be run: `echo "Hello world"`.
-6. Select **OK**. ![Add a new step to the procedure](te-new-procedure-step.png?width=70pc) 
-7. Your *Hello World* step is displayed in the list of steps.
-
-## Run the procedure for the first time
-
-1. Select the Run Procedure icon (green arrow) on the right, and then select **New Run**. The Run Procedure dialog box appears. Select **OK**. Note the job’s progress.
-2. View the job details by selecting **Procedure Runs** at the top of the page, then selecting the job number. Select the job once again to be able to view the log.
-3. Select the icon under **Log** to view the job output. ![View the log after running a procedure](te-log-details-procedure.png?width=30pc)
-4. You will now see the *Hello world* message.
-5. Close the job dialog.
 
 ## Add a parameter
 
@@ -131,11 +86,7 @@ return options
 ```
 ![New input parameter](te-input-param-cdUser.png?width=70pc)
 
-6. When the script is saved, CloudBees CD/RO runs the DSL script to validate it. You can use the DSL IDE to create and debug them. If there are dependencies on other parameters, you’ll need to include their definitions in the test script. For example:
-```groovy
-def args = [parameters: [aParameter: "Parm value"] ]
-```
-7. Select **OK** to save the new parameter and then close the Parameters dialog. You are returned to the step object list.
+6. Select **OK** to save the new parameter and then close the Parameters dialog. You are returned to the step object list.
 
 ## Use the multi-option parameter in a step
 
