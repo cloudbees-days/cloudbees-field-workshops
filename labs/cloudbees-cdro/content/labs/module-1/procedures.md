@@ -28,9 +28,7 @@ To create a project:
 5. Enter the project name *Trial Guide* (or similar name) and then select **OK**. You will not be using credentials (secrets), so when asked if you want to create or edit credentials, select **No**.  
 
 {{% notice note %}}
-Although we are not using credentials with this simple procedure you will definitely need to create/use credentials from more complicated procedures. Credentials are used to access services and resources used during application deployments, release pipeline execution, or any other automated process orchestrated by CloudBees CD/RO.
-
-When a run-time object is configured to run as a specific user other than that defined at install time, CloudBees CD/RO retrieves the user name and password from a stored credential. The credential is passed to the CloudBees CD/RO agent over an encrypted channel so the agent can authenticate itself to the operating system and set up a security context where the object runs with the user permissions in the credential.
+Although we are not using credentials with this simple procedure you will definitely need to create/use credentials from more complicated procedures. Credentials are used to access services and resources used during application deployments, release pipeline execution, or any other automated process orchestrated by CloudBees CD/RO. When a run-time object is configured to run as a specific user other than that defined at install time, CloudBees CD/RO retrieves the user name and password from a stored credential. The credential is passed to the CloudBees CD/RO agent over an encrypted channel so the agent can authenticate itself to the operating system and set up a security context where the object runs with the user permissions in the credential.
 {{% /notice %}}
 
 6. After the project is created, search for it by name. When it is displayed, select the menu under **Actions** to access the project’s attributes. ![Search project](te-project-list.png?width=70pc) 

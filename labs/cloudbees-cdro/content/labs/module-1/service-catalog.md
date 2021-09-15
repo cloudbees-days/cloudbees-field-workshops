@@ -7,9 +7,11 @@ weight: 3
 Use the CloudBees CD/RO Service Catalog to package up easy-to-use functionality such as:
 
 **Creating models from parameterized templates**
+
 Create models from templates by wrapping DSL code that is executed by a service catalog item.
 
 **Running custom automation**
+
 Invoke a procedure from a Service Catalog item to implement automated tasks.
 
 In this lab you will create a Service Catalog, and then create and run a Service Catalog item with the procedure you created earlier.
