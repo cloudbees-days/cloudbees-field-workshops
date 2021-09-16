@@ -62,8 +62,9 @@ echo "Hello world"
 
 ## Run the procedure for the first time
 
-1. Select the Run Procedure icon (green arrow) on the right, and then select **New Run**. The Run Procedure dialog box appears. Select **OK**. Note the job’s progress. ![Run procedure](te-run-procedure.png?width=70pc) 
-2. View the job details by selecting **Procedure Runs** at the top of the page, then selecting the job number. Select the job once again to be able to view the log.
-3. Select the icon under **Log** to view the job output. ![View the log after running a procedure](te-log-details-procedure.png?width=30pc)
-4. You will now see the *Hello world* message.
-5. Close the job dialog.
+1. Select the Run Procedure icon (green arrow) on the right, and then select **New Run**. ![Run procedure](te-run-procedure.png?width=70pc) 
+2. The Run Procedure dialog box appears. Select **OK**. Note the job’s progress.
+3. View the job details by clicking the **Runs** breadcrumb link, then click the link of the last job run. On the **Run Details** page, click the job run link once again to be able to view the step logs. ![Run procedure](te-procedure-runs.png?width=70pc)
+4. Select the icon under **Log** to view the log output for the *Hello World* step. ![View the log after running a procedure](te-log-details-procedure.png?width=30pc)
+5. You should see the *Hello world* message in the logs of the *Hello World* step.
+6. Close the job dialog by clicking the **X** in the top right corner.
