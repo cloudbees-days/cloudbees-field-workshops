@@ -4,18 +4,18 @@ chapter: false
 weight: 4
 --- 
 
-In this exercise, you use a service catalog item to build out a Tomcat application model. You also create a few environment models and map them to the application so that the Tomcat application can be deployed to the environments.
+In this exercise, you will use a Service Catalog item to build out a Tomcat application model. You also create a few environment models and map them to the application so that the Tomcat application can be deployed to the environments.
 
 {{% notice note %}}
 You must have access to GitHub to complete this exercise.
 {{% /notice %}}
 
-## Use the Tomcat service catalog item to create a model
+## Use the Tomcat Service Catalog item to create a model
 
 1. From GitHub, download [jpetstore.war](https://github.com/o2platform/Demos_Files/blob/master/jPetStore%20-%20O2%20Demo%20Pack/apache-tomcat-7.0.16/webapps/jpetstore.war) to your computer.
-2. Select **Service catalog** from the banner.
-3. Navigate (scroll down) to the Tomcat Application Model. ![Tomcat catalog item](te-tomcat-item.png?width=20pc) 
-4. Select **Create**. The New Tomcat Application Model dialog appears.
+2. Select **Service catalog** from the banner at the top.
+3. Navigate (scroll down) to the **Tomcat Application Model**. ![Tomcat catalog item](te-tomcat-item.png?width=20pc) 
+4. Click the **Create** link and the **Tomcat Application Model** dialog appears.
 5. In the **Application details** section, enter these field values:
     - **Application Name**: *jpetstore*
     - **Application Version**: *1.0*
