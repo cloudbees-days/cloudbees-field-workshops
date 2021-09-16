@@ -8,20 +8,20 @@ Use the CloudBees CD/RO Service Catalog to package up easy-to-use functionality 
 
 - **Creating models from parameterized templates**
 
-    Create models from templates by wrapping DSL code that is executed by a service catalog item.
+    Create models from templates by wrapping DSL code that is executed by a Service Catalog item.
 
 - **Running custom automation**
 
     Invoke a procedure from a Service Catalog item to implement automated tasks.
 
-In this lab you will create a Service Catalog, and then create and run a [procedure based Service Catalog item](https://docs.cloudbees.com/docs/cloudbees-cd/latest/self-service/#_procedure_based_catalog_items) with the procedure you created earlier.
+In this lab you will create a Service Catalog, and then create and run a [procedure based Service Catalog item](https://docs.cloudbees.com/docs/cloudbees-cd/latest/self-service/#_procedure_based_catalog_items) using the procedure you created earlier.
 
 ## Create a new catalog
 
 1. Select **Service catalog** from the banner at the top. ![Service catalog in banner](te-service-catalog-banner.png?width=50pc) 
 2. Create a new catalog by selecting the plus button (**+**) in the upper right.
-3. Select **Create new**.
-4. Provide a name for the catalog such as Trial Catalog and select the target project for it. Select **OK**.
+3. Select **Create new** on the **New Catalog** dialog.
+4. Provide a name for the catalog such as *Trial Catalog* and select your *Trial Project* target project for it, and then click **OK**. ![New Catalog dialog](te-service-catalog-new-dialog.png?width=50pc) 
 
 ## Add a catalog item
 
