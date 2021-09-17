@@ -18,7 +18,7 @@ In this lab you will create a Service Catalog, and then create and run a [proced
 
 ## Create a new catalog
 
-1. Select **Service catalog** from the banner at the top. ![Service catalog in banner](te-service-catalog-banner.png?width=50pc) 
+1. Select the **Service catalog** link from the banner at the top. ![Service catalog in banner](te-service-catalog-banner.png?width=50pc) 
 2. Create a new catalog by selecting the plus button (**+**) in the upper right.
 3. Select **Create new** on the **New Catalog** dialog.
 4. Provide a name for the catalog such as *Trial Catalog* and select your *Trial Project* target project for it, and then click **OK**. ![New Catalog dialog](te-service-catalog-new-dialog.png?width=50pc) 
