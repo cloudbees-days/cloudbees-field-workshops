@@ -34,7 +34,7 @@ You must have access to GitHub to complete this exercise.
     - **Version**: *7.0.16*
     - **Filename**: *jpetstore.war*
 ![Tomcat Application details](te-tomcat-app-details.png?width=40pc) 
-7. **File to upload**: Click the **Choose File** button to upload the jpetstore.war file you downloaded earlier.
+7. For **File to upload**: Click the **Choose File** button to upload the *jpetstore.war* file you downloaded earlier.
 8. Scroll down to the **Deployment details** section (you may need to expand it) and enter the following:
     - **Retrieve to Folder**: */tmp*
     - **Tomcat Config**: *Tomcat*
@@ -50,13 +50,13 @@ In this exercise we will map a deployment environment to your Tomcat application
 2. Select **Create from this Application**. ![Create environment from application](te-tomcat-create-uat-env.png?width=40pc)
 3. Enter *QA* for the environment name and select the **Trial Guide** project you created earlier. Select **OK** to create the environment.
 4. Select the Resources plus (**+**) button. ![Select Resources](te-ss-catalog-webtier-resources-plus.png?width=20pc)
-5. Select **Add resources**. ![Add Resources](add-resources.png?width=20pc)
-6. Choose **tomcat_mysql_qa** then select **OK**. ![Select QA resource](select-qa-resource.png?width=20pc)
+5. Select **Add resources**. ![Add Resources](add-resources.png?width=40pc)
+6. Choose **tomcat_mysql_qa** then select **OK**. ![Select QA resource](select-qa-resource.png?width=70pc)
 7. Return to the application by selecting the **Application: jpetstore** link in the **Hierarchy Menu**.
 
 ## Deploy the application
 
-1. Select **Run** and then **New Run**. The Deployment dialog appears. ![Run deploy](run-deploy.png?width=20pc)
+1. Select **Run** and then **New Run**. The Deployment dialog appears. ![Run deploy](run-deploy.png?width=70pc)
 2. Set **Deploy** to **QA** and turn off the **Smart Deploy**, **Check Dependency** and **Artifact Staging** options. Select **OK**. ![Run Application selections](te-run-app-selections.png?width=40pc)
 3. Select the job name to examine the Job Details.
 4. Select the resource where the application was deployed and note the IP address. ![Resource IP address](te-app-resource-details-ip.png?width=20pc)

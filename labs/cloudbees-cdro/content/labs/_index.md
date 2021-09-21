@@ -16,10 +16,13 @@ It is also recommended that you read the product features pages in the [CloudBee
 
 Workshop Labs:
 
-1. Creating and Running Procedures
-2. Creating a Service Catalog Item
-3. Deploying a Tomcat Application
-4. Running a Helm Chart Deployment
-5. Running a Release Pipeline
-6. Exploring the CloudBees CD/RO DSL
-7. Viewing Deployment and Release Dashboards
+### Module 1: Accelerating Software Delivery with Service Catalogs
+- Creating and Running Procedures
+- Creating a Service Catalog Item
+- Deploying a Tomcat Application
+- Running a Helm Chart Deployment
+
+### Module 2: Release Orchestration
+- Running a Release Pipeline
+- Exploring the CloudBees CD/RO DSL
+- Viewing Deployment and Release Dashboards
