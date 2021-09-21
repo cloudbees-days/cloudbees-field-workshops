@@ -1,7 +1,7 @@
 ---
 title: "Parameters for Procedures"
 chapter: false
-weight: 5
+weight: 2
 --- 
 
 Each procedure can define parameters, which are values provided to the procedure when it is invoked. Each parameter value is placed in a property associated with the job and the procedure can use the property to control its execution. For example, a parameter might specify a particular branch of a product to build; another parameter might indicate whether unit tests should be run during this build.

@@ -1,7 +1,7 @@
 ---
 title: "Running a Release Pipeline"
 chapter: false
-weight: 6
+weight: 3
 --- 
 
 Releases are used to manage the tasks associated with releasing multiple applications or components together.

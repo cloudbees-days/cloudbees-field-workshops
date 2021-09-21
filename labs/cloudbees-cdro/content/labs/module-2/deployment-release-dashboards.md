@@ -1,7 +1,7 @@
 ---
 title: "Viewing Deployment and Release Dashboards"
 chapter: false
-weight: 7
+weight: 6
 --- 
 
 

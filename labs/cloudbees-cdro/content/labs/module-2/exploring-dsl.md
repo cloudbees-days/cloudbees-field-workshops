@@ -1,7 +1,7 @@
 ---
 title: "Exploring the CloudBees CD/RO DSL"
 chapter: false
-weight: 7
+weight: 5
 --- 
 
 The CloudBees CD/RO Domain Specific Language (DSL) can be used to manage configurations and also run CloudBees CD/RO APIs.

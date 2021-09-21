@@ -20,9 +20,9 @@ Workshop Labs:
 - Creating and Running Procedures
 - Creating a Service Catalog Item
 - Deploying a Tomcat Application
-- Running a Helm Chart Deployment
 
 ### Module 2: Release Orchestration
 - Running a Release Pipeline
 - Exploring the CloudBees CD/RO DSL
 - Viewing Deployment and Release Dashboards
+- Running a Helm Chart Deployment

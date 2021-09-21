@@ -4,7 +4,7 @@ chapter: false
 weight: 5
 --- 
 
-In this lab, you create an application model that runs a Helm chart deployment.
+In this lab, you will create an application model that runs a Helm chart deployment.
 
 ## Application Model Helm Chart Deployment
 
