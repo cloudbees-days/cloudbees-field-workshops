@@ -56,14 +56,16 @@ In this exercise we will map a deployment environment to your Tomcat application
 
 ## Deploy the application
 
-1. Select **Run** and then **New Run**. The Deployment dialog appears. ![Run deploy](run-deploy.png?width=70pc)
-2. Set **Deploy** to **QA** and turn off the **Smart Deploy**, **Check Dependency** and **Artifact Staging** options. Select **OK**. ![Run Application selections](te-run-app-selections.png?width=40pc)
-3. Select the job name to examine the Job Details.
-4. Select the resource where the application was deployed and note the IP address. ![Resource IP address](te-app-resource-details-ip.png?width=20pc)
-5. Use the IP address of the resource to access the application. For example, **http://35.202.90.57:8080/jpetstore/** ![jepetstore-webpage](te-app-jpetstore-webpage.png?width=20pc)
-6. Close the Job Details dialog to return to the Deployment run.
-7. Navigate to the environment where the application was deployed, which is QA.
-8. Examine the inventory.
-9. Create a snapshot by selecting the snapshot (camera) icon. The New Snapshot dialog appears.
-10. Enter version number 1.0 in the top field, and then select **Next**. You now have a snapshot of this artifact. ![Snapshot of artifact](te-app-snapshot-details.png?width=20pc)
+1. Select **Run** and then **New Run**. The **Run Application** dialog appears. ![Run deploy](run-deploy.png?width=70pc)
+2. Set **Deploy**  as the *process* and **QA** as the *environment*, and turn off the **Smart Deploy**, **Check Dependency** and **Artifact Staging** options. Select **OK**. ![Run Application selections](te-run-app-selections.png?width=40pc)
+3. Once the application deployment completes click on the job details link. ![Deploy Job Details link](deploy-job-details-link.png?width=20pc)
+4. Next, on the **Job Details** page click on the link for the *tomcat_mysql_qa* **Resource** for the **DeployApp** step. ![Resource link](deploy-resource-link.png?width=20pc)
+5. Under the **Resource Details** find the **Agent Host Name** and copy the IP address. ![Resource IP address](te-app-resource-details-ip.png?width=20pc)
+6. Use the IP address of the resource to access the application by appending `:8080/jpetsore` to the IP address that you copied. For example, **http://35.202.90.57:8080/jpetstore/** ![jepetstore-webpage](te-app-jpetstore-webpage.png?width=20pc)
+7. Close the Job Details dialog to return to the **Deploy** run.
+8. Navigate to the environment where the application was deployed by clicking **QA** in the breadcrumbs. ![Navigate to QA Environment](deploy-qa-env-link.png?width=20pc)
+9. Click on the **Inventory** link in the top navigation. ![QA Inventory link](qa-inventory-link.png?width=20pc)
+10. Create a snapshot by clicking the snapshot (camera) icon under the **Actions** column. ![QA Inventory](qa-inventory.png?width=20pc)
+11. The New Snapshot dialog appears.
+12. Enter version number 1.0 in the top field, and then select **Next**. You now have a snapshot of this artifact. ![Snapshot of artifact](te-app-snapshot-details.png?width=20pc)
 
