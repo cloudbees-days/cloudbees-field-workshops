@@ -65,7 +65,7 @@ In this exercise we will map a deployment environment to your Tomcat application
 7. Close the Job Details dialog to return to the **Deploy** run.
 8. Navigate to the environment where the application was deployed by clicking **QA** in the breadcrumbs. ![Navigate to QA Environment](deploy-qa-env-link.png?width=20pc)
 9. Click on the **Inventory** link in the top navigation. ![QA Inventory link](qa-inventory-link.png?width=20pc)
-10. Create a snapshot by clicking the snapshot (camera) icon under the **Actions** column. ![QA Inventory](qa-inventory.png?width=20pc)
-11. The New Snapshot dialog appears.
-12. Enter version number 1.0 in the top field, and then select **Next**. You now have a snapshot of this artifact. ![Snapshot of artifact](te-app-snapshot-details.png?width=20pc)
+10. Create a snapshot by clicking the snapshot (camera) icon under the **Actions** column and clicking the **New Snapshot** link. ![QA Inventory New Snapshot](qa-inventory.png?width=20pc)
+11. In the **New Snapshot** dialog enter *jpetstore-qa** as the **Name** and then click the **Next** button. ![New QA Snapshot](new-qa-snapshot.png?width=20pc) 
+12. You now have a snapshot of this artifact. ![Snapshot of artifact](te-app-snapshot-details.png?width=70pc)
 
