@@ -6,7 +6,9 @@ weight: 3
 
 CloudBees CI for modern platforms takes advantage of Kubernetes to providing dynamic provisioning of team specific Jenkins instances we refer to as ***managed controllers***. A loudBees ***managed controller*** (Jenkins instance) was provisioned for you with an initial configuration provided by CloudBees CI Configuration-as-Code.
 
->NOTE: If you haven't already received the link for the CloudBees CI Workshop cluster, then ask your instructor for it.
+{{% notice note %}}
+If you haven't already received the link for the CloudBees CI Workshop cluster, then ask your instructor for it.
+{{% /notice %}}
 
 ## CloudBees CI Managed Controller
 

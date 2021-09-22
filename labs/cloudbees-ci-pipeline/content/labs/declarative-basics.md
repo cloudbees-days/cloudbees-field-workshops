@@ -102,8 +102,10 @@ OpenJDK Runtime Environment (IcedTea 3.10.0) (Alpine 8.191.12-r0)
 OpenJDK 64-Bit Server VM (build 25.191-b12, mixed mode)
 ...
 ```
-  
-> **NOTE:** You may have noticed that your Pipeline GitHub repository is being checked out even though you didn't specify that in your Jenkinsfile. Declarative Pipeline checks out source code by default without the need to explicitly include the `checkout scm` step. Furthermore, this automatic checkout will occur in every `stage` that uses a different agent.
+
+{{% notice note %}}
+You may have noticed that your Pipeline GitHub repository is being checked out even though you didn't specify that in your Jenkinsfile. Declarative Pipeline checks out source code by default without the need to explicitly include the `checkout scm` step. Furthermore, this automatic checkout will occur in every `stage` that uses a different agent.
+{{% /notice %}}
 
 ## Next Lesson
 

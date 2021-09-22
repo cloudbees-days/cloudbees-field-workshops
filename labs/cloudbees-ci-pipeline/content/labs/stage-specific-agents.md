@@ -82,7 +82,9 @@ pipeline {
 ```
 8. Commit the changes and the **helloworld-nodejs** job will run and it will complete successfully with the following output: ![Agent Success](agent-java-success.png?width=50pc) 
 
->**NOTE:** The sh 'java -version' step before the `container('nodejs')` completed successfully this time because it used the default `jnlp` container to execute any steps not in the `container` block.
+{{% notice note %}}
+The sh 'java -version' step before the `container('nodejs')` completed successfully this time because it used the default `jnlp` container to execute any steps not in the `container` block.
+{{% /notice %}}
 
 ### Finished Jenkinsfile for *Stage Specific Agents* Lab
 **Important**: For the finished Jenkinsfile for this stage, remove the `sh 'java -version'` step and make sure you copy the Pipeline as below and replace yours. 
