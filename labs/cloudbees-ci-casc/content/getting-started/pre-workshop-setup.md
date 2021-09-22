@@ -29,7 +29,9 @@ We highly recommend creating a new GitHub Organization for the CloudBees CI Pipe
 3. On the **Welcome to GitHub** screen just click the **Complete setup** button.<p>![GitHub Org Set up](github-org-welcome.png?width=50pc) 
 4. On the final page you don't have to fill anything in/answer any questions (unless your really want to) and just scroll to the bottom of the page and click the **Submit** button.
 
->NOTE: Even though you have to provide an email for billing, **you will NOT be charged anything** as long as you choose the free option.
+{{% notice note %}}
+Even though you have to provide an email for billing, **you will NOT be charged anything** as long as you choose the free option.
+{{% /notice %}}
 
 ### Install the CloudBees CI CasC Workshop GitHub App
 
@@ -45,5 +47,7 @@ We highly recommend creating a new GitHub Organization for the CloudBees CI Pipe
    - pipeline-library
    - pipeline-template-catalog ![GitHub App Installed](copied-repos.png?width=50pc)
 
->NOTE: These repositories were created from GitHub template repositories in the [CloudBees Field Workshops GitHub Organization](https://github.com/cloudbees-days).
+{{% notice note %}}
+These repositories were created from GitHub template repositories in the [CloudBees Field Workshops GitHub Organization](https://github.com/cloudbees-days).
+{{% /notice %}}
 
