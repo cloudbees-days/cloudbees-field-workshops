@@ -60,8 +60,8 @@ In this exercise we will map a deployment environment to your Tomcat application
 2. Set **Deploy**  as the *process* and **QA** as the *environment*, and turn off the **Smart Deploy**, **Check Dependency** and **Artifact Staging** options. Select **OK**. ![Run Application selections](te-run-app-selections.png?width=40pc)
 3. Once the application deployment completes click on the job details link. ![Deploy Job Details link](deploy-job-details-link.png?width=70pc)
 4. Next, on the **Job Details** page click on the link for the *tomcat_mysql_qa* **Resource** for the **DeployApp** step. ![Resource link](deploy-resource-link.png?width=70pc)
-5. Under the **Resource Details** find the **Agent Host Name** and copy the IP address. ![Resource IP address](te-app-resource-details-ip.png?width=20pc)
-6. Use the IP address of the resource to access the application by appending `:8080/jpetsore` to the IP address that you copied. For example, **http://35.202.90.57:8080/jpetstore/** ![jepetstore-webpage](te-app-jpetstore-webpage.png?width=20pc)
+5. Under the **Resource Details** find the **Agent Host Name** and copy the IP address. ![Resource IP address](te-app-resource-details-ip.png?width=70pc)
+6. Use the IP address of the resource to access the application by appending `:8080/jpetsore` to the IP address that you copied. For example, **http://35.202.90.57:8080/jpetstore/** ![jepetstore-webpage](te-app-jpetstore-webpage.png?width=70pc)
 7. Close the Job Details dialog to return to the **Deploy** run.
 8. Navigate to the environment where the application was deployed by clicking **QA** in the breadcrumbs. ![Navigate to QA Environment](deploy-qa-env-link.png?width=70pc)
 9. Click on the **Inventory** link in the top navigation. ![QA Inventory link](qa-inventory-link.png?width=70pc)
