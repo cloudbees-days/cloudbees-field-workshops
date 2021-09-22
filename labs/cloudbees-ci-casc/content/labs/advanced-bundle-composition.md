@@ -174,7 +174,11 @@ notificationConfiguration:
     - Enforcing the use of the CloudBees Assurance Plugins.
     - Enabling [controller hibernation](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/managing-masters#_hibernation_in_managed_masters) to reduce infrastructure costs - controllers will only run when they need to.
     - Enabling [Cross Team Collaboration](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/cross-team-collaboration) notifications to allow controllers to send and receive pipeline events.
->**NOTE:** In some cases we are including configuration that is enabled by default - like enabling the CloudBees SCM Reporting notifications. The reason for including such configuration is that when included, it cannot be overridden at the individual controller level as we will learn below.
+
+{{% notice note %}}
+In some cases we are including configuration that is enabled by default - like enabling the CloudBees SCM Reporting notifications. The reason for including such configuration is that when included, it cannot be overridden at the individual controller level as we will learn below.
+{{% /notice %}}
+
 4. Next, let's review the `plugins.yaml` that will provide a base set of plugins for all the controllers in our CloudBees CI cluster:
 ```yaml
 plugins:
@@ -274,7 +278,8 @@ items:
 24. Click on the **Reload Configuration** button and then on the next screen click the **Yes** button to apply the bundle update. ![CasC bundle apply](casc-bundle-apply.png?width=50pc)
 25. After your Ops Controller has finished restarting navigate back to the **CloudBees Configuration as Code bundle** configuration page and click on the **Original Bundle** tab. Notice that there are now three `jcasc` files: `jcasc/base.jenkins.yaml`, `jcasc/cbci-casc-workshop-ops-controller.credentials.yaml` and `jcasc/cbci-casc-workshop-ops-controller.jenkins.yaml`. CloudBees CI Configuration as Code (CasC) for Controllers automatically renames all JCasC files by prefixing them with the bundle id and placing them in a `jcasc` directory. However, in the case of the `plugins.yaml`, multiple files are merged into one. Also note that the `items` files is placed in an `items` folder and also prefixed with the bundle id. ![Original Bundle](original-bundle-base.png?width=50pc) 
 
->**NOTE:** Catalog file types, in this case the `plugin-catalog.yaml` file, are not merged and will be overridden by the last catalog file added. So if we hadn't removed the `catalog` entry from your Ops controller's `bundle.yaml` file (and not deleted the `plugin-catalog.yaml`) then it would have overridden the `plugin-catalog.yaml` provided by the `base` (parent) bundle. One way you could enforce only allowing the `catalog` to be defined at the parent level would be to add a pipeline `step` to the `controller-casc-automation` job that removes the `catalog` section from the controller's `bundle.yaml`. Here is an [example using yq version 4](https://mikefarah.gitbook.io/yq/operators/delete#delete-matching-entries):
+{{% notice note %}}
+Catalog file types, in this case the `plugin-catalog.yaml` file, are not merged and will be overridden by the last catalog file added. So if we hadn't removed the `catalog` entry from your Ops controller's `bundle.yaml` file (and not deleted the `plugin-catalog.yaml`) then it would have overridden the `plugin-catalog.yaml` provided by the `base` (parent) bundle. One way you could enforce only allowing the `catalog` to be defined at the parent level would be to add a pipeline `step` to the `controller-casc-automation` job that removes the `catalog` section from the controller's `bundle.yaml`. Here is an [example using yq version 4](https://mikefarah.gitbook.io/yq/operators/delete#delete-matching-entries):
 ```groovy
 ...
 container('yq') {
@@ -282,3 +287,4 @@ container('yq') {
 }
 ...
 ```
+{{% /notice %}}
