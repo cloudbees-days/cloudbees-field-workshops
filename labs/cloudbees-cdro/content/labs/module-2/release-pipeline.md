@@ -15,15 +15,15 @@ Perform these steps to create and run a CloudBees CD/RO release pipeline that do
 
 1. From the main menu, navigate to **Release Orchestration > Releases**. ![Releases from main menu](te-main-menu-releases.png?width=20pc) 
 2. Select **There are no releases. Add one +** or **New +**. The New Release dialog appears.
-3. Provide a release name such as Trial Release, and select a project (for example, Trial Guide).
+3. Provide a release name such as *Trial Release*, and select *Trial Guide* as the **Project**.
 4. Select **OK** to create the new release definition.
 
 ## Add stage details
 
-1. Rename the stage from **Stage 1** to QA.
+1. Rename the stage from **Stage 1** to *QA*.
     - Select the stage menu on the right and then select **Stage Details**.
-    - Enter QA for the name of the stage, then select **OK** to save the change.
-2. Create a stage called UAT.
+    - Enter *QA* for the name of the stage, then select **OK** to save the change.
+2. Create a stage called *UAT*.
     - From the Hierarchy Menu on the left, select the plus (**+**) next to Stages. The New Stage Dialog appears. ![Add a stage from the Hierarchy Menu](te-release-add-stage.png?width=40pc) 
     - In the New Stage dialog, enter name UAT and then select **OK** to create the new stage.
 
@@ -31,7 +31,7 @@ Perform these steps to create and run a CloudBees CD/RO release pipeline that do
 
 1. Add the procedure created earlier to the QA stage. ![Add procedure to QA stage](te-release-add-procedure.png?width=20pc) 
 2. Select **Add +**.
-3. Enter a task name such as Greeting, then select **Select Task Type**.
+3. Enter a task name such as *Greeting*, then select **Select Task Type**.
 4. Select **Procedure** as the task type. ![Select task type](te-release-task-type.png?width=40pc) 
 5. Select **Define** in the New Task box.
 6. Select the project and procedure for the procedure definition you created earlier. Then select the right arrow beside **Input Parameters** to enter the parameters. ![Add input Parameters](te-release-input-params.png?width=40pc)
