@@ -46,7 +46,8 @@ If the **Deploy** button is not activated, make sure the microservice is mapped 
 {{% /notice %}}
 
 ![Mapped RSS-UAT environment](te-helm-mapped-rss-uat.png?width=40pc)
+
 14. Select **Deploy Application** and **RSS - QA** as the target environment.
 15. To view the inventory, select the **RSS - QA** link from the bread crumb, then select Inventory.
-16. View the microservices deployment details by selecting **Details** from the menu for freshrss microservice.
+16. View the microservices deployment details by selecting **Details** from the menu for the *freshrss* microservice.
 17. Access the application. Note the URL above on line 10; this URL can be used to access the deployed application.
