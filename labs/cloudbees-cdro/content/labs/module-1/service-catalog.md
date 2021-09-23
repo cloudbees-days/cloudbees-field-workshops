@@ -30,7 +30,7 @@ In this lab you will create a Service Catalog, and then create and run a [proced
 3. In the **Display** section, locate the **Select Button Label** field. Select **Execute**.
 
 {{% notice note %}}
-The **Button Label** of a Service Catalog Item is just a descriptive label of what end users should expect as an outcome of using the Service Catalog Item and does in any way control what the Service Catalog item does. Also, besides the explicit options there is also an **Other...** option that allows you to provide whatever label you want.
+The **Button Label** of a Service Catalog Item is just a descriptive label of what end users should expect as an outcome of using the Service Catalog Item and does not in any way control what the Service Catalog item does. Also, besides the explicit options there is also an **Other...** option that allows you to provide whatever label you want.
 {{% /notice %}}
 
 4. Next, in the search input for the icon, enter  *Automation* and select the **Automation** icon. ![Catalog Item label and icon](te-service-catalog-item-label-icon.png?width=50pc)
