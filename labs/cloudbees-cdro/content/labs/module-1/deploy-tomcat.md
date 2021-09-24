@@ -8,7 +8,7 @@ In this lab, you will use a Service Catalog item to build out a Tomcat applicati
 
 ## CloudBees CD/RO Application Models
 
-CloudBees CD/RO deploy makes deployments manageable, reproducible, and error-proof by modeling application tiers or microservices, the environments to which it are be deployed, and automating the workflow needed for the deployment. The model can be broken into these parts of your application tiers or microservice deployment.
+CloudBees CD/RO makes deployments manageable, reproducible, and error-proof by modeling application tiers or microservices, modeling the deployment environments, and automating the workflow needed for the deployment. The model can be broken into these parts of your application tiers or microservice deployment.
 
 - What: the files or microservices being deployed
 - Where: the environments to which the application or microservices are deployed.
