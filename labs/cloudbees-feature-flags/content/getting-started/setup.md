@@ -105,4 +105,4 @@ Once you committed the `flags.js` file a job will be triggered on the CloudBees 
 ### Setup Completed!
 Congratulations! You have finished the setup of the CloudBees Feature Management Workshop.
 
-**For instructor led workshops please <a href="https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-feature-flags/#gating-code-title">return to the workshop slides</a>**
+**For instructor led workshops please <a href="https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-feature-management/#gating-code-title">return to the workshop slides</a>**
