@@ -40,7 +40,8 @@ The `flags.js` file imports the relevant CloudBees Feature Management SDK and de
 
 1. In Github, navigate to the root level of the `microblog-frontend` repository (ensure you are working on the `development` branch).
 2. Change directories and select the `flags.js` file (`src\utils\flags.js`) by first clicking the `src` folder from root view, followed by the `utils` folder, and finally select the subsequent `flags.js` file. ![Open flags.js](images/open-flags-js.png?width=60pc)
-3. We will later add a component to the **Posts view** of the microblog application that will be gated by this new `title` feature flag we are about to add. Click the pencil to edit the file. Define the `title` flag and its default value (`false`) by adding the following within the `const Flag` section after **Line 4**:
+3. We will later add a component to the **Posts view** of the microblog application that will be gated by this new `title` feature flag we are about to add. Click the pencil to edit the file.  ![Edit flags.js](images/editflags-js.png?width=60pc)
+4. Next, define the `title` flag and its default value (`false`) by adding the following within the `const Flag` section after **Line 4**:
 ```javascript
 export const Flags = {
   sidebar: new Rox.Flag(false),
@@ -72,7 +73,7 @@ initCloudBees().then(function () {
 ```
 {{% /expand%}}
 
-4. Commit the changes by adding a comment (e.g. "added title flag"), and select the **Commit directly to the `development` branch** radio button. And then click **Commit changes**.
+5. Commit the changes by adding a comment (e.g. "added title flag"), select the **Commit directly to the `development` branch** radio button, and then click **Commit changes**.
 
 
 ### See the Deployed Microblog Website
