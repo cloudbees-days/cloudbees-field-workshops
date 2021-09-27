@@ -31,9 +31,7 @@ data: function () {
  <h1 class="title">Posts <span v-if="show_title"> - Show New Title!</span></h1>
 ```
 
-6. After editing, expand the following to review (and if you have any errors then replace the entire file in GitHub with the contents):
-<details><summary>Updated <code>Post.vue</code></summary>
-
+{{%expand "expand for complete updated Post.vue file" %}}
 ```html
 <template>
   <div class="container">
@@ -156,7 +154,7 @@ export default {
 }
 </script>
 ```
-</details>
+{{% /expand%}}
 
 7. Create a commit message (e.g. "Gating new title feature") and select the **Commit directly to the `development` branch** radio button. Click **Commit changes**.
 

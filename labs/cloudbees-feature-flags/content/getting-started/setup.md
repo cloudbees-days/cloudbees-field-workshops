@@ -12,11 +12,11 @@ In this lab, you will set up a CloudBees Feature Management account and use it t
 
 1. Open the CloudBees Feature Management [sign-up form](https://rollout.io/sign-up/) in a _new tab_ within your browser. If you already have a CloudBees Feature Management account the [click here to login to your account](https://app.rollout.io/login) and proceed to step 3.
 2. Fill out the form with your name, email, and a created password. After confirming your password, check the box agreeing to CloudBees Feature Management' Terms of Service (which can be viewed [here](https://docs.cloudbees.com/docs/cloudbees-common/latest/subscription-agreement/)), and click **Sign Up**.
-3. After you have successfully created an account, the CloudBees Feature Management dashboard will be displayed. Create a new application by clicking the blue panel in the top left corner of the screen.
+3. After you have successfully created an account, the CloudBees Feature Management dashboard will be displayed. Create a new application by clicking the blue panel in the top left corner of the screen. ![New Application](images/new-application.png?width=70pc)
 4. After creating a new application in the dashboard, click the **App Settings** panel seen on the left hand menu. From the resulting page, select the **Environments** tab.
 5. Click **Add New Environment** and name it **Development**. Then click **Generate Key**.
 6. **Close** the subsequent **Development Key** pop-up window so that both _Production_ and _Development_ keys are displayed. Leave this CloudBees Feature Management dashboard tab open in the browser. Both keys will be referenced later in this lab.
-![Environment Key](images/CBFMEnvKey.png?width=50pc)
+![Environment Key](images/CBFMEnvKey.png?width=70pc)
 
 ### API Key Environment Variable
 
@@ -36,11 +36,12 @@ The CloudBees CI Pipeline that will automatically build and deploy your `mircrob
 
 ### Create Feature Flags with CloudBees Feature Management
 
-The `flags.js` file imports the relevant CloudBees Feature Management SDK and defines the feature flags (with its `DEFAULT` values) that an application will use. The file contains a call to the `setup` function that establishes a connection to the CloudBees Feature Management dashboard. The CloudBees Feature Management dashboard interface will allow for remote configuration in future labs.
+The `flags.js` file imports the relevant CloudBees Feature Management SDK and defines the feature flags (with the flags' `DEFAULT` values) that an application will use. The file contains a call to the `setup` function that establishes a connection to the CloudBees Feature Management dashboard. The CloudBees Feature Management dashboard interface will allow for remote configuration in future labs.
 
 1. In Github, navigate to the root level of the `microblog-frontend` repository (ensure you are working on the `development` branch).
-2. Change directories and select the `flags.js` file (`src\utils\flags.js`) by first clicking the `src` folder from root view, followed by the `utils` folder, and finally select the subsequent `flags.js` file.
-3. We will later add a component to the **Posts view** of the microblog application that will be gated by this new `title` feature flag. Click the pencil to edit the file. Define the `title` flag and its default value (`false`) by adding the following within the `const Flag` section after **Line 4**:
+2. Change directories and select the `flags.js` file (`src\utils\flags.js`) by first clicking the `src` folder from root view, followed by the `utils` folder, and finally select the subsequent `flags.js` file. ![Open flags.js](images/open-flags-js.png?width=60pc)
+3. We will later add a component to the **Posts view** of the microblog application that will be gated by this new `title` feature flag we are about to add. Click the pencil to edit the file.  ![Edit flags.js](images/editflags-js.png?width=60pc)
+4. Next, define the `title` flag and its default value (`false`) by adding the following within the `const Flag` section after **Line 4**:
 ```javascript
 export const Flags = {
   sidebar: new Rox.Flag(false),
@@ -48,8 +49,7 @@ export const Flags = {
 }
 ```
 
-**After this edit, the `flags.js` should be**
-<details><summary>this:</summary>
+{{%expand "expand for complete updated flag.js file" %}}
 
 ```javascript
 import Rox from 'rox-browser'
@@ -71,14 +71,14 @@ initCloudBees().then(function () {
   console.log('Done loading CloudBees Feature Management')
 })
 ```
-</details>
+{{% /expand%}}
 
-4. Commit the changes by adding a comment (e.g. "added title flag"), and select the **Commit directly to the `development` branch** radio button. And then click **Commit changes**.
+5. Commit the changes by adding a comment (e.g. "added title flag"), select the **Commit directly to the `development` branch** radio button, and then click **Commit changes**.
 
 
 ### See the Deployed Microblog Website
 
-Once you committed the `flags.js` file a job will be triggered on the CloudBees CI ***managed controller*** that was provisioned for you for this workshop. That job will build and deploy your `microblog-frontend` application.
+Once you committed the `flags.js` file a job will be triggered on a CloudBees CI ***managed controller*** that was provisioned for you for this workshop. That job will build and deploy your `microblog-frontend` application.
 
 1. Navigate to the `microblog-frontend` repository.
 2. Click on the **Pull requests** tab and the click on the **New Feature** pull request. ![New Feature PR](new-feature-pr.png?width=50pc)
@@ -99,10 +99,10 @@ Once you committed the `flags.js` file a job will be triggered on the CloudBees 
 
 1. In your browser, switch to CloudBees Feature Management dashboard.
 2. On the left-hand side of the dashboard, select the **Audit Logs** view.
-3. You should see both the `title` and `sidebar` flags have been added to the `default` namespace and communicated from the `development` code. This means they are available for remote configuration in the dashboard! There are also some default properties that have been added, but we'll add more in a future lab. ![Audit logs](images/auditLogs.png?width=50pc)
-4. Finally, click on **Flags overview** in the left menu and you will see the two flags from your `flag.js` file, and an outline of their configurations (though we have none yet) defined across all environments. ![Flags](images/dashboard-flags.png?width=50pc)
+3. You should see both the `title` and `sidebar` flags have been added to the `default` namespace and communicated from the `development` code. This means they are available for remote configuration in the dashboard! There are also some default properties that have been added, but we'll add more in a future lab. ![Audit logs](images/auditLogs.png?width=70pc)
+4. Finally, click on **Flags overview** in the left menu and you will see the two flags from your `flag.js` file, and an outline of their configurations (though we have none yet) defined across all environments. ![Flags](images/dashboard-flags.png?width=70pc)
 
 ### Setup Completed!
 Congratulations! You have finished the setup of the CloudBees Feature Management Workshop.
 
-**For instructor led workshops please <a href="https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-feature-management/#14">return to the workshop slides</a>**
+**For instructor led workshops please <a href="https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-feature-management/#gating-code-title">return to the workshop slides</a>**
