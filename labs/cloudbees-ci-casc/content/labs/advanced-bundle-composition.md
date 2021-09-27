@@ -8,7 +8,7 @@ This lab will explore more advanced aspects of bundle composition to include bun
 
 ## Organizing Configuration Bundles with Sub-folders and Multiple Files
 
-CloudBees CI Configuration as Code (CasC) for Controllers allows managing bundles files in folders and allows the use of multiple files for certain bundle file types. In this lab we will split your JCasC configuration into two files and put those files in a `jcasc` folder to make the configuration files easier to manage.
+CloudBees CI Configuration as Code (CasC) for Controllers allows managing bundle files in folders and allows the use of multiple files for certain bundle file types. In this lab we will split your JCasC configuration (the `jenkins.yaml` file) into two files and put those files in a `jcasc` folder to make the configuration files easier to manage.
 
 1. Navigate back to the top level of your `ops-controller` repository in your workshop GitHub Organization, then click on the **Add file** button and then select **Create new file**. ![Create new file in GitHub](github-create-new-file.png?width=50pc)
 ```yaml
@@ -93,10 +93,10 @@ items:
 13. We have now made all the necessary changes and can now merge the pull request to the `main` branch. In GitHub, click on the **Pull requests** tab and then click on the link for the **Create credentials.yaml** pull request. ![jcasc pull request link](github-jcasc-pr-link.png?width=50pc)
 14. On the **Create credentials.yaml #1** pull request page, click the **Merge pull request** button, then click the **Confirm merge** button and then click the **Delete branch** button.
 15. Navigate to the `main` branch job of the `ops-controller` Multibranch pipeline project on your Ops controller. ![ops-controller Mulitbranch](ops-controller-multibranch-jcasc.png?width=50pc)
-16. After the the `main` branch job has completed successfully, navigate to the top level of your Ops controller, click on the **Manage Jenkins** link in the left menu, and then click on the **CloudBees Configuration as Code bundle** **System Configuration** item. ![CasC Configuration link](casc-config-link.png?width=50pc) 
-17. On the **CloudBees Configuration as Code bundle** click on the **Bundle update** tab and you should see that there is a bundle update available. ![CasC bundle update](casc-bundle-update.png?width=50pc)
+16. After the the `main` branch job has completed successfully, navigate to the top level of your Ops controller, click on the **Manage Jenkins** link in the left menu, and then click on the **CloudBees Configuration as Code export and update** **System Configuration** item. ![CasC Configuration link](cloudbees-casc-link.png?width=50pc) 
+17. On the **CloudBees Configuration as Code export and update** click on the **Bundle update** tab and you should see that there is a bundle update available. ![CasC bundle update](casc-bundle-update.png?width=50pc)
 18. Click on the **Reload Configuration** button and then on the next screen click the **Yes** button to apply the bundle update. ![CasC bundle apply](casc-bundle-apply.png?width=50pc)
-19. After the updated configuration bundle is finished being applied return to the **CloudBees Configuration as Code bundle** configuration page and click on the **Original Bundle** tab. ![Original bundle with folder](original-bundle-folder.png?width=50pc)
+19. After the updated configuration bundle is finished being applied return to the **CloudBees Configuration as Code export and update** configuration page and click on the **Original Bundle** tab. ![Original bundle with folder](original-bundle-folder.png?width=50pc)
 20. The **Original Bundle** view will show you what configuration is being managed by the configuration bundle assigned to your controller. Notice that there are now two *Jenkins configuration as defined by OSS CasC* files - `jcasc/cbci-casc-workshop-ops-controller.credentials.yaml` and `jcasc/cbci-casc-workshop-ops-controller.jenkins.yaml`; and both prefixed with the `id` of your bundle. This is done to support bundle inheritance as we will see in the next section.
 
 ## Bundle Inheritance
@@ -188,7 +188,6 @@ plugins:
 - id: cloudbees-groovy-view
 - id: cloudbees-monitoring
 - id: cloudbees-pipeline-policies
-- id: cloudbees-prometheus
 - id: cloudbees-slack
 - id: cloudbees-template
 - id: cloudbees-view-creation-filter
@@ -217,10 +216,9 @@ version: '1'
 configurations:
 - description: Workshop Additional Plugins
   includePlugins:
-    cloudbees-prometheus: {version: '1.0'}
-    pipeline-utility-steps: {version: '2.8.0'}
+    pipeline-utility-steps: {version: '2.10.0'}
 ```
-6. Now that we have reviewed the contents of the `base` bundle we will update your Ops controller bundle to use it as a parent bundle. However, before we do that it is important to understand how JCasC files are processed. All JCasC configuration **MUST** be supplementary, meaning that a child bundle cannot overwrite any of the parent configuration values. Otherwise there will be a `ConfiguratorException` and the controller will not startup. Therefore, before we update the `ops-controller` configuration bundle we must ensure that it does not overwrite any of the parent bundle’s configuration elements. Navigate to the `ops-controller` repository in your workshop GitHub Organization. Anything that may need to be unique between different controllers should be configured at the controller level; at least until other [JCasC YAML merge strategies become available](https://github.com/jenkinsci/configuration-as-code-plugin/pull/1218).
+6. Now that we have reviewed the contents of the `base` bundle we will update your Ops controller bundle to use it as a parent bundle. However, before we do that, it is important to understand how JCasC files are processed. All JCasC configuration **MUST** be supplementary, meaning that a child bundle cannot overwrite any of the parent configuration values. Otherwise there will be a `ConfiguratorException` and the controller will not startup. Therefore, before we update the `ops-controller` configuration bundle we must ensure that it does not overwrite any of the parent bundle’s configuration elements. Navigate to the `ops-controller` repository in your workshop GitHub Organization. Anything that may need to be unique between different controllers should be configured at the controller level; at least until other [JCasC YAML merge strategies become available](https://github.com/jenkinsci/configuration-as-code-plugin/pull/1218).
 7. Navigate to the `jcasc` folder of your copy of the `ops-controller` repository and click on the `jenkins.yaml` file and then click on the ***Edit this file*** pencil button.
 8. Now we will delete all the configuration that will be provided by the parent bundle:
    - Delete the `quietPeriod` and the `systemMessage` sections under `jenkins`.
@@ -273,10 +271,10 @@ items:
 19. We have now made all the necessary changes and can now merge the pull request to the `main` branch. In GitHub, click on the **Pull requests** tab and then click on the link for the **Update jenkins.yaml** pull request. ![pull request link](github-pr-link.png?width=50pc)
 20. On the **Update jenkins.yaml #2** pull request page, click the **Merge pull request** button, then click the **Confirm merge** button and then click the **Delete branch** button. ![merge pull request](github-merge-pr.png?width=50pc)
 21. Navigate to the `main` branch job of your `ops-controller` Multibranch pipeline project on your Ops controller. ![ops-controller Mulitbranch](ops-controller-multibranch.png?width=50pc)
-22. After the the `main` branch job has completed successfully, navigate to the top level of your Ops controller, click on the **Manage Jenkins** link in the left menu, and then click on the **CloudBees Configuration as Code bundle** **System Configuration** item. ![CasC Configuration link](casc-config-link.png?width=50pc) 
-23. On the **CloudBees Configuration as Code bundle** click on the **Bundle update** tab and you should see that there is a bundle update available. ![CasC bundle update](casc-bundle-update.png?width=50pc)
+22. After the the `main` branch job has completed successfully, navigate to the top level of your Ops controller, click on the **Manage Jenkins** link in the left menu, and then click on the **CloudBees Configuration as Code export and update** **System Configuration** item. ![CasC Configuration link](casc-config-link.png?width=50pc) 
+23. On the **CloudBees Configuration as Code export and update** click on the **Bundle update** tab and you should see that there is a bundle update available. ![CasC bundle update](casc-bundle-update.png?width=50pc)
 24. Click on the **Reload Configuration** button and then on the next screen click the **Yes** button to apply the bundle update. ![CasC bundle apply](casc-bundle-apply.png?width=50pc)
-25. After your Ops Controller has finished restarting navigate back to the **CloudBees Configuration as Code bundle** configuration page and click on the **Original Bundle** tab. Notice that there are now three `jcasc` files: `jcasc/base.jenkins.yaml`, `jcasc/cbci-casc-workshop-ops-controller.credentials.yaml` and `jcasc/cbci-casc-workshop-ops-controller.jenkins.yaml`. CloudBees CI Configuration as Code (CasC) for Controllers automatically renames all JCasC files by prefixing them with the bundle id and placing them in a `jcasc` directory. However, in the case of the `plugins.yaml`, multiple files are merged into one. Also note that the `items` files is placed in an `items` folder and also prefixed with the bundle id. ![Original Bundle](original-bundle-base.png?width=50pc) 
+25. After your Ops Controller has finished restarting, navigate back to the **CloudBees Configuration as Code export and update** configuration page and click on the **Original Bundle** tab. Notice that there are now three `jcasc` files: `jcasc/base.jenkins.yaml`, `jcasc/cbci-casc-workshop-ops-controller.credentials.yaml` and `jcasc/cbci-casc-workshop-ops-controller.jenkins.yaml`. CloudBees CI Configuration as Code (CasC) for Controllers automatically renames all JCasC files by prefixing them with the bundle id and placing them in a `jcasc` directory. However, in the case of the `plugins.yaml`, multiple files are merged into one. Also note that the `items` files is placed in an `items` folder and also prefixed with the bundle id. ![Original Bundle](original-bundle-base.png?width=50pc) 
 
 {{% notice note %}}
 Catalog file types, in this case the `plugin-catalog.yaml` file, are not merged and will be overridden by the last catalog file added. So if we hadn't removed the `catalog` entry from your Ops controller's `bundle.yaml` file (and not deleted the `plugin-catalog.yaml`) then it would have overridden the `plugin-catalog.yaml` provided by the `base` (parent) bundle. One way you could enforce only allowing the `catalog` to be defined at the parent level would be to add a pipeline `step` to the `controller-casc-automation` job that removes the `catalog` section from the controller's `bundle.yaml`. Here is an [example using yq version 4](https://mikefarah.gitbook.io/yq/operators/delete#delete-matching-entries):
