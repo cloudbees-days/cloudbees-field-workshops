@@ -63,7 +63,7 @@ initCloudBees().then(function () {
 {{% /expand%}}
 
 5. Create a commit message (e.g. "Added setCustomBooleanProperty"). **Commit changes** directly to the `development` branch.
-6. Open the new deployment URL, so that the properties can be created to the dashboard.
+6. Once the commit has finished being built on the open pull request, open the new deployment URL so that the properties can be created to the Feature Management dashboard.
 
 ### Create a Target Group Based on Custom Properties
 
