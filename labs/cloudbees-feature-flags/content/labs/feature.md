@@ -31,8 +31,6 @@ data: function () {
  <h1 class="title">Posts <span v-if="show_title"> - Show New Title!</span></h1>
 ```
 
-6. After editing, expand the following to review (and if you have any errors then replace the entire file in GitHub with the contents):
-
 {{%expand "expand for complete updated Post.vue file" %}}
 ```html
 <template>
