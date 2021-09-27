@@ -37,4 +37,4 @@ value: false
 ### Lab 4 Completed!
 Congratulations! You have finished Lab 4 of the CloudBees Feature Management Workshop.
 
-**For instructor led workshops please <a href="https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-feature-flags/#33">return to the workshop slides</a>**
+**For instructor led workshops please <a href="https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-feature-management/#33">return to the workshop slides</a>**
