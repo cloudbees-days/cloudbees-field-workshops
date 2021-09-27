@@ -78,7 +78,7 @@ initCloudBees().then(function () {
 
 ### See the Deployed Microblog Website
 
-Once you committed the `flags.js` file a job will be triggered on the CloudBees CI ***managed controller*** that was provisioned for you for this workshop. That job will build and deploy your `microblog-frontend` application.
+Once you committed the `flags.js` file a job will be triggered on a CloudBees CI ***managed controller*** that was provisioned for you for this workshop. That job will build and deploy your `microblog-frontend` application.
 
 1. Navigate to the `microblog-frontend` repository.
 2. Click on the **Pull requests** tab and the click on the **New Feature** pull request. ![New Feature PR](new-feature-pr.png?width=50pc)
@@ -99,8 +99,8 @@ Once you committed the `flags.js` file a job will be triggered on the CloudBees 
 
 1. In your browser, switch to CloudBees Feature Management dashboard.
 2. On the left-hand side of the dashboard, select the **Audit Logs** view.
-3. You should see both the `title` and `sidebar` flags have been added to the `default` namespace and communicated from the `development` code. This means they are available for remote configuration in the dashboard! There are also some default properties that have been added, but we'll add more in a future lab. ![Audit logs](images/auditLogs.png?width=50pc)
-4. Finally, click on **Flags overview** in the left menu and you will see the two flags from your `flag.js` file, and an outline of their configurations (though we have none yet) defined across all environments. ![Flags](images/dashboard-flags.png?width=50pc)
+3. You should see both the `title` and `sidebar` flags have been added to the `default` namespace and communicated from the `development` code. This means they are available for remote configuration in the dashboard! There are also some default properties that have been added, but we'll add more in a future lab. ![Audit logs](images/auditLogs.png?width=70pc)
+4. Finally, click on **Flags overview** in the left menu and you will see the two flags from your `flag.js` file, and an outline of their configurations (though we have none yet) defined across all environments. ![Flags](images/dashboard-flags.png?width=70pc)
 
 ### Setup Completed!
 Congratulations! You have finished the setup of the CloudBees Feature Management Workshop.
