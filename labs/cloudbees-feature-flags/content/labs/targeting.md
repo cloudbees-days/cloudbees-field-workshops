@@ -22,8 +22,8 @@ Rox.setCustomBooleanProperty('isLoggedIn', store.getters.isLoggedIn)
 Rox.setCustomBooleanProperty('hasBetaAccess', betaAccess())
 ```
 
-4. Review your edits with updated code below
-<details><summary>Updated <code>flags.js</code></summary>
+4. Review your edits with updated code below:
+{{%expand "expand for complete updated file" %}}
 
 ```javascript
 import Rox from 'rox-browser'
@@ -60,7 +60,7 @@ initCloudBees().then(function () {
 })
 
 ```
-</details>
+{{% /expand%}}
 
 5. Create a commit message (e.g. "Added setCustomBooleanProperty"). **Commit changes** directly to the `development` branch.
 6. Open the new deployment URL, so that the properties can be created to the dashboard.
