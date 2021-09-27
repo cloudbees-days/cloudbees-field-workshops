@@ -40,4 +40,4 @@ The experiments seen in a CloudBees Feature Management environment view govern t
 ### Lab 2 Completed!
 Congratulations! You have finished Lab 2 of the CloudBees Feature Management Workshop.
 
-**For instructor led workshops please <a href="https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-feature-flags/#23">return to the workshop slides</a>**
+**For instructor led workshops please <a href="https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-feature-management/#23">return to the workshop slides</a>**
