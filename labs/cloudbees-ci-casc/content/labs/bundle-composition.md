@@ -139,7 +139,7 @@ As you can see from the composition overview above, the YAML in the different co
 2. At the top level of your Ops controller, click on the **Mange Jenkins** link in the left menu. ![Manage Jenkins link](manage-jenkins-link.png?width=50pc) 
 3. On the **Manage Jenkins** page click on **Manage Plugins** under the **System Configuration** section. ![Manage Plugins link](manage-plugins-link.png?width=50pc) 
 4. On the **Plugin Manager** screen, click on the **Available** tab and enter ***Pipeline Util*** into the search box. Then check the **Install** checkbox for the **Pipeline Utility Steps** plugin and then click the the **Install without restart** button. ![Search for Pipeline Util](search-pipeline-util.png?width=50pc) 
-5. Once the **Pipeline Utility Steps** plugin is successfully installed return to the top-level of your Ops controller and click on the **Mange Jenkins** link in the left menu. ![Install plugin](install-plugin.png?width=50pc) 
+5. Once the **Pipeline Utility Steps** plugin is successfully installed, return to the top-level of your Ops controller and click on the **Mange Jenkins** link in the left menu. ![Install plugin](install-plugin.png?width=50pc) 
 6. On the **Manage Jenkins** page click on **CloudBees Configuration as Code export and update** under the **System Configuration** section. ![CloudBees CasC link](cloudbees-casc-link.png?width=50pc) 
 7. Next, on the **CloudBees Configuration as Code export and update** page under the **Current configuration** tab, click on the *visualize* link for the `plugin-catalog.yaml` **Filename**. A [plugin catalog](https://docs.cloudbees.com/docs/admin-resources/latest/plugin-management/configuring-plugin-catalogs) is used to include plugins that are not in the CloudBees Assurance Program (CAP); tested and used by your software delivery workloads. Since the **Pipeline Utility Steps** is not in CAP we must create a plugin catalog that includes that plugin so we may install it on a controller. ![Plugin Catalog visualize link](plugin-catalog-visualize-link.png?width=50pc) 
 8. A new browser page will open in a new tab or window with the auto-generated contents of a Plugin Catalog with the following contents (except the export does not put single quotes around the plugin version as we see below, this is needed to keep the `.0` from being stripped off):
@@ -155,10 +155,10 @@ configurations:
 ```
 
 {{% notice info %}}
-There will be continued improvements for configuration export but exported configuration should never be use as is without manually checking it. 
+There will be continued improvements for configuration export but exported configuration should never be use as is without manually checking it. In regards to the issue with the version number, the YAML parser will strip off the zero, resulting in a version number of `2.10` which does not exist for that plugin.
 {{% /notice %}}
 
-9. Copy the contents of the `plugin-catalog.yaml` withe the `version` fix from above and then navigate to the `ops-controller` repository in your workshop GitHub Organization.
+9. Copy the contents of the `plugin-catalog.yaml` with the `version` fix from above and then navigate to the `ops-controller` repository in your workshop GitHub Organization.
 10. Next click on the **Add file** button and then select **Create new file**. ![Create new file in GitHub](github-create-new-file.png?width=50pc)
 11. On the next screen, name the new file `plugin-catalog.yaml`, enter the contents from the `plugin-catalog.yaml` export but **make sure your put single quotes around the plugin version**. Then commit directly to the `main` branch. ![Commit plugin-catalog.yaml](commit-plugin-catalog.png?width=50pc)
 12. Plugins in the `plugin-catalog.yaml` are not actually installed on a controller, rather they just extend what can be installed outside of CAP. In order for a plugin to be installed via a configuration bundle you must add it to the `plugins.yaml`. Click on the `plugins.yaml` file and then click on the ***Edit this file*** pencil button. ![Edit plugins file GitHub](github-edit-plugins-file.png?width=50pc)
@@ -206,7 +206,7 @@ plugins:
 21. On the next screen, name the new file `items.yaml`, paste the contents from the `items.yaml` export (same as above).
 
 {{% notice note %}}
-There is an open issue in regards to the GitHub Organization item type.
+There is an [open issue](https://github.com/jenkinsci/branch-api-plugin/pull/271) in regards to the GitHub Organization item type and item restrictions. A temporary fix is to manually add `jenkins.branch.OrganizationFolder` to the `allowedTypes` collection as below.
 ```yaml
 removeStrategy:
   rbac: SYNC
@@ -258,7 +258,7 @@ items:
 {{% /expand%}}
 
 {{% notice note %}}
-In previous versions of CloudBees CI Configuration as Code (CasC) for Controllers the `version` field of the `bundle.yaml` file had to be modified in order for an update to be triggered for controllers using that bundle. This is no longer required as any change in any file in a bundle will trigger a bundle update for any controllers using the updated bundle. However, it is still considered a best practice to increment the bundle version.
+In previous versions of CloudBees CI Configuration as Code (CasC) for Controllers the `version` field of the `bundle.yaml` file had to be modified in order for an update to be triggered for controllers using that bundle. This is no longer required as any change in any file in a bundle will trigger a bundle update for any controllers using the updated bundle once those changes are copied to the JCasC bundle directory on Operations Center. However, it is still considered a best practice to increment the bundle version.
 {{% /notice %}}
 
 25. Commit the `bundle.yaml` file directly to the `main` branch of your `ops-controller` repository. ![Commit bundle.yaml](commit-bundle.png?width=50pc)
