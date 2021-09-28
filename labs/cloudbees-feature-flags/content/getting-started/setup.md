@@ -24,14 +24,14 @@ The CloudBees CI Pipeline that will automatically build and deploy your `mircrob
 
 1. Open your browser to the Github Organization you created for the workshop and navigate to the `microblog-frontend` repository.
 2. Change the branch from `main` to `development`. After changing branches to the `development` branch, click on the `.env.production` file.
-3. Click the pencil icon to edit the file - again, making sure you are on the `development` branch. ![GitHub edit file](images/pencilEdit.png?width=50pc)
-1. Switch back to the CloudBees Feature Management dashboard. Copy the environment **Key** for the **Production** environment by clicking on the **Key** value for that environment. ![Copy key](images/copy-key.png?width=50pc)
-2. Navigate back to the Github tab with the `.env.production` file being edited.
-3. Replace `YOUR_PRODUCTION_KEY_HERE` on **Line 1** by pasting your unique Production **Key** value that you copied.
-4. At the bottom of the page, select **Commit directly to the `development` branch** radio button. Then click the **Commit changes** button.
-5. Navigate back to the root directory of the `microblog-frontend` repository (`development` branch). Click the `.env.development` file. And then select the pencil icon on the following page to make an edit to the file.
-6. Now, copy your **Development** environment **Key** value from the CloudBees Feature Management dashboard and then replace `YOUR_DEVELOPMENT_KEY_HERE` in the `.env.development` file with that value. Make sure you copied and replaced the value for the ***Development*** environment and the `.env.development` file on the `development` branch.
-7. Select the **Commit the file directly to the `development` branch** radio button, and then click **Commit changes**.
+3. Click the pencil icon to edit the file - again, making sure you are on the `development` branch. ![GitHub edit file](images/pencilEdit.png?width=70pc)
+4. Switch back to the CloudBees Feature Management dashboard. Copy the environment **Key** for the **Production** environment by clicking on the **Key** value for that environment. ![Copy key](images/copy-key.png?width=70pc)
+5. Navigate back to the Github tab with the `.env.production` file being edited.
+6. Replace `YOUR_PRODUCTION_KEY_HERE` on **Line 1** by pasting your unique Production **Key** value that you copied.
+7. At the bottom of the page, select **Commit directly to the `development` branch** radio button. Then click the **Commit changes** button.
+8. Navigate back to the root directory of the `microblog-frontend` repository (`development` branch). Click the `.env.development` file. And then select the pencil icon on the following page to make an edit to the file.
+9. Now, copy your **Development** environment **Key** value from the CloudBees Feature Management dashboard and then replace `YOUR_DEVELOPMENT_KEY_HERE` in the `.env.development` file with that value. Make sure you copied and replaced the value for the ***Development*** environment and the `.env.development` file on the `development` branch.
+10. Select the **Commit the file directly to the `development` branch** radio button, and then click **Commit changes**.
 ![Commit changes](images/commitChanges.png?width=50pc)
 
 ### Create Feature Flags with CloudBees Feature Management
