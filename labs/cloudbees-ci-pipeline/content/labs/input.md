@@ -4,7 +4,7 @@ chapter: false
 weight: 7
 --- 
 
-In this lab, we will see how you can capture interactive input in your Jenkins Pipeline while it is running by using the `input` step and will explore some pitfalls you will want to avoid when using the `input` step.
+In this lab, we will see how you can capture interactive input in your Jenkins Pipeline while it is running by using the `input` step and we will explore some pitfalls you will want to avoid when using the `input` step.
 
 1. Use the GitHub file editor to update the **Jenkinsfile** file in the **main** branch of your copy of the **helloworld-nodejs** repository and update the **Deploy** `stage` by adding the following between `environment` directive and `steps` block:
 
@@ -17,7 +17,9 @@ In this lab, we will see how you can capture interactive input in your Jenkins P
           }
 ```
 
-Note that we added a new `when` condition that will result in the **Deploy** stage being skipped. We also added an `input` directive instead of an `input` step in the `steps` block. This ensures that the `input` will be displayed before the agent is used. *Also note that even though we are setting the `FAVORITE_COLOR` environment variable value to `BLUE` in the **Deploy** stage that does not get executed until after the `when` condition is checked; so the value is still `RED` for the `when` condition.* 
+{{% notice note %}}
+We added a new `when` condition that will result in the **Deploy** stage being skipped. We also added an `input` directive instead of an `input` step in the `steps` block. This ensures that the `input` will be displayed before the agent is used. *Also note that even though we are setting the `FAVORITE_COLOR` environment variable value to `BLUE` in the **Deploy** stage that does not get executed until after the `when` condition is checked; so the value is still `RED` for the `when` condition.* 
+{{% /notice %}}
 
 2. Commit the changes and then navigate to the **main** branch of your **helloworld-nodejs** project on your Managed Controller.
 3. There will be an `input` prompt for the `Deploy` stage (*the `input` prompt is also available in the Console log*). ![Configure Notification Link](input-prompt.png?width=50pc) Go ahead and click the **Proceed** button and you will see that the **Deploy** stage is skipped. 
@@ -63,7 +65,7 @@ Note that we added a new `when` condition that will result in the **Deploy** sta
             SERVICE_CREDS = credentials('example-service-username-password')
           }
           options {
-            timeout(time: 30, unit: 'SECONDS') 
+            timeout(time: 10, unit: 'SECONDS') 
           }
           input {
             message "Should we continue with deployment?"
@@ -74,7 +76,7 @@ Note that we added a new `when` condition that will result in the **Deploy** sta
         }
 ```
 
-9. Navigate to the **main** branch of your **helloworld-nodejs** project on your Managed Controller and wait at least 30 seconds after the 'Deploy' `stage` starts. Your pipeline will be automatically **aborted** 30 seconds after the 'Deploy' `stage` starts. ![Input Timeout](input-timeout.png?width=50pc)
+9. Navigate to the **main** branch of your **helloworld-nodejs** project on your Managed Controller and wait a little more than 10 seconds after the 'Deploy' `stage` starts. Your pipeline will be automatically **aborted** 10 seconds after the 'Deploy' `stage` starts. ![Input Timeout](input-timeout.png?width=50pc)
 
 ### Finished Jenkinsfile for *Declarative Pipelines with Interactive Input* Lab
 ```
@@ -122,7 +124,7 @@ pipeline {
             SERVICE_CREDS = credentials('example-service-username-password')
           }
           options {
-            timeout(time: 30, unit: 'SECONDS') 
+            timeout(time: 10, unit: 'SECONDS') 
           }
           input {
             message "Should we continue with deployment?"

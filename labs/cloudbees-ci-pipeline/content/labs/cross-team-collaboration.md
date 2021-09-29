@@ -4,7 +4,7 @@ chapter: false
 weight: 6
 --- 
 
-In this lab we will explore the [CloudBees CI Cross Team Collaboration feature](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/cross-team-collaboration). Cross Team Collaboration simplifies the cumbersome and complicated tasks of triggering downstream jobs by eliminating the need to identify and maintain the full path for every downstream job. Simply put it, this proprietary feature connects pipelines, increasing automation and collaboration. Prior to this feature, the details of every downstream job (Jenkins instance ID, full job name, Git branch name) all had to be meticulously specified in the upstream job. If the job name changed, the upstream job had to be refactored, creating a maintenance burden and discouraging the adoption of event-based triggers.
+In this lab we will explore the [CloudBees CI Cross Team Collaboration feature](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/cross-team-collaboration). Cross Team Collaboration simplifies the cumbersome and complicated tasks of triggering downstream jobs by eliminating the need to identify and maintain the full path for every downstream job. Simply put, this proprietary CloudBees CI feature connects pipelines, increasing automation and collaboration. Prior to this feature, the details of every downstream job (Jenkins instance ID, full job name, Git branch name) all had to be meticulously specified in the upstream job. If the job name changed, the upstream job had to be refactored, creating a maintenance burden and discouraging the adoption of event-based triggers.
 
 ## Cross Team Collaboration Events
 
@@ -15,9 +15,9 @@ The Cross Team Collaboration feature has a configurable router for routing event
  You should see the following configuration: ![Notification Configuration](notification-config.png?width=50pc)
 
 
-1. To use Cross Team Collaboration we will need to update the **helloworld-nodejs** Jenkinsfile to listen for a notification event to be published by the upstream, or publishing, job. We will do that by adding a `trigger` directive to your **Jenkinsfile** Pipeline script.
+1. To use Cross Team Collaboration we will need to update the **helloworld-nodejs** Jenkinsfile to listen for a notification event to be published by the upstream, or publishing, job. We will do that by adding a [`trigger` directive](https://www.jenkins.io/doc/book/pipeline/syntax/#triggers) to your **Jenkinsfile** Pipeline script.
 2. Open the GitHub editor for the **Jenkinsfile** file in the **main** branch of your copy of the **helloworld-nodejs** repository.
-3. Add the following `trigger` block just above the top-level `stages` block:
+3. Add the following `trigger` directive just above the top-level `stages` block:
 
 ```groovy
   triggers {
@@ -27,7 +27,11 @@ The Cross Team Collaboration feature has a configurable router for routing event
 
 4. Commit the changes and then navigate to the **main** branch of your **helloworld-nodejs** project on your Managed Controller and view the configuration for that job by click the **View Configuration** link on the **Branch main** job page. ![View Configuration Link](view-config-link.png?width=50pc)
 5. Click on the **Build Triggers** tab on the job configuration page for the **main** branch job and you will the **Build whenever the specified event is seen** trigger is checked and configured with a **Simple Event**. ![View Configuration Link](event-trigger-config.png?width=50pc)
->**NOTE:**After first adding a new `trigger` you must run the job at least once so that the `trigger` is saved to the Jenkins job configuration (similar to setting the `buildDiscarder` `option`).
+
+{{% notice note %}}
+After first adding a new `trigger` you must run the job at least once so that the `trigger` is saved to the Jenkins job configuration (similar to setting the `buildDiscarder` `option`).
+{{% /notice %}}
+
 6. Next, your instructor will set up a Pipeline project with the following **[simple event](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/cross-team-collaboration#cross-team-event-types)**: 
 
 ```
