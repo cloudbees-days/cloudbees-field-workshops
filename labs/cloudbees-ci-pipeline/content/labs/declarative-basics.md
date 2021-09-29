@@ -13,9 +13,11 @@ In this exercise we are going to create a special type of Jenkins Pipeline proje
 1. Navigate to the top-level of the CloudBees CI Operations Center - **Dashboard** - and click on the link for your ***Managed Controller*** (in the folder with the same name as your workshop GitHub Organization). ![Managed Controller link](managed-controller-link.png?width=60pc)
 2. At the top-level of your CloudBees CI Managed Controller click into the **pipelines** folder and then click on **New Item** in the left menu. Make sure you are in the **pipelines** folder. ![New Item](new-item.png?width=50pc) 
 
->NOTE: It is considered a best practice to create and manage all of your CloudBees CI jobs in folders.  
+{{% notice note %}}
+It is considered a best practice to create and manage all of your CloudBees CI jobs in folders.  
+{{% /notice %}}
 
-3. Enter **helloworld-nodejs** as the **Item Name** and select **Multibranch Pipeline** as the item type and click the **OK** button - again, make sure you are in your **pipelines** folder. ![New GitHub Multibranch Pipeline](github-multibranch-item.png?width=50pc) 
+3. Enter ***helloworld-nodejs*** as the **Item Name** and select **Multibranch Pipeline** as the item type and click the **OK** button - again, make sure you are in your **pipelines** folder. ![New GitHub Multibranch Pipeline](github-multibranch-item.png?width=50pc) 
 4. On the Multibranch Pipeline configuration page scroll down to **Branch Sources**, click the **Add source** button and then select **GitHub** from the dropdown. ![Set Branch Source](branch-source.png?width=50pc) 
 5. Next, select the **CloudBees CI Pipeline Workshop GitHub App** credential from the **Credentials** drop down and enter the URL for your workshop copy of the **helloworld-nodejs** GitHub repository as the value for the **Repository HTTPS URL** - ***https:\//github.com/{YOUR_GITHUB_ORGANIZATION}/helloworld-nodejs.git***.
 6. The rest of the default values are sufficient so click the **Validate** button and then click the **Save** button. ![Configure and Save Multibranch Pipeline](configure-save-multibranch-item.png?width=50pc) 
@@ -30,7 +32,11 @@ pipeline {
 ``` 
 ![Jenkinsfile in GitHub Editor](jenkinsfile-github-editor.png?width=50pc) 
 11. At the bottom of the screen enter a commit message, such as ***initial Jenkinsfile***, select the **Create a new branch for this commit and start a pull request**, name the branch **development** and click the **Propose new file** button. **IMPORTANT: Do Not Create a Pull Request on the next screen after saving**. ![Commit Jenkinsfile](commit-jenkinsfile.png?width=50pc) 
-12. Navigate back to your new Jenkins Multibranch Pipeline project folder on your CloudBees CI Managed Controller and refresh your browser.  You should now have a new failed job for the **development** branch where you just added the `Jenkinsfile`. Don't worry that it failed, that is expected and something we will fix in the next lab. *NOTE: If you do not have a new **development** pipeline job then click on the **Scan Repository Now** link in the left menu and then refresh your browser.*![Job Failed](job-failed.png?width=50pc) 
+12. Navigate back to your new Jenkins Multibranch Pipeline project folder on your CloudBees CI Managed Controller and refresh your browser.  You should now have a new failed job for the **development** branch where you just added the `Jenkinsfile`. Don't worry that it failed, that is expected and something we will fix in the next lab. ![Job Failed](job-failed.png?width=50pc) 
+
+{{% notice tip %}}
+If you do not have a new **development** pipeline job then click on the **Scan Repository Now** link in the left menu and then refresh your browser.
+{{% /notice %}}
 
 ## Basic Declarative Syntax Structure
 
@@ -52,7 +58,14 @@ WorkflowScript: 1: Missing required section "agent" @ line 1, column 1.
 
 [Declarative Pipelines](https://jenkins.io/doc/book/pipeline/syntax/#declarative-pipeline) must be enclosed within a `pipeline` block - which we have. But Declarative Pipelines must also contain a top-level `agent` declaration, and must contain exactly one `stages` block at the top level. The `stages` block must have at least one `stage` block but can have an unlimited number of additional `stage` blocks. Each `stage` block must have exactly one `steps` block. 
 
-1. We will use the GitHub file editor to update the `Jenkinsfile` file in your copy of the **helloworld-nodejs** repository. Navigate to the `Jenkinsfile` file in the **development** branch of your **helloworld-nodejs** repository and then click on the pencil icon in the upper right to edit that file. **IMPORTANT:** Make sure you are editing the `Jenkinsfile` on your `development` branch** and **NOT the `main` branch**. ![Edit Basic Syntax](github-edit-basic-syntax.png?width=50pc) 
+1. We will use the GitHub file editor to update the `Jenkinsfile` file in your copy of the **helloworld-nodejs** repository. Navigate to the `Jenkinsfile` file in the **development** branch of your **helloworld-nodejs** repository and then click on the pencil icon in the upper right to edit that file. 
+
+{{% notice warning %}}
+Make sure you are editing the `Jenkinsfile` on your `development` branch** and **NOT the `main` branch**.
+{{% /notice %}}
+
+![Edit Basic Syntax](github-edit-basic-syntax.png?width=50pc) 
+
 2. Replace the contents of that file with the following Declarative Pipeline:
 
 ```groovy
