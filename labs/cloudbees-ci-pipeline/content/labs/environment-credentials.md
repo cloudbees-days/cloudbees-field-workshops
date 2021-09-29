@@ -104,8 +104,8 @@ In this lab we will use the `environment` directive to inject a username/passwor
         }
 ```
 
-{{% notice note %}}
-Note that the `credentials` helper automatically creates two environment variables use the variable name we provided as a prefix and add `_USR` for the credential username and `_PSW` for the credential password. The credential variable without either suffix will provide the value in the format `username:password`.
+{{% notice tip %}}
+The `credentials` helper automatically creates two environment variables use the variable name we provided as a prefix and add `_USR` for the credential username and `_PSW` for the credential password. The credential variable without either suffix will provide the value in the format `username:password`.
 {{% /notice %}}
 
 3. At the bottom of the screen enter a commit message, leave **Commit directly to the `main` branch** selected and click the **Commit new file** button.
