@@ -61,7 +61,7 @@ WorkflowScript: 1: Missing required section "agent" @ line 1, column 1.
 1. We will use the GitHub file editor to update the `Jenkinsfile` file in your copy of the **helloworld-nodejs** repository. Navigate to the `Jenkinsfile` file in the **development** branch of your **helloworld-nodejs** repository and then click on the pencil icon in the upper right to edit that file. 
 
 {{% notice warning %}}
-Make sure you are editing the `Jenkinsfile` on your `development` branch** and **NOT the `main` branch**.
+Make sure you are editing the `Jenkinsfile` on your **`development` branch** and **NOT the `main` branch**.
 {{% /notice %}}
 
 ![Edit Basic Syntax](github-edit-basic-syntax.png?width=50pc) 
