@@ -5,7 +5,7 @@ weight: 2
 ---
 
 ## Create a Job from Pipeline Template Catalog
-In this lab you will create a new Multibranch Pipeline job from the **Maven Pipeline Template** provided by a Pipeline Template Catalog. And just by filling in a few parameters of a Pipeline template you will quickly have a complete continuous integration pipeline for your application that meets the required standards of your organization.
+In this lab you will create a new Multibranch Pipeline job from the **Maven Pipeline Template** provided by a Pipeline Template Catalog. And just by filling in a few parameters of a Pipeline template, you will quickly have a complete continuous integration pipeline for your application that meets the required standards of your organization.
 
 1. On your CloudBees CI Managed Controller (Jenkins instance) navigate into the **template-jobs** folder.
 2. Click on the **New Item** link in the left navigation menu.
@@ -30,6 +30,11 @@ In this lab you will create a new Multibranch Pipeline job from the **Maven Pipe
    ```
 7. Now, in **GitHub**, navigate to your `simple-java-maven-app` repository in the GitHub Organization you created for this workshop, click on the `example.cloudbees-ci.yml` file, then click **pencil** icon to edit the file and then rename the file by deleting `example.` from the beginning of the file name, leaving just `cloudbees-ci.yml`. ![Rename Marker File](rename-marker-file.png?width=50pc)
 8. Scroll to the bottom of the page and click the **Commit changes** *(directly to the `main` branch)* button to commit the renamed `cloudbees-ci.yml` to the **main** branch of your `simple-java-maven-app` repository. 
-9.  Navigate back to the **simple-maven-app** Multibranch Pipeline on your CloudBees CI Managed Controller and you will see that there is now a **main** branch job. ***NOTE: The job will fail and that is expected. We will fix the error in a subsequent lab.*** ![Maven main job](maven-main-job.png?width=50pc)
+9.  Navigate back to the **simple-maven-app** Multibranch Pipeline on your CloudBees CI Managed Controller and you will see that there is now a **main** branch job. 
+
+{{% notice note %}}
+The job will fail and that is expected. We will fix the error in a subsequent lab.
+{{% /notice %}}
+![Maven main job](maven-main-job.png?width=50pc)
 
 **For instructor led workshops please <a href="https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-ci/#casc-dev-title">return to the workshop slides</a>**

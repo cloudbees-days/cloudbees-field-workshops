@@ -7,7 +7,7 @@ weight: 4
 Developers should use the tools they want and not be required to use tools that slow them down. CloudBees CI contextual feedback for Jenkins Pipelines allows you to focus on your code and not your continuous integration tool.
 
 ## Jenkins Pipeline Contextual Feedback
-In this lab you will create a PR for your fork of the `simple-java-maven-app` repository that will provide an example of the contextual feedback provided by the CloudBees Slack plugin and the CloudBees SCM Reporting plugin.
+In this lab you will create a PR for your copy of the `simple-java-maven-app` repository that will provide an example of the contextual feedback provided by the CloudBees Slack plugin and the CloudBees SCM Reporting plugin.
 
 1. Navigate to your `simple-java-maven-app` repository in GitHub and then navigate to the `App.java` file. ![App.java](goto-app-java.png?width=50pc)
 2. Click on the pencil icon to edit the file, then update the typo changing `Helloo` to `Hello`, then scroll to the bottom of the page and select the option to ***Create a new branch for this commit and start a pull request*** and the click the **Propose changes** button. ![Propose changes](propose-changes.png?width=50pc)
