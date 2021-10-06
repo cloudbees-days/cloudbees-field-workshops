@@ -4,20 +4,26 @@ chapter: false
 weight: 3
 ---
 
-Pipeline Policies are runtime validations that work for both scripted and declarative pipelines and provide administrators a way to include warnings for or block the execution of pipelines that do not comply with the policies applied to your ***managed controller***.
+Pipeline Policies are runtime validations that work for both scripted and declarative pipelines, and provide administrators a way to include warnings for or block the execution of pipelines that do not comply with the policies applied to your ***managed controller***.
 
 ## Create a Pipeline Policy
 
 In this lab you will use CloudBees CI CasC for controllers to create a [Pipeline Policy](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines-user-guide/pipeline-policies) to enforce that all Pipeline jobs that run on your CloudBees CI ***managed controller*** (Jenkins instance) have a maximum 30 minute global `timeout` set.
 
 1. Navigate to your `cloudbees-ci-config-bundle` repository in GitHub and click on the **Pull requests** link. ![PR link](pr-link.png?width=50pc) 
-2. On the next screen, click on the **Pipeline Policies lab updates** pull request and then click on the **Files changed** tab to review the requested configuration changes. Note the addition of the `cloudbees-pipeline-policies` configuration at the top of the `jenkins.yaml` file. We also updated the bundler version and the Jenkins system message. ![PR Files Changed](pr-files-changed.png?width=50pc)
+2. On the next screen, click on the **Pipeline Policies lab updates** pull request and then click on the **Files changed** tab to review the requested configuration changes. Note the addition of the `cloudbees-pipeline-policies` configuration at the top of the `jenkins.yaml` file. We also updated the bundle version and the Jenkins system message. ![PR Files Changed](pr-files-changed.png?width=50pc)
 3. Once you have reviewed the changed files, click on the **Conversation** tab, scroll down and click the green **Merge pull request** button and then the **Confirm merge** button.
 4. On the next screen click the **Delete branch** button.
 5. Navigate to the **config-bundle-ops** job under the **template-jobs** folder on your CloudBees CI managed controller.
 6. Shortly after the **main** branch job completes successfully navigate to the top-level of your managed controller.
-7. Click on the **Manage Jenkins** link in the left navigation menu and then click on the **CloudBees Configuration as Code bundle** configuration link. ![CloudBees Configuration config](config-bundle-system-config.png?width=50pc)
-8.  On the next screen, click on the **Bundle Update** link and you should see that a new version of the configuration bundle is available. Click the **Reload Configuration** button and on the next screen click the **Yes** button to apply the updated configuration bundle. *Note: If you don't see the new version available then click the **Check for Updates** button.* ![Bundle Update](new-bundle-available.png?width=50pc)
+7. Click on the **Manage Jenkins** link in the left navigation menu and then click on the **CloudBees Configuration as Code export and update** configuration link. ![CloudBees Configuration config](config-bundle-system-config.png?width=50pc)
+8.  On the next screen, click on the **Bundle Update** link and you should see that a new version of the configuration bundle is available. Click the **Reload Configuration** button and on the next screen click the **Yes** button to apply the updated configuration bundle. 
+
+{{% notice note %}}
+If you don't see the new version available then click the **Check for Updates** button.
+{{% /notice %}}
+![Bundle Update](new-bundle-available.png?width=50pc)
+
 9. After the updated configuration bundle has finished loading, click on **Pipeline Policies** link in the left menu. ![Pipeline Policies Link](policies-click.png?width=50pc) 
 10. Next, on the **Pipeline Policies** screen, you will see a policy with the following settings - matching the configuration from the updated CasC bundle:
     - **Name**: ***Timeout policy***
@@ -54,7 +60,12 @@ pipeline {
 {{% /expand%}}
 
 15. Next, to ensure that we are using the updated **CloudBees CI Configuration Bundle** template, we will check the Pipeline Template Catalog **Import Log**. Navigate to the top-level of your CloudBees CI ***managed controller*** and click on **Pipeline Template Catalogs** link in the left menu and then click the **workshopCatalog** link. 
-   - ***NOTE:*** *Because the **pipeline-catalog-ops** project is a Multibranch pipeline it will be triggered via a GitHub webhook on all code commits resulting in a re-import of the Pipeline Template Catalog.* ![workshop Catalog link](workshop-catalog-link.png?width=50pc) 
+
+{{% notice note %}}
+Because the **pipeline-catalog-ops** project is a Multibranch pipeline it will be triggered via a GitHub webhook on all code commits resulting in a re-import of the Pipeline Template Catalog.
+{{% /notice %}}
+![workshop Catalog link](workshop-catalog-link.png?width=50pc) 
+
 16.  On the next screen, click the **Import Log** link to ensure the catalog was imported successfully and recently. ![Import Now](click-import-log-link.png?width=50pc)
 17.    After the import is complete, navigate back to the **main** branch job in the **config-bundle-ops** Mutlibranch project in the **template-jobs** folder and click the **Build Now** link in the left menu. The build will complete successfully and the logs for that build will show that the Pipeline policy validated successfully. ![Policy Success](pipeline-policy-success.png?width=50pc)
 
