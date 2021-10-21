@@ -26,7 +26,9 @@ Hibernation for CloudBees CI Managed Controllers is managed at the global Jenkin
 12. Navigate to the **Manage** screen for your managed controller and refresh your browser. **IMPORTANT - DO NOT CLICK ON THE LINK FOR YOU MANAGED CONTROLLER!** Although you should still see that your managed controller is **Disconnected** you should also see that the **Statefulset** has **1/1 replicas**. ![Managed Controller unhibernating](controller-unhibernating.png?width=50pc)
 13.  After a few minutes your managed controller will no longer be hibernated. ![Managed Controller Running](controller-running.png?width=50pc)
 
->NOTE: If you review the **Automatic hibernation** configuration for your Managed Controller after it is running again, you will see that the hibernation **Grace period** has been reconfigured to a value of ***1500*** second (25 minutes) based on the value configured in the CloudBees CI configuration bundle for your managed controller as the configuration bundle values will always override any UI based changes.
+{{% notice note %}}
+If you review the **Automatic hibernation** configuration for your Managed Controller after it is running again, you will see that the hibernation **Grace period** has been reconfigured to a value of ***1500*** second (25 minutes) based on the value configured in the CloudBees CI configuration bundle for your managed controller as the configuration bundle values will always override any UI based changes.
+{{% /notice %}}
 
 ## Un-hibernate a Managed Controllers via the Operations Center UI
 
