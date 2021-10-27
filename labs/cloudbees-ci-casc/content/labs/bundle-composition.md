@@ -217,16 +217,14 @@ items:
   name: controller-jobs
   description: ''
   properties:
-  - {}
+  - envVars: {}
   - kubernetesFolderProperty: {}
   - itemRestrictions:
       allowedTypes:
       - org.jenkinsci.plugins.workflow.job.WorkflowJob
       - org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject
-      - jenkins.branch.OrganizationFolder
       - jenkins.branch.OrganizationFolder.org.jenkinsci.plugins.github_branch_source.GitHubSCMNavigator
       filter: true
-
 ```
 {{% /notice %}}
 
