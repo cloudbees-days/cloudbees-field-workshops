@@ -3,7 +3,7 @@ title: "Pre-Workshop Setup"
 chapter: false
 weight: 2
 --- 
-#### <i class="fas fa-clock"></i> The pre-workshop setup should take you approximately 10 minutes to complete.
+#### <i class="fas fa-clock"></i> The pre-workshop setup should take you approximately 5 minutes to complete.
 
 If you are attending a CloudBees led workshop then these setup steps should be completed before the start of the workshop event - unless otherwise instructed.
 
@@ -34,7 +34,7 @@ We highly recommend creating a new GitHub Organization for the CloudBees CI Work
 
 ### Install the CloudBees CI Workshop GitHub App
 
-1. Ensure that you are logged into GitHub.com and then navigate to [https://github.com/apps/cloudbees-ci-workshop](https://github.com/apps/cloudbees-ci-workshop).<p>![GitHub App](cbci-github-app.png?width=60pc)
+1. Ensure that you are logged into GitHub.com and then navigate to [https://github.com/apps/cloudbees-ci-kubernetes-workshop](https://github.com/apps/cloudbees-ci-kubernetes-workshop).<p>![GitHub App](cbci-github-app.png?width=60pc)
 2. Click on the **Install** button.
 3. Next, select the GitHub Organization you created above for the CloudBees CI Workshop. 
 >NOTE:  Only GitHub Organizations are supported, do not install the GitHub App on your GitHub user account. 
@@ -43,15 +43,10 @@ We highly recommend creating a new GitHub Organization for the CloudBees CI Work
 
 4. On the next screen, select **All repositories** and click the **Install** button.<p>![GitHub App](github-app-install.png?width=50pc)
 5. You may be prompted for your GitHub password. Enter your GitHub.com password, for the GitHub account you are using for this workshop, to complete the installation of the CloudBees CI Workshop GitHub App into your workshop specific GitHub Organization.
-6. The CloudBees CI Workshop GitHub App is now installed on your workshop GitHub Organization. <p>![GitHub App Installed](installed-now.png?width=50pc)
-7. A few minutes after you install the CloudBees CI Workshop GitHub App you should see the following repositories created in your workshop GitHub Organization.
-   - https://github.com/cloudbees-days/cloudbees-ci-config-bundle
-   - https://github.com/cloudbees-days/pipeline-library
-   - https://github.com/cloudbees-days/pipeline-template-catalog
-   - https://github.com/cloudbees-days/simple-java-maven-app ![GitHub App Installed](forked-repos.png?width=50pc)
+6. The CloudBees CI Kubernetes Workshop GitHub App is now installed on your workshop GitHub Organization. <p>![GitHub App Installed](installed-now.png?width=50pc)
+7. A few minutes after you install the CloudBees CI Kubernetes Workshop GitHub App you should see the following repository created in your workshop GitHub Organization.
+   - cloudbees-ci-k8s-cloudshell-tutorials
 
 {{% notice tip %}}
-These repositories were created from GitHub template repositories in the [CloudBees Field Workshops GitHub Organization](https://github.com/cloudbees-days).
+This repository was created from GitHub template repository in the [CloudBees Field Workshops GitHub Organization](https://github.com/cloudbees-days).
 {{% /notice %}}
-
-**For instructor led workshops please <a href="https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-ci/#core-overview-title">return to the workshop slides</a>**
