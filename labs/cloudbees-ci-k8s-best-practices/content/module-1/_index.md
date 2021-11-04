@@ -35,7 +35,7 @@ In addition to being the future direction of volume storage for Kubernetes, CSI 
 
 ### Installation Tools
 
-We will be using the Google Cloud Shell to create the GKE cluster and install CloudBees CI. One benefit of using Google's Cloud Shell for this workshop is that it comes with the tools we need preinstalled. They include:
+We will be using the [Google Cloud Shell](https://cloud.google.com/shell) to create the GKE cluster and install CloudBees CI. One benefit of using Google's Cloud Shell for this workshop is that it comes with the tools we need preinstalled. They include:
 
 - **git**: You won't actually be using it yourself, but when you launch the Cloud Shell with the link mentioned below it will automatically clone the `cloudbees-ci-k8s-cloudshell-tutorials` repository into you Cloud Shell environment. The files include the actual instructions and the different manifest and configuration files we will be using in the workshop.
 - **gcloud**: The `gcloud` CLI will be used to create the GKE cluster and set-up/configure other necessary GCP services.
@@ -44,6 +44,6 @@ We will be using the Google Cloud Shell to create the GKE cluster and install Cl
 
 ## Labs
 
-THe labs for this workshop will leverage the Google Cloud Shell tutorial format. Navigate to the **cloudbees-ci-k8s-cloudshell-tutorials** repository in the GitHub Organization you created for this workshop and click on the **OPEN IN GOOGLE CLOUD SHELL** button.
+The labs for this workshop will leverage the Google Cloud Shell tutorial format. Navigate to the **cloudbees-ci-k8s-cloudshell-tutorials** repository in the GitHub Organization you created for this workshop and click on the **OPEN IN GOOGLE CLOUD SHELL** button.
 
 
