@@ -9,7 +9,7 @@ weight: 1
 This module will provide detailed instructions for creating a Google Kubernetes Engine (GKE) cluster on the Google Cloud Platform (GCP) to include an in-depth review of specific features that provide the best foundation for installing and utilizing CloudBees CI on modern platforms. We will also take a look at some useful Kubernetes tools to use with CloudBees CI.
 
 ## Container Runtime
-Using Docker as the container runtime for Kubernetes has been deprecated with the v1.20 release. And starting with version 1.19, GKE defaults to using [**containerd**](https://containerd.io/) as the default container runtime. This is important from the context on continuous integrations jobs as the Docker daemon will not be available to CloudBees CI agent pods - for example to build and push a container image. We will explore other tools to build and push container images later in this workshop.
+Using Docker as the container runtime for Kubernetes has been deprecated with the v1.20 release. And starting with version 1.19, GKE defaults to using **[containerd](https://containerd.io/)** as the default container runtime. This is important from the context on continuous integrations jobs as the Docker daemon will not be available to CloudBees CI agent pods - for example to build and push a container image. We will explore other tools to build and push container images later in this workshop.
 
 
 ## Google Kubernetes Engine (GKE)
@@ -35,7 +35,7 @@ In addition to being the future direction of volume storage for Kubernetes, CSI 
 
 ### Installation Tools
 
-One benefit of using Google's Cloud Shell for this workshop is that it comes with the tools we need preinstalled. They include:
+We will be using the Google Cloud Shell to create the GKE cluster and install CloudBees CI. One benefit of using Google's Cloud Shell for this workshop is that it comes with the tools we need preinstalled. They include:
 
 - **git**: You won't actually be using it yourself, but when you launch the Cloud Shell with the link mentioned below it will automatically clone the `cloudbees-ci-k8s-cloudshell-tutorials` repository into you Cloud Shell environment. The files include the actual instructions and the different manifest and configuration files we will be using in the workshop.
 - **gcloud**: The `gcloud` CLI will be used to create the GKE cluster and set-up/configure other necessary GCP services.
