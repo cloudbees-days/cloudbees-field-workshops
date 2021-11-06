@@ -26,12 +26,13 @@ You may have noticed that all the file types except for the **bundle** file are 
 In this lab we will explore the configuration bundle assigned to your Ops controller when it was dynamically provisioned.
 
 1. Navigate to the `ops-controller` repository in your workshop GitHub Organization. ![ops-controller repository](ops-controller-repo.png?width=50pc) 
-2. Click on the `bundle.yaml` file. Its contents will mostly match the following (the `id` and `description` will include your workshop GitHub Organization name):
+2. Click on the `bundle.yaml` file. Its contents will mostly match the following (the `id`, `description` and `availabilityPattern` will be unique to each attendee):
 ```yaml
 apiVersion: "1"
 version: "1"
 id: "cbci-casc-workshop-ops-controller"
 description: "CloudBees CI configuration bundle for the cbci-casc-workshop ops-controller Controller"
+availabilityPattern: "{GitHub Org}/{controller name}"
 jcasc:
   - "jenkins.yaml"
 plugins:
