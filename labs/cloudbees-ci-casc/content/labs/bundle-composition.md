@@ -12,7 +12,7 @@ This lab will explore the composition of a CloudBees CI configuration bundle to 
 
 A configuration bundle may consist of the following YAML file types:
 
-- **bundle** (required) - This file is an index file that describes the bundle, references the other files in the bundle and must be named `bundle.yaml`. Any files not listed in this file will not be included in the controller bundle.
+- **bundle** (required) - This file is an index file that describes the bundle, references the other files in the bundle and must be named `bundle.yaml`. Any files not listed in this file will not be included in the controller bundle. It also (optionally) allows you to specify an `availabilityPattern` which is the full path to the controllers that can use the bundle defined as a regular expression.
 - **jcasc** (optional) - This file contains the Jenkins configuration (global configuration, credentials), as defined by the Jenkins [Configuration as Code plugin](https://github.com/jenkinsci/configuration-as-code-plugin).
 - **plugins** (optional) - This file contains a list of all the plugins to be installed on the controller. Plugins that are not in the [CloudBees Assurance Program (CAP)](https://docs.cloudbees.com/docs/admin-resources/latest/assurance-program/) have to be added with a Plugin Catalog and to this file.
 - **catalog** (optional) - This file defines the catalog of versioned plugins outside of the CloudBees Assurance Program (CAP) that are available for installation on the controller. An optional location can also be specified for plugins that are not available in the standard update centers. Adding plugins to a catalog only makes them available to install and they still must be added to the plugins file above.
@@ -20,7 +20,7 @@ A configuration bundle may consist of the following YAML file types:
 - **items** (optional) - This file defines items to be created on the controller. Currently, only folders and a subset of fields are fully supported. 
 
 {{% notice note %}}
-You may have noticed that all the file types except for the **bundle** file are optional and wonder if it would make sense to have a configuration bundle that only had a **bundle** file. We will see in a later lab that it is useful with bundle inheritance.
+You may have noticed that all the file types except for the **bundle** file are optional and wonder if it would make sense to have a configuration bundle that only had a **bundle** file. We will see in a later lab that it is useful with bundle inheritance. Future versions of CloudBees CI CasC for Operations Center will allow defining managed controllers as `items`.
 {{% /notice %}}
 
 In this lab we will explore the configuration bundle assigned to your Ops controller when it was dynamically provisioned.
@@ -131,6 +131,7 @@ plugins:
 - id: warnings-ng
 - id: workflow-aggregator
 - id: workflow-cps-checkpoint
+# non-cap plugins
 ```
 
 ## Creating/Updating a Configuration Bundle from a Bundle Export
@@ -159,7 +160,7 @@ configurations:
 10. Next click on the **Add file** button and then select **Create new file**. ![Create new file in GitHub](github-create-new-file.png?width=50pc)
 11. On the next screen, name the new file `plugin-catalog.yaml`, enter the contents from the `plugin-catalog.yaml` export but **make sure your put single quotes around the plugin version**. Then commit directly to the `main` branch. ![Commit plugin-catalog.yaml](commit-plugin-catalog.png?width=50pc)
 12. Plugins in the `plugin-catalog.yaml` are not actually installed on a controller, rather they just extend what can be installed outside of CAP. In order for a plugin to be installed via a configuration bundle you must add it to the `plugins.yaml`. Click on the `plugins.yaml` file and then click on the ***Edit this file*** pencil button. ![Edit plugins file GitHub](github-edit-plugins-file.png?width=50pc)
-13. In the GitHub file editor, add `- id: pipeline-utility-steps` under the line containing the content `- id: pipeline-stage-view`, and then commit directly to the `main` branch. ![Commit plugins.yaml](commit-plugins.png?width=50pc)
+13. In the GitHub file editor, add `- id: pipeline-utility-steps` under the `# non-cap plugins` comment, and then commit directly to the `main` branch. ![Commit plugins.yaml](commit-plugins.png?width=50pc)
 
 {{%expand "expand for complete updated plugins.yaml file" %}}
 ```yaml
@@ -186,10 +187,11 @@ plugins:
 - id: pipeline-event-step
 - id: pipeline-model-extensions
 - id: pipeline-stage-view
-- id: pipeline-utility-steps
 - id: warnings-ng
 - id: workflow-aggregator
 - id: workflow-cps-checkpoint
+# non-cap plugins
+- id: pipeline-utility-steps
 ```
 {{% /expand%}}
 
@@ -201,30 +203,6 @@ plugins:
 19. On the **CloudBees Configuration as Code export and update** page of your Ops controller, instead of clicking the *visualize* link, click the *Copy content* link for the `items.yaml` **Filename**. ![Items copy content link](items-copy-content-link.png?width=50pc) 
 20. Navigate to the top level of your copy of the `ops-controller` repository in your workshop GitHub Organization and click on the **Add file** button and then select **Create new file**. ![Create new file in GitHub](github-create-new-file.png?width=50pc)
 21. On the next screen, name the new file `items.yaml`, paste the contents from the `items.yaml` export (same as above).
-
-{{% notice note %}}
-There is an [open issue](https://github.com/jenkinsci/branch-api-plugin/pull/271) in regards to the GitHub Organization item type and item restrictions. A temporary fix is to manually add `jenkins.branch.OrganizationFolder` to the `allowedTypes` collection as below.
-```yaml
-removeStrategy:
-  rbac: SYNC
-  items: NONE
-items:
-- kind: folder
-  displayName: controller-jobs
-  name: controller-jobs
-  description: ''
-  properties:
-  - envVars: {}
-  - kubernetesFolderProperty: {}
-  - itemRestrictions:
-      allowedTypes:
-      - org.jenkinsci.plugins.workflow.job.WorkflowJob
-      - org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject
-      - jenkins.branch.OrganizationFolder.org.jenkinsci.plugins.github_branch_source.GitHubSCMNavigator
-      filter: true
-```
-{{% /notice %}}
-
 22. Add the `- jenkins.branch.OrganizationFolder` type as shown above and then commit directly to the `main` branch. ![Commit items.yaml](commit-items.png?width=50pc)
 23. In addition to updating the `plugins.yaml`, we also added two new files: `plugin-catalog.yaml` and `items.yaml`. However, those files are not listed in the `bundles.yaml`. In order to include those files in the configuration bundle we need to add them to the `bundle.yaml` file, so click on the `bundles.yaml` file and then click on the ***Edit this file*** pencil button.
 24. In the GitHub file editor for the `bundle.yaml` file, update the `version` field to **2** and add the following configuration to the end of the `bundle.yaml` file:
@@ -234,23 +212,6 @@ catalog:
 items:
   - "items.yaml"
 ```
-
-{{%expand "expand for complete bundle.yaml file" %}}
-```yaml
-apiVersion: "1"
-version: "2"
-id: "cbci-casc-workshop-ops-controller"
-description: "CloudBees CI configuration bundle for the cbci-casc-workshop ops-controller Controller"
-jcasc:
-  - "jenkins.yaml"
-plugins:
-  - "plugins.yaml"
-catalog:
-  - "plugin-catalog.yaml"
-items:
-  - "items.yaml"
-```
-{{% /expand%}}
 
 {{% notice note %}}
 In previous versions of CloudBees CI Configuration as Code (CasC) for Controllers the `version` field of the `bundle.yaml` file had to be modified in order for an update to be triggered for controllers using that bundle. This is no longer required as any change in any file in a bundle will trigger a bundle update for any controllers using the updated bundle once those changes are copied to the JCasC bundle directory on Operations Center. However, it is still considered a best practice to increment the bundle version.
