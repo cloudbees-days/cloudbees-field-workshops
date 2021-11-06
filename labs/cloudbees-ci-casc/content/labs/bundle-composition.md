@@ -20,7 +20,7 @@ A configuration bundle may consist of the following YAML file types:
 - **items** (optional) - This file defines items to be created on the controller. Currently, only folders and a subset of fields are fully supported. 
 
 {{% notice note %}}
-You may have noticed that all the file types except for the **bundle** file are optional and wonder if it would make sense to have a configuration bundle that only had a **bundle** file. We will see in a later lab that it is useful with bundle inheritance. Future versions of CloudBees CI CasC for Operations Center will allow defining managed controllers as `items`.
+You may have noticed that all the file types except for the **bundle** file are optional and wonder if it would make sense to have a configuration bundle that only had a **bundle** file. We will see in a later lab that it is useful with bundle inheritance.
 {{% /notice %}}
 
 In this lab we will explore the configuration bundle assigned to your Ops controller when it was dynamically provisioned.
