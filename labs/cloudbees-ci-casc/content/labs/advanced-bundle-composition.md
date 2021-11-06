@@ -73,15 +73,14 @@ unclassified:
 8. The contents of your `jcasc` folder in the `jcasc-subfolder` branch should now match the following: ![Commit jcasc-subfolder contents](github-jcasc-subfolder-contents.png?width=50pc)
 9.  Navigating back to the top level of your `ops-controller` repository and ensuring that you are on the ` jcasc-subfolder` branch, click on the `jenkins.yaml` file and then click on the *trash can icon* to delete the `jenkins.yaml` file and on the next screen click the **Commit changes** button. ![Delete jenkins.yaml file](github-delete-jenkins-yaml.png?width=50pc)
 10. Navigating back to the top level of your `ops-controller` repository and ensuring that you are on the ` jcasc-subfolder` branch, click on the `bundle.yaml` file and then click on the ***Edit this file*** pencil button to edit the file. 
-11. Change the bundle `version` to **3** and update the `jcasc` section to match the following:
+11. Change the bundle `version` to **3** and update the `jcasc` section to match the following and note that you only have to specify the `jcasc` folder to include all of the configuration files in that folder (and sub-folders):
 ```yaml
 apiVersion: "1"
 version: "3"
 id: "cbci-casc-workshop-ops-controller"
 description: "CloudBees CI configuration bundle for the cbci-casc-workshop ops-controller Controller"
 jcasc:
-  - "jcasc/credentials.yaml"
-  - "jcasc/jenkins.yaml"
+  - "jcasc/"
 plugins:
   - "plugins.yaml"
 catalog:
@@ -103,7 +102,7 @@ items:
 
 Bundle inheritance allows you to easily share common configuration across numerous controllers. In this lab we will update your Ops controller bundle to extend a parent bundle providing common configuration and plugins to be shared across all of your organizations' controllers. First, we will review the contents of the parent `base` bundle that has already been set-up on Operations Center (and is also the default bundle), and then we will update your Ops controller bundle to use the `base` bundle as a parent bundle. The `base` bundle will include Jenkins configuration that enforces best practices across all of the controllers in the CloudBees CI cluster and include a common set of plugins to be used across all controllers.
 
-1. First we will take a look at the `bundle.yaml` for the `base` bundle (also available on GitHub at https://github.com/cloudbees-days/parent-configuration-bundle/blob/main/bundle.yaml):
+1. First we will take a look at the `bundle.yaml` for the `base` bundle (also available in GitHub at https://github.com/cloudbees-days/parent-configuration-bundle/blob/main/bundle.yaml ):
 ```yaml
 apiVersion: "1"
 id: "base"
