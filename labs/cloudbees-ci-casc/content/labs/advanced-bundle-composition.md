@@ -96,7 +96,7 @@ items:
 17. On the **CloudBees Configuration as Code export and update** click on the **Bundle update** tab and you should see that there is a bundle update available. ![CasC bundle update](casc-bundle-update.png?width=50pc)
 18. Click on the **Reload Configuration** button and then on the next screen click the **Yes** button to apply the bundle update. ![CasC bundle apply](casc-bundle-apply.png?width=50pc)
 19. After the updated configuration bundle is finished being applied return to the **CloudBees Configuration as Code export and update** configuration page and click on the **Original Bundle** tab. ![Original bundle with folder](original-bundle-folder.png?width=50pc)
-20. The **Original Bundle** view will show you what configuration is being managed by the configuration bundle assigned to your controller. Notice that there are now two *Jenkins configuration as defined by OSS CasC* files - `jcasc/cbci-casc-workshop-ops-controller.credentials.yaml` and `jcasc/cbci-casc-workshop-ops-controller.jenkins.yaml`; and both prefixed with the `id` of your bundle. This is done to support bundle inheritance as we will see in the next section.
+20. The **Original Bundle** view will show you what configuration is being managed by the configuration bundle assigned to your controller. Notice that there are now two *Jenkins configuration as defined by OSS CasC* files - `jcasc/01-cbci-casc-workshop-ops-controller.jcasc.credentials.yaml` and `jcasc/01-cbci-casc-workshop-ops-controller.jcasc.jenkins.yaml`; and both prefixed with `01`, the `id` of your bundle and include the name of the folder the configurations files are in. This is done to support including configuration files in folders and sub-folders, and also bundle inheritance as we will see in the next section.
 
 ## Bundle Inheritance
 
@@ -260,9 +260,9 @@ version: "4"
 id: "cbci-casc-workshop-ops-controller"
 description: "CloudBees CI configuration bundle for the cbci-casc-workshop ops-controller Controller"
 parent: "base"
+availabilityPattern: "{GitHub Org}/{controller name}"
 jcasc:
-  - "jcasc/credentials.yaml"
-  - "jcasc/jenkins.yaml"
+  - "jcasc/"
 plugins:
   - "plugins.yaml"
 items:
