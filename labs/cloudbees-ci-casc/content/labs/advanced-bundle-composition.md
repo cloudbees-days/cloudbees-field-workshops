@@ -13,6 +13,17 @@ CloudBees CI Configuration as Code (CasC) for Controllers allows managing bundle
 1. Navigate back to the top level of your `ops-controller` repository in your workshop GitHub Organization, then click on the **Add file** button and then select **Create new file**. ![Create new file in GitHub](github-create-new-file.png?width=50pc)
 ```yaml
 credentials:
+  restrictedSystem:
+    domainCredentials:
+    - allowList: "controller-jobs/cbci-casc-automation/**/*"
+      credentials:
+        gitHubApp:
+          apiUri: "https://api.github.com"
+          appID: "${cbciCascWorkshopGitHubAppId}"
+          description: "CloudBees CI CasC Workshop GitHub App credential"
+          id: "cloudbees-ci-casc-workshop-github-app"
+          owner: "${GITHUB_ORGANIZATION}"
+          privateKey: "${cbciCascWorkshopGitHubAppPrivateKey}"
   system:
     domainCredentials:
     - credentials:
@@ -21,15 +32,9 @@ credentials:
           id: "cloudbees-ci-workshop-github-webhook-secret"
           scope: SYSTEM
           secret: "${gitHubWebhookSecret}"
-      - gitHubApp:
-          apiUri: "https://api.github.com"
-          appID: "${cbciCascWorkshopGitHubAppId}"
-          description: "CloudBees CI CasC Workshop GitHub App credential"
-          id: "cloudbees-ci-casc-workshop-github-app"
-          owner: "${GITHUB_ORGANIZATION}"
-          privateKey: "${cbciCascWorkshopGitHubAppPrivateKey}"
 ```
-2. Name the new file `jcasc/credentials.yaml`, copy the `credentials` section from above and paste it into the GitHub file editor. Then select the option to **"Create a new branch for this commit and start a pull request"**, name the branch `jcasc-subfolder` and finally click the **Propose new file** button. ![Create credentials.yaml in jcasc folder](github-commit-credentials-yaml.png?width=50pc)
+2. Name the new file `jcasc/credentials.yaml`, copy the `credentials` section from above and paste it into the GitHub file editor. Note also, that we are using the **CloudBees Restricted Credentials Plugin** we added earlier to restrict the `cloudbees-ci-casc-workshop-github-ap` to only be used within your **cbci-casc-automation** GitHub Organization job.
+3. Next, select the option to **"Create a new branch for this commit and start a pull request"**, name the branch `jcasc-subfolder` and finally click the **Propose new file** button. ![Create credentials.yaml in jcasc folder](github-commit-credentials-yaml.png?width=50pc)
 3. On the next screen click the **Create pull request** button to create a pull request to merge to the `main` branch when you are done updating your `ops-controller` configuration bundle. ![Create sub-folder pull request](github-create-subfolder-pr.png?width=50pc)
 4. Next, navigate back to the **Code** tab of your `ops-controller` repository and select the `jcasc-subfolder` branch from the branch drop down. ![Select jcasc-subfolder branch](github-select-jcasc-subfolder-branch.png?width=50pc)
 5. Back at the top level of your `ops-controller` repository, click on the `jcasc` folder and then click on the **Add file** button and then select **Create new file**. ![Create new unclassified in GitHub](github-create-unclassified-file.png?width=50pc)
@@ -69,7 +74,7 @@ unclassified:
               repoOwner: "${GITHUB_ORGANIZATION}"
               repository: "pipeline-library"
 ```
-7. After you have pasted `unclassified` section of the `jenkins.yaml` file into the editor, ensure that you are committing to the `jcasc-subfolder` branch and then click the **Commit changes** button. ![Commit unclassified.yaml](github-commit-unclassified-yaml.png?width=50pc)
+7. After you have pasted `unclassified` section of the `jenkins.yaml` file into the editor, ensure that you are committing to the `jcasc-subfolder` branch and then click the **Commit new file** button. ![Commit unclassified.yaml](github-commit-unclassified-yaml.png?width=50pc)
 8. The contents of your `jcasc` folder in the `jcasc-subfolder` branch should now match the following: ![Commit jcasc-subfolder contents](github-jcasc-subfolder-contents.png?width=50pc)
 9.  Navigating back to the top level of your `ops-controller` repository and ensuring that you are on the ` jcasc-subfolder` branch, click on the `jenkins.yaml` file and then click on the *trash can icon* to delete the `jenkins.yaml` file and on the next screen click the **Commit changes** button. ![Delete jenkins.yaml file](github-delete-jenkins-yaml.png?width=50pc)
 10. Navigating back to the top level of your `ops-controller` repository and ensuring that you are on the ` jcasc-subfolder` branch, click on the `bundle.yaml` file and then click on the ***Edit this file*** pencil button to edit the file. 
@@ -93,10 +98,8 @@ items:
 14. On the **Create credentials.yaml #1** pull request page, click the **Merge pull request** button, then click the **Confirm merge** button and then click the **Delete branch** button.
 15. Navigate to the `main` branch job of the `ops-controller` Multibranch pipeline project on your Ops controller. ![ops-controller Mulitbranch](ops-controller-multibranch-jcasc.png?width=50pc)
 16. After the the `main` branch job has completed successfully, navigate to the top level of your Ops controller, click on the **Manage Jenkins** link in the left menu, and then click on the **CloudBees Configuration as Code export and update** **System Configuration** item. ![CasC Configuration link](cloudbees-casc-link.png?width=50pc) 
-17. On the **CloudBees Configuration as Code export and update** click on the **Bundle update** tab and you should see that there is a bundle update available. ![CasC bundle update](casc-bundle-update.png?width=50pc)
-18. Click on the **Reload Configuration** button and then on the next screen click the **Yes** button to apply the bundle update. ![CasC bundle apply](casc-bundle-apply.png?width=50pc)
-19. After the updated configuration bundle is finished being applied return to the **CloudBees Configuration as Code export and update** configuration page and click on the **Original Bundle** tab. ![Original bundle with folder](original-bundle-folder.png?width=50pc)
-20. The **Original Bundle** view will show you what configuration is being managed by the configuration bundle assigned to your controller. Notice that there are now two *Jenkins configuration as defined by OSS CasC* files - `jcasc/01-cbci-casc-workshop-ops-controller.jcasc.credentials.yaml` and `jcasc/01-cbci-casc-workshop-ops-controller.jcasc.jenkins.yaml`; and both prefixed with `01`, the `id` of your bundle and include the name of the folder the configurations files are in. This is done to support including configuration files in folders and sub-folders, and also bundle inheritance as we will see in the next section.
+17. Click on the **Original Bundle** tab. ![Original bundle with folder](original-bundle-folder.png?width=50pc)
+18. The **Original Bundle** view will show you what configuration is being managed by the configuration bundle assigned to your controller. Notice that there are now two *Jenkins configuration as defined by OSS CasC* files - `jcasc/01-cbci-casc-workshop-ops-controller.jcasc.credentials.yaml` and `jcasc/01-cbci-casc-workshop-ops-controller.jcasc.jenkins.yaml`; and both prefixed with `01`, the `id` of your bundle and include the name of the folder the configurations files are in. This is done to support including configuration files in folders and sub-folders, and also bundle inheritance as we will see in the next section.
 
 ## Bundle Inheritance
 
@@ -217,12 +220,12 @@ configurations:
   includePlugins:
     pipeline-utility-steps: {version: '2.10.0'}
 ```
-6. Now that we have reviewed the contents of the `base` bundle we will update your Ops controller bundle to use it as a parent bundle. However, before we do that, it is important to understand how JCasC files are processed. [JCasC configuration](https://github.com/jenkinsci/configuration-as-code-plugin) supports different [merge strategies](https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/features/mergeStrategy.md), currently limited to `errorOnConflict` and `override`.
+6. Now that we have reviewed the contents of the `base` bundle we will update your Ops controller bundle to use it as a parent bundle. However, before we do that, it is important to understand how JCasC files are processed. [JCasC configuration](https://github.com/jenkinsci/configuration-as-code-plugin) supports different [merge strategies](https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/features/mergeStrategy.md), currently limited to `errorOnConflict` and `override`. Everyone's managed controllers are configured to use the `override` merge strategy.
   - `errorOnConflict` is what existed before merge strategies were added to JCasC and will result in a Jenkins exception when loading a bundle with conflicting configuration; meaning that a child bundle cannot overwrite any of the parent configuration values
   - `override` allows for JCasC configuration in a child bundle to override that of the parent bundle.
 7. Navigate to the `jcasc` folder of your copy of the `ops-controller` repository and click on the `jenkins.yaml` file and then click on the ***Edit this file*** pencil button.
-8. Now we will delete all the configuration that will be provided by the parent bundle:
-   - Delete the `quietPeriod` and the `systemMessage` sections under `jenkins`.
+8. Now we will delete most of the configuration that will be provided by the parent bundle:
+   - Delete the `quietPeriod` under `jenkins`.
    - Under the `unclassified` section delete everything except for the `globallibraries` section.
    - After making those changes, your `jenkins.yaml` file should match the following:
 ```yaml
@@ -232,6 +235,7 @@ jenkins:
       env:
       - key: "GITHUB_USER"
         value: "${GITHUB_USER}"
+  systemMessage: 'Jenkins configured using CloudBees CI CasC'
 unclassified:
   globallibraries:
     libraries:
