@@ -74,7 +74,7 @@ pipeline {
         withCredentials([usernamePassword(credentialsId: 'admin-cli-token', usernameVariable: 'JENKINS_CLI_USR', passwordVariable: 'JENKINS_CLI_PSW')]) {
             sh """
               alias cli='java -jar jenkins-cli.jar -s http://${GITHUB_ORG}-${GITHUB_REPO}/${GITHUB_ORG}-${GITHUB_REPO}/ -auth $JENKINS_CLI_USR:$JENKINS_CLI_PSW'
-              cli groovy =<./reload-casc.groovy
+              casc-bundle-reload-bundle
             """
         }
       }
@@ -82,7 +82,7 @@ pipeline {
   }
 }
 ```
-4. On the first line you will see that we are using the Pipeline shared library defined in your Ops controller configuration bundle. The Pipeline shared library contains a number of Jenkins Kubernetes Pod templates that can be leveraged across all the controllers. We are utilizing the `kubectl.yml` Pod template so we can use the `kubectl cp` command to copy your `ops-controller` configuration bundle files into the `jcasc-bundles-store` directory on Operations Center. Finally, we use a Groovy script to automatically reload the bundle as long as it can be reloaded without a restart of the controller. Once you have finished reviewing the `controller-casc-automation` pipeline contents, commit directly to the main branch of your Ops controller repository. ![Commit Jenkinsfile](commit-jenkinsfile.png?width=50pc)
+4. On the first line you will see that we are using the Pipeline shared library defined in your Ops controller configuration bundle. The Pipeline shared library contains a number of Jenkins Kubernetes Pod templates that can be leveraged across all the controllers. We are utilizing the `kubectl.yml` Pod template so we can use the `kubectl cp` command to copy your `ops-controller` configuration bundle files into the `jcasc-bundles-store` directory on Operations Center. Finally, we use a the [CasC CLI](https://docs.cloudbees.com/docs/admin-resources/latest/cli-guide/casc-bundle-management) `casc-bundle-reload-bundle` command  to automatically reload the bundle as long as it can be reloaded without a restart of the controller. Once you have finished reviewing the `controller-casc-automation` pipeline contents, commit directly to the main branch of your Ops controller repository. ![Commit Jenkinsfile](commit-jenkinsfile.png?width=50pc)
 
 {{% notice info %}}
 In a production environment we recommend placing Operations Center and the Ops Controller in the same Kubernetes `namespace`, and isolating all managed controllers in one or more other Kubernetes `namespaces`.
