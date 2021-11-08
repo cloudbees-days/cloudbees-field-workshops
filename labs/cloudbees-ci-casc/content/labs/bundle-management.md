@@ -69,14 +69,20 @@ pipeline {
           sh "kubectl cp --namespace cbci ${GITHUB_ORG}-${GITHUB_REPO} cjoc-0:/var/jenkins_home/jcasc-bundles-store/ -c jenkins"
         }
         echo "begin config bundle reload"
-        sh "curl -O https://raw.githubusercontent.com/cloudbees-days/ops-workshop-setup/master/groovy/reload-casc.groovy"
-        sh "curl -O http://${GITHUB_ORG}-${GITHUB_REPO}/${GITHUB_ORG}-${GITHUB_REPO}/jnlpJars/jenkins-cli.jar"
-        withCredentials([usernamePassword(credentialsId: 'admin-cli-token', usernameVariable: 'JENKINS_CLI_USR', passwordVariable: 'JENKINS_CLI_PSW')]) {
-            sh """
-              alias cli='java -jar jenkins-cli.jar -s http://${GITHUB_ORG}-${GITHUB_REPO}/${GITHUB_ORG}-${GITHUB_REPO}/ -auth $JENKINS_CLI_USR:$JENKINS_CLI_PSW'
-              cli casc-bundle-check-bundle-update
-              cli casc-bundle-reload-bundle
-            """
+        script {
+          try {
+            sh "curl -O https://raw.githubusercontent.com/cloudbees-days/ops-workshop-setup/master/groovy/reload-casc.groovy"
+            sh "curl -O http://${GITHUB_ORG}-${GITHUB_REPO}/${GITHUB_ORG}-${GITHUB_REPO}/jnlpJars/jenkins-cli.jar"
+            withCredentials([usernamePassword(credentialsId: 'admin-cli-token', usernameVariable: 'JENKINS_CLI_USR', passwordVariable: 'JENKINS_CLI_PSW')]) {
+                sh """
+                  alias cli='java -jar jenkins-cli.jar -s http://${GITHUB_ORG}-${GITHUB_REPO}/${GITHUB_ORG}-${GITHUB_REPO}/ -auth $JENKINS_CLI_USR:$JENKINS_CLI_PSW'
+                  cli casc-bundle-check-bundle-update
+                  cli casc-bundle-reload-bundle
+                """
+            }
+          } catch (Exception e) {
+              echo 'Exception occurred: ' + e.toString()
+          }
         }
       }
     }
