@@ -25,7 +25,7 @@ This lab will provide an overview of how configuration bundles are managed via t
 1. By checking the **Availability pattern** checkbox, any configuration bundle that has an empty **Availability pattern** can be used by any controller.
 2. The **Default bundle** drop-down allows you to automatically apply a default configuration bundle to any controller that does not specify a different configuration bundle. However, the **Availability pattern** checkbox must be checked for this feature to work.
 3. The **cog** icon signifies that the bundle's availability pattern has been defined in the UI, to include overriding availability patterns set in the `bundle.yaml`.
-4. The **bundle** icon signifies that the availability pattern was set in the `bundle.yaml` via the `availabilityPattern` field.
+4. The **bundle** icon signifies that the availability pattern was set in the `bundle.yaml` via the `availabilityPattern` field. Note that setting the **Availability pattern**  with the `availabilityPattern` field allows managing this value with each individual bundle rather than having to specify it in the UI.
 5. The configuration bundle **Availability pattern** allows assigning regular expressions that must match the full path to one or more controllers in order to use that bundle. For the `base` bundle the **Availability pattern** is empty and this typically would not match any path, but since the **Availability pattern** checkbox is checked it is available to all controllers.
 6. For the `ops` bundle the **Availability pattern** is set to `operations/ops` so that means only a controller with the name **ops** in the **operations** folder can use this bundle. If the **Availability pattern** were set to `operations/*` then any controller in the **operations** folder could use this bundle.
 
@@ -74,7 +74,8 @@ pipeline {
         withCredentials([usernamePassword(credentialsId: 'admin-cli-token', usernameVariable: 'JENKINS_CLI_USR', passwordVariable: 'JENKINS_CLI_PSW')]) {
             sh """
               alias cli='java -jar jenkins-cli.jar -s http://${GITHUB_ORG}-${GITHUB_REPO}/${GITHUB_ORG}-${GITHUB_REPO}/ -auth $JENKINS_CLI_USR:$JENKINS_CLI_PSW'
-              casc-bundle-reload-bundle
+              cli casc-bundle-check-bundle-update
+              cli casc-bundle-reload-bundle
             """
         }
       }
@@ -89,8 +90,9 @@ In a production environment we recommend placing Operations Center and the Ops C
 {{% /notice %}}
 
 5. Navigate to the top level of your Ops controller and click the **Create a job** link. ![Create job link](create-job-link.png?width=50pc)
-6. Name the project the sames as your workshop GitHub Organization, select **GitHub Organization** as the project type and then click the **OK** button. ![Create job](create-job.png?width=50pc)
-7. On the GitHub Organization project configuration page click on the **Projects** tab and select ***CloudBees CI CasC Workshop GitHub App credential*** for the **Credentials** value. Note that the **Owner** input should match your workshop GitHub Organization name. ![Select GitHub App credentials](select-credentials.png?width=50pc)
+6. Name the project `cbci-casc-automation`, select **GitHub Organization** as the project type and then click the **OK** button. ![Create job](create-job.png?width=50pc)
+7. On the GitHub Organization project configuration page, under **Projects** click on the **Add** button and then select **GitHub Organization**. ![Select Source](select-source.png?width=50pc)
+8. **Projects** tab and select ***CloudBees CI CasC Workshop GitHub App credential*** for the **Credentials** value. Note that the **Owner** input should match your workshop GitHub Organization name. In the screenshot below, the workshop GitHub Organization is `cbci-casc-workshop` but yours will be different. Leaving the **API endpoint** field empty will default to ***https://api.github.com***, which is what we want. ![Select GitHub App credentials](select-credentials.png?width=50pc)
 8. Next, scroll down to the **Project Recognizers** section and delete the **Pipeline Jenkinsfile** project recognizer. Then click the **Add** button and select **Custom script** as the project recognizer. ![Delete Jenkinsfile project recognizer](delete-project-recognizer.png?width=50pc)
 9. For the **Custom script** configuration enter `bundle.yaml` as the **Marker file** so pipeline jobs will only be created for repository branches with a `bundle.yaml` file. ![Custom script config](custom-script-config.png?width=50pc)
 10. For the **Definition** of the **Pipeline** select ***Pipeline script from SCM*** and then select ***Git*** as the **SCM**
