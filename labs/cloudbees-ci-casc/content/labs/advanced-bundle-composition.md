@@ -227,6 +227,7 @@ configurations:
 7. Navigate to the `jcasc` folder of your copy of the `ops-controller` repository and click on the `jenkins.yaml` file and then click on the ***Edit this file*** pencil button.
 8. Now we will delete most of the configuration that will be provided by the parent bundle:
    - Delete the `quietPeriod` under `jenkins`.
+   - Update the `systemMessage` to `'Jenkins configured using CloudBees CI CasC with controller overrides'`.
    - Under the `unclassified` section delete everything except for the `globallibraries` section.
    - After making those changes, your `jenkins.yaml` file should match the following:
 ```yaml
@@ -236,7 +237,7 @@ jenkins:
       env:
       - key: "GITHUB_USER"
         value: "${GITHUB_USER}"
-  systemMessage: 'Jenkins configured using CloudBees CI CasC'
+  systemMessage: 'Jenkins configured using CloudBees CI CasC with controller overrides'
 unclassified:
   globallibraries:
     libraries:
@@ -256,7 +257,7 @@ unclassified:
 12. Click on the `plugin-catalog.yaml` file, again ensuring that you are on the `add-parent-bundle` branch, and then click the **Delete this file** button. ![Delete plugin-catalog.yaml](github-delete-plugin-catalog.png?width=50pc)
 13. On the next screen, ensure that **Commit directly to the add-parent-bundle branch** is selected and click the **Commit changes** to commit the deletion to the `add-parent-bundle` branch. ![Commit delete plugin-catalog.yaml](github-commit-delete-plugin-catalog.png?width=50pc)
 14. Next, again ensuring that you are on the `add-parent-bundle` branch, click on the `plugins.yaml` file and then click on the ***Edit this file*** pencil button to edit the file. ![Edit plugin.yaml](github-edit-plugin-yaml.png?width=50pc)
-15. Remove every single plugin entry except for the `pipeline-utility-steps` plugin. All of the plugins we are deleting will be provided by the parent bundle. After you have made the changes, ensure that you are committing to the `add-parent-bundle` branch and then click the **Commit changes** button. ![Commit plugin.yaml](github-commit-plugin-yaml.png?width=50pc)
+15. Remove every single plugin entry except for the `cloudbees-restricted-credentials` plugin. All of the plugins we are deleting will be provided by the parent bundle. After you have made the changes, ensure that you are committing to the `add-parent-bundle` branch and then click the **Commit changes** button. ![Commit plugin.yaml](github-commit-plugin-yaml.png?width=50pc)
 16. Ensuring that you are on the `add-parent-bundle` branch, click on the `bundle.yaml` file and then click on the ***Edit this file*** pencil button to edit the file. 
 17. Change the bundle `version` to **4**, then below the the description property add `parent: "base"` and finally delete the entry for the `catalog`. Your `bundle.yaml` should match the following:
 ```yaml
@@ -277,18 +278,7 @@ items:
 19. We have now made all the necessary changes and can now merge the pull request to the `main` branch. In GitHub, click on the **Pull requests** tab and then click on the link for the **Update jenkins.yaml** pull request. ![pull request link](github-pr-link.png?width=50pc)
 20. On the **Update jenkins.yaml #2** pull request page, click the **Merge pull request** button, then click the **Confirm merge** button and then click the **Delete branch** button. ![merge pull request](github-merge-pr.png?width=50pc)
 21. Navigate to the `main` branch job of your `ops-controller` Multibranch pipeline project on your Ops controller. ![ops-controller Mulitbranch](ops-controller-multibranch.png?width=50pc)
-22. After the the `main` branch job has completed successfully, navigate to the top level of your Ops controller, click on the **Manage Jenkins** link in the left menu, and then click on the **CloudBees Configuration as Code export and update** **System Configuration** item. ![CasC Configuration link](casc-config-link.png?width=50pc) 
-23. On the **CloudBees Configuration as Code export and update** click on the **Bundle update** tab and you should see that there is a bundle update available. ![CasC bundle update](casc-bundle-update.png?width=50pc)
-24. Click on the **Reload Configuration** button and then on the next screen click the **Yes** button to apply the bundle update. ![CasC bundle apply](casc-bundle-apply.png?width=50pc)
-25. After your Ops Controller has finished restarting, navigate back to the **CloudBees Configuration as Code export and update** configuration page and click on the **Original Bundle** tab. Notice that there are now three `jcasc` files: `jcasc/base.jenkins.yaml`, `jcasc/cbci-casc-workshop-ops-controller.credentials.yaml` and `jcasc/cbci-casc-workshop-ops-controller.jenkins.yaml`. CloudBees CI Configuration as Code (CasC) for Controllers automatically renames all JCasC files by prefixing them with the bundle id and placing them in a `jcasc` directory. However, in the case of the `plugins.yaml`, multiple files are merged into one. Also note that the `items` files is placed in an `items` folder and also prefixed with the bundle id. ![Original Bundle](original-bundle-base.png?width=50pc) 
+22. After the the `main` branch job has completed successfully, navigate to the top level of your Ops controller, the ***system message*** should read - "Jenkins configured using CloudBees CI CasC with controller overrides" signifying that it has been overridden by your controller bundle. ![Overridden systemMessage](overridden-system-message.png?width=50pc) 
+23. Next, click on the **Manage Jenkins** link in the left menu, and then click on the **CloudBees Configuration as Code export and update** **System Configuration** item. ![CasC Configuration link](casc-config-link.png?width=50pc) 
+23. On the **CloudBees Configuration as Code export and update** click on the **Original Bundle** tab. Notice that there are now three `jcasc` files: `jcasc/01-base.jenkins.yaml`, `jcasc/02-cbci-casc-workshop-ops-controller.jcasc.credentials.yaml` and `jcasc/02-cbci-casc-workshop-ops-controller.jcasc.jenkins.yaml`. CloudBees CI Configuration as Code (CasC) for Controllers automatically renames all JCasC files by prefixing them with the level of inheritance, the bundle id and their folder structure and then copies them into the `jcasc` directory. However, in the case of the `plugins.yaml`, multiple files are merged into one. Also note that the `items` files is placed in an `items` folder and also prefixed. ![Original Bundle](original-bundle-base.png?width=50pc) 
 
-{{% notice note %}}
-Catalog file types, in this case the `plugin-catalog.yaml` file, are not merged and will be overridden by the last catalog file added. So if we hadn't removed the `catalog` entry from your Ops controller's `bundle.yaml` file (and not deleted the `plugin-catalog.yaml`) then it would have overridden the `plugin-catalog.yaml` provided by the `base` (parent) bundle. One way you could enforce only allowing the `catalog` to be defined at the parent level would be to add a pipeline `step` to the `controller-casc-automation` job that removes the `catalog` section from the controller's `bundle.yaml`. Here is an [example using yq version 4](https://mikefarah.gitbook.io/yq/operators/delete#delete-matching-entries):
-```groovy
-...
-container('yq') {
-  sh 'yq eval 'del(.catalog)' bundle.yaml'
-}
-...
-```
-{{% /notice %}}
