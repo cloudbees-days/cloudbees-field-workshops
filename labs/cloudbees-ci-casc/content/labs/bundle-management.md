@@ -68,6 +68,15 @@ pipeline {
           sh "find -name '*.yaml' | xargs cp --parents -t ${GITHUB_ORG}-${GITHUB_REPO}"
           sh "kubectl cp --namespace cbci ${GITHUB_ORG}-${GITHUB_REPO} cjoc-0:/var/jenkins_home/jcasc-bundles-store/ -c jenkins"
         }
+        echo "begin config bundle reload"
+        sh "curl -O https://raw.githubusercontent.com/cloudbees-days/ops-workshop-setup/master/groovy/reload-casc.groovy"
+        sh "curl -O http://${GITHUB_ORG}-${GITHUB_REPO}/${GITHUB_ORG}-${GITHUB_REPO}/jnlpJars/jenkins-cli.jar"
+        withCredentials([usernamePassword(credentialsId: 'admin-cli-token', usernameVariable: 'JENKINS_CLI_USR', passwordVariable: 'JENKINS_CLI_PSW')]) {
+            sh """
+              alias cli='java -jar jenkins-cli.jar -s http://${GITHUB_ORG}-${GITHUB_REPO}/${GITHUB_ORG}-${GITHUB_REPO}/ -auth $JENKINS_CLI_USR:$JENKINS_CLI_PSW'
+              cli groovy =<./reload-casc.groovy
+            """
+        }
       }
     }
   }
@@ -76,7 +85,7 @@ pipeline {
 4. On the first line you will see that we are using the Pipeline shared library defined in your Ops controller configuration bundle. The Pipeline shared library contains a number of Jenkins Kubernetes Pod templates that can be leveraged across all the controllers. We are utilizing the `kubectl.yml` Pod template so we can use the `kubectl cp` command to copy your `ops-controller` configuration bundle files into the `jcasc-bundles-store` directory on Operations Center. Once you have finished reviewing the `controller-casc-automation` pipeline contents, commit directly to the main branch of your Ops controller repository. ![Commit Jenkinsfile](commit-jenkinsfile.png?width=50pc)
 
 {{% notice info %}}
-In a production environment we recommend placing Operations Center and the Ops Controller in the same Kubernetes `namespace`, and isolating all managed controllers in other Kubernetes `namespaces`.
+In a production environment we recommend placing Operations Center and the Ops Controller in the same Kubernetes `namespace`, and isolating all managed controllers in one or more other Kubernetes `namespaces`.
 {{% /notice %}}
 
 5. Navigate to the top level of your Ops controller and click the **Create a job** link. ![Create job link](create-job-link.png?width=50pc)
