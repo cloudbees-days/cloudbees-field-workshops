@@ -105,7 +105,7 @@ items:
 
 Bundle inheritance allows you to easily share common configuration across numerous controllers. In this lab we will update your Ops controller bundle to extend a parent bundle providing common configuration and plugins to be shared across all of your organizations' controllers. First, we will review the contents of the parent `base` bundle that has already been set-up on Operations Center (and is also the default bundle), and then we will update your Ops controller bundle to use the `base` bundle as a parent bundle. The `base` bundle will include Jenkins configuration that enforces best practices across all of the controllers in the CloudBees CI cluster and include a common set of plugins to be used across all controllers.
 
-1. First we will take a look at the `bundle.yaml` for the `base` bundle (also available in GitHub at https://github.com/cloudbees-days/parent-configuration-bundle/blob/main/bundle.yaml ):
+1. First we will take a look at the `bundle.yaml` for the `base` bundle (also available in GitHub at [https://github.com/cloudbees-days/parent-configuration-bundle/blob/main/bundle.yaml](https://github.com/cloudbees-days/parent-configuration-bundle/blob/main/bundle.yaml) ):
 ```yaml
 apiVersion: "1"
 id: "base"
@@ -118,7 +118,7 @@ plugins:
 catalog:
   - "plugin-catalog.yaml"
 ```
-2. Next let's take a detailed look at the `base` bundle `jenkins.yaml` (also available on GitHub at https://github.com/cloudbees-days/parent-configuration-bundle/blob/main/jenkins.yaml):
+2. Next let's take a detailed look at the `base` bundle `jenkins.yaml` (also available on GitHub at [https://github.com/cloudbees-days/parent-configuration-bundle/blob/main/jenkins.yaml](https://github.com/cloudbees-days/parent-configuration-bundle/blob/main/jenkins.yaml) ):
 ```yaml
 jenkins:
   authorizationStrategy: "cloudBeesRoleBasedAccessControl"
@@ -218,6 +218,7 @@ version: '1'
 configurations:
 - description: Workshop Additional Plugins
   includePlugins:
+    cloudbees-restricted-credentials: {version: '0.1'}
     pipeline-utility-steps: {version: '2.10.0'}
 ```
 6. Now that we have reviewed the contents of the `base` bundle we will update your Ops controller bundle to use it as a parent bundle. However, before we do that, it is important to understand how JCasC files are processed. [JCasC configuration](https://github.com/jenkinsci/configuration-as-code-plugin) supports different [merge strategies](https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/features/mergeStrategy.md), currently limited to `errorOnConflict` and `override`. Everyone's managed controllers are configured to use the `override` merge strategy.
