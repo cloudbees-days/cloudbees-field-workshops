@@ -254,7 +254,7 @@ In previous versions of CloudBees CI Configuration as Code (CasC) for Controller
 20. On the **CloudBees Configuration as Code export and update** page of your Ops controller, instead of clicking the *Copy content* link, click the *Visualize* link for the `items.yaml` **Filename**. ![Items copy content link](items-copy-content-link.png?width=50pc) 
 21. A new browser page will open in a new tab or window with the auto-generated contents portraying all the `items` on your controller. Copy the `properties` section at the bottom. This is the only fragment we need to add to the `items.yaml` file in the `ops-controller` repository. ![Copy folder properties](copy-folder-properties.png?width=50pc)
 22. Navigate to the top level of your copy of the `ops-controller` repository and click on the `items.yaml` file and then click on the ***Edit this file*** pencil button. ![Edit items.yaml](edit-items.png?width=50pc)
-23. Paste the `properties` fragment you copied from the `items.yaml` export right below `name: controller-jobs` and then commit directly to the `main` branch. ![Commit items.yaml](commit-items.png?width=50pc)
+23. Paste the `properties` fragment you copied from the `items.yaml` export right below `name: controller-jobs` but delete the `hudson.model.FreeStyleProject` entry (we decided we don't want anyone creating Freestyle jobs in that folder), and then commit directly to the `main` branch. ![Commit items.yaml](commit-items.png?width=50pc)
 
 {{%expand "expand for complete updated items.yaml file" %}}
 ```yaml
@@ -315,7 +315,5 @@ items:
                 lightweight: true
 ```
 {{% /expand%}}
-
-25. The contents of your copy of the `ops-controller` repository in your workshop GitHub Organization should match the following screenshot: ![Repository contents](repository-contents.png?width=50pc)
 
 So now we have an updated configuration bundle based on a bundle export from our Ops controller but the bundle hasn't actually been applied to the controller. In the next lab we will update the `cbci-casc-automation` job to actually update the bundle files on Operations Center, that will in turn trigger an available update on your controller, any time there is a commit to the `main` branch of your `ops-controller` repository.
