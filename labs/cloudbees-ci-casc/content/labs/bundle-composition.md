@@ -254,8 +254,8 @@ plugins:
 - id: cloudbees-restricted-credentials
 ```
 {{% /expand%}}
-23. In addition to updating the `plugins.yaml`, we also added the`plugin-catalog.yaml` file. But it is not listed in the `bundles.yaml`. In order to have that file used by configuration bundle on our controller, we need to add it to the `bundle.yaml` file, so click on the `bundles.yaml` file and then click on the ***Edit this file*** pencil button.
-24. In the GitHub file editor for the `bundle.yaml` file, update the `version` field to **2** and add the following configuration to the end of the `bundle.yaml` file:
+14. In addition to updating the `plugins.yaml`, we also added the`plugin-catalog.yaml` file. But it is not listed in the `bundles.yaml`. In order to have that file used by configuration bundle on our controller, we need to add it to the `bundle.yaml` file, so click on the `bundles.yaml` file and then click on the ***Edit this file*** pencil button.
+15. In the GitHub file editor for the `bundle.yaml` file, update the `version` field to **2** and add the following configuration to the end of the `bundle.yaml` file:
 ```yaml
 catalog:
   - "plugin-catalog.yaml"
@@ -265,17 +265,75 @@ catalog:
 In previous versions of CloudBees CI Configuration as Code (CasC) for Controllers the `version` field of the `bundle.yaml` file had to be modified in order for an update to be triggered for controllers using that bundle. This is no longer required as any change in any file in a bundle will trigger a bundle update for any controllers using the updated bundle once those changes are copied to the JCasC bundle directory on Operations Center. However, it is still considered a best practice to increment the bundle version.
 {{% /notice %}}
 
-25. Commit the `bundle.yaml` file directly to the `main` branch of your `ops-controller` repository. ![Commit bundle.yaml](commit-bundle.png?width=50pc)
-14. Navigate back to the top level of your Ops controller, click on the **controller-jobs** folder.  ![Controller jobs](controller-jobs-folder.png?width=50pc) 
-15. On the **controller-jobs** folder click on the **Configure** left menu item. ![Configure folder](configure-folder-link.png?width=50pc) 
-16. Scroll to the bottom of the folder configuration and click on **Restrict the kind of children in this folder** - a [CloudBees Folders Plus](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-secure-guide/folders-plus) feature - and then select **Pipeline**, **Multibranch Pipeline** and **Organization Folder** so only Jenkins Pipeline type jobs are allowed to be created in the folder; and then hit the **Save** button. ![Configure folder](configure-folder.png?width=50pc) 
-17. Navigate back to the top-level of your Ops controller and you should see the new **controller-jobs** folder. Click on the **Manage Jenkins** link in the left menu. ![Folder created](folder-created.png?width=50pc) 
-18. Next, On the **Manage Jenkins** page click on **CloudBees Configuration as Code export and update** under the **System Configuration** section.
-19. On the **CloudBees Configuration as Code export and update** page of your Ops controller, instead of clicking the *visualize* link, click the *Copy content* link for the `items.yaml` **Filename**. ![Items copy content link](items-copy-content-link.png?width=50pc) 
-20. Navigate to the top level of your copy of the `ops-controller` repository in your workshop GitHub Organization and click on the **Add file** button and then select **Create new file**. ![Create new file in GitHub](github-create-new-file.png?width=50pc)
-21. On the next screen, name the new file `items.yaml`, paste the contents from the `items.yaml` export (same as above).
-22. Add the `- jenkins.branch.OrganizationFolder` type as shown above and then commit directly to the `main` branch. ![Commit items.yaml](commit-items.png?width=50pc)
-26. The contents of your copy of the `ops-controller` repository in your workshop GitHub Organization should match the following screenshot: ![Repository contents](repository-contents.png?width=50pc)
-27. Finally, navigate back to the top level of your Ops controller, click on the **controller-jobs** folder and then click **Delete Folder** in the left menu. When the updated configuration bundle is applied to your Ops controller it will add the `controller-jobs` folder back. ![Delete folder](delete-folder.png?width=50pc)
+16. Commit the `bundle.yaml` file directly to the `main` branch of your `ops-controller` repository. ![Commit bundle.yaml](commit-bundle.png?width=50pc)
+17. Navigate back to the top level of your Ops controller, click on the **controller-jobs** folder.  ![Controller jobs](controller-jobs-folder.png?width=50pc) 
+18. On the **controller-jobs** folder click on the **Configure** left menu item. ![Configure folder](configure-folder-link.png?width=50pc) 
+19. Scroll to the bottom of the folder configuration and click on **Restrict the kind of children in this folder** - a [CloudBees Folders Plus](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-secure-guide/folders-plus) feature - and then select **Pipeline**, **Multibranch Pipeline** and **Organization Folder** so only Jenkins Pipeline type jobs are allowed to be created in the folder; and then hit the **Save** button. ![Configure folder](configure-folder.png?width=50pc) 
+20. Navigate back to the top-level of your Ops controller and click on the **Manage Jenkins** link in the left menu. ![Folder updated](folder-created.png?width=50pc) 
+21. Next, On the **Manage Jenkins** page click on **CloudBees Configuration as Code export and update** under the **System Configuration** section.
+22. On the **CloudBees Configuration as Code export and update** page of your Ops controller, instead of clicking the *visualize* link, click the *Copy content* link for the `items.yaml` **Filename**. ![Items copy content link](items-copy-content-link.png?width=50pc) 
+23. Navigate to the top level of your copy of the `ops-controller` and click on the `items.yaml` file and then click on the ***Edit this file*** pencil button. ![Edit items.yaml](edit-items.png?width=50pc)
+24. Replace the entire contents of the file with the contents you copied from the `items.yaml` export and then commit directly to the `main` branch. ![Commit items.yaml](commit-items.png?width=50pc)
+
+{{%expand "expand for complete updated items.yaml file" %}}
+```yaml
+removeStrategy:
+  rbac: SYNC
+  items: NONE
+items:
+- kind: folder
+  displayName: controller-jobs
+  name: controller-jobs
+  description: ''
+  items:
+  - orphanedItemStrategy:
+      defaultOrphanedItemStrategy:
+        pruneDeadBranches: true
+        daysToKeep: -1
+        numToKeep: -1
+    kind: organizationFolder
+    displayName: cbci-casc-automation
+    name: cbci-casc-automation
+    navigators:
+    - github:
+        apiUri: https://api.github.com
+        repoOwner: cbci-casc-workshop
+        credentialsId: cloudbees-ci-casc-workshop-github-app
+    projectFactories:
+    - customMultiBranchProjectFactory:
+        factory:
+          customBranchProjectFactory:
+            marker: Jenkinsfile
+            definition:
+              cpsScmFlowDefinition:
+                scriptPath: controller-casc-automation
+                scm:
+                  gitSCM:
+                    userRemoteConfigs:
+                    - userRemoteConfig:
+                        credentialsId: cloudbees-ci-casc-workshop-github-app
+                        url: https://github.com/cbci-casc-workshop/ops-controller.git
+                    branches:
+                    - branchSpec:
+                        name: '*/main'
+                lightweight: true
+    trigger:
+      periodicFolderTrigger:
+        interval: 1d
+    strategy:
+      allBranchesSame: {}
+  properties:
+  - envVars: {}
+  - kubernetesFolderProperty: {}
+  - itemRestrictions:
+      allowedTypes:
+      - org.jenkinsci.plugins.workflow.job.WorkflowJob
+      - jenkins.branch.OrganizationFolder
+      - org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject
+      filter: true
+```
+{{% /expand%}}
+
+25. The contents of your copy of the `ops-controller` repository in your workshop GitHub Organization should match the following screenshot: ![Repository contents](repository-contents.png?width=50pc)
 
 So now we have an updated configuration bundle based on a bundle export from our Ops controller but the bundle hasn't actually been applied to the controller. In the next lab we will set up a job to actually update the bundle files on Operations Center, that will in turn trigger an available update on your controller, any time there is a commit to the `main` branch of your `ops-controller` repository.
