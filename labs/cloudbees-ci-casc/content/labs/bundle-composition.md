@@ -135,7 +135,7 @@ plugins:
 - id: workflow-cps-checkpoint
 # non-cap plugins
 ```
-6. Finally, return to the top level of your `ops-controller` repository and click on the `items.yaml` file.
+6. Finally, return to the top level of your `ops-controller` repository and click on the `items.yaml` file. The name of this file must match the file name listed under `items` in the `bundle.yaml` file. Its contents will match the following (except for the `REPLACE_GITHUB_ORG` placeholders):
 
 ```yml
 removeStrategy:
@@ -197,6 +197,7 @@ items:
 As you can see from the composition overview above, the YAML in the different configuration files can be somewhat complicated, and that is only with a few of the bundle file types and a fairly simple set of configurations. Luckily, CloudBees CI Configuration as Code (CasC) for Controllers supports an export capability that allows you to export the current configuration from an existing controller. In this lab you will make configurations changes on your Ops controller and then use the export feature to copy new or updated configuration to the files in the Ops controller branch of your `ops-controller` repository.
 
 1. Navigate to the top level of your Ops controller - it will be in the folder with the same name as your workshop GitHub Organization name (lower-cased).
+2. You will see a folder named `controller-jobs` and within that folder there will be a GitHub Organization job named `cbci-casc-automation` which we will take a deeper look at in the next lab.
 2. At the top level of your Ops controller, click on the **Mange Jenkins** link in the left menu. ![Manage Jenkins link](manage-jenkins-link.png?width=50pc) 
 3. On the **Manage Jenkins** page click on **Manage Plugins** under the **System Configuration** section. ![Manage Plugins link](manage-plugins-link.png?width=50pc) 
 4. On the **Plugin Manager** screen, click on the **Available** tab and enter ***CloudBees Restrict*** into the search box. Then check the **Install** checkbox for the **CloudBees Restricted Credentials Plugin** and then click the the **Install without restart** button. ![Search for Plugin](search-plugin.png?width=50pc) 
@@ -253,23 +254,11 @@ plugins:
 - id: cloudbees-restricted-credentials
 ```
 {{% /expand%}}
-
-14. Navigate back to the top level of your Ops controller, click on **Create a job** link.  ![Create a job](create-job-link.png?width=50pc) 
-15. On the item creation screen, enter ***controller-jobs*** as the name, select **Folder** as the type and then click the **OK** button. ![Create folder](create-folder.png?width=50pc) 
-16. Scroll to the bottom of the folder configuration and click on **Restrict the kind of children in this folder** - a [CloudBees Folders Plus](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-secure-guide/folders-plus) feature - and then select **Pipeline**, **Multibranch Pipeline** and **Organization Folder**; and then hit the **Save** button. ![Configure folder](configure-folder.png?width=50pc) 
-17. Navigate back to the top-level of your Ops controller and you should see the new **controller-jobs** folder. Click on the **Manage Jenkins** link in the left menu. ![Folder created](folder-created.png?width=50pc) 
-18. Next, On the **Manage Jenkins** page click on **CloudBees Configuration as Code export and update** under the **System Configuration** section.
-19. On the **CloudBees Configuration as Code export and update** page of your Ops controller, instead of clicking the *visualize* link, click the *Copy content* link for the `items.yaml` **Filename**. ![Items copy content link](items-copy-content-link.png?width=50pc) 
-20. Navigate to the top level of your copy of the `ops-controller` repository in your workshop GitHub Organization and click on the **Add file** button and then select **Create new file**. ![Create new file in GitHub](github-create-new-file.png?width=50pc)
-21. On the next screen, name the new file `items.yaml`, paste the contents from the `items.yaml` export (same as above).
-22. Add the `- jenkins.branch.OrganizationFolder` type as shown above and then commit directly to the `main` branch. ![Commit items.yaml](commit-items.png?width=50pc)
-23. In addition to updating the `plugins.yaml`, we also added two new files: `plugin-catalog.yaml` and `items.yaml`. However, those files are not listed in the `bundles.yaml`. In order to include those files in the configuration bundle we need to add them to the `bundle.yaml` file, so click on the `bundles.yaml` file and then click on the ***Edit this file*** pencil button.
+23. In addition to updating the `plugins.yaml`, we also added the`plugin-catalog.yaml` file. But it is not listed in the `bundles.yaml`. In order to have that file used by configuration bundle on our controller, we need to add it to the `bundle.yaml` file, so click on the `bundles.yaml` file and then click on the ***Edit this file*** pencil button.
 24. In the GitHub file editor for the `bundle.yaml` file, update the `version` field to **2** and add the following configuration to the end of the `bundle.yaml` file:
 ```yaml
 catalog:
   - "plugin-catalog.yaml"
-items:
-  - "items.yaml"
 ```
 
 {{% notice note %}}
@@ -277,6 +266,15 @@ In previous versions of CloudBees CI Configuration as Code (CasC) for Controller
 {{% /notice %}}
 
 25. Commit the `bundle.yaml` file directly to the `main` branch of your `ops-controller` repository. ![Commit bundle.yaml](commit-bundle.png?width=50pc)
+14. Navigate back to the top level of your Ops controller, click on the **controller-jobs** folder.  ![Controller jobs](controller-jobs-folder.png?width=50pc) 
+15. On the **controller-jobs** folder click on the **Configure** left menu item. ![Configure folder](configure-folder-link.png?width=50pc) 
+16. Scroll to the bottom of the folder configuration and click on **Restrict the kind of children in this folder** - a [CloudBees Folders Plus](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-secure-guide/folders-plus) feature - and then select **Pipeline**, **Multibranch Pipeline** and **Organization Folder** so only Jenkins Pipeline type jobs are allowed to be created in the folder; and then hit the **Save** button. ![Configure folder](configure-folder.png?width=50pc) 
+17. Navigate back to the top-level of your Ops controller and you should see the new **controller-jobs** folder. Click on the **Manage Jenkins** link in the left menu. ![Folder created](folder-created.png?width=50pc) 
+18. Next, On the **Manage Jenkins** page click on **CloudBees Configuration as Code export and update** under the **System Configuration** section.
+19. On the **CloudBees Configuration as Code export and update** page of your Ops controller, instead of clicking the *visualize* link, click the *Copy content* link for the `items.yaml` **Filename**. ![Items copy content link](items-copy-content-link.png?width=50pc) 
+20. Navigate to the top level of your copy of the `ops-controller` repository in your workshop GitHub Organization and click on the **Add file** button and then select **Create new file**. ![Create new file in GitHub](github-create-new-file.png?width=50pc)
+21. On the next screen, name the new file `items.yaml`, paste the contents from the `items.yaml` export (same as above).
+22. Add the `- jenkins.branch.OrganizationFolder` type as shown above and then commit directly to the `main` branch. ![Commit items.yaml](commit-items.png?width=50pc)
 26. The contents of your copy of the `ops-controller` repository in your workshop GitHub Organization should match the following screenshot: ![Repository contents](repository-contents.png?width=50pc)
 27. Finally, navigate back to the top level of your Ops controller, click on the **controller-jobs** folder and then click **Delete Folder** in the left menu. When the updated configuration bundle is applied to your Ops controller it will add the `controller-jobs` folder back. ![Delete folder](delete-folder.png?width=50pc)
 
