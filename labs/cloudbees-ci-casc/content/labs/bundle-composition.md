@@ -56,7 +56,7 @@ jenkins:
       - key: GITHUB_REPOSITORY
         value: ops-controller
   quietPeriod: 0
-  systemMessage: 'Jenkins configured using CloudBees CI CasC'
+  systemMessage: 'Jenkins configured using CloudBees CI CasC v1'
 unclassified:
   hibernationConfiguration:
     activities:
@@ -135,7 +135,7 @@ plugins:
 - id: workflow-cps-checkpoint
 # non-cap plugins
 ```
-6. Finally, return to the top level of your `ops-controller` repository and click on the `items.yaml` file. The name of this file must match the file name listed under `items` in the `bundle.yaml` file. Its contents will match the following (except for the `REPLACE_GITHUB_ORG` placeholders):
+6. Finally, return to the top level of your `ops-controller` repository and click on the `items.yaml` file. The name of this file must match the file name listed under `items` in the `bundle.yaml` file. Its contents will match the following (except for the `REPLACE_GITHUB_ORG` placeholders). Also note the `removeStrategy` configuration at the top, this specifies the strategy to handle existing configuration when a new configuration is applied, and is required for all `items` files (`NONE` is currently the only strategy available for `items`):
 
 ```yml
 removeStrategy:
@@ -155,22 +155,15 @@ items:
         daysToKeep: -1
         numToKeep: -1
     SCMSources:
+    navigators:
     - github:
         apiUri: https://api.github.com
         traits:
         - gitHubBranchDiscovery:
             strategyId: 1
         - headWildcardFilter:
+            excludes: ''
             includes: main
-        repoOwner: REPLACE_GITHUB_ORG
-        credentialsId: cloudbees-ci-casc-workshop-github-app
-        id: org.jenkinsci.plugins.github_branch_source.GitHubSCMNavigator::https://api.github.com::REPLACE_GITHUB_ORG::ops-controller
-        repository: ops-controller
-        configuredByUrl: false
-        repositoryUrl: https://github.com/REPLACE_GITHUB_ORG/ops-controller
-    navigators:
-    - github:
-        apiUri: https://api.github.com
         repoOwner: REPLACE_GITHUB_ORG
         credentialsId: cloudbees-ci-casc-workshop-github-app
     projectFactories:
