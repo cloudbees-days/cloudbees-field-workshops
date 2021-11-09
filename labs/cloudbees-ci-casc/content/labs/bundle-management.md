@@ -71,14 +71,11 @@ pipeline {
         echo "begin config bundle reload"
         script {
           try {
-            sh "curl -O https://raw.githubusercontent.com/cloudbees-days/ops-workshop-setup/master/groovy/reload-casc.groovy"
-            sh "curl -O http://${GITHUB_ORG}-${GITHUB_REPO}/${GITHUB_ORG}-${GITHUB_REPO}/jnlpJars/jenkins-cli.jar"
             withCredentials([usernamePassword(credentialsId: 'admin-cli-token', usernameVariable: 'JENKINS_CLI_USR', passwordVariable: 'JENKINS_CLI_PSW')]) {
-                sh """
-                  alias cli='java -jar jenkins-cli.jar -s http://${GITHUB_ORG}-${GITHUB_REPO}/${GITHUB_ORG}-${GITHUB_REPO}/ -auth $JENKINS_CLI_USR:$JENKINS_CLI_PSW'
-                  cli casc-bundle-check-bundle-update
-                  cli casc-bundle-reload-bundle
-                """
+                sh '''
+                  curl --user $JENKINS_CLI_USR:$JENKINS_CLI_PSW -XGET http://${GITHUB_ORG}-${GITHUB_REPO}/${GITHUB_ORG}-${GITHUB_REPO}/casc-bundle-mgnt/check-bundle-update 
+                  curl --user $JENKINS_CLI_USR:$JENKINS_CLI_PSW -XPOST http://${GITHUB_ORG}-${GITHUB_REPO}/${GITHUB_ORG}-${GITHUB_REPO}/reload-bundle/
+                '''
             }
           } catch (Exception e) {
               echo 'Exception occurred: ' + e.toString()
