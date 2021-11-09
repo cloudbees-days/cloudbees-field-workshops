@@ -6,7 +6,7 @@ weight: 2
 
 The YAML based configuration of a controller is described in a collection of files referred to as a Configuration as Code (CasC) for Controllers bundle that we will refer to as just ***configuration bundle*** for most of this workshop. The CloudBees CI Operations Center can store as many different configuration bundles as needed to represent any unique requirements between different controllers.
 
-This lab will explore the composition of a CloudBees CI configuration bundle to include the manual updating of a configuration bundle and creating a configuration bundle from the bundle export of an existing controller.
+This lab will explore the composition of a CloudBees CI configuration bundle, to include the manual updating of a configuration bundle and creating a configuration bundle from the bundle export of an existing controller.
 
 ## Configuration Bundle Composition Overview
 
@@ -37,6 +37,8 @@ jcasc:
   - "jenkins.yaml"
 plugins:
   - "plugins.yaml"
+items:
+  - "items.yaml"
 ``` 
 
 {{% notice note %}}
@@ -99,10 +101,10 @@ credentials:
 ```
 
 {{% notice note %}}
-Setting up an initial Ops controller is a bit like the chicken and the egg conundrum. There will typically be some required manual steps to bootstrap the initial automation. In the case of this workshop, we have our own Ops controller that is used to dynamically provision each attendees Ops controller with a dynamically generated configuration bundle when you installed the CloudBees CI CasC Workshop GitHub App into your workshop GitHub Organization. Another alternative is to use CloudBees CI CasC for Operations Center that allows you defined managed controllers as `items` in the Operations Center CasC bundle (but it does not support automatically provisioning those controllers, so there is still am manual step to actually start the managed controller).
+Setting up an initial Ops controller is a bit like the chicken and the egg conundrum. There will typically be some required manual steps to bootstrap the initial automation. In the case of this workshop, we have our own Ops controller that is used to dynamically provision each attendees Ops controller with a dynamically generated configuration bundle when you installed the CloudBees CI CasC Workshop GitHub App into your workshop GitHub Organization. Another alternative is to use CloudBees CI CasC for Operations Center that allows you to define managed controllers as `items` in the Operations Center CasC bundle (but it does not support automatically provisioning those controllers at this time, so there is still am manual step to actually start the managed controller).
 {{% /notice %}}
 
-4. As mentioned above, the `gitHubApp` credential is unique to your workshop GitHub Organization. But also notice the variable substitution for the `privateKey` field of that credential - the value in the `jenkins.yaml` file is the `${gitHubAppPrivateKey}` variable. Of course you wouldn't want to store a secure secret directly in a JCasC yaml file, especially if it is to be store in source control. Luckily JCasC supports several ways to [pass secrets more securely](https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/features/secrets.adoc). For this workshop we are passing secrets through variables using the [Kubernetes Secrets Store CSI driver](https://secrets-store-csi-driver.sigs.k8s.io/introduction.html) with the [Google Secret Manager provider](https://github.com/GoogleCloudPlatform/secrets-store-csi-driver-provider-gcp). This allows us to manage secrets with the Google Secret Manager in GCP and to mount those secrets as files in the directory on your controller configured for JCasC to read secret variables with the file name being the variable name and the file contents being the secret value.
+4. As mentioned above, the `gitHubApp` credential is unique to your workshop GitHub Organization. But also notice the variable substitution for the `privateKey` field of that credential - the value in the `jenkins.yaml` file is the `${gitHubAppPrivateKey}` variable. Of course you wouldn't want to store a secure secret directly in a JCasC yaml file, especially if it is to be store in source control. However, JCasC supports several ways to [pass secrets more securely](https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/features/secrets.adoc). For this workshop we are passing secrets through variables using the [Kubernetes Secrets Store CSI driver](https://secrets-store-csi-driver.sigs.k8s.io/introduction.html) with the [Google Secret Manager provider](https://github.com/GoogleCloudPlatform/secrets-store-csi-driver-provider-gcp). This allows us to manage secrets with the Google Secret Manager in GCP and to mount those secrets as files in the directory on your controller configured for JCasC to read secret variables with the file name being the variable name and the file contents being the secret value.
 5. Return to the top level of your `ops-controller` repository and click on the `plugins.yaml` file. The name of this file must match the file name listed under `plugins` in the `bundle.yaml` file. Its contents will match the following:
 
 ```yaml
@@ -132,6 +134,63 @@ plugins:
 - id: workflow-aggregator
 - id: workflow-cps-checkpoint
 # non-cap plugins
+```
+6. Finally, return to the top level of your `ops-controller` repository and click on the `items.yaml` file.
+
+```yml
+removeStrategy:
+  rbac: SYNC
+  items: NONE
+items:
+- kind: folder
+  displayName: controller-jobs
+  name: controller-jobs
+  items:
+  - kind: organizationFolder
+    displayName: cbci-casc-automation
+    name: cbci-casc-automation
+    orphanedItemStrategy:
+      defaultOrphanedItemStrategy:
+        pruneDeadBranches: true
+        daysToKeep: -1
+        numToKeep: -1
+    SCMSources:
+    - github:
+        apiUri: https://api.github.com
+        traits:
+        - gitHubBranchDiscovery:
+            strategyId: 1
+        - headWildcardFilter:
+            includes: main
+        repoOwner: REPLACE_GITHUB_ORG
+        credentialsId: cloudbees-ci-casc-workshop-github-app
+        id: org.jenkinsci.plugins.github_branch_source.GitHubSCMNavigator::https://api.github.com::REPLACE_GITHUB_ORG::ops-controller
+        repository: ops-controller
+        configuredByUrl: false
+        repositoryUrl: https://github.com/REPLACE_GITHUB_ORG/ops-controller
+    navigators:
+    - github:
+        apiUri: https://api.github.com
+        repoOwner: REPLACE_GITHUB_ORG
+        credentialsId: cloudbees-ci-casc-workshop-github-app
+    projectFactories:
+    - customMultiBranchProjectFactory:
+        factory:
+          customBranchProjectFactory:
+            marker: Jenkinsfile
+            definition:
+              cpsScmFlowDefinition:
+                scriptPath: controller-casc-automation
+                scm:
+                  gitSCM:
+                    userRemoteConfigs:
+                    - userRemoteConfig:
+                        credentialsId: cloudbees-ci-casc-workshop-github-app
+                        url: https://github.com/REPLACE_GITHUB_ORG/ops-controller.git
+                    branches:
+                    - branchSpec:
+                        name: '*/main'
+                lightweight: true
 ```
 
 ## Creating/Updating a Configuration Bundle from a Bundle Export
