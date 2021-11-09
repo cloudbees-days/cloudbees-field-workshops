@@ -336,4 +336,4 @@ items:
 
 25. The contents of your copy of the `ops-controller` repository in your workshop GitHub Organization should match the following screenshot: ![Repository contents](repository-contents.png?width=50pc)
 
-So now we have an updated configuration bundle based on a bundle export from our Ops controller but the bundle hasn't actually been applied to the controller. In the next lab we will set up a job to actually update the bundle files on Operations Center, that will in turn trigger an available update on your controller, any time there is a commit to the `main` branch of your `ops-controller` repository.
+So now we have an updated configuration bundle based on a bundle export from our Ops controller but the bundle hasn't actually been applied to the controller. In the next lab we will update the `cbci-casc-automation` job to actually update the bundle files on Operations Center, that will in turn trigger an available update on your controller, any time there is a commit to the `main` branch of your `ops-controller` repository.
