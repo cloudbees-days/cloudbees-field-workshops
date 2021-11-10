@@ -232,8 +232,10 @@ plugins:
 - id: cloudbees-restricted-credentials
 ```
 {{% /expand%}}
+
 12. In addition to updating the `plugins.yaml`, we also added the`plugin-catalog.yaml` file. But it is not listed in the `bundles.yaml`. In order to have that file used by the configuration bundle assigned to our controller, we need to add it to the `bundle.yaml` file. So click on the `bundles.yaml` file and then click on the ***Edit this file*** pencil button.
 13. In the GitHub file editor for the `bundle.yaml` file, update the `version` field to **2** and add the following configuration to the end of the `bundle.yaml` file:
+
 ```yaml
 
 catalog:
