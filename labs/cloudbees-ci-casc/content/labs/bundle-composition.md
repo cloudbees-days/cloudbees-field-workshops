@@ -195,9 +195,9 @@ As you can see from the composition overview above, the YAML in the different co
 4. On the **Plugin Manager** screen, click on the **Available** tab and enter ***CloudBees Restrict*** into the search box. Then check the **Install** checkbox for the **CloudBees Restricted Credentials Plugin** and then click the the **Install without restart** button. ![Search for Plugin](search-plugin.png?width=50pc) 
 5. Once the **CloudBees Restricted Credentials Plugin** is successfully installed, click on the **Mange Jenkins** link in the left menu. ![Install plugin](install-plugin.png?width=50pc) 
 6. On the **Manage Jenkins** page click on **CloudBees Configuration as Code export and update** under the **System Configuration** section. ![CloudBees CasC link](cloudbees-casc-link.png?width=50pc) 
-7. Next, on the **CloudBees Configuration as Code export and update** page, under the **Current configuration** tab, click on the **Copy content** link for the `plugin-catalog.yaml` **Filename**. A [plugin catalog](https://docs.cloudbees.com/docs/admin-resources/latest/plugin-management/configuring-plugin-catalogs) is used to include plugins that are not in the CloudBees Assurance Program (CAP); tested and used by your software delivery workloads. Since the **CloudBees Restricted Credentials Plugin** is not in CAP we must create a plugin catalog that includes that plugin so we may install it on a controller with CasC. ![Plugin Catalog copy link](plugin-catalog-copy-link.png?width=50pc) 
+7. Next, on the **CloudBees Configuration as Code export and update** page, under the **Current configuration** tab, click on the **Copy content** link for the `plugin-catalog.yaml` **Filename**. A [plugin catalog](https://docs.cloudbees.com/docs/admin-resources/latest/plugin-management/configuring-plugin-catalogs) is used to include plugins that are not in the CloudBees Assurance Program (CAP); tested and used by your software delivery workloads. Since the **CloudBees Restricted Credentials Plugin** is not in CAP we must add a plugin catalog to our bundle that includes that plugin, so we may install it on our controllers with CasC. ![Plugin Catalog copy link](plugin-catalog-copy-link.png?width=50pc) 
 8. Navigate to the `ops-controller` repository in your workshop GitHub Organization and click on the **Add file** button and then select **Create new file**. ![Create new file in GitHub](github-create-new-file.png?width=50pc)
-9. On the next screen, name the new file `plugin-catalog.yaml`, paste the contents from the `plugin-catalog.yaml` export. Then commit directly to the `main` branch. ![Commit plugin-catalog.yaml](commit-plugin-catalog.png?width=50pc)
+9. On the next screen, name the new file `plugin-catalog.yaml`, paste the contents from the `plugin-catalog.yaml` export, and then commit directly to the `main` branch. ![Commit plugin-catalog.yaml](commit-plugin-catalog.png?width=50pc)
 10. Plugins in the `plugin-catalog.yaml` are not actually installed on a controller, rather they just extend what can be installed outside of CAP. In order for a plugin to be installed via a configuration bundle you must add it to the `plugins.yaml`. Click on the `plugins.yaml` file and then click on the ***Edit this file*** pencil button. ![Edit plugins file GitHub](github-edit-plugins-file.png?width=50pc)
 11. In the GitHub file editor, add `- id: cloudbees-restricted-credentials` under the `# non-cap plugins` comment, and then commit directly to the `main` branch. ![Commit plugins.yaml](commit-plugins.png?width=50pc)
 
@@ -210,7 +210,6 @@ plugins:
 - id: cloudbees-groovy-view
 - id: cloudbees-monitoring
 - id: cloudbees-pipeline-policies
-- id: cloudbees-prometheus
 - id: cloudbees-slack
 - id: cloudbees-template
 - id: cloudbees-view-creation-filter
@@ -233,7 +232,7 @@ plugins:
 - id: cloudbees-restricted-credentials
 ```
 {{% /expand%}}
-12. In addition to updating the `plugins.yaml`, we also added the`plugin-catalog.yaml` file. But it is not listed in the `bundles.yaml`. In order to have that file used by configuration bundle on our controller, we need to add it to the `bundle.yaml` file, so click on the `bundles.yaml` file and then click on the ***Edit this file*** pencil button.
+12. In addition to updating the `plugins.yaml`, we also added the`plugin-catalog.yaml` file. But it is not listed in the `bundles.yaml`. In order to have that file used by the configuration bundle assigned to our controller, we need to add it to the `bundle.yaml` file. So click on the `bundles.yaml` file and then click on the ***Edit this file*** pencil button.
 13. In the GitHub file editor for the `bundle.yaml` file, update the `version` field to **2** and add the following configuration to the end of the `bundle.yaml` file:
 ```yaml
 
@@ -242,7 +241,7 @@ catalog:
 ```
 
 {{% notice note %}}
-In previous versions of CloudBees CI Configuration as Code (CasC) for Controllers the `version` field of the `bundle.yaml` file had to be modified in order for an update to be triggered for controllers using that bundle. This is no longer required as any change in any file in a bundle will trigger a bundle update for any controllers using the updated bundle once those changes are copied to the JCasC bundle directory on Operations Center. However, it is still considered a best practice to increment the bundle version.
+In previous versions of CloudBees CI Configuration as Code (CasC) for Controllers the `version` field of the `bundle.yaml` file had to be modified in order for an update to be triggered for controllers using that bundle. This is no longer required, as any change in any file in a bundle will trigger a bundle update for any controllers using the updated bundle once those changes are copied to the JCasC bundle directory on Operations Center. However, it is still considered a best practice to increment the bundle version.
 {{% /notice %}}
 
 14. Commit the `bundle.yaml` file directly to the `main` branch of your `ops-controller` repository. ![Commit bundle.yaml](commit-bundle.png?width=50pc)
@@ -251,8 +250,8 @@ In previous versions of CloudBees CI Configuration as Code (CasC) for Controller
 17. Scroll to the bottom of the folder configuration and click on **Restrict the kind of children in this folder** - a [CloudBees Folders Plus](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-secure-guide/folders-plus) feature - and then select **Freestyle project**, **Pipeline**, **Multibranch Pipeline** and **Organization Folder** so only Jenkins Pipeline type jobs are allowed to be created in the folder; and then hit the **Save** button. ![Configure folder](configure-folder.png?width=50pc) 
 18. Navigate back to the top-level of your Ops controller and click on the **Manage Jenkins** link in the left menu. ![Folder updated](folder-created.png?width=50pc) 
 19. Next, On the **Manage Jenkins** page click on **CloudBees Configuration as Code export and update** under the **System Configuration** section.
-20. On the **CloudBees Configuration as Code export and update** page of your Ops controller, instead of clicking the *Copy content* link, click the *Visualize* link for the `items.yaml` **Filename**. ![Items copy content link](items-copy-content-link.png?width=50pc) 
-21. A new browser page will open in a new tab or window with the auto-generated contents portraying all the `items` on your controller. Copy the `properties` section at the bottom. This is the only fragment we need to add to the `items.yaml` file in the `ops-controller` repository. ![Copy folder properties](copy-folder-properties.png?width=50pc)
+20. On the **CloudBees Configuration as Code export and update** page of your Ops controller, instead of clicking the *Copy content* link, click the *Visualize* link for the `items.yaml` **Filename**. ![Items copy content link](items-visualize-link.png?width=50pc) 
+21. A new browser page will open in a new tab or window with the auto-generated YAML representing all the `items` on your controller. Copy the `properties` section at the bottom (as highlighted below). This is the only fragment we need to add to the `items.yaml` file in the `ops-controller` repository. ![Copy folder properties](copy-folder-properties.png?width=50pc)
 22. Navigate to the top level of your copy of the `ops-controller` repository and click on the `items.yaml` file and then click on the ***Edit this file*** pencil button. ![Edit items.yaml](edit-items.png?width=50pc)
 23. Paste the `properties` fragment you copied from the `items.yaml` export right below `name: controller-jobs` but delete the `hudson.model.FreeStyleProject` entry (we decided we don't want anyone creating Freestyle jobs in that folder), and then commit directly to the `main` branch. ![Commit items.yaml](commit-items.png?width=50pc)
 
@@ -316,4 +315,4 @@ items:
 ```
 {{% /expand%}}
 
-So now we have an updated configuration bundle based on a bundle export from our Ops controller but the bundle hasn't actually been applied to the controller. In the next lab we will update the `cbci-casc-automation` job to actually update the bundle files on Operations Center, that will in turn trigger an available update on your controller, any time there is a commit to the `main` branch of your `ops-controller` repository.
+So now we have an updated configuration bundle based on a bundle exports from our Ops controller. However, the updated bundle hasn't actually been applied to the your controller. In the next lab we will update the `cbci-casc-automation` job to actually update the bundle files on Operations Center, that will in turn trigger an available update on your controller. After that, any time there is a commit to the `main` branch of your `ops-controller` repository, it will automatically be updated on your CloudBees CI controller.
