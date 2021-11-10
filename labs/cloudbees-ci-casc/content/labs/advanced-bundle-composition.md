@@ -13,17 +13,6 @@ CloudBees CI Configuration as Code (CasC) for Controllers allows managing bundle
 1. Navigate back to the top level of your `ops-controller` repository in your workshop GitHub Organization, then click on the **Add file** button and then select **Create new file**. ![Create new file in GitHub](github-create-new-file.png?width=50pc)
 ```yaml
 credentials:
-  restrictedSystem:
-    domainCredentials:
-    - allowList: "controller-jobs/cbci-casc-automation/**/*"
-      credentials:
-        gitHubApp:
-          apiUri: "https://api.github.com"
-          appID: "${cbciCascWorkshopGitHubAppId}"
-          description: "CloudBees CI CasC Workshop GitHub App credential"
-          id: "cloudbees-ci-casc-workshop-github-app"
-          owner: "${GITHUB_ORGANIZATION}"
-          privateKey: "${cbciCascWorkshopGitHubAppPrivateKey}"
   system:
     domainCredentials:
     - credentials:
@@ -32,13 +21,20 @@ credentials:
           id: "cloudbees-ci-workshop-github-webhook-secret"
           scope: SYSTEM
           secret: "${gitHubWebhookSecret}"
+      - gitHubApp:
+          apiUri: "https://api.github.com"
+          appID: "${cbciCascWorkshopGitHubAppId}"
+          description: "CloudBees CI CasC Workshop GitHub App credential"
+          id: "cloudbees-ci-casc-workshop-github-app"
+          owner: "${GITHUB_ORGANIZATION}"
+          privateKey: "${cbciCascWorkshopGitHubAppPrivateKey}"
 ```
-2. Name the new file `jcasc/credentials.yaml`, copy the `credentials` section from above and paste it into the GitHub file editor. Note also, that we are using the **CloudBees Restricted Credentials Plugin** we added earlier to restrict the `cloudbees-ci-casc-workshop-github-ap` to only be used within your **cbci-casc-automation** GitHub Organization job.
+2. Name the new file `jcasc/credentials.yaml`, copy the `credentials` section from above and paste it into the GitHub file editor.
 3. Next, select the option to **"Create a new branch for this commit and start a pull request"**, name the branch `jcasc-subfolder` and finally click the **Propose new file** button. ![Create credentials.yaml in jcasc folder](github-commit-credentials-yaml.png?width=50pc)
 3. On the next screen click the **Create pull request** button to create a pull request to merge to the `main` branch when you are done updating your `ops-controller` configuration bundle. ![Create sub-folder pull request](github-create-subfolder-pr.png?width=50pc)
 4. Next, navigate back to the **Code** tab of your `ops-controller` repository and select the `jcasc-subfolder` branch from the branch drop down. ![Select jcasc-subfolder branch](github-select-jcasc-subfolder-branch.png?width=50pc)
 5. Back at the top level of your `ops-controller` repository, click on the `jcasc` folder and then click on the **Add file** button and then select **Create new file**. ![Create new unclassified in GitHub](github-create-unclassified-file.png?width=50pc)
-6. Name the file `jenkins.yaml` and paste the contents from the `jenkins` and `unclassified` sections of the `jenkins.yaml` file into the editor. The new `jenkins.yaml` contents should match the following:
+6. Name the file `jenkins.yaml` and paste the contents from the `jenkins` and `unclassified` sections of the `jenkins.yaml` file into the editor but changing the `systemMessage` to **v2**. The new `jenkins.yaml` contents should match the following:
 ```yaml
 jenkins:
   globalNodeProperties:
@@ -47,7 +43,7 @@ jenkins:
       - key: "GITHUB_USER"
         value: "${GITHUB_USER}"
   quietPeriod: 0
-  systemMessage: 'Jenkins configured using CloudBees CI CasC'
+  systemMessage: 'Jenkins configured using CloudBees CI CasC v2'
 unclassified:
   hibernationConfiguration:
     activities:
