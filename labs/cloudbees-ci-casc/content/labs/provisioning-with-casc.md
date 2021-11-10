@@ -181,9 +181,9 @@ credentials:
       }
       environment { PROVISION_SECRET = credentials('casc-workshop-controller-provision-secret') }
       steps {
-        publishEvent event:jsonEvent('''
-          {'controller':{'name':"'"${GITHUB_REPO}"'",'action':'provision'},'github':{'organization':"'"${GITHUB_ORG}"'",'repository':"'"${GITHUB_REPO}"'",'user':"'"${GITHUB_USER}"'"},'secret':"'"${PROVISION_SECRET}"'"}
-        '''), verbose: true
+        publishEvent event:jsonEvent("""
+          {'controller':{'name':'${GITHUB_REPO}','action':'provision'},'github':{'organization':'${GITHUB_ORG}','repository':'${GITHUB_REPO}','user':'${GITHUB_USER}'},'secret':'${PROVISION_SECRET}'}
+        """), verbose: true
       }
     }
 ```
@@ -235,9 +235,9 @@ pipeline {
       }
       environment { PROVISION_SECRET = credentials('casc-workshop-controller-provision-secret') }
       steps {
-        publishEvent event:jsonEvent('''
-          {'controller':{'name':"'"${GITHUB_REPO}"'",'action':'provision'},'github':{'organization':"'"${GITHUB_ORG}"'",'repository':"'"${GITHUB_REPO}"'",'user':"'"${GITHUB_USER}"'"},'secret':"'"${PROVISION_SECRET}"'"}
-        '''), verbose: true
+        publishEvent event:jsonEvent("""
+          {'controller':{'name':'${GITHUB_REPO}','action':'provision'},'github':{'organization':'${GITHUB_ORG}','repository':'${GITHUB_REPO}','user':'${GITHUB_USER}'},'secret':'${PROVISION_SECRET}'}
+        """), verbose: true
       }
     }
   }

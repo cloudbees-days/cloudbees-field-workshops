@@ -204,6 +204,3 @@ items:
 10. Navigate to the `main` branch job of the `dev-controller` Multibranch pipeline project **on your Ops controller**. ![dev-controller Mulitbranch](dev-controller-multibranch-jcasc.png?width=50pc)
 11. After the the `main` branch job has completed successfully, navigate to the top level of your **dev controller** and there will be a new **controller-jobs** folder. ![New folder](new-jobs-folder.png?width=50pc)
 15. Click on the **controller-jobs** folder and you will see that you are able to create new jobs in that folder. ![Create jobs](create-job.png?width=50pc)
-
-
-
