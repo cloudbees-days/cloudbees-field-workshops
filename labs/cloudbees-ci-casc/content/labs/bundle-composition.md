@@ -32,7 +32,7 @@ apiVersion: "1"
 version: "1"
 id: "cbci-casc-workshop-ops-controller"
 description: "CloudBees CI configuration bundle for the cbci-casc-workshop ops-controller Controller"
-availabilityPattern: "{GitHub Org}/{controller name}"
+availabilityPattern: "cloudbees-ci-casc-workshop/cbci-casc-workshop/ops-controller"
 jcasc:
   - "jenkins.yaml"
 plugins:
