@@ -174,15 +174,16 @@ credentials:
 10. Return to your copy of the `ops-controller` repository, click on the `controller-casc-automation` pipeline script and then click on the ***Edit this file*** pencil button.
 11. Add the following `stage` after the existing **Update Config Bundle** `stage`. It is important that the **Publish Provision Controller Event** `stage` comes after the **Update Config Bundle** `stage` as the managed controller's configuration bundle must exist before it can be provisioned with a configuration bundle. Also recall from the review above that the target job's `eventTrigger` is looking to match `controller.action=='provision'` and will validate the `PROVISION_SECRET` we are passing in.
 ```groovy
+
     stage('Publish Provision Controller Event') {
       when {
         branch 'main'
       }
       environment { PROVISION_SECRET = credentials('casc-workshop-controller-provision-secret') }
       steps {
-        publishEvent event:jsonEvent("""
-          {'controller':{'name':'${GITHUB_REPO}','action':'provision'},'github':{'organization':'${GITHUB_ORG}','repository':'${GITHUB_REPO}','user':'${GITHUB_USER}'},'secret':'${PROVISION_SECRET}'}
-        """), verbose: true
+        publishEvent event:jsonEvent('''
+          {'controller':{'name':"'"${GITHUB_REPO}"'",'action':'provision'},'github':{'organization':"'"${GITHUB_ORG}"'",'repository':"'"${GITHUB_REPO}"'",'user':"'"${GITHUB_USER}"'"},'secret':"'"${PROVISION_SECRET}"'"}
+        '''), verbose: true
       }
     }
 ```
@@ -235,7 +236,7 @@ pipeline {
       environment { PROVISION_SECRET = credentials('casc-workshop-controller-provision-secret') }
       steps {
         publishEvent event:jsonEvent('''
-          {'controller':{'name':'${GITHUB_REPO}','action':'provision'},'github':{'organization':'${GITHUB_ORG}','repository':'${GITHUB_REPO}','user':'${GITHUB_USER}'},'secret':'${PROVISION_SECRET}'}
+          {'controller':{'name':"'"${GITHUB_REPO}"'",'action':'provision'},'github':{'organization':"'"${GITHUB_ORG}"'",'repository':"'"${GITHUB_REPO}"'",'user':"'"${GITHUB_USER}"'"},'secret':"'"${PROVISION_SECRET}"'"}
         '''), verbose: true
       }
     }
