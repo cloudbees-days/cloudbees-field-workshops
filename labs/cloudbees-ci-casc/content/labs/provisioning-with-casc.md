@@ -6,10 +6,10 @@ weight: 5
 
 The parent `base` bundle we explored in the previous lab is also configured to be the default bundle for all managed controllers that do not specify one. This allows you to easily manage configuration across all of your organization's managed controllers, but it does not allow for any variations in configuration bundles between controllers. Also, the number of manual steps to provision a managed controller, and apply controller specific bundles to numerous controllers, wastes time and is prone to configuration errors. Imagine if you had dozens or even hundreds of controllers (like we do in this workshop), things would quickly become very difficult to manage.
 
-In this lab we will explore a GitOps approach for automating the process of provisioning a controller to include automating the configuration and application of a controller specific configuration bundle. This approach is based on individual repositories representing individual controllers, and takes advantage of the Jenkins GitHub Organization project type and CloudBees CI custom marker file we setup earlier. After we are done updating the `controller-casc-automation` Jenkins pipeline script in our copy of the `ops-controller` repository, a new controller will be provisioned any time you add a new GitHub repository with a `bundle.yaml` file to your workshop GitHub Organization. The managed controller will have the same name as the repository and will be provisioned with the configuration bundle from the associated GitHub repository (one other approach may be to use folders in one repository to represent each controller).
+In this lab we will explore a GitOps approach for automating the process of provisioning a controller, to include automating the configuration and application of a controller specific configuration bundle. This approach is based on individual repositories representing individual controllers, and takes advantage of the Jenkins GitHub Organization project type and CloudBees CI custom marker file we setup earlier. After we are done updating the `controller-casc-automation` Jenkins pipeline script in our copy of the `ops-controller` repository, a new controller will be provisioned any time you add a new GitHub repository with a `bundle.yaml` file to your workshop GitHub Organization. The managed controller will have the same name as the repository and will be provisioned with the configuration bundle from the associated GitHub repository (one other approach may be to use folders in one repository to represent each controller).
 
 {{% notice note %}}
-Another GitOps type approach you may be interested in is using CloudBees CI CasC for CloudBees CI Cloud Operations Center which allows you define individual managed controllers as `items`. However, as of the `2.303.3.3` release, the managed controllers are not automatically provisioned when the bundle is loaded but will be available in a future version of CloudBees CI on Kubernetes.
+Another GitOps type approach you may be interested in is using CloudBees CI CasC for CloudBees CI Cloud Operations Center which allows you define individual managed controllers as `items`. However, as of the `2.303.3.3` release, the managed controllers are not automatically provisioned when the bundle is loaded but automatic provisiong will be available in a future version of CloudBees CI on Kubernetes.
 {{% /notice %}}
 
 ## GitOps for Controller Provisioning with CloudBees CI Configuration Bundles
@@ -124,7 +124,10 @@ Now that we have reviewed the pipeline and Groovy script for the workshop provis
 3. Click on the `jcasc/credentials.yaml` and then click on the ***Edit this file*** pencil button.
 4. Add the following new `credential` under `restrictedSystem`->`domainCredentials`:
 ```yaml
-    - allowList: "controller-jobs/cbci-casc-automation/**/*"
+
+  restrictedSystem:
+    domainCredentials:
+    - allowList: "controller-jobs/cbci-casc-automation/**/main"
       credentials:
         string:
           description: "CasC Workshop Controller Provision Secret"
@@ -138,22 +141,13 @@ Now that we have reviewed the pipeline and Groovy script for the workshop provis
 credentials:
   restrictedSystem:
     domainCredentials:
-    - allowList: "controller-jobs/cbci-casc-automation/**/*"
+    - allowList: "controller-jobs/cbci-casc-automation/**/main"
       credentials:
         string:
           description: "CasC Workshop Controller Provision Secret"
           id: "casc-workshop-controller-provision-secret"
           scope: GLOBAL
           secret: "${cbciCascWorkshopControllerProvisionSecret}"
-    - allowList: "controller-jobs/cbci-casc-automation/**/*"
-      credentials:
-        gitHubApp:
-          apiUri: "https://api.github.com"
-          appID: "${cbciCascWorkshopGitHubAppId}"
-          description: "CloudBees CI CasC Workshop GitHub App credential"
-          id: "cloudbees-ci-casc-workshop-github-app"
-          owner: "${GITHUB_ORGANIZATION}"
-          privateKey: "${cbciCascWorkshopGitHubAppPrivateKey}"
   system:
     domainCredentials:
     - credentials:
@@ -162,16 +156,25 @@ credentials:
           id: "cloudbees-ci-workshop-github-webhook-secret"
           scope: SYSTEM
           secret: "${gitHubWebhookSecret}"
+      - gitHubApp:
+          apiUri: "https://api.github.com"
+          appID: "${cbciCascWorkshopGitHubAppId}"
+          description: "CloudBees CI CasC Workshop GitHub App credential"
+          id: "cloudbees-ci-casc-workshop-github-app"
+          owner: "${GITHUB_ORGANIZATION}"
+          privateKey: "${cbciCascWorkshopGitHubAppPrivateKey}"
 ```
 {{% /expand%}}
 
 5. Commit the `jcasc/credentials.yaml` file directly to the `main` branch of your `ops-controller` repository. ![Commit credentials.yaml](commit-credentials.png?width=50pc)
-6. Navigate to the `main` branch job of the `ops-controller` Multibranch pipeline project on your Ops controller. ![ops-controller Mulitbranch](ops-controller-multibranch-jcasc.png?width=50pc)
-7. After the the `main` branch job has completed successfully, navigate to the top level of your Ops controller, click on the **Manage Jenkins** link in the left menu, and then click on the **Manage Credentials** link. ![Manage Credentials link](manage-credentials-link.png?width=50pc)
-11. On the **Credentials** management page you will see a new **CasC Workshop Controller Provision Secret** credential.  ![New Credential](new-credential.png?width=50pc)
-11. Return to your copy of the `ops-controller` repository, click on the `controller-casc-automation` pipeline script and then click on the ***Edit this file*** pencil button.
+6. Next, click on the `bundles.yaml` file and then click on the ***Edit this file*** pencil button. In the GitHub file editor for the `bundle.yaml` file, update the `version` field to **5** and commit the `bundle.yaml` file directly to the `main` branch of your `ops-controller` repository.
+7. Navigate to the `main` branch job of the `ops-controller` Multibranch pipeline project on your Ops controller. ![ops-controller Mulitbranch](ops-controller-multibranch-jcasc.png?width=50pc)
+8. After the the `main` branch job has completed successfully, navigate to the top level of your Ops controller, click on the **Manage Jenkins** link in the left menu, and then click on the **Manage Credentials** link. ![Manage Credentials link](manage-credentials-link.png?width=50pc)
+9. On the **Credentials** management page you will see a new **CasC Workshop Controller Provision Secret** credential.  ![New Credential](new-credential.png?width=50pc)
+10. Return to your copy of the `ops-controller` repository, click on the `controller-casc-automation` pipeline script and then click on the ***Edit this file*** pencil button.
 11. Add the following `stage` after the existing **Update Config Bundle** `stage`. It is important that the **Publish Provision Controller Event** `stage` comes after the **Update Config Bundle** `stage` as the managed controller's configuration bundle must exist before it can be provisioned with a configuration bundle. Also recall from the review above that the target job's `eventTrigger` is looking to match `controller.action=='provision'` and will validate the `PROVISION_SECRET` we are passing in.
 ```groovy
+
     stage('Publish Provision Controller Event') {
       when {
         branch 'main'
@@ -214,14 +217,11 @@ pipeline {
         echo "begin config bundle reload"
         script {
           try {
-            sh "curl -O https://raw.githubusercontent.com/cloudbees-days/ops-workshop-setup/master/groovy/reload-casc.groovy"
-            sh "curl -O http://${GITHUB_ORG}-${GITHUB_REPO}/${GITHUB_ORG}-${GITHUB_REPO}/jnlpJars/jenkins-cli.jar"
             withCredentials([usernamePassword(credentialsId: 'admin-cli-token', usernameVariable: 'JENKINS_CLI_USR', passwordVariable: 'JENKINS_CLI_PSW')]) {
-                sh """
-                  alias cli='java -jar jenkins-cli.jar -s http://${GITHUB_ORG}-${GITHUB_REPO}/${GITHUB_ORG}-${GITHUB_REPO}/ -auth $JENKINS_CLI_USR:$JENKINS_CLI_PSW'
-                  cli casc-bundle-check-bundle-update
-                  cli casc-bundle-reload-bundle
-                """
+                sh '''
+                  curl --user $JENKINS_CLI_USR:$JENKINS_CLI_PSW -XGET http://${GITHUB_ORG}-${GITHUB_REPO}/${GITHUB_ORG}-${GITHUB_REPO}/casc-bundle-mgnt/check-bundle-update 
+                  curl --user $JENKINS_CLI_USR:$JENKINS_CLI_PSW -XPOST http://${GITHUB_ORG}-${GITHUB_REPO}/${GITHUB_ORG}-${GITHUB_REPO}/casc-bundle-mgnt/reload-bundle/
+                '''
             }
           } catch (Exception e) {
               echo 'Exception occurred: ' + e.toString()
@@ -246,10 +246,10 @@ pipeline {
 {{% /expand%}}
 
 12. Commit the changes directly to the `main` branch. ![Commit pipeline job](commit-pipeline.png?width=50pc)
-13. After you commit the file, your GitHub Organization pipeline job for the `main` branch of your `ops-controller` repository will be triggered. However, nothing will actually be updated or created because your Ops controller already exists and there were no configuration bundle changes. But we are now ready to dynamically provision a new managed controller for your GitHub Organization.
+13. After you commit the file, your GitHub Organization pipeline job for the `main` branch of your `ops-controller` repository will be triggered. However, nothing will actually be updated or created because your Ops controller already exists and there were no configuration bundle changes. But we are now ready to dynamically provision a new managed controller from your GitHub Organization.
 
 ### Create a new managed controller repository
-In the previous section you updated your Ops controller `controller-casc-automation` pipeline script to publish an event to trigger the provisioning of a managed controller with a configuration bundle. Now you will triggers the provisioning of a managed controller by creating a new GitHub repository in your workshop GitHub Organization and adding a `bundle.yaml` file to it.
+In the previous section you updated your Ops controller `controller-casc-automation` pipeline script to publish an event to trigger the provisioning of a managed controller with a configuration bundle. Now you will trigger the provisioning of a new managed controller by adding a `bundle.yaml` file to your copy of the `dev-controller` repository in your workshop GitHub Organization.
 
 1. At the top level of your GitHub Organization click on the link for the **dev-controller** repository. ![dev-controller repo link](github-dev-controller-repo-link.png?width=50pc)
 2. Next click on the **Add file** button and then select **Create new file**. ![Create new file in GitHub](github-create-new-file.png?width=50pc)

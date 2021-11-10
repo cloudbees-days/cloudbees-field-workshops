@@ -99,7 +99,7 @@ items:
 
 ## Bundle Inheritance
 
-Bundle inheritance allows you to easily share common configuration across numerous controllers. In this lab we will update your Ops controller bundle to extend a parent bundle providing common configuration and plugins to be shared across all of your organizations' controllers. First, we will review the contents of the parent `base` bundle that has already been set-up on Operations Center (and is also the default bundle), and then we will update your Ops controller bundle to use the `base` bundle as a parent bundle. The `base` bundle will include Jenkins configuration that enforces best practices across all of the controllers in the CloudBees CI cluster and include a common set of plugins to be used across all controllers.
+Bundle inheritance allows you to easily share common configuration across numerous controllers. In this lab we will update your Ops controller bundle to extend a parent bundle, providing common configuration and plugins to be shared across all of your organizations' controllers. First, we will review the contents of the parent `base` bundle that has already been set-up on Operations Center (and is also the default bundle), and then we will update your Ops controller bundle to use the `base` bundle as a parent bundle. The `base` bundle will include Jenkins configuration that enforces best practices across all of the controllers in the CloudBees CI cluster and include a common set of plugins to be used across all controllers.
 
 1. First we will take a look at the `bundle.yaml` for the `base` bundle (also available in GitHub at [https://github.com/cloudbees-days/parent-configuration-bundle/blob/main/bundle.yaml](https://github.com/cloudbees-days/parent-configuration-bundle/blob/main/bundle.yaml) ):
 ```yaml
@@ -163,7 +163,7 @@ notificationConfiguration:
   router: "operationsCenter"
 ```
 3. The parent `jenkins.yaml` enforces a number of best practices across all managed controllers to include: 
-    - Setting the number of executors to 0 on controllers, as you should never execute jobs directly on controller, rather you should always use agents.
+    - Setting the number of executors to 0 on controllers, as you should never execute jobs directly on a controller, rather you should always distribute jobs across agents.
     - Enforcing a project naming strategy to maintain clean job URLs and directory paths in the Jenkins home.
     - Setting the quite period to 0 to maximize speed of builds and utilization of ephemeral Kubernetes agents.
     - Configuring a global build discard policy to reduce controller disk usage. Read more about [best strategies for disk space management](https://support.cloudbees.com/hc/en-us/articles/215549798-Best-Strategy-for-Disk-Space-Management-Clean-Up-Old-Builds).
@@ -172,10 +172,6 @@ notificationConfiguration:
     - Enforcing the use of the CloudBees Assurance Plugins.
     - Enabling [controller hibernation](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/managing-masters#_hibernation_in_managed_masters) to reduce infrastructure costs - controllers will only run when they need to.
     - Enabling [Cross Team Collaboration](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/cross-team-collaboration) notifications to allow controllers to send and receive pipeline events.
-
-{{% notice note %}}
-In some cases we are including configuration that is enabled by default - like enabling the CloudBees SCM Reporting notifications. The reason for including such configuration is that when included, it cannot be overridden at the individual controller level as we will learn below.
-{{% /notice %}}
 
 4. Next, let's review the `plugins.yaml` that will provide a base set of plugins for all the controllers in our CloudBees CI cluster:
 ```yaml
@@ -205,7 +201,7 @@ plugins:
 - id: workflow-aggregator
 - id: workflow-cps-checkpoint
 ```
-5. Finally, let's review the `plugin-catalog.yaml` that will extend CAP with plugins you have tested and required for your software deliver workloads. 
+5. Finally, let's review the `plugin-catalog.yaml` that will extend CAP plugins and allow individual controllers to opt-in to their usage. 
 ```yaml
 displayName: CloudBees CI Workshop Plugin Catalog
 name: cbci-workshop-catalog
@@ -217,7 +213,7 @@ configurations:
     cloudbees-restricted-credentials: {version: '0.1'}
     pipeline-utility-steps: {version: '2.10.0'}
 ```
-6. Now that we have reviewed the contents of the `base` bundle we will update your Ops controller bundle to use it as a parent bundle. However, before we do that, it is important to understand how JCasC files are processed. [JCasC configuration](https://github.com/jenkinsci/configuration-as-code-plugin) supports different [merge strategies](https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/features/mergeStrategy.md), currently limited to `errorOnConflict` and `override`. Everyone's managed controllers are configured to use the `override` merge strategy.
+6. Now that we have reviewed the contents of the `base` bundle we will update your Ops controller bundle to use it as a parent bundle. However, before we do that, it is important to understand how JCasC files are processed. [JCasC configuration](https://github.com/jenkinsci/configuration-as-code-plugin) supports different [merge strategies](https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/features/mergeStrategy.md), currently limited to `errorOnConflict` and `override`. Everyone's managed controllers are configured to use the `override` merge strategy (via the `-Dcasc.merge.strategy=override` system property).
   - `errorOnConflict` is what existed before merge strategies were added to JCasC and will result in a Jenkins exception when loading a bundle with conflicting configuration; meaning that a child bundle cannot overwrite any of the parent configuration values
   - `override` allows for JCasC configuration in a child bundle to override that of the parent bundle.
 7. Navigate to the `jcasc` folder of your copy of the `ops-controller` repository and click on the `jenkins.yaml` file and then click on the ***Edit this file*** pencil button.
@@ -276,5 +272,5 @@ items:
 21. Navigate to the `main` branch job of your `ops-controller` Multibranch pipeline project on your Ops controller. ![ops-controller Mulitbranch](ops-controller-multibranch.png?width=50pc)
 22. After the the `main` branch job has completed successfully, navigate to the top level of your Ops controller, the ***system message*** should read - "Jenkins configured using CloudBees CI CasC with controller overrides" signifying that it has been overridden by your controller bundle. ![Overridden systemMessage](overridden-system-message.png?width=50pc) 
 23. Next, click on the **Manage Jenkins** link in the left menu, and then click on the **CloudBees Configuration as Code export and update** **System Configuration** item. ![CasC Configuration link](casc-config-link.png?width=50pc) 
-23. On the **CloudBees Configuration as Code export and update** click on the **Original Bundle** tab. Notice that there are now three `jcasc` files: `jcasc/01-base.jenkins.yaml`, `jcasc/02-cbci-casc-workshop-ops-controller.jcasc.credentials.yaml` and `jcasc/02-cbci-casc-workshop-ops-controller.jcasc.jenkins.yaml`. CloudBees CI Configuration as Code (CasC) for Controllers automatically renames all JCasC files by prefixing them with the level of inheritance, the bundle id and their folder structure and then copies them into the `jcasc` directory. However, in the case of the `plugins.yaml`, multiple files are merged into one. Also note that the `items` files is placed in an `items` folder and also prefixed. ![Original Bundle](original-bundle-base.png?width=50pc) 
+23. On the **CloudBees Configuration as Code export and update** click on the **Original Bundle** tab. Notice that there are now three `jcasc` files: `jcasc/01-base.jenkins.yaml`, `jcasc/02-cbci-casc-workshop-ops-controller.jcasc.credentials.yaml` and `jcasc/02-cbci-casc-workshop-ops-controller.jcasc.jenkins.yaml`. CloudBees CI Configuration as Code (CasC) for Controllers automatically renames all JCasC files by prefixing them with the level of inheritance, the bundle id and their folder structure and then copies them into the `jcasc` directory. However, in the case of the `plugins.yaml`, multiple files are merged into one. Also note that the `items.yaml` file is prefixed and placed in an `items` folder. ![Original Bundle](original-bundle-base.png?width=50pc) 
 
