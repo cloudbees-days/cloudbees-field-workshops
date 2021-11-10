@@ -12,13 +12,13 @@ While Operations Center simplifies the management of bundles, it is possible to 
 
 The labs in this section will explore:
 
-- storing configuration bundles on Operations Center
+- storing and managing configuration bundles on Operations Center
 - setting a default configuration bundle
 - setting up GitOps for automating CloudBees CI configuration bundle updates
 
 ## Managing Configuration Bundles on Operations Center
 
-This lab will provide an overview of how configuration bundles are managed via the Operations Center UI and how to manually apply a configuration bundle to a controller. The first part of the overview will be on the Operations Center **Configuration as Code bundles** settings page that is only accessible by workshop instructors. Therefore, the first part of this lab will explore the 3 major components on the Operations Center **Configuration as Code bundles** settings page without any hands-on material.
+This lab will provide an overview of how configuration bundles are managed via the Operations Center UI and how to manually apply a configuration bundle to a controller. The first part of the overview will be on the Operations Center **Configuration as Code bundles** settings page that is only accessible by workshop instructors. Therefore, the first part of this lab, that will explore the 3 major components on the Operations Center **Configuration as Code bundles** settings page, wont' have any hands-on material.
 
 ![Operations Center Configuration as Code bundles settings pag](ops-center-config-bundle-settings.png?width=70pc)
 
@@ -26,7 +26,7 @@ This lab will provide an overview of how configuration bundles are managed via t
 2. The **Default bundle** drop-down allows you to automatically apply a default configuration bundle to any controller that does not specify a different configuration bundle.
 3. The **cog** icon signifies that the bundle's availability pattern has been defined in the UI, to include overriding availability patterns set in the `bundle.yaml`.
 4. The **bundle** icon signifies that the availability pattern was set in the `bundle.yaml` via the `availabilityPattern` field. Note that setting the **Availability pattern**  with the `availabilityPattern` field allows managing this value with each individual bundle rather than having to specify it in the UI.
-5. The configuration bundle **Availability pattern** allows assigning regular expressions that must match the full path to one or more controllers in order to use that bundle. For the `base` bundle the **Availability pattern** is empty and this typically would not match any path, but since the **Availability pattern** checkbox is checked it is available to all controllers.
+5. The configuration bundle **Availability pattern** allows assigning regular expressions that must match the full path to one or more controllers in order to use that bundle. For the `base` bundle, the **Availability pattern** is empty and this typically would not match any path, but since the **Availability pattern** checkbox is checked it is available to all controllers.
 6. For the `ops` bundle, the **Availability pattern** is set to `operations/ops`. So that means only a controller with the name **ops** in the **operations** folder can use this bundle. If the **Availability pattern** were set to `operations/*` then any controller in the **operations** folder could use this bundle.
 
 ### Applying Bundles to Controllers
@@ -38,7 +38,7 @@ This lab will provide an overview of how configuration bundles are managed via t
 
 ## GitOps for CloudBees CI Configuration Bundles
 
-In this lab we will update the `cbci-casc-automation` job (created by CasC) to automatically update our controllers' configuration bundles whenever any changes are committed to the GitHub `main` branch for the controller's configuration bundle repository. The `cbci-casc-automation` job is actually a [GitHub Organization Folder project](https://www.jenkins.io/doc/book/pipeline/multibranch/#organization-folders) with a [custom marker file](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/pipeline-as-code#custom-pac-scripts). Instead of using the typical `Jenkinsfile`, we will use `bundle.yaml` as our custom marker file. By using the custom marker file with a GitHub Organization Folder project, a Multibranch Pipeline project will automatically be created for all repositories in your workshop GitHub Organization when their `main` branch contains a `bundle.yaml` file.
+In this lab we will update the `cbci-casc-automation` job (created by CasC) to automatically update our controllers' configuration bundles whenever any changes are committed to the GitHub `main` branch for the controller's configuration bundle repository. The `cbci-casc-automation` job is actually a [GitHub Organization Folder project](https://www.jenkins.io/doc/book/pipeline/multibranch/#organization-folders) with a [custom marker file](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/pipeline-as-code#custom-pac-scripts). Instead of using the typical `Jenkinsfile`, we will use `bundle.yaml` as our custom marker file. By using the custom marker file with a GitHub Organization Folder project, a Multibranch Pipeline project will automatically be created for all repositories in your workshop GitHub Organization when the `main` branch contains a `bundle.yaml` file.
  
 1. Navigate to the `ops-controller` repository in your workshop GitHub Organization.
 2. Next click on the`cbci-casc-automation`file to open it. It will match the contents of the file below. ![Open pipeline file](open-pipeline-file.png?width=50pc)
