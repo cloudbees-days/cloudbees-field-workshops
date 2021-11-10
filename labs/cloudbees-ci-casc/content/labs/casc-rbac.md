@@ -84,10 +84,8 @@ rbac:
 8. Now that we have added the `rbac.yaml` and updated the `bundle.yaml`,  we can now merge the pull request to the `main` branch. In GitHub, click on the **Pull requests** tab and then click on the link for the **Create rbac.yaml** pull request. ![rbac pull request link](github-rbac-pr-link.png?width=50pc)
 9. On the **Create rbac.yaml #1** pull request page, click the **Merge pull request** button, then click the **Confirm merge** button and then click the **Delete branch** button.
 10. Navigate to the `main` branch job of the `dev-controller` Multibranch pipeline project on your Ops controller. ![dev-controller Mulitbranch](dev-controller-multibranch-jcasc.png?width=50pc)
-11. After the the `main` branch job has completed successfully, navigate to the top level of your **dev controller**, click on the **Manage Jenkins** link in the left menu, and then click on the **CloudBees Configuration as Code export and update** **System Configuration** item. ![CasC Configuration link](dev-casc-config-link.png?width=50pc) 
-12. On the **CloudBees Configuration as Code bundle** click on the **Bundle update** tab and you should see that there is a bundle update available. ![CasC bundle update](casc-bundle-update.png?width=50pc)
-13. Click on the **Reload Configuration** button and then on the next screen click the **Yes** button to apply the bundle update. ![CasC bundle apply](casc-bundle-apply.png?width=50pc)
-14. Once the bundle has finished reloading you will see a *Manage Jenkins* page with fewer items and the left navigation will have fewer items. Also, many of the configuration items that are still available are view only. ![After Delegating Admin](after-delegating-admin.png?width=85pc)
+11. After the the `main` branch job has completed successfully, navigate to the top level of your **dev controller**, click on the **Manage Jenkins** link in the left menu.
+14. You will see a *Manage Jenkins* page with fewer items and the left navigation will have fewer items. Also, many of the configuration items that are still available are view only. ![After Delegating Admin](after-delegating-admin.png?width=85pc)
 15. Click on **Manage Plugins**, click on the **Available** tab and search for *CloudBees*.  Note that you can see what plugins are available but you cannot install plugins. In order to install or update plugins (or other configuration) you will need to update and reload the CasC bundle for your Managed Controller. ![View Only Plugin Management](plugins-view-only.png?width=60pc)
 16. Finally, navigate to the top level of your dev controller and you will see that you cannot create any items (or jobs). We will fix that in the next section by creating a folder with RBAC that allows you to create jobs in that folder.
 
@@ -204,10 +202,7 @@ items:
 8. Now that we have added the `folders.yaml`, and updated the `rbac.yaml` and `bundle.yaml` files,  we can now merge the pull request to the `main` branch. In GitHub, click on the **Pull requests** tab and then click on the link for the **Create folders.yaml** pull request. ![folders pull request link](github-folders-pr-link.png?width=50pc)
 9. On the **Create folders.yaml #2** pull request page, click the **Merge pull request** button, then click the **Confirm merge** button and then click the **Delete branch** button.
 10. Navigate to the `main` branch job of the `dev-controller` Multibranch pipeline project **on your Ops controller**. ![dev-controller Mulitbranch](dev-controller-multibranch-jcasc.png?width=50pc)
-11. After the the `main` branch job has completed successfully, navigate to the top level of your **dev controller**, click on the **Manage Jenkins** link in the left menu, and then click on the **CloudBees Configuration as Code bundle** **System Configuration** item. ![CasC Configuration link](dev-casc-config-link.png?width=50pc) 
-12. On the **Bundle update** page, you should see that there is a bundle update available. Also note that without `administrator` permissions on this page, you cannot see the other tabs. ![CasC bundle update](casc-bundle-update-manager.png?width=50pc)
-13. Click on the **Reload Configuration** button and then on the next screen click the **Yes** button to apply the bundle update. ![CasC bundle apply](casc-bundle-apply.png?width=50pc)
-14. Navigate back to the top level of your dev controller and there will be a new **controller-jobs** folder. ![New folder](new-jobs-folder.png?width=50pc)
+11. After the the `main` branch job has completed successfully, navigate to the top level of your **dev controller** and there will be a new **controller-jobs** folder. ![New folder](new-jobs-folder.png?width=50pc)
 15. Click on the **controller-jobs** folder and you will see that you are able to create new jobs in that folder. ![Create jobs](create-job.png?width=50pc)
 
 

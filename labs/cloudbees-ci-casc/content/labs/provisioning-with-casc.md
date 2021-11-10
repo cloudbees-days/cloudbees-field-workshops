@@ -234,9 +234,9 @@ pipeline {
       }
       environment { PROVISION_SECRET = credentials('casc-workshop-controller-provision-secret') }
       steps {
-        publishEvent event:jsonEvent("""
+        publishEvent event:jsonEvent('''
           {'controller':{'name':'${GITHUB_REPO}','action':'provision'},'github':{'organization':'${GITHUB_ORG}','repository':'${GITHUB_REPO}','user':'${GITHUB_USER}'},'secret':'${PROVISION_SECRET}'}
-        """), verbose: true
+        '''), verbose: true
       }
     }
   }
@@ -248,7 +248,7 @@ pipeline {
 13. After you commit the file, your GitHub Organization pipeline job for the `main` branch of your `ops-controller` repository will be triggered. However, nothing will actually be updated or created because your Ops controller already exists and there were no configuration bundle changes. But we are now ready to dynamically provision a new managed controller from your GitHub Organization.
 
 ### Create a new managed controller repository
-In the previous section you updated your Ops controller `controller-casc-automation` pipeline script to publish an event to trigger the provisioning of a managed controller with a configuration bundle. Now you will triggers the provisioning of a managed controller by creating a new GitHub repository in your workshop GitHub Organization and adding a `bundle.yaml` file to it.
+In the previous section you updated your Ops controller `controller-casc-automation` pipeline script to publish an event to trigger the provisioning of a managed controller with a configuration bundle. Now you will trigger the provisioning of a new managed controller by adding a `bundle.yaml` file to your copy of the `dev-controller` repository in your workshop GitHub Organization.
 
 1. At the top level of your GitHub Organization click on the link for the **dev-controller** repository. ![dev-controller repo link](github-dev-controller-repo-link.png?width=50pc)
 2. Next click on the **Add file** button and then select **Create new file**. ![Create new file in GitHub](github-create-new-file.png?width=50pc)
