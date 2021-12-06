@@ -12,8 +12,32 @@ Configuration as Code (CasC) for CloudBees CI allows for managing Pipeline Templ
 ## Explore Pipeline Template Catalog
 This lab will explore how to manage CloudBees CI Pipeline Template Catalogs with the CloudBees CI CLI. 
 
-1. Navigate to the top-level of CloudBees CI Operations Center - **Dashboard** - and click on the link for your Managed Controller (it will have the same names as your workshop GitHub Organization). ![Managed Controller link](managed-controller-link.png?width=60pc)
-2. Navigate to the top-level of your managed controller and then click on the **Pipeline Template Catalogs** link in the menu on the left. ![Pipeline Template Catalogs link](catalog-link.png?width=40pc)
+1. Navigate to your `cloudbees-ci-config-bundle` repository in GitHub, click on the `jenkins.yaml` file and scroll down to the `globalCloudBeesPipelineTemplateCatalog` entry and you will see the CasC entry for a Pipeline Template Catalog similar to that below (but for your workshop GitHub Organization replacing the `REPLACE_GITHUB_ORG` placeholders):
+
+```yaml
+globalCloudBeesPipelineTemplateCatalog:
+  catalogs:
+  - branchOrTag: "main"
+    scm:
+      github:
+        configuredByUrl: true
+        credentialsId: "cloudbees-ci-workshop-github-app"
+        repoOwner: "REPLACE_GITHUB_ORGs"
+        repository: "pipeline-template-catalog"
+        repositoryUrl: "https://github.com/REPLACE_GITHUB_ORG/pipeline-template-catalog.git"
+        traits:
+        - gitHubBranchDiscovery:
+            strategyId: 1
+        - gitHubPullRequestDiscovery:
+            strategyId: 1
+        - gitHubForkDiscovery:
+            strategyId: 1
+            trust: "gitHubTrustPermissions"
+    updateInterval: "1d"
+```
+
+1. Next, navigate to the top-level of CloudBees CI Operations Center - **Dashboard** - and click on the link for your Managed Controller that is named **controller** (it will be in a folder with the same name as your workshop GitHub Organization). ![Managed Controller link](managed-controller-link.png?width=60pc)
+2. At the top-level of your managed controller, click on the **Pipeline Template Catalogs** link in the menu on the left. ![Pipeline Template Catalogs link](catalog-link.png?width=40pc)
 3. On the **Pipeline Template Catalogs** page ensure that the **workshopCatalog** catalog's **Status** is ***Healthy*** and then click on the **workshopCatalog** link. <p>![workshopCatalog link](workshopcatalog-link.png?width=50pc)
 4.  On the **CloudBees CI Workshop Template Catalog** screen you will see the following templates listed: ![Template List](workshop-template-list.png?width=50pc)
 
