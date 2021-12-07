@@ -70,7 +70,7 @@ pipeline {
 15. Next, to ensure that we are using the updated **CloudBees CI Configuration Bundle** template, we will check the Pipeline Template Catalog **Import Log**. Navigate to the top-level of your CloudBees CI ***managed controller*** and click on **Pipeline Template Catalogs** link in the left menu and then click the **workshopCatalog** link. 
 
 {{% notice note %}}
-Because the **pipeline-catalog-ops** project is a Multibranch pipeline it will be triggered via a GitHub webhook on all code commits resulting in a re-import of the Pipeline Template Catalog.
+Merging the updated `Jenkinsfile` for that template will trigger a GitHub webhook resulting in a re-import of the ***CloudBees CI Workshop Template Catalog***.
 {{% /notice %}}
 ![workshop Catalog link](workshop-catalog-link.png?width=50pc) 
 
