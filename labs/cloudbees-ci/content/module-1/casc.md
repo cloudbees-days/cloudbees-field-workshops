@@ -10,9 +10,9 @@ In this lab we will setup [GitOps](https://www.gitops.tech/) for [CloudBees CI C
 
 In this lab you will:
 * Update the CloudBees CI configuration bundle in your copy of the `cloudbees-ci-config-bundle` repository and then commit the changes to the **main** branch of your that will in turn trigger the Pipeline template job.
-* Update the ***CloudBees CI Configuration Bundle*** Pipeline Catalog template to use CloudBees CI Cross Team Collaboration feature to trigger a job on another controller, with permissions to use `kubectl` to copy files to the Operations Center `pod`, by publishing a notification event.
+* Update the ***CloudBees CI Configuration Bundle*** Pipeline Catalog template to use [CloudBees CI Cross Team Collaboration feature](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/cross-team-collaboration) to trigger a job on another controller, with permissions to use `kubectl` to copy files to the Operations Center `pod`, by publishing a notification event.
 
-1.  After you click the **Save** button, the Multibranch Pipeline project (created by the template) will scan your copy of the `cloubees-ci-config-bunlde` repository, creating a Pipeline job for each branch where there is a marker file that matched `.markerfile` as specified in the `template.yaml` of the ***CloudBees CI Configuration Bundle*** template (just the open Pull Requests have that file and will be scanned in). Click on the **Scan Repository Log** link in the left menu to see the results of the branch indexing scan. ![Scan Log](bundle-scan-log.png?width=50pc) 
+1.  Navigate back to your CloudBees CI ***managed controller*** and ensure that you are in the **config-bundle-ops** Multi-branch Project in the **template-jobs** folder. Click on the **Scan Repository Log** link in the left menu to see the results of the branch indexing scan. ![Scan Log](bundle-scan-log.png?width=50pc) 
 2.  Next, click on the **config-bundle-ops** link in the menu at the top of page and you will see that there are no jobs for **Branches** and 5 jobs for **Pull Requests**.  Click on the **Pull Requests** tab. ![Scan Log](bundle-no-branch-jobs.png?width=50pc) 
 3.  In the **Pull Requests** view of your Multibranch project click on the link for **PR-1**. ![PR-1 Link](pr-link.png?width=50pc)
 4.  On the build screen for **PR-1** click on the **GitHub** link in the left navigation menu that will take you to the pull request page in GitHub. ![PR-1 GitHub Link](pr-github-link.png?width=50pc)
@@ -32,8 +32,37 @@ A job was created for the `main` branch of your copy of the `cloudbees-ci-config
 ```
 Error from server (Forbidden): pods "cjoc-0" is forbidden: User "system:serviceaccount:controllers:jenkins" cannot get resource "pods" in API group "" in the namespace "cbci"
 ```
-10. The reason you get this error is because your **controller** has been provisioned to a different Kubernetes `namespace` than Operations Center and no agent `pod` in the `controllers` namespace will have the permissions to copy files with `kubectl` to the Operations Center `cjoc-0` `pod`.
-11. You will now have a Pipeline job for the `main` branch of your copy of the `cloudbees-ci-config-bundle` repository. After the Pipeline job successfully completes navigate to the top-level of your ***managed controller***. ![Config Update Complete](config-update-complete.png?width=50pc)
+10. The reason you get this error is because your **controller** has been provisioned to a different Kubernetes `namespace` than Operations Center and no agent `pod` in the `controllers` namespace will have the permissions to copy files with `kubectl` to the Operations Center `cjoc-0` `pod`. To fix this, you must update the ***CloudBees CI Configuration Bundle*** Pipeline Catalog template. 
+11. Navigate to your copy of the `pipeline-template-catalog` repository in your workshop GitHub Organization and open the `Jenkinsfile` for the ***CloudBees CI Configuration Bundle*** Pipeline Catalog template in the `templates/casc-bundle/` directory. ![casc-bundle Jenkinsfile path](casc-bundle-template-path.png?width=50pc)
+12. Click the **pencil icon** to open it in the GitHub file editor and replace the entire contents with the following:
+
+```groovy
+library 'pipeline-library'
+pipeline {
+  agent none
+  options {
+    buildDiscarder(logRotator(numToKeepStr: '2'))
+    timeout(time: 60, unit: 'MINUTES')
+  }
+  stages {
+    stage('Publish CasC Bundle Update Event') {
+      agent { label 'default' }
+      when {
+        beforeAgent true
+        branch 'main'
+      }
+      environment { CASC_UPDATE_SECRET = credentials('casc-update-secret') }
+      steps {
+        publishEvent event:jsonEvent("""
+          {'controller':{'name':'${CONTROLLER_SUBDOMAIN}','action':'casc_bundle_update','bundle_id':'${CASC_BUNDLE_ID}'},'secret':'${CASC_UPDATE_SECRET}'}
+        """), verbose: true
+      }
+    }
+  }
+}
+```
+
+13. Navigate back to your CloudBees CI ***managed controller*** and then navigate to the ***main*** branch job of your **config-bundle-ops** Multi-branch Project in the **template-jobs** folder and click the **Build Now** link in the left menu. After the job successfully completes, navigate to the top-level of your ***managed controller***. ![Config Update Complete](config-update-complete.png?width=50pc)
 14. Click on the **Manage Jenkins** link in the left navigation menu and then click on the **CloudBees Configuration as Code export and update** configuration link. ![CloudBees Configuration config](config-bundle-system-config.png?width=50pc)
 15.  On the next screen, click on the **Bundle Update** link and you should see that a new version of the configuration bundle is available. Click the **Reload Configuration** button and on the next screen click the **Yes** button to apply the updated configuration bundle. 
 

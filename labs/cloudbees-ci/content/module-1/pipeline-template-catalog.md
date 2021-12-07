@@ -12,7 +12,7 @@ Configuration as Code (CasC) for CloudBees CI allows for managing Pipeline Templ
 ## Explore Pipeline Template Catalog
 This lab will explore how to manage CloudBees CI Pipeline Template Catalogs with the CloudBees CI CLI. 
 
-1. Navigate to your `cloudbees-ci-config-bundle` repository in GitHub, click on the `jenkins.yaml` file and scroll down to the `globalCloudBeesPipelineTemplateCatalog` entry:
+1. Navigate to your copy of the `cloudbees-ci-config-bundle` repository in your workshop GitHub Organization, click on the `jenkins.yaml` file and scroll down to the `globalCloudBeesPipelineTemplateCatalog` entry:
 
 ```yaml
 globalCloudBeesPipelineTemplateCatalog:
