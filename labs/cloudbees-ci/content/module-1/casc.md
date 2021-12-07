@@ -72,7 +72,7 @@ pipeline {
 }
 ```
 
-13. Navigate back to your CloudBees CI ***managed controller*** and then navigate to the ***main*** branch job of your **config-bundle-ops** Multi-branch Project in the **template-jobs** folder and click the **Build Now** link in the left menu. After the job successfully completes, navigate to the top-level of your ***managed controller***. 
+13. Navigate back to your CloudBees CI ***managed controller*** and then navigate to the ***main*** branch job of your **config-bundle-ops** Multi-branch Project in the **template-jobs** folder and click the **Build Now** link in the left menu. After the job successfully completes, navigate to the top-level of your ***managed controller***. ![CasC Update Success](casc-job-success.png?width=50pc)
 
 {{% notice note %}}
 After you commit the changes to the `main` branch, a GitHub webhook will trigger the updating of the ***CloudBees CI Workshop Template Catalog*** on your controller. This may take longer that it takes you to re-trigger the job, so if it fails again, just wait a second and click **Build Now** again.
