@@ -54,7 +54,7 @@ pipeline {
       environment { CASC_UPDATE_SECRET = credentials('casc-update-secret') }
       steps {
         publishEvent event:jsonEvent("""
-          {'controller':{'name':'${CONTROLLER_SUBDOMAIN}','action':'casc_bundle_update','bundle_id':'${CASC_BUNDLE_ID}'},'secret':'${CASC_UPDATE_SECRET}'}
+          {'controller':{'name':'${BUNDLE_ID}','action':'casc_bundle_update','bundle_id':'${BUNDLE_ID}'},'secret':'${CASC_UPDATE_SECRET}'}
         """), verbose: true
       }
     }
