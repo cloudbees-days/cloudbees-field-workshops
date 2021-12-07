@@ -33,6 +33,11 @@ A job was created for the `main` branch of your copy of the `cloudbees-ci-config
 Error from server (Forbidden): pods "cjoc-0" is forbidden: User "system:serviceaccount:controllers:jenkins" cannot get resource "pods" in API group "" in the namespace "cbci"
 ```
 10. The reason you get this error is because your **controller** has been provisioned to a different Kubernetes `namespace` than Operations Center and no agent `pod` in the `controllers` namespace will have the permissions to copy files with `kubectl` to the Operations Center `cjoc-0` `pod`. To fix this, you must update the ***CloudBees CI Configuration Bundle*** Pipeline Catalog template. 
+
+{{% notice note %}}
+Provisioning controllers and agents in a different namespace than Operations Center provides additional isolation and more security for Operations Center. 
+{{% /notice %}}
+
 11. Navigate to your copy of the `pipeline-template-catalog` repository in your workshop GitHub Organization and open the `Jenkinsfile` for the ***CloudBees CI Configuration Bundle*** Pipeline Catalog template in the `templates/casc-bundle/` directory. ![casc-bundle Jenkinsfile path](casc-bundle-template-path.png?width=50pc)
 12. Click the **pencil icon** to open it in the GitHub file editor and replace the entire contents with the following and click on the **Commit changes** button to commit to the `main` branch:
 
@@ -68,6 +73,11 @@ pipeline {
 ```
 
 13. Navigate back to your CloudBees CI ***managed controller*** and then navigate to the ***main*** branch job of your **config-bundle-ops** Multi-branch Project in the **template-jobs** folder and click the **Build Now** link in the left menu. After the job successfully completes, navigate to the top-level of your ***managed controller***. 
+
+{{% notice note %}}
+After you commit the changes to the `main` branch, a GitHub webhook will trigger the updating of the ***CloudBees CI Workshop Template Catalog*** on your controller. This may take longer that it takes you to re-trigger the job, so if it fails again, just wait a second and click **Build Now** again.
+{{% /notice %}}
+
 14. Click on the **Manage Jenkins** link in the left navigation menu and then click on the **CloudBees Configuration as Code export and update** configuration link. ![CloudBees Configuration config](config-bundle-system-config.png?width=50pc)
 15.  On the next screen, click on the **Bundle Update** link and you should see that a new version of the configuration bundle is available. Click the **Reload Configuration** button and on the next screen click the **Yes** button to apply the updated configuration bundle. 
 
