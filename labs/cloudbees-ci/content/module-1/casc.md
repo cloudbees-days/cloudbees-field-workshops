@@ -35,7 +35,7 @@ Error from server (Forbidden): pods "cjoc-0" is forbidden: User "system:servicea
 10. The reason you get this error is because your **controller** has been provisioned to a different Kubernetes `namespace` than Operations Center and no agent `pod` in the `controllers` namespace will have the permissions to copy files with `kubectl` to the Operations Center `cjoc-0` `pod`. To fix this, you must update the ***CloudBees CI Configuration Bundle*** Pipeline Catalog template. 
 
 {{% notice note %}}
-Provisioning controllers and agents in a different namespace than Operations Center provides additional isolation and more security for Operations Center. 
+Provisioning controllers and agents in a different namespace than Operations Center provides additional isolation and more security for Operations Center. By default, when controllers are created in the same namespace as Operations Center and agents, they can provision an agent that can run the `pod` `exec` command against any other `pod` in the `namespace` - including the Operations Center's `pod`.
 {{% /notice %}}
 
 11. Navigate to your copy of the `pipeline-template-catalog` repository in your workshop GitHub Organization and open the `Jenkinsfile` for the ***CloudBees CI Configuration Bundle*** Pipeline Catalog template in the `templates/casc-bundle/` directory. ![casc-bundle Jenkinsfile path](casc-bundle-template-path.png?width=50pc)
