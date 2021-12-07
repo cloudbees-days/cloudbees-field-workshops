@@ -82,7 +82,7 @@ After you commit the changes to the `main` branch, a GitHub webhook will trigger
 15.  On the next screen, click on the **Bundle Update** link and you should see that a new version of the configuration bundle is available. Click the **Reload Configuration** button and on the next screen click the **Yes** button to apply the updated configuration bundle. 
 
 {{% notice note %}}
-If you don't see the new version available then click the **Check for Updates** button. Also, once you click **Yes** it will take a few minutes for the bundle update to reload.
+If you don't see the new version available then click the **Check for Updates** button. Also, once you click **Yes** it may take a few minutes for the bundle update to reload.
 {{% /notice %}}
 ![Bundle Update](new-bundle-available.png?width=50pc)
 
