@@ -9,8 +9,8 @@ In this lab we will setup [GitOps](https://www.gitops.tech/) for [CloudBees CI C
 ## GitOps for CloudBees CI CasC
 
 In this lab you will:
-* Update the CloudBees CI configuration bundle in your copy of the `cloudbees-ci-config-bundle` repository and then commit the changes to the **main** branch of your that will in turn trigger the Pipeline template job.
-* Update the ***CloudBees CI Configuration Bundle*** Pipeline Catalog template to use [CloudBees CI Cross Team Collaboration feature](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/cross-team-collaboration) to trigger a job on another controller, with permissions to use `kubectl` to copy files to the Operations Center `pod`, by publishing a notification event.
+* merge a pull request in your copy of the `cloudbees-ci-config-bundle` repository with some CasC changes and add the necessary Pipeline Template `marker` file to the `main` branch, so it will trigger the `main` branch job for your ***config-bundle-ops*** Mutlibranch project.
+* update the ***CloudBees CI Configuration Bundle*** Pipeline Catalog template to use [CloudBees CI Cross Team Collaboration feature](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/cross-team-collaboration) to trigger a job on another controller, with permissions to use `kubectl` to copy files to the Operations Center `pod`, by publishing a notification event.
 
 1.  Navigate back to your CloudBees CI ***managed controller*** and ensure that you are in the **config-bundle-ops** Multi-branch Project in the **template-jobs** folder. Click on the **Scan Repository Log** link in the left menu to see the results of the branch indexing scan. ![Scan Log](bundle-scan-log.png?width=50pc) 
 2.  Next, click on the **config-bundle-ops** link in the menu at the top of page and you will see that there are no jobs for **Branches** and 5 jobs for **Pull Requests**.  Click on the **Pull Requests** tab. ![Scan Log](bundle-no-branch-jobs.png?width=50pc) 
