@@ -53,8 +53,13 @@ pipeline {
       }
       environment { CASC_UPDATE_SECRET = credentials('casc-update-secret') }
       steps {
+        gitHubParseOriginUrl()
         publishEvent event:jsonEvent("""
-          {'controller':{'name':'${BUNDLE_ID}','action':'casc_bundle_update','bundle_id':'${BUNDLE_ID}'},'secret':'${CASC_UPDATE_SECRET}'}
+          {
+            'controller':{'name':'${BUNDLE_ID}','action':'casc_bundle_update','bundle_id':'${BUNDLE_ID}'},
+            'github':{'organization':'${GITHUB_ORG}','repository':'${GITHUB_REPO}'},
+            'secret':'${CASC_UPDATE_SECRET}'
+          }
         """), verbose: true
       }
     }
