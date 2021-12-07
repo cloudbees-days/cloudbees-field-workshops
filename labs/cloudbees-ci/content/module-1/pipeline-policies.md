@@ -24,7 +24,7 @@ If you don't see the new version available then click the **Check for Updates** 
 {{% /notice %}}
 ![Bundle Update](new-bundle-available.png?width=50pc)
 
-9. After the updated configuration bundle has finished loading, click on **Pipeline Policies** link in the left menu. ![Pipeline Policies Link](policies-click.png?width=50pc) 
+9. After the updated configuration bundle has finished loading, click on the **Pipeline Policies** link in the left menu. ![Pipeline Policies Link](policies-click.png?width=50pc) 
 10. Next, on the **Pipeline Policies** screen, you will see a policy with the following settings - matching the configuration from the updated CasC bundle:
     - **Name**: ***Timeout policy***
     - **Action**: ***Fail***
