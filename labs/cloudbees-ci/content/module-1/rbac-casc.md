@@ -29,7 +29,7 @@ If you don't see the new version available then click the **Check for Updates** 
 {{% /notice %}}
 ![Bundle Update](new-bundle-available.png?width=50pc)
 
-12. Once the bundle has finished reloading you will see a *Manage Jenkins* page with fewer items and the left navigation will have fewer items. Also, many of the configuration items that are still available are view only. ![Before and After Delegating Admin](before-after-delegating-admin.png?width=85pc)
+12. Once the bundle has finished reloading you will see a *Manage Jenkins* page with fewer items and the left navigation will have fewer items - including no longer having the ability to create a **New Item** at the root of your controller. Also, many of the configuration items that are still available are view only. ![Before and After Delegating Admin](before-after-delegating-admin.png?width=85pc)
 13. Click on **Manage Plugins**, click on the **Available** tab and search for *CloudBees*.  Note that you can see what plugins are available but you cannot install plugins. In order to install or update plugins (or other configuration) you will need to update and reload the CasC bundle for your managed controller. ![View Only Plugin Management](plugins-view-only.png?width=60pc)
 
 **For instructor led workshops please <a href="https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-ci/#prbac-casc-overview">return to the workshop slides</a>**
