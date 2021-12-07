@@ -6,7 +6,7 @@ weight: 4
 
 Role-Based Access Control (RBAC) for CloudBees CI provides the ability to restrict access and delegate administration. When combined with CloudBees CI CasC, you have a complete audit history of any changes to access control (and other configuration changes) captured by your source control tool, such as Git.
 
-In addition to using CloudBees CI CasC to configure RBAC for your Managed Controller, we will be using the *Overall/Manage* and *Overall/SystemRead* permissions (as described [here](https://www.jenkins.io/doc/book/security/access-control/permissions/#optional-permissions)) to limit UI based configuration for your user, but still allow you to reload updated CasC bundles.
+In addition to using CloudBees CI CasC to configure RBAC for your managed controller, we will be using the *Overall/Manage* and *Overall/SystemRead* permissions (as described [here](https://www.jenkins.io/doc/book/security/access-control/permissions/#optional-permissions)) to limit UI based configuration for your user, but still allow you to reload updated CasC bundles.
 
 {{% notice note %}}
 Using CasC for RBAC requires that you allow Managed Controllers to opt-out of inheriting the Operations Center authorization strategy meaning that the Managed Controller will not inherit roles or groups from Operations Center.
