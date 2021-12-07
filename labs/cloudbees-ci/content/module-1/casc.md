@@ -16,7 +16,7 @@ In this lab you will:
 2. Click on the **New Item** link in the left navigation menu.
 3. Enter ***config-bundle-ops*** as the **Item Name**, select **CloudBees CI Configuration Bundle** as the item type and then click the **OK** button. ![New Update Bundle](new-bundle-template-job.png?width=50pc)
 4. On the next screen, fill in the **GitHub Organization** template parameter with the name of the GitHub Organization you created for this workshop (all the other default values should be correct) and then click the **Save** button. ![Config Bundle Template Parameters](bundle-template-params.png?width=50pc) 
-5.  After you click the **Save** button, the Multibranch Pipeline project (created by the template) will scan your copy of the `cloubees-ci-config-bunlde` repository, creating a Pipeline job for each branch where there is a marker file that matched `bundle.yaml` (or in this case, just the `PR-1` Pull Request). Click on the **Scan Repository Log** link in the left menu to see the results of the branch indexing scan. ![Scan Log](bundle-scan-log.png?width=50pc) 
+5.  After you click the **Save** button, the Multibranch Pipeline project (created by the template) will scan your copy of the `cloubees-ci-config-bunlde` repository, creating a Pipeline job for each branch where there is a marker file that matched `.markerfile` as specified in the `template.yaml` of the ***CloudBees CI Configuration Bundle*** template (just the open Pull Requests have that file and will be scanned in). Click on the **Scan Repository Log** link in the left menu to see the results of the branch indexing scan. ![Scan Log](bundle-scan-log.png?width=50pc) 
 6.  Next, click on the **config-bundle-ops** link in the menu at the top of page and you will see that there are no jobs for **Branches** and 5 jobs for **Pull Requests**.  Click on the **Pull Requests** tab. ![Scan Log](bundle-no-branch-jobs.png?width=50pc) 
 7.  In the **Pull Requests** view of your Multibranch project click on the link for **PR-1**. ![PR-1 Link](pr-link.png?width=50pc)
 8.  On the build screen for **PR-1** click on the **GitHub** link in the left navigation menu that will take you to the pull request page in GitHub. ![PR-1 GitHub Link](pr-github-link.png?width=50pc)
@@ -26,6 +26,17 @@ In this lab you will:
 10. Once you have reviewed the changes, click back on the **Conversation** tab and then click the green **Merge pull request** button and then the **Confirm merge** button. ![Merge PR](merge-pr.png?width=50pc)
 11. On the next screen click the **Delete branch** button.
 12. Navigate back to your CloudBees CI ***managed controller*** and then navigate to the ***main*** branch job of your **config-bundle-ops** Multi-branch Project in the **template-jobs** folder.
+
+{{% notice note %}}
+A job was created for the `main` branch of your copy of the `cloudbees-ci-config-bundle` repository because when you merged the pull request it added the `.markerfile` to your `main` branch and that triggered the ***config-bundle-ops*** Multibranch Pipeline template to create the job.
+{{% /notice %}}
+
+13. The job will fail with the following error:
+
+```
+Error from server (Forbidden): pods "cjoc-0" is forbidden: User "system:serviceaccount:controllers:jenkins" cannot get resource "pods" in API group "" in the namespace "cbci"
+```
+14. The reason you get this error is because your **controller** has been provisioned to a different Kubernetes `namespace` than Operations Center and no agent `pod` in the `controllers` namespace will have the permissions to copy files with `kubectl` to the Operations Center `cjoc-0` `pod`.
 13. You will now have a Pipeline job for the `main` branch of your copy of the `cloudbees-ci-config-bundle` repository. After the Pipeline job successfully completes navigate to the top-level of your ***managed controller***. ![Config Update Complete](config-update-complete.png?width=50pc)
 14. Click on the **Manage Jenkins** link in the left navigation menu and then click on the **CloudBees Configuration as Code export and update** configuration link. ![CloudBees Configuration config](config-bundle-system-config.png?width=50pc)
 15.  On the next screen, click on the **Bundle Update** link and you should see that a new version of the configuration bundle is available. Click the **Reload Configuration** button and on the next screen click the **Yes** button to apply the updated configuration bundle. 
