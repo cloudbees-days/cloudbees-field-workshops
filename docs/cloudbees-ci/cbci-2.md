@@ -49,7 +49,9 @@ name: pipeline-template-catalog-lab-link
 
 # Lab - Pipeline Template Catalog
 
-* In this lab you will use the CloudBees CI CLI to create a Pipeline Template Catalog from the `pipeline-template-catalog` repository that was forked (copied) into your workshop GitHub Organization.
+* In this lab you will explore a Pipeline Template Catalog from the `pipeline-template-catalog` repository that was copied into your workshop GitHub Organization and installed on your managed controller with CloudBees CI Configuration as Code.
+* Create a folder that only allows creating jobs from certain templates.
+* Create a job from a Pipeline Template Catalog template.
 * The *Pipeline Template Catalog* lab instructions are available at: 
   * https://cloudbees-ci.labs.cb-sa.io/module-1/pipeline-template-catalog/
 
@@ -58,5 +60,6 @@ name: pipeline-template-catalog-overview
 
 # Pipeline Template Catalog Overview
 
-* Imported a Pipeline Template Catalog from a GitHub repository
+* Reviewed a Pipeline Template Catalog from a GitHub repository
 * Used a CloudBees Folders Plus feature to restrict what type of jobs can be created in a folder
+* Created a job from a Pipeline Template Catalog template

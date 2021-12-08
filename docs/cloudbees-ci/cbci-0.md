@@ -171,7 +171,7 @@ name: core-overview-scale
 
 # Manage Jenkins at Scale
 * Curated and verified Jenkins plug-ins with **CloudBees Assurance Program** ensures you are using the most up-to-date and secure versions via monthly security and functionality releases 
-* Configuration as Code for Jenkins and CloudBees CI commercial components
+* Configuration as Code for Jenkins and CloudBees CI commercial components; including plugin management and job configuration
 * Enables Comprehensive Jenkins Team Management including:
   * Easily provide *managed controllers* (Jenkins instance) per team
   * Centrally managed Role Based Access Control (RBAC)

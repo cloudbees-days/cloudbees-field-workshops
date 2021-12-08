@@ -35,18 +35,18 @@ If you haven't already done the pre-workshop setup then do it now: https://cloud
 
 The pre-workshop setup consisted of:
 * Setting up a GitHub.com user account that will be used throughout the workshop. If you have an existing GitHub.com account you will be able to use that account if you are comfortable using that account to create a GitHub Organization for use in this workshop.
-* Creating a GitHub organization to use for this workshop.
-* Installing the CloudBees CI Workshop GitHub App into your workshop GitHub Organization triggering a CloudBees CI job that:
+* Creating a GitHub Organization to use for this workshop.
+* Installing the [CloudBees CI Workshop GitHub App](https://github.com/apps/cloudbees-ci-workshop) into your workshop GitHub Organization triggering a CloudBees CI job that:
   * Installed several repositories into your workshop GitHub Organization.
-  * Created a CloudBees CI (Jenkins) account for you.
-  * Provisioned a (team specific) CloudBees CI managed Jenkins instance we refer to as a [***managed controller***](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/managing-masters) for each of you.
+  * Create a CloudBees CI (Jenkins) account for you.
+  * Provisioned a (attendee specific) CloudBees CI managed Jenkins instance we refer to as a [***managed controller***](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/managing-masters).
 
 ---
 name: core-setup-lab
 # Lab - CloudBees CI Setup
 In this lab you will login into your CloudBees CI managed controller.
 
-* If the URL for the CloudBees CI Workshop cluster was not already provided to you then it will be provided by your instructor.
+* If the URL for the CloudBees CI Workshop cluster was not already provided to you, then it will be provided by your instructor.
 * The *CloudBees CI Workshop Setup* lab instructions are available at: 
   * https://cloudbees-ci.labs.cb-sa.io/getting-started/cloudbees-ci-login/
 
@@ -64,5 +64,5 @@ Let's explore the results of the workshop setup:
    2. **pipeline-library** - a Jenkins Pipeline Shared Library that will be used by the Jenkins Pipelines you create during this workshop.
    3. **pipeline-template-catalog** - a set of templated Pipelines that you will use to create Jenkins Pipeline jobs for this workshop.
    4. **simple-java-maven-app** - a simple Java project using Maven, used to highlight contextual Pipeline feedback.
-* Your CloudBees CI ***managed controller*** was also setup to use CloudBees CI configuration as code as we will explore after the next section on Pipeline Template Catalogs.
+* Your CloudBees CI ***managed controller*** was also setup to use CloudBees CI configuration, as code as we will explore in more detail after the next section on Pipeline Template Catalogs.
 ]
