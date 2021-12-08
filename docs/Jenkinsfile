@@ -1,4 +1,4 @@
-library 'pipeline-library@master'
+library 'pipeline-library'
 def prNumber
 pipeline {
   agent { label 'default-jnlp' }
