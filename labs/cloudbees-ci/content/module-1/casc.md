@@ -64,7 +64,8 @@ pipeline {
           {
             'controller':{'name':'${BUNDLE_ID}','action':'casc_bundle_update','bundle_id':'${BUNDLE_ID}'},
             'github':{'organization':'${GITHUB_ORG}','repository':'${GITHUB_REPO}'},
-            'secret':'${CASC_UPDATE_SECRET}'
+            'secret':'${CASC_UPDATE_SECRET}',
+            'casc':{'auto_reload':'true'}
           }
         """), verbose: true
       }
