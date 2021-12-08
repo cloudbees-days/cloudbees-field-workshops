@@ -122,6 +122,51 @@ In a production environment we recommend placing Operations Center and the Ops C
 12. Navigate back to the `cbic-casc-automation` job on your Ops controller and update the **Marker file** to `bundle.yaml`, and the click the **Save** button. ![Update job config](update-job-config.png?width=50pc)
 13. Once the GitHub Organization scan is complete click on the the **Status** link in the left menu and you will see a Multibranch pipeline project for your `ops-controller` repository. ![Ops controller Multibranch pipeline](ops-controller-multibranch-job.png?width=50pc)
 15. Click on the `ops-controller` Multibranch pipeline project and then click on the pipeline job for the `main` branch of your `ops-controller` repository. ![Ops controller job](ops-controller-job.png?width=50pc)
-16. On the **Branch main** screen, wait for the job to complete. ![Ops controller main branch job](ops-controller-main-branch-job.png?width=50pc)
-17. After the job has completed successfully, navigate to the `controller-jobs` folder and click on **New Item** in the left menu and note that the **Freestyle** job type is not available. ![No freestyle job](no-freestyle-job.png?width=50pc)
+16. On the **Branch main** screen, wait for the job to complete and you will see that the job fails with the following error:
+
+```
+Error from server (Forbidden): pods "cjoc-0" is forbidden: User "system:serviceaccount:controllers:jenkins" cannot get resource "pods" in API group "" in the namespace "cbci"
+```
+
+17. The reason you get this error is because your **controller** has been provisioned to a different Kubernetes `namespace` than Operations Center and no agent `pod` in the `controllers` namespace will have the permissions to copy files with `kubectl` (a CLI tool for Kubernetes) to the Operations Center Kubernetes `pod`. To fix this, you must update the `controller-casc-automation` pipeline script in your `ops-controller` repository to trigger a job on another controller that is able to use `kubectl` to copy updated bundle files to Operations Center. 
+
+{{% notice note %}}
+Provisioning controllers and agents in a different namespace than Operations Center provides additional isolation and more security for Operations Center. By default, when controllers are created in the same namespace as Operations Center and agents, they can provision an agent that can run the `pod` `exec` command against any other `pod` in the `namespace` - including the Operations Center's `pod`.
+{{% /notice %}}
+
+18. Navigate to your copy of the `ops-controller` repository in your workshop GitHub Organization and open the `controller-casc-automation` pipeline script.
+19. Click the **pencil icon** to open it in the GitHub file editor and replace the entire contents with the following and click on the **Commit changes** button to commit to the `main` branch:
+
+```groovy
+library 'pipeline-library'
+pipeline {
+  agent none
+  options {
+    timeout(time: 10, unit: 'MINUTES')
+  }
+  stages {
+    stage('Update Config Bundle') {
+      agent { label 'default' }
+      when {
+        beforeAgent true
+        branch 'main'
+        not { triggeredBy 'UserIdCause' }
+      }
+      environment { CASC_UPDATE_SECRET = credentials('casc-update-secret') }
+      steps {
+        publishEvent event:jsonEvent("""
+          {
+            'controller':{'name':'${GITHUB_ORGANIZATION}-${GITHUB_REPOSITORY}','action':'casc_bundle_update','bundle_id':'${GITHUB_ORGANIZATION}-${GITHUB_REPOSITORY}'},
+            'github':{'organization':'${GITHUB_ORGANIZATION}','repository':'${GITHUB_REPOSITORY}'},
+            'secret':'${CASC_UPDATE_SECRET}',
+            'casc':{'auto_reload':'false'}
+          }
+        """), verbose: true
+      }
+    }
+  }
+}
+```
+
+20. After the job has completed successfully, navigate to the `controller-jobs` folder and click on **New Item** in the left menu and note that the **Freestyle** job type is not available. ![No freestyle job](no-freestyle-job.png?width=50pc)
 
