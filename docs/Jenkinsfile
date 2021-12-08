@@ -1,16 +1,16 @@
-library 'pipeline-library@master'
+library 'pipeline-library'
 def prNumber
 pipeline {
   agent { label 'default-jnlp' }
   environment {
     repoOwner = "cloudbees-days"
     repo = "cloudbees-field-workshops"
-    githubCredentialId = "field-workshops-github-app"
-    credId = "field-workshops-github-app"
+    githubCredentialId = "field-workshops-app"
+    credId = "field-workshops-app"
     projectName = "cb-workshop-slides"
     gcpProject="core-workshop"
     deployTypePR="managed"
-    gcpRegionPR="us-central1"
+    gcpRegionPR="us-east1"
   }
   options { 
     buildDiscarder(logRotator(numToKeepStr: '5'))
