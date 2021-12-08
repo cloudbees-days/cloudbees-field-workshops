@@ -17,8 +17,9 @@ In this lab you will:
 3.  In the **Pull Requests** view of your Multibranch project click on the link for **PR-1**. ![PR-1 Link](pr-link.png?width=50pc)
 4.  On the build screen for **PR-1** click on the **GitHub** link in the left navigation menu that will take you to the pull request page in GitHub. ![PR-1 GitHub Link](pr-github-link.png?width=50pc)
 5.  To review the changes that will be made to your CloudBees CI configuration bundle for your CloudBees CI ***managed controller***, click on the **Files changed** tab and scroll down to see the differences. 
-    - The `version` of the `bundle.yaml` file was updated to **2**, **it is important to note that this is required to trigger a reload of the configuration bundle from CloudBees CI Operations Center to your** ***managed controller***.
+    - The `version` of the `bundle.yaml` file was updated to **2**, this is no longer required to trigger a reload of the configuration bundle from CloudBees CI Operations Center to your managed controller, but it is useful for tracking bundle changes.
     - The `cloudbees-pipeline-policies` plugin, that we will need for the next lab, was added to the `plugins.yaml` file. ![Scan Log](pr-files-changed.png?width=50pc)
+    - A pod template was added to provide ephemeral agents for maven tasks.
 6. Once you have reviewed the changes, click back on the **Conversation** tab and then click the green **Merge pull request** button and then the **Confirm merge** button. ![Merge PR](merge-pr.png?width=50pc)
 7. On the next screen click the **Delete branch** button.
 8. Navigate back to your CloudBees CI ***managed controller*** and then navigate to the ***main*** branch job of your **config-bundle-ops** Multi-branch Project in the **template-jobs** folder.
@@ -32,7 +33,7 @@ A job was created for the `main` branch of your copy of the `cloudbees-ci-config
 ```
 Error from server (Forbidden): pods "cjoc-0" is forbidden: User "system:serviceaccount:controllers:jenkins" cannot get resource "pods" in API group "" in the namespace "cbci"
 ```
-10. The reason you get this error is because your **controller** has been provisioned to a different Kubernetes `namespace` than Operations Center and no agent `pod` in the `controllers` namespace will have the permissions to copy files with `kubectl` to the Operations Center `cjoc-0` `pod`. To fix this, you must update the ***CloudBees CI Configuration Bundle*** Pipeline Catalog template. 
+10. The reason you get this error is because your **controller** has been provisioned to a different Kubernetes `namespace` than Operations Center and no agent `pod` in the `controllers` namespace will have the permissions to copy files with `kubectl` (a CLI tool for Kubernetes) to the Operations Center Kubernetes `pod`. To fix this, you must update the ***CloudBees CI Configuration Bundle*** Pipeline Catalog template to trigger a job on another controller that is able to use `kubectl` to copy updated bundle files to Operations Center. 
 
 {{% notice note %}}
 Provisioning controllers and agents in a different namespace than Operations Center provides additional isolation and more security for Operations Center. By default, when controllers are created in the same namespace as Operations Center and agents, they can provision an agent that can run the `pod` `exec` command against any other `pod` in the `namespace` - including the Operations Center's `pod`.
@@ -63,7 +64,8 @@ pipeline {
           {
             'controller':{'name':'${BUNDLE_ID}','action':'casc_bundle_update','bundle_id':'${BUNDLE_ID}'},
             'github':{'organization':'${GITHUB_ORG}','repository':'${GITHUB_REPO}'},
-            'secret':'${CASC_UPDATE_SECRET}'
+            'secret':'${CASC_UPDATE_SECRET}',
+            'casc':{'auto_reload':'true'}
           }
         """), verbose: true
       }
@@ -71,6 +73,8 @@ pipeline {
   }
 }
 ```
+
+Note that we replaced the previous `steps` with the `publishEvent` step (along with the `gitHubParseOriginUrl` pipeline library utility step). The `publishEvent` step with send a notification to a message bus on Operations Center and result in the triggering of any job that is configured to listen for that event. The configuration for the job that it triggers [is available here](https://github.com/cloudbees-days/cloudbees-ci-casc-bundle-update/blob/main/Jenkinsfile).
 
 13. Navigate back to your CloudBees CI ***managed controller*** and then navigate to the ***main*** branch job of your **config-bundle-ops** Multi-branch Project in the **template-jobs** folder and click the **Build Now** link in the left menu. After the job successfully completes, navigate to the top-level of your ***managed controller***. ![CasC Update Success](casc-job-success.png?width=50pc)
 
