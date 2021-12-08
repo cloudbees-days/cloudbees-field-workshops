@@ -73,7 +73,7 @@ pipeline {
 }
 ```
 
-Note that we replaced the previous `steps` with the `publishEvent` step (along with the `gitHubParseOriginUrl` pipeline library utility step). The `publishEvent` step with send a notification to a message bus on Operations Center and result in the triggering of any job that is configured to listen for that event.
+Note that we replaced the previous `steps` with the `publishEvent` step (along with the `gitHubParseOriginUrl` pipeline library utility step). The `publishEvent` step with send a notification to a message bus on Operations Center and result in the triggering of any job that is configured to listen for that event. The configuration for the job that it triggers [is available here](https://github.com/cloudbees-days/cloudbees-ci-casc-bundle-update/blob/main/Jenkinsfile).
 
 13. Navigate back to your CloudBees CI ***managed controller*** and then navigate to the ***main*** branch job of your **config-bundle-ops** Multi-branch Project in the **template-jobs** folder and click the **Build Now** link in the left menu. After the job successfully completes, navigate to the top-level of your ***managed controller***. ![CasC Update Success](casc-job-success.png?width=50pc)
 
