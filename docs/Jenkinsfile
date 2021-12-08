@@ -6,7 +6,7 @@ pipeline {
     repoOwner = "cloudbees-days"
     repo = "cloudbees-field-workshops"
     githubCredentialId = "field-workshops-app"
-    credId = "field-workshops-github-app"
+    credId = "field-workshops-app"
     projectName = "cb-workshop-slides"
     gcpProject="core-workshop"
     deployTypePR="managed"
