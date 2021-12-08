@@ -6,11 +6,11 @@ weight: 1
 
 Managing Pipeline Template Catalogs across a large number of ***managed controllers*** using the graphical user interface (GUI) is time consuming and prone to human error due to the repetitive nature of the task.
 
-Configuration as Code (CasC) for CloudBees CI allows for managing Pipeline Template Catalogs as code across multiple managed controllers, which reduces efforts and ensures consistency across all of your teams.
+Configuration as Code (CasC) for CloudBees CI allows for managing Pipeline Template Catalogs as code across multiple managed controllers as code, which reduces efforts and ensures consistency across all of your teams, while increasing the security and traceability of changes by managing the configuration as code.
 
 
 ## Explore Pipeline Template Catalog
-This lab will explore how to manage CloudBees CI Pipeline Template Catalogs with the CloudBees CI Configuration as Code. 
+This lab will explore how to manage CloudBees CI Pipeline Template Catalogs with the CloudBees CI Configuration as Code. This will be a brief introduction to CloudBees CI Configuration as Code which we will explore more in the next section.
 
 1. Navigate to your copy of the `cloudbees-ci-config-bundle` repository in your workshop GitHub Organization, click on the `jenkins.yaml` file and scroll down to the `globalCloudBeesPipelineTemplateCatalog` CasC entry:
 

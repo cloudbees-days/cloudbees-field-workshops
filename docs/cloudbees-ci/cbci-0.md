@@ -59,9 +59,9 @@ class: center
 name: lab-environment
 # Lab Environment
 * This workshop uses a CloudBees CI cluster, an enterprise version of Jenkins, running on the Google Kubernetes Engine (GKE)
-  * Each attendee will have their own Jenkins instance provisioned as if you were a team. We refer to these as a ***managed controller*** since they are dynamical provisioned on Kubernetes and their full lifecycle is **managed** by the CloudBees CI Operations Center.
-* All the instructions for the labs and these slides are publicly available
-* Attendees will be using their own GitHub accounts 
+  * Each attendee will have their own Jenkins instance provisioned as if you were a team. We refer to these as a ***managed controller*** since they are dynamically provisioned on Kubernetes and their full lifecycle is **managed** by the CloudBees CI Operations Center.
+* All the instructions for the labs and these slides are publicly available.
+* Attendees will be using their own GitHub accounts. 
 * **IMPORTANT:** If you haven't already completed the *Pre-Workshop Setup* then do so here: https://cloudbees-ci.labs.cb-sa.io/getting-started/pre-workshop-setup/
 
 
@@ -118,7 +118,7 @@ Eliminate Silos
 
 Empower teams
 .no-bullet[
-* Enable freedom and experimentation by providing dedicated CD resources within a shared platform
+* Enable freedom and experimentation by providing dedicated software delivery resources within a shared platform
 ]
 
 Ensure Security and Compliance
