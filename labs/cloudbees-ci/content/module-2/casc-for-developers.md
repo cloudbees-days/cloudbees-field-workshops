@@ -6,7 +6,48 @@ weight: 3
 
 As a developer you may (and shouldn't) have access to makes configuration changes to your team's CloudBees CI ***managed controller*** (Jenkins instance). However, developers can take advantage of the GitOps approach to managing the configuration of a CloudBees CI managed controller by requesting configuration changes via GitHub pull requests.
 
-In this lab you will act as developer and CloudBees CI admin, where you will review and merge a pull request to your `cloudbees-ci-config-bundle` repository in your workshop GitHub Organization and then the CasC bundle will be updated and automatically reloaded by the **config-bundle-ops** job on your managed controller.
+In this lab you will act as developer and CloudBees CI admin, where you will review and merge a pull request to your `cloudbees-ci-config-bundle` repository in your workshop GitHub Organization and then the CasC bundle will be updated and automatically reloaded by the **config-bundle-ops** job on your managed controller. But before the bundle is automatically updated, we must put on our Jenkins admin hat and update the ***CloudBees CI Configuration Bundle*** Pipeline template.
+
+## Update the CasC Update Template to Automatically Reload Configuration
+
+1. Navigate to your copy of the pipeline-template-catalog repository in your workshop GitHub Organization and open the Jenkinsfile for the CloudBees CI Configuration Bundle Pipeline Catalog template in the `templates/casc-bundle/` directory and click on the *pencil* button to edit. ![casc-bundle Jenkinsfile path](casc-bundle-template-path.png?width=50pc)
+2. Remember, we are triggering another job with a notification event to have it actually copy the updated configuration files to Operations Center, so we can't automatically reload the configuration until it has been updated. Luckily the downstream job is configured to automatically reload the bundle on your controller by passing `'casc':{'auto_reload':'true'}` in the `jsonEvent` of the `publishEvent` with the completed Jenkinsfile matching the following
+
+```groovy
+library 'pipeline-library'
+pipeline {
+  agent none
+  options {
+    buildDiscarder(logRotator(numToKeepStr: '2'))
+    timeout(time: 10, unit: 'MINUTES')
+  }
+  stages {
+    stage('Publish CasC Bundle Update Event') {
+      agent { label 'default' }
+      when {
+        beforeAgent true
+        branch 'main'
+      }
+      environment { CASC_UPDATE_SECRET = credentials('casc-update-secret') }
+      steps {
+        gitHubParseOriginUrl()
+        publishEvent event:jsonEvent("""
+          {
+            'controller':{'name':'${BUNDLE_ID}','action':'casc_bundle_update','bundle_id':'${BUNDLE_ID}'},
+            'github':{'organization':'${GITHUB_ORG}','repository':'${GITHUB_REPO}'},
+            'secret':'${CASC_UPDATE_SECRET}',
+            'casc':{'auto_reload':'true'}
+          }
+        """), verbose: true
+      }
+    }
+  }
+}
+```
+
+3. Finally, click on the **Commit changes** button to commit to the `main` branch.
+
+## Add Slack Integration via CasC
 
 {{% notice note %}}
 Please ensure that you have signed up for the [CloudBees Workshops Slack workspace](https://cloudbees-workshops.slack.com/) as instructed in the *[Pre-Workshop Setup](https://cloudbees-ci.labs.cb-sa.io/getting-started/pre-workshop-setup/#slack)* before continuing with this lab.
