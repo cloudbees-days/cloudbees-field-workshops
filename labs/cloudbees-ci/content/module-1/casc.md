@@ -33,7 +33,7 @@ A job was created for the `main` branch of your copy of the `cloudbees-ci-config
 ```
 Error from server (Forbidden): pods "cjoc-0" is forbidden: User "system:serviceaccount:controllers:jenkins" cannot get resource "pods" in API group "" in the namespace "cbci"
 ```
-10. The reason you get this error is because your **controller** has been provisioned to a different Kubernetes `namespace` than Operations Center and no agent `pod` in the `controllers` namespace will have the permissions to copy files with `kubectl` to the Operations Center `cjoc-0` `pod`. To fix this, you must update the ***CloudBees CI Configuration Bundle*** Pipeline Catalog template. 
+10. The reason you get this error is because your **controller** has been provisioned to a different Kubernetes `namespace` than Operations Center and no agent `pod` in the `controllers` namespace will have the permissions to copy files with `kubectl` (a CLI tool for Kubernetes) to the Operations Center Kubernetes `pod`. To fix this, you must update the ***CloudBees CI Configuration Bundle*** Pipeline Catalog template to trigger a job on another controller that is able to use `kubectl` to copy updated bundle files to Operations Center. 
 
 {{% notice note %}}
 Provisioning controllers and agents in a different namespace than Operations Center provides additional isolation and more security for Operations Center. By default, when controllers are created in the same namespace as Operations Center and agents, they can provision an agent that can run the `pod` `exec` command against any other `pod` in the `namespace` - including the Operations Center's `pod`.
