@@ -5,7 +5,7 @@ pipeline {
   environment {
     repoOwner = "cloudbees-days"
     repo = "cloudbees-field-workshops"
-    githubCredentialId = "field-workshops-github-app"
+    githubCredentialId = "field-workshops-app"
     credId = "field-workshops-github-app"
     projectName = "cb-workshop-slides"
     gcpProject="core-workshop"
