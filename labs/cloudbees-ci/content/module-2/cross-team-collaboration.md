@@ -8,12 +8,6 @@ weight: 5
 
 We will utilize CloudBees CI CasC to enable and configure Notifications for Cross Team Collaboration.
 
-1. Navigate to your `cloudbees-ci-config-bundle` repository in GitHub and click on the **Pull requests** link. ![PR link](pr-link.png?width=50pc) 
-2. On the next screen, click on the **Cross Team Collaboration Lab: Enable Notifications** pull request and then click on the **Files changed** tab to review the requested configuration changes and scroll down to the `jenksin.yaml` file. As you can see, we are adding `notificationConfiguration` for your CloudBees CI Managed Controller. ![PR Files Changed](collab-casc-changes.png?width=50pc)
-3. Once you have reviewed the changed files, click on the **Conversation** tab, scroll down and click the green **Merge pull request** button and then the **Confirm merge** button.
-4. On the next screen click the **Delete branch** button.
-5. Navigate to the **config-bundle-ops** job under the **template-jobs** folder on your CloudBees CI Managed Controller. After the **main** branch job completes successfully **Cross Team Collaboration** notifications will be enabled for your *managed controller*.
-
 ## Adding an event trigger
 
 Now that we have configured CloudBees CI Notifications for our ***managed controllers***, we will add an event trigger to a Pipeline template.
@@ -42,8 +36,9 @@ Because the **pipeline-catalog-ops** project is a Multibranch pipeline it will b
 
 Now that you have an `eventTrigger` added to your **Maven Pipeline Template**, we need to create a job that will publish an event that will trigger it. Each of you will create a simple Pipeline job that will publish an event to imitate the real world scenario where a new `maven` build image would be built and pushed - typically by another team on a different Managed Controller (Jenkins instance).
 
-1. At the top level of your CloudBees CI Managed Controller click on the **New Item** link in the left navigation menu.
-2. Enter an item name - say **publish-event** - then select **Pipeline** as the item type and then click the **OK** button. ![Create publish event pipeline](create-publish-event-pipeline.png?width=50pc)
+1. Navigate to the **template-jobs** folder on your controller and click the **Configure** link in the left menu. ![Configure folder](configure-folder.png?width=50pc)
+2. Next, scroll down to the ***Restrict the kind of children in this folder*** section, check **Pipeline** and click the **Save** button. ![Add Pipeline](add-pipeline.png?width=50pc)
+2. Click on the **New Item** link in the left menu and then enter an item name - say **publish-event** - then select **Pipeline** as the item type and then click the **OK** button. ![Create publish event pipeline](create-publish-event-pipeline.png?width=50pc)
 3. Click on the **Pipeline** tab and then copy the following Pipeline, paste it into the **Script** text area and then click the **Save** button:
 ```groovy
 pipeline {
