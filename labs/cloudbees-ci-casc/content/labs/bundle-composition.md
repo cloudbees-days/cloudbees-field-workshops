@@ -191,7 +191,7 @@ items:
                 lightweight: true
 ```
 
-7. There is one more configuration file in your `ops-controller` repository, but it is not part of the `bundle`. The `controller.yaml` file represents the CloudBees CI **managed controller** that was provisioned for you as part of the workshop setup. It has the same format as the `items.yaml` we reviewed above. However, it is applied to Operations Center instead of being applied to your managed controller. Its contents will match the following (except for the `REPLACE_...` placeholders):
+7. There is one more configuration file in your `ops-controller` repository, but it is not part of the `bundle`. The `controller.yaml` file represents the CloudBees CI **managed controller** that was provisioned for you as part of the workshop setup. It has the same format as the `items.yaml` we reviewed above. However, it is applied to Operations Center with the [CloudBees CI CasC HTTP API](https://docs.cloudbees.com/docs/cloudbees-ci-api/latest/bundle-management-api) instead of being applied to your managed controller. Its contents will match the following (except for the `REPLACE_...` placeholders):
 
 ```yaml
 removeStrategy:
