@@ -4,14 +4,14 @@ chapter: false
 weight: 3
 ---
 
-As a developer you may (and shouldn't) have access to makes configuration changes to your team's CloudBees CI ***managed controller*** (Jenkins instance). However, developers can take advantage of the GitOps approach to managing the configuration of a CloudBees CI managed controller by requesting configuration changes via GitHub pull requests.
+As a developer you may (and shouldn't) have access to make configuration changes to your team's CloudBees CI ***managed controller*** (Jenkins instance). However, developers can take advantage of the GitOps approach to managing the configuration of a CloudBees CI managed controller by requesting configuration changes via GitHub pull requests.
 
 In this lab you will act as developer and CloudBees CI admin, where you will review and merge a pull request to your `cloudbees-ci-config-bundle` repository in your workshop GitHub Organization and then the CasC bundle will be updated and automatically reloaded by the **config-bundle-ops** job on your managed controller. But before the bundle is automatically updated, we must put on our Jenkins admin hat and update the ***CloudBees CI Configuration Bundle*** Pipeline template.
 
 ## Update the CasC Update Template to Automatically Reload Configuration
 
 1. Navigate to your copy of the pipeline-template-catalog repository in your workshop GitHub Organization and open the Jenkinsfile for the CloudBees CI Configuration Bundle Pipeline Catalog template in the `templates/casc-bundle/` directory and click on the *pencil* button to edit. ![casc-bundle Jenkinsfile path](casc-bundle-template-path.png?width=50pc)
-2. Remember, we are triggering another job with a notification event to have it actually copy the updated configuration files to Operations Center, so we can't automatically reload the configuration until it has been updated. Luckily the downstream job is configured to automatically reload the bundle on your controller by passing `'casc':{'auto_reload':'true'}` in the `jsonEvent` of the `publishEvent` with the completed Jenkinsfile matching the following:
+2. We are triggering another job with a notification event to have it actually copy the updated configuration files to Operations Center, so we can't automatically reload the configuration until it has been updated. Luckily the downstream job is configured to automatically reload the bundle on your controller by passing `'casc':{'auto_reload':'true'}` in the `jsonEvent` of the `publishEvent`. So to automatically reload the bundle for your controller, update the `Jenkinsfile` to match the following:
 
 ```groovy
 library 'pipeline-library'
@@ -45,7 +45,7 @@ pipeline {
 }
 ```
 
-3. Finally, click on the **Commit changes** button to commit to the `main` branch.
+3. Finally, click on the **Commit changes** button to commit to the `main` branch. ![Commit casc-bundle Jenkinsfile](commit-casc-bundle-template.png?width=50pc)
 
 ## Add Slack Integration via CasC
 
