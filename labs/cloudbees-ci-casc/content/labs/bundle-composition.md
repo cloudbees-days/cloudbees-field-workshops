@@ -140,7 +140,7 @@ plugins:
 - id: workflow-cps-checkpoint
 # non-cap plugins
 ```
-6. Finally, return to the top level of your `ops-controller` repository and click on the `items.yaml` file. The name of this file must match the file name listed under `items` in the `bundle.yaml` file. Its contents will match the following (except for the `REPLACE_GITHUB_ORG` placeholders). Also note the `removeStrategy` configuration at the top, this specifies the strategy to handle existing configuration when a new configuration is applied, and is required for all `items` files (`NONE` is currently the only strategy available for `items`):
+6. Return to the top level of your `ops-controller` repository and click on the `items.yaml` file. The name of this file must match the file name listed under `items` in the `bundle.yaml` file. Its contents will match the following (except for the `REPLACE_GITHUB_ORG` placeholders). Also note the `removeStrategy` configuration at the top, this specifies the strategy to handle existing configuration when a new configuration is applied, and is required for all `items` files (`NONE` is currently the only strategy available for `items`):
 
 ```yml
 removeStrategy:
@@ -189,6 +189,78 @@ items:
                     - branchSpec:
                         name: '*/main'
                 lightweight: true
+```
+
+7. There is one more configuration file in your `ops-controller` repository, but it is not part of the `bundle`. The `controller.yaml` file represents the CloudBees CI **managed controller** that was provisioned for you as part of the workshop setup. It has the same format as the `items.yaml` we reviewed above. However, it is applied to Operations Center instead of being applied to your managed controller. Its contents will match the following (except for the `REPLACE_...` placeholders):
+
+```yaml
+removeStrategy:
+  rbac: SYNC
+  items: NONE
+items:
+- kind: folder
+  name: REPLACE_FOLDER_NAME
+  groups:
+  - members:
+      users:
+      - REPLACE_GITHUB_USERNAME
+      - REPLACE_GITHUB_USERNAME-admin
+    roles:
+    - name: browse
+      grantedAt: current
+    - name: workshop-admin
+      grantedAt: child
+    name: Team Administrators
+  filteredRoles:
+  - workshop-admin
+  - browse
+  items:
+  - kind: managedController
+    name: REPLACE_CONTROLLER_NAME
+    properties:
+    - healthReporting:
+        enabled: true
+    - configurationAsCode:
+        bundle: REPLACE_GITHUB_ORG-REPLACE_CONTROLLER_NAME
+    configuration:
+      kubernetes:
+        memory: 4000
+        cpus: 1.0
+        clusterEndpointId: default
+        disk: 10
+        storageClassName: premium-rwo
+        domain: REPLACE_GITHUB_ORG-REPLACE_CONTROLLER_NAME
+        namespace: controllers
+        yaml: |
+          kind: "StatefulSet"
+          spec:
+            template:
+              spec:
+                containers:
+                - name: "jenkins"
+                  env:
+                  - name: "SECRETS"
+                    value: "/var/jenkins_home/jcasc_secrets"
+                  - name: "GITHUB_ORGANIZATION"
+                    value: "REPLACE_GITHUB_ORG"
+                  - name: "GITHUB_USER"
+                    value: "REPLACE_GITHUB_USERNAME"
+                  - name: "GITHUB_APP"
+                    value: "REPLACE_GITHUB_APP"
+                  - name: "CONTROLLER_SUBDOMAIN"
+                    value: "REPLACE_GITHUB_ORG-REPLACE_CONTROLLER_NAME"
+                  - name: "CASC_BUNDLE_ID"
+                    value: "REPLACE_GITHUB_ORG-REPLACE_CONTROLLER_NAME"
+                  volumeMounts:
+                  - name: "jcasc-secrets"
+                    mountPath: "/var/jenkins_home/jcasc_secrets"
+                volumes:
+                - name: "jcasc-secrets"
+                  csi:
+                    driver: secrets-store.csi.k8s.io
+                    readOnly: true
+                    volumeAttributes:
+                      secretProviderClass: "cbci-mc-secret-provider"
 ```
 
 ## Creating/Updating a Configuration Bundle from a Bundle Export
