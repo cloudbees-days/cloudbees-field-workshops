@@ -43,6 +43,7 @@ In this lab we will update the `cbci-casc-automation` job (created by CasC) to a
 1. Navigate to the `ops-controller` repository in your workshop GitHub Organization.
 2. Next click on the`cbci-casc-automation`file to open it. It will match the contents of the file below. ![Open pipeline file](open-pipeline-file.png?width=50pc)
 ```groovy
+
 library 'pipeline-library'
 pipeline {
   agent {
@@ -67,25 +68,12 @@ pipeline {
           sh "find -name '*.yaml' | xargs cp --parents -t ${GITHUB_ORG}-${GITHUB_REPO}"
           sh "kubectl cp --namespace cbci ${GITHUB_ORG}-${GITHUB_REPO} cjoc-0:/var/jenkins_home/jcasc-bundles-store/ -c jenkins"
         }
-        echo "begin config bundle reload"
-        script {
-          try {
-            withCredentials([usernamePassword(credentialsId: 'admin-cli-token', usernameVariable: 'JENKINS_CLI_USR', passwordVariable: 'JENKINS_CLI_PSW')]) {
-                sh '''
-                  curl --user $JENKINS_CLI_USR:$JENKINS_CLI_PSW -XGET http://${GITHUB_ORG}-${GITHUB_REPO}/${GITHUB_ORG}-${GITHUB_REPO}/casc-bundle-mgnt/check-bundle-update 
-                  curl --user $JENKINS_CLI_USR:$JENKINS_CLI_PSW -XPOST http://${GITHUB_ORG}-${GITHUB_REPO}/${GITHUB_ORG}-${GITHUB_REPO}/reload-bundle/
-                '''
-            }
-          } catch (Exception e) {
-              echo 'Exception occurred: ' + e.toString()
-          }
-        }
       }
     }
   }
 }
 ```
-4. On the first line you will see that we are using the Pipeline shared library defined in your Ops controller configuration bundle. The Pipeline shared library contains a number of Jenkins Kubernetes Pod templates that can be leveraged across all the controllers. We are utilizing the `kubectl.yml` Pod template, so we can use the `kubectl cp` command to copy your `ops-controller` configuration bundle files into the `jcasc-bundles-store` directory on Operations Center. Finally, we use the [CasC HTTP API](https://docs.cloudbees.com/docs/cloudbees-ci-api/latest/bundle-management-api) to check for an update and then automatically reload the bundle as long as it can be reloaded without a restart of the controller. Once you have finished reviewing the `controller-casc-automation` pipeline contents, navigate to the top level of your Ops controller and click the on the `controller-jobs` folder.
+4. On the first line you will see that we are using the Pipeline shared library defined in your Ops controller configuration bundle. The Pipeline shared library contains a number of Jenkins Kubernetes Pod templates that can be leveraged across all the controllers. We are utilizing the `kubectl.yml` Pod template, so we can use the `kubectl cp` command to copy your `ops-controller` configuration bundle files into the `jcasc-bundles-store` directory on Operations Center. Once you have finished reviewing the `controller-casc-automation` pipeline contents, navigate to the top level of your Ops controller and click the on the `controller-jobs` folder.
 
 {{%expand "expand to view podtemplates/kubectl.yml file" %}}
 ```yaml
@@ -107,10 +95,6 @@ spec:
     runAsUser: 1000
 ```
 {{% /expand%}}
-
-{{% notice info %}}
-In a production environment we recommend placing Operations Center and the Ops Controller in the same Kubernetes `namespace`, and isolating all managed controllers in one or more other Kubernetes `namespaces`.
-{{% /notice %}}
 
 5. Inside of the `controller-jobs` folder, click on the `cbic-casc-automation` job. ![CasC job link](casc-job-link.png?width=50pc)
 6. On the next screen, you will see **This folder is empty**. The reason it is empty is because the GitHub Folder branch scan did not find any matches for the current *marker file*. Click on the **Configure** link in the left menu so we can fix that.  ![CasC job config link](casc-job-config-link.png?width=50pc)
