@@ -167,3 +167,68 @@ If you don't see the new version available then click the **Check for Updates** 
 ![Bundle Update](new-bundle-available.png?width=50pc)
 23. Navigate to the `controller-jobs` folder and click on **New Item** in the left menu and note that the **Freestyle** job type is not available. ![No freestyle job](no-freestyle-job.png?width=50pc)
 
+## Auto-Updating with the CloudBees CI CasC HTTP API
+
+Although we have enabled GitOps to automatically update your CasC bundle on Operations Center whenever there is a commit to the `main` branch of your `ops-controller` repository, checking for and applying the bundle updates on your controller is still a manual process. CloudBees CI CasC provides [HTTP API endpoints](https://docs.cloudbees.com/docs/cloudbees-ci-api/latest/bundle-management-api) (and a CLI) for managing CasC bundles, to include endpoints to check for controller bundle updates and reloading a controller bundle:
+
+- GET `${JENKINS_URL}/casc-bundle-mgnt/check-bundle-update`
+- POST `${JENKINS_URL}/casc-bundle-mgnt/reload-bundle`
+
+The pipeline snippet below is used by the *bundle update* job, triggered by your **cbci-casc-automation ops-controller** `main` branch job, to check for a bundle update and then reload the bundle for your controller:
+
+```groovy
+        stage('Auto Reload Bundle') {
+          when {
+            environment name: 'AUTO_RELOAD', value: "true"
+          }
+          steps {
+            echo "begin config bundle reload"
+            withCredentials([usernamePassword(credentialsId: 'admin-cli-token', usernameVariable: 'JENKINS_CLI_USR', passwordVariable: 'JENKINS_CLI_PSW')]) {
+                sh '''
+                  curl --user $JENKINS_CLI_USR:$JENKINS_CLI_PSW -XGET http://${BUNDLE_ID}.controllers.svc.cluster.local/${BUNDLE_ID}/casc-bundle-mgnt/check-bundle-update 
+                  curl --user $JENKINS_CLI_USR:$JENKINS_CLI_PSW -XPOST http://${BUNDLE_ID}.controllers.svc.cluster.local/${BUNDLE_ID}/casc-bundle-mgnt/reload-bundle
+                '''
+            }
+          }
+        }
+```
+
+So, all you have to do to enable reload is update the value of the `casc.auto_reload` portion of the event payload to `true`:
+
+1. Navigate to your copy of the `ops-controller` repository in your workshop GitHub Organization and open the `controller-casc-automation` pipeline script.
+2. Click the **pencil icon** to open it in the GitHub file editor, then modify `'casc':{'auto_reload':'true'}` to `'casc':{'auto_reload':'false'}` and click on the **Commit changes** button to commit to the `main` branch. The complete updated contents should match the following:
+
+```groovy
+library 'pipeline-library'
+pipeline {
+  agent none
+  options {
+    timeout(time: 10, unit: 'MINUTES')
+    skipDefaultCheckout()
+  }
+  stages {
+    stage('Update Config Bundle') {
+      agent { label 'default' }
+      when {
+        beforeAgent true
+        branch 'main'
+        not { triggeredBy 'UserIdCause' }
+      }
+      environment { CASC_UPDATE_SECRET = credentials('casc-update-secret') }
+      steps {
+        gitHubParseOriginUrl()
+        publishEvent event:jsonEvent("""
+          {
+            'controller':{'name':'${env.GITHUB_ORG}-${GITHUB_REPO}','action':'casc_bundle_update','bundle_id':'${env.GITHUB_ORG}-${GITHUB_REPO}'},
+            'github':{'organization':'${env.GITHUB_ORG}','repository':'${GITHUB_REPO}'},
+            'secret':'${CASC_UPDATE_SECRET}',
+            'casc':{'auto_reload':'true'}
+          }
+        """), verbose: true
+      }
+    }
+  }
+}
+```
+
+
