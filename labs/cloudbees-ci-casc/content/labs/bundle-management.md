@@ -41,7 +41,8 @@ This lab will provide an overview of how configuration bundles are managed via t
 In this lab we will update the `cbci-casc-automation` job (created by CasC) to automatically update our controllers' configuration bundles whenever any changes are committed to the GitHub `main` branch for the controller's configuration bundle repository. The `cbci-casc-automation` job is actually a [GitHub Organization Folder project](https://www.jenkins.io/doc/book/pipeline/multibranch/#organization-folders) with a [custom marker file](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/pipeline-as-code#custom-pac-scripts). Instead of using the typical `Jenkinsfile`, we will use `bundle.yaml` as our custom marker file. By using the custom marker file with a GitHub Organization Folder project, a Multibranch Pipeline project will automatically be created for all repositories in your workshop GitHub Organization when the `main` branch contains a `bundle.yaml` file.
  
 1. Navigate to the `ops-controller` repository in your workshop GitHub Organization.
-2. Next click on the`cbci-casc-automation`file to open it. It will match the contents of the file below. ![Open pipeline file](open-pipeline-file.png?width=50pc)
+2. Next click on the`cbci-casc-automation`file to open it. It will match the contents of the file below.
+
 ```groovy
 
 library 'pipeline-library'
@@ -99,9 +100,9 @@ spec:
 5. Inside of the `controller-jobs` folder, click on the `cbic-casc-automation` job. ![CasC job link](casc-job-link.png?width=50pc)
 6. On the next screen, you will see **This folder is empty**. The reason it is empty is because the GitHub Folder branch scan did not find any matches for the current *marker file*. Click on the **Configure** link in the left menu so we can fix that.  ![CasC job config link](casc-job-config-link.png?width=50pc)
 7. Scroll down to the **Project Recognizers** section. Under **Custom script**, notice how the **Marker file** is configured. ![Wrong marker file](wrong-marker-file.png?width=50pc)
-8. With the default **project recognizer**, the file you specify (usually `Jenkinsfile`) is used not only as the Pipeline script to run, but also as the **marker file** - that is, the file that indicates which repositories and branches should be processed by the SCM based Pipeline job. However,  with the [CloudBees **custom script** project recognizer](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/pipeline-as-code#custom-pac-scripts) for Mulitbranch and Org Folder Pipeline jobs, the **marker file** and the **script file** are separated, allowing you to specify an arbitrary file as the **marker file** and subsequently use an embedded Pipeline script or pull in a Pipeline file from a completely different source control repository. But in order for a GitHub `branch` to be *recognized*, the `branch` must contain the **marker file**.
+8. With the default **project recognizer**, the file you specify (usually `Jenkinsfile`) is used not only as the Pipeline script to run, but also as the **marker file** - that is, the file that indicates which repositories and branches should be processed by the SCM based Pipeline job. However,  with the [CloudBees custom script project recognizer](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/pipeline-as-code#custom-pac-scripts) for Mulitbranch and Org Folder Pipeline jobs, the **marker file** and the **script file** are separated, allowing you to specify an arbitrary file as the **marker file** and subsequently use an embedded Pipeline script or pull in a Pipeline file from a completely different source control repository. But in order for a GitHub `branch` to be *recognized*, the `branch` must contain the **marker file**.
 9. Navigate to the top level of you `ops-controller` repository in your workshop GitHub Organization. Notice that there is no Jenkinsfile. ![No Jenkinsfile](no-jenkinsfile.png?width=50pc)
-10. But remember, the **marker file** can be any arbitrary file, and we want this Org Folder Pipeline job to support CasC automation for other repositories in your GitHub Organization. So we want to use the `bundle.yaml` file as the **marker file**, so that anytime there is a repository with a `bundle.yaml` file, it will automatically keep its `main` branch in-sync and CasC bundle up to date. But before we update the job on your controller to use `bundle.yaml` as the marker file, we have to update the `items.yaml`. Otherwise, the job on your controller would be updated to use `Jenkinsfile` - we need to update it on both places only this once, and must update the value in the `items.yaml` first. Click on the `items.yaml` file and then click on the ***Edit this file*** pencil button.
+10. But remember, the **marker file** can be any arbitrary file, and it doesn't have to be the file with the pipeline script. We want this Org Folder Pipeline job to support CasC automation for other repositories in your GitHub Organization. So we want to use the `bundle.yaml` file as the **marker file**, so that anytime there is a repository with a `bundle.yaml` file, it will automatically keep its `main` branch in-sync and CasC bundle up to date. But before we update the job on your controller to use `bundle.yaml` as the marker file, we have to update the `items.yaml`. Otherwise, the job on your controller would be updated to use `Jenkinsfile` - we need to update it on both places only this once, and must update the value in the `items.yaml` first. Click on the `items.yaml` file and then click on the ***Edit this file*** pencil button.
 11. Scroll down to line 42 and change `markerFile: Jenkinsfile` to `markerFile: bundle.yaml` and then commit directly to the `main` branch. ![Commit items.yaml](commit-items.png?width=50pc)
 12. Navigate back to the `cbic-casc-automation` job on your Ops controller and update the **Marker file** to `bundle.yaml`, and the click the **Save** button. ![Update job config](update-job-config.png?width=50pc)
 13. Once the GitHub Organization scan is complete click on the the **Status** link in the left menu and you will see a Multibranch pipeline project for your `ops-controller` repository. ![Ops controller Multibranch pipeline](ops-controller-multibranch-job.png?width=50pc)
@@ -112,7 +113,7 @@ spec:
 Error from server (Forbidden): pods "cjoc-0" is forbidden: User "system:serviceaccount:controllers:jenkins" cannot get resource "pods" in API group "" in the namespace "cbci"
 ```
 
-17. The reason you get this error is because your **controller** has been provisioned to a different Kubernetes `namespace` than Operations Center and no agent `pod` in the `controllers` namespace will have the permissions to copy files with `kubectl` (a CLI tool for Kubernetes) to the Operations Center Kubernetes `pod`. To fix this, you must update the `controller-casc-automation` pipeline script in your `ops-controller` repository to trigger a job on another controller that is able to use `kubectl` to copy updated bundle files to Operations Center. 
+17. The reason you get this error is because your **controller** has been provisioned to a different Kubernetes `namespace` than Operations Center and no agent `pod` in the `controllers` namespace will have the permissions to copy files with `kubectl` (a CLI tool for Kubernetes) to the Operations Center Kubernetes `pod`. To fix this, you must update the `controller-casc-automation` pipeline script in your `ops-controller` repository to trigger a job on another controller with permission to use `kubectl` to copy updated bundle files to Operations Center. 
 
 {{% notice note %}}
 Provisioning controllers and agents in a different namespace than Operations Center provides additional isolation and more security for Operations Center. By default, when controllers are created in the same namespace as Operations Center and agents, they can provision an agent that can run the `pod` `exec` command against any other `pod` in the `namespace` - including the Operations Center's `pod`.
@@ -127,6 +128,7 @@ pipeline {
   agent none
   options {
     timeout(time: 10, unit: 'MINUTES')
+    skipDefaultCheckout()
   }
   stages {
     stage('Update Config Bundle') {
@@ -138,10 +140,12 @@ pipeline {
       }
       environment { CASC_UPDATE_SECRET = credentials('casc-update-secret') }
       steps {
+        checkout scm
+        gitHubParseOriginUrl()
         publishEvent event:jsonEvent("""
           {
-            'controller':{'name':'${GITHUB_ORGANIZATION}-${GITHUB_REPOSITORY}','action':'casc_bundle_update','bundle_id':'${GITHUB_ORGANIZATION}-${GITHUB_REPOSITORY}'},
-            'github':{'organization':'${GITHUB_ORGANIZATION}','repository':'${GITHUB_REPOSITORY}'},
+            'controller':{'name':'${env.GITHUB_ORG}-${GITHUB_REPO}','action':'casc_bundle_update','bundle_id':'${env.GITHUB_ORG}-${GITHUB_REPO}'},
+            'github':{'organization':'${env.GITHUB_ORG}','repository':'${GITHUB_REPO}'},
             'secret':'${CASC_UPDATE_SECRET}',
             'casc':{'auto_reload':'false'}
           }
@@ -151,6 +155,15 @@ pipeline {
   }
 }
 ```
+Note that we replaced the previous `steps` with the `publishEvent` step (along with the `gitHubParseOriginUrl` pipeline library utility step). The `publishEvent` step with send a notification to a message bus on Operations Center and result in the triggering of any job that is configured to listen for that event. The configuration for the job that it triggers [is available here](https://github.com/cloudbees-days/cloudbees-ci-casc-bundle-update/blob/main/Jenkinsfile).
 
-20. After the job has completed successfully, navigate to the `controller-jobs` folder and click on **New Item** in the left menu and note that the **Freestyle** job type is not available. ![No freestyle job](no-freestyle-job.png?width=50pc)
+20. Navigate back to your CloudBees CI ***managed controller*** and then navigate to the ***main*** branch job of your **ops-controller** Multi-branch Project in the **cbci-casc-automation** Organization Folder project. After the job successfully completes, navigate to the top-level of your ***managed controller***. 
+21. Click on the **Manage Jenkins** link in the left navigation menu and then click on the **CloudBees Configuration as Code export and update** configuration link. ![CloudBees Configuration config](config-bundle-system-config.png?width=50pc)
+22.  On the next screen, click on the **Bundle Update** link and you should see that a new version of the configuration bundle is available. Click the **Reload Configuration** button and on the next screen click the **Yes** button to apply the updated configuration bundle. 
+
+{{% notice note %}}
+If you don't see the new version available then click the **Check for Updates** button. Also, once you click **Yes** it may take a few minutes for the bundle update to reload.
+{{% /notice %}}
+![Bundle Update](new-bundle-available.png?width=50pc)
+23. Navigate to the `controller-jobs` folder and click on **New Item** in the left menu and note that the **Freestyle** job type is not available. ![No freestyle job](no-freestyle-job.png?width=50pc)
 
