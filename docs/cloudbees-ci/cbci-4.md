@@ -47,7 +47,7 @@ class: compact
 # Labs - Enforcing Pipeline Timeouts with Pipeline Policies and GitOps for Pipeline Policies
 
 * In the following labs:
-  *  You will use CasC for CloudBees CI to create a Pipeline Policy that will require that all Pipeline jobs on your ***managed controller*** be configured with a 30 minute (or greater) global timeout.
+  *  You will use CasC for CloudBees CI to create a Pipeline Policy that will require that all Pipeline jobs on your ***managed controller*** be configured with a 30 minute (or shorter) global timeout.
 * The *Enforcing Pipeline Timeouts with Pipeline Policies* lab instructions are available at: 
   * https://cloudbees-ci.labs.cb-sa.io/module-1/pipeline-policies/
 
