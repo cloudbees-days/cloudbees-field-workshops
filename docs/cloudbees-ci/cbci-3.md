@@ -33,7 +33,7 @@ name: core-casc-overview
 .no-bullet[
 * 
 * Configuration as Code (CasC) for CloudBees CI simplifies the management of a CloudBees CI cluster by capturing the configuration of CloudBees CI Operations Center and ***managed controllers*** (Jenkins instances) in human-readable declarative configuration files which can then be applied in a reproducible way and managed as code. 
-* By capturing the configuration in files, it can be treated as a revision-controlled artifact. It can be versioned, tested, validated, and then applied to a *managed controller* while being centrally managed from CloudBees CI Operations Center.
+* By capturing the configuration in files, it can be treated as a revision-controlled artifact. That configuration can be versioned, tested, validated, and then applied to a *managed controller* while being centrally managed from CloudBees CI Operations Center.
 * The configuration of a CloudBees CI *managed controller* is defined in a collection of YAML files referred to as a *configuration bundle*.
 * CasC for CloudBees CI expands on what is offered by OSS Jenkins CasC by enabling the management of **CasC at scale** across many *managed controllers* and including the **ability to manage plugins** and **job configuration** for all of your team specific *managed controllers*.
 ]
