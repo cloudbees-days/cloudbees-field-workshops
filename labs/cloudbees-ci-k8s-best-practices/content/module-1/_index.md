@@ -44,6 +44,6 @@ We will be using the [Google Cloud Shell](https://cloud.google.com/shell) to cre
 
 ## Labs
 
-The labs for this workshop will leverage the Google Cloud Shell tutorial format. Navigate to the **cloudbees-ci-k8s-cloudshell-tutorials** repository in the GitHub Organization you created for this workshop and click on the **OPEN IN GOOGLE CLOUD SHELL** button.
+The labs for this workshop will leverage the Google Cloud Shell tutorial format. Navigate to the **cloudbees-ci-k8s-cloudshell-tutorials** repository in the GitHub Organization you created for this workshop and click on the **OPEN IN GOOGLE CLOUD SHELL** button under the **Install CloudBees CI on GKE** heading.
 
 
