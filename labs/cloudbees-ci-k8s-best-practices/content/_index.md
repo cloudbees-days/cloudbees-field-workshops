@@ -38,9 +38,14 @@ A Kubernetes **Ingress** resource exposes HTTP and HTTPS routes from outside the
     2. CasC for Operations Center
     3. Additional Automation - Init Groovy Startup Scripts
     4. Helm Install
-4. Creating GKE Cluster with Terraform
 
-## Module 2: CloudBees CI Workload on Kubernetes
+## Module 2: Managed Controllers and Security
+
+1. CloudBees CI RBAC Overview
+2. Provision Controllers in Separate Namespaces
+3. Kubernetes Network Policies
+
+## Module 3: CloudBees CI Workload on Kubernetes
 
 1. Jenkins Agents on Kubernetes
 2. Resource Requests, Limits and Quotas
@@ -49,9 +54,10 @@ A Kubernetes **Ingress** resource exposes HTTP and HTTPS routes from outside the
 3. Building Container Images without Docker
 4. Cloud Secrets Managers
 
-## Module 3: Advanced Topics
+## Module 4: Advanced Topics
 
-1. OPA - Open Policies Agent
+1. Creating GKE Cluster with Terraform
+2. OPA - Open Policies Agent
 2. Multi-Region Disaster Recovery
     1. Install Velero
     2. Create Backup Schedule
@@ -59,6 +65,7 @@ A Kubernetes **Ingress** resource exposes HTTP and HTTPS routes from outside the
 3. Vault Integration
 4. Multi Cloud
 5. Hybrid Cloud
+
 
 ## Other
 Use Namespaces for Organization and Management of Resources
