@@ -210,4 +210,5 @@ pipeline {
 }
 ```
 
+3. Now, the next time you update any of the bundle files on the `main` branch of your `ops-controller` repository, the changes will be automatically applied to your controller.
 

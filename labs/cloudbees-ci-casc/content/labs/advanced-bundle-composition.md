@@ -17,6 +17,11 @@ credentials:
     domainCredentials:
     - credentials:
       - string:
+          description: "CasC Update Secret"
+          id: "casc-update-secret"
+          scope: GLOBAL
+          secret: "${cbciCascWorkshopControllerProvisionSecret}"
+      - string:
           description: "Webhook secret for CloudBees CI Workshop GitHub App"
           id: "cloudbees-ci-workshop-github-webhook-secret"
           scope: SYSTEM
@@ -106,7 +111,7 @@ items:
 17. On the next screen, click on the **Bundle Update** link and you should see that a new version of the configuration bundle is available. Click the **Reload Configuration** button and on the next screen click the **Yes** button to apply the updated configuration bundle.
 
 {{% notice note %}}
-If you don't see the new version available then click the **Check for Updates** button. Also, once you click **Yes** it may take a few minutes for the bundle update to reload.
+There is a known issue 
 {{% /notice %}}
 
 18. After the bundle has finished loading, click on the **CloudBees Configuration as Code export and update** **System Configuration** item again and then click on the **Original Bundle** tab. ![Original bundle with folder](original-bundle-folder.png?width=50pc)
@@ -192,7 +197,10 @@ notificationConfiguration:
 ```yaml
 plugins:
 - id: antisamy-markup-formatter
-- id: cloudbees-casc-api
+- id: cloudbees-casc-client
+- id: cloudbees-casc-items-api
+- id: cloudbees-casc-items-commons
+- id: cloudbees-casc-items-controller
 - id: cloudbees-github-reporting
 - id: cloudbees-groovy-view
 - id: cloudbees-monitoring
@@ -236,6 +244,7 @@ configurations:
    - Delete the `quietPeriod` under `jenkins`.
    - Update the `systemMessage` to `'Jenkins configured using CloudBees CI CasC with controller overrides'`.
    - Under the `unclassified` section delete everything except for the `globallibraries` section.
+   - Update the `headerLabel` `text` to **v4**.
    - After making those changes, your `jenkins.yaml` file should match the following:
 ```yaml
 jenkins:
@@ -257,6 +266,8 @@ unclassified:
               credentialsId: "cloudbees-ci-casc-workshop-github-app"
               repoOwner: "${GITHUB_ORGANIZATION}"
               repository: "pipeline-library"
+  headerLabel:
+    text: "${GITHUB_APP}-bundle-v4"
 ```
 9. Next, because we have other changes we need to make before we trigger a bundle update, select the option to **"Create a new branch for this commit and start a pull request"**, name the branch `add-parent-bundle` and then click the **Propose changes** button. ![Commit jenkins.yaml](github-commit-jenkins-yaml.png?width=50pc)
 10. On the next screen click the **Create pull request** button to create a pull request to merge to the `main` branch when are done updating your `ops-controller` configuration bundle. ![Create pull request](github-create-pr.png?width=50pc)
