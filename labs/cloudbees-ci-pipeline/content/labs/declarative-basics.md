@@ -19,6 +19,10 @@ There are three main Jenkins job types for managing Jenkins Pipelines:
 
 In this first lab we will [create a Multibranch Pipeline project](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/github-branch-source-plugin) and get an overview of the [basic fundamentals of the Declarative Pipeline syntax](#basic-declarative-syntax-structure). 
 
+{{% notice note %}}
+There are numerous advantages to managing your Jenkins Pipelines as code that are explained in detail in *[Understanding and implementing Pipeline as Code](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/pipeline-as-code)*.
+{{% /notice %}}
+
 ## Create a GitHub Multibranch Pipeline Project
 
 In this exercise we are going to create a special type of Jenkins Pipeline project referred to as a **[Multibranch Pipeline](https://jenkins.io/doc/book/pipeline/multibranch/)** (this type of project is also [available for Bitbucket](https://plugins.jenkins.io/cloudbees-bitbucket-branch-source) and [GitLab](https://github.com/jenkinsci/gitlab-branch-source-plugin)). The Jenkins *Multibranch Pipeline* project for GitHub will scan a GitHub Repository to discover the branches, automatically creating **managed** Pipeline jobs for any branch containing a *Jenkins Pipeline project recognizer* - typically **Jenkinsfile**. We will use the **helloworld-nodejs** repository in the GitHub Organization that you created in **[Setup - Create a GitHub Organization](/getting-started/pre-workshop-setup/#create-a-github-organization)**. We will also utilize a GitHub Organization level ***webhook*** to automatically manage Jenkins jobs associated with a branch (this includes pull requests) so when a branch is deleted from or added to the **helloworld-nodejs** the corresponding Pipeline job will be deleted or added to your controller.
