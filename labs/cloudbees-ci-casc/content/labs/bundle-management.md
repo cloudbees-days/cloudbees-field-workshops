@@ -34,7 +34,7 @@ This lab will provide an overview of how configuration bundles are managed via t
 2. On the controller manage screen click on the **Configure** link in the left menu. ![Configure controller link](configure-controller-link.png?width=50pc)
 3. On the configure controller screen, scroll down to the **Configuration as Code (CasC)** section and expand the **Bundle** drop down. ![Bundle dropdown](bundle-dropdown.png?width=50pc)
 4. Note that the bundle matching the name of your Ops controller is selected and the `base` bundle is also available, but the `ops` bundle is not available to select. ![Bundle dropdown expanded](bundle-dropdown-expanded.png?width=50pc)
-5. We do not actually need to change the configured bundle so just click on the breadcrumb link for your Ops controller to exit from the controller configuration page. ![Controller breadcrumb link](controller-breadcrumb-link.png?width=50pc)
+5. We do not actually need to change the configured bundle, so just click on the breadcrumb link for your Ops controller to exit from the controller configuration page. ![Controller breadcrumb link](controller-breadcrumb-link.png?width=50pc)
 
 ## GitOps for CloudBees CI Configuration Bundles
 
@@ -44,7 +44,6 @@ In this lab we will update the `cbci-casc-automation` job (created by CasC) to a
 2. Next click on the`cbci-casc-automation`file to open it. It will match the contents of the file below.
 
 ```groovy
-
 library 'pipeline-library'
 pipeline {
   agent {
@@ -74,34 +73,14 @@ pipeline {
   }
 }
 ```
-4. On the first line you will see that we are using the Pipeline shared library defined in your Ops controller configuration bundle. The Pipeline shared library contains a number of Jenkins Kubernetes Pod templates that can be leveraged across all the controllers. We are utilizing the `kubectl.yml` Pod template, so we can use the `kubectl cp` command to copy your `ops-controller` configuration bundle files into the `jcasc-bundles-store` directory on Operations Center. Once you have finished reviewing the `controller-casc-automation` pipeline contents, navigate to the top level of your Ops controller and click the on the `controller-jobs` folder.
 
-{{%expand "expand to view podtemplates/kubectl.yml file" %}}
-```yaml
-kind: Pod
-metadata:
-  name: kubectl
-spec:
-  serviceAccountName: jenkins
-  containers:
-  - name: kubectl
-    image: gcr.io/cloud-builders/kubectl
-    resources:
-      requests:
-        memory: "500Mi"
-    command:
-    - cat
-    tty: true
-  securityContext:
-    runAsUser: 1000
-```
-{{% /expand%}}
+4. On the first line you will see that we are using the Pipeline shared library defined in your Ops controller configuration bundle. The Pipeline shared library contains a number of Jenkins Kubernetes Pod templates that can be leveraged across all the controllers. We are utilizing the `kubectl.yml` Pod template, so we can use the `kubectl cp` command to copy your `ops-controller` configuration bundle files into the `jcasc-bundles-store` directory on Operations Center. Once you have finished reviewing the `controller-casc-automation` pipeline contents, navigate to the top level of your Ops controller and click the on the controller-jobs folder.
 
-5. Inside of the `controller-jobs` folder, click on the `cbic-casc-automation` job. ![CasC job link](casc-job-link.png?width=50pc)
+5. Once you have finished reviewing the `controller-casc-automation` pipeline contents, navigate to the top level of your Ops controller and click the on the `controller-jobs` folder. Inside of the `controller-jobs` folder, click on the `cbic-casc-automation` job. ![CasC job link](casc-job-link.png?width=50pc)
 6. On the next screen, you will see **This folder is empty**. The reason it is empty is because the GitHub Folder branch scan did not find any matches for the current *marker file*. Click on the **Configure** link in the left menu so we can fix that.  ![CasC job config link](casc-job-config-link.png?width=50pc)
 7. Scroll down to the **Project Recognizers** section. Under **Custom script**, notice how the **Marker file** is configured. ![Wrong marker file](wrong-marker-file.png?width=50pc)
 8. With the default **project recognizer**, the file you specify (usually `Jenkinsfile`) is used not only as the Pipeline script to run, but also as the **marker file** - that is, the file that indicates which repositories and branches should be processed by the SCM based Pipeline job. However,  with the [CloudBees custom script project recognizer](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/pipeline-as-code#custom-pac-scripts) for Mulitbranch and Org Folder Pipeline jobs, the **marker file** and the **script file** are separated, allowing you to specify an arbitrary file as the **marker file** and subsequently use an embedded Pipeline script or pull in a Pipeline file from a completely different source control repository. But in order for a GitHub `branch` to be *recognized*, the `branch` must contain the **marker file**.
-9. Navigate to the top level of you `ops-controller` repository in your workshop GitHub Organization. Notice that there is no Jenkinsfile. ![No Jenkinsfile](no-jenkinsfile.png?width=50pc)
+9. Navigate to the top level of you `ops-controller` repository in your workshop GitHub Organization. Notice that there is no *Jenkinsfile*. ![No Jenkinsfile](no-jenkinsfile.png?width=50pc)
 10. But remember, the **marker file** can be any arbitrary file, and it doesn't have to be the file with the pipeline script. We want this Org Folder Pipeline job to support CasC automation for other repositories in your GitHub Organization. So we want to use the `bundle.yaml` file as the **marker file**, so that anytime there is a repository with a `bundle.yaml` file, it will automatically keep its `main` branch in-sync and CasC bundle up to date. But before we update the job on your controller to use `bundle.yaml` as the marker file, we have to update the `items.yaml`. Otherwise, the job on your controller would be updated to use `Jenkinsfile` - we need to update it on both places only this once, and must update the value in the `items.yaml` first. Click on the `items.yaml` file and then click on the ***Edit this file*** pencil button.
 11. Scroll down to line 42 and change `markerFile: Jenkinsfile` to `markerFile: bundle.yaml` and then commit directly to the `main` branch. ![Commit items.yaml](commit-items.png?width=50pc)
 12. Navigate back to the `cbic-casc-automation` job on your Ops controller and update the **Marker file** to `bundle.yaml`, and the click the **Save** button. ![Update job config](update-job-config.png?width=50pc)
@@ -116,7 +95,7 @@ Error from server (Forbidden): pods "cjoc-0" is forbidden: User "system:servicea
 17. The reason you get this error is because your **controller** has been provisioned to a different Kubernetes `namespace` than Operations Center and no agent `pod` in the `controllers` namespace will have the permissions to copy files with `kubectl` (a CLI tool for Kubernetes) to the Operations Center Kubernetes `pod`. To fix this, you must update the `controller-casc-automation` pipeline script in your `ops-controller` repository to trigger a job on another controller with permission to use `kubectl` to copy updated bundle files to Operations Center. 
 
 {{% notice note %}}
-Provisioning controllers and agents in a different namespace than Operations Center provides additional isolation and more security for Operations Center on Kubernetes. By default, when controllers are created in the same namespace as Operations Center and agents, they can provision an agent that can run the `pod` `exec` command against any other `pod` in the `namespace` - including the Operations Center's `pod`.
+Provisioning controllers and agents in a different Kubernetes `namespace` than Operations Center provides additional isolation and more security for Operations Center on Kubernetes. By default, when controllers are created in the same `namespace` as Operations Center and agents, they can provision an agent that can run the `pod` `exec` command against any other `pod` in the `namespace` - including the Operations Center's `pod`.
 {{% /notice %}}
 
 18. Navigate to your copy of the `ops-controller` repository in your workshop GitHub Organization and open the `controller-casc-automation` pipeline script.
@@ -155,7 +134,7 @@ pipeline {
   }
 }
 ```
-Note that we replaced the previous `steps` with the `publishEvent` step (along with the `gitHubParseOriginUrl` pipeline library utility step). The `publishEvent` step with send a notification to a message bus on Operations Center and result in the triggering of any job that is configured to listen for that event. The configuration for the job that it triggers [is available here](https://github.com/cloudbees-days/cloudbees-ci-casc-bundle-update/blob/main/Jenkinsfile).
+Note that we replaced the previous `steps` with the `publishEvent` step (along with the `gitHubParseOriginUrl` pipeline library utility step that will provide the GitHub repository the bundle is being updated from). The `publishEvent` step with send a notification to a message bus on Operations Center and result in the triggering of any job that is configured to listen for that event. The configuration for the job that it triggers [is available here](https://github.com/cloudbees-days/cloudbees-ci-casc-bundle-update/blob/main/Jenkinsfile).
 
 20. Navigate back to your CloudBees CI ***managed controller*** and then navigate to the ***main*** branch job of your **ops-controller** Multi-branch Project in the **cbci-casc-automation** Organization Folder project. After the job successfully completes, navigate to the top-level of your ***managed controller***. 
 21. Click on the **Manage Jenkins** link in the left navigation menu and then click on the **CloudBees Configuration as Code export and update** configuration link. ![CloudBees Configuration config](config-bundle-system-config.png?width=50pc)

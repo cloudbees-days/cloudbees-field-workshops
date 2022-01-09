@@ -51,12 +51,17 @@ jenkins:
   globalNodeProperties:
   - envVars:
       env:
-      - key: GITHUB_ORGANIZATION
+      - key: "GITHUB_ORGANIZATION"
         value: "${GITHUB_ORGANIZATION}"
-      - key: GITHUB_REPOSITORY
-        value: ops-controller
+      - key: "GITHUB_REPOSITORY"
+        value: "ops-controller"
+      - key: "BUNDLE_ID"
+        value: "${CASC_BUNDLE_ID}"
   quietPeriod: 0
   systemMessage: 'Jenkins configured using CloudBees CI CasC v1'
+notificationConfiguration:
+  enabled: true
+  router: "operationsCenter"
 unclassified:
   hibernationConfiguration:
     activities:
@@ -79,13 +84,20 @@ unclassified:
         modernSCM:
           scm:
             github:
-              credentialsId: "cloudbees-ci-workshop-github-app"
+              credentialsId: "cloudbees-ci-casc-workshop-github-app"
               repoOwner: "${GITHUB_ORGANIZATION}"
               repository: "pipeline-library"
+  headerLabel:
+    text: "${GITHUB_APP}-bundle-v1"
 credentials:
   system:
     domainCredentials:
     - credentials:
+      - string:
+          description: "CasC Update Secret"
+          id: "casc-update-secret"
+          scope: GLOBAL
+          secret: "${cbciCascWorkshopControllerProvisionSecret}"
       - string:
           description: "Webhook secret for CloudBees CI Workshop GitHub App"
           id: "cloudbees-ci-workshop-github-webhook-secret"
@@ -100,10 +112,6 @@ credentials:
           privateKey: "${cbciCascWorkshopGitHubAppPrivateKey}"
 ```
 
-{{% notice note %}}
-Setting up an initial Ops controller is a bit like the chicken and the egg conundrum. There will typically be some required manual steps to bootstrap the initial automation. In the case of this workshop, we have our own Ops controller that is used to dynamically provision each attendees Ops controller with a dynamically generated configuration bundle when you installed the CloudBees CI CasC Workshop GitHub App into your workshop GitHub Organization. Another alternative is to use CloudBees CI CasC for Operations Center that allows you to define managed controllers as `items` in the Operations Center CasC bundle (but it does not support automatically provisioning those controllers at this time, so there is still am manual step to actually start the managed controller).
-{{% /notice %}}
-
 4. The `gitHubApp` credential is unique to your workshop GitHub Organization. But also notice the variable substitution for the `privateKey` field of that credential - the value in the `jenkins.yaml` file is the `${gitHubAppPrivateKey}` variable. Of course you wouldn't want to store a secure secret directly in a JCasC yaml file, especially if it is to be stored in source control. However, JCasC supports several ways to [pass secrets more securely](https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/features/secrets.adoc). For this workshop we are passing secrets by mounting secret volumes using the [Kubernetes Secrets Store CSI driver](https://secrets-store-csi-driver.sigs.k8s.io/introduction.html) with the [Google Secret Manager provider](https://github.com/GoogleCloudPlatform/secrets-store-csi-driver-provider-gcp). This allows us to manage secrets with the Google Secret Manager in GCP and to mount those secrets as files in the directory on your controller configured for JCasC to read secret variables, with the file name being the variable name and the file contents being the secret value.
 
 {{% notice tip %}}
@@ -115,7 +123,10 @@ There are also Kubernetes Secrets Store CSI providers for [AWS Secrets Manager](
 ```yaml
 plugins:
 - id: antisamy-markup-formatter
-- id: cloudbees-casc-api
+- id: cloudbees-casc-client
+- id: cloudbees-casc-items-api
+- id: cloudbees-casc-items-commons
+- id: cloudbees-casc-items-controller
 - id: cloudbees-github-reporting
 - id: cloudbees-groovy-view
 - id: cloudbees-monitoring
@@ -199,12 +210,12 @@ removeStrategy:
   items: NONE
 items:
 - kind: folder
-  name: REPLACE_FOLDER_NAME
+  name: cbci-casc-workshop
   groups:
   - members:
       users:
-      - REPLACE_GITHUB_USERNAME
-      - REPLACE_GITHUB_USERNAME-admin
+      - beedemo-dev
+      - beedemo-dev-admin
     roles:
     - name: browse
       grantedAt: current
@@ -216,12 +227,12 @@ items:
   - browse
   items:
   - kind: managedController
-    name: REPLACE_CONTROLLER_NAME
+    name: ops-controller
     properties:
     - healthReporting:
         enabled: true
     - configurationAsCode:
-        bundle: REPLACE_GITHUB_ORG-REPLACE_CONTROLLER_NAME
+        bundle: cbci-casc-workshop-ops-controller
     configuration:
       kubernetes:
         memory: 4000
@@ -229,12 +240,15 @@ items:
         clusterEndpointId: default
         disk: 10
         storageClassName: premium-rwo
-        domain: REPLACE_GITHUB_ORG-REPLACE_CONTROLLER_NAME
+        domain: cbci-casc-workshop-ops-controller
         namespace: controllers
         yaml: |
           kind: "StatefulSet"
           spec:
             template:
+              metadata:
+                labels:
+                  networking/allow-internet-access: "true"
               spec:
                 containers:
                 - name: "jenkins"
@@ -242,25 +256,22 @@ items:
                   - name: "SECRETS"
                     value: "/var/jenkins_home/jcasc_secrets"
                   - name: "GITHUB_ORGANIZATION"
-                    value: "REPLACE_GITHUB_ORG"
+                    value: "cbci-casc-workshop"
                   - name: "GITHUB_USER"
-                    value: "REPLACE_GITHUB_USERNAME"
+                    value: "beedemo-dev"
                   - name: "GITHUB_APP"
-                    value: "REPLACE_GITHUB_APP"
+                    value: "cloudbees-ci-casc-workshop"
                   - name: "CONTROLLER_SUBDOMAIN"
-                    value: "REPLACE_GITHUB_ORG-REPLACE_CONTROLLER_NAME"
+                    value: "cbci-casc-workshop-ops-controller"
                   - name: "CASC_BUNDLE_ID"
-                    value: "REPLACE_GITHUB_ORG-REPLACE_CONTROLLER_NAME"
+                    value: "cbci-casc-workshop-ops-controller"
                   volumeMounts:
                   - name: "jcasc-secrets"
                     mountPath: "/var/jenkins_home/jcasc_secrets"
                 volumes:
                 - name: "jcasc-secrets"
-                  csi:
-                    driver: secrets-store.csi.k8s.io
-                    readOnly: true
-                    volumeAttributes:
-                      secretProviderClass: "cbci-mc-secret-provider"
+                  secret:
+                    secretName: cbci-mc-secret
 ```
 
 ## Creating/Updating a Configuration Bundle from a Bundle Export
@@ -281,8 +292,12 @@ As you can see from the composition overview above, the YAML in the different co
 {{%expand "expand for complete updated plugins.yaml file" %}}
 ```yaml
 plugins:
+plugins:
 - id: antisamy-markup-formatter
-- id: cloudbees-casc-api
+- id: cloudbees-casc-client
+- id: cloudbees-casc-items-api
+- id: cloudbees-casc-items-commons
+- id: cloudbees-casc-items-controller
 - id: cloudbees-github-reporting
 - id: cloudbees-groovy-view
 - id: cloudbees-monitoring
@@ -343,15 +358,6 @@ items:
 - kind: folder
   displayName: controller-jobs
   name: controller-jobs
-  properties:
-  - envVars: {}
-  - kubernetesFolderProperty: {}
-  - itemRestrictions:
-      allowedTypes:
-      - org.jenkinsci.plugins.workflow.job.WorkflowJob
-      - jenkins.branch.OrganizationFolder
-      - org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject
-      filter: true
   items:
   - kind: organizationFolder
     displayName: cbci-casc-automation
@@ -391,7 +397,16 @@ items:
                     - branchSpec:
                         name: '*/main'
                 lightweight: true
+  properties:
+  - envVars: {}
+  - kubernetesFolderProperty: {}
+  - itemRestrictions:
+      allowedTypes:
+      - org.jenkinsci.plugins.workflow.job.WorkflowJob
+      - jenkins.branch.OrganizationFolder
+      - org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject
+      filter: true
 ```
 {{% /expand%}}
 
-So now we have an updated configuration bundle based on a bundle exports from our Ops controller. However, the updated bundle hasn't actually been applied to your controller. In the next lab we will update the `cbci-casc-automation` job configuration so it will actually update the bundle files on Operations Center, that will in turn trigger an available update on your controller. After that, any time there is a commit to the `main` branch of your `ops-controller` repository, it will automatically be updated on your CloudBees CI controller.
+So now we have an updated configuration bundle based on bundle exports from our Ops controller. However, the updated bundle hasn't actually been applied to your controller. In the next lab we will update the `cbci-casc-automation` job configuration so it will actually update the bundle files on Operations Center, that will in turn trigger an available update on your controller. After that, any time there is a commit to the `main` branch of your `ops-controller` repository, it will automatically be updated on your CloudBees CI controller.
