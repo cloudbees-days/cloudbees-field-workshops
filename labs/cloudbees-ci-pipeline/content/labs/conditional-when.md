@@ -63,6 +63,10 @@ Note the `beforeAgent true` option - this setting will result in the `when` cond
 
 7. Navigate to the **helloworld-nodejs** job on your CloudBees CI Managed Controller and the job for the **main** branch should be running or queued to run. Click on the run and after it has completed notice that the ***Build and Push Image*** stage was not skipped. ![Stage Not Skipped](stage-not-skipped.png?width=50pc)
 
+{{% notice note %}}
+A Jenkins Pipeline job was automatically created for the pull request (which is really just a special type of GitHub branch) and the `main` branch by the Multibranch Pipeline project when the `Jenkisfile` was added to those branches.
+{{% /notice %}}
+
 ## Using the When Directive with Nested Stages
 
 In this lab we will learn how you can combine nested `stages` with the `when` directive so that you don't have repeat a `when` condition for every `stage` it applies. We will also update the ***Test*** `stage` so it will only execute when the condition is false.
@@ -108,9 +112,9 @@ pipeline {
 }
 ```
 
-By wrapping the ***Build and Push Image*** and ***Deploy*** `stages` in the ***Main Branch Stages***, the `when` directive for the `main` branch only has to be specified once. Also, by using the `not` nesting condition, the ***Test*** `stage` will only be executed when the branch being processed in **not** the `main` branch.
+By wrapping the ***Build and Push Image*** and ***Deploy*** `stages` in the ***Main Branch Stages***, the `when` directive for the `main` branch only has to be specified once. Also, by using the `not` nesting condition, the ***Test*** `stage` will only be executed when the branch being processed is **not** the `main` branch.
 
-3. Commit the changes to the **main** branch and then navigate to the **helloworld-nodejs** job on your Managed Controller and the job for the **main** branch should be running or queued to run. Once the run completes you will see that the ***Test*** `stage` was skipped but the **Main Branch Stages** were not. ![Conditional Nested Stage](conditional-nested-stage.png?width=50pc) 
+3. Commit the changes to the **main** branch and then navigate to the **helloworld-nodejs** job on your managed controller. The job for the **main** branch should be running or queued to run. Once the run completes you will see that the ***Test*** `stage` was skipped but the **Main Branch Stages** were not. ![Conditional Nested Stage](conditional-nested-stage.png?width=50pc) 
 
 ## Next Lesson
 
