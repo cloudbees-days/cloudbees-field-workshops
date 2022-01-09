@@ -19,13 +19,15 @@ spec:
   - name: nodejs
     image: node:17-alpine
     command:
-    - cat
-    tty: true
+    - sleep
+    args:
+    - 99d
   - name: testcafe
     image: testcafe/testcafe:1.18.0
     command:
-    - cat
-    tty: true
+    - sleep
+    args:
+    - 99d
   securityContext:
     runAsUser: 1000
 ```
@@ -71,14 +73,14 @@ apiVersion: "v1"
 kind: "Pod"
 metadata:
   annotations:
-    buildUrl: "http://cbci-pipeline-controller.controllers.svc.cluster.local/cbci-pipeline-controller/job/pipelines/job/helloworld-nodejs/job/development/8/"
-    runUrl: "job/pipelines/job/helloworld-nodejs/job/development/8/"
+    buildUrl: "http://cbci-pipeline-controller.controllers.svc.cluster.local/cbci-pipeline-controller/job/pipelines/job/helloworld-nodejs/job/development/11/"
+    runUrl: "job/pipelines/job/helloworld-nodejs/job/development/11/"
   labels:
     jenkins: "agent"
-    jenkins/label-digest: "7b5b505889e5548431ba23cbd7f014bf01ccd338"
-    jenkins/label: "pipelines_helloworld-nodejs_development_8-nqljm"
+    jenkins/label-digest: "61f0f4a8bcfe17103cfdfc7664930d6f52ba5c90"
+    jenkins/label: "pipelines_helloworld-nodejs_development_11-mv2mw"
     cloudbees.com/master: "cbci-pipeline-controller"
-  name: "pipelines-helloworld-nodejs-development-8-nqljm-w7vl5-s8w76"
+  name: "pipelines-helloworld-nodejs-development-11-mv2mw-c9lrm-0vccf"
 spec:
   affinity:
     podAffinity:
@@ -94,20 +96,22 @@ spec:
           topologyKey: "kubernetes.io/hostname"
         weight: 1
   containers:
-  - command:
-    - "cat"
+  - args:
+    - "99d"
+    command:
+    - "sleep"
     image: "node:17-alpine"
     name: "nodejs"
-    tty: true
     volumeMounts:
     - mountPath: "/home/jenkins/agent"
       name: "workspace-volume"
       readOnly: false
-  - command:
-    - "cat"
+  - args:
+    - "99d"
+    command:
+    - "sleep"
     image: "testcafe/testcafe:1.18.0"
     name: "testcafe"
-    tty: true
     volumeMounts:
     - mountPath: "/home/jenkins/agent"
       name: "workspace-volume"
@@ -116,11 +120,11 @@ spec:
     - name: "JENKINS_SECRET"
       value: "********"
     - name: "JENKINS_AGENT_NAME"
-      value: "pipelines-helloworld-nodejs-development-8-nqljm-w7vl5-s8w76"
+      value: "pipelines-helloworld-nodejs-development-11-mv2mw-c9lrm-0vccf"
     - name: "JENKINS_WEB_SOCKET"
       value: "true"
     - name: "JENKINS_NAME"
-      value: "pipelines-helloworld-nodejs-development-8-nqljm-w7vl5-s8w76"
+      value: "pipelines-helloworld-nodejs-development-11-mv2mw-c9lrm-0vccf"
     - name: "JENKINS_AGENT_WORKDIR"
       value: "/home/jenkins/agent"
     - name: "JENKINS_URL"
