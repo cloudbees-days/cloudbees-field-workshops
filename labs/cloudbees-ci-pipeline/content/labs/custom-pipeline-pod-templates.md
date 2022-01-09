@@ -17,12 +17,12 @@ metadata:
 spec:
   containers:
   - name: nodejs
-    image: node:15.10.0-alpine
+    image: node:17-alpine
     command:
     - cat
     tty: true
   - name: testcafe
-    image: gcr.io/technologists/testcafe:0.0.2
+    image: testcafe/testcafe:1.18.0
     command:
     - cat
     tty: true
@@ -63,7 +63,7 @@ pipeline {
 }
 ```
 
-6. Commit the changes and then navigate to the **development** branch of your **helloworld-nodejs** job on your CloudBees CI Managed Controller. The job will run successfully. Also, note the output of the `sh 'node --version'` step - it is `v15.10.0` instead of `v8.12.0`: ![Update Node Container Tag](pod-template-update-image-tag.png?width=50pc) Also notice that the final Kubernetes pod spec for the agent is printed out in the logs and is merge of a default template (with the **jnlp** container) and the pod spec from your **helloworld-nodejs** repository:
+6. Commit the changes and then navigate to the **development** branch of your **helloworld-nodejs** job on your CloudBees CI Managed Controller. The job will run successfully. Also, note the output of the `sh 'node --version'` step - it is `v17.x.x` instead of `v14.x.x`: ![Update Node Container Tag](pod-template-update-image-tag.png?width=50pc) Also notice that the final Kubernetes pod spec for the agent is printed out in the logs and is merge of a default template (with the **jnlp** container) and the pod spec from your **helloworld-nodejs** repository:
 ```
 ---
 apiVersion: "v1"
