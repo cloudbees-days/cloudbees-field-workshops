@@ -92,7 +92,7 @@ pipeline {
 Error from server (Forbidden): pods "cjoc-0" is forbidden: User "system:serviceaccount:controllers:jenkins" cannot get resource "pods" in API group "" in the namespace "cbci"
 ```
 
-17. The reason you get this error is because your **controller** has been provisioned to the `controllers` `namespace` which is a different Kubernetes `namespace` than Operations Center and no agent `pod` in the `controllers` namespace will have the permissions to copy files with `kubectl` (a CLI tool for Kubernetes) to the Operations Center Kubernetes `pod`. To fix this, you must update the `controller-casc-update` pipeline script in your `ops-controller` repository to trigger a job on another controller that does have permissions to use `kubectl` to copy updated bundle files to Operations Center. 
+17. The reason you get this error is because your **controller** has been provisioned to the `controllers` `namespace` which is a different Kubernetes `namespace` than Operations Center and no agent `pod` in the `controllers` namespace will have the permissions to copy files with `kubectl` (a CLI tool for Kubernetes) to the Operations Center Kubernetes `pod`. To fix this, you must update the `controller-casc-update` pipeline script in your `ops-controller` repository to trigger a job (with the [CloudBees CI Cross Team Collaboration](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/cross-team-collaboration) feature) on another controller that does have permissions to use `kubectl` to copy updated bundle files to Operations Center. 
 
 {{% notice note %}}
 Provisioning controllers and agents in a different Kubernetes `namespace` than Operations Center provides additional isolation and more security for Operations Center on Kubernetes. By default, when controllers are created in the same `namespace` as Operations Center and agents, they can provision an agent that can run the `pod` `exec` command against any other `pod` in the `namespace` - including the Operations Center's `pod`.
@@ -172,7 +172,7 @@ The pipeline snippet below is used by the *bundle update* job, triggered by your
         }
 ```
 
-So, all you have to do to enable reload is update the value of the `casc.auto_reload` portion of the event payload to `true`:
+So, all you have to do to enable automatic reloading is update the value of the `casc.auto_reload` portion of the event payload to `true`:
 
 1. Navigate to your copy of the `ops-controller` repository in your workshop GitHub Organization and open the `controller-casc-update` pipeline script.
 2. Click the **pencil icon** to open it in the GitHub file editor, then modify `'casc':{'auto_reload':'true'}` to `'casc':{'auto_reload':'false'}` and click on the **Commit changes** button to commit to the `main` branch. The complete updated contents should match the following:
