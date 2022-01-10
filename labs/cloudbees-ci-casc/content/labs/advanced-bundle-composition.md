@@ -253,8 +253,12 @@ jenkins:
   globalNodeProperties:
   - envVars:
       env:
-      - key: "GITHUB_USER"
-        value: "${GITHUB_USER}"
+      - key: "GITHUB_ORGANIZATION"
+        value: "${GITHUB_ORGANIZATION}"
+      - key: "GITHUB_REPOSITORY"
+        value: "ops-controller"
+      - key: "BUNDLE_ID"
+        value: "${CASC_BUNDLE_ID}"
   systemMessage: 'Jenkins configured using CloudBees CI CasC with controller overrides'
 unclassified:
   globallibraries:
