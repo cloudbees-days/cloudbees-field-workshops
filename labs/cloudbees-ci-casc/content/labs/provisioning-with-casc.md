@@ -18,8 +18,8 @@ def event = currentBuild.getBuildCauses()[0].event
 pipeline {
   agent none
   environment {
-    PROVISION_SECRET = credentials('casc-workshop-controller-provision-secret')
-    PUBLISHED_SECRET = event.secret.toString()
+    OPS_PROVISION_SECRET = credentials('casc-workshop-controller-provision-secret')
+    CONTROLLER_PROVISION_SECRET = event.secret.toString()
   }
   options { timeout(time: 10, unit: 'MINUTES') }
   triggers {
@@ -27,7 +27,11 @@ pipeline {
   }
   stages {
     stage('Provision Managed Controller') {
-      agent  { label 'default-jnlp' }
+      agent {
+        kubernetes {
+          yaml libraryResource ('podtemplates/kubectl.yml')
+        }
+      }
       environment {
         ADMIN_CLI_TOKEN = credentials('admin-cli-token')
         GITHUB_ORGANIZATION = event.github.organization.toString().replaceAll(" ", "-")
@@ -35,18 +39,24 @@ pipeline {
         GITHUB_USER = event.github.user.toString().toLowerCase()
         CONTROLLER_FOLDER = GITHUB_ORGANIZATION.toLowerCase()
         BUNDLE_ID = "${CONTROLLER_FOLDER}-${GITHUB_REPOSITORY}"
-        AVAILABILITY_PATTERN = "${GITHUB_ORGANIZATION}/${GITHUB_REPOSITORY}"
+        AVAILABILITY_PATTERN = "cloudbees-ci-casc-workshop/${GITHUB_ORGANIZATION}/${GITHUB_REPOSITORY}"
       }
       when {
         triggeredBy 'EventTriggerCause'
-        environment name: 'PUBLISHED_SECRET', value: PROVISION_SECRET
+        environment name: 'CONTROLLER_PROVISION_SECRET', value: OPS_PROVISION_SECRET
       }
       steps {
+        sh "rm -rf ./${BUNDLE_ID} || true"
+        sh "mkdir -p ${BUNDLE_ID}"
+        sh "git clone https://github.com/${GITHUB_ORGANIZATION}/${GITHUB_REPOSITORY}.git ${BUNDLE_ID}"
+      
+        container('kubectl') {
+          sh "kubectl cp --namespace cbci ${BUNDLE_ID} cjoc-0:/var/jenkins_home/jcasc-bundles-store/ -c jenkins"
+        }
         sh '''
-          curl -O http://cjoc/cjoc/jnlpJars/jenkins-cli.jar
-          alias cli='java -jar jenkins-cli.jar -s http://cjoc/cjoc/ -webSocket -auth $ADMIN_CLI_TOKEN_USR:$ADMIN_CLI_TOKEN_PSW'
-          cli casc-bundle-set-availability-pattern --bundle-id $BUNDLE_ID --availability-pattern $AVAILABILITY_PATTERN
-          cli groovy =<casc-workshop-provision-controller-with-casc.groovy $GITHUB_ORGANIZATION $GITHUB_USER $GITHUB_REPOSITORY $CONTROLLER_FOLDER
+          curl --user "$ADMIN_CLI_TOKEN_USR:$ADMIN_CLI_TOKEN_PSW" -XPOST \
+            http://cjoc/cjoc/casc-items/create-items?path=/cloudbees-ci-casc-workshop \
+            --data-binary @./$BUNDLE_ID/controller.yaml -H 'Content-Type:text/yaml'
         '''
       }
     }
@@ -59,11 +69,8 @@ pipeline {
 4. An agent is defined for the **Provision Managed Controller** `stage` as the `sh` steps require a normal (some times referred to as heavy-weight) executor (meaning it must be run on an agent since all managed controllers our configured with 0 executors): `agent { label 'default-jnlp' }`
 5. The declarative `environment` directive is used to capture values published by the Cross Team Collaboration `event`, to retrieve the controller provisioning secret value from the workshop Ops controller and to retrieve the Operations Center admin API token credential.
 6. Multiple `when` conditions are configured so the **Provision Managed Controller** `stage` will only run if the job is triggered by an `EventTriggerCause` and if the `PROVISION_SECRET` matches the event payload secret.
-7. Finally, the actual steps to provision a managed controller:
-    - The `curl` command is used to download the `jenkins-cli.jar` from the Operations Center. A Docker container image could be used instead, but correct compatible version is guaranteed by downloading it every time.
-    - An `alias` is created for the the Jenkins CLI connection command. This makes the pipeline more readable and allows reuse for multiple CLI commands.
-    - Next, the `casc-bundle-set-availability-pattern` command of the [CLI for CloudBees CI Configuration as Code (CasC) for Controllers](https://docs.cloudbees.com/docs/admin-resources/latest/cli-guide/casc-bundle-management) is used to set the configuration bundle availability pattern for the provisioned controller's bundle.
-    - Finally, a custom Groovy script, `casc-workshop-provision-controller-with-casc.groovy`, is executed on the Operations Center and contains the Groovy code to provision a managed controller with a configuration bundle.
+7. The `kubectl` CLI tool is used to copy CasC bundle files to Operations Center.
+8. Finally, the `curl` command is used to load the `controller.yaml` file
 
 ### Review the Controller with CasC Provisioning Groovy Script
 The `casc-workshop-provision-controller-with-casc.groovy` script is based on the Groovy script mentioned in this CloudBees Knowledge Base article *[How to create a Kubernetes Managed Master programmatically](https://support.cloudbees.com/hc/en-us/articles/360035632851-How-to-create-a-Kubernetes-Managed-Master-programmatically)* and can be found in the [CloudBees jenkins-scripts public repository](https://github.com/cloudbees/jenkins-scripts/blob/master/createManagedMasterK8s.groovy). The script we are using in the workshop differs in a few ways:
