@@ -88,12 +88,14 @@ unclassified:
 9. The contents of your `jcasc` folder in the `jcasc-subfolder` branch should now match the following: ![Commit jcasc-subfolder contents](github-jcasc-subfolder-contents.png?width=50pc)
 10.  Navigating back to the top level of your `ops-controller` repository and ensuring that you are on the ` jcasc-subfolder` branch, click on the `jenkins.yaml` file and then click on the *trash can icon* to delete the `jenkins.yaml` file and on the next screen click the **Commit changes** button. ![Delete jenkins.yaml file](github-delete-jenkins-yaml.png?width=50pc)
 11. Navigating back to the top level of your `ops-controller` repository and ensuring that you are on the ` jcasc-subfolder` branch, click on the `bundle.yaml` file and then click on the ***Edit this file*** pencil button to edit the file. 
-12. Change the bundle `version` to **3** and update the `jcasc` section to match the following and note that you only have to specify the `jcasc` folder to include all of the configuration files in that folder (and sub-folders):
+12. Change the bundle `version` to **3** and update the `jcasc` section to match the following (except for the `availabilityPattern` which will be unique for each attendee) and note that you only have to specify the `jcasc` folder to include all of the configuration files in that folder (and sub-folders):
+
 ```yaml
 apiVersion: "1"
 version: "3"
 id: "cbci-casc-workshop-ops-controller"
 description: "CloudBees CI configuration bundle for the cbci-casc-workshop ops-controller Controller"
+availabilityPattern: "{GitHub Org}/{controller name}"
 jcasc:
   - "jcasc/"
 plugins:
@@ -103,6 +105,7 @@ catalog:
 items:
   - "items.yaml"
 ```
+
 13. After you have made the changes, ensure that you are committing to the `jcasc-subfolder` branch and then click the **Commit changes** button. ![Commit jcasc folder bundle.yaml](github-commit-jcasc-folder-bundle-yaml.png?width=50pc)
 14. We have now made all the necessary changes and can now merge the pull request to the `main` branch. In GitHub, click on the **Pull requests** tab and then click on the link for the **Create credentials.yaml** pull request. ![jcasc pull request link](github-jcasc-pr-link.png?width=50pc)
 15. On the **Create credentials.yaml #1** pull request page, click the **Merge pull request** button, then click the **Confirm merge** button and then click the **Delete branch** button.
@@ -114,7 +117,7 @@ There is a known limitation that requires a controller restart when updating a b
 {{% /notice %}}
 
 18. After the bundle has finished loading, click on the **Manage Jenkins** link in the left menu and then click on the **CloudBees Configuration as Code export and update** **System Configuration** item again and then click on the **Original Bundle** tab. ![Original bundle with folder](original-bundle-folder.png?width=50pc)
-19. The **Original Bundle** view will show you what configuration is being managed by the configuration bundle assigned to your controller. Notice that there are now two *Jenkins configuration as defined by OSS CasC* files - `jcasc/01-cbci-casc-workshop-ops-controller.jcasc.credentials.yaml` and `jcasc/01-cbci-casc-workshop-ops-controller.jcasc.jenkins.yaml`; and both prefixed with `01`, the `id` of your bundle and include the name of the folder the configurations files are in. This is done to support including configuration files in folders and sub-folders, and also bundle inheritance as we will see in the next section.
+19. The **Original Bundle** view will show you what configuration is being managed by the configuration bundle assigned to your controller. Notice that there are now two *Jenkins configuration as defined by OSS CasC* files - `jcasc/01-cbci-casc-workshop-ops-controller.jcasc.credentials.yaml` and `jcasc/01-cbci-casc-workshop-ops-controller.jcasc.jenkins.yaml`; and both prefixed with `01`, the `id` of your bundle and include the name of the folder the configurations files are in. This is done to support including configuration files in folders and sub-folders, and to support bundle inheritance as we will see in the next section.
 
 ## Bundle Inheritance
 
@@ -276,7 +279,7 @@ unclassified:
 14. Next, again ensuring that you are on the `add-parent-bundle` branch, click on the `plugins.yaml` file and then click on the ***Edit this file*** pencil button to edit the file. ![Edit plugin.yaml](github-edit-plugin-yaml.png?width=50pc)
 15. Remove every single plugin entry except for the `cloudbees-restricted-credentials` plugin. All of the plugins we are deleting will be provided by the parent bundle. After you have made the changes, ensure that you are committing to the `add-parent-bundle` branch and then click the **Commit changes** button. ![Commit plugin.yaml](github-commit-plugin-yaml.png?width=50pc)
 16. Ensuring that you are on the `add-parent-bundle` branch, click on the `bundle.yaml` file and then click on the ***Edit this file*** pencil button to edit the file. 
-17. Change the bundle `version` to **4**, then below the the description property add `parent: "base"` and finally delete the entry for the `catalog`. Your `bundle.yaml` should match the following:
+17. Change the bundle `version` to **4**, then below the the description property add `parent: "base"` and finally delete the entry for the `catalog`. Your `bundle.yaml` should match the following (except for the `availabilityPattern` which will be unique for each attendee):
 ```yaml
 apiVersion: "1"
 version: "4"

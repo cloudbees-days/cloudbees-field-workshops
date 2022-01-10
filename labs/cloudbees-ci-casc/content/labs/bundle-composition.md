@@ -413,6 +413,7 @@ items:
 23. Update the `systemMessage` to `'Jenkins configured using CloudBees CI CasC v2'`, update `headerLabel` `text` to `"${GITHUB_APP}-bundle-v2"`, and then commit directly to the `main` branch.
 
 {{%expand "expand for complete updated jenkins.yaml file" %}}
+```yaml
 jenkins:
   globalNodeProperties:
   - envVars:
@@ -476,6 +477,7 @@ credentials:
           id: "cloudbees-ci-casc-workshop-github-app"
           owner: "${GITHUB_ORGANIZATION}"
           privateKey: "${cbciCascWorkshopGitHubAppPrivateKey}"
+```
 {{% /expand%}}
 
 So now we have an updated configuration bundle based on bundle exports from our Ops controller. However, the updated bundle hasn't actually been applied to your controller. In the next lab we will update the `controller-casc-update` job configuration so it will actually update the bundle files on Operations Center, that will in turn trigger an available update on your controller. After that, any time there is a commit to the `main` branch of your `ops-controller` repository, it will automatically be updated on your CloudBees CI controller.
