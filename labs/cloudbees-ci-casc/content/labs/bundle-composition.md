@@ -422,6 +422,8 @@ jenkins:
         value: "${GITHUB_ORGANIZATION}"
       - key: "GITHUB_REPOSITORY"
         value: "ops-controller"
+      - key: "GITHUB_USER"
+        value: "${GITHUB_USER}"
       - key: "BUNDLE_ID"
         value: "${CASC_BUNDLE_ID}"
   quietPeriod: 0
