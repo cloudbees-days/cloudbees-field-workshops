@@ -113,7 +113,7 @@ items:
 17. After the the `main` branch job has completed successfully, navigate to the top level of your Ops controller and refresh the page until you see the bundle version change in the system message (remember we updated the `controller-casc-update` job to auto-reload the bundle). ![Bundle Version Updated](bundle-version-updated.png?width=50pc) 
 
 {{% notice note %}}
-There is a known limitation that requires a controller restart when updating a bundle with a new folder of configuration files as we have done above. Restart your managed controller and after it has restarted, navigate back to the top level of your **ops-controller**.
+There is a currently known limitation that requires a controller restart when updating a bundle with a new folder of configuration files as we have done above. Restart your managed controller and after it has restarted, navigate back to the top level of your **ops-controller**.
 {{% /notice %}}
 
 18. After the bundle has finished loading, click on the **Manage Jenkins** link in the left menu and then click on the **CloudBees Configuration as Code export and update** **System Configuration** item again and then click on the **Original Bundle** tab. ![Original bundle with folder](original-bundle-folder.png?width=50pc)
