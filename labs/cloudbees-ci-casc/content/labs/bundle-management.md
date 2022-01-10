@@ -74,9 +74,9 @@ pipeline {
 }
 ```
 
-4. On the first line you will see that we are using the Pipeline shared library defined in your Ops controller configuration bundle. The Pipeline shared library contains a number of Jenkins Kubernetes Pod templates that can be leveraged across all the controllers. We are utilizing the `kubectl.yml` Pod template, so we can use the `kubectl cp` command to copy your `ops-controller` configuration bundle files into the `jcasc-bundles-store` directory on Operations Center. Once you have finished reviewing the `controller-casc-automation` pipeline contents, navigate to the top level of your Ops controller and click the on the controller-jobs folder.
+4. On the first line you will see that we are using the Pipeline shared library defined in your Ops controller configuration bundle. The Pipeline shared library contains a number of Jenkins Kubernetes Pod templates that can be leveraged across all the controllers. We are utilizing the `kubectl.yml` Pod template, so we can use the `kubectl cp` command to copy your `ops-controller` configuration bundle files into the `jcasc-bundles-store` directory on Operations Center. Once you have finished reviewing the `controller-casc-update` pipeline contents, navigate to the top level of your Ops controller and click the on the controller-jobs folder.
 
-5. Once you have finished reviewing the `controller-casc-automation` pipeline contents, navigate to the top level of your Ops controller and click the on the `controller-jobs` folder. Inside of the `controller-jobs` folder, click on the `controller-casc-update` job. ![CasC job link](casc-job-link.png?width=50pc)
+5. Once you have finished reviewing the `controller-casc-update` pipeline contents, navigate to the top level of your Ops controller and click the on the `controller-jobs` folder. Inside of the `controller-jobs` folder, click on the `controller-casc-update` job. ![CasC job link](casc-job-link.png?width=50pc)
 6. On the next screen, you will see **This folder is empty**. The reason it is empty is because the GitHub Folder branch scan did not find any matches for the current *marker file*. Click on the **Configure** link in the left menu so we can fix that.  ![CasC job config link](casc-job-config-link.png?width=50pc)
 7. Scroll down to the **Project Recognizers** section. Under **Custom script**, notice how the **Marker file** is configured. ![Wrong marker file](wrong-marker-file.png?width=50pc)
 8. With the default **project recognizer**, the file you specify (usually `Jenkinsfile`) is used not only as the Pipeline script to run, but also as the **marker file** - that is, the file that indicates which repositories and branches should be processed by the SCM based Pipeline job. However,  with the [CloudBees custom script project recognizer](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/pipeline-as-code#custom-pac-scripts) for Mulitbranch and Org Folder Pipeline jobs, the **marker file** and the **script file** are separated, allowing you to specify an arbitrary file as the **marker file** and subsequently use an embedded Pipeline script or pull in a Pipeline file from a completely different source control repository. But in order for a GitHub `branch` to be *recognized*, the `branch` must contain the **marker file**.
@@ -92,13 +92,13 @@ pipeline {
 Error from server (Forbidden): pods "cjoc-0" is forbidden: User "system:serviceaccount:controllers:jenkins" cannot get resource "pods" in API group "" in the namespace "cbci"
 ```
 
-17. The reason you get this error is because your **controller** has been provisioned to the `controllers` `namespace` which is a different Kubernetes `namespace` than Operations Center and no agent `pod` in the `controllers` namespace will have the permissions to copy files with `kubectl` (a CLI tool for Kubernetes) to the Operations Center Kubernetes `pod`. To fix this, you must update the `controller-casc-automation` pipeline script in your `ops-controller` repository to trigger a job on another controller that does have permissions to use `kubectl` to copy updated bundle files to Operations Center. 
+17. The reason you get this error is because your **controller** has been provisioned to the `controllers` `namespace` which is a different Kubernetes `namespace` than Operations Center and no agent `pod` in the `controllers` namespace will have the permissions to copy files with `kubectl` (a CLI tool for Kubernetes) to the Operations Center Kubernetes `pod`. To fix this, you must update the `controller-casc-update` pipeline script in your `ops-controller` repository to trigger a job on another controller that does have permissions to use `kubectl` to copy updated bundle files to Operations Center. 
 
 {{% notice note %}}
 Provisioning controllers and agents in a different Kubernetes `namespace` than Operations Center provides additional isolation and more security for Operations Center on Kubernetes. By default, when controllers are created in the same `namespace` as Operations Center and agents, they can provision an agent that can run the `pod` `exec` command against any other `pod` in the `namespace` - including the Operations Center's `pod`.
 {{% /notice %}}
 
-18. Navigate to your copy of the `ops-controller` repository in your workshop GitHub Organization and open the `controller-casc-automation` pipeline script.
+18. Navigate to your copy of the `ops-controller` repository in your workshop GitHub Organization and open the `controller-casc-update` pipeline script.
 19. Click the **pencil icon** to open it in the GitHub file editor and replace the entire contents with the following and click on the **Commit changes** button to commit to the `main` branch:
 
 ```groovy
@@ -174,7 +174,7 @@ The pipeline snippet below is used by the *bundle update* job, triggered by your
 
 So, all you have to do to enable reload is update the value of the `casc.auto_reload` portion of the event payload to `true`:
 
-1. Navigate to your copy of the `ops-controller` repository in your workshop GitHub Organization and open the `controller-casc-automation` pipeline script.
+1. Navigate to your copy of the `ops-controller` repository in your workshop GitHub Organization and open the `controller-casc-update` pipeline script.
 2. Click the **pencil icon** to open it in the GitHub file editor, then modify `'casc':{'auto_reload':'true'}` to `'casc':{'auto_reload':'false'}` and click on the **Commit changes** button to commit to the `main` branch. The complete updated contents should match the following:
 
 ```groovy

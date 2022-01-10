@@ -189,7 +189,7 @@ items:
             marker: Jenkinsfile
             definition:
               cpsScmFlowDefinition:
-                scriptPath: controller-casc-automation
+                scriptPath: controller-casc-update
                 scm:
                   gitSCM:
                     userRemoteConfigs:
@@ -408,10 +408,11 @@ items:
                 lightweight: true
 ```
 {{% /expand%}}
+
 22. Finally, navigate back to the top level of your copy of the `ops-controller` repository and click on the `jenkins.yaml` file and then click on the ***Edit this file*** pencil button.
 23. Update the `systemMessage` to `'Jenkins configured using CloudBees CI CasC v2'`, update `headerLabel` `text` to `"${GITHUB_APP}-bundle-v2"`, and then commit directly to the `main` branch.
 
-{{%expand "expand for complete updated items.yaml file" %}}
+{{%expand "expand for complete updated jenkins.yaml file" %}}
 jenkins:
   globalNodeProperties:
   - envVars:
