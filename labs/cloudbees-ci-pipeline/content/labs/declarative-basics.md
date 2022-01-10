@@ -4,7 +4,24 @@ chapter: false
 weight: 2
 --- 
 
+Jenkins Pipelines may be categorized by the syntax used to write the pipeline and the type of Jenkins job used to execute the pipeline. 
+
+The two syntaxes are:
+
+1. **Scripted Pipeline**: Scripted Pipeline provides a fully-featured Groovy based programming environment. 
+2. **Declarative Pipeline**: Declarative Pipeline provides a simpler and more opinionated syntax with a more strict and pre-defined structure.
+
+There are three main Jenkins job types for managing Jenkins Pipelines:
+
+1. **Pipeline**: The original Pipeline job type, it allows defining the Jenkins Pipeline (Scripted or Declarative) inline where it is stored in the Jenkins home directory or to load a Jenkins Pipeline from source control.
+2. **Multibranch Pipeline**: The Jenkins Pipeline must be defined in source control, and Jenkins will automatically discover, manage and execute the Jenkins Pipeline for branches which contain a Jenkinsfile in source control.
+3. **Organization Folder (Pipeline)**: Enables Jenkins to monitor an entire GitHub Organization, Bitbucket Team/Project, GitLab organization, or Gitea organization and automatically creates new Multibranch Pipeline project for repositories that contain a Jenkinsfile in at least one branch (including pull/merge requests).
+
 In this first lab we will [create a Multibranch Pipeline project](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/github-branch-source-plugin) and get an overview of the [basic fundamentals of the Declarative Pipeline syntax](#basic-declarative-syntax-structure). 
+
+{{% notice note %}}
+There are numerous advantages to managing your Jenkins Pipelines as code that are explained in detail in *[Understanding and implementing Pipeline as Code](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/pipeline-as-code)*.
+{{% /notice %}}
 
 ## Create a GitHub Multibranch Pipeline Project
 

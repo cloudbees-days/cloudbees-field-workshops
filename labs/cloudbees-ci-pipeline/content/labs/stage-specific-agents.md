@@ -16,13 +16,13 @@ We will use the Kubernetes plugin [Pipeline container block](https://jenkins.io/
 
 1. Go to the top-level of your Managed Controller, click on the **Manage Jenkins** link and then scroll down and click on the **Kubernetes Pod Templates** item. ![Controller Pod Templates](controller-pod-templates.png?width=50pc) 
 2. On the next screen, click on the **Pod Template details...** button for the ***Kubernetes Pod Template*** with the **Name** **'nodejs-app'**.  ![Kubernetes Node.js Agent Template](k8s-nodejs-agent-template.png?width=50pc) 
-Take note of the ***Labels*** field with a value of ***nodejs-app*** and the **Container Template** ***Name*** field with a value of ***nodejs*** - both of these are important and we will need those values to configure our Pipeline to use this **Pod Template** and **Container Template** in your `Jenkinsfile`. Also note the **Docker image** being specified: `node:8.12.0-alpine`.
+Take note of the ***Labels*** field with a value of ***nodejs-app*** and the **Container Template** ***Name*** field with a value of ***nodejs*** - both of these are important and we will need those values to configure our Pipeline to use this **Pod Template** and **Container Template** in your `Jenkinsfile`. The **Pod Template** **Labels** are used in a Jenkins Pipeline to specify the template to create an agent from, while the **Container Template** **Name** is used to run 1 or more steps in a specific `container` provided by the **Pod Template**. Also note the **Docker image** being specified: `node:14-alpine`.
 3. Navigate to and click on the `Jenkinsfile` file in the **development** branch of your **helloworld-nodejs** repository and click on the **Edit this file** button (pencil) and replace the global `agent` section with the following:
 ```
   agent none
 ```
 
-4. Next, in the **Say Hello** `stage` add the following `agent` section right above the `steps` section so that we will get the Kubernetes Pod Template configured for your Managed Controller with the **Container Template** that includes the `node:8.12.0-alpine` Docker(container) image above: 
+4. Next, in the **Say Hello** `stage` add the following `agent` section right above the `steps` section so that we will get the Kubernetes Pod Template configured for your Managed Controller with the **Container Template** that includes the `node:14-alpine` Docker(container) image above: 
 ```
     agent { label 'nodejs-app' }
 ```
@@ -63,7 +63,7 @@ pipeline {
 }
 ```
 
-  All of the Pipeline steps within the `container` block will run in the container specified by the **Name** of the **Container Template** - and in this case that **Container Template** is using the `node:8.12.0-alpine` container image as we saw above. Commit the changes and the **helloworld-nodejs** job will run - it will result in an error because the `nodejs` container does not have Java installed (and why should it). Hover over the failed stage in the **Stage View** of your development branch job and click on the **Logs** button.   ![Open Logs](stage-view-logs-button.png?width=50pc) Next, expand the last step - `sh 'java -version'` - to see the error. ![Java Error](agent-java-error.png?width=50pc) 
+  All of the Pipeline steps within the `container` block will run in the container specified by the **Name** of the **Container Template** - and in this case that **Container Template** is using the `node:14-alpine` container image as we saw above. Commit the changes and the **helloworld-nodejs** job will run - it will result in an error because the `nodejs` container does not have Java installed (and why should it). Hover over the failed stage in the **Stage View** of your development branch job and click on the **Logs** button.   ![Open Logs](stage-view-logs-button.png?width=50pc) Next, expand the last step - `sh 'java -version'` - to see the error. ![Java Error](agent-java-error.png?width=50pc) 
 7. We will fix the error in the **Test** `stage` we added above by replacing the `sh 'java -version'` step with the `sh 'node --version'` step and moving the `sh 'java -version` step above the `container` block in the `Jenkinsfile` file in the **development** branch of your forked **helloworld-nodejs** repository so the entire pipeline looks like the following:
 ```
 pipeline {
