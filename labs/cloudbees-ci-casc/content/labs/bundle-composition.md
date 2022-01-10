@@ -163,8 +163,8 @@ items:
   name: controller-jobs
   items:
   - kind: organizationFolder
-    displayName: cbci-casc-automation
-    name: cbci-casc-automation
+    displayName: controller-casc-update
+    name: controller-casc-update
     orphanedItemStrategy:
       defaultOrphanedItemStrategy:
         pruneDeadBranches: true
@@ -360,8 +360,8 @@ items:
   name: controller-jobs
   items:
   - kind: organizationFolder
-    displayName: cbci-casc-automation
-    name: cbci-casc-automation
+    displayName: controller-casc-update
+    name: controller-casc-update
     orphanedItemStrategy:
       defaultOrphanedItemStrategy:
         pruneDeadBranches: true
@@ -408,5 +408,73 @@ items:
       filter: true
 ```
 {{% /expand%}}
+24. Finally, navigate back to the top level of your copy of the `ops-controller` repository and click on the `jenkins.yaml` file and then click on the ***Edit this file*** pencil button.
+25. Update the `systemMessage` to `'Jenkins configured using CloudBees CI CasC v2'`, update `headerLabel` `text` to `"${GITHUB_APP}-bundle-v2"`, and then commit directly to the `main` branch.
 
-So now we have an updated configuration bundle based on bundle exports from our Ops controller. However, the updated bundle hasn't actually been applied to your controller. In the next lab we will update the `cbci-casc-automation` job configuration so it will actually update the bundle files on Operations Center, that will in turn trigger an available update on your controller. After that, any time there is a commit to the `main` branch of your `ops-controller` repository, it will automatically be updated on your CloudBees CI controller.
+{{%expand "expand for complete updated items.yaml file" %}}
+jenkins:
+  globalNodeProperties:
+  - envVars:
+      env:
+      - key: "GITHUB_ORGANIZATION"
+        value: "${GITHUB_ORGANIZATION}"
+      - key: "GITHUB_REPOSITORY"
+        value: "ops-controller"
+      - key: "BUNDLE_ID"
+        value: "${CASC_BUNDLE_ID}"
+  quietPeriod: 0
+  systemMessage: 'Jenkins configured using CloudBees CI CasC v2'
+notificationConfiguration:
+  enabled: true
+  router: "operationsCenter"
+unclassified:
+  hibernationConfiguration:
+    activities:
+    - "build"
+    - "web"
+    enabled: true
+    gracePeriod: 1500
+  gitHubConfiguration:
+    apiRateLimitChecker: ThrottleForNormalize
+  gitHubPluginConfig:
+    hookSecretConfigs:
+    - credentialsId: "cloudbees-ci-workshop-github-webhook-secret"
+  globalDefaultFlowDurabilityLevel:
+    durabilityHint: PERFORMANCE_OPTIMIZED
+  globallibraries:
+    libraries:
+    - defaultVersion: "main"
+      name: "pipeline-library"
+      retriever:
+        modernSCM:
+          scm:
+            github:
+              credentialsId: "cloudbees-ci-casc-workshop-github-app"
+              repoOwner: "${GITHUB_ORGANIZATION}"
+              repository: "pipeline-library"
+  headerLabel:
+    text: "${GITHUB_APP}-bundle-v2"
+credentials:
+  system:
+    domainCredentials:
+    - credentials:
+      - string:
+          description: "CasC Update Secret"
+          id: "casc-update-secret"
+          scope: GLOBAL
+          secret: "${cbciCascWorkshopControllerProvisionSecret}"
+      - string:
+          description: "Webhook secret for CloudBees CI Workshop GitHub App"
+          id: "cloudbees-ci-workshop-github-webhook-secret"
+          scope: SYSTEM
+          secret: "${gitHubWebhookSecret}"
+      - gitHubApp:
+          apiUri: "https://api.github.com"
+          appID: "${cbciCascWorkshopGitHubAppId}"
+          description: "CloudBees CI CasC Workshop GitHub App credential"
+          id: "cloudbees-ci-casc-workshop-github-app"
+          owner: "${GITHUB_ORGANIZATION}"
+          privateKey: "${cbciCascWorkshopGitHubAppPrivateKey}"
+{{% /expand%}}
+
+So now we have an updated configuration bundle based on bundle exports from our Ops controller. However, the updated bundle hasn't actually been applied to your controller. In the next lab we will update the `controller-casc-update` job configuration so it will actually update the bundle files on Operations Center, that will in turn trigger an available update on your controller. After that, any time there is a commit to the `main` branch of your `ops-controller` repository, it will automatically be updated on your CloudBees CI controller.

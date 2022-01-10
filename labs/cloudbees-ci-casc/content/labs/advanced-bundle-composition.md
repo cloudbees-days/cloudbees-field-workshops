@@ -111,7 +111,7 @@ items:
 17. On the next screen, click on the **Bundle Update** link and you should see that a new version of the configuration bundle is available. Click the **Reload Configuration** button and on the next screen click the **Yes** button to apply the updated configuration bundle.
 
 {{% notice note %}}
-There is a known issue 
+There is a known issue with the current release that requires a controller restart when updating a bundle with a new folder of configuration files as we have done above. Restart your managed controller and after it has restarted, navigate back to the top level of your **ops-controller**.
 {{% /notice %}}
 
 18. After the bundle has finished loading, click on the **CloudBees Configuration as Code export and update** **System Configuration** item again and then click on the **Original Bundle** tab. ![Original bundle with folder](original-bundle-folder.png?width=50pc)

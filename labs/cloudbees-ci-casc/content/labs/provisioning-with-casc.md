@@ -123,7 +123,7 @@ Now that we have reviewed the pipeline and Groovy script for the workshop provis
 
   restrictedSystem:
     domainCredentials:
-    - allowList: "controller-jobs/cbci-casc-automation/**/main"
+    - allowList: "controller-jobs/controller-casc-update/**/main"
       credentials:
         string:
           description: "CasC Workshop Controller Provision Secret"
@@ -137,7 +137,7 @@ Now that we have reviewed the pipeline and Groovy script for the workshop provis
 credentials:
   restrictedSystem:
     domainCredentials:
-    - allowList: "controller-jobs/cbci-casc-automation/**/main"
+    - allowList: "controller-jobs/controller-casc-update/**/main"
       credentials:
         string:
           description: "CasC Workshop Controller Provision Secret"
