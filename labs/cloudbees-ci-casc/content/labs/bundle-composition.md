@@ -342,12 +342,10 @@ In previous versions of CloudBees CI Configuration as Code (CasC) for Controller
 15. Navigate back to the top level of your Ops controller, click on the **controller-jobs** folder.
 16. On the **controller-jobs** folder screen, click on the **Configure** left menu item. ![Configure folder](configure-folder-link.png?width=50pc) 
 17. Scroll to the bottom of the folder configuration and click on **Restrict the kind of children in this folder** - a [CloudBees Folders Plus](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-secure-guide/folders-plus) feature - and then select **Freestyle project**, **Pipeline**, **Multibranch Pipeline** and **Organization Folder** so only Jenkins Pipeline type jobs are allowed to be created in the folder; and then hit the **Save** button. ![Configure folder](configure-folder.png?width=50pc) 
-18. Navigate back to the top-level of your Ops controller and click on the **Manage Jenkins** link in the left menu. ![Folder updated](folder-created.png?width=50pc) 
-19. Next, On the **Manage Jenkins** page click on **CloudBees Configuration as Code export and update** under the **System Configuration** section.
-20. On the **CloudBees Configuration as Code export and update** page of your Ops controller, instead of clicking the *Copy content* link, click the *Visualize* link for the `items.yaml` **Filename**. ![Items copy content link](items-visualize-link.png?width=50pc) 
-21. A new browser page will open in a new tab or window with the auto-generated YAML representing all the `items` on your controller. Copy the `properties` section at the bottom (as highlighted below). This is the only fragment we need to add to the `items.yaml` file in the `ops-controller` repository. ![Copy folder properties](copy-folder-properties.png?width=50pc)
-22. Navigate to the top level of your copy of the `ops-controller` repository and click on the `items.yaml` file and then click on the ***Edit this file*** pencil button. ![Edit items.yaml](edit-items.png?width=50pc)
-23. Paste the `properties` fragment you copied from the `items.yaml` export right below `name: controller-jobs` but delete the `hudson.model.FreeStyleProject` entry (we decided we don't want anyone creating Freestyle jobs in that folder), and then commit directly to the `main` branch. ![Commit items.yaml](commit-items.png?width=50pc)
+18. After the updated **controller-jobs** folder configuration has been saved, click on the **Export CasC item** link in the left menu. ![Folder updated](export-casc-item-link.png?width=50pc) 
+19. On the **Export CasC item** page, scroll down to the `properties` section at the bottom (as highlighted below). This is the only fragment we need to add to the `items.yaml` file in the `ops-controller` repository. ![Copy folder properties](copy-folder-properties.png?width=50pc)
+20. Navigate to the top level of your copy of the `ops-controller` repository and click on the `items.yaml` file and then click on the ***Edit this file*** pencil button. ![Edit items.yaml](edit-items.png?width=50pc)
+21. Paste the `properties` fragment you copied from the `items.yaml` export right below `name: controller-jobs` and indent it two spaces to align with `name:controller-jobs` as seen below. Delete the `hudson.model.FreeStyleProject` entry (we decided we don't want anyone creating Freestyle jobs in that folder), and then commit directly to the `main` branch. ![Commit items.yaml](commit-items.png?width=50pc)
 
 {{%expand "expand for complete updated items.yaml file" %}}
 ```yaml
@@ -358,6 +356,17 @@ items:
 - kind: folder
   displayName: controller-jobs
   name: controller-jobs
+  properties:
+  - envVars: {
+      }
+  - kubernetesFolderProperty: {
+      }
+  - itemRestrictions:
+      allowedTypes:
+      - org.jenkinsci.plugins.workflow.job.WorkflowJob
+      - jenkins.branch.OrganizationFolder
+      - org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject
+      filter: true
   items:
   - kind: organizationFolder
     displayName: controller-casc-update
@@ -386,7 +395,7 @@ items:
             marker: Jenkinsfile
             definition:
               cpsScmFlowDefinition:
-                scriptPath: controller-casc-automation
+                scriptPath: controller-casc-update
                 scm:
                   gitSCM:
                     userRemoteConfigs:
@@ -397,19 +406,10 @@ items:
                     - branchSpec:
                         name: '*/main'
                 lightweight: true
-  properties:
-  - envVars: {}
-  - kubernetesFolderProperty: {}
-  - itemRestrictions:
-      allowedTypes:
-      - org.jenkinsci.plugins.workflow.job.WorkflowJob
-      - jenkins.branch.OrganizationFolder
-      - org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject
-      filter: true
 ```
 {{% /expand%}}
-24. Finally, navigate back to the top level of your copy of the `ops-controller` repository and click on the `jenkins.yaml` file and then click on the ***Edit this file*** pencil button.
-25. Update the `systemMessage` to `'Jenkins configured using CloudBees CI CasC v2'`, update `headerLabel` `text` to `"${GITHUB_APP}-bundle-v2"`, and then commit directly to the `main` branch.
+22. Finally, navigate back to the top level of your copy of the `ops-controller` repository and click on the `jenkins.yaml` file and then click on the ***Edit this file*** pencil button.
+23. Update the `systemMessage` to `'Jenkins configured using CloudBees CI CasC v2'`, update `headerLabel` `text` to `"${GITHUB_APP}-bundle-v2"`, and then commit directly to the `main` branch.
 
 {{%expand "expand for complete updated items.yaml file" %}}
 jenkins:

@@ -177,6 +177,7 @@ credentials:
       }
       environment { PROVISION_SECRET = credentials('casc-workshop-controller-provision-secret') }
       steps {
+        gitHubParseOriginUrl()
         publishEvent event:jsonEvent("""
           {'controller':{'name':'${GITHUB_REPO}','action':'provision'},'github':{'organization':'${GITHUB_ORG}','repository':'${GITHUB_REPO}','user':'${GITHUB_USER}'},'secret':'${PROVISION_SECRET}'}
         """), verbose: true
@@ -184,53 +185,22 @@ credentials:
     }
 ```
 
-{{%expand "expand for complete controller-casc-automation pipeline file" %}}
+{{%expand "expand for complete controller-casc-provision pipeline file" %}}
 ```groovy
 library 'pipeline-library'
 pipeline {
-  agent {
-    kubernetes {
-      yaml libraryResource ('podtemplates/kubectl.yml')
-    }
-  }
+  agent none
   options {
     timeout(time: 10, unit: 'MINUTES')
   }
   stages {
-    stage('Update Config Bundle') {
-      when {
-        beforeAgent true
-        branch 'main'
-        not { triggeredBy 'UserIdCause' }
-      }
-      steps {
-        gitHubParseOriginUrl()
-        container("kubectl") {
-          sh "mkdir -p ${GITHUB_ORG}-${GITHUB_REPO}"
-          sh "find -name '*.yaml' | xargs cp --parents -t ${GITHUB_ORG}-${GITHUB_REPO}"
-          sh "kubectl cp --namespace cbci ${GITHUB_ORG}-${GITHUB_REPO} cjoc-0:/var/jenkins_home/jcasc-bundles-store/ -c jenkins"
-        }
-        echo "begin config bundle reload"
-        script {
-          try {
-            withCredentials([usernamePassword(credentialsId: 'admin-cli-token', usernameVariable: 'JENKINS_CLI_USR', passwordVariable: 'JENKINS_CLI_PSW')]) {
-                sh '''
-                  curl --user $JENKINS_CLI_USR:$JENKINS_CLI_PSW -XGET http://${GITHUB_ORG}-${GITHUB_REPO}/${GITHUB_ORG}-${GITHUB_REPO}/casc-bundle-mgnt/check-bundle-update 
-                  curl --user $JENKINS_CLI_USR:$JENKINS_CLI_PSW -XPOST http://${GITHUB_ORG}-${GITHUB_REPO}/${GITHUB_ORG}-${GITHUB_REPO}/casc-bundle-mgnt/reload-bundle/
-                '''
-            }
-          } catch (Exception e) {
-              echo 'Exception occurred: ' + e.toString()
-          }
-        }
-      }
-    }
     stage('Publish Provision Controller Event') {
       when {
         branch 'main'
       }
       environment { PROVISION_SECRET = credentials('casc-workshop-controller-provision-secret') }
       steps {
+        gitHubParseOriginUrl()
         publishEvent event:jsonEvent("""
           {'controller':{'name':'${GITHUB_REPO}','action':'provision'},'github':{'organization':'${GITHUB_ORG}','repository':'${GITHUB_REPO}','user':'${GITHUB_USER}'},'secret':'${PROVISION_SECRET}'}
         """), verbose: true
