@@ -12,15 +12,15 @@ This lab will explore the composition of a CloudBees CI configuration bundle, to
 
 A configuration bundle may consist of the following YAML file types:
 
-- **bundle** (required) - This file is an index file that describes the bundle, references the other files in the bundle and must be named `bundle.yaml`. Any files not listed in this file will not be included in the controller bundle (even if it is in the bundle's directory). It also (optionally) allows you to specify an `availabilityPattern` which a regular expression that controls what controllers can use the bundle based on their location on Operations Center.
+- **bundle** (required) - This file is an index file that describes the bundle, references the other files in the bundle and must be named `bundle.yaml`. Any files not listed in this file will not be included in the controller bundle (even if it is in the bundle's directory). It also (optionally) allows you to specify an `availabilityPattern` which is a regular expression that controls what controllers can use the bundle based on their location on Operations Center.
 - **jcasc** (optional) - This file contains the Jenkins configuration (global configuration, credentials, plugin configuration, etc), as defined by the Jenkins [Configuration as Code plugin](https://github.com/jenkinsci/configuration-as-code-plugin).
 - **plugins** (optional) - This file contains a list of all the plugins to be installed on the controller. Plugins that are not in the [CloudBees Assurance Program (CAP)](https://docs.cloudbees.com/docs/admin-resources/latest/assurance-program/) have to be added with a Plugin Catalog and to this file.
 - **catalog** (optional) - This file defines the catalog of versioned plugins outside of the CloudBees Assurance Program (CAP) that are available for installation on the controller. An optional location can also be specified for plugins that are not available in the standard update centers. Adding plugins to a catalog only makes them available to install and they still must be added to the plugins file above.
 - **rbac** (optional) - This file defines the RBAC groups and roles at the root level of a controller. 
-- **items** (optional) - This file defines items (folders, jobs, etc) to be created on the controller.
+- **items** (optional) - This file defines items (folders, jobs, etc), and optionally, RBAC for folders to be created on the controller.
 
 {{% notice note %}}
-You may have noticed that all the file types except for the **bundle** file are optional and wonder if it would make sense to have a configuration bundle that only had a **bundle** file. We will see in a later lab that it is useful with bundle inheritance.
+You may have noticed that all the file types except for the **bundle** file are optional and wonder if it would make sense to have a configuration bundle that only had a **bundle** file. We will see in a later lab that it can be useful with bundle inheritance.
 {{% /notice %}}
 
 In this lab we will explore the configuration bundle assigned to your Ops controller when it was dynamically provisioned.
@@ -153,7 +153,7 @@ plugins:
 - id: workflow-cps-checkpoint
 # non-cap plugins
 ```
-6. Return to the top level of your `ops-controller` repository and click on the `items.yaml` file. The name of this file must match the file name listed under `items` in the `bundle.yaml` file. Its contents will match the following (except for the `REPLACE_GITHUB_ORG` placeholders). Also note the `removeStrategy` configuration at the top, this specifies the strategy to handle existing configuration when a new configuration is applied, and is required for all `items` files (`NONE` is currently the only strategy available for `items`):
+6. Return to the top level of your `ops-controller` repository and click on the `items.yaml` file. The name of this file must match the file name listed under `items` in the `bundle.yaml` file. Its contents will match the following (except for the `REPLACE_GITHUB_ORG` placeholders which are replace with our workshop GitHub Organization when your controller is provisioned). Also note the `removeStrategy` configuration at the top, this specifies the strategy to handle existing configuration when a new configuration is applied, and is required for all `items` files (`NONE` is currently the only strategy available for `items`):
 
 ```yml
 removeStrategy:
@@ -212,12 +212,12 @@ removeStrategy:
   items: NONE
 items:
 - kind: folder
-  name: cbci-casc-workshop
+  name: REPLACE_FOLDER_NAME
   groups:
   - members:
       users:
-      - beedemo-dev
-      - beedemo-dev-admin
+      - REPLACE_GITHUB_USERNAME
+      - REPLACE_GITHUB_USERNAME-admin
     roles:
     - name: browse
       grantedAt: current
@@ -229,12 +229,12 @@ items:
   - browse
   items:
   - kind: managedController
-    name: ops-controller
+    name: REPLACE_CONTROLLER_NAME
     properties:
     - healthReporting:
         enabled: true
     - configurationAsCode:
-        bundle: cbci-casc-workshop-ops-controller
+        bundle: REPLACE_GITHUB_ORG-REPLACE_CONTROLLER_NAME
     configuration:
       kubernetes:
         memory: 4000
@@ -242,7 +242,7 @@ items:
         clusterEndpointId: default
         disk: 10
         storageClassName: premium-rwo
-        domain: cbci-casc-workshop-ops-controller
+        domain: REPLACE_GITHUB_ORG-REPLACE_CONTROLLER_NAME
         namespace: controllers
         yaml: |
           kind: "StatefulSet"
@@ -258,15 +258,15 @@ items:
                   - name: "SECRETS"
                     value: "/var/jenkins_home/jcasc_secrets"
                   - name: "GITHUB_ORGANIZATION"
-                    value: "cbci-casc-workshop"
+                    value: "REPLACE_GITHUB_ORG"
                   - name: "GITHUB_USER"
-                    value: "beedemo-dev"
+                    value: "REPLACE_GITHUB_USERNAME"
                   - name: "GITHUB_APP"
-                    value: "cloudbees-ci-casc-workshop"
+                    value: "REPLACE_GITHUB_APP"
                   - name: "CONTROLLER_SUBDOMAIN"
-                    value: "cbci-casc-workshop-ops-controller"
+                    value: "REPLACE_GITHUB_ORG-REPLACE_CONTROLLER_NAME"
                   - name: "CASC_BUNDLE_ID"
-                    value: "cbci-casc-workshop-ops-controller"
+                    value: "REPLACE_GITHUB_ORG-REPLACE_CONTROLLER_NAME"
                   volumeMounts:
                   - name: "jcasc-secrets"
                     mountPath: "/var/jenkins_home/jcasc_secrets"
@@ -349,7 +349,7 @@ In previous versions of CloudBees CI Configuration as Code (CasC) for Controller
 20. Navigate to the top level of your copy of the `ops-controller` repository and click on the `items.yaml` file and then click on the ***Edit this file*** pencil button. ![Edit items.yaml](edit-items.png?width=50pc)
 21. Paste the `properties` fragment you copied from the `items.yaml` export right below `name: controller-jobs` and indent it two spaces to align with `name:controller-jobs` as seen below. Delete the `hudson.model.FreeStyleProject` entry (we decided we don't want anyone creating Freestyle jobs in that folder), and then commit directly to the `main` branch. ![Commit items.yaml](commit-items.png?width=50pc)
 
-{{%expand "expand for complete updated items.yaml file" %}}
+{{%expand "expand for complete updated items.yaml snippet - it does not include the `organizationFolder` as that configuration is unique to each workshop GitHub Organization" %}}
 ```yaml
 removeStrategy:
   rbac: SYNC
@@ -369,45 +369,6 @@ items:
       - jenkins.branch.OrganizationFolder
       - org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject
       filter: true
-  items:
-  - kind: organizationFolder
-    displayName: controller-casc-update
-    name: controller-casc-update
-    orphanedItemStrategy:
-      defaultOrphanedItemStrategy:
-        pruneDeadBranches: true
-        daysToKeep: -1
-        numToKeep: -1
-    SCMSources:
-    navigators:
-    - github:
-        apiUri: https://api.github.com
-        traits:
-        - gitHubBranchDiscovery:
-            strategyId: 1
-        - headWildcardFilter:
-            excludes: ''
-            includes: main
-        repoOwner: cbci-casc-workshop
-        credentialsId: cloudbees-ci-casc-workshop-github-app
-    projectFactories:
-    - customMultiBranchProjectFactory:
-        factory:
-          customBranchProjectFactory:
-            marker: Jenkinsfile
-            definition:
-              cpsScmFlowDefinition:
-                scriptPath: controller-casc-update
-                scm:
-                  gitSCM:
-                    userRemoteConfigs:
-                    - userRemoteConfig:
-                        credentialsId: cloudbees-ci-casc-workshop-github-app
-                        url: https://github.com/cbci-casc-workshop/ops-controller.git
-                    branches:
-                    - branchSpec:
-                        name: '*/main'
-                lightweight: true
 ```
 {{% /expand%}}
 
