@@ -160,7 +160,7 @@ credentials:
 9. Navigating back to the top level of your `ops-controller` repository and ensuring that you are on the `add-provision-job` branch, click on the `items.yaml` file and then click on the ***Edit this file*** pencil button to edit the file. 
 10. Copy the entire `controller-casc-update` item and paste it below the second `items` entry (it should be line 19).
 11. Change the `name` of the new `organizationFolder` item to `controller-provision`, change the value for `marker` to `controller.yaml` and change the `scriptPath` to `controller-provision`. 
-12. After you have made those changes, ensure that you are committing to the `add-provision-job` branch and then click the **Commit new file** button.
+12. After you have made those changes, ensure that you are committing to the `add-provision-job` branch and then click the **Commit new file** button. ![Commit items.yaml](github-commit-items-yaml.png?width=50pc)
 13. We have now made all the necessary changes and can now merge the pull request to the `main` branch. In GitHub, click on the **Pull requests** tab and then click on the link for the **Create controller-provision** pull request.
 14. On the **Create controller-provision #3** pull request page, click the **Merge pull request** button and then click the **Confirm merge** button.
 15. Navigate to the `main` branch job of the `controller-casc-update` `ops-controller` Multibranch pipeline project on your Ops controller. ![ops-controller Mulitbranch](ops-controller-multibranch-jcasc.png?width=50pc)
