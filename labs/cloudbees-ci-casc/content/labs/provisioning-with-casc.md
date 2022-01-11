@@ -75,7 +75,7 @@ pipeline {
 ### Create Ops controller Job to Trigger Provisioning
 Now that we have reviewed the pipeline script for the workshop provisioning of managed controllers, we need to create a new GitHub Organization Folder project that will publish a Cross Team Collaboration event to trigger that pipeline.
 
-1. Navigate to your copy of the `ops-controller` repository in GitHub and click on the **Add file** button and then select **Create new file**. ![Create new file in GitHub](github-create-new-file.png?width=50pc)
+1. Navigate to your copy of the `ops-controller` repository in GitHub and click on the **Add file** button and then select **Create new file**. ![Create new file in GitHub](github-create-new-file-ops.png?width=50pc)
 2. Name the new file `controller-provision`, copy the `controller-provision` contents from below and paste it into the GitHub file editor. Notice that the `controller-provision` Declarative Pipeline script is loading a `credential` with an id of `casc-workshop-controller-provision-secret`.
 
 ```groovy
@@ -156,7 +156,7 @@ credentials:
 ```
 {{% /expand%}}
 
-8. After you have pasted the new credential into the `credentials.yaml` file, ensure that you are committing to the `add-provision-job` branch and then click the **Commit new file** button. ![Commit unclassified.yaml](github-commit-unclassified-yaml.png?width=50pc)
+8. After you have pasted the new credential into the `credentials.yaml` file, ensure that you are committing to the `add-provision-job` branch and then click the **Commit new file** button. ![Commit credentials.yaml](github-commit-credentials-yaml.png?width=50pc)
 9. Navigating back to the top level of your `ops-controller` repository and ensuring that you are on the `add-provision-job` branch, click on the `items.yaml` file and then click on the ***Edit this file*** pencil button to edit the file. 
 10. Copy the entire `controller-casc-update` item and paste it below the second `items` entry (it should be line 19).
 11. Change the `name` of the new `organizationFolder` item to `controller-provision`, change the value for `marker` to `controller.yaml` and change the `scriptPath` to `controller-provision`. 
