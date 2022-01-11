@@ -120,6 +120,8 @@ That event will be published **across all Managed Controllers in the Workshop cl
 7. Now, once that change is committed, and the job with the `publishEvent` runs, everyone will see the **main** branch of their **helloworld-nodejs** job triggered by the `hello-api-deploy-event` simple event. ![View Configuration Link](triggered-by-event.png?width=50pc)
 
 
+Refer to the link to see a more complicated example using JSON with a more realistic payload [here](https://www.cloudbees.com/blog/how-to-improve-cross-team-collaboration-in-jenkins).
+
 ## Next Lesson
 
 Before moving on to the next lesson make sure that your **Jenkinsfile** Pipeline script on the **main** branch of your copy of the **helloworld-nodejs** repository matches the one from [below](#finished-jenkinsfile-for-pipeline-pod-templates-and-cross-team-collaboration).
