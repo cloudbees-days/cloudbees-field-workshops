@@ -10,7 +10,7 @@ This lab will explore more advanced aspects of bundle composition to include bun
 
 CloudBees CI Configuration as Code (CasC) for Controllers allows managing bundle files in folders and allows the use of multiple files for certain bundle file types. In this lab we will split your JCasC configuration (the `jenkins.yaml` file) into two files and put those files in a `jcasc` folder to make the configuration files easier to manage.
 
-1. Navigate back to the top level of your `ops-controller` repository in your workshop GitHub Organization, then click on the **Add file** button and then select **Create new file**. ![Create new file in GitHub](github-create-new-file.png?width=50pc)
+1. Navigate back to the top level of your `ops-controller` repository in your workshop GitHub Organization and click on the **Add file** button and then select **Create new file**. ![Create new file in GitHub](github-create-new-file.png?width=50pc)
 ```yaml
 credentials:
   system:
@@ -109,8 +109,8 @@ items:
 ```
 
 13. After you have made the changes, ensure that you are committing to the `jcasc-subfolder` branch and then click the **Commit changes** button. ![Commit jcasc folder bundle.yaml](github-commit-jcasc-folder-bundle-yaml.png?width=50pc)
-14. We have now made all the necessary changes and can now merge the pull request to the `main` branch. In GitHub, click on the **Pull requests** tab and then click on the link for the **Create credentials.yaml** pull request. ![jcasc pull request link](github-jcasc-pr-link.png?width=50pc)
-15. On the **Create credentials.yaml #1** pull request page, click the **Merge pull request** button, then click the **Confirm merge** button and then click the **Delete branch** button.
+14. We have now made all the necessary changes and can now merge the pull request to the `main` branch. In GitHub, click on the **Pull requests** tab and then click on the link for the **Create credentials.yaml** pull request.
+15. On the **Create credentials.yaml #1** pull request page, click the **Merge pull request** button and then click the **Confirm merge** button.
 16. Navigate to the `main` branch job of the `ops-controller` Multibranch pipeline project on your Ops controller. ![ops-controller Mulitbranch](ops-controller-multibranch-jcasc.png?width=50pc)
 17. After the the `main` branch job has completed successfully, navigate to the top level of your Ops controller and refresh the page until you see the bundle version change in the system message (remember we updated the `controller-casc-update` job to auto-reload the bundle). ![Bundle Version Updated](bundle-version-updated.png?width=50pc) 
 
@@ -259,6 +259,8 @@ jenkins:
         value: "${GITHUB_ORGANIZATION}"
       - key: "GITHUB_REPOSITORY"
         value: "ops-controller"
+      - key: "GITHUB_USER"
+        value: "${GITHUB_USER}"
       - key: "BUNDLE_ID"
         value: "${CASC_BUNDLE_ID}"
   systemMessage: 'Jenkins configured using CloudBees CI CasC with controller overrides'
@@ -301,10 +303,10 @@ items:
   - "items.yaml"
 ```
 18. After you have made the changes, ensure that you are committing to the `add-parent-bundle` branch and then click the **Commit changes** button. ![Commit bundle.yaml](github-commit-bundle-yaml.png?width=50pc)
-19. We have now made all the necessary changes and can now merge the pull request to the `main` branch. In GitHub, click on the **Pull requests** tab and then click on the link for the **Update jenkins.yaml** pull request. ![pull request link](github-pr-link.png?width=50pc)
-20. On the **Update jenkins.yaml #2** pull request page, click the **Merge pull request** button, then click the **Confirm merge** button and then click the **Delete branch** button. ![merge pull request](github-merge-pr.png?width=50pc)
+19. We have now made all the necessary changes and can now merge the pull request to the `main` branch. In GitHub, click on the **Pull requests** tab and then click on the link for the **Update jenkins.yaml** pull request.
+20. On the **Update jenkins.yaml #2** pull request page, click the **Merge pull request** button and then click the **Confirm merge** button. ![merge pull request](github-merge-pr.png?width=50pc)
 21. Navigate to the `main` branch job of your `ops-controller` Multibranch pipeline project on your Ops controller. ![ops-controller Mulitbranch](ops-controller-multibranch.png?width=50pc)
-22. After the the `main` branch job has completed successfully, navigate to the top level of your Ops controller, the ***system message*** should read - "Jenkins configured using CloudBees CI CasC with controller overrides" signifying that it has been overridden by your controller bundle. ![Overridden systemMessage](overridden-system-message.png?width=50pc) 
+22. After the the `main` branch job has completed successfully, navigate to the top level of your Ops controller, the ***system message*** should read - "Jenkins configured using CloudBees CI CasC with controller overrides" signifying that the `base` bundle has been overridden by your controller specific bundle. ![Overridden systemMessage](overridden-system-message.png?width=50pc) 
 
 {{% notice note %}}
 It takes a minute or two for the bundle file to be updated and reloaded.
