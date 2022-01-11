@@ -84,12 +84,12 @@ Now that we have reviewed the pipeline script for the workshop provisioning of m
   - the `headerLabel` `text` has been updated with `v5` in the `jcacs/jenkins.yaml` file
 3. Once you have reviewed the changed files, click on the **Conversation** tab, scroll down and click the green **Merge pull request** button and then the **Confirm merge** button.
 4. On the next screen click the **Delete branch** button.
-5. Navigate to the top level of your Ops controller and click the on the `controller-jobs` folder. Refresh the page until the `controller-provision` job appears.
+5. Navigate to the top level of your Ops controller and click the on the `controller-jobs` folder. Refresh the page until the `controller-provision` job appears. ![controller-provision-job](controller-provision-job?width=50pc)
 
 ### Create a new managed controller repository
 In the previous section you added the `controller-provision` Organization Folder job to your Ops controller to publish an event to trigger the provisioning of a managed controller. Now you will trigger the provisioning of a new managed controller by adding a `controller.yaml` file to the `main` branch of your copy of the `dev-controller` repository in your workshop GitHub Organization.
 
-1. navigate to your copy of the `dev-controller` repository in GitHub and click on the Pull requests link and then click on the link for the **Provision Controller** pull request. ![dev  provision pull request link](pr-link-dev-provision.png?width=50pc)
+1. Navigate to your copy of the `dev-controller` repository in GitHub and click on the Pull requests link and then click on the link for the **Provision Controller** pull request. ![dev  provision pull request link](pr-link-dev-provision.png?width=50pc)
 2. On the next screen, click on the **Files changed** tab to review the `controller.yaml` file being added to your `dev-controller` repository.
 3. Once you have reviewed the changed files, click on the **Conversation** tab, scroll down and click the green **Merge pull request** button and then the **Confirm merge** button.
 Navigate to the top level of your Ops controller, click the on the `controller-jobs` folder and then click on the `controller-provision` job. There should now be a `dev-controller` folder under the `controller-provision` job for your 
