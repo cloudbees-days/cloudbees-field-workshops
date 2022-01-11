@@ -10,7 +10,7 @@ This lab will explore more advanced aspects of bundle composition to include bun
 
 CloudBees CI Configuration as Code (CasC) for Controllers allows managing bundle files in folders and allows the use of multiple files for certain bundle file types. In this lab we will split your JCasC configuration (the `jenkins.yaml` file) into two files and put those files in a `jcasc` folder to make the configuration files easier to manage.
 
-1. Navigate back to the top level of your `ops-controller` repository in your workshop GitHub Organization, then click on the **Add file** button and then select **Create new file**. ![Create new file in GitHub](github-create-new-file.png?width=50pc)
+1. Navigate back to the top level of your `ops-controller` repository in your workshop GitHub Organization and click on the **Add file** button and then select **Create new file**. ![Create new file in GitHub](github-create-new-file.png?width=50pc)
 ```yaml
 credentials:
   system:
