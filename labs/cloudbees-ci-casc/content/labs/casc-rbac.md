@@ -82,7 +82,7 @@ rbac:
 
 7. After you have made the changes, ensure that you are committing to the `add-rbac` branch and then click the **Commit changes** button. ![Commit bundle.yaml with rbac](github-commit-rbac-bundle-yaml.png?width=50pc)
 8. Now that we have added the `rbac.yaml` and updated the `bundle.yaml`,  we can now merge the pull request to the `main` branch. In GitHub, click on the **Pull requests** tab and then click on the link for the **Create rbac.yaml** pull request. ![rbac pull request link](github-rbac-pr-link.png?width=50pc)
-9. On the **Create rbac.yaml #1** pull request page, click the **Merge pull request** button, then click the **Confirm merge** button and then click the **Delete branch** button.
+9. On the **Create rbac.yaml #1** pull request page, click the **Merge pull request** button and then click the **Confirm merge** button.
 10. Navigate to the `main` branch job of the `dev-controller` Multibranch pipeline project on your Ops controller. ![dev-controller Mulitbranch](dev-controller-multibranch-jcasc.png?width=50pc)
 11. After the the `main` branch job has completed successfully, navigate to the top level of your **dev controller**, click on the **Manage Jenkins** link in the left menu.
 14. You will see a *Manage Jenkins* page with fewer items and the left navigation will have fewer items. Also, many of the configuration items that are still available are view only. ![After Delegating Admin](after-delegating-admin.png?width=85pc)
