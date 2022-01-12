@@ -123,7 +123,7 @@ pipeline {
         gitHubParseOriginUrl()
         publishEvent event:jsonEvent("""
           {
-            'controller':{'name':'${env.GITHUB_ORG}-${GITHUB_REPO}','action':'casc_bundle_update','bundle_id':'${env.GITHUB_ORG}-${GITHUB_REPO}'},
+            'controller':{'name':'${env.GITHUB_ORG}-${GITHUB_REPO}','action':'casc_bundle_update','bundle_id':'${env.BUNDLE_ID}'},
             'github':{'organization':'${env.GITHUB_ORG}','repository':'${GITHUB_REPO}'},
             'secret':'${CASC_UPDATE_SECRET}',
             'casc':{'auto_reload':'false'}
