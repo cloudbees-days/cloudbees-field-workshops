@@ -96,7 +96,6 @@ rbac:
 removeStrategy:
  items: "none"
  rbac: "sync"
-
 items:
  - kind: "folder"
    name: "controller-jobs"
@@ -104,8 +103,8 @@ items:
    groups:
      - name: "Job Managers"
        members:
-         users:
-           - "Managers"
+         internal_groups:
+         - Managers
        roles:
          - name: "job-manager"
            grantedAt: "current"
