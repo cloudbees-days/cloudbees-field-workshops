@@ -18,6 +18,7 @@ In this lab you will:
 4.  On the build screen for **PR-1** click on the **GitHub** link in the left navigation menu that will take you to the pull request page in GitHub. ![PR-1 GitHub Link](pr-github-link.png?width=50pc)
 5.  To review the changes that will be made to your CloudBees CI configuration bundle for your CloudBees CI ***managed controller***, click on the **Files changed** tab and scroll down to see the differences. 
     - The `version` of the `bundle.yaml` file was updated to **2**, this is no longer required to trigger a reload of the configuration bundle from CloudBees CI Operations Center to your managed controller, but it is useful for tracking bundle changes.
+    - `items.yaml` was added to the list of files in the `bundle.yaml` file and the `items.yaml` file that is being added includes the configuration for the `template-jobs` folder and the `config-bundle-ops` Pipeline Template Catalog job. ![Adding items](pr-files-changed-items.png?width=50pc)
     - The `cloudbees-pipeline-policies` plugin, that we will need for the next lab, was added to the `plugins.yaml` file. ![Scan Log](pr-files-changed.png?width=50pc)
     - A pod template was added to provide ephemeral agents for maven tasks.
 6. Once you have reviewed the changes, click back on the **Conversation** tab and then click the green **Merge pull request** button and then the **Confirm merge** button. ![Merge PR](merge-pr.png?width=50pc)

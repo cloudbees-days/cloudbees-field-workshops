@@ -18,7 +18,6 @@ Using CasC for RBAC requires that you allow Managed Controllers to opt-out of in
 4. Click on the **RBAC lab updates** pull request in GitHub and then click on the **Files changed** tab to review the requested configuration changes.
 5. Note the new `rbac.yaml` file that we are adding. We are adding two roles and two groups using those roles. ![RBAC YAML](rbac-yaml.png?width=50pc) 
 6. Once you have reviewed the changed files, click on the **Conversation** tab, scroll down and click the green **Merge pull request** button and then the **Confirm merge** button.
-7. On the next screen click the **Delete branch** button.
 8. Navigate to the **config-bundle-ops** job under the **template-jobs** folder on your CloudBees CI managed controller.
 9. Shortly after the **main** branch job completes successfully, navigate to the top-level of your managed controller.
 10. Click on the **Manage Jenkins** link in the left navigation menu and then click on the **CloudBees Configuration as Code export and update** link. ![CloudBees Configuration config](config-bundle-system-config.png?width=50pc)
