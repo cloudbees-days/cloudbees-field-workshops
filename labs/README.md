@@ -11,3 +11,9 @@ hugo server --config ../cloudbees-feature-flags/config.toml --contentDir ../clou
 ```
 
 If you create a PR in the https://github.com/cloudbees-days/cloudbees-field-workshops/ repository then a preview site will be built and deployed for you with the link provided as a PR comment once the site is ready. 
+
+In order to render the workshops locally, you will need to ensure the theme is pulled locally. These are configured as git submodules, so you will need to pull those. You can do this by running:
+
+```bash
+git submodule update --init --recursive
+```

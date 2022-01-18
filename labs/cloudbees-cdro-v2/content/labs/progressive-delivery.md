@@ -1,5 +1,5 @@
 ---
-title: "Progressive Delivery"
+title: "WIP: Progressive Delivery"
 chapter: false
 weight: 9
 --- 
