@@ -108,3 +108,15 @@ Now you're ready to deploy into the production environment. Like before, you can
 This should successfully deploy into the production environment.
 
 ![Production deploy success](prod-9.png)
+
+
+One question may be occurring to you: Didn't we hardcode the URL for the application?
+
+That is right, right now we've deployed our application into two different environments, yet we have the same URL set for both. That's not what we want!
+
+This is where we'll bring in some environment properties.
+
+## Environment specific properties
+
+We're going to make some modifications that will allow us to deploy to each environment with some key differences including different URLs and different environment variables passed into the deploy.
+
