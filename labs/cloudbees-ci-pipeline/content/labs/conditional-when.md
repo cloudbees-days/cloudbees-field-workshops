@@ -112,7 +112,7 @@ pipeline {
 }
 ```
 
-By wrapping the ***Build and Push Image*** and ***Deploy*** `stages` in the ***Main Branch Stages***, the `when` directive for the `main` branch only has to be specified once. Also, by using the `not` nesting condition, the ***Test*** `stage` will only be executed when the branch being processed is **not** the `main` branch.
+By wrapping the ***Build and Push Image*** and ***Deploy*** `stages` in the ***Main Branch Stages***, the `when` directive for the `main` branch only has to be specified once. Also, by using the `not` `when` condition, the ***Test*** `stage` will only be executed when the branch being processed is **not** the `main` branch.
 
 3. Commit the changes to the **main** branch and then navigate to the **insurance-frontend** job on your managed controller. The job for the **main** branch should be running or queued to run. Once the run completes you will see that the ***Test*** `stage` was skipped but the **Main Branch Stages** were not. ![Conditional Nested Stage](conditional-nested-stage.png?width=50pc) 
 
