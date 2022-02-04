@@ -15,8 +15,8 @@ The Cross Team Collaboration feature has a configurable router for routing event
  You should see the following configuration: ![Notification Configuration](notification-config.png?width=50pc)
 
 
-1. To use Cross Team Collaboration we will need to update the **helloworld-nodejs** Jenkinsfile to listen for a notification event to be published by the upstream, or publishing, job. We will do that by adding a [trigger directive](https://www.jenkins.io/doc/book/pipeline/syntax/#triggers) to your **Jenkinsfile** Pipeline script.
-2. Open the GitHub editor for the **Jenkinsfile** file in the **main** branch of your copy of the **helloworld-nodejs** repository.
+1. To use Cross Team Collaboration we will need to update the **insurance-frontend** Jenkinsfile to listen for a notification event to be published by the upstream, or publishing, job. We will do that by adding a [trigger directive](https://www.jenkins.io/doc/book/pipeline/syntax/#triggers) to your **Jenkinsfile** Pipeline script.
+2. Open the GitHub editor for the **Jenkinsfile** file in the **main** branch of your copy of the **insurance-frontend** repository.
 3. Add the following `trigger` directive just above the top-level `stages` block:
 
 ```groovy
@@ -82,7 +82,7 @@ pipeline {
 ```
 {{% /expand%}}
 
-4. Commit the changes and then navigate to the **main** branch of your **helloworld-nodejs** project on your Managed Controller and view the configuration for that job by click the **View Configuration** link on the **Branch main** job page. ![View Configuration Link](view-config-link.png?width=50pc)
+4. Commit the changes and then navigate to the **main** branch of your **insurance-frontend** project on your Managed Controller and view the configuration for that job by click the **View Configuration** link on the **Branch main** job page. ![View Configuration Link](view-config-link.png?width=50pc)
 5. Click on the **Build Triggers** tab on the job configuration page for the **main** branch job and you will the **Build whenever the specified event is seen** trigger is checked and configured with a **Simple Event**. ![View Configuration Link](event-trigger-config.png?width=50pc)
 
 {{% notice note %}}
@@ -115,16 +115,16 @@ pipeline {
 }
 ```
 
-That event will be published **across all Managed Controllers in the Workshop cluster** via the CloudBees CI Cloud Operations Center event router triggering everyones' **helloworld-nodejs** Pipelines to run. 
+That event will be published **across all Managed Controllers in the Workshop cluster** via the CloudBees CI Cloud Operations Center event router triggering everyones' **insurance-frontend** Pipelines to run. 
 
-7. Now, once that change is committed, and the job with the `publishEvent` runs, everyone will see the **main** branch of their **helloworld-nodejs** job triggered by the `hello-api-deploy-event` simple event. ![View Configuration Link](triggered-by-event.png?width=50pc)
+7. Now, once that change is committed, and the job with the `publishEvent` runs, everyone will see the **main** branch of their **insurance-frontend** job triggered by the `hello-api-deploy-event` simple event. ![View Configuration Link](triggered-by-event.png?width=50pc)
 
 
 Refer to the link to see a more complicated example using JSON with a more realistic payload [here](https://www.cloudbees.com/blog/how-to-improve-cross-team-collaboration-in-jenkins).
 
 ## Next Lesson
 
-Before moving on to the next lesson make sure that your **Jenkinsfile** Pipeline script on the **main** branch of your copy of the **helloworld-nodejs** repository matches the one from [below](#finished-jenkinsfile-for-pipeline-pod-templates-and-cross-team-collaboration).
+Before moving on to the next lesson make sure that your **Jenkinsfile** Pipeline script on the **main** branch of your copy of the **insurance-frontend** repository matches the one from [below](#finished-jenkinsfile-for-pipeline-pod-templates-and-cross-team-collaboration).
 
 ### Finished Jenkinsfile for *Cross Team Collaboration* Lab
 ```
