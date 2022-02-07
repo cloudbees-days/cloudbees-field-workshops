@@ -50,14 +50,10 @@ Note the `beforeAgent true` option - this setting will result in the `when` cond
   }
   ```
 
-3. Commit the changes and then navigate to the **insurance-frontend** job on your Managed Controller and the job for the **development** branch should be running or queued to run. Note that the ***Build and Push Image*** `stage` was skipped. ![Conditional Stage Skipped](conditional-skipped-stage.png?width=50pc) 
-4. Now we will create a [Pull Request](https://help.github.com/en/articles/creating-a-pull-request) between the **development** branch and **main** branch of your **insurance-frontend** repository. Navigate to your **insurance-frontend** repository in GitHub, make sure you are on the `development` branch. Click on the **Compare & pull request** button at the top; if you don't see that then click the **Contribute** lin and then click the **Open pull request** button. ![Create Pull request link](create-pr-link.png?width=50pc) 
+3. Commit the changes directly to your `development` branch and then navigate to the **insurance-frontend** job on your Managed Controller and the job for the **development** branch should be running or queued to run. Note that the ***Build and Push Image*** `stage` was skipped. ![Conditional Stage Skipped](conditional-skipped-stage.png?width=50pc) 
+4. Now we will create a [Pull Request](https://help.github.com/en/articles/creating-a-pull-request) between the **development** branch and **main** branch of your **insurance-frontend** repository. Navigate to your **insurance-frontend** repository in GitHub, make sure you are on the `development` branch. Click on the **Compare & pull request** button at the top; if you don't see that then click the **Contribute** link and then click the **Open pull request** button. ![Create Pull request link](create-pr-link.png?width=50pc) 
 5. Make sure that the **base repository** is the **main** branch of your **insurance-frontend** repository, add a comment and then click the **Create pull request** button. ![Create Pull request](create-pr.png?width=50pc) 
 6. A job will be created for the pull request and once it has completed successfully your pull request will show that **All checks have passed**. Go ahead and click the **Merge pull request** button and then click the **Confirm merge** button.
-
-{{% notice warning %}}
-**DO NOT delete**  the **development** branch.
-{{% /notice %}}
 
 ![Merge Pull request](merge-pr.png?width=50pc)
 
