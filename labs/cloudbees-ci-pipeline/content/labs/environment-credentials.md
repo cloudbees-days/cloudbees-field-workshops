@@ -1,7 +1,7 @@
 ---
 title: "Environment Variables and Credentials"
 chapter: false
-weight: 6
+weight: 5
 --- 
 
 The Declarative Pipeline syntax provides an [environment directive](https://www.jenkins.io/doc/book/pipeline/syntax/#environment) that allows specifying key-value pairs at the Pipeline global or `stage` level. In addition to providing environment variables, the `environment` directive also [integrates with Jenkins credentials](https://www.jenkins.io/doc/book/pipeline/syntax/#supported-credentials-type) to provide a simpler way of securely injecting credentials into your Jenkins Pipeline. In this lab we will explore both types of Declarative Pipeline environment variables.
