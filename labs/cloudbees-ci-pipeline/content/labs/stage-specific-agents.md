@@ -14,15 +14,15 @@ One of the **containers** in a **Pod Template** must host the actual Jenkins bui
 
 We will use the Kubernetes plugin [Pipeline container block](https://jenkins.io/doc/pipeline/steps/kubernetes/#container-run-build-steps-in-a-container) to run Pipeline `steps` inside a specific container configured as part of a Jenkins Kubernetes Agent Pod template. In our initial Pipeline, we used `agent any` which required at least one Jenkins agent configured to *Use this node as much as possible* - resulting in the use of a Pod Template that only had a `jnlp` container. But now we want to use Node.js in our Pipeline. [Jenkins CasC](https://github.com/jenkinsci/configuration-as-code-plugin) was used to pre-configure the [CloudBees Kube Agent Management plugin](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/agents#_editing_pod_templates_per_team_using_masters) to include a [Kubernetes Pod Template at the Managed Controller level](https://github.com/cloudbees-days/cloudbees-ci-config-bundle/blob/pipeline-workshop/jenkins.yaml#L33) to provide a Node.js container. 
 
-1. Go to the top-level of your Managed Controller, click on the **Manage Jenkins** link and then scroll down and click on the **Kubernetes Pod Templates** item. ![Controller Pod Templates](controller-pod-templates.png?width=50pc) 
+1. Go to the top-level of your CloudBees CI managed controller, click on the **Manage Jenkins** link and then scroll down and click on the **Kubernetes Pod Templates** item. ![Controller Pod Templates](controller-pod-templates.png?width=50pc) 
 2. On the next screen, click on the **Pod Template details...** button for the ***Kubernetes Pod Template*** with the **Name** **'nodejs-app'**.  ![Kubernetes Node.js Agent Template](k8s-nodejs-agent-template.png?width=50pc) 
-Take note of the ***Labels*** field with a value of ***nodejs-app*** and the **Container Template** ***Name*** field with a value of ***nodejs*** - both of these are important and we will need those values to configure our Pipeline to use this **Pod Template** and **Container Template** in your `Jenkinsfile`. The **Pod Template** **Labels** are used in a Jenkins Pipeline to specify the template to create an agent from, while the **Container Template** **Name** is used to run 1 or more steps in a specific `container` provided by the **Pod Template**. Also note the **Docker image** being specified: `node:14-alpine`.
-3. Navigate to and click on the `Jenkinsfile` file in the **development** branch of your **helloworld-nodejs** repository and click on the **Edit this file** button (pencil) and replace the global `agent` section with the following:
+Take note of the ***Labels*** field with a value of ***nodejs-app*** and the **Container Template** ***Name*** field with a value of ***nodejs*** - both of these are important and we will need those values to configure our Pipeline to use this **Pod Template** and **Container Template** in your `Jenkinsfile`. The **Pod Template** **Labels** are used in a Jenkins Pipeline to specify the template to create an agent from, while the **Container Template** **Name** is used to run 1 or more steps in a specific `container` provided by the **Pod Template**. Also note the **Docker image** being specified: `us-east1-docker.pkg.dev/core-workshop/workshop-registry/node:14-alpine`.
+3. Navigate to and click on the `Jenkinsfile` file in the **development** branch of your **insurance-frontend** repository and click on the **Edit this file** button (pencil) and replace the global `agent` section with the following:
 ```
   agent none
 ```
 
-4. Next, in the **Say Hello** `stage` add the following `agent` section right above the `steps` section so that we will get the Kubernetes Pod Template configured for your Managed Controller with the **Container Template** that includes the `node:14-alpine` Docker(container) image above: 
+4. Next, in the **Say Hello** `stage` add the following `agent` section right above the `steps` section so that we will get the Kubernetes Pod Template configured for your Managed Controller with the **Container Template** that includes the `us-east1-docker.pkg.dev/core-workshop/workshop-registry/node:14-alpine` Docker(container) image above: 
 ```
     agent { label 'nodejs-app' }
 ```
@@ -43,8 +43,8 @@ pipeline {
 ```
 {{% /expand%}}
 
-5. Commit that change to the `development` branch and navigate to your **helloworld-nodejs** job on your Managed Controller. The build logs should be almost the same as before because we are still using the default `jnlp` container. ![Build with Agent Template](build-agent-template.png?width=50pc) 
-6. Let's change that by replacing the **Say Hello** `stage` with the following **Test** `stage` so the steps run in the **nodejs** `container`. Edit the `Jenkinsfile` file in the **development** branch of your forked **helloworld-nodejs** repository so the entire pipeline looks like the following:
+5. Commit that change to the `development` branch and navigate to your **insurance-frontend** job on your Managed Controller. The build logs should be almost the same as before because we are still using the default `jnlp` container. ![Build with Agent Template](build-agent-template.png?width=50pc) 
+6. Let's change that by replacing the **Say Hello** `stage` with the following **Test** `stage` so the steps run in the **nodejs** `container`. Edit the `Jenkinsfile` file in the **development** branch of your forked **insurance-frontend** repository so the entire pipeline looks like the following:
 
 ```
 pipeline {
@@ -63,8 +63,8 @@ pipeline {
 }
 ```
 
-  All of the Pipeline steps within the `container` block will run in the container specified by the **Name** of the **Container Template** - and in this case that **Container Template** is using the `node:14-alpine` container image as we saw above. Commit the changes and the **helloworld-nodejs** job will run - it will result in an error because the `nodejs` container does not have Java installed (and why should it). Hover over the failed stage in the **Stage View** of your development branch job and click on the **Logs** button.   ![Open Logs](stage-view-logs-button.png?width=50pc) Next, expand the last step - `sh 'java -version'` - to see the error. ![Java Error](agent-java-error.png?width=50pc) 
-7. We will fix the error in the **Test** `stage` we added above by replacing the `sh 'java -version'` step with the `sh 'node --version'` step and moving the `sh 'java -version` step above the `container` block in the `Jenkinsfile` file in the **development** branch of your forked **helloworld-nodejs** repository so the entire pipeline looks like the following:
+  All of the Pipeline steps within the `container` block will run in the container specified by the **Name** of the **Container Template** - and in this case that **Container Template** is using the `us-east1-docker.pkg.dev/core-workshop/workshop-registry/node:14-alpine` container image as we saw above. Commit the changes and the **insurance-frontend** job will run - it will result in an error because the `nodejs` container does not have Java installed (and why should it). Hover over the failed stage in the **Stage View** of your development branch job and click on the **Logs** button.   ![Open Logs](stage-view-logs-button.png?width=50pc) Next, expand the last step - `sh 'java -version'` - to see the error. ![Java Error](agent-java-error.png?width=50pc) 
+7. We will fix the error in the **Test** `stage` we added above by replacing the `sh 'java -version'` step with the `sh 'node --version'` step and moving the `sh 'java -version` step above the `container` block in the `Jenkinsfile` file in the **development** branch of your forked **insurance-frontend** repository so the entire pipeline looks like the following:
 ```
 pipeline {
   agent none
@@ -82,10 +82,10 @@ pipeline {
   }
 }
 ```
-8. Commit the changes and the **helloworld-nodejs** job will run and it will complete successfully with the following output: ![Agent Success](agent-java-success.png?width=50pc) 
+8. Commit the changes and the **insurance-frontend** job will run and it will complete successfully with the following output: ![Agent Success](agent-java-success.png?width=50pc) 
 
 {{% notice note %}}
-The sh 'java -version' step before the `container('nodejs')` completed successfully this time because it used the default `jnlp` container to execute any steps not in the `container` block.
+The sh 'java -version' step before the `container('nodejs')` completed successfully this time because it used the default `jnlp` container to execute any steps not in the `container` block. You could also explicitly run pipeline steps within the `jnlp` container by wrapping them with `container('jnlp')`.
 {{% /notice %}}
 
 ### Finished Jenkinsfile for *Stage Specific Agents* Lab
