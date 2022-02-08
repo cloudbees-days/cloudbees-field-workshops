@@ -1,7 +1,7 @@
 ---
 title: "CloudBees Pipeline Template Catalogs"
 chapter: false
-weight: 6
+weight: 7
 --- 
 
 Up to this point, the `Jenksfile` that we have created does not do a whole lot. We will quickly change that by using a template from a [Pipeline Template Catalog](https://docs.cloudbees.com/docs/admin-resources/latest/pipeline-templates-user-guide/setting-up-a-pipeline-template-catalog).

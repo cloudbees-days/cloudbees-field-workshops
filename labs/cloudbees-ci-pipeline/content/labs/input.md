@@ -1,7 +1,7 @@
 ---
 title: "Declarative Pipelines with Interactive Input"
 chapter: false
-weight: 7
+weight: 6
 --- 
 
 In this lab, we will see how you can capture interactive input in your Jenkins Pipeline while it is running by using the `input` step and we will explore some pitfalls you will want to avoid when using the `input` step.
