@@ -65,7 +65,7 @@ pipeline {
 }
 ```
 
-6. Commit the changes and then navigate to the **development** branch of your **insurance-frontend** job on your CloudBees CI Managed Controller. The job will run successfully. Also, note the output of the `sh 'node --version'` step - it is `v17.x.x` instead of `v14.x.x`: ![Update Node Container Tag](pod-template-update-image-tag.png?width=50pc) Also notice that the final Kubernetes pod spec for the agent is printed out in the logs and is merge of a default template (with the **jnlp** container) and the pod spec from your **insurance-frontend** repository:
+6. Commit the changes and then navigate to the **development** branch of your **insurance-frontend** job on your CloudBees CI Managed Controller. The job will run successfully. Also, note the output of the `sh 'node --version'` step - it is `v17.x.x` instead of `v14.x.x`: ![Update Node Container Tag](pod-template-update-image-tag.png?width=50pc) Also notice that the final Kubernetes pod spec for the agent is printed out in the logs and is merge of a default template (with the **jnlp** container) and the `nodejs-pod.yaml` pod spec from your **insurance-frontend** repository:
 
 ```yaml
 ---
