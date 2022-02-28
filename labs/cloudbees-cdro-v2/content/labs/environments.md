@@ -120,3 +120,16 @@ This is where we'll bring in some environment properties.
 
 We're going to make some modifications that will allow us to deploy to each environment with some key differences including different URLs and different environment variables passed into the deploy.
 
+First, let's pull the environment's name into the values section of the application deployment.
+
+You can do this by using the syntax of `$[propertyName]` to access the value of a particular property. There are a bunch of properties we could access throughout the platform, but in this case we want to reference the current environment we're running against.
+
+There is a handy shortcut we can use which is `$[/myEnvironment/name]` which will do just this.
+
+Now to update the application deployment, you click on the three dots in the top right of the "hello-app" component.
+
+![Update app details](envvars-1.png)
+
+Now you'll need to update the last line.
+
+<script defer src="../scripts/replacer.js" type="module"></script>

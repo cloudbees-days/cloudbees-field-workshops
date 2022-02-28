@@ -113,7 +113,7 @@ Next you need to fill out the definition form.
 | Additional options | `--create-namespace` | If you want to pass in arguments like you do using the Helm cli, you can pass them in here  |
 | Values | *Below* | You can also pass in values in YAML form. This is what we'll be doing for the workshop. |
 
-**Values** - You'll need to replace the `my-username` values with your specific username.
+**Values** - You'll want to make sure the subdomain is targeting your username.
 ```yaml
 ingress:
   hosts:
@@ -199,3 +199,5 @@ You should see the name of your username and the environment QA listed.
 
 
 In the next lab we'll be diving deeper into the environments and setting up environment specific variables.
+
+<script defer src="../scripts/replacer.js" type="module"></script>
