@@ -99,4 +99,3 @@ initRollout().then(function () {
   console.log('Done loading Rollout');
 });
 
-
