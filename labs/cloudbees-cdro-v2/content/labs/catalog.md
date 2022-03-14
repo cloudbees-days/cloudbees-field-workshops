@@ -1,5 +1,5 @@
 ---
-title: "Self-service catalog"
+title: "WIP: Self-service catalog"
 chapter: false
 weight: 7
 --- 

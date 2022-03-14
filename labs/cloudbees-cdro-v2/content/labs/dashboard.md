@@ -1,5 +1,5 @@
 ---
-title: "Dashboarding and analytics"
+title: "WIP: Dashboarding and analytics"
 chapter: false
 weight: 8
 --- 
