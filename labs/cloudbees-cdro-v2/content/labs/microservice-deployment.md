@@ -191,7 +191,7 @@ You can click the top list item to see more detail on the overall run and you ca
 
 ### Visiting our application
 
-Now we can visit the application we just deployed by visiting the URL from the values definition of our application. This will be in the form of `my-username.cdro-workshop.cb-demos.io`.
+Now we can visit the application we just deployed by visiting the URL from the values definition of our application. This will be in the form of `https://my-username.cdro-workshop.cb-demos.io`.
 
 You should see the name of your username and the environment QA listed. 
 

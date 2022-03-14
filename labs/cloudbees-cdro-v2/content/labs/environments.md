@@ -73,19 +73,19 @@ First, click on the "New Cluster" button in the inner block. This will pop up th
 
 This will look remarkably similar to before. We'll just replace the values of QA that we used previously with that of Production.
 
-| Field | Value | Description | 
-| --- | --- | --- |
-| Environment name | `Production` | The name to identify your environment |
-| Project | Select your project | The project inside which this environment will be stored |
-| Environment description | *Optional* | A field to give textual details about this environment |
-| Cluster name | `default` | A name to identify this cluster |
-| Cluster description | *Optional* | A field to give textual details about this cluster |
-| Configuration provider | `Kubernetes (via Helm)` | The type of environment you're defining |
-| Configuration name | `helm` | A reference to a configuration that lets CD/RO know where to use Helm |
-| Namespace | `my-username-prod` | The Kubernetes namespace where your application will be deployed. You should update this to be YOUR_USERNAME-prod. |
-| Kubeconfig context |  | This allows you to target a specific cluster if your configuration is pointed at multiple. For this workshop you can leave this blank. |
-| Utility resource name | `k8s-agent` | This is the name to identify the utility resource |
-| Resource | `k8s-agent` | This is the agent which will communicate with the Kubernetes cluster  |
+| Field                   | Value                   | Description                                                                                                                            | 
+|-------------------------|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| Environment name        | `Production`            | The name to identify your environment                                                                                                  |
+| Project                 | Select your project     | The project inside which this environment will be stored                                                                               |
+| Environment description | *Optional*              | A field to give textual details about this environment                                                                                 |
+| Cluster name            | `default`               | A name to identify this cluster                                                                                                        |
+| Cluster description     | *Optional*              | A field to give textual details about this cluster                                                                                     |
+| Configuration provider  | `Kubernetes (via Helm)` | The type of environment you're defining                                                                                                |
+| Configuration name      | `helm`                  | A reference to a configuration that lets CD/RO know where to use Helm                                                                  |
+| Namespace               | `my-username-prod`      | The Kubernetes namespace where your application will be deployed. You should update this to be YOUR_USERNAME-prod.                     |
+| Kubeconfig context      |                         | This allows you to target a specific cluster if your configuration is pointed at multiple. For this workshop you can leave this blank. |
+| Utility resource name   | `k8s-agent`             | This is the name to identify the utility resource                                                                                      |
+| Resource                | `k8s-agent`             | This is the agent which will communicate with the Kubernetes cluster                                                                   |
 
 ![New environment form](prod-4.png)
 
@@ -112,7 +112,7 @@ This should successfully deploy into the production environment.
 
 One question may be occurring to you: Didn't we hardcode the URL for the application?
 
-That is right, right now we've deployed our application into two different environments, yet we have the same URL set for both. That's not what we want!
+That is right! Right now we've deployed our application into two different environments, yet we have the same URL set for both. That's not what we want!
 
 This is where we'll bring in some environment properties.
 
@@ -120,20 +120,100 @@ This is where we'll bring in some environment properties.
 
 We're going to make some modifications that will allow us to deploy to each environment with some key differences including different URLs and different environment variables passed into the deploy.
 
-First, let's pull the environment's name into the values section of the application deployment.
+### Adding subdomain environment variable
+First, you'll add a property to the two environments that specifies a subdomain. Then you'll update the application model to use this subdomain so each deployment can actually be accessed.
+
+We'll start with the QA environment. You can add a property by clicking on the menu with the three dots on the QA environment box. 
+
+![Add a property](envvars-1.png)
+![Add a property](envvars-2.png)
+![Add a property](envvars-3.png)
+
+Go ahead and fill it out with the properties:
+
+| Property | Value |
+| --- | --- |
+| subdomain | `my-username-qa` |
+
+You can leave all the other values default and save it by clicking **OK**.
+
+![New property](envvars-4.png)
+
+Now go ahead and do the same for the production environment, except use these properties:
+
+| Property | Value              |
+| --- |--------------------|
+| subdomain | `my-username-prod` |
+
+![New property](envvars-5.png)
+
+And with that, we're ready to update the application model.
+
+### Updating the app model
+
+Let's go back to the application model. Go ahead and click on the **Details** option in the menu for the **hello-app** model.
+
+![Update app details](envvars-6.png)
+![Update app details](envvars-7.png)
+
+We'll update the values block to interpolate some values rather than using the hardcoded values we started with. To make sure you get all the values right, you can copy the following block.
+
+```yaml
+ingress:
+  hosts:
+    - host: $[/myEnvironment/subdomain].cdro-workshop.cb-demos.io
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls:
+    - secretName: insurance-frontend-tls
+      hosts:
+        - $[/myEnvironment/subdomain].cdro-workshop.cb-demos.io
+
+name: "$[/myJob/launchedByUser]"
+environment: "$[/myEnvironment/name]"
+```
+
+What we're doing here is using the `$[propertyName]` syntax to access the values of particular properties. There are a bunch of properties we can access throughout the platform, but in this case we want to reference a few related to this particular environment and deployment.
+
+| Property                      | Description                                                                        |
+|-------------------------------|------------------------------------------------------------------------------------|
+| `$[/myEnvironment/subdomain]` | Accesses the `subdomain` property on the environment targeted by a deployment run. |
+| `$[/myEnvironment/name]`      | Accesses the name of the environment targed by a deployment run.                   |
+| `$[/myJob/launchedByUser]`    | Grabs the name of the user who kicked off the run.                                 | 
+
 
 You can do this by using the syntax of `$[propertyName]` to access the value of a particular property. There are a bunch of properties we could access throughout the platform, but in this case we want to reference the current environment we're running against.
 
-There is a handy shortcut we can use which is `$[/myEnvironment/name]` which will do just this.
+## Running the deployments
+With these new settings in place, go ahead and deploy into the QA environment.
 
-Now to update the application deployment, you click on the three dots in the top right of the "hello-app" component.
+![New run](rerun-1.png)
+![New run](rerun-2.png)
+![New run](rerun-3.png)
 
-![Update app details](envvars-1.png)
+This should run fairly quickly. Once it is complete, you can access your application at: `my-username-qa.cdro-workshop.cb-demos.io`
 
-Now you'll need to update the last line.
+<div id="qa-env-link"></div>
+
+![QA new run](rerun-4.png)
+
+Now go ahead and do the same for the production environment. You'll be able to access the production application at: `my-username-prod.cdro-workshop.cb-demos.io`
+<div id="prod-env-link"></div>
+
+![Production new run](rerun-5.png)
 
 
+After deploying both applications you should now see:
+1. You can now access the two different deployments on different URLs
+2. Your username should appear in the **Deployed by** field
+3. The **Environment** field should reflect the environment it is running in
 
+
+## Up next
+
+In the next lab you'll be integrating the application and environment models you've worked on over the past 2 labs into the release from the first lab.
 
 
 <script defer src="../scripts/replacer.js" type="module"></script>
+<script defer src="../scripts/env-access-buttons.js" type="module"></script>

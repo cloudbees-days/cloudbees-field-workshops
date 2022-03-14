@@ -10,3 +10,4 @@ Array.from(elements).forEach(el => {
   const replaced = inner.replaceAll("my-username", username)
   el.innerHTML = replaced
 })
+
