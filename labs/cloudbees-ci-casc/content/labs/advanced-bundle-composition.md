@@ -237,8 +237,7 @@ version: '1'
 configurations:
 - description: Workshop Additional Plugins
   includePlugins:
-    cloudbees-restricted-credentials: {version: '0.1'}
-    pipeline-utility-steps: {version: '2.10.0'}
+    pipeline-utility-steps: {version: '2.12.0'}
 ```
 6. Now that we have reviewed the contents of the `base` bundle we will update your Ops controller bundle to use it as a parent bundle. However, before we do that, it is important to understand how JCasC files are processed. [JCasC configuration](https://github.com/jenkinsci/configuration-as-code-plugin) supports different [merge strategies](https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/features/mergeStrategy.md), currently limited to `errorOnConflict` and `override`. Everyone's managed controllers are configured to use the `override` merge strategy (via the `-Dcasc.merge.strategy=override` system property).
   - `errorOnConflict` is what existed before merge strategies were added to JCasC and will result in a Jenkins exception when loading a bundle with conflicting configuration; meaning that a child bundle cannot overwrite any of the parent configuration values
