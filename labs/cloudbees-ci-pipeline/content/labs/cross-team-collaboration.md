@@ -20,8 +20,8 @@ The Cross Team Collaboration feature has a configurable router for routing event
 3. Add the following `trigger` directive just above the top-level `stages` block:
 
 ```groovy
-  triggers {
-    eventTrigger simpleMatch('deploy-event')
+    triggers {
+    eventTrigger jmespathQuery("image.action=='update' && image.name=='${baseImageName}'")
   }
 ```
 
@@ -37,19 +37,21 @@ pipeline {
     skipDefaultCheckout true
     timeout(time: 10, unit: 'MINUTES')
   }
+  triggers {
+    eventTrigger jmespathQuery("image.action=='update' && image.name=='${baseImageName}'")
+  }
   environment {
     REPO_OWNER = "${repoOwner}"
     REPO_NAME = "${repository}"
     GITHUB_CREDENTIAL_ID = "${githubCredentialId}"
   }
-  triggers {
-    eventTrigger simpleMatch('deploy-event')
-  } 
   stages {
     stage('Staging PR') {
       when {
         beforeAgent true
-        branch 'pr-*'
+        anyOf {        
+          branch 'pr-*'
+          triggeredBy 'EventTriggerCause'
       }
       environment {
         DEPLOYMENT_ENV = "staging"
@@ -87,10 +89,14 @@ pipeline {
 After first adding a new `trigger` you must run the job at least once so that the `trigger` is saved to the Jenkins job configuration (similar to setting the `buildDiscarder` `option`).
 {{% /notice %}}
 
-6. Next, your instructor will set up a Pipeline project with the following **[simple event](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/cross-team-collaboration#cross-team-event-types)**: 
+6. Next, your instructor will set up a Pipeline project with the following **[JSON event](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/cross-team-collaboration#cross-team-event-types)**: 
 
 ```
-publishEvent simpleEvent('deploy-event')
+publishEvent event:jsonEvent("""
+          {
+            'image':{'name':'nginx','action':'update','tag':'1.20.2'}
+          }
+        """), verbose: true
 ```
 
 The entire Jenkins Pipeline containing the publishing event:
@@ -106,7 +112,11 @@ pipeline {
     stage('Deploy') {
       steps {
         echo 'deploy'
-        publishEvent simpleEvent('deploy-event')
+        publishEvent event:jsonEvent("""
+          {
+            'image':{'name':'nginx','action':'update','tag':'1.20.2'}
+          }
+        """), verbose: true
       }
     }
   }
@@ -115,8 +125,8 @@ pipeline {
 
 That event will be published **across all Managed Controllers in the Workshop cluster** via the CloudBees CI Cloud Operations Center event router triggering everyones' **insurance-frontend-build-deploy** Pipelines to run. 
 
-7. Now, once that change is committed, and the job with the `publishEvent` runs, everyone will see the open **PR** branch of their **insurance-frontend-build-deploy** job triggered by the `deploy-event` simple event.
+7. Now, once that change is committed, and the job with the `publishEvent` runs, everyone will see the open **PR** branch of their **insurance-frontend-build-deploy** job triggered by the `deploy-event` JSON event.
 
 
-Refer to the link to see a more complicated example using JSON with a more realistic payload [here](https://www.cloudbees.com/blog/how-to-improve-cross-team-collaboration-in-jenkins).
+Refer to the link to see another example using JSON with a more realistic payload [here](https://www.cloudbees.com/blog/how-to-improve-cross-team-collaboration-in-jenkins).
 
