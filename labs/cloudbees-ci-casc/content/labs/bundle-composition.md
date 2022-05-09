@@ -278,7 +278,9 @@ items:
 ```
 
 ## Creating/Updating a Configuration Bundle from a Bundle Export
-As you can see from the composition overview above, the YAML in the different configuration files can be somewhat complicated, and that is with only a some of the bundle file types and a fairly simple set of configurations. Luckily, CloudBees CI Configuration as Code (CasC) for Controllers supports an export capability that allows you to export the current configuration from an existing controller. In this lab you will make configurations changes on your Ops controller using the UI and then use the export feature to copy new or updated configuration to the files in your `ops-controller` repository. First, we will add a new, non-CAP plugin and then we will add some properties to a folder - and we will use the CasC export functionality to copy the YAML for those updates to apply to the your bundle in your `ops-controller` repository.
+As you can see from the composition overview above, the YAML in the different configuration files can be somewhat complicated, and that is with only a some of the bundle file types and a fairly simple set of configurations. Luckily, CloudBees CI Configuration as Code (CasC) for Controllers supports an export capability that allows you to export the current configuration from an existing controller. In this lab you will make configurations changes on your Ops controller using the UI and then use the export feature to copy new or updated configuration to the files in your `ops-controller` repository. First, we will add a new, non-CAP plugin and then we will add some properties to a folder - and we will use the CasC export functionality to copy the YAML for those updates to apply to the your bundle in your `ops-controller` repository. 
+
+This lab models the process of adding plugin through the usual Jenkins user interface and then updating the repository to reflect the contents of the controller. If you would rather avoid stepping through each detail, please skip to the next section, where the changes to the configuration are all gathered into a pull request, and the instructions to workshop participants are simpler. 
 
 1. Navigate to the top level of your Ops controller - it will be in the folder with the same name as your workshop GitHub Organization name (lower-cased), and you will see a folder named `controller-jobs`.
 2. At the top level of your Ops controller, click on the **Mange Jenkins** link in the left menu. ![Manage Jenkins link](manage-jenkins-link.png?width=50pc) 
@@ -460,3 +462,22 @@ credentials:
 {{% /expand%}}
 
 So now we have an updated configuration bundle based on bundle exports from our Ops controller. However, the updated bundle hasn't actually been applied to your controller. In the next lab we will update the `controller-casc-update` job configuration so it will actually update the bundle files on Operations Center, that will in turn trigger an available update on your controller. After that, any time there is a commit to the `main` branch of your `ops-controller` repository, it will automatically be updated on your CloudBees CI controller.
+
+## Creating/Updating a Configuration Bundle from a Pull Request
+Navigation to pull request place holder
+navigation to files changed pull request tab place holder
+changes in bundle yaml placeholder
+  version
+  catalog
+Addition of plugin catalog
+  compare to visualized version from Jenkins ui
+  notice version of plugin, compare to plugins.yaml
+Changes in plugins.yaml
+  notice non-cap plugines 
+Changes in items yaml placeholder
+  notice allowed types
+Changes in jenkins yaml placeholder
+  notice system message and header label
+Navigate back to conversation tab
+  click green merge pull request followed by confirm merge
+  comment on deleted branch  
