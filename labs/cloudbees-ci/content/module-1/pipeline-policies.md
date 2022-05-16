@@ -33,7 +33,7 @@ If you don't see the new version available then click the **Check for Updates** 
 11. Navigate to the **config-bundle-ops** Mutlibranch project in the **template-jobs** folder, click on the **main** branch job and then click the **Build Now** link in the left menu. ![Build with Policy](build-with-policy.png?width=50pc) 
 12. Navigate to the logs for that build and you will see that the build failed due to **Validation Errors**. ![Policy Error](pipeline-policy-error.png?width=50pc) 
 13. To fix this we will have to once again update the `Jenkinsfile` of the **CloudBees CI Configuration Bundle** template in your copy of the `pipeline-template-catalog` repository - remember, even though we are building from the `cloudbees-ci-config-bundle` repository, the `Jenkinsfile` is actually coming from the **CloudBees CI Configuration Bundle** template. Navigate to that `Jenkinsfile` and click the **pencil icon** to open it in the GitHub file editor. ![Edit Timeout](pipeline-policy-open-jenkinsfile.png?width=50pc) 
-14. In the GitHub file editor, change the `time` value of the `timeout` pipeline `option`  from `60` to `10` (it needs to be 30 minutes or less to validate against the ***Timeout policy***) and then click the **Commit changes** *(directly to the `main` branch)* button to commit the updated `Jenkinsfile` to your **main** branch. ![Fix Timeout](pipeline-policy-fix-commit-jenkinsfile.png?width=50pc) 
+14. In the GitHub file editor, change the `time` value of the `timeout` pipeline `option`  from `60` to `10` (it needs to be 30 minutes or less to successfully validate against the ***Timeout policy***) and then click the **Commit changes** *(directly to the `main` branch)* button to commit the updated `Jenkinsfile` to your **main** branch. ![Fix Timeout](pipeline-policy-fix-commit-jenkinsfile.png?width=50pc) 
 {{%expand "expand to copy edited Jenkinsfile" %}}
 ```groovy
 library 'pipeline-library'
@@ -57,7 +57,8 @@ pipeline {
           {
             'controller':{'name':'${BUNDLE_ID}','action':'casc_bundle_update','bundle_id':'${BUNDLE_ID}'},
             'github':{'organization':'${GITHUB_ORG}','repository':'${GITHUB_REPO}'},
-            'secret':'${CASC_UPDATE_SECRET}'
+            'secret':'${CASC_UPDATE_SECRET}',
+            'casc':{'auto_reload':'false'}
           }
         """), verbose: true
       }
