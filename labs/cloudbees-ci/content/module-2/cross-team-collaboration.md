@@ -6,11 +6,11 @@ weight: 5
 
 ## Enable Cross Team Collaboration Notifications
 
-We will utilize CloudBees CI CasC to enable and configure Notifications for Cross Team Collaboration.
+CloudBees CI CasC was used to enable and configure Notifications for Cross Team Collaboration.
 
 ## Adding an event trigger
 
-Now that we have configured CloudBees CI Notifications for our ***managed controllers***, we will add an event trigger to a Pipeline template.
+With CloudBees CI Notifications configured for our ***managed controllers***, we can add an event trigger to a Pipeline template.
 
 1. In GitHub, navigate to the **Cross Team Collaboration: Add Event Trigger** pull request (#1) in your fork of the **pipeline-template-catalog** repository. ![Event trigger PR](event-trigger-pr.png?width=50pc)
 2. Click on the  **Cross Team Collaboration: Add Event Trigger** pull request link and then click on the **Files changed** tab to see the changes that will be made to the **Maven Pipeline Template**.
