@@ -10,7 +10,7 @@ In this lab you will act as developer and CloudBees CI admin, where you will rev
 
 ## Update the CasC Update Template to Automatically Reload Configuration
 
-1. Navigate to your copy of the pipeline-template-catalog repository in your workshop GitHub Organization and open the Jenkinsfile for the CloudBees CI Configuration Bundle Pipeline Catalog template in the `templates/casc-bundle/` directory and click on the *pencil* button to edit. ![casc-bundle Jenkinsfile path](casc-bundle-template-path.png?width=50pc)
+1. Navigate to your copy of the `pipeline-template-catalog` repository in your **workshop GitHub Organization**, open the `Jenkinsfile` for the CloudBees CI Configuration Bundle Pipeline Catalog template in the `templates/casc-bundle/` directory and click on the *pencil* button to edit. ![casc-bundle Jenkinsfile path](casc-bundle-template-path.png?width=50pc)
 2. We are triggering another job with a notification event to have it actually copy the updated configuration files to Operations Center, so we can't automatically reload the configuration until it has been updated. Luckily the downstream job is configured to automatically reload the bundle on your controller by passing `'casc':{'auto_reload':'true'}` in the `jsonEvent` of the `publishEvent`. So to automatically reload the bundle for your controller, update the `Jenkinsfile` to match the following:
 
 ```groovy
