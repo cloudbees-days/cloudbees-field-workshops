@@ -142,7 +142,7 @@ name: casc-lab-review
 # CloudBees CI - GitOps for CloudBees CI CasC Lab Review
 
 * You created a Pipeline template catalog job that will update your ***managed controller*** configuration bundle whenever you commit any changes to the **`main`** branch of your fork of the **`cloudbees-ci-config-bundle`** repository. This is GitOps for Jenkins configuration.
-* Then, via the GitHub Pull Request, you merged changes for the CloudBees CI CasC bundle for your *managed controller*, and finally you applied an update that included several new plugins and configuration for some of those plugins.
+* Then, via the GitHub Pull Request, you merged changes for the CloudBees CI CasC bundle for your *managed controller*, and finally you applied that update that included several new plugins and configuration for some of those plugins.
 * In the next sections and labs we will be exploring the functionality of those plugins and other features - to include:
   * CloudBees CI *managed controller* specific Pod Templates for Kubernetes based agents
   * Pipeline Template Catalogs
