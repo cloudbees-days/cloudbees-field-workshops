@@ -16,7 +16,7 @@ layout: true
 ]
 
 .footer[
-- © 2021 CloudBees, Inc.
+- © 2022 CloudBees, Inc.
 - ![:scale 100%](img/CloudBees-Submark-Full-Color.svg)
 ]
 ---
