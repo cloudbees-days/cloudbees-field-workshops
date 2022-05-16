@@ -16,7 +16,7 @@ layout: true
 ]
 
 .footer[
-- © 2021 CloudBees, Inc.
+- © 2022 CloudBees, Inc.
 - ![:scale 100%](../img/CloudBees-Submark-Full-Color.svg)
 ]
 ---
@@ -170,10 +170,10 @@ Different Kubernetes clouds can be configured and shared from OC or at the indiv
 name: core-overview-scale
 
 # Manage Jenkins at Scale
-* Curated and verified Jenkins plug-ins with **CloudBees Assurance Program** ensures you are using the most up-to-date and secure versions via monthly security and functionality releases 
+* Curated and verified Jenkins plug-ins with the **CloudBees Assurance Program (CAP)** ensures you are using the most up-to-date and secure plugin-in versions via monthly security and functionality releases 
 * Configuration as Code for Jenkins and CloudBees CI commercial components; including plugin management and job configuration
 * Enables Comprehensive Jenkins Team Management including:
-  * Easily provide *managed controllers* (Jenkins instance) per team
+  * Easily provision *managed controllers* (Jenkins instance) per team
   * Centrally managed Role Based Access Control (RBAC)
   * Centralized and per team Credentials Management
-  * Manage inbound events across multiple *managed controllers*
+  * Managing inbound events across multiple *managed controllers*
