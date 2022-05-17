@@ -68,17 +68,6 @@ pipeline {
             'casc':{'auto_reload':'false'}
           }
         """), verbose: true
-
-        withCredentials([usernamePassword(credentialsId: 'api-token', usernameVariable: 'JENKINS_CLI_USR',     passwordVariable: 'JENKINS_CLI_PSW')]) {
-          waitUntil {
-            script {
-              def UPDATE_AVAILABLE = sh (script: '''curl -s --user $JENKINS_CLI_USR:$JENKINS_CLI_PSW -XGET http://${BUNDLE_ID}.controllers.svc.cluster.local/${BUNDLE_ID}/casc-bundle-mgnt/check-bundle-update  | jq '.["update-available"]' | tr -d "\n" ''', 
-                returnStdout: true) 
-              echo "update available: ${UPDATE_AVAILABLE}"
-              return (UPDATE_AVAILABLE=="true")
-            }
-          }
-        }
       }
     }
   }
