@@ -25,8 +25,8 @@ You may have noticed that all the file types except for the **bundle** file are 
 
 In this lab we will explore the configuration bundle assigned to your Ops controller when it was dynamically provisioned.
 
-1. Navigate to the `ops-controller` repository in your workshop GitHub Organization. ![ops-controller repository](ops-controller-repo.png?width=50pc) 
-2. Click on the `bundle.yaml` file. Its contents will mostly match the following (the `id`, `description` and `availabilityPattern` will be unique to each attendee):
+1. Navigate to your `ops-controller` repository in your workshop GitHub Organization. ![ops-controller repository](ops-controller-repo.png?width=50pc) 
+2. Open the `bundle` folder and then click on the `bundle.yaml` file. Its contents will mostly match the following (the `id`, `description` and `availabilityPattern` will be unique to each attendee):
 ```yaml
 apiVersion: "1"
 version: "1"
@@ -45,7 +45,7 @@ items:
 It is important that the bundle file is named exactly `bundle.yaml` otherwise the bundle will not be useable.
 {{% /notice %}}
 
-3. Return to the top level of your `ops-controller` repository and click on the `jenkins.yaml` file. The name of this file must match the file name listed under `jcasc` in the `bundle.yaml` file. Its contents will  match the following:
+3. Return to the `bundle` folder of your `ops-controller` repository and click on the `jenkins.yaml` file. The name of this file must match the file name listed under `jcasc` in the `bundle.yaml` file. Its contents will  match the following:
 ```yaml
 jenkins:
   globalNodeProperties:
@@ -120,7 +120,7 @@ credentials:
 There are also Kubernetes Secrets Store CSI providers for [AWS Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/integrating_csi_driver.html), [Azure Key Vault](https://docs.microsoft.com/en-us/azure/aks/csi-secrets-store-driver) and [HashiCorp Vault](https://www.vaultproject.io/docs/platform/k8s/csi).
 {{% /notice %}}
 
-5. Return to the top level of your `ops-controller` repository and click on the `plugins.yaml` file. The name of this file must match the file name listed under `plugins` in the `bundle.yaml` file. Its contents will match the following:
+5. Return to the `bundle` folder of your `ops-controller` repository and click on the `plugins.yaml` file. The name of this file must match the file name listed under `plugins` in the `bundle.yaml` file. Its contents will match the following:
 
 ```yaml
 plugins:
@@ -154,26 +154,19 @@ plugins:
 - id: workflow-cps-checkpoint
 # non-cap plugins
 ```
-6. Return to the top level of your `ops-controller` repository and click on the `items.yaml` file. The name of this file must match the file name listed under `items` in the `bundle.yaml` file. Its contents will match the following (except for the `REPLACE_GITHUB_ORG` placeholders which are replace with our workshop GitHub Organization when your controller is provisioned). Also note the `removeStrategy` configuration at the top, this specifies the strategy to handle existing configuration when a new configuration is applied, and is required for all `items` files (`NONE` is currently the only strategy available for `items`):
+6. Return to the `bundle` folder of your `ops-controller` repository and click on the `items.yaml` file. The name of this file must match the file name listed under `items` in the `bundle.yaml` file. Its contents will match the following. Also note the `removeStrategy` configuration at the top, this specifies the strategy to handle existing configuration when a new configuration is applied, and is required for all `items` files (`NONE` is currently the only strategy available for `items`):
 
-```yml
+```yaml
 removeStrategy:
   rbac: SYNC
   items: NONE
 items:
 - kind: folder
-  displayName: controller-jobs
   name: controller-jobs
   items:
   - kind: organizationFolder
-    displayName: controller-casc-update
     name: controller-casc-update
-    orphanedItemStrategy:
-      defaultOrphanedItemStrategy:
-        pruneDeadBranches: true
-        daysToKeep: -1
-        numToKeep: -1
-    SCMSources:
+    disabled: false
     navigators:
     - github:
         apiUri: https://api.github.com
@@ -183,7 +176,7 @@ items:
         - headWildcardFilter:
             excludes: ''
             includes: main
-        repoOwner: REPLACE_GITHUB_ORG
+        repoOwner: ${GITHUB_ORGANIZATION}
         credentialsId: cloudbees-ci-casc-workshop-github-app
     projectFactories:
     - customMultiBranchProjectFactory:
@@ -198,14 +191,18 @@ items:
                     userRemoteConfigs:
                     - userRemoteConfig:
                         credentialsId: cloudbees-ci-casc-workshop-github-app
-                        url: https://github.com/REPLACE_GITHUB_ORG/ops-controller.git
+                        url: https://github.com/${GITHUB_ORGANIZATION}/ops-controller.git
                     branches:
                     - branchSpec:
                         name: '*/main'
                 lightweight: true
+    properties:
+    - suppressFolderAutomaticTriggering:
+        strategy: INDEXING
+        branches: .*
 ```
 
-7. There is one more configuration file in your `ops-controller` repository, but it is not part of the `bundle`. The `controller.yaml` file represents the CloudBees CI **managed controller** that was provisioned for you as part of the workshop setup. It has the same format as the `items.yaml` we reviewed above. However, it is applied to Operations Center with the [CloudBees CI CasC HTTP API](https://docs.cloudbees.com/docs/cloudbees-ci-api/latest/bundle-management-api) instead of being applied to your managed controller. Its contents will match the following (except for the `REPLACE_...` placeholders):
+7. There is one more configuration file at the top level of your `ops-controller` repository. The `controller.yaml` file represents the CloudBees CI **managed controller** that was provisioned for you as part of the workshop setup. It has the same format as the `items.yaml` we reviewed above. However, it is applied to Operations Center with the [CloudBees CI CasC HTTP API](https://docs.cloudbees.com/docs/cloudbees-ci-api/latest/bundle-management-api) instead of being applied to your managed controller. Its contents will match the following (except for the `REPLACE_...` placeholders):
 
 ```yaml
 removeStrategy:
@@ -280,8 +277,6 @@ items:
 ## Creating/Updating a Configuration Bundle from a Bundle Export
 As you can see from the composition overview above, the YAML in the different configuration files can be somewhat complicated, and that is with only a some of the bundle file types and a fairly simple set of configurations. Luckily, CloudBees CI Configuration as Code (CasC) for Controllers supports an export capability that allows you to export the current configuration from an existing controller. In this lab you will make configurations changes on your Ops controller using the UI and then use the export feature to copy new or updated configuration to the files in your `ops-controller` repository. First, we will add a new, non-CAP plugin and then we will add some properties to a folder - and we will use the CasC export functionality to copy the YAML for those updates to apply to the your bundle in your `ops-controller` repository. 
 
-This lab models the process of adding plugin through the usual Jenkins user interface and then updating the repository to reflect the contents of the controller. If you would rather avoid stepping through each detail, please skip to the next section, where the changes to the configuration are all gathered into a pull request, and the instructions to workshop participants are simpler. 
-
 1. Navigate to the top level of your Ops controller - it will be in the folder with the same name as your workshop GitHub Organization name (lower-cased), and you will see a folder named `controller-jobs`.
 2. At the top level of your Ops controller, click on the **Mange Jenkins** link in the left menu. ![Manage Jenkins link](manage-jenkins-link.png?width=50pc) 
 3. On the **Manage Jenkins** page click on **Manage Plugins** under the **System Configuration** section. ![Manage Plugins link](manage-plugins-link.png?width=50pc) 
@@ -289,8 +284,14 @@ This lab models the process of adding plugin through the usual Jenkins user inte
 5. Once the **Pipeline Utility Steps** plugin is successfully installed, click on the **Mange Jenkins** link in the left menu. ![Install plugin](install-plugin.png?width=50pc) 
 6. On the **Manage Jenkins** page click on **CloudBees Configuration as Code export and update** under the **System Configuration** section. ![CloudBees CasC link](cloudbees-casc-link.png?width=50pc) 
 7. Next, on the **CloudBees Configuration as Code export and update** page, under the **Current configuration** tab, click on the **Copy content** link for the `plugin-catalog.yaml` **Filename**. A [plugin catalog](https://docs.cloudbees.com/docs/admin-resources/latest/plugin-management/configuring-plugin-catalogs) is used to include plugins that are not in the CloudBees Assurance Program (CAP); tested and used by your software delivery workloads. Since the **Pipeline Utility Steps** plugin is not in CAP we must add a plugin catalog to our bundle that includes that plugin, so we may install it on our controllers with CasC. ![Plugin Catalog copy link](plugin-catalog-copy-link.png?width=50pc) 
-8. Navigate to the `ops-controller` repository in your workshop GitHub Organization and click on the **Add file** button and then select **Create new file**. ![Create new file in GitHub](github-create-new-file.png?width=50pc)
-9. On the next screen, name the new file `plugin-catalog.yaml`, paste the contents from the `plugin-catalog.yaml` export, and then commit directly to the `main` branch. The contents should match the following:
+
+{{% notice note %}}
+We have created a Pull Request with all the required changes for the `plugin-catalog.yaml` and for the `items.yaml` updates below.
+{{% /notice %}}
+
+8. Navigate to your `ops-controller` repository in your workshop GitHub Organization and click on the **Pull requests** link. ![PR link](pr-link.png?width=50pc) 
+9. On the next screen, click on the **Bundle Export** pull request (it is #1) and then click on the **Files changed** tab to review the requested configuration changes. ![PR Files Changed](pr-files-changed.png?width=50pc)
+10. In the **Files changed** you will notice that we are adding the `plugin-catalog.yaml` file to the `bundle` folder and the contents match the export from your controller:
 
 ```yaml
 type: plugin-catalog
@@ -301,183 +302,37 @@ configurations:
 - description: Exported plugins
   includePlugins:
     pipeline-utility-steps:
-      version: 2.12.0
+      version: 2.12.2
 ```
 
-11. Again, plugins in the `plugin-catalog.yaml` are not actually installed on a controller, rather they just extend what can be installed outside of CAP. In order for a plugin to be installed via a configuration bundle you must add it to the `plugins.yaml`. Click on the `plugins.yaml` file and then click on the ***Edit this file*** pencil button. ![Edit plugins file GitHub](github-edit-plugins-file.png?width=50pc)
-12. In the GitHub file editor, add `- id: pipeline-utility-steps` under the `# non-cap plugins` comment, and then commit directly to the `main` branch. 
+11. You will also notice that there are changes for the `plugins.yaml` and `bundle.yaml` (we will review the changes to the `items.yaml` and `jenkins.yaml` later in this lab). Again, plugins in the `plugin-catalog.yaml` are not actually installed on a controller, rather they just extend what can be installed outside of CAP. In order for a plugin to be installed via a configuration bundle it must be added to the `plugins.yaml`. Click on the `plugins.yaml` file and you will notice that we have added the following entry under the `# non-cap plugins` comment:
 
-{{%expand "expand for complete updated plugins.yaml file" %}}
 ```yaml
-plugins:
-- id: antisamy-markup-formatter
-- id: cloudbees-casc-client
-- id: cloudbees-casc-items-api
-- id: cloudbees-casc-items-commons
-- id: cloudbees-casc-items-controller
-- id: cloudbees-github-reporting
-- id: cloudbees-groovy-view
-- id: cloudbees-monitoring
-- id: cloudbees-pipeline-policies
-- id: cloudbees-restricted-credentials
-- id: cloudbees-slack
-- id: cloudbees-template
-- id: cloudbees-view-creation-filter
-- id: cloudbees-workflow-template
-- id: cloudbees-workflow-ui
-- id: configuration-as-code
-- id: git
-- id: github-branch-source
-- id: managed-master-hibernation
-- id: notification-api
-- id: operations-center-cloud
-- id: operations-center-notification
-- id: pipeline-event-step
-- id: pipeline-model-extensions
-- id: pipeline-stage-view
-- id: warnings-ng
-- id: workflow-aggregator
-- id: workflow-cps-checkpoint
-# non-cap plugins
 - id: pipeline-utility-steps
 ```
-{{% /expand%}}
 
-12. In addition to updating the `plugins.yaml`, we also added the`plugin-catalog.yaml` file. But it is not listed in the `bundles.yaml`. In order to have that file used by the configuration bundle assigned to our controller, we need to add it to the `bundle.yaml` file. So click on the `bundles.yaml` file and then click on the ***Edit this file*** pencil button.
-13. In the GitHub file editor for the `bundle.yaml` file, update the `version` field to **2** and add the following configuration to the end of the `bundle.yaml` file:
+12. Next, click on the `bundle.yaml` file and you will see that we added the following entry below the `items` entry:
 
 ```yaml
-
 catalog:
   - "plugin-catalog.yaml"
 ```
+
+In order to have the `plugin-catalog.yaml` file be part of the configuration bundle assigned to your controller, it must be added to the `bundle.yaml` file.
 
 {{% notice note %}}
 In previous versions of CloudBees CI Configuration as Code (CasC) for Controllers the `version` field of the `bundle.yaml` file had to be modified in order for an update to be triggered for controllers using that bundle. This is no longer required, as any change in any file in a bundle will trigger a bundle update for any controllers using the updated bundle once those changes are copied to the JCasC bundle directory on Operations Center. However, it is still considered a best practice to increment the bundle version.
 {{% /notice %}}
 
-14. Commit the `bundle.yaml` file directly to the `main` branch of your `ops-controller` repository. ![Commit bundle.yaml](commit-bundle.png?width=50pc)
-15. Navigate back to the top level of your Ops controller, click on the **controller-jobs** folder.
+
+13. Navigate back to the top level of your Ops controller and click on the **controller-jobs** folder.
 16. On the **controller-jobs** folder screen, click on the **Configure** left menu item. ![Configure folder](configure-folder-link.png?width=50pc) 
 17. Scroll to the bottom of the folder configuration and click on **Restrict the kind of children in this folder** - a [CloudBees Folders Plus](https://docs.cloudbees.com/docs/cloudbees-core/latest/cloud-secure-guide/folders-plus) feature - and then select **Freestyle project**, **Pipeline**, **Multibranch Pipeline** and **Organization Folder** so only Jenkins Pipeline type jobs are allowed to be created in the folder; and then hit the **Save** button. ![Configure folder](configure-folder.png?width=50pc) 
 18. After the updated **controller-jobs** folder configuration has been saved, click on the **Export CasC item** link in the left menu. ![Folder updated](export-casc-item-link.png?width=50pc) 
 19. On the **Export CasC item** page, scroll down to the `properties` section at the bottom (as highlighted below). This is the only fragment we need to add to the `items.yaml` file in the `ops-controller` repository. ![Copy folder properties](copy-folder-properties.png?width=50pc)
-20. Navigate to the top level of your copy of the `ops-controller` repository and click on the `items.yaml` file and then click on the ***Edit this file*** pencil button. ![Edit items.yaml](edit-items.png?width=50pc)
-21. Paste the `properties` fragment you copied from the `items.yaml` export right below `name: controller-jobs` and indent it two spaces to align with `name:controller-jobs` as seen below. Delete the `hudson.model.FreeStyleProject` entry (we decided we don't want anyone creating Freestyle jobs in that folder), and then commit directly to the `main` branch. ![Commit items.yaml](commit-items.png?width=50pc)
-
-{{%expand "expand for complete updated items.yaml snippet - it does not include the `organizationFolder` as that configuration is unique to each workshop GitHub Organization" %}}
-```yaml
-removeStrategy:
-  rbac: SYNC
-  items: NONE
-items:
-- kind: folder
-  displayName: controller-jobs
-  name: controller-jobs
-  properties:
-  - envVars: {
-      }
-  - kubernetesFolderProperty: {
-      }
-  - itemRestrictions:
-      allowedTypes:
-      - org.jenkinsci.plugins.workflow.job.WorkflowJob
-      - jenkins.branch.OrganizationFolder
-      - org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject
-      filter: true
-```
-{{% /expand%}}
-
-22. Finally, navigate back to the top level of your copy of the `ops-controller` repository and click on the `jenkins.yaml` file and then click on the ***Edit this file*** pencil button.
-23. Update the `systemMessage` to `'Jenkins configured using CloudBees CI CasC v2'`, update `headerLabel` `text` to `"${GITHUB_APP}-bundle-v2"`, and then commit directly to the `main` branch.
-
-{{%expand "expand for complete updated jenkins.yaml file" %}}
-```yaml
-jenkins:
-  globalNodeProperties:
-  - envVars:
-      env:
-      - key: "GITHUB_ORGANIZATION"
-        value: "${GITHUB_ORGANIZATION}"
-      - key: "GITHUB_REPOSITORY"
-        value: "ops-controller"
-      - key: "GITHUB_USER"
-        value: "${GITHUB_USER}"
-      - key: "BUNDLE_ID"
-        value: "${CASC_BUNDLE_ID}"
-  quietPeriod: 0
-  systemMessage: 'Jenkins configured using CloudBees CI CasC v2'
-notificationConfiguration:
-  enabled: true
-  router: "operationsCenter"
-unclassified:
-  hibernationConfiguration:
-    activities:
-    - "build"
-    - "web"
-    enabled: true
-    gracePeriod: 1500
-  gitHubConfiguration:
-    apiRateLimitChecker: ThrottleForNormalize
-  gitHubPluginConfig:
-    hookSecretConfigs:
-    - credentialsId: "cloudbees-ci-workshop-github-webhook-secret"
-  globalDefaultFlowDurabilityLevel:
-    durabilityHint: PERFORMANCE_OPTIMIZED
-  globallibraries:
-    libraries:
-    - defaultVersion: "main"
-      name: "pipeline-library"
-      retriever:
-        modernSCM:
-          scm:
-            github:
-              credentialsId: "cloudbees-ci-casc-workshop-github-app"
-              repoOwner: "${GITHUB_ORGANIZATION}"
-              repository: "pipeline-library"
-  headerLabel:
-    text: "${GITHUB_APP}-bundle-v2"
-credentials:
-  system:
-    domainCredentials:
-    - credentials:
-      - string:
-          description: "CasC Update Secret"
-          id: "casc-update-secret"
-          scope: GLOBAL
-          secret: "${cbciCascWorkshopControllerProvisionSecret}"
-      - string:
-          description: "Webhook secret for CloudBees CI Workshop GitHub App"
-          id: "cloudbees-ci-workshop-github-webhook-secret"
-          scope: SYSTEM
-          secret: "${gitHubWebhookSecret}"
-      - gitHubApp:
-          apiUri: "https://api.github.com"
-          appID: "${cbciCascWorkshopGitHubAppId}"
-          description: "CloudBees CI CasC Workshop GitHub App credential"
-          id: "cloudbees-ci-casc-workshop-github-app"
-          owner: "${GITHUB_ORGANIZATION}"
-          privateKey: "${cbciCascWorkshopGitHubAppPrivateKey}"
-```
-{{% /expand%}}
+20. Navigate back to the **Bundle Export** pull request **Files changed** tab on your `ops-controller` repository in your workshop GitHub Organization and click on the `items.yaml` file. Note that the update in GitHub looks slightly different than the snippet on the **Export CasC item** page. We moved the folder properties directly under the `controller-jobs` folder item, we removed `hudson.model.FeeStyleProject` from the `allowedTypes` and we removed the empty `envVars` and `kubernetesFolderProperty`. ![items.yaml changes](items-changes.png?width=50pc)
+22. Finally, click on the `jenkins.yaml` file and note that we updated the `systemMessage` to `'Jenkins configured using CloudBees CI CasC v2'` and updated `headerLabel` `text` to `"${GITHUB_APP}-bundle-v2"`. ![jenkins.yaml changes](jenkins-file-changes.png?width=50pc)
+23. Once you have finished reviewing the changed files, click on the **Conversation** tab of the **Bundle Export** pull request, scroll down and click the green **Merge pull request** button and then click the **Confirm merge** button.
 
 So now we have an updated configuration bundle based on bundle exports from our Ops controller. However, the updated bundle hasn't actually been applied to your controller. In the next lab we will update the `controller-casc-update` job configuration so it will actually update the bundle files on Operations Center, that will in turn trigger an available update on your controller. After that, any time there is a commit to the `main` branch of your `ops-controller` repository, it will automatically be updated on your CloudBees CI controller.
 
-## Creating/Updating a Configuration Bundle from a Pull Request
-Navigation to pull request place holder
-navigation to files changed pull request tab place holder
-changes in bundle yaml placeholder
-  version
-  catalog
-Addition of plugin catalog
-  compare to visualized version from Jenkins ui
-  notice version of plugin, compare to plugins.yaml
-Changes in plugins.yaml
-  notice non-cap plugines 
-Changes in items yaml placeholder
-  notice allowed types
-Changes in jenkins yaml placeholder
-  notice system message and header label
-Navigate back to conversation tab
-  click green merge pull request followed by confirm merge
-  comment on deleted branch  
