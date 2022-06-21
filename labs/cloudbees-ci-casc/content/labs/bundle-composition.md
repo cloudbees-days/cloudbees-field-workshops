@@ -18,6 +18,7 @@ A configuration bundle may consist of the following YAML file types:
 - **catalog** (optional) - This file defines the catalog of versioned plugins outside of the CloudBees Assurance Program (CAP) that are available for installation on the controller. An optional location can also be specified for plugins that are not available in the standard update centers. Adding plugins to a catalog only makes them available to install and they still must be added to the plugins file above.
 - **rbac** (optional) - This file defines the RBAC groups and roles at the root level of a controller. 
 - **items** (optional) - This file defines items (folders, jobs, etc), and optionally, RBAC for folders to be created on the controller.
+- **variables**: (Optional) This file defines the variables that can be used in the **jcasc**, **items**, and **rbac** yaml files.
 
 {{% notice note %}}
 You may have noticed that all the file types except for the **bundle** file are optional and wonder if it would make sense to have a configuration bundle that only had a **bundle** file. We will see in a later lab that it can be useful with bundle inheritance.
