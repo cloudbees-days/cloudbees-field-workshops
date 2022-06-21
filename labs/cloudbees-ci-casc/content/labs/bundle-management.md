@@ -97,44 +97,8 @@ Error from server (Forbidden): pods "cjoc-0" is forbidden: User "system:servicea
 Provisioning controllers and agents in a different Kubernetes `namespace` than Operations Center provides additional isolation and more security for Operations Center on Kubernetes. By default, when controllers are created in the same `namespace` as Operations Center and agents, they can provision an agent that can run the `pod` `exec` command against any other `pod` in the `namespace` - including the Operations Center's `pod`.
 {{% /notice %}}
 
-18. Navigate to your copy of the `ops-controller` repository in your workshop GitHub Organization and open the `controller-casc-update` pipeline script.
-19. Click the **pencil icon** to open it in the GitHub file editor and replace the entire contents with the following and click on the **Commit changes** button to commit to the `main` branch:
-
-```groovy
-library 'pipeline-library'
-pipeline {
-  agent none
-  options {
-    timeout(time: 10, unit: 'MINUTES')
-    skipDefaultCheckout()
-  }
-  stages {
-    stage('Update Config Bundle') {
-      agent { label 'default' }
-      when {
-        beforeAgent true
-        branch 'main'
-        not { triggeredBy 'UserIdCause' }
-      }
-      environment { CASC_UPDATE_SECRET = credentials('casc-update-secret') }
-      steps {
-        checkout scm
-        gitHubParseOriginUrl()
-        publishEvent event:jsonEvent("""
-          {
-            'controller':{'name':'${env.GITHUB_ORG}-${GITHUB_REPO}','action':'casc_bundle_update','bundle_id':'${env.BUNDLE_ID}'},
-            'github':{'organization':'${env.GITHUB_ORG}','repository':'${GITHUB_REPO}'},
-            'secret':'${CASC_UPDATE_SECRET}',
-            'casc':{'auto_reload':'false'}
-          }
-        """), verbose: true
-      }
-    }
-  }
-}
-```
-Note that we replaced the previous `steps` with the `publishEvent` step (along with the `gitHubParseOriginUrl` pipeline library utility step that will provide the GitHub repository the bundle is being updated from). The `publishEvent` step with send a notification to a message bus on Operations Center and result in the triggering of any job that is configured to listen for that event. The configuration for the job that it triggers [is available here](https://github.com/cloudbees-days/cloudbees-ci-casc-bundle-update/blob/main/Jenkinsfile).
-
+18. Navigate back to the **Bundle Update** pull request **Files changed** tab on your `ops-controller` repository in your workshop GitHub Organization and click on the `controller-casc-update` file, and note that we replaced the previous `steps` with the `publishEvent` step (along with the `gitHubParseOriginUrl` pipeline library utility step that will provide the GitHub repository the bundle is being updated from). The `publishEvent` step with send a notification to a message bus on Operations Center and result in the triggering of any job that is configured to listen for that event. The configuration for the job that it triggers [is available here](https://github.com/cloudbees-days/cloudbees-ci-casc-bundle-update/blob/main/Jenkinsfile).
+19. Once you have finished reviewing the changes, click on the **Conversation** tab of the **Bundle Export** pull request, scroll down and click the green **Merge pull request** button and then click the **Confirm merge** button.
 20. Navigate back to your CloudBees CI ***managed controller*** and then navigate to the ***main*** branch job of your **ops-controller** Multi-branch Project in the **controller-casc-update** Organization Folder project. After the job successfully completes, navigate to the top-level of your ***managed controller***. 
 21. Click on the **Manage Jenkins** link in the left navigation menu and then click on the **CloudBees Configuration as Code export and update** configuration link. ![CloudBees Configuration config](config-bundle-system-config.png?width=50pc)
 22.  On the next screen, click on the **Bundle Update** link and you should see that a new version of the configuration bundle is available. Click the **Reload Configuration** button and on the next screen click the **Yes** button to apply the updated configuration bundle. 
@@ -144,6 +108,7 @@ If you don't see the new version available then click the **Check for Updates** 
 {{% /notice %}}
 ![Bundle Update](new-bundle-available.png?width=50pc)
 23. Navigate to the `controller-jobs` folder and click on **New Item** in the left menu and note that the **Freestyle** job type is not available. ![No freestyle job](no-freestyle-job.png?width=50pc)
+
 
 ## Auto-Updating with the CloudBees CI CasC HTTP API
 
