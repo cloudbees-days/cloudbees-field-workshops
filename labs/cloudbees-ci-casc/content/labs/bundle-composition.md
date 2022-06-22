@@ -6,7 +6,7 @@ weight: 2
 
 The YAML based configuration of a controller is described in a collection of files referred to as a Configuration as Code (CasC) for Controllers bundle that we will refer to as just ***configuration bundle*** for most of this workshop. The CloudBees CI Operations Center can store as many different configuration bundles as needed to represent any unique requirements between different controllers.
 
-This lab will explore the composition of a CloudBees CI configuration bundle, to include the manual updating of a configuration bundle and creating a configuration bundle from the bundle export of an existing controller.
+This lab will explore the composition of a CloudBees CI configuration bundle, to include the manual updating of a configuration bundle contents and updating a configuration bundle from the bundle export of an existing controller.
 
 ## Configuration Bundle Composition Overview
 
@@ -290,7 +290,7 @@ As you can see from the composition overview above, the YAML in the different co
 We have created a Pull Request with all the required changes for the `plugin-catalog.yaml` and for the `items.yaml` updates below.
 {{% /notice %}}
 
-8. Navigate to your `ops-controller` repository in your workshop GitHub Organization and click on the **Pull requests** link. ![PR link](pr-link.png?width=50pc) 
+8. Although the intent of this lab is to show you how to export different CasC snippets and add them to an existing bundle, we have created a Pull Request for all the required changes to get through the material more quickly. So, we will navigate to your `ops-controller` repository in your workshop GitHub Organization and click on the **Pull requests** link. ![PR link](pr-link.png?width=50pc) 
 9. On the next screen, click on the **Bundle Export** pull request (it is #1) and then click on the **Files changed** tab to review the requested configuration changes. ![PR Files Changed](pr-files-changed.png?width=50pc)
 10. In the **Files changed** you will notice that we are adding the `plugin-catalog.yaml` file to the `bundle` folder and the contents match the export from your controller:
 

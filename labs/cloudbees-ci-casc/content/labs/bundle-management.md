@@ -4,11 +4,15 @@ chapter: false
 weight: 3
 --- 
 
-Operations Center provides a CasC for Controllers **storage service** that allows storing bundles in a directory that is accessible by Operations Center or in source control.
+Operations Center provides a CasC for Controllers **storage service** that allows storing bundles in a directory that is accessible by Operations Center or in a source control repository that is accessible by Operations center. These *external* storage locations, referred to as the **Local folder** and **SCM** retrieval methods, are then synced with an internal storage location (the `/var/jenkins_home/cb-casc-bundles-store` directory) via polling, an SCM webhook and/or manually. Once a bundle is synced to the internal storage location, it becomes available for use by controllers.
 
-![CasC for Controllers Storage Service](storage-service-diagram.png?width=70pc)
+{{% notice note %}}
+There are two options available for manually forcing a sync of the bundles from external sources to the internal storage with the first being via the Operations Center UI and the second being via an HTTP API endpoint for Operations Center: `POST /load-casc-bundles/checkout`.
+{{% /notice %}}
 
-CloudBees CI configuration bundles are centrally managed and stored in the `jcasc-bundles-store` directory in the Operations Center Jenkins home directory. In order to make a bundle available for a controller, or to update an existing bundle, the bundle files must be copied to the `jcasc-bundles-store` directory.
+![CasC for Controllers Storage Service](storage-service-diagram.png?width=50pc)
+
+You may configure multiple versions of each retrieval method, but bundle names (the folder the bundle files are in) must be unique across all external bundle sources. The CloudBees CI cluster we are using for this workshop has been configured with both an **SCM** and a **Local folder** external sources. We are using the **SCM** source to load bundles at Operations center initial startup and using a **Local folder** source for all of the workshop controller bundles.
 
 {{% notice note %}}
 While Operations Center simplifies the management of bundles, it is possible to configure a controller with a bundle without Operations Center using the `-Dcore.casc.config.bundle=/path/to/casc-bundle` Java system property.
@@ -70,7 +74,7 @@ pipeline {
         container("kubectl") {
           sh "mkdir -p ${GITHUB_ORG}-${GITHUB_REPO}"
           sh "find -name '*.yaml' | xargs cp --parents -t ${GITHUB_ORG}-${GITHUB_REPO}"
-          sh "kubectl cp --namespace cbci ${GITHUB_ORG}-${GITHUB_REPO} cjoc-0:/var/jenkins_home/jcasc-bundles-store/ -c jenkins"
+          sh "kubectl cp --namespace cbci ${GITHUB_ORG}-${GITHUB_REPO} cjoc-0:/var/jenkins_config/jcasc-bundles-store/ -c jenkins"
         }
       }
     }
@@ -78,7 +82,7 @@ pipeline {
 }
 ```
 
-4. On the first line you will see that we are using the Pipeline shared library defined in your Ops controller configuration bundle. The Pipeline shared library contains a number of Jenkins Kubernetes Pod templates that can be leveraged across all the controllers. We are utilizing the `kubectl.yml` Pod template, so we can use the `kubectl cp` command to copy your `ops-controller` configuration bundle files into the `jcasc-bundles-store` directory on Operations Center. Once you have finished reviewing the `controller-casc-update` pipeline contents, navigate to the top level of your Ops controller and click the on the controller-jobs folder.
+4. On the first line you will see that we are using the Pipeline shared library defined in your Ops controller configuration bundle. The Pipeline shared library contains a number of Jenkins Kubernetes Pod templates that can be leveraged across all the controllers. We are utilizing the `kubectl.yml` Pod template, so we can use the `kubectl cp` command to copy your `ops-controller` configuration bundle files into the **Local folder** external storage configured on Operations Center. Once you have finished reviewing the `controller-casc-update` pipeline contents, navigate to the top level of your Ops controller and click the on the controller-jobs folder.
 
 5. Once you have finished reviewing the `controller-casc-update` pipeline contents, navigate to the top level of your Ops controller and click the on the `controller-jobs` folder. Inside of the `controller-jobs` folder, click on the `controller-casc-update` job. ![CasC job link](casc-job-link.png?width=50pc)
 6. On the next screen, you will see **This folder is empty**. The reason it is empty is because the GitHub Folder branch scan did not find any matches for the current *marker file* which is set to the default `Jenkinsfile`. Click on the **Configure** link in the left menu so we can fix that.  ![CasC job config link](casc-job-config-link.png?width=50pc)
