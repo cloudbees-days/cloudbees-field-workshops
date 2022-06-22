@@ -4,6 +4,10 @@ chapter: false
 weight: 3
 --- 
 
+Operations Center provides a CasC for Controllers **storage service** that allows storing bundles in a directory that is accessible by Operations Center or in source control.
+
+![CasC for Controllers Storage Service](storage-service-diagram.png?width=70pc)
+
 CloudBees CI configuration bundles are centrally managed and stored in the `jcasc-bundles-store` directory in the Operations Center Jenkins home directory. In order to make a bundle available for a controller, or to update an existing bundle, the bundle files must be copied to the `jcasc-bundles-store` directory.
 
 {{% notice note %}}
@@ -18,9 +22,9 @@ The labs in this section will explore:
 
 ## Managing Configuration Bundles on Operations Center
 
-This lab will provide an overview of how configuration bundles are managed via the Operations Center UI and how to manually apply a configuration bundle to a controller. The first part of the overview will be on the Operations Center **Configuration as Code bundles** settings page that is only accessible by workshop instructors. Therefore, the first part of this lab, that will explore the 3 major components on the Operations Center **Configuration as Code bundles** settings page, wont' have any hands-on material.
+This lab will provide an overview of how configuration bundles are managed via the Operations Center UI and how to manually apply a configuration bundle to a controller. The first part of the overview will be on the Operations Center **Configuration as Code bundles** settings page that is only accessible by workshop instructors. Therefore, the first part of this lab that will explore the 3 major components on the Operations Center **Configuration as Code bundles** settings page, wont' have any hands-on material.
 
-![Operations Center Configuration as Code bundles settings pag](ops-center-config-bundle-settings.png?width=70pc)
+![Operations Center Configuration as Code bundles settings page](ops-center-config-bundle-settings.png?width=70pc)
 
 1. By checking the **Availability pattern** checkbox, any configuration bundle that has an empty **Availability pattern** can be used by any controller.
 2. The **Default bundle** drop-down allows you to automatically apply a default configuration bundle to any controller that does not specify a different configuration bundle.
@@ -30,7 +34,7 @@ This lab will provide an overview of how configuration bundles are managed via t
 6. For the `ops` bundle, the **Availability pattern** is set to `operations/ops`. So that means only a controller with the name **ops** in the **operations** folder can use this bundle. If the **Availability pattern** were set to `operations/*` then any controller in the **operations** folder could use this bundle.
 
 ### Applying Bundles to Controllers
-1. To actually apply a bundle to a controller, you must select the bundle from the **Bundle** drop-down on the controller configuration page. To do this navigate to the top level of Operations Center and click on the **Manage** icon for your Ops controller. ![Manage controller link](manage-controller-link.png?width=60pc)
+1. To actually apply a bundle to a controller, you must select the bundle from the **Bundle** drop-down on the controller configuration page. To do this navigate to the top level of Cloud Operations Center and click on the **Manage** icon for your Ops controller. ![Manage controller link](manage-controller-link.png?width=60pc)
 2. On the controller manage screen click on the **Configure** link in the left menu. ![Configure controller link](configure-controller-link.png?width=50pc)
 3. On the configure controller screen, scroll down to the **Configuration as Code (CasC)** section and expand the **Bundle** drop down. ![Bundle dropdown](bundle-dropdown.png?width=50pc)
 4. Note that the bundle matching the name of your Ops controller is selected and the `base` bundle is also available, but the `ops` bundle is not available to select. ![Bundle dropdown expanded](bundle-dropdown-expanded.png?width=50pc)
