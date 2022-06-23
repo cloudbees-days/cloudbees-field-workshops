@@ -93,9 +93,10 @@ pipeline {
 ### Create Ops controller Job to Trigger Provisioning
 Now that we have reviewed the pipeline script for the workshop provisioning of managed controllers, we need to create a new GitHub Organization Folder project that will publish a Cross Team Collaboration event to trigger that pipeline.
 
-1. Navigate to your `ops-controller` repository in your workshop GitHub Organization, click on the **Pull requests** link and click on the **Bundle Provision** pull request. ![Provision PR link](provision-pr-link.png?width=50pc)  
-Navigate to your copy of the `ops-controller` repository in GitHub and click on the **Add file** button and then select **Create new file**. ![Create new file in GitHub](github-create-new-file-ops.png?width=50pc)
-2. Name the new file `controller-provision`, copy the `controller-provision` contents from below and paste it into the GitHub file editor. Notice that the `controller-provision` Declarative Pipeline script is loading a `credential` with an id of `casc-workshop-controller-provision-secret`.
+1. Navigate to your `ops-controller` repository in your workshop GitHub Organization, click on the **Pull requests** link and click on the **Bundle Provision** pull request. ![Provision PR link](provision-pr-link.png?width=50pc) 
+2. Next, click on the **Files changed** tab to review the configuration changes. First, click on the `items.yaml` file and note the new `organizationFolder` item using `controller.yaml` as the `marker` and the `controller-provision` Declarative Pipeline script. 
+3. Next, click on the `credentials.yaml` file and note the we are adding a new `restrictedSystem` credential with an `id` of `casc-workshop-controller-provision-secret` that matches the id used in the `controller-provision` Declarative Pipeline script below. 
+4. Finally, let's take a look at the new file `controller-provision`. Notice that the `controller-provision` Declarative Pipeline script is loading the `credential` with an id of `casc-workshop-controller-provision-secret` that was added to the `credentials.yaml` above and is using the `publishEvent` to publish an event that will trigger the job we reviewed above.
 
 ```groovy
 library 'pipeline-library'
@@ -120,70 +121,9 @@ pipeline {
   }
 }
 ```
-
-3. Next, select the option to **"Create a new branch for this commit and start a pull request"**, name the branch `add-provision-job` and finally click the **Propose new file** button. ![Add provision job](add-provision-job.png?width=50pc)
-4. On the next screen click the **Create pull request** button to create a pull request to merge to the `main` branch when you are done updating your `ops-controller` configuration bundle. ![Create add provision job pull request](github-create-provision-pr.png?width=50pc)
-5. Next, navigate back to the **Code** tab of your `ops-controller` repository and select the `add-provision-job` branch from the branch drop down.
-6. Back at the top level of your `ops-controller` repository, click on the `jcasc` folder, then click on the `credentials.yaml` file and then click on the ***Edit this file*** pencil button to edit the file. 
-7. Add the `casc-workshop-controller-provision-secret` below the top `credentials` entry:
-
-```yaml
-
-  restrictedSystem:
-    domainCredentials:
-    - allowList: "controller-jobs/controller-provision/**/main"
-      credentials:
-        string:
-          description: "CasC Workshop Controller Provision Secret"
-          id: "casc-workshop-controller-provision-secret"
-          scope: GLOBAL
-          secret: "${cbciCascWorkshopControllerProvisionSecret}"
-```
-
-{{%expand "expand for complete updated credentials.yaml file" %}}
-```yaml
-credentials:
-  restrictedSystem:
-    domainCredentials:
-    - allowList: "controller-jobs/controller-provision/**/main"
-      credentials:
-        string:
-          description: "CasC Workshop Controller Provision Secret"
-          id: "casc-workshop-controller-provision-secret"
-          scope: GLOBAL
-          secret: "${cbciCascWorkshopControllerProvisionSecret}"
-  system:
-    domainCredentials:
-    - credentials:
-      - string:
-          description: "CasC Update Secret"
-          id: "casc-update-secret"
-          scope: GLOBAL
-          secret: "${cbciCascWorkshopControllerProvisionSecret}"
-      - string:
-          description: "Webhook secret for CloudBees CI Workshop GitHub App"
-          id: "cloudbees-ci-workshop-github-webhook-secret"
-          scope: SYSTEM
-          secret: "${gitHubWebhookSecret}"
-      - gitHubApp:
-          apiUri: "https://api.github.com"
-          appID: "${cbciCascWorkshopGitHubAppId}"
-          description: "CloudBees CI CasC Workshop GitHub App credential"
-          id: "cloudbees-ci-casc-workshop-github-app"
-          owner: "${GITHUB_ORGANIZATION}"
-          privateKey: "${cbciCascWorkshopGitHubAppPrivateKey}"
-```
-{{% /expand%}}
-
-8. After you have pasted the new credential into the `credentials.yaml` file, ensure that you are committing to the `add-provision-job` branch and then click the **Commit new file** button. ![Commit credentials.yaml](github-commit-credentials-yaml.png?width=50pc)
-9. Navigating back to the top level of your `ops-controller` repository and ensuring that you are on the `add-provision-job` branch, click on the `items.yaml` file and then click on the ***Edit this file*** pencil button to edit the file. 
-10. Copy the entire `controller-casc-update` item and paste it below the second `items` entry (it should be line 19).
-11. Change the `name` of the new `organizationFolder` item to `controller-provision`, change the value for `marker` to `controller.yaml` and change the `scriptPath` to `controller-provision`. 
-12. After you have made those changes, ensure that you are committing to the `add-provision-job` branch and then click the **Commit new file** button. ![Commit items.yaml](github-commit-items-yaml.png?width=50pc)
-13. We have now made all the necessary changes and can now merge the pull request to the `main` branch. In GitHub, click on the **Pull requests** tab and then click on the link for the **Create controller-provision** pull request.
-14. On the **Create controller-provision #3** pull request page, click the **Merge pull request** button and then click the **Confirm merge** button.
-15. Navigate to the `main` branch job of the `controller-casc-update` `ops-controller` Multibranch pipeline project on your Ops controller. ![ops-controller Mulitbranch](ops-controller-multibranch-jcasc.png?width=50pc)
-16. After the the `main` branch job has completed successfully, navigate to the `controller-jobs` folder and refresh the page until the `controller-provision` job appears. ![controller-provision-job](controller-provision-job.png?width=50pc)
+5. Once you have finished reviewing the changes, click on the **Conversation** tab of the **Bundle Provision** pull request, scroll down and click the green **Merge pull request** button and then click the **Confirm merge** button.
+6. Navigate to the `main` branch job of the `controller-casc-update` `ops-controller` Multibranch pipeline project on your Ops controller. ![ops-controller Mulitbranch](ops-controller-multibranch-jcasc.png?width=50pc)
+7. After the the `main` branch job has completed successfully, navigate to the `controller-jobs` folder and refresh the page until the `controller-provision` job appears. ![controller-provision-job](controller-provision-job.png?width=50pc)
 
 ### Create a new managed controller repository
 In the previous section you added the `controller-provision` Organization Folder job to your Ops controller to publish an event to trigger the provisioning of a managed controller. Now you will trigger the provisioning of a new managed controller by adding a `controller.yaml` file to the `main` branch of your copy of the `dev-controller` repository in your workshop GitHub Organization.
