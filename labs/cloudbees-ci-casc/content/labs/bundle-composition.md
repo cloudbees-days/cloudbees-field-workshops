@@ -203,6 +203,10 @@ items:
         branches: .*
 ```
 
+{{% notice note %}}
+Note the `${GITHUB_ORGANIZATION}` variable.
+{{% /notice %}}
+
 7. There is one more configuration file at the top level of your `ops-controller` repository. The `controller.yaml` file represents the CloudBees CI **managed controller** that was provisioned for you as part of the workshop setup. It has the same format as the `items.yaml` we reviewed above. However, it is applied to Operations Center with the [CloudBees CI CasC HTTP API](https://docs.cloudbees.com/docs/cloudbees-ci-api/latest/bundle-management-api) instead of being applied to your managed controller. Its contents will match the following (except for the `REPLACE_...` placeholders):
 
 ```yaml
@@ -284,7 +288,7 @@ As you can see from the composition overview above, the YAML in the different co
 4. On the **Plugin Manager** screen, click on the **Available** tab and enter ***Pipeline Util*** into the search box. Then check the **Install** checkbox for the **Pipeline Utility Steps** and then click the the **Install without restart** button.
 5. Once the **Pipeline Utility Steps** plugin is successfully installed, click on the **Mange Jenkins** link in the left menu. ![Install plugin](install-plugin.png?width=50pc) 
 6. On the **Manage Jenkins** page click on **CloudBees Configuration as Code export and update** under the **System Configuration** section. ![CloudBees CasC link](cloudbees-casc-link.png?width=50pc) 
-7. Next, on the **CloudBees Configuration as Code export and update** page, under the **Current configuration** tab, click on the **Copy content** link for the `plugin-catalog.yaml` **Filename**. A [plugin catalog](https://docs.cloudbees.com/docs/admin-resources/latest/plugin-management/configuring-plugin-catalogs) is used to include plugins that are not in the CloudBees Assurance Program (CAP); tested and used by your software delivery workloads. Since the **Pipeline Utility Steps** plugin is not in CAP we must add a plugin catalog to our bundle that includes that plugin, so we may install it on our controllers with CasC. ![Plugin Catalog copy link](plugin-catalog-copy-link.png?width=50pc) 
+7. Next, on the **CloudBees Configuration as Code export and update** page, under the **Current configuration** tab, click on the **Visualize** link for the `plugin-catalog.yaml` **Filename**. A [plugin catalog](https://docs.cloudbees.com/docs/admin-resources/latest/plugin-management/configuring-plugin-catalogs) is used to include plugins that are not in the CloudBees Assurance Program (CAP); tested and used by your software delivery workloads. Since the **Pipeline Utility Steps** plugin is not in CAP we must add a plugin catalog to our bundle that includes that plugin, so we may install it on our controllers with CasC. ![Plugin Catalog visualize link](plugin-catalog-visualize-link.png?width=50pc) 
 
 8. Although the intent of this lab is to show you how to export different CasC snippets and add them to an existing bundle, we have created GitHub Pull Requests for all the required changes in order to get through the material more quickly. So, navigate to your `ops-controller` repository in your workshop GitHub Organization and click on the **Pull requests** link. ![PR link](pr-link.png?width=50pc) 
 9. On the next screen, click on the **Bundle Export** pull request (it is #1) and then click on the **Files changed** tab to review the requested configuration changes. ![PR Files Changed](pr-files-changed.png?width=50pc)
@@ -299,7 +303,7 @@ configurations:
 - description: Exported plugins
   includePlugins:
     pipeline-utility-steps:
-      version: 2.12.2
+      version: 2.13.0
 ```
 
 11. You will also notice that there are changes for the `plugins.yaml` and `bundle.yaml` (we will review the changes to the `items.yaml` and `jenkins.yaml` later in this lab). Again, plugins in the `plugin-catalog.yaml` are not actually installed on a controller, rather they just extend what can be installed outside of CAP. In order for a plugin to be installed via a configuration bundle it must be added to the `plugins.yaml`. Click on the `plugins.yaml` file and you will notice that we have added the following entry under the `# non-cap plugins` comment:
