@@ -95,7 +95,7 @@ pipeline {
 12. Navigate back to the `controller-casc-update` job on your Ops controller and update the **Marker file** to `bundle/bundle.yaml`, and the click the **Save** button. ![Update job config](update-job-config.png?width=50pc)
 13. Once the GitHub Organization scan is complete click on the the **Status** link in the left menu and you will see a Multibranch pipeline project for your `ops-controller` repository. ![Ops controller Multibranch pipeline](ops-controller-multibranch-job.png?width=50pc)
 14. Click on the `ops-controller` Multibranch pipeline project and then click on the pipeline job for the `main` branch of your `ops-controller` repository. ![Ops controller job](ops-controller-job.png?width=50pc)
-15. Click on the **main** branch job and then click the **Build Now** link in the left navigation. ![Build now](build-now.png?width=50pc)
+15. Next, click on the **Build Now** link in the left navigation. ![Build now](build-now.png?width=50pc)
 16. Once the job completes you will see that the job fails with the following error:
 
 ```
@@ -123,7 +123,7 @@ If you don't see the new version available then click the **Check for Updates** 
 
 ## Auto-Updating with the CloudBees CI CasC HTTP API
 
-Although we have enabled GitOps to automatically update your CasC bundle on Operations Center whenever there is a commit to the `main` branch of your `ops-controller` repository, checking for and applying the bundle updates on your controller is still a manual process. CloudBees CI CasC provides [HTTP API endpoints](https://docs.cloudbees.com/docs/cloudbees-ci-api/latest/bundle-management-api) (and a CLI) for managing CasC bundles, to include endpoints to check for controller bundle updates and reloading a controller bundle:
+Although we have enabled GitOps to automatically update your CasC bundle on Operations Center whenever there is a commit to the `main` branch of your `ops-controller` repository, checking for and applying the bundle updates on your controller is still a manual process via the controller UI. CloudBees CI CasC provides [HTTP API endpoints](https://docs.cloudbees.com/docs/cloudbees-ci-api/latest/bundle-management-api) (and a CLI) for managing CasC bundles, to include endpoints to check for controller bundle updates and reloading a controller bundle:
 
 - GET `${JENKINS_URL}/casc-bundle-mgnt/check-bundle-update`
 - POST `${JENKINS_URL}/casc-bundle-mgnt/reload-bundle`
