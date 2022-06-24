@@ -9,15 +9,25 @@ CloudBees CI CasC provides support for managing the configuration of CloudBees C
 In this lab we will explore updating the configuration bundle of your dev controller to manage RBAC with its CasC bundle.
 
 {{% notice note %}}
-Using CasC for RBAC requires that you allow Managed Controllers to opt-out of inheriting the Operations Center authorization strategy meaning that the Managed Controller will not inherit roles or groups from Operations Center but will still authenticate through Operations Center. As noted in the previous lab, your dev controller was provisioned with the setting already configured to opt out of inheriting the Operations Center authorization strategy.
+Using CasC for RBAC requires that you allow Managed Controllers to opt-out of inheriting the Operations Center authorization strategy, meaning that the managed controller will not inherit roles or groups from Operations Center but will still authenticate through Operations Center. As noted in the previous lab, your dev controller was provisioned with the setting already configured to opt out of inheriting the Operations Center authorization strategy.
 {{% /notice %}}
+
+The configuration from the `dev-controller` `controller.yaml` that allows configuring RBAC with CasC for controllers:
+
+```yaml
+    - optOutProperty:
+        securityEnforcerOptOutMode:
+          authorizationOptOutMode: {
+            }
+```
+
 
 In addition to using CasC to configure RBAC for your dev controller, we will also utilize the Jenkins **Overall/Manage** and **Overall/SystemRead** permissions to limit the amount of configuration that your CloudBees CI user is able to make via the UI. The **Overall/Manage** permission will still allow your user to reload updated configuration bundles but the actual configuration changes must be committed to your `dev-controller` repository.
 
 ## Configure controller RBAC with a Configuration Bundle
 
-1. Navigate to your workshop GitHub Organization click on the link for your copy of the **dev-controller** repository. ![dev-controller repo link](github-dev-controller-repo-link.png?width=50pc)
-2. At the top level of your `dev-controller` repository in your workshop GitHub Organization, click on the **Add file** button and then select **Create new file**. ![Create new file in GitHub](github-create-new-file.png?width=50pc)
+1. Navigate to your workshop GitHub Organization click on the link for your copy of the **dev-controller** repository, click on the **Pull requests** tab and then click on the link for the **Controller RBAC** pull request.
+2. On the next screen, click on the **Files changed** tab to review the files being updated and added to your `dev-controller` repository.
 ```yaml
 removeStrategy:
   rbac: SYNC

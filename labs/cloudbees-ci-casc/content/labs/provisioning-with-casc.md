@@ -128,7 +128,7 @@ pipeline {
 ### Create a new managed controller repository
 In the previous section you added the `controller-provision` Organization Folder job to your Ops controller to publish an event to trigger the provisioning of a managed controller. Now you will trigger the provisioning of a new managed controller by adding a `controller.yaml` file (and a simple CasC bundle) to the `main` branch of your copy of the `dev-controller` repository in your workshop GitHub Organization.
 
-1. Navigate to your copy of the `dev-controller` repository in GitHub and click on the **Pull requests** link and then click on the link for the **Provision Controller** pull request.
+1. Navigate to your copy of the `dev-controller` repository in GitHub, click on the **Pull requests** tab and then click on the link for the **Provision Controller** pull request.
 2. On the next screen, click on the **Files changed** tab to review the `bundle/bundle.yaml` and `controller.yaml` files being added to your `dev-controller` repository. Note that the `bundle/bundle.yaml` file does include any other configuration files but it does specify `parent: base`.
 3. Once you have reviewed the changed files, click on the **Conversation** tab, scroll down and click the green **Merge pull request** button and then the **Confirm merge** button.
 4. Next, navigate to the top level of your Ops controller, click the on the `controller-jobs` folder and then click on the `controller-provision` job. There should now be a `dev-controller` folder under the `controller-provision` job for your `dev-controller` repository. ![dev-controller job](dev-controller-job.png?width=50pc)
