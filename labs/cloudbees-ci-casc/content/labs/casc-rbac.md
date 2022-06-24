@@ -4,9 +4,9 @@ chapter: false
 weight: 6
 --- 
 
-CloudBees CI CasC provides support for managing the configuration of CloudBees CI Role Based Access Control (RBAC) and folders.
+CloudBees CI CasC provides support for managing the configuration of CloudBees CI Role Based Access Control (RBAC) for controllers and folders on controllers.
 
-In this lab we will explore updating configuration bundle of your dev controller to manage RBAC.
+In this lab we will explore updating the configuration bundle of your dev controller to manage RBAC with its CasC bundle.
 
 {{% notice note %}}
 Using CasC for RBAC requires that you allow Managed Controllers to opt-out of inheriting the Operations Center authorization strategy meaning that the Managed Controller will not inherit roles or groups from Operations Center but will still authenticate through Operations Center. As noted in the previous lab, your dev controller was provisioned with the setting already configured to opt out of inheriting the Operations Center authorization strategy.
