@@ -28,76 +28,14 @@ In addition to using CasC to configure RBAC for your dev controller, we will als
 
 1. Navigate to your workshop GitHub Organization click on the link for your copy of the **dev-controller** repository, click on the **Pull requests** tab and then click on the link for the **Controller RBAC** pull request.
 2. On the next screen, click on the **Files changed** tab to review the files being updated and added to your `dev-controller` repository.
-```yaml
-removeStrategy:
-  rbac: SYNC
-roles:
-- name: authenticated
-  filterable: 'true'
-  permissions:
-  - hudson.model.Hudson.Read
-  - hudson.model.Item.Read
-  - hudson.model.View.Read
-- name: administrator
-  permissions:
-  - hudson.model.Hudson.Administer
-- name: manager
-  filterable: 'true'
-  permissions:
-  - hudson.model.Hudson.SystemRead
-  - hudson.model.Hudson.Manage
-  - com.cloudbees.plugins.credentials.CredentialsProvider.View
-  - com.cloudbees.pipeline.governance.templates.catalog.TemplateCatalogAction.ViewCatalogs
-  - com.cloudbees.jenkins.plugin.metrics.views.Alerter.View
-  - nectar.plugins.rbac.groups.Group.View
-  - nectar.plugins.rbac.roles.Role.View
-groups:
-- name: Administrators
-  members:
-    users:
-    - admin
-    - team-admin
-    - "REPLACE_GITHUB_USERNAME-admin"
-  roles:
-  - name: administrator
-    grantedAt: current
-- name: Managers
-  members:
-    users:
-    - "REPLACE_GITHUB_USERNAME"
-  roles:
-  - name: manager
-    grantedAt: current
-```
-3. Name the new file `rbac.yaml`, copy the `rbac` configuration from above and paste it into the GitHub file editor. **Important**: replace the two `REPLACE_GITHUB_USERNAME` placeholders with your GitHub username. Then select the option to **"Create a new branch for this commit and start a pull request"**, name the branch `add-rbac` and then click the **Propose changes** button. ![Create rbac.yaml](github-commit-rbac-yaml.png?width=50pc)
-4. On the next screen click the **Create pull request** button to create a pull request to merge to the `main` branch when you are done updating your `dev-controller` configuration bundle. ![Create RBAC pull request](github-create-rbac-pr.png?width=50pc)
-5. Navigating back to the top level of your `dev-controller` repository and ensuring that you are on the ` add-rbac` branch, click on the `bundle.yaml` file and then click on the ***Edit this file*** pencil button to edit the file. 
-6. Update the bundle `version` to **2** and add the following `rbac` section:
-```yaml
-rbac:
-  - "rbac.yaml"
-```
-
-{{%expand "expand for complete bundle.yaml file" %}}
-```yaml
-apiVersion: "1"
-version: "2"
-id: "cbci-casc-workshop-dev-controller"
-description: "CloudBees CI configuration bundle for the cbci-casc-workshop dev-controller Controller"
-parent: "base"
-rbac:
-  - "rbac.yaml"
-  ```
-{{% /expand%}}
-
-7. After you have made the changes, ensure that you are committing to the `add-rbac` branch and then click the **Commit changes** button. ![Commit bundle.yaml with rbac](github-commit-rbac-bundle-yaml.png?width=50pc)
-8. Now that we have added the `rbac.yaml` and updated the `bundle.yaml`,  we can now merge the pull request to the `main` branch. In GitHub, click on the **Pull requests** tab and then click on the link for the **Create rbac.yaml** pull request. ![rbac pull request link](github-rbac-pr-link.png?width=50pc)
-9. On the **Create rbac.yaml #1** pull request page, click the **Merge pull request** button and then click the **Confirm merge** button.
-10. Navigate to the `main` branch job of the `dev-controller` Multibranch pipeline project on your Ops controller. ![dev-controller Mulitbranch](dev-controller-multibranch-jcasc.png?width=50pc)
-11. After the the `main` branch job has completed successfully, navigate to the top level of your **dev controller**, click on the **Manage Jenkins** link in the left menu.
-14. You will see a *Manage Jenkins* page with fewer items and the left navigation will have fewer items. Also, many of the configuration items that are still available are view only. ![After Delegating Admin](after-delegating-admin.png?width=85pc)
-15. Click on **Manage Plugins**, click on the **Available** tab and search for *CloudBees*.  Note that you can see what plugins are available but you cannot install plugins. In order to install or update plugins (or other configuration) you will need to update and reload the CasC bundle for your Managed Controller. ![View Only Plugin Management](plugins-view-only.png?width=60pc)
-16. Finally, navigate to the top level of your dev controller and you will see that you cannot create any items (or jobs). We will fix that in the next section by creating a folder with RBAC that allows you to create jobs in that folder.
+3. Note that we incremented the `bundle.yaml` `version` to 2, added an `rbac` entry and added the `bundle/rbac.yaml` file.  ![bundle.yaml changes](bundel-yaml-changes.png?width=50pc)
+4. Click on the `rbac.yaml` file. Note that we are adding two roles, `administrator` and `manager`; and creating two groups using those roles with your regular user being added as a member of the `Managers` group and your admin user being added to the `Administrators` group.  ![rbac.yaml changes](rbac-yaml-changes.png?width=50pc)
+5. Once you have finished reviewing the changes, click on the **Conversation** tab of the **Controller RBAC** pull request, scroll down and click the green **Merge pull request** button and then click the **Confirm merge** button.
+6. Navigate to the `main` branch job of the `dev-controller` Multibranch pipeline project on your Ops controller. ![dev-controller Mulitbranch](dev-controller-multibranch-jcasc.png?width=50pc)
+7. After the the `main` branch job has completed successfully, navigate to the top level of your **dev controller**, click on the **Manage Jenkins** link in the left menu.
+8. You will see a *Manage Jenkins* page with fewer items and the left navigation will have fewer items. Also, many of the configuration items that are still available are view only. ![After Delegating Admin](after-delegating-admin.png?width=85pc)
+9. Click on **Manage Plugins**, click on the **Available** tab and search for *CloudBees*.  Note that you can see what plugins are available but you cannot install plugins. In order to install or update plugins (or other configuration) you will need to update and reload the CasC bundle for your Managed Controller. ![View Only Plugin Management](plugins-view-only.png?width=60pc)
+10. Finally, navigate to the top level of your dev controller and you will see that you cannot create any items (jobs). In the next section we will create a folder with RBAC that allows you to create jobs in that folder.
 
 ## Adding a Folder with RBAC to a Configuration Bundle
 
