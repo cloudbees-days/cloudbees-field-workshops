@@ -39,115 +39,12 @@ In addition to using CasC to configure RBAC for your dev controller, we will als
 
 ## Adding a Folder with RBAC to a Configuration Bundle
 
-1. Navigate to the top level of your `dev-controller` repository in your workshop GitHub Organization and click on the **Add file** button and then select **Create new file**. ![Create new file in GitHub](github-create-new-file.png?width=50pc)
-```yaml
-removeStrategy:
- items: "none"
- rbac: "sync"
-items:
- - kind: "folder"
-   name: "controller-jobs"
-   description: "Base controller folder for all jobs."
-   groups:
-     - name: "Job Managers"
-       members:
-         internal_groups:
-         - Managers
-       roles:
-         - name: "job-manager"
-           grantedAt: "current"
-           propagates: "true"
-```
-2. Name the new file `folders.yaml`, copy the `items` configuration from above and paste it into the GitHub file editor. Then select the option to **"Create a new branch for this commit and start a pull request"**, name the branch `add-folder` and then click the **Propose changes** button. ![Create folders.yaml](github-commit-folders-yaml.png?width=50pc)
-3. On the next screen click the **Create pull request** button to create a pull request to merge to the `main` branch when you are done updating your `dev-controller` configuration bundle. ![Create folder pull request](github-create-folder-pr.png?width=50pc)
-4. Now we must add the new `job-manager` role to your `rbac.yaml`. Navigate back to the top level of your `dev-controller` repository and ensuring that you are on the ` add-folder` branch, click on the `rbac.yaml` file and then click on the ***Edit this file*** pencil button to edit the file.
-5. Add the following `job-manager` section after the current `manager` role:
-```yaml
-- name: job-manager
-  filterable: 'true'
-  permissions:
-  - hudson.model.Item.Read
-  - hudson.model.Item.Create
-  - hudson.model.Item.Configure
-  - hudson.model.Item.Build
-```
-
-{{%expand "expand for complete rbac.yaml file - IMPORTANT: REPLACE_GITHUB_USERNAME must be replaced with your GitHub username" %}}
-```yaml
-removeStrategy:
-  rbac: SYNC
-roles:
-- name: authenticated
-  filterable: 'true'
-  permissions:
-  - hudson.model.Hudson.Read
-  - hudson.model.Item.Read
-  - hudson.model.View.Read
-- name: administrator
-  permissions:
-  - hudson.model.Hudson.Administer
-- name: manager
-  filterable: 'true'
-  permissions:
-  - hudson.model.Hudson.SystemRead
-  - hudson.model.Hudson.Manage
-  - com.cloudbees.plugins.credentials.CredentialsProvider.View
-  - com.cloudbees.pipeline.governance.templates.catalog.TemplateCatalogAction.ViewCatalogs
-  - com.cloudbees.jenkins.plugin.metrics.views.Alerter.View
-  - nectar.plugins.rbac.groups.Group.View
-  - nectar.plugins.rbac.roles.Role.View
-- name: job-manager
-  filterable: 'true'
-  permissions:
-  - hudson.model.Item.Read
-  - hudson.model.Item.Create
-  - hudson.model.Item.Configure
-  - hudson.model.Item.Build
-groups:
-- name: Administrators
-  members:
-    users:
-    - admin
-    - team-admin
-    - "REPLACE_GITHUB_USERNAME-admin"
-  roles:
-  - name: administrator
-    grantedAt: current
-- name: Managers
-  members:
-    users:
-    - "REPLACE_GITHUB_USERNAME"
-  roles:
-  - name: manager
-    grantedAt: current
-  ```
-{{% /expand%}}
-
-6. After you have made the changes, ensure that you are committing to the `add-folder` branch and then click the **Commit changes** button. ![Commit rbac.yaml with job-manager role](github-commit-rbac-yaml-job-manager.png?width=50pc)
-7. Navigating back to the top level of your `dev-controller` repository and ensuring that you are on the ` add-folder` branch, click on the `bundle.yaml` file and then click on the ***Edit this file*** pencil button to edit the file. 
-8. Update the bundle `version` to **3** and add the following `items` section after the `rbac` section:
-```yaml
-items:
-  - "folders.yaml"
-```
-
-{{%expand "expand for complete bundle.yaml file" %}}
-```yaml
-apiVersion: "1"
-version: "3"
-id: "cbci-casc-workshop-dev-controller"
-description: "CloudBees CI configuration bundle for the cbci-casc-workshop dev-controller Controller"
-parent: "base"
-rbac:
-  - "rbac.yaml"
-items:
-  - "folders.yaml"
-  ```
-{{% /expand%}}
-
-9. After you have made the changes, ensure that you are committing to the `add-folder` branch and then click the **Commit changes** button. ![Commit bundle.yaml with items](github-commit-items-bundle-yaml.png?width=50pc)
-8. Now that we have added the `folders.yaml`, and updated the `rbac.yaml` and `bundle.yaml` files,  we can now merge the pull request to the `main` branch. In GitHub, click on the **Pull requests** tab and then click on the link for the **Create folders.yaml** pull request. ![folders pull request link](github-folders-pr-link.png?width=50pc)
-9. On the **Create folders.yaml #2** pull request page, click the **Merge pull request** button and then click the **Confirm merge** button.
-10. Navigate to the `main` branch job of the `dev-controller` Multibranch pipeline project **on your Ops controller**. ![dev-controller Mulitbranch](dev-controller-multibranch-jcasc.png?width=50pc)
-11. After the the `main` branch job has completed successfully, navigate to the top level of your **dev controller** and there will be a new **controller-jobs** folder. ![New folder](new-jobs-folder.png?width=50pc)
-12. Click on the **controller-jobs** folder and you will see that you are able to create new jobs in that folder. ![Create jobs](create-job.png?width=50pc)
+1. Navigate to your workshop GitHub Organization click on the link for your copy of the **dev-controller** repository, click on the **Pull requests** tab and then click on the link for the **Folder RBAC** pull request. 
+2. On the next screen, click on the **Files changed** tab to review the files being updated and added to your `dev-controller` repository.
+3. Note that we incremented the `bundle.yaml` `version` to 3, added an `items` entry and added the `bundle/folder.yaml` file.  ![folder bundle.yaml changes](folder-bundel-yaml-changes.png?width=50pc)
+4. Next, click on the `folder.yaml` file
+5. Finally, click on the `rbac.yaml` file. Note that we are adding the `job-manager` role being used in the `folder.yaml` file above.  ![folder rbac.yaml changes](folder rbac-yaml-changes.png?width=50pc)
+6. Now that we have reviewed the new `folders.yaml`, and the changes to the `rbac.yaml` and `bundle.yaml` files,  click on the **Conversation** tab of the **Folder RBAC** pull request, scroll down and click the green **Merge pull request** button and then click the **Confirm merge** button.
+7. Navigate to the `main` branch job of the `dev-controller` Multibranch pipeline project **on your Ops controller**. ![dev-controller Mulitbranch](dev-controller-multibranch-jcasc.png?width=50pc)
+8. After the the `main` branch job has completed successfully, navigate to the top level of your **dev controller** and there will be a new **controller-jobs** folder. ![New folder](new-jobs-folder.png?width=50pc)
+9. Click on the **controller-jobs** folder and you will see that you are able to create new jobs in that folder. ![Create jobs](create-job.png?width=50pc)
