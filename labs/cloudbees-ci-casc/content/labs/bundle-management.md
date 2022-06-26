@@ -12,7 +12,7 @@ There are two options available for manually forcing a sync of the bundles from 
 
 ![CasC for Controllers Storage Service](storage-service-diagram.png?width=50pc)
 
-You may configure multiple versions of each retrieval method, but bundle names (the folder the bundle files are in) must be unique across all external bundle sources. The CloudBees CI cluster we are using for this workshop has been configured with both an **SCM** and a **Local folder** external sources. We are using the **SCM** source to load bundles at Operations center initial startup and using a **Local folder** source for all of the workshop controller bundles.
+You may configure multiple versions of each retrieval method, but bundle names (the folder the bundle files are in) must be unique across all external bundle sources. The CloudBees CI cluster we are using for this workshop has been configured with both an **SCM** and a **Local folder** external sources. We are using the [**SCM** source](https://github.com/cloudbees-days/workshop-casc-bundles) to load bundles at Operations center initial startup and using a **Local folder** source for all of the workshop controller bundles.
 
 {{% notice note %}}
 While Operations Center simplifies the management of bundles, it is possible to configure a controller with a bundle without Operations Center using the `-Dcore.casc.config.bundle=/path/to/casc-bundle` Java system property.
@@ -95,6 +95,11 @@ pipeline {
 13. Once the GitHub Organization scan is complete click on the the **Status** link in the left menu and you will see a Multibranch pipeline project for your `ops-controller` repository. ![Ops controller Multibranch pipeline](ops-controller-multibranch-job.png?width=50pc)
 14. Click on the `ops-controller` Multibranch pipeline project and then click on the pipeline job for the `main` branch of your `ops-controller` repository. ![Ops controller job](ops-controller-job.png?width=50pc)
 15. Next, click on the **Build Now** link in the left navigation. ![Build now](build-now.png?width=50pc)
+
+{{% notice note %}}
+Normally **Organization Folder** and **Multibranch Pipeline** jobs are triggered when they are indexed, but we have configured the `suppressFolderAutomaticTriggering` property on the `controller-casc-update` job so it will only be triggered by webhook events and manually. 
+{{% /notice %}}
+
 16. Once the job completes you will see that the job fails with the following error:
 
 ```
