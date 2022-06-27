@@ -17,7 +17,7 @@ A configuration bundle may consist of the following YAML file types:
 - **plugins** (optional) - This file contains a list of all the plugins to be installed on the controller. Plugins that are not in the [CloudBees Assurance Program (CAP)](https://docs.cloudbees.com/docs/admin-resources/latest/assurance-program/) have to be added with a Plugin Catalog and to this file.
 - **catalog** (optional) - This file defines the catalog of versioned plugins outside of the CloudBees Assurance Program (CAP) that are available for installation on the controller. An optional location can also be specified for plugins that are not available in the standard update centers. Adding plugins to a catalog only makes them available to install and they still must be added to the plugins file above.
 - **rbac** (optional) - This file defines the RBAC groups and roles at the root level of a controller. 
-- **items** (optional) - This file defines items (folders, jobs, etc), and optionally, RBAC for folders to be created on the controller.
+- **items** (optional) - This file defines items (folders, jobs, etc), and, optionally, RBAC for folders to be created on the controller.
 - **variables**: (Optional) This file defines the variables that can be used in the **jcasc**, **items**, and **rbac** yaml files.
 
 {{% notice note %}}
@@ -115,7 +115,7 @@ credentials:
           privateKey: "${cbciCascWorkshopGitHubAppPrivateKey}"
 ```
 
-4. The `gitHubApp` credential is unique to your workshop GitHub Organization. But also notice the variable substitution for the `privateKey` field of that credential - the value in the `jenkins.yaml` file is the `${gitHubAppPrivateKey}` variable. Of course you wouldn't want to store a secure secret directly in a JCasC yaml file, especially if it is to be stored in source control. However, JCasC supports several ways to [pass secrets more securely](https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/features/secrets.adoc). For this workshop we are passing secrets by mounting secret volumes using the [Kubernetes Secrets Store CSI driver](https://secrets-store-csi-driver.sigs.k8s.io/introduction.html) with the [Google Secret Manager provider](https://github.com/GoogleCloudPlatform/secrets-store-csi-driver-provider-gcp). This allows us to manage secrets with the Google Secret Manager in GCP and to mount those secrets as files in the directory on your controller configured for JCasC to read secret variables, with the file name being the variable name and the file contents being the secret value.
+4. The `gitHubApp` credential is unique to your workshop GitHub Organization. But also notice the variable substitution for the `privateKey` field of that credential - the value in the `jenkins.yaml` file is the `${gitHubAppPrivateKey}` variable. Of course you wouldn't want to store a secure secret directly in a JCasC yaml file, especially if it is to be stored in source control. However, JCasC supports several ways to [pass secrets more securely](https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/features/secrets.adoc). For this workshop we are passing secrets by mounting secret volumes using the [Kubernetes Secrets Store CSI driver](https://secrets-store-csi-driver.sigs.k8s.io/introduction.html) with the [Google Secret Manager provider](https://github.com/GoogleCloudPlatform/secrets-store-csi-driver-provider-gcp). This allows us to manage secrets with the Google Secret Manager in GCP and to mount those secrets as files in the directory on your controller configured for JCasC to read secret variables, with the file name being the variable name and the file contents being the secret value. Other, less sensitive, variables may be configured as System properties such as the `${GITHUB_ORGANIZATION}` placeholder above.
 
 {{% notice tip %}}
 There are also Kubernetes Secrets Store CSI providers for [AWS Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/integrating_csi_driver.html), [Azure Key Vault](https://docs.microsoft.com/en-us/azure/aks/csi-secrets-store-driver) and [HashiCorp Vault](https://www.vaultproject.io/docs/platform/k8s/csi).
@@ -155,7 +155,7 @@ plugins:
 - id: workflow-cps-checkpoint
 # non-cap plugins
 ```
-6. Return to the `bundle` folder of your `ops-controller` repository and click on the `items.yaml` file. The name of this file must match the file name listed under `items` in the `bundle.yaml` file. Its contents will match the following. Also note the `removeStrategy` configuration at the top, this specifies the strategy to handle existing configuration when a new configuration is applied, and is required for all `items` files (`NONE` is currently the only strategy available for `items`):
+6. Return to the `bundle` folder of your `ops-controller` repository and click on the `items.yaml` file. The name of this file must match the file name listed under `items` in the `bundle.yaml` file. Its contents will match the following. Also note the `removeStrategy` configuration at the top, this specifies the strategy to handle existing configuration when a new configuration is applied, and is required for all `items` files (`NONE` is currently the only strategy available for `items`, while `sync` and `update` are the two `removeStrategy` values available for `rbac`):
 
 ```yaml
 removeStrategy:
@@ -278,6 +278,8 @@ items:
                   secret:
                     secretName: cbci-mc-secret
 ```
+
+Note the `GITHUB_ORGANIZATION` `env` name/value pair that we are leveraging in your `jenkins.yaml`.
 
 ## Creating/Updating a Configuration Bundle from a Bundle Export
 As you can see from the composition overview above, the YAML in the different configuration files can be somewhat complicated, and that is with only a some of the bundle file types and a fairly simple set of configurations. Luckily, CloudBees CI Configuration as Code (CasC) for Controllers supports an export capability that allows you to export the current configuration from an existing controller. In this lab you will make configurations changes on your Ops controller using the UI and then use the export feature to copy new or updated configuration to the files in your `ops-controller` repository. First, we will add a new, non-CAP plugin and then we will add some properties to a folder - and we will use the CasC export functionality to copy the YAML for those updates to apply to the your bundle in your `ops-controller` repository. 
