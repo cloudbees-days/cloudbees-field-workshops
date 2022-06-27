@@ -43,7 +43,7 @@ In addition to using CasC to configure RBAC for your dev controller, we will als
 2. On the next screen, click on the **Files changed** tab to review the files being updated and added to your `dev-controller` repository.
 3. Note that we incremented the `bundle.yaml` `version` to 3, added an `items` entry and added the `bundle/folder.yaml` file. ![folder bundle.yaml changes](folder-bundle-yaml-changes.png?width=50pc)
 4. Next, click on the `folder.yaml` file and notice that we are creating a `controller-jobs` folder with a `Job Managers` group. ![folder.yaml](folder-yaml.png?width=50pc)
-5. Finally, click on the `rbac.yaml` file. Note that we are adding the `job-manager` role being used in the `folder.yaml` file above.  ![folder rbac.yaml changes](folder rbac-yaml-changes.png?width=50pc)
+5. Finally, click on the `rbac.yaml` file. Note that we are adding the `job-manager` role being used in the `folder.yaml` file above. ![folder rbac.yaml changes](folder-rbac-yaml-changes.png?width=50pc)
 6. Now that we have reviewed the new `folders.yaml`, and the changes to the `rbac.yaml` and `bundle.yaml` files,  click on the **Conversation** tab of the **Folder RBAC** pull request, scroll down and click the green **Merge pull request** button and then click the **Confirm merge** button.
 7. Navigate to the `main` branch job of the `dev-controller` Multibranch pipeline project **on your Ops controller**. ![dev-controller Mulitbranch](dev-controller-multibranch-jcasc.png?width=50pc)
 8. After the the `main` branch job has completed successfully, navigate to the top level of your **dev controller** and there will be a new **controller-jobs** folder. ![New folder](new-jobs-folder.png?width=50pc)
