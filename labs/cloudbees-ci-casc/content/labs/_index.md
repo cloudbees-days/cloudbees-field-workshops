@@ -10,5 +10,5 @@ weight: 1
 2. Configuration Bundle Management
 3. Configuration Bundle Inheritance and Advanced Directory Structure
 4. Provisioning Controllers with Configuration Bundles
-5. Managing Role Based Access Control with Configuration Bundles
-6. Extending Jenkins CasC with Groovy
+5. Configuring RBAC and Folders with CloudBees CI CasC
+6. Simplifying Controller Bundles with Variables
