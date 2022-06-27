@@ -19,5 +19,55 @@ In this lab we will use variables to templatize the `rbac.yaml` file.
 7. On the login screen, login as your admin user - which is your lowercased GitHub username with a **-admin** suffix and the password is the same. For example `beedemo-dev-admin`.
 8. Once you are logged in, navigate to the top level of your **dev-controller**, click on the **Manage Jenkins** link in the left menu and then click on the **CloudBees Configuration as Code export and update** *System Configuration* item.
 9. On the **CloudBees Configuration as Code export and update** click on the **Original Bundle** tab. Notice that the `rbac` files is named `01-rbac-base.rbac.yaml` signifying that it is coming from the `rbac-base` parent bundle. ![rbac from parent](rbac-parent-file.png?width=50pc)
+10. Note the `${admin-user}` and `${manager-user}` placeholders in the `rbac-base` `rbac.yaml` file below (available in GitHub [here](https://github.com/cloudbees-days/workshop-casc-bundles/blob/main/rbac-base/rbac.yaml)):
 
+```yaml
+removeStrategy:
+  rbac: SYNC
+roles:
+- name: authenticated
+  filterable: 'true'
+  permissions:
+  - hudson.model.Hudson.Read
+  - hudson.model.Item.Read
+  - hudson.model.View.Read
+- name: administrator
+  permissions:
+  - hudson.model.Hudson.Administer
+- name: manager
+  filterable: 'true'
+  permissions:
+  - hudson.model.Hudson.SystemRead
+  - hudson.model.Hudson.Manage
+  - com.cloudbees.plugins.credentials.CredentialsProvider.View
+  - com.cloudbees.pipeline.governance.templates.catalog.TemplateCatalogAction.ViewCatalogs
+  - com.cloudbees.jenkins.plugin.metrics.views.Alerter.View
+  - nectar.plugins.rbac.groups.Group.View
+  - nectar.plugins.rbac.roles.Role.View
+- name: job-manager
+  filterable: 'true'
+  permissions:
+  - hudson.model.Item.Read
+  - hudson.model.Item.Create
+  - hudson.model.Item.Configure
+  - hudson.model.Item.Build
+groups:
+- name: Administrators
+  members:
+    users:
+    - admin
+    - team-admin
+    - "${admin-user}"
+  roles:
+  - name: administrator
+    grantedAt: current
+- name: Managers
+  members:
+    users:
+    - "${manager-user}"
+  roles:
+  - name: manager
+    grantedAt: current
+```
 
+This allows us to use the same `rbac` configuration for everyone's controllers.
