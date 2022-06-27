@@ -87,7 +87,7 @@ pipeline {
 4. An agent is defined for the **Provision Managed Controller** `stage` as the `sh` steps require a normal (some times referred to as heavy-weight) executor (meaning it must be run on an agent since all managed controllers our configured with 0 executors): `agent { label 'default-jnlp' }`
 5. The declarative `environment` directive is used to capture values published by the Cross Team Collaboration `event`, to retrieve the controller provisioning secret value from the workshop Ops controller and to retrieve the Operations Center admin API token credential.
 6. Multiple `when` conditions are configured so the **Provision Managed Controller** `stage` will only run if the job is triggered by an `EventTriggerCause` and if the `PROVISION_SECRET` matches the event payload secret.
-7. The `kubectl` CLI tool is used to copy CasC bundle files to Operations Center.
+7. The `kubectl` CLI tool is used to copy CasC bundle files to Operations Center **Local folder** we have configured.
 8. Finally, the `curl` command is used to post the contents of the `controller.yaml` file to the `/casc-items/create-items` CloudBees CI CasC HTTP API endpoint which will result in the provisioning of a managed controller.
 
 ### Create Ops controller Job to Trigger Provisioning
@@ -95,8 +95,8 @@ Now that we have reviewed the pipeline script for the workshop provisioning of m
 
 1. Navigate to your `ops-controller` repository in your workshop GitHub Organization, click on the **Pull requests** link and click on the **Bundle Provision** pull request. ![Provision PR link](provision-pr-link.png?width=50pc) 
 2. Next, click on the **Files changed** tab to review the configuration changes. First, click on the `items.yaml` file and note the new `organizationFolder` item using `controller.yaml` as the `marker` and the `controller-provision` Declarative Pipeline script. 
-3. Next, click on the `credentials.yaml` file and note the we are adding a new `restrictedSystem` credential with an `id` of `casc-workshop-controller-provision-secret` that matches the id used in the `controller-provision` Declarative Pipeline script below. 
-4. Finally, let's take a look at the new file `controller-provision`. Notice that the `controller-provision` Declarative Pipeline script is loading the `credential` with an id of `casc-workshop-controller-provision-secret` that was added to the `credentials.yaml` above and is using the `publishEvent` to publish an event that will trigger the job we reviewed above.
+3. Next, click on the `credentials.yaml` file and note the we are adding a new `restrictedSystem` credential with an `id` of `casc-workshop-controller-provision-secret` that matches the id used in the `controller-provision` Declarative Pipeline script below. ![Restricted credential](restricted-credential.png?width=50pc)
+4. Finally, let's take a look at the new file `controller-provision`. Notice that the `controller-provision` Declarative Pipeline script is loading the `credential` with an id of `casc-workshop-controller-provision-secret` that was added to the `credentials.yaml` above and is using the `publishEvent` to publish an event that will trigger the workshops Ops controller job we reviewed above.
 
 ```groovy
 library 'pipeline-library'
@@ -128,8 +128,8 @@ pipeline {
 ### Create a new managed controller repository
 In the previous section you added the `controller-provision` Organization Folder job to your Ops controller to publish an event to trigger the provisioning of a managed controller. Now you will trigger the provisioning of a new managed controller by adding a `controller.yaml` file (and a simple CasC bundle) to the `main` branch of your copy of the `dev-controller` repository in your workshop GitHub Organization.
 
-1. Navigate to your copy of the `dev-controller` repository in GitHub, click on the **Pull requests** tab and then click on the link for the **Provision Controller** pull request.
-2. On the next screen, click on the **Files changed** tab to review the `bundle/bundle.yaml` and `controller.yaml` files being added to your `dev-controller` repository. Note that the `bundle/bundle.yaml` file does include any other configuration files but it does specify `parent: base`.
+1. Navigate to your copy of the `dev-controller` repository in GitHub, click on the **Pull requests** tab and then click on the link for the **Provision Controller** pull request. ![Provision Controller PR link](provision-controller-pr-link.png?width=50pc)
+2. On the next screen, click on the **Files changed** tab to review the `bundle/bundle.yaml` and `controller.yaml` files being added to your `dev-controller` repository. Note that the `bundle/bundle.yaml` file does include any other configuration files but it does specify `parent: base`. ![files changed](provision-controller-files-changed.png?width=50pc)
 3. Once you have reviewed the changed files, click on the **Conversation** tab, scroll down and click the green **Merge pull request** button and then the **Confirm merge** button.
 4. Next, navigate to the top level of your Ops controller, click the on the `controller-jobs` folder and then click on the `controller-provision` job. There should now be a `dev-controller` folder under the `controller-provision` job for your `dev-controller` repository. ![dev-controller job](dev-controller-job.png?width=50pc)
 5. Navigate to the `main` branch of the **dev-controller** Multi-branch pipeline job on your Ops controller and you should see an **Event JSON** in the build logs similar to the one below (of course the GitHub information will be unique to you). ![Event JSON log output](event-json-log-output.png?width=50pc)
