@@ -12,7 +12,7 @@ There are two options available for manually forcing a sync of the bundles from 
 
 ![CasC for Controllers Storage Service](storage-service-diagram.png?width=50pc)
 
-You may configure multiple versions of each retrieval method, but bundle names (the folder the bundle files are in) must be unique across all external bundle sources. The CloudBees CI cluster we are using for this workshop has been configured with both an **SCM** and a **Local folder** external sources. We are using the [**SCM** source](https://github.com/cloudbees-days/workshop-casc-bundles) to load bundles at Operations center initial startup and using a **Local folder** source for all of the workshop controller bundles.
+You may configure multiple versions of each retrieval method, but bundle names (the folder the bundle files are in) must be unique across all external bundle sources. The CloudBees CI cluster we are using for this workshop has been configured with both an **SCM** and a **Local folder** external sources. We are using the [SCM source](https://github.com/cloudbees-days/workshop-casc-bundles) to load bundles at Operations center initial startup and using a **Local folder** source for all of the workshop controller bundles.
 
 {{% notice note %}}
 While Operations Center simplifies the management of bundles, it is possible to configure a controller with a bundle without Operations Center using the `-Dcore.casc.config.bundle=/path/to/casc-bundle` Java system property.

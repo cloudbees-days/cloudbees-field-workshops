@@ -94,7 +94,7 @@ notificationConfiguration:
   enabled: true
   router: "operationsCenter"
 ```
-3. The parent `jenkins.yaml` enforces a number of best practices across all managed controllers to include: 
+4. The parent `jenkins.yaml` enforces a number of best practices across all managed controllers to include: 
     - Setting the number of executors to 0 on controllers, as you should never execute jobs directly on a controller, rather you should always distribute jobs across agents.
     - Enforcing a project naming strategy to maintain clean job URLs and directory paths in the Jenkins home.
     - Setting the quite period to 0 to maximize speed of builds and utilization of ephemeral Kubernetes agents.
@@ -105,7 +105,7 @@ notificationConfiguration:
     - Enabling [controller hibernation](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/managing-masters#_hibernation_in_managed_masters) to reduce infrastructure costs - controllers will only run when they need to.
     - Enabling [Cross Team Collaboration](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/cross-team-collaboration) notifications to allow controllers to send and receive pipeline events.
 
-4. Next, let's review the `plugins.yaml` that will provide a base set of plugins for all the controllers in our CloudBees CI cluster:
+5. Next, let's review the `plugins.yaml` that will provide a base set of plugins for all the controllers in our CloudBees CI cluster:
 ```yaml
 plugins:
 - id: antisamy-markup-formatter
@@ -136,7 +136,7 @@ plugins:
 - id: workflow-aggregator
 - id: workflow-cps-checkpoint
 ```
-5. Finally, let's review the `plugin-catalog.yaml` that will extend CAP plugins and allow individual controllers to opt-in to their usage. 
+6. Finally, let's review the `plugin-catalog.yaml` that will extend CAP plugins and allow individual controllers to opt-in to their usage. 
 ```yaml
 displayName: CloudBees CI Workshop Plugin Catalog
 name: cbci-workshop-catalog
@@ -145,25 +145,26 @@ version: '1'
 configurations:
 - description: Workshop Additional Plugins
   includePlugins:
-    pipeline-utility-steps: {version: '2.13.0'}
+    pipeline-utility-steps: 
+      version: 2.13.0
 ```
-6. Now that we have reviewed the `base` bundle, navigate to your `ops-controller` repository in your workshop GitHub Organization, click on the **Pull requests** link and click on the **Bundle Inheritance** pull request. ![Inheritance PR link](inheritance-pr-link.png?width=50pc) 
-7. Next, click on the **Files changed** tab to review the configuration changes. For the `bundle.yaml` note that we added `parent: base` and removed the `catalog` entry. ![Inheritance PR Files Changed](inheritance-pr-files-changed.png?width=50pc)
-8. Click on the `jenkins.yaml` file link and you will see that much of the configuration has been removed since it will be provided by the parent bundle:
+7. Now that we have reviewed the `base` bundle, navigate to your `ops-controller` repository in your workshop GitHub Organization, click on the **Pull requests** link and click on the **Bundle Inheritance** pull request. ![Inheritance PR link](inheritance-pr-link.png?width=50pc) 
+8. Next, click on the **Files changed** tab to review the configuration changes. For the `bundle.yaml` note that we added `parent: base` and removed the `catalog` entry. ![Inheritance PR Files Changed](inheritance-pr-files-changed.png?width=50pc)
+9. Click on the `jenkins.yaml` file link and you will see that much of the configuration has been removed since it will be provided by the parent bundle:
    - Deleted the `quietPeriod` under `jenkins`.
    - Updated the `systemMessage` to `'Jenkins configured using CloudBees CI CasC with controller overrides'`.
    - Under the `unclassified` section deleted everything except for the `globallibraries` section.
    - Update the `headerLabel` `text` to **v4**.
 ![jenkins.yaml changes](jenkins-yaml-changes.png?width=50pc)
-9. Next, click on the `plugins.yaml` file link. The `plugin-catalog.yaml` has been deleted. Also, all of the plugins have been removed from the `plugins.yaml` file except for the non-CAP `pipeline-utility-steps` plugin made available to install via the parent bundle `plugin-catalog.yaml` configuration. Plugin files are merged so the majority of your controller plugins will now come from the parent defined standard list of plugins. Plugin catalog files are not merged, so we are relying on the parent bundle to defined the available non-CAP plugins. ![plugins.yaml changes](plugins-yaml-changes.png?width=50pc)
-10. Once you have finished reviewing the changes, click on the **Conversation** tab of the **Bundle Inheritance** pull request, scroll down and click the green **Merge pull request** button and then click the **Confirm merge** button.
-11. Navigate to the `main` branch job of your `ops-controller` Multibranch pipeline project on your Ops controller.
-12. After the the `main` branch job has completed successfully, navigate to the top level of your Ops controller, the ***system message*** should read - "Jenkins configured using CloudBees CI CasC with controller overrides" signifying that the `base` bundle has been overridden by your controller specific bundle. ![Overridden systemMessage](overridden-system-message.png?width=50pc) 
+10. Next, click on the `plugins.yaml` file link. The `plugin-catalog.yaml` has been deleted. Also, all of the plugins have been removed from the `plugins.yaml` file except for the non-CAP `pipeline-utility-steps` plugin made available to install via the parent bundle `plugin-catalog.yaml` configuration. Plugin files are merged so the majority of your controller plugins will now come from the parent defined standard list of plugins. Plugin catalog files are not merged, so we are relying on the parent bundle to defined the available non-CAP plugins. ![plugins.yaml changes](plugins-yaml-changes.png?width=50pc)
+11. Once you have finished reviewing the changes, click on the **Conversation** tab of the **Bundle Inheritance** pull request, scroll down and click the green **Merge pull request** button and then click the **Confirm merge** button.
+12. Navigate to the `main` branch job of your `ops-controller` Multibranch pipeline project on your Ops controller.
+13. After the the `main` branch job has completed successfully, navigate to the top level of your Ops controller, the ***system message*** should read - "Jenkins configured using CloudBees CI CasC with controller overrides" signifying that the `base` bundle has been overridden by your controller specific bundle. ![Overridden systemMessage](overridden-system-message.png?width=50pc) 
 
 {{% notice note %}}
 It takes a minute or two for the bundle files to be checked out, copied, updated and reloaded.
 {{% /notice %}}
 
-13. Next, click on the **Manage Jenkins** link in the left menu, and then click on the **CloudBees Configuration as Code export and update** *System Configuration* item.
-14. On the **CloudBees Configuration as Code export and update** click on the **Original Bundle** tab. Notice that there are now three `jcasc` files: `jcasc/01-base.jenkins.yaml`, `jcasc/02-cbci-casc-workshop-ops-controller.jcasc.credentials.yaml` and `jcasc/02-cbci-casc-workshop-ops-controller.jcasc.jenkins.yaml`. CloudBees CI Configuration as Code (CasC) for Controllers automatically renames all JCasC files by prefixing them with the level of inheritance, the bundle id and their folder structure and then copies them into the `jcasc` directory. However, in the case of the `plugins.yaml`, multiple files are merged into one. Also note that the `items.yaml` file is prefixed and placed in an `items` folder. ![Original Bundle](original-bundle-base.png?width=50pc) 
+14. Next, click on the **Manage Jenkins** link in the left menu, and then click on the **CloudBees Configuration as Code export and update** *System Configuration* item.
+15. On the **CloudBees Configuration as Code export and update** click on the **Original Bundle** tab. Notice that there are now three `jcasc` files: `jcasc/01-base.jenkins.yaml`, `jcasc/02-cbci-casc-workshop-ops-controller.jcasc.credentials.yaml` and `jcasc/02-cbci-casc-workshop-ops-controller.jcasc.jenkins.yaml`. CloudBees CI Configuration as Code (CasC) for Controllers automatically renames all JCasC files by prefixing them with the level of inheritance, the bundle id and their folder structure and then copies them into the `jcasc` directory. However, in the case of the `plugins.yaml`, multiple files are merged into one. Also note that the `items.yaml` file is prefixed and placed in an `items` folder. ![Original Bundle](original-bundle-base.png?width=50pc) 
 
