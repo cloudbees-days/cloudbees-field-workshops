@@ -308,7 +308,7 @@ configurations:
       version: 2.13.0
 ```
 
-11. You will also notice that there are changes for the `plugins.yaml` and `bundle.yaml` (we will review the changes to the `items.yaml` and `jenkins.yaml` later in this lab). Again, plugins in the `plugin-catalog.yaml` are not actually installed on a controller, rather they just extend what can be installed outside of CAP. In order for a plugin to be installed via a configuration bundle it must be added to the `plugins.yaml`. Click on the `plugins.yaml` file and you will notice that we have added the following entry under the `# non-cap plugins` comment:
+11. You will also notice that there are changes for the `plugins.yaml` and `bundle.yaml` (we will review the changes to the `items.yaml` and `jenkins.yaml` later in this lab). Again, plugins in the `plugin-catalog.yaml` are not actually installed on a controller, rather they just extend what can be installed outside of CAP. In order for a plugin to be installed via a configuration bundle it must be added to the `plugins.yaml` file. Click on the `plugins.yaml` file and you will notice that we have added the following entry under the `# non-cap plugins` comment:
 
 ```yaml
 - id: pipeline-utility-steps
