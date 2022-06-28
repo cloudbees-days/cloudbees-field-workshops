@@ -12,12 +12,12 @@ This lab will explore the composition of a CloudBees CI configuration bundle, to
 
 A configuration bundle may consist of the following YAML file types:
 
-- **bundle** (required) - This file is an index file that describes the bundle, references the other files in the bundle and must be named `bundle.yaml`. Any files not listed in this file will not be included in the controller bundle (even if it is in the bundle's directory). It also (optionally) allows you to specify an `availabilityPattern` which is a regular expression that controls what controllers can use the bundle based on their location on Operations Center and the `jcascMergeStrategy` which we will explore in the *Bundle Inheritance* lab.
-- **jcasc** (optional) - This file contains the Jenkins configuration (global configuration, credentials, plugin configuration, etc), as defined by the Jenkins [Configuration as Code plugin](https://github.com/jenkinsci/configuration-as-code-plugin).
+- **bundle** (required) - This file is an index file that describes the bundle, references the other files in the bundle and must be named `bundle.yaml`. Any files not listed in this file will not be included in the controller bundle (even if it is in the bundle's directory). It also (optionally) allows you to specify an `availabilityPattern` which is a regular expression that controls what controllers can use the bundle based on their location on Operations Center and the `jcascMergeStrategy` property, which we will explore in the *Bundle Inheritance* lab.
+- **jcasc** (optional) - These files contain the Jenkins configuration (global configuration, credentials, plugin configuration, etc), as defined by the Jenkins [Configuration as Code plugin](https://github.com/jenkinsci/configuration-as-code-plugin).
 - **plugins** (optional) - This file contains a list of all the plugins to be installed on the controller. Plugins that are not in the [CloudBees Assurance Program (CAP)](https://docs.cloudbees.com/docs/admin-resources/latest/assurance-program/) have to be added with a Plugin Catalog and to this file.
 - **catalog** (optional) - This file defines the catalog of versioned plugins outside of the CloudBees Assurance Program (CAP) that are available for installation on the controller. An optional location can also be specified for plugins that are not available in the standard update centers. Adding plugins to a catalog only makes them available to install and they still must be added to the plugins file above.
 - **rbac** (optional) - This file defines the RBAC groups and roles at the root level of a controller. 
-- **items** (optional) - This file defines items (folders, jobs, etc), and, optionally, RBAC for folders to be created on the controller.
+- **items** (optional) - These files define items (folders, jobs, etc), and, optionally, RBAC for folders to be created on the controller.
 - **variables**: (Optional) This file defines the variables that can be used in the **jcasc**, **items**, and **rbac** yaml files.
 
 {{% notice note %}}
