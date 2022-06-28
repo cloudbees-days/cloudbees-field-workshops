@@ -46,7 +46,7 @@ items:
 It is important that the bundle file is named exactly `bundle.yaml` otherwise the bundle will not be useable.
 {{% /notice %}}
 
-3. Return to the `bundle` folder of your `ops-controller` repository and click on the `jenkins.yaml` file. The name of this file must match the file name listed under `jcasc` in the `bundle.yaml` file. Its contents will  match the following:
+3. Return to the `bundle` folder of your `ops-controller` repository and click on the `jenkins.yaml` file. The name of this file must match the file name listed under `jcasc` in the `bundle.yaml` file. Its contents will match the following:
 ```yaml
 jenkins:
   globalNodeProperties:
@@ -279,7 +279,7 @@ items:
                     secretName: cbci-mc-secret
 ```
 
-Note the `GITHUB_ORGANIZATION` `env` name/value pair that we are leveraging in your `jenkins.yaml`.
+Note the `GITHUB_ORGANIZATION` `env` name/value pair that we are leveraging in your `jenkins.yaml` and `items.yaml` bundle files.
 
 ## Creating/Updating a Configuration Bundle from a Bundle Export
 As you can see from the composition overview above, the YAML in the different configuration files can be somewhat complicated, and that is with only a some of the bundle file types and a fairly simple set of configurations. Luckily, CloudBees CI Configuration as Code (CasC) for Controllers supports an export capability that allows you to export the current configuration from an existing controller. In this lab you will make configurations changes on your Ops controller using the UI and then use the export feature to copy new or updated configuration to the files in your `ops-controller` repository. First, we will add a new, non-CAP plugin and then we will add some properties to a folder - and we will use the CasC export functionality to copy the YAML for those updates to apply to the your bundle in your `ops-controller` repository. 
