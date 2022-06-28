@@ -23,7 +23,7 @@ CloudBees CI Configuration as Code (CasC) for Controllers allows managing bundle
 
 Bundle inheritance allows you to easily share common configuration across numerous controllers. In this lab we will update your Ops controller bundle to extend a parent bundle, providing common configuration and plugins to be shared across all of your organizations' controllers. First, we will review the contents of the parent `base` bundle that has already been set-up on Operations Center (and is also the default bundle), and then we will update your Ops controller bundle to use the `base` bundle as a parent bundle. The `base` bundle will include Jenkins configuration that enforces best practices across all of the controllers in the CloudBees CI cluster and include a common set of plugins to be used across all controllers.
 
-1. First we will take a look at the `bundle.yaml` for the `base` bundle (also available in GitHub at [https://github.com/cloudbees-days/parent-configuration-bundle/blob/main/bundle.yaml](https://github.com/cloudbees-days/parent-configuration-bundle/blob/main/bundle.yaml) ):
+1. First we will take a look at the `bundle.yaml` for the `base` bundle (also available in GitHub [here](https://github.com/cloudbees-days/workshop-casc-bundles/blob/main/base/bundle.yaml) ):
 ```yaml
 apiVersion: "1"
 id: "base"
@@ -46,7 +46,7 @@ catalog:
 Your may also specify the JCasC merge strategy via the `-Dcasc.merge.strategy=override` system property.
 {{% /notice %}}
 
-3. Next let's take a detailed look at the `base` bundle `jenkins.yaml` (also available on GitHub at [https://github.com/cloudbees-days/parent-configuration-bundle/blob/main/jenkins.yaml](https://github.com/cloudbees-days/parent-configuration-bundle/blob/main/jenkins.yaml) ):
+3. Next let's take a detailed look at the `base` bundle `jenkins.yaml` (also available on GitHub [here](https://github.com/cloudbees-days/workshop-casc-bundles/blob/main/base/jenkins.yaml) ):
 ```yaml
 jenkins:
   authorizationStrategy: "cloudBeesRoleBasedAccessControl"
