@@ -8,7 +8,7 @@ The `variables.yaml` is one of the optional CasC bundle file types. It allows yo
 
 In addition to `variables` bundle files, variables may also be defined as controller system properties and as [JCasC secrets](https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/features/secrets.adoc).
 
-In this lab we will use variables to templatize the `rbac.yaml` file.
+In this lab we will use variables to templatize the `rbac.yaml` file and update the parent bundle of your `dev-controller` bundle to the `rbac-base` bundle that includes that templatized version. This allows you to centrally manage standard RBAC strategies across many controllers.
 
 1. Navigate to your workshop GitHub Organization click on the link for your copy of the **dev-controller** repository, click on the **Pull requests** tab and then click on the link for the **Using Variables** pull request.
 2. On the next screen, click on the **Files changed** tab to review the files being removed and updated in your `dev-controller` repository.
