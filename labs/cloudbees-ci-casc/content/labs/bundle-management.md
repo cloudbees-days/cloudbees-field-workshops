@@ -4,7 +4,7 @@ chapter: false
 weight: 3
 --- 
 
-Operations Center provides a CasC for Controllers **storage service** that allows storing bundles in a directory or source control repository that is accessible by Operations center. These *external* storage locations, referred to as the **Local folder** and **SCM** retrieval methods, are then synced with an internal storage location (the `/var/jenkins_home/cb-casc-bundles-store` directory) via polling, an SCM webhook and/or manually. Once a bundle is synced to the internal storage location, it becomes available for use by controllers.
+Operations Center provides a CasC for Controllers **storage service** that allows storing bundles in a directory or source control repository that is accessible by Operations center. These *external* storage locations, referred to as the **Local folder** and **SCM** retrieval methods, are then synced with an internal storage location (the `/var/jenkins_home/cb-casc-bundles-store` directory) via polling, an SCM webhook and/or manually. Once a bundle is synced to the internal storage location, it becomes available for use by controllers based on the availability pattern of the bundle.
 
 {{% notice note %}}
 There are two options available for manually forcing a sync of the bundles from external sources to the internal storage with the first being via the Operations Center UI and the second being via an HTTP API endpoint for Operations Center: `POST /load-casc-bundles/checkout`.
@@ -12,7 +12,7 @@ There are two options available for manually forcing a sync of the bundles from 
 
 ![CasC for Controllers Storage Service](storage-service-diagram.png?width=50pc)
 
-You may configure multiple versions of each retrieval method, but bundle names (the folder the bundle files are in) must be unique across all external bundle sources. The CloudBees CI cluster we are using for this workshop has been configured with both an **SCM** and a **Local folder** external sources. We are using the [SCM source](https://github.com/cloudbees-days/workshop-casc-bundles) to load bundles at Operations center initial startup and using a **Local folder** source for all of the workshop controller bundles.
+You may configure multiple versions of each retrieval method, but bundle names (the folder the bundle files are in) must be unique across all external bundle sources. The CloudBees CI cluster we are using for this workshop has been configured with both an **SCM** and a **Local folder** external sources. We are using the [SCM source](https://github.com/cloudbees-days/workshop-casc-bundles) to load bundles at the Operations center initial startup to be used as parent bundles and for the workshop Ops controller used to provision workshop environments. We are using a **Local folder** source for all of the provisioned workshop controller bundles since they are all in individual source code repositories.
 
 {{% notice note %}}
 While Operations Center simplifies the management of bundles, it is possible to configure a controller with a bundle without Operations Center using the `-Dcore.casc.config.bundle=/path/to/casc-bundle` Java system property.
