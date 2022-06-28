@@ -12,12 +12,12 @@ This lab will explore the composition of a CloudBees CI configuration bundle, to
 
 A configuration bundle may consist of the following YAML file types:
 
-- **bundle** (required) - This file is an index file that describes the bundle, references the other files in the bundle and must be named `bundle.yaml`. Any files not listed in this file will not be included in the controller bundle (even if it is in the bundle's directory). It also (optionally) allows you to specify an `availabilityPattern` which is a regular expression that controls what controllers can use the bundle based on their location on Operations Center and the `jcascMergeStrategy` which we will explore in the *Bundle Inheritance* lab.
-- **jcasc** (optional) - This file contains the Jenkins configuration (global configuration, credentials, plugin configuration, etc), as defined by the Jenkins [Configuration as Code plugin](https://github.com/jenkinsci/configuration-as-code-plugin).
+- **bundle** (required) - This file is an index file that describes the bundle, references the other files in the bundle and must be named `bundle.yaml`. Any files not listed in this file will not be included in the controller bundle (even if it is in the bundle's directory). It also (optionally) allows you to specify an `availabilityPattern` which is a regular expression that controls what controllers can use the bundle based on their location on Operations Center and the `jcascMergeStrategy` property, which we will explore in the *Bundle Inheritance* lab.
+- **jcasc** (optional) - These files contain the Jenkins configuration (global configuration, credentials, plugin configuration, etc), as defined by the Jenkins [Configuration as Code plugin](https://github.com/jenkinsci/configuration-as-code-plugin).
 - **plugins** (optional) - This file contains a list of all the plugins to be installed on the controller. Plugins that are not in the [CloudBees Assurance Program (CAP)](https://docs.cloudbees.com/docs/admin-resources/latest/assurance-program/) have to be added with a Plugin Catalog and to this file.
 - **catalog** (optional) - This file defines the catalog of versioned plugins outside of the CloudBees Assurance Program (CAP) that are available for installation on the controller. An optional location can also be specified for plugins that are not available in the standard update centers. Adding plugins to a catalog only makes them available to install and they still must be added to the plugins file above.
 - **rbac** (optional) - This file defines the RBAC groups and roles at the root level of a controller. 
-- **items** (optional) - This file defines items (folders, jobs, etc), and optionally, RBAC for folders to be created on the controller.
+- **items** (optional) - These files define items (folders, jobs, etc), and, optionally, RBAC for folders to be created on the controller.
 - **variables**: (Optional) This file defines the variables that can be used in the **jcasc**, **items**, and **rbac** yaml files.
 
 {{% notice note %}}
@@ -46,7 +46,7 @@ items:
 It is important that the bundle file is named exactly `bundle.yaml` otherwise the bundle will not be useable.
 {{% /notice %}}
 
-3. Return to the `bundle` folder of your `ops-controller` repository and click on the `jenkins.yaml` file. The name of this file must match the file name listed under `jcasc` in the `bundle.yaml` file. Its contents will  match the following:
+3. Return to the `bundle` folder of your `ops-controller` repository and click on the `jenkins.yaml` file. The name of this file must match the file name listed under `jcasc` in the `bundle.yaml` file. Its contents will match the following:
 ```yaml
 jenkins:
   globalNodeProperties:
@@ -115,7 +115,7 @@ credentials:
           privateKey: "${cbciCascWorkshopGitHubAppPrivateKey}"
 ```
 
-4. The `gitHubApp` credential is unique to your workshop GitHub Organization. But also notice the variable substitution for the `privateKey` field of that credential - the value in the `jenkins.yaml` file is the `${gitHubAppPrivateKey}` variable. Of course you wouldn't want to store a secure secret directly in a JCasC yaml file, especially if it is to be stored in source control. However, JCasC supports several ways to [pass secrets more securely](https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/features/secrets.adoc). For this workshop we are passing secrets by mounting secret volumes using the [Kubernetes Secrets Store CSI driver](https://secrets-store-csi-driver.sigs.k8s.io/introduction.html) with the [Google Secret Manager provider](https://github.com/GoogleCloudPlatform/secrets-store-csi-driver-provider-gcp). This allows us to manage secrets with the Google Secret Manager in GCP and to mount those secrets as files in the directory on your controller configured for JCasC to read secret variables, with the file name being the variable name and the file contents being the secret value.
+4. The `gitHubApp` credential is unique to your workshop GitHub Organization. But also notice the variable substitution for the `privateKey` field of that credential - the value in the `jenkins.yaml` file is the `${gitHubAppPrivateKey}` variable. Of course you wouldn't want to store a secure secret directly in a JCasC yaml file, especially if it is to be stored in source control. However, JCasC supports several ways to [pass secrets more securely](https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/docs/features/secrets.adoc). For this workshop we are passing secrets by mounting secret volumes using the [Kubernetes Secrets Store CSI driver](https://secrets-store-csi-driver.sigs.k8s.io/introduction.html) with the [Google Secret Manager provider](https://github.com/GoogleCloudPlatform/secrets-store-csi-driver-provider-gcp). This allows us to manage secrets with the Google Secret Manager in GCP and to mount those secrets as files in the directory on your controller configured for JCasC to read secret variables, with the file name being the variable name and the file contents being the secret value. Other, less sensitive, variables may be configured as System properties such as the `${GITHUB_ORGANIZATION}` placeholder above.
 
 {{% notice tip %}}
 There are also Kubernetes Secrets Store CSI providers for [AWS Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/integrating_csi_driver.html), [Azure Key Vault](https://docs.microsoft.com/en-us/azure/aks/csi-secrets-store-driver) and [HashiCorp Vault](https://www.vaultproject.io/docs/platform/k8s/csi).
@@ -155,7 +155,7 @@ plugins:
 - id: workflow-cps-checkpoint
 # non-cap plugins
 ```
-6. Return to the `bundle` folder of your `ops-controller` repository and click on the `items.yaml` file. The name of this file must match the file name listed under `items` in the `bundle.yaml` file. Its contents will match the following. Also note the `removeStrategy` configuration at the top, this specifies the strategy to handle existing configuration when a new configuration is applied, and is required for all `items` files (`NONE` is currently the only strategy available for `items`):
+6. Return to the `bundle` folder of your `ops-controller` repository and click on the `items.yaml` file. The name of this file must match the file name listed under `items` in the `bundle.yaml` file. Its contents will match the following. Also note the `removeStrategy` configuration at the top, this specifies the strategy to handle existing configuration when a new configuration is applied, and is required for all `items` files (`NONE` is currently the only strategy available for `items`, while `sync` and `update` are the two `removeStrategy` values available for `rbac`):
 
 ```yaml
 removeStrategy:
@@ -279,6 +279,8 @@ items:
                     secretName: cbci-mc-secret
 ```
 
+Note the `GITHUB_ORGANIZATION` `env` name/value pair that we are leveraging in your `jenkins.yaml` and `items.yaml` bundle files.
+
 ## Creating/Updating a Configuration Bundle from a Bundle Export
 As you can see from the composition overview above, the YAML in the different configuration files can be somewhat complicated, and that is with only a some of the bundle file types and a fairly simple set of configurations. Luckily, CloudBees CI Configuration as Code (CasC) for Controllers supports an export capability that allows you to export the current configuration from an existing controller. In this lab you will make configurations changes on your Ops controller using the UI and then use the export feature to copy new or updated configuration to the files in your `ops-controller` repository. First, we will add a new, non-CAP plugin and then we will add some properties to a folder - and we will use the CasC export functionality to copy the YAML for those updates to apply to the your bundle in your `ops-controller` repository. 
 
@@ -290,7 +292,7 @@ As you can see from the composition overview above, the YAML in the different co
 6. On the **Manage Jenkins** page click on **CloudBees Configuration as Code export and update** under the **System Configuration** section. ![CloudBees CasC link](cloudbees-casc-link.png?width=50pc) 
 7. Next, on the **CloudBees Configuration as Code export and update** page, under the **Current configuration** tab, click on the **Visualize** link for the `plugin-catalog.yaml` **Filename**. A [plugin catalog](https://docs.cloudbees.com/docs/admin-resources/latest/plugin-management/configuring-plugin-catalogs) is used to include plugins that are not in the CloudBees Assurance Program (CAP); tested and used by your software delivery workloads. Since the **Pipeline Utility Steps** plugin is not in CAP we must add a plugin catalog to our bundle that includes that plugin, so we may install it on our controllers with CasC. ![Plugin Catalog visualize link](plugin-catalog-visualize-link.png?width=50pc) 
 
-8. Although the intent of this lab is to show you how to export different CasC snippets and add them to an existing bundle, we have created GitHub Pull Requests for all the required changes in order to get through the material more quickly. So, navigate to your `ops-controller` repository in your workshop GitHub Organization and click on the **Pull requests** link. ![PR link](pr-link.png?width=50pc) 
+8. Although the intent of this lab is to show you how to export different CasC snippets and add them to an existing bundle, we have created GitHub Pull Requests for all the required changes in order to get through the material more efficiently, and it allows us to clearly see the difference between the old and updated bundle. So, navigate to your `ops-controller` repository in your workshop GitHub Organization and click on the **Pull requests** link. ![PR link](pr-link.png?width=50pc) 
 9. On the next screen, click on the **Bundle Export** pull request (it is #1) and then click on the **Files changed** tab to review the requested configuration changes. ![PR Files Changed](pr-files-changed.png?width=50pc)
 10. In the **Files changed** you will notice that we are adding the `plugin-catalog.yaml` file to the `bundle` folder and the contents match the export from your controller:
 
@@ -306,7 +308,7 @@ configurations:
       version: 2.13.0
 ```
 
-11. You will also notice that there are changes for the `plugins.yaml` and `bundle.yaml` (we will review the changes to the `items.yaml` and `jenkins.yaml` later in this lab). Again, plugins in the `plugin-catalog.yaml` are not actually installed on a controller, rather they just extend what can be installed outside of CAP. In order for a plugin to be installed via a configuration bundle it must be added to the `plugins.yaml`. Click on the `plugins.yaml` file and you will notice that we have added the following entry under the `# non-cap plugins` comment:
+11. You will also notice that there are changes for the `plugins.yaml` and `bundle.yaml` (we will review the changes to the `items.yaml` and `jenkins.yaml` later in this lab). Again, plugins in the `plugin-catalog.yaml` are not actually installed on a controller, rather they just extend what can be installed outside of CAP. In order for a plugin to be installed via a configuration bundle it must be added to the `plugins.yaml` file. Click on the `plugins.yaml` file and you will notice that we have added the following entry under the `# non-cap plugins` comment:
 
 ```yaml
 - id: pipeline-utility-steps
