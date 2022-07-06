@@ -31,7 +31,7 @@ In this exercise we are going to create a special type of Jenkins Pipeline proje
 2. At the top-level of your CloudBees CI managed controller click into the **pipelines** folder and then click on **New Item** in the left menu. Make sure you are in the **pipelines** folder. ![New Item](new-item.png?width=50pc) 
 
 {{% notice note %}}
-It is considered a best practice to create and manage all of your CloudBees CI jobs in folders.  
+It is considered a best practice to create and manage all of your CloudBees CI jobs in folders. Furthermore, we are leveraging the CloudBees Folders Plus plugin to limit the types of jobs that may be created in the folder to just three job types to include a Pipeline Catalog template based job that we will explore later in this workshop.
 {{% /notice %}}
 
 3. Enter ***insurance-frontend*** as the **Item Name** and select **Multibranch Pipeline** as the item type and click the **OK** button - again, make sure you are in your **pipelines** folder. ![New GitHub Multibranch Pipeline](github-multibranch-item.png?width=50pc) 
@@ -39,7 +39,7 @@ It is considered a best practice to create and manage all of your CloudBees CI j
 5. Next, select the **CloudBees CI Pipeline Workshop GitHub App** credential from the **Credentials** drop down and enter the URL for your workshop copy of the **insurance-frontend** GitHub repository as the value for the **Repository HTTPS URL** - ***https:\//github.com/{YOUR_GITHUB_ORGANIZATION}/insurance-frontend.git***.
 6. The rest of the default values are sufficient so click the **Validate** button and then click the **Save** button. ![Configure and Save Multibranch Pipeline](configure-save-multibranch-item.png?width=50pc) 
 7. After the repository scan completes, click on the bread-crumb link to go back to your **Multibranch Pipeline** folder that is synced with your workshop copy of the **insurance-frontend** repository. When the scan is complete your **Multibranch Pipeline** project should be **empty**! ![Empty GitHub Organization Folder](empty-multibranch-project.png?width=50pc) 
-9. The reason why the scan did not find any repositories is because there were no branches in the **insurance-frontend** repository with a `Jenkinsfile` in it, so let's fix that. Navigate to your copy of the **insurance-frontend** repository in your workshop GitHub Organization and click on the **Add file** button towards the top right of the screen and then select **Create new file**. Make sure that you don't commit the file to the `main` branch. ![Create Jenkinsfile](create-jenkinsfile.png?width=50pc) 
+9. The reason why the scan did not find any repositories is because there were no branches in your copy of the **insurance-frontend** repository with a `Jenkinsfile` in it, so let's fix that. Navigate to your copy of the **insurance-frontend** repository in your workshop GitHub Organization and click on the **Add file** button towards the top right of the screen and then select **Create new file**. Make sure that you don't commit the file to the `main` branch. ![Create Jenkinsfile](create-jenkinsfile.png?width=50pc) 
 10. Name the file `Jenkinsfile` and add the following content:
 ```
 pipeline {
