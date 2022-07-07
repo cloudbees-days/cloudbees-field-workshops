@@ -37,7 +37,7 @@ publishEvent event:jsonEvent("""
         """), verbose: true
 ```
 
-The entire Jenkins Pipeline containing the publishing event:
+The entire Jenkins Pipeline containing the publishing event (also available in GitHub [here](https://github.com/cloudbees-days/cross-team-collab-publish-pipeline/blob/main/Jenkinsfile)):
 ```groovy
 pipeline {
   agent none
@@ -56,8 +56,8 @@ pipeline {
 }
 ```
 
-That event will be published **across all Managed Controllers in the Workshop cluster** via the CloudBees CI Cloud Operations Center event router triggering everyones' **insurance-frontend-build-deploy** Pipelines to run. 
+That event will be published **across all Managed Controllers in the Workshop cluster** via the CloudBees CI Cloud Operations Center event router triggering everyone's **insurance-frontend-build-deploy** Pipelines to run. 
 
-8. Now, once that change is committed, and the job with the `publishEvent` runs, everyone will see the open **PR** branch of their **insurance-frontend-build-deploy** job triggered by the `deploy-event` JSON event.
+8. Now, once that change is committed, and the job with the `publishEvent` runs, everyone will see the open **PR** branch of their **insurance-frontend-build-deploy** job triggered by the `deploy-event` JSON event and if you explore the **Console Output** of that build you will see that the `BASE_IMAGE_TAG` value is coming from the published event payload instead of what is specified in the `Dockerfile` of the `insurance-frontend` repository.
 
 
