@@ -25,7 +25,7 @@ There are numerous advantages to managing your Jenkins Pipelines as code that ar
 
 ## Create a GitHub Multibranch Pipeline Project
 
-In this exercise we are going to create a special type of Jenkins Pipeline project referred to as a **[Multibranch Pipeline](https://jenkins.io/doc/book/pipeline/multibranch/)** (this type of project is also [available for Bitbucket](https://plugins.jenkins.io/cloudbees-bitbucket-branch-source) and [GitLab](https://github.com/jenkinsci/gitlab-branch-source-plugin)). The Jenkins *Multibranch Pipeline* project for GitHub will scan a GitHub repository to discover the branches, automatically creating **managed** Pipeline jobs for any branch containing a *Jenkins Pipeline project recognizer* - typically **Jenkinsfile**. We will use the **insurance-frontend** repository in the GitHub Organization that you created in **[Setup - Create a GitHub Organization](/getting-started/pre-workshop-setup/#create-a-github-organization)**. We will also utilize a GitHub Organization level ***webhook*** to automatically manage Jenkins jobs associated with a branch (this includes pull requests) so when a branch is deleted from or added to the **insurance-frontend** repository, the corresponding Pipeline job will be deleted or added to your controller.
+In this exercise we are going to create a special type of Jenkins Pipeline project referred to as a **[Multibranch Pipeline](https://jenkins.io/doc/book/pipeline/multibranch/)** (this type of project is also [available for Bitbucket](https://plugins.jenkins.io/cloudbees-bitbucket-branch-source) and [GitLab](https://github.com/jenkinsci/gitlab-branch-source-plugin)). The Jenkins *Multibranch Pipeline* project for GitHub will scan a GitHub repository to discover the branches, automatically creating **managed** Pipeline jobs for any branch containing a *Jenkins Pipeline project recognizer* - typically **Jenkinsfile**. We will use the **insurance-frontend** repository in the GitHub Organization that you created in **[Setup - Create a GitHub Organization](/getting-started/pre-workshop-setup/#create-a-github-organization)**. We will also utilize a GitHub Organization level ***webhook*** to automatically manage Jenkins jobs associated with a branch (this includes pull requests) so when a branch is deleted from or added to the **insurance-frontend** repository, the corresponding Pipeline job will automatically be deleted or added to your controller.
 
 1. Navigate to the top-level of the CloudBees CI Operations Center - **Dashboard** - and click on the link for your ***managed controller*** (in the folder with the same name as your workshop GitHub Organization). ![Managed Controller link](managed-controller-link.png?width=60pc)
 2. At the top-level of your CloudBees CI managed controller click into the **pipelines** folder and then click on **New Item** in the left menu. Make sure you are in the **pipelines** folder. ![New Item](new-item.png?width=50pc) 
@@ -126,9 +126,9 @@ pipeline {
 ...
 [Pipeline] sh
 + java -version
-openjdk version "1.8.0_191"
-OpenJDK Runtime Environment (IcedTea 3.10.0) (Alpine 8.191.12-r0)
-OpenJDK 64-Bit Server VM (build 25.191-b12, mixed mode)
+openjdk version "11.0.15" 2022-04-19 LTS
+OpenJDK Runtime Environment 18.9 (build 11.0.15+10-LTS)
+OpenJDK 64-Bit Server VM 18.9 (build 11.0.15+10-LTS, mixed mode, sharing)
 ...
 ```
 

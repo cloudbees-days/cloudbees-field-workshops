@@ -42,14 +42,9 @@ The entire Jenkins Pipeline containing the publishing event:
 pipeline {
   agent none
   stages {
-    stage('Build') {
+    stage('Update Docker Image') {
       steps {
-        echo 'build'
-      }
-    }
-    stage('Deploy') {
-      steps {
-        echo 'deploy'
+        echo 'updated docker image nginx'
         publishEvent event:jsonEvent("""
           {
             'image':{'name':'nginx','action':'update','tag':'1.22.0'}
