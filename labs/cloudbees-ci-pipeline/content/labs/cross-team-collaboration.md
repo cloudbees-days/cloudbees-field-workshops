@@ -16,91 +16,29 @@ The Cross Team Collaboration feature has a configurable router for routing event
 
 
 1. To use Cross Team Collaboration we will need to update the `Jenkinsfile` in the `/templates/container-build-push` folder in your copy of the `pipeline-template-catalog` repository, to listen for a notification event to be published by the upstream, or event publishing, job. We will do that by adding a [trigger directive](https://www.jenkins.io/doc/book/pipeline/syntax/#triggers) to then template **Jenkinsfile** Pipeline script.
-2. Open the GitHub editor for the `/templates/container-build-push/Jenkinsfile` file in the **main** branch of your copy of the `pipeline-template-catalog` repository.
-3. Add the following `trigger` directive just above the top-level `stages` block:
-
-```groovy
-    triggers {
-    eventTrigger jmespathQuery("image.action=='update' && image.name=='${baseImageName}'")
-  }
-```
-
-{{%expand "expand for complete updated Jenkinsfile" %}}
-```groovy
-
-library 'pipeline-library'
-pipeline {
-  agent none
-  options { 
-    buildDiscarder(logRotator(numToKeepStr: '2'))
-    preserveStashes(buildCount: 2)    
-    skipDefaultCheckout true
-    timeout(time: 10, unit: 'MINUTES')
-  }
-  triggers {
-    eventTrigger jmespathQuery("image.action=='update' && image.name=='${baseImageName}'")
-  }
-  environment {
-    REPO_OWNER = "${repoOwner}"
-    REPO_NAME = "${repository}"
-    GITHUB_CREDENTIAL_ID = "${githubCredentialId}"
-  }
-  stages {
-    stage('Staging PR') {
-      when {
-        beforeAgent true
-        anyOf {        
-          branch 'pr-*'
-          triggeredBy 'EventTriggerCause'
-      }
-      environment {
-        DEPLOYMENT_ENV = "staging"
-      }
-      stages {
-        stage('Build and Push Container Image') {
-          steps {  
-            echo "building and pushing container image for ${REPO_OWNER}/${REPO_NAME}"
-            containerBuildPushGeneric(REPO_NAME) {
-              checkout scm
-              gitShortCommit()
-              stash name: "chart", includes: "chart/**"
-            }
-          }
-        }
-        stage('Deploy: Staging') {
-          steps {  
-            echo "deploying commit $SHORT_COMMIT for ${REPO_OWNER}/${REPO_NAME}"
-            helmDeploy(REPO_OWNER, env.SHORT_COMMIT) {
-              unstash "chart"
-            }
-          }
-        }
-      }
-    }
-  }
-}
-```
-{{% /expand%}}
-
-4. Commit the changes to the `main` branch and then navigate to the open **PR** branch of your **insurance-frontend-build-deploy** project on your Managed Controller and click the **Build Now** link in the left menu. Then view the configuration for that job by clicking the **View Configuration** link on the **Branch main** job page.
-5. Click on the **Build Triggers** tab on the job configuration page for the **main** branch job and you will the **Build whenever the specified event is seen** trigger is checked and configured with a **Simple Event**.
+2. Navigate to your copy of the `pipeline-template-catalog` repository in your workshop GitHub Organization, click on the **Pull requests** link and click on the **Add Cross Team Collaboration Trigger** pull request. ![PR link](pr-link.png?width=50pc)  
+Open the GitHub editor for the `/templates/container-build-push/Jenkinsfile` file in the **main** branch of your copy of the `pipeline-template-catalog` repository.
+3. Click on the **Files changed** tab to review the requested configuration changes. Note that we have added a `triggers` block with an `eventTrigger` and we have updated the `when` condition to include `triggeredBy 'EventTriggerCause'`: ![PR Files Changed](pr-files-changed.png?width=50pc)
+4. Once you have finished reviewing the changes, click on the **Conversation** tab of the **Add Cross Team Collaboration Trigger** pull request, scroll down and click the green **Merge pull request** button and then click the **Confirm merge** button.
+5. Navigate to the open **PR** job of your **insurance-frontend-build-deploy** project on your Managed Controller and click the **Build Now** link in the left menu. Then view the configuration for that job by clicking the **View Configuration** link.
+6. Click on the **Build Triggers** tab on the job configuration page for the **PR-1**  job and you will see that the **Build whenever the specified event is seen** trigger is checked and configured with a **Jmespath Query** as specified in the template above.
 
 {{% notice note %}}
-After first adding a new `trigger` you must run the job at least once so that the `trigger` is saved to the Jenkins job configuration (similar to setting the `buildDiscarder` `option`).
+After first adding a new `trigger` you must run the job at least once so that the `trigger` is saved to the Jenkins job configuration on the controller (similar to setting the `buildDiscarder` `option`).
 {{% /notice %}}
 
-6. Next, your instructor will set up a Pipeline project with the following **[JSON event](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/cross-team-collaboration#cross-team-event-types)**: 
+7. Next, your instructor will set up a Pipeline project with the following **[JSON event](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/cross-team-collaboration#cross-team-event-types)**: 
 
-```
+```groovy
 publishEvent event:jsonEvent("""
           {
-            'image':{'name':'nginx','action':'update','tag':'1.20.2'}
+            'image':{'name':'nginx','action':'update','tag':'1.22.0'}
           }
         """), verbose: true
 ```
 
 The entire Jenkins Pipeline containing the publishing event:
-```
+```groovy
 pipeline {
   agent none
   stages {
@@ -114,7 +52,7 @@ pipeline {
         echo 'deploy'
         publishEvent event:jsonEvent("""
           {
-            'image':{'name':'nginx','action':'update','tag':'1.20.2'}
+            'image':{'name':'nginx','action':'update','tag':'1.22.0'}
           }
         """), verbose: true
       }
@@ -125,8 +63,6 @@ pipeline {
 
 That event will be published **across all Managed Controllers in the Workshop cluster** via the CloudBees CI Cloud Operations Center event router triggering everyones' **insurance-frontend-build-deploy** Pipelines to run. 
 
-7. Now, once that change is committed, and the job with the `publishEvent` runs, everyone will see the open **PR** branch of their **insurance-frontend-build-deploy** job triggered by the `deploy-event` JSON event.
+8. Now, once that change is committed, and the job with the `publishEvent` runs, everyone will see the open **PR** branch of their **insurance-frontend-build-deploy** job triggered by the `deploy-event` JSON event.
 
-
-Refer to the link to see another example using JSON with a more realistic payload [here](https://www.cloudbees.com/blog/how-to-improve-cross-team-collaboration-in-jenkins).
 
