@@ -6,9 +6,9 @@ weight: 3
 
 ## Kubernetes Pod Templates Defined in Pipeline Script
 
-In this lab we will create a custom Kubernetes Pod Template containing a NodeJS **container** and an additional Docker **container** for executing tests. We also want to use a different version of the **node** container than the one provided by the **nodejs-app** Kubernetes *Pod Template* [defined for us on our Managed Controller](https://go.cloudbees.com/docs/cloudbees-core/cloud-admin-guide/agents/#_editing_pod_templates_per_team_using_masters). In order to be able to control what `containers` and what container `image` version we use in our Pipeline, we will update the **Jenkinsfile** Pipeline script with an inline [Kubernetes Pod Template definition](https://github.com/jenkinsci/kubernetes-plugin#declarative-pipeline).
+In this lab we will create a custom Kubernetes Pod Template containing a NodeJS **container** and an additional Docker **container** for executing tests. We also want to use a different version of the **node** container than the one provided by the **nodejs-app** Kubernetes *Pod Template* [on your Managed Controller](https://go.cloudbees.com/docs/cloudbees-core/cloud-admin-guide/agents/#_editing_pod_templates_per_team_using_masters). In order to be able to control what `containers` and what container `image` version we use in our Pipeline, we will update the **Jenkinsfile** Pipeline script with an inline [Kubernetes Pod Template definition](https://github.com/jenkinsci/kubernetes-plugin#declarative-pipeline).
 
-1. The [Jenkins Kubernetes plugin](https://github.com/jenkinsci/kubernetes-plugin#using-yaml-to-define-pod-templates) allows you to use standard Kubernetes Pod yaml configuration to define Pod Templates directly in your Pipeline script, either as a string or a file. We will do just that by creating a new `nodejs-pod.yaml` file and then adding a `yamlFile` parameter to the `agent` declaration with a value of the the repository relative path to that yaml file. The file provides a standard Kubernetes [Pod spec](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.11/#pod-v1-core) to be used to create the Pod Template based agent. Navigate to your workshop **insurance-frontend** repository in your workshop GitHub Organization, make sure you are on the `development` branch, then click the **Add file** button towards the top right of the screen and select **Create new file**. **IMPORTANT:** Make sure you are on the `development` branch. ![Create Pod Template File](create-pod-template-file.png?width=50pc)
+1. The [Jenkins Kubernetes plugin](https://github.com/jenkinsci/kubernetes-plugin#using-yaml-to-define-pod-templates) allows you to use a standard Kubernetes Pod yaml manifest to define Pod Templates directly in your Pipeline script, either as a string or a file. We will do just that by creating a new `nodejs-pod.yaml` file and then adding a `yamlFile` parameter to the `agent` declaration with a value of the the repository relative path to that yaml file. The file provides a standard Kubernetes [Pod spec](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.11/#pod-v1-core) to be used to create the Pod Template based agent. Navigate to your workshop **insurance-frontend** repository in your workshop GitHub Organization, make sure you are on the `development` branch, then click the **Add file** button towards the top right of the screen and select **Create new file**. **IMPORTANT:** Make sure you are on the `development` branch. ![Create Pod Template File](create-pod-template-file.png?width=50pc)
 2. Name the file `nodejs-pod.yaml` and add the following content:
 ```
 kind: Pod
@@ -73,17 +73,17 @@ apiVersion: "v1"
 kind: "Pod"
 metadata:
   annotations:
-    buildUrl: "http://cbci-pipeline-controller.controllers.svc.cluster.local/cbci-pipeline-controller/job/pipelines/job/insurance-frontend/job/development/7/"
-    runUrl: "job/pipelines/job/insurance-frontend/job/development/7/"
+    buildUrl: "http://cbci-pipeline-controller.controllers.svc.cluster.local/cbci-pipeline-controller/job/pipelines/job/insurance-frontend/job/development/9/"
+    runUrl: "job/pipelines/job/insurance-frontend/job/development/9/"
   labels:
     jenkins: "agent"
-    jenkins/label-digest: "7b641e6907750378fbfccdcc4bb47edd5f008ca4"
-    jenkins/label: "pipelines_insurance-frontend_development_7-w27xc"
+    jenkins/label-digest: "f118e136db96b17c3878dc31913066a79570d519"
+    jenkins/label: "pipelines_insurance-frontend_development_9-dp8rd"
     cloudbees.com/master: "cbci-pipeline-controller"
-  name: "pipelines-insurance-frontend-development-7-w27xc-v8ch4-6dct7"
+  name: "pipelines-insurance-frontend-development-9-dp8rd-m1rb7-q8kxd"
 spec:
   affinity:
-    podAffinity:
+    podAntiAffinity:
       preferredDuringSchedulingIgnoredDuringExecution:
       - podAffinityTerm:
           labelSelector:
@@ -126,16 +126,16 @@ spec:
     - name: "JENKINS_SECRET"
       value: "********"
     - name: "JENKINS_AGENT_NAME"
-      value: "pipelines-insurance-frontend-development-7-w27xc-v8ch4-6dct7"
+      value: "pipelines-insurance-frontend-development-9-dp8rd-m1rb7-q8kxd"
     - name: "JENKINS_WEB_SOCKET"
       value: "true"
     - name: "JENKINS_NAME"
-      value: "pipelines-insurance-frontend-development-7-w27xc-v8ch4-6dct7"
+      value: "pipelines-insurance-frontend-development-9-dp8rd-m1rb7-q8kxd"
     - name: "JENKINS_AGENT_WORKDIR"
       value: "/home/jenkins/agent"
     - name: "JENKINS_URL"
       value: "http://cbci-pipeline-controller.controllers.svc.cluster.local/cbci-pipeline-controller/"
-    image: "us-east1-docker.pkg.dev/core-workshop/workshop-registry/agent:2.319.2.5"
+    image: "us-east1-docker.pkg.dev/core-workshop/workshop-registry/agent:2.346.1.4"
     imagePullPolicy: "IfNotPresent"
     name: "jnlp"
     resources:
@@ -150,6 +150,7 @@ spec:
       name: "workspace-volume"
       readOnly: false
     workingDir: "/home/jenkins/agent"
+  enableServiceLinks: false
   hostNetwork: false
   nodeSelector:
     kubernetes.io/os: "linux"

@@ -88,9 +88,9 @@ pipeline {
 
 ## Credentials as Environment Variables
 
-In this lab we will use the `environment` directive to inject a username/password credential into your Jenkins Pipeline. We will also explore some best practices around injecting sensitive environmental variables into a Jenkins Pipeline.
+In this lab we will use the `environment` directive to inject a username/password credential into your Jenkins Pipeline. We will also explore the enforcement of some best practices around injecting sensitive environmental variables into a Jenkins Pipeline.
 
-1. Navigate to and open the GitHub editor for the `Jenkinsfile` file in the **main** branch of your **insurance-frontend** repository and click the pencil icon to edit the file.  ![Edit Jenkinsfile](edit-jenksinfile.png?width=50pc) 
+1. Navigate to and open the GitHub editor for the `Jenkinsfile` file in the **main** branch of your **insurance-frontend** repository and click the pencil icon to edit the file.
 2. We will add another environment variable to the `environment` directive of the **Deploy** stage, but this time we will use the special helper method `credentials()` to create an environment variable from a username/password credential and we will then update the `echo` step to print out the values of the variable. Replace the entire **Deploy** stage with the following:
 ```
         stage('Deploy') {
@@ -178,7 +178,7 @@ Finished: FAILURE
 There is an error regarding *Groovy String interpolation* for the **SERVICE_CREDS** environment variable. This is referring to the fact that the the sensitive environment variable will be interpolated during Groovy evaluation and the value could be made available earlier than intended, resulting in sensitive data leaking in various contexts.
 {{% /notice %}}
 
-5. To fix this insecure syntax, navigate back to and open the GitHub editor for the `Jenkinsfile` file in the **main** branch of your **insurance-frontend** repository.  ![Edit Jenkinsfile](edit-jenksinfile.png?width=50pc) 
+5. To fix this insecure syntax, navigate back to and open the GitHub editor for the `Jenkinsfile` file in the **main** branch of your **insurance-frontend** repository.
 6. We will update the `echo` step of the **Deploy** stage so it does not use Groovy String interpolation to inject the username/password credential variables. Replace the entire **Deploy** stage with the following:
 ```
         stage('Deploy') {
@@ -246,7 +246,7 @@ pipeline {
 ```
 {{% /expand%}}
 
-We were able to remove Groovy String interpolation on the controller by replacing the `echo` step with an `sh` step that executes **echo** on the agent and replacing the double-quotes with single-quotes so there is no Groovy String interpolation - the pipeline environment variable is used as an environment variable on the agent and is therefore not accessible by any Groovy scripting in the Pipeline. We also had to add an `agent` because the `sh` step requires an agent (it requires a non flyweight executor or regular executor).
+We were able to remove Groovy String interpolation on the controller by replacing the `echo` step with an `sh` step that executes **echo** on the agent and replacing the double-quotes with single-quotes so there is no Groovy String interpolation - the pipeline environment variable is used as an environment variable on the agent and is therefore not accessible by any Groovy scripting in the Pipeline. We also had to add an `agent` to the `deploy` `stage` because the `sh` step requires an agent (it requires a [non flyweight executor also referred to as a heavyweight executor](https://support.cloudbees.com/hc/en-us/articles/360012808951-Pipeline-Difference-between-flyweight-and-heavyweight-Executors)).
 
 7. At the bottom of the screen enter a commit message, leave **Commit directly to the `main` branch** selected and click the **Commit new file** button.
 8. Navigate to the **main** branch job of the **insurance-frontend** project on your Managed Controller and the job should be running or queued to run. Once it completes, review the logs for the **Deploy** stage. ![Deploy Stage Logs No Secret Warning](deploy-logs-no-secret-warning.png?width=50pc) 
