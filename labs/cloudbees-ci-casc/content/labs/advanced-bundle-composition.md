@@ -4,11 +4,15 @@ chapter: false
 weight: 4
 --- 
 
-This lab will explore more advanced aspects of bundle composition to include bundle inheritance and using folders with multiple files. Both of which make it easier to manage configuration bundles at scale.
+This lab will explore more advanced aspects of bundle composition to include bundle inheritance and using folders with multiple files. Features that make it easier to manage configuration bundles at scale across many controllers.
 
 ## Organizing Configuration Bundles with Sub-folders and Multiple Files
 
 CloudBees CI Configuration as Code (CasC) for Controllers allows managing bundle files in folders and allows the use of multiple files for certain bundle file types. In this lab we will split your JCasC configuration (the `jenkins.yaml` file) into two files and put those files in a `jcasc` folder to make the configuration files easier to manage.
+
+{{% notice tip %}}
+The `items` CasC configuration also supports managing multiple files in folders (and sub-folders) which may be very useful when managing many controller items with CloudBees CI CasC. Also, if you are managing items within sub-folders you may want to take advantage of the `items` `root` property that allows you to define the root path for item creation as part of individual `items` yaml files (of course you must ensure the root path exists).
+{{% /notice %}}
 
 1. Navigate to your `ops-controller` repository in your workshop GitHub Organization, click on the **Pull requests** link and click on the **Bundle Folders** pull request. ![PR link](pr-link.png?width=50pc) 
 2. Click on the **Files changed** tab to review the requested configuration changes. ![PR Files Changed](pr-files-changed.png?width=50pc)

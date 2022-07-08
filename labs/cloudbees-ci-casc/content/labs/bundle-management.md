@@ -4,7 +4,7 @@ chapter: false
 weight: 3
 --- 
 
-Operations Center provides a CasC for Controllers **storage service** that allows storing bundles in a directory or source control repository that is accessible by Operations center. These *external* storage locations, referred to as the **Local folder** and **SCM** retrieval methods, are then synced with an internal storage location (the `/var/jenkins_home/cb-casc-bundles-store` directory) via polling, an SCM webhook and/or manually. Once a bundle is synced to the internal storage location, it becomes available for use by controllers based on the availability pattern of the bundle.
+Operations Center provides a CasC for Controllers **storage service** that allows storing bundles in a directory and/or source control repository that is accessible by Operations center. These *external* storage locations, referred to as the **Local folder** and **SCM** retrieval methods, are then synced with an internal storage location (the `/var/jenkins_home/cb-casc-bundles-store` directory) via polling, an SCM webhook and/or manually. Once a bundle is synced to the internal storage location, it becomes available for use by controllers based on the availability pattern of the bundle.
 
 {{% notice note %}}
 There are two options available for manually forcing a sync of the bundles from external sources to the internal storage with the first being via the Operations Center UI and the second being via an HTTP API endpoint for Operations Center: `POST /load-casc-bundles/checkout`.
@@ -116,13 +116,15 @@ Provisioning controllers and agents in a different Kubernetes `namespace` than O
 19. Once you have finished reviewing the changes, click on the **Conversation** tab of the **Bundle Export** pull request, scroll down and click the green **Merge pull request** button and then click the **Confirm merge** button.
 20. Navigate back to your CloudBees CI ***managed controller*** and then navigate to the ***main*** branch job of your **ops-controller** Multi-branch Project in the **controller-casc-update** Organization Folder project. After the job successfully completes, navigate to the top-level of your ***managed controller***. 
 21. Click on the **Manage Jenkins** link in the left navigation menu and then click on the **CloudBees Configuration as Code export and update** configuration link. ![CloudBees Configuration config](config-bundle-system-config.png?width=50pc)
-22.  On the next screen, click on the **Bundle Update** link and you should see that a new version of the configuration bundle is available. Click the **Reload Configuration** button and on the next screen click the **Yes** button to apply the updated configuration bundle. 
+22.  On the next screen, click on the **Bundle Update** link and you should see that a new version of the configuration bundle is available. Before you click the **Reload Configuration** button, click on the **See differences** icon. ![See differences link](see-diff-link.png?width=50pc)
+23. The bundle difference visualization will show you the changes between the current and incoming bundle. This is especially useful if the user loading the new bundle in the UI wasn't directly involved in updating the bundle files. Under **Bundle descriptor** you will see that we are adding the `catalog` section. Feel free to explore the rest of the changes and then click on the **Back to Bundle update** link. ![Bundle differences](bundle-diff.png?width=50pc)
+24. Back on the **Bundle update** screen, click the **Reload Configuration** button and on the next screen click the **Yes** button to apply the updated configuration bundle. 
 
 {{% notice note %}}
 If you don't see the new version available then click the **Check for Updates** button. Also, once you click **Yes** it may take a few minutes for the bundle update to reload.
 {{% /notice %}}
 ![Bundle Update](new-bundle-available.png?width=50pc)
-23. Navigate to the `controller-jobs` folder and click on **New Item** in the left menu and note that the **Freestyle** job type is not available. ![No freestyle job](no-freestyle-job.png?width=50pc)
+25. Navigate to the `controller-jobs` folder and click on **New Item** in the left menu and note that the **Freestyle** job type is not available. ![No freestyle job](no-freestyle-job.png?width=50pc)
 
 
 ## Auto-Updating with the CloudBees CI CasC HTTP API
