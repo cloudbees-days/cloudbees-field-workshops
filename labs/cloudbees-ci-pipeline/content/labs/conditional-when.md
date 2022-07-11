@@ -29,7 +29,11 @@ Note the `beforeAgent true` option - this setting will result in the `when` cond
     agent none
     stages {
       stage('Test') {
-        agent { label 'nodejs-app' }
+        agent {
+          kubernetes {
+            yamlFile 'nodejs-pod.yaml'
+          }
+        }
         steps {
           container('nodejs') {
             echo 'Hello World!'   
@@ -78,7 +82,11 @@ pipeline {
         beforeAgent true
         not { branch 'main' }
       }
-      agent { label 'nodejs-app' }
+      agent {
+        kubernetes {
+          yamlFile 'nodejs-pod.yaml'
+        }
+      }
       steps {
         container('nodejs') {
           echo 'Hello World!'   
@@ -126,7 +134,11 @@ pipeline {
         beforeAgent true
         not { branch 'main' }
       }
-      agent { label 'nodejs-app' }
+      agent {
+        kubernetes {
+          yamlFile 'nodejs-pod.yaml'
+        }
+      }
       steps {
         container('nodejs') {
           echo 'Hello World!'   

@@ -6,9 +6,9 @@ weight: 7
 
 Up to this point, the `Jenksfile` that we have created does not do a whole lot. We will quickly change that by using a template from a [Pipeline Template Catalog](https://docs.cloudbees.com/docs/admin-resources/latest/pipeline-templates-user-guide/setting-up-a-pipeline-template-catalog).
 
-Pipeline Template Catalogs provide version controlled, parameterized templates for Multibranch and stand-alone Pipeline jobs. In this lab we will use a template from a Pipeline Template Catalog to create another Multibranch Pipeline project for your copy of the `insurance-fronted` repository. However, the `Jenksinfile` will be pulled from the `pipeline-template-catalog` repository instead of from the `insurance-fronted` repository. But the source code that the pipeline template executes upon will still be checked out from your `insurance-fronted` repository. 
+Pipeline Template Catalogs provide version controlled, parameterized templates for Multibranch and stand-alone Pipeline jobs. In this lab we will use a template from a Pipeline Template Catalog to create another Multibranch Pipeline project for your copy of the `insurance-frontend` repository. However, the `Jenksinfile` will be pulled from the `pipeline-template-catalog` repository instead of from the `insurance-frontend` repository. But the source code that the pipeline template executes upon will still be checked out from your `insurance-frontend` repository. 
 
-All that is needed to create a new job from a catalog templates is fill in a few simple parameters. After that, you will end up with a complete end-to-end CI/CD Pipeline for the **insurance-fronted** application with all the same benefits as a non-templatized Multibranch pipeline project.
+Creating a new job from a catalog template is as simple as filling in a few template specific parameters. After that, you will end up with a complete end-to-end CI/CD Pipeline for the **insurance-frontend** application with all the same benefits as a non-templatized Multibranch pipeline project. Also note that although everyone is using a template from their copy of the  `pipeline-template-catalog` repository, we could just as easily have everyone use a template from the same repository. 
 
 1. Navigate to the top-level of your CloudBees CI managed controller and click into the **pipelines** folder, and then click on **New Item** in the left menu. Make sure you are in the **pipelines** folder. ![New Item](new-item.png?width=50pc)
 2. Enter ***insurance-frontend-build-deploy*** as the **Item Name** and select **Container Build and Deploy** as the item type and click the **OK** button.  ![Create template job](create-template-job.png?width=50pc)
@@ -18,8 +18,8 @@ All that is needed to create a new job from a catalog templates is fill in a few
 The **Repository Owner** parameter will match the GitHub Organization that you are using for the workshop; not what is in the screenshot above. 
 {{% /notice %}}
 
-4. After you click the **Save** button, the Multibranch Pipeline project (created by the template) will scan your `insurance-frontend` repository, creating a Pipeline job for each branch where there is a marker file that matches `Dockerfile` (or in this case, the `main`  branch). 
-5. The marker file and parameters of a catalog template are defined in a `template.yaml` file that is stored alongside a `Jenkinsfile` within a subfolder of a required top-level `templates` folder. The name of the subfolder will be used as an internal identifier of the template so it is recommended to keep it all lowercase with no spaces. Navigate to the `template.yaml` file under `/templates/container-build-push` in your copy of the `pipeline-template-catalog` repository and you will see a file similar to the one below:
+4. After you click the **Save** button, the Multibranch Pipeline project (created by the template) will scan your `insurance-frontend` repository, creating a Pipeline job for each branch where there is a marker file that matches `Dockerfile` (or in this case, the `main`  branch). ![Docker template main branch job](docker-template-main-branch-job.png?width=50pc)
+5. The marker file and parameters of a catalog template are defined in a `template.yaml` file that is stored alongside a `Jenkinsfile` within a subfolder of the Pipeline Template Catalog required top-level `templates` folder. The name of the subfolder will be used as an internal identifier of the template so it is recommended to keep it all lowercase with no spaces. Navigate to the `template.yaml` file under `/templates/container-build-push` in your copy of the `pipeline-template-catalog` repository and you will see a file similar to the one below:
 
 ```yaml
 version: 1
@@ -56,7 +56,7 @@ multibranch:
 ```
 
 6. The `REPLACE_GITHUB_ORG` `defaultValue` for the `repoOwner` parameter has been replaced with the name of your workshop GitHub Organization in your copy of the `template.yaml` file for your `container-build-deploy` template. Note also that the `templateType` is `MULTIBRANCH` and there is a `markerFile` configured with the value of `Dockerfile`.
-7. Notice that none of the `stages` are executed for the `main` branch job. Navigate to the `Jenkinsfile` in the same `container-build-deploy` subfolder (under the `templates` folder) of your copy of the `pipeline-template-catalog` repository, and you will discover why. The contents should match the screenshot below: ![container-build-deploy template Jenkinsfile](template-jenkinsfile.png?width=60pc)
+7. You may have noticed that none of the `stages` are executed for the `main` branch job. Navigate to the `Jenkinsfile` in the same `container-build-deploy` subfolder (under the `templates` folder) of your copy of the `pipeline-template-catalog` repository, and you will discover why. The contents should match the screenshot below: ![container-build-deploy template Jenkinsfile](template-jenkinsfile.png?width=60pc)
 Some of the highlights include:
     - On **line 1** we are importing a [Pipeline Shared Library](https://www.jenkins.io/doc/book/pipeline/shared-libraries/) that allows us to share custom steps between multiple pipeline definitions - templates or not.
     - On **line 3** we declare `agent none` as we don't want to spin up an agent if the `when` conditions are not satisfied.
