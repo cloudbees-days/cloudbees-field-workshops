@@ -4,7 +4,7 @@ chapter: false
 weight: 6
 --- 
 
-In this lab, we will see how you can capture interactive input in your Jenkins Pipeline while it is running by using the `input` step and we will explore some pitfalls you will want to avoid when using the `input` step.
+In this lab, we will see how you can capture interactive input in your Jenkins Pipeline while it is running by using the [`input` directive](https://www.jenkins.io/doc/book/pipeline/syntax/#input) and we will explore some pitfalls you will want to avoid when using the `input` directive.
 
 1. Use the GitHub file editor to update the **Jenkinsfile** file in the **main** branch of your copy of the **insurance-frontend** repository and update the **Deploy** `stage` by adding the following between `environment` directive and `steps` block:
 
