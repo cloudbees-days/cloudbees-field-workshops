@@ -120,7 +120,7 @@ pipeline {
   ...
   ```
 
-   iv. The agent has a Java version of `1.8.0_191`:
+   iv. The agent has a Java version of `11.0.15`:
 
 ```
 ...
