@@ -70,4 +70,5 @@ groups:
     grantedAt: current
 ```
 
-This allows us to use the same `rbac` configuration for everyone's controllers.
+This allows us to use the same `rbac` configuration for everyone's controllers and it could actually be part of a parent bundle.
+
