@@ -82,10 +82,10 @@ In this lab we will learn how you can combine nested `stages` with the `when` di
 pipeline {
   agent none
   stages {
-    stage('Not Main Branch') {
+    stage('Pull Request') {
       when {
         beforeAgent true
-        not { branch 'main' }
+        branch 'PR-*'
       }
       stages {
         stage('Build and Push Container Image') {
@@ -130,9 +130,10 @@ pipeline {
 }
 ```
 
-By wrapping the ***Push Image to Prod Registry*** and ***Deploy*** `stages` in the ***Main Branch Stages***, the `when` directive for the `main` branch only has to be specified once. Also, by using the `not` `when` condition, the ***Test*** `stage` will only be executed when the branch being processed is **not** the `main` branch.
+By wrapping the ***Push Image to Prod Registry*** and ***Deploy*** `stages` in the ***Main Branch Stages***, the `when` directive for the `main` branch only has to be specified once. Also, by using the `not` `when` condition, the nested ***Build and Push Container Image*** and ***Test*** `stages` will only be executed when the branch being processed is **not** the `main` branch.
 
-3. Commit the changes to the **main** branch and then navigate to the **insurance-frontend** job on your managed controller. The job for the **main** branch should be running or queued to run. Once the run completes you will see that the nested ***Build and Push Container Image*** and ***Test*** `stages` will be skipped but the **Main Branch Stages** were not. ![Conditional Nested Stage](conditional-nested-stage.png?width=50pc) 
+3. Click the **Propose changes** button and on the next screen click the **Create Pull Request** button. Once the required ***stage/Build and Push Container Image*** stage has completed, click the **Merge pull request** button and **Confirm merge** button. 
+4. Navigate to the **insurance-frontend** job on your managed controller. The job for the **main** branch should be running or queued to run. Once the run completes you will see that the nested ***Build and Push Container Image*** and ***Test*** `stages` will be skipped but the **Main Branch Stages** were not. ![Conditional Nested Stage](conditional-nested-stage.png?width=50pc) 
 
 ## Next Lesson
 
@@ -143,10 +144,10 @@ Before moving on to the next lesson make sure that your **Jenkinsfile** Pipeline
 pipeline {
   agent none
   stages {
-    stage('Not Main Branch') {
+    stage('Pull Request') {
       when {
         beforeAgent true
-        not { branch 'main' }
+        branch 'PR-*'
       }
       stages {
         stage('Build and Push Container Image') {
