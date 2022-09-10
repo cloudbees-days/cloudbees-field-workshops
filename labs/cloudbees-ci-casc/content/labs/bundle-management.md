@@ -4,7 +4,7 @@ chapter: false
 weight: 3
 --- 
 
-Operations Center provides a CasC for Controllers **storage service** that allows storing bundles in a directory and/or source control repository that is accessible by Operations center. These *external* storage locations, referred to as the **Local folder** and **SCM** retrieval methods, are then synced with an internal storage location (the `/var/jenkins_home/cb-casc-bundles-store` directory) via polling, an SCM webhook and/or manually. Once a bundle is synced to the internal storage location, it becomes available for use by controllers based on the availability pattern of the bundle.
+Operations Center provides a CasC for Controllers **storage service** that allows storing bundles in a directory and/or source control repository that is accessible by Operations center. These *external* storage locations, referred to as the **Local folder** and **SCM** retrieval methods, are then synced with an internal storage location (the `/var/jenkins_home/cb-casc-bundles-store` directory) via polling, an SCM webhook and/or manually. Once a bundle is synced to the internal storage location, it becomes available for use by controllers based on the availability pattern of the bundle, and a polling time (defaults to 5 minutes) or CLI/API calls that makes the controller check for an update on demand.
 
 {{% notice note %}}
 There are two options available for manually forcing a sync of the bundles from external sources to the internal storage with the first being via the Operations Center UI and the second being via an HTTP API endpoint for Operations Center: `POST /load-casc-bundles/checkout`.
@@ -12,7 +12,7 @@ There are two options available for manually forcing a sync of the bundles from 
 
 ![CasC for Controllers Storage Service](storage-service-diagram.png?width=50pc)
 
-You may configure multiple versions of each retrieval method, but bundle names (the folder the bundle files are in) must be unique across all external bundle sources. The CloudBees CI cluster we are using for this workshop has been configured with both an **SCM** and a **Local folder** external sources. We are using the [SCM source](https://github.com/cloudbees-days/workshop-casc-bundles) to load bundles at the Operations center initial startup to be used as parent bundles and for the workshop Ops controller used to provision workshop environments. We are using a **Local folder** source for all of the provisioned workshop controller bundles since they are all in individual source code repositories.
+You may configure multiple versions of each retrieval method, but bundle names (the folder the bundle files are in) must be unique across all external bundle sources. The CloudBees CI cluster we are using for this workshop has been configured with both an **SCM** and a **Local folder** external sources. We are using the [SCM source](https://github.com/cloudbees-days/workshop-casc-bundles) to load bundles at the Operations center initial startup to be used as parent bundles and for the workshop Ops controller used to provision workshop environments. We are using a **Local folder** source for all of the provisioned workshop controller bundles since they are all in unique source code repositories.
 
 {{% notice note %}}
 While Operations Center simplifies the management of bundles, it is possible to configure a controller with a bundle without Operations Center using the `-Dcore.casc.config.bundle=/path/to/casc-bundle` Java system property.
@@ -31,9 +31,9 @@ This lab will provide an overview of how configuration bundles are managed via t
 ![Operations Center Configuration as Code bundles settings page](ops-center-config-bundle-settings.png?width=70pc)
 
 1. By checking the **Availability pattern** checkbox, any configuration bundle that has an empty **Availability pattern** can be used by any controller.
-2. The **Default bundle** drop-down allows you to automatically apply a default configuration bundle to any controller that does not specify a different configuration bundle.
+2. The **Default bundle** drop-down allows you to automatically apply a default configuration bundle to any controller that does not specify a controller specific configuration bundle.
 3. The **cog** icon signifies that the bundle's availability pattern has been defined in the UI, to include overriding availability patterns set in the `bundle.yaml`.
-4. The **bundle** icon signifies that the availability pattern was set in the `bundle.yaml` via the `availabilityPattern` field. Note that setting the **Availability pattern**  with the `availabilityPattern` field allows managing this value with each individual bundle rather than having to specify it in the UI.
+4. The **bundle** icon signifies that the availability pattern was set in the `bundle.yaml` via the `availabilityPattern` field. Note that setting the **Availability pattern**  with the `availabilityPattern` field allows managing this value with each individual bundle rather than having to specify it in the UI, and that is what we are using for this workshop.
 5. The configuration bundle **Availability pattern** allows assigning regular expressions that must match the full path to one or more controllers in order to use that bundle. For the `base` bundle, the **Availability pattern** is empty and this typically would not match any path, but since the **Availability pattern** checkbox is checked it is available to all controllers.
 6. For the `ops` bundle, the **Availability pattern** is set to `operations/ops`. So that means only a controller with the name **ops** in the **operations** folder can use this bundle. If the **Availability pattern** were set to `operations/*` then any controller in the **operations** folder could use this bundle.
 

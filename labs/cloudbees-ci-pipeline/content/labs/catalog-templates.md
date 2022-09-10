@@ -8,7 +8,7 @@ Up to this point, the `Jenksfile` that we have created does not do a whole lot. 
 
 Pipeline Template Catalogs provide version controlled, parameterized templates for Multibranch and stand-alone Pipeline jobs. In this lab we will use a template from a Pipeline Template Catalog to create another Multibranch Pipeline project for your copy of the `insurance-frontend` repository. However, the `Jenkinsfile` will be pulled from the `pipeline-template-catalog` repository instead of from the `insurance-frontend` repository. But the source code that the pipeline template executes upon will still be checked out from your `insurance-frontend` repository. 
 
-Creating a new job from a catalog template is as simple as filling in a few template specific parameters. After that, you will end up with a complete end-to-end CI/CD Pipeline for the **insurance-frontend** application with all the same benefits as a non-templatized Multibranch pipeline project. Also note that although everyone is using a template from their copy of the  `pipeline-template-catalog` repository, we could just as easily have everyone use a template from the same repository. 
+Creating a new job from a catalog template is as simple as filling in a few template specific parameters or by adding the simple job configuration to your controller's configuration as code bundle. After that, you will end up with a complete end-to-end CI/CD Pipeline for the **insurance-frontend** application with all the same benefits as a non-templatized Multibranch pipeline project. Also, note, that although everyone is using a template from their copy of the  `pipeline-template-catalog` repository, we could just as easily have everyone use a template from the same repository. 
 
 1. Navigate to the top-level of your CloudBees CI managed controller and click into the **pipelines** folder, and then click on **New Item** in the left menu. Make sure you are in the **pipelines** folder. ![New Item](new-item.png?width=50pc)
 2. Enter ***insurance-frontend-build-deploy*** as the **Item Name** and select **Container Build and Deploy** as the item type and click the **OK** button.  ![Create template job](create-template-job.png?width=50pc)
@@ -24,9 +24,9 @@ The **Repository Owner** parameter will match the GitHub Organization that you a
 ```yaml
 version: 1
 type: pipeline-template
-name: Container Build and Deploy
+name: Container Build
 templateType: MULTIBRANCH
-description: Builds a top-level Dockerfile from the specified repository and deploys it using a Helm chart from the same repository.
+description: Builds a top-level Dockerfile from the specified repository.
 parameters:
   - name: repoOwner
     type: string
@@ -65,16 +65,14 @@ Some of the highlights include:
     - On **line 17** a `when` condition is defined that will only allow the **Staging PR** nested `stages` to be executed when the `branch` being processed is a GitHub pull request. This is why no `stages` were executed for the `main` branche.
     - On **line 28** we are calling the `containerBuildPushGeneric` Pipeline Shared Library global variable that provides a common, repeatable method for building and pushing Docker images. (In this case we are building and pushing container images with a tool called [Kaniko](https://docs.cloudbees.com/docs/cloudbees-ci/latest/cloud-admin-guide/using-kaniko) which allows building and pushing container images from a Kubernetes `pod` without Docker installed.)
     - On **line 29** `checkout scm` is called so the `containerBuildPushGeneric` global variable step will have access to the `Dockerfile` and application code of your `insurance-frontend` repository. We must explicitly call this as we disabled the Declarative Pipeline default checkout in the global `options` block above.
-    - On **line 31**, the `stash` command is used to copy the Helm `chart` files for use in a later `stage`. This will alleviate the need to checkout the entire `insurance-frontend` repository in that `stage`.
-    - On **line 38**, we call the `helmDeploy` global variable step.
-    - On **line 39**, we use the `unstash` step to make the Helm `chart` files available to the `helmDeploy` step.
 8. Now we will create a pull request in your copy of the `insurance-frontend` repository. Navigate to the `main` branch of your copy of the `insurance-frontend` repository and click on the `Jenkinsfile`. 
 9. We are going to delete this `Jenkinsfile` since we will now be using the `Jenkinsfile` from the ***Container Build and Deploy*** catalog template. Click on the trashcan icon at the top of the file, again ensuring that you are on the `main` branch. ![delete Jenkinsfile](delete-jenkinsfile.png?width=60pc)
 10. On the next screen, make sure that ***Create a new branch for this commit and start a pull request.*** is selected with the default provided branch name (yours will begin with your GitHub username) and click the **Propose changes** button. ![propose changes](propose-changes.png?width=60pc)
 11. On the next screen, click the **Create pull request** button. ![create pr](create-pr.png?width=60pc)
 12. Navigate to the **insurance-frontend-build-deploy** job on your controller and you will see that there is 1 **Pull Requests** job (you may need to refresh the page). ![pr job](pr-job.png?width=60pc)
 13. Click on the **Pull Requests** tab and you should see a ***PR*** job running.
-14. It will take the job a few minutes to complete as it is utilizing a [multistage Docker build](https://docs.docker.com/develop/develop-images/multistage-build/) in the `Dockerfile` that will build the `insurance-frontend` application from the source code checked out from your copy of the `insurance-frontend` repository and then creates a runtime Docker image that is push to a Google Cloud Artifact Registry via the `containerBuildPushGeneric` Pipeline Shared Library global variable step. Next, it leverages the `helmDeploy` global variable step to deploy that pushed image to a Kubernetes cluster using the Helm chart defined in the `chart` directory of your `insurance-frontend` repository.
-15. Once the ***PR*** job has completed, navigate to the corresponding open pull request in your copy of the `insurance-frontend` repository. Make sure you are on the **Conversation** tab and you should see a deployment block stating, "This branch was successfully deployed". Click on the **Show environments** link in that block and then click on the **View deployment** button for the ***staging*** environment. ![staging deployed](staging-deployed.png?width=60pc)
+14. It will take the job a few minutes to complete as it is utilizing a [multistage Docker build](https://docs.docker.com/develop/develop-images/multistage-build/) in the `Dockerfile` that will build the `insurance-frontend` application from the source code checked out from your copy of the `insurance-frontend` repository and then creates a runtime Docker image that is push to a Google Cloud Artifact Registry via the `containerBuildPushGeneric` Pipeline Shared Library global variable step.
+15. 
+16. Once the ***PR*** job has completed, navigate to the corresponding open pull request in your copy of the `insurance-frontend` repository. Make sure you are on the **Conversation** tab and you should see a deployment block stating, "This branch was successfully deployed". Click on the **Show environments** link in that block and then click on the **View deployment** button for the ***staging*** environment. ![staging deployed](staging-deployed.png?width=60pc)
 
 
