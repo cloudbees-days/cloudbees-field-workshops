@@ -28,6 +28,11 @@ Note the `beforeAgent true` option - this setting will result in the `when` cond
   pipeline {
     agent none
     stages {
+      stage('Build and Push Container Image') {
+        steps {
+          echo "TODO - Build and Push Container Image"
+        }
+      }     
       stage('Test') {
         agent {
           kubernetes {
@@ -41,13 +46,13 @@ Note the `beforeAgent true` option - this setting will result in the `when` cond
           }
         }
       }
-      stage('Build and Push Image') {
+      stage('Deploy') {
         when {
           beforeAgent true
           branch 'main'
         }
         steps {
-          echo "TODO - build and push image"
+          echo "TODO - deploy"
         }
       }
     }
@@ -129,20 +134,29 @@ Before moving on to the next lesson make sure that your **Jenkinsfile** Pipeline
 pipeline {
   agent none
   stages {
-    stage('Test') {
+    stage('Not Main Branch') {
       when {
         beforeAgent true
         not { branch 'main' }
       }
-      agent {
-        kubernetes {
-          yamlFile 'nodejs-pod.yaml'
+      stages {
+        stage('Build and Push Container Image') {
+          steps {
+            echo "TODO - Build and Push Container Image"
+          }
         }
-      }
-      steps {
-        container('nodejs') {
-          echo 'Hello World!'   
-          sh 'node --version'
+        stage('Test') {
+          agent {
+            kubernetes {
+              yamlFile 'nodejs-pod.yaml'
+            }
+          }
+          steps {
+            container('nodejs') {
+              echo 'Hello World!'   
+              sh 'node --version'
+            }
+          }
         }
       }
     }
@@ -152,9 +166,9 @@ pipeline {
         branch 'main'
       }
       stages {
-        stage('Build and Push Image') {
+        stage('Push Image to Prod Registry') {
           steps {
-            echo "TODO - build and push image"
+            echo "TODO - push image"
           }
         }
         stage('Deploy') {
