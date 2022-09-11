@@ -27,12 +27,7 @@ Note the `beforeAgent true` option - this setting will result in the `when` cond
   ```
   pipeline {
     agent none
-    stages {
-      stage('Build and Push Container Image') {
-        steps {
-          echo "TODO - Build and Push Container Image"
-        }
-      }     
+    stages {    
       stage('Test') {
         agent {
           kubernetes {
@@ -62,19 +57,19 @@ Note the `beforeAgent true` option - this setting will result in the `when` cond
 3. Commit the changes directly to your `development` branch and then navigate to the **insurance-frontend** job on your Managed Controller and the job for the **development** branch should be running or queued to run. Note that the ***Deploy*** `stage` was skipped. ![Conditional Stage Skipped](conditional-skipped-stage.png?width=50pc) 
 4. Now we will create a [Pull Request](https://help.github.com/en/articles/creating-a-pull-request) between the **development** branch and **main** branch of your **insurance-frontend** repository. Navigate to your **insurance-frontend** repository in GitHub, make sure you are on the `development` branch. Click on the **Compare & pull request** button at the top; if you don't see that then click the **Contribute** link and then click the **Open pull request** button. ![Create Pull request link](create-pr-link.png?width=50pc) 
 5. Make sure that the **base repository** is the **main** branch of your **insurance-frontend** repository, add a comment and then click the **Create pull request** button. ![Create Pull request](create-pr.png?width=50pc) 
-6. A job will be created for the pull request and once it has completed successfully your pull request will show that **All checks have passed**. Go ahead and click the **Merge pull request** button and then click the **Confirm merge** button.
+6. A job will be created for the pull request and once it has completed you will notice that it cannot be merged because the required ***stage/Pull Request/Build and Push Container Image*** check has not passed.
 
-![Merge Pull request](merge-pr.png?width=50pc)
-
-7. Navigate to the **insurance-frontend** job on your CloudBees CI Managed Controller and the job for the **main** branch should be running or queued to run. Click on the run and after it has completed notice that the ***Deploy*** stage was not skipped. ![Stage Not Skipped](stage-not-skipped.png?width=50pc)
+{{% notice tip %}}
+We have configured your copy of the **insurance-frontend** repository with [GitHub branch protection](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#require-status-checks-before-merging). This allows integrating with [checks](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks) provided by CloudBees CI, to include the requirement that certain pipeline stages complete successfully before GitHub will allow for a pull request to be merged to the protected branch - in this case, the `main` branch.
+{{% /notice %}}
 
 {{% notice note %}}
-A Jenkins Pipeline job was automatically created for the pull request (which is really just a special type of GitHub branch) and the `main` branch by the Multibranch Pipeline project when the `Jenkisfile` was added to those branches.
+A Jenkins Pipeline job was automatically created for the pull request (which is really just a special type of GitHub branch) by the Multibranch Pipeline project when the `Jenkisfile` was added to that branch and the **development** branch job was removed as it really is just a duplicate of the **PR** job.
 {{% /notice %}}
 
 ## Using the When Directive with Nested Stages
 
-In this lab we will learn how you can combine nested `stages` with the `when` directive so that you don't have repeat a `when` condition for every `stage` it applies. We will also update the ***Test*** `stage` so it will only execute when the condition is false.
+In this lab we will learn how you can combine nested `stages` with the `when` directive so that you don't have repeat a `when` condition for every `stage` it applies. We will also add a set of pull request specific stages to include the **Build and Push Container Image** stage that is a required status check for merging pull requests to the `main` branch of you **insurance-frontend** repository.
 
 1. Navigate to and open the GitHub editor for the `Jenkinsfile` file in the **main** branch of your **insurance-frontend** repository.
 2. Replace the entire pipeline with the following:
@@ -85,7 +80,7 @@ pipeline {
     stage('Pull Request') {
       when {
         beforeAgent true
-        branch 'PR-*'
+        branch 'pr-*'
       }
       stages {
         stage('Build and Push Container Image') {
@@ -130,9 +125,9 @@ pipeline {
 }
 ```
 
-By wrapping the ***Push Image to Prod Registry*** and ***Deploy*** `stages` in the ***Main Branch Stages***, the `when` directive for the `main` branch only has to be specified once. Also, by using the `not` `when` condition, the nested ***Build and Push Container Image*** and ***Test*** `stages` will only be executed when the branch being processed is **not** the `main` branch.
+By wrapping the ***Push Image to Prod Registry*** and ***Deploy*** `stages` in the ***Main Branch Stages***, the `when` directive for the `main` branch only has to be specified once. We are also using the `pr-*`wildcard `branch` `when` condition so the nested ***Build and Push Container Image*** and ***Test*** `stages` will be executed for all pull request branches but not for any other branch. Once we build and test a container image, there is no reason we can't use it when the pull request is merged to the `main` branch.
 
-3. Click the **Propose changes** button and on the next screen click the **Create Pull Request** button. Once the required ***stage/Build and Push Container Image*** stage has completed, click the **Merge pull request** button and **Confirm merge** button. 
+3. Click the **Propose changes** button and on the next screen click the **Create Pull Request** button. Once the required ***stage/Pull Request/Build and Push Container Image*** stage has completed, click the **Merge pull request** button and **Confirm merge** button. 
 4. Navigate to the **insurance-frontend** job on your managed controller. The job for the **main** branch should be running or queued to run. Once the run completes you will see that the nested ***Build and Push Container Image*** and ***Test*** `stages` will be skipped but the **Main Branch Stages** were not. ![Conditional Nested Stage](conditional-nested-stage.png?width=50pc) 
 
 ## Next Lesson
@@ -147,7 +142,7 @@ pipeline {
     stage('Pull Request') {
       when {
         beforeAgent true
-        branch 'PR-*'
+        branch 'pr-*'
       }
       stages {
         stage('Build and Push Container Image') {
