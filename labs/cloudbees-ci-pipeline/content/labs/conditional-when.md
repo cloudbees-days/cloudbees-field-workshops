@@ -144,7 +144,7 @@ In addition to using GitHub branch protection to protect the `main` branch, we h
 Before moving on to the next lesson make sure that your **Jenkinsfile** Pipeline script on the **main** branch of your copy of the **insurance-frontend** repository matches the one from below:
 
 ### Finished Jenkinsfile for *Conditional Execution using the `when` directive* lab
-```
+```groovy
 pipeline {
   agent none
   stages {

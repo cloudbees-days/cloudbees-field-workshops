@@ -147,10 +147,9 @@ pipeline {
         branch 'main'
       }
       stages {
-        stage('Build and Push Image') {
+        stage('Push Image to Prod Registry') {
           steps {
-            echo "FAVORITE_COLOR is $FAVORITE_COLOR"  
-            echo "TODO - build and push image"
+            echo "TODO - push image"
           }
         }
         stage('Deploy') {
@@ -241,10 +240,9 @@ pipeline {
         branch 'main'
       }
       stages {
-        stage('Build and Push Image') {
+        stage('Push Image to Prod Registry') {
           steps {
-            echo "FAVORITE_COLOR is $FAVORITE_COLOR"  
-            echo "TODO - build and push image"
+            echo "TODO - push image"
           }
         }
         stage('Deploy') {
@@ -310,10 +308,9 @@ pipeline {
         branch 'main'
       }
       stages {
-        stage('Build and Push Image') {
+        stage('Push Image to Prod Registry') {
           steps {
-            echo "FAVORITE_COLOR is $FAVORITE_COLOR"  
-            echo "TODO - build and push image"
+            echo "TODO - push image"
           }
         }
         stage('Deploy') {
