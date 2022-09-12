@@ -73,11 +73,11 @@ Some of the highlights include:
 11. On the next screen, click the **Create pull request** button. ![create pr](create-pr.png?width=60pc)
 12. Navigate to the **insurance-frontend-container-build** job on your controller and you will see that there is a new **Pull Requests** job (you may need to refresh the page). ![pr job](pr-job.png?width=60pc)
 13. Click on the **Pull Requests** tab and you should see a ***PR*** job running.
-14. It will take the job a few minutes to complete as it is utilizing a [multistage Docker build](https://docs.docker.com/develop/develop-images/multistage-build/) in the `Dockerfile` that will build the `insurance-frontend` application from the source code checked out from your copy of the `insurance-frontend` repository and then creates a runtime container image that is pushed to a Google Cloud Artifact Registry via the `containerBuildPushGeneric` Pipeline Shared Library global variable step.
+14. It will take the job a few minutes to complete as it is utilizing a [multistage Docker build](https://docs.docker.com/develop/develop-images/multistage-build/) in the `Dockerfile` that will build the `insurance-frontend` application from the source code checked out from your copy of the `insurance-frontend` repository and then creates a runtime container image that is pushed to a Google Cloud Artifact Registry via the `containerBuildPushGeneric` Pipeline Shared Library global variable step. **IMPORTANT**: Do not merge the pull request!
 
 ## Ephemeral Deployment Environments for Pull Requests
 
-In this section we are going to provide a brief overview of [CloudBees Previews](). Although this is not Jenkins pipeline specific, it does allows us to easily provide preview environments for a GitHub pull request without any additional pipeline code. In previous versions of this workshop we used the following Jenkins pipeline shared library step to providing a staging environment for GitHub pull requests:
+In this section we are going to provide a brief overview of [CloudBees Previews](https://docs.beescloud.com/docs/cloudbees-previews/latest/) - a standalone feature of CloudBees CI that is currently in preview. Although this is not Jenkins pipeline specific, it does allows us to easily provide preview environments for a GitHub pull request without any additional pipeline code. In previous versions of this workshop we used the following Jenkins pipeline shared library step to providing a staging environment for GitHub pull requests:
 
 ```groovy
 def call(String name, 
@@ -117,7 +117,7 @@ In addition to the additional pipeline code, we also had to manage the configura
 1. Once the ***PR*** job has completed, navigate to the corresponding open pull request in your copy of the `insurance-frontend` repository. Make sure you are on the **Conversation** tab, scroll down to the comments, enter ***/preview*** and click the **Comment** button.
 2. you should see a notice that you have requested a deployment under your comment and that it is **In progress**. ![deployment requests](deployment-requested.png?width=60pc)
 3. After a minute or so you should see a message stating: "This branch was successfully deployed". Click on the **Show environments** link in that block and then click on the **View deployment** button. ![environment deployed](env-deployed.png?width=60pc)
-4. Navigate back to the **Delete Jenkinsfile** pull request in your copy of the **insurance-frontend** GitHub repository. Ensure that you are on the **Conversation** tab and scroll down, click the **Merge pull request** button and then the **Confirm merge** button. Once the merge is complete, you should see the deployment block update to **No deployments**. ![no deployments](no-deployments.png?width=60pc)
-5. Refresh the tab with your pull request preview environment and it should be gone. As soon as a pull request is closed, CloudBees Previews will destroy all environments associated with that pull request.
+4. Navigate back to the **Delete Jenkinsfile** pull request in your copy of the **insurance-frontend** GitHub repository. Ensure that you are on the **Conversation** tab and scroll down, click the **Merge pull request** button and then the **Confirm merge** button. 
+5. After a few seconds, refresh the tab with your pull request preview environment and it should be gone. As soon as a pull request is closed, CloudBees Previews will destroy all environments associated with that pull request.
 
 
