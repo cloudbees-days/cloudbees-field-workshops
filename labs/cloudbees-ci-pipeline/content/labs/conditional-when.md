@@ -132,11 +132,11 @@ pipeline {
 
 By wrapping the ***Push Image to Prod Registry*** and ***Deploy*** `stages` in the ***Main Branch Stages***, the `when` directive for the `main` branch only has to be specified once. We are also using the `pr-*`wildcard `branch` `when` condition so the nested ***Build and Push Container Image*** and ***Test*** `stages` will be executed for all pull request branches but not for any other branch. Once we build and test a container image, there is no reason we can't use it when the pull request is merged to the `main` branch.
 
-3. Commit the changes directly to the `adding-jenkinsfile` branch and navigate back to the **Conversation** tab of the **Adding jenkinsfile** pull request. Once the required ***stage/Pull Request/Build and Push Container Image*** stage has completed, click the **Merge pull request** button and **Confirm merge** button. ![Finished required check](finished-required-check.png?width=50pc)
+3. Commit the changes directly to the `add-jenkinsfile` branch and navigate back to the **Conversation** tab of the **Add jenkinsfile** pull request. Once the required ***stage/Pull Request/Build and Push Container Image*** stage has completed, click the **Merge pull request** button and **Confirm merge** button. ![Finished required check](finished-required-check.png?width=50pc)
 4. Navigate to the **insurance-frontend** job on your managed controller. The job for the **main** branch should be running or queued to run. Once the run completes you will see that the nested ***Build and Push Container Image*** and ***Test*** `stages` will be skipped but the **Main Branch Stages** were not. ![Conditional Nested Stage](conditional-nested-stage.png?width=50pc) 
 
 {{% notice tip %}}
-In addition to using GitHub branch protection to protect the `main` branch, we have also configured your copy of the **insurance-frontend** repository to automatically delete branches after they are merged into the `main` branch. This ensures that developers the best practice of not having long-lived branches.
+In addition to using GitHub branch protection to protect the `main` branch, we have also configured your copy of the **insurance-frontend** repository to automatically delete branches after they are merged into the `main` branch. This allows us to reduce the possibility of long-lived branches in the repository.
 {{% /notice %}}
 
 ## Next Lesson

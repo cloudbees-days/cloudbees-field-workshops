@@ -43,7 +43,7 @@ spec:
         }
       }
 ```
-Your complete `add-jenkinsfile` branch Jenkinsfile should match the following:
+Your complete `add-jenkinsfile` branch **Jenkinsfile** should match the following:
 ```
 pipeline {
   agent none
