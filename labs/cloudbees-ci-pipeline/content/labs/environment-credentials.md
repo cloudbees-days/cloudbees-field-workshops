@@ -94,7 +94,7 @@ pipeline {
 In this lab we will use the `environment` directive to inject a username/password credential into your Jenkins Pipeline. We will also explore the enforcement of some best practices around injecting sensitive environmental variables into a Jenkins Pipeline.
 
 {{% notice note %}}
-You may also use the `withCredentials` block directive to inject Jenkins credentials into a pipeline job. It works the same way as the `credentials()` helper we use below, but is much more verbose.
+You may also use the `withCredentials` block directive to inject Jenkins credentials into a pipeline job. It works the same way as the `credentials()` helper we use below, but is more verbose.
 {{% /notice %}}
 
 1. Navigate to and open the GitHub editor for the `Jenkinsfile` file in the `add-env-vars` branch of your **insurance-frontend** repository and click the pencil icon to edit the file.

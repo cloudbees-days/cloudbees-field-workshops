@@ -81,7 +81,7 @@ pipeline {
   }
 }
 ```
-8. Commit the changes and the **insurance-frontend** job will run and it will complete successfully with the following output: ![Agent Success](agent-java-success.png?width=50pc) 
+8. Commit the changes and the **insurance-frontend** **add-jenkinsfile** branch job will run and it will complete successfully with the following output: ![Agent Success](agent-java-success.png?width=50pc) 
 
 {{% notice note %}}
 The sh 'java -version' step before the `container('nodejs')` completed successfully this time because it used the default `jnlp` container to execute any steps not in the `container` block. You could also explicitly run pipeline steps within the `jnlp` container by wrapping them with `container('jnlp')`.

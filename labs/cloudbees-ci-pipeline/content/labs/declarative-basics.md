@@ -47,7 +47,7 @@ pipeline {
 }
 ``` 
 ![Jenkinsfile in GitHub Editor](jenkinsfile-github-editor.png?width=50pc) 
-11. At the bottom of the screen enter a commit message, such as ***adding Jenkinsfile***. Notice the message regarding the `main` branch: *You can’t commit to main because it is a protected branch.* We will learn more about GitHub protected branches later in the workshop, so for now, create a new branch and give it a descriptive name such as **adding-jenkinsfile** and click the **Propose new file** button. **IMPORTANT: Do Not Create a Pull Request on the next screen after saving**. ![Commit Jenkinsfile](commit-jenkinsfile.png?width=50pc) 
+11. At the bottom of the screen enter a commit message, such as ***adding Jenkinsfile***. Notice the message regarding the `main` branch: *You can’t commit to main because it is a protected branch.* We will learn more about GitHub protected branches later in the workshop, so for now, create a new branch and give it a descriptive name such as **add-jenkinsfile** and click the **Propose new file** button. **IMPORTANT: Do Not Create a Pull Request on the next screen after saving**. ![Commit Jenkinsfile](commit-jenkinsfile.png?width=50pc) 
 12. Navigate back to your new Jenkins Multibranch Pipeline project folder on your CloudBees CI Managed Controller and refresh your browser.  You should now have a new failed job for the **add-jenkinsfile** branch that you just added the `Jenkinsfile`. Don't worry that it failed, that is expected and something we will fix in the next lab. ![Job Failed](job-failed.png?width=50pc) 
 
 {{% notice tip %}}
