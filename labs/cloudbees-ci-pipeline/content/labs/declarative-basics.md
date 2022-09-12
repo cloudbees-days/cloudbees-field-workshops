@@ -80,8 +80,6 @@ WorkflowScript: 1: Missing required section "agent" @ line 1, column 1.
 Make sure you are editing the `Jenkinsfile` on your **`add-jenkinsfile` branch** and **NOT the `main` branch**.
 {{% /notice %}}
 
-![Edit Basic Syntax](github-edit-basic-syntax.png?width=50pc) 
-
 2. Replace the contents of that file with the following Declarative Pipeline:
 
 ```groovy

@@ -16,7 +16,7 @@ We will use the Kubernetes plugin [Pipeline container block](https://jenkins.io/
 
 1. In the **pipelines** folder on your controller, click on the **simple-pipeline-job** link and then click on the **Pod Templates** link. ![Controller Pod Templates](controller-pod-templates.png?width=50pc) 
 2. The **Available pod templates** screen will show you what pod templates are available to use on your controller and includes the ***Label*** to use for the agent and lists the ***Containers*** configured for the template. Note the label, container name and image for the **nodejs-app** template.  ![Available Pod Templates](available-pod-templates.png?width=50pc) 
-3. Navigate to and click on the `Jenkinsfile` file in the **development** branch of your **insurance-frontend** repository and click on the **Edit this file** button (pencil) and replace the global `agent` section with the following:
+3. Navigate to and click on the `Jenkinsfile` file in the **add-jenkinsfile** branch of your **insurance-frontend** repository and click on the **Edit this file** button (pencil) and replace the global `agent` section with the following:
 ```
   agent none
 ```
@@ -42,8 +42,8 @@ pipeline {
 ```
 {{% /expand%}}
 
-5. Commit that change to the `development` branch and navigate to your **insurance-frontend** job on your Managed Controller. The build logs should be almost the same as before because we are still using the default `jnlp` container. ![Build with Agent Template](build-agent-template.png?width=50pc) 
-6. Let's change that by replacing the **Say Hello** `stage` with the following **Test** `stage` so the steps run in the **nodejs** `container`. Edit the `Jenkinsfile` file in the **development** branch of your forked **insurance-frontend** repository so the entire pipeline looks like the following:
+5. Commit that change to the `add-jenkinsfile` branch and navigate to your **insurance-frontend** job on your Managed Controller. The build logs should be almost the same as before because we are still using the default `jnlp` container. ![Build with Agent Template](build-agent-template.png?width=50pc) 
+6. Let's change that by replacing the **Say Hello** `stage` with the following **Test** `stage` so the steps run in the **nodejs** `container`. Edit the `Jenkinsfile` file in the **add-jenkinsfile** branch of your forked **insurance-frontend** repository so the entire pipeline looks like the following:
 
 ```
 pipeline {
@@ -62,8 +62,8 @@ pipeline {
 }
 ```
 
-  All of the Pipeline steps within the `container` block will run in the container specified by the **Name** of the **Container Template** - and in this case that **Container Template** is using the `us-east1-docker.pkg.dev/core-workshop/workshop-registry/node:14-alpine` container image as we saw above. Commit the changes and the **insurance-frontend** job will run - it will result in an error because the `nodejs` container does not have Java installed (and why should it). Hover over the failed stage in the **Stage View** of your development branch job and click on the **Logs** button.   ![Open Logs](stage-view-logs-button.png?width=50pc) Next, expand the last step - `sh 'java -version'` - to see the error. ![Java Error](agent-java-error.png?width=50pc) 
-7. We will fix the error in the **Test** `stage` we added above by replacing the `sh 'java -version'` step with the `sh 'node --version'` step and moving the `sh 'java -version` step above the `container` block in the `Jenkinsfile` file in the **development** branch of your forked **insurance-frontend** repository so the entire pipeline looks like the following:
+  All of the Pipeline steps within the `container` block will run in the container specified by the **Name** of the **Container Template** - and in this case that **Container Template** is using the `us-east1-docker.pkg.dev/core-workshop/workshop-registry/node:14-alpine` container image as we saw above. Commit the changes and the **insurance-frontend** job will run - it will result in an error because the `nodejs` container does not have Java installed (and why should it). Hover over the failed stage in the **Stage View** of your **add-jenkinsfile** branch job and click on the **Logs** button.   ![Open Logs](stage-view-logs-button.png?width=50pc) Next, expand the last step - `sh 'java -version'` - to see the error. ![Java Error](agent-java-error.png?width=50pc) 
+7. We will fix the error in the **Test** `stage` we added above by replacing the `sh 'java -version'` step with the `sh 'node --version'` step and moving the `sh 'java -version` step above the `container` block in the `Jenkinsfile` file in the **add-jenkinsfile** branch of your forked **insurance-frontend** repository so the entire pipeline looks like the following:
 ```
 pipeline {
   agent none
