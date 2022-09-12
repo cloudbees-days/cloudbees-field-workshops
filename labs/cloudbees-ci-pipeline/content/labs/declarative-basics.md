@@ -47,11 +47,11 @@ pipeline {
 }
 ``` 
 ![Jenkinsfile in GitHub Editor](jenkinsfile-github-editor.png?width=50pc) 
-11. At the bottom of the screen enter a commit message, such as ***initial Jenkinsfile***, select the **Create a new branch for this commit and start a pull request**, name the branch **development** and click the **Propose new file** button. **IMPORTANT: Do Not Create a Pull Request on the next screen after saving**. ![Commit Jenkinsfile](commit-jenkinsfile.png?width=50pc) 
-12. Navigate back to your new Jenkins Multibranch Pipeline project folder on your CloudBees CI Managed Controller and refresh your browser.  You should now have a new failed job for the **development** branch where you just added the `Jenkinsfile`. Don't worry that it failed, that is expected and something we will fix in the next lab. ![Job Failed](job-failed.png?width=50pc) 
+11. At the bottom of the screen enter a commit message, such as ***adding Jenkinsfile***. Notice the message regarding the `main` branch: *You can’t commit to main because it is a protected branch.* We will learn more about GitHub protected branches later in the workshop, so for now, create a new branch and give it a descriptive name such as **add-jenkinsfile** and click the **Propose new file** button. **IMPORTANT: Do Not Create a Pull Request on the next screen after saving**. ![Commit Jenkinsfile](commit-jenkinsfile.png?width=50pc) 
+12. Navigate back to your new Jenkins Multibranch Pipeline project folder on your CloudBees CI Managed Controller and refresh your browser.  You should now have a new failed job for the **add-jenkinsfile** branch that you just added the `Jenkinsfile`. Don't worry that it failed, that is expected and something we will fix in the next lab. ![Job Failed](job-failed.png?width=50pc) 
 
 {{% notice tip %}}
-If you do not have a new **development** pipeline job then click on the **Scan Repository Now** link in the left menu and then refresh your browser.
+If you do not have a new **add-jenkinsfile** pipeline job then click on the **Scan Repository Now** link in the left menu and then refresh your browser.
 {{% /notice %}}
 
 ## Basic Declarative Syntax Structure
@@ -74,13 +74,11 @@ WorkflowScript: 1: Missing required section "agent" @ line 1, column 1.
 
 [Declarative Pipelines](https://jenkins.io/doc/book/pipeline/syntax/#declarative-pipeline) must be enclosed within a `pipeline` block - which we have. But Declarative Pipelines must also contain a top-level `agent` declaration, and must contain exactly one `stages` block at the top level. The `stages` block must have at least one `stage` block but can have an unlimited number of additional `stage` blocks. Each `stage` block must have exactly one `steps` block. 
 
-1. We will use the GitHub file editor to update the `Jenkinsfile` file in your copy of the **insurance-frontend** repository. Navigate to the `Jenkinsfile` file in the **development** branch of your **insurance-frontend** repository and then click on the pencil icon in the upper right to edit that file. 
+1. We will use the GitHub file editor to update the `Jenkinsfile` file in your copy of the **insurance-frontend** repository. Navigate to the `Jenkinsfile` file in the **add-jenkinsfile** branch of your **insurance-frontend** repository and then click on the pencil icon in the upper right to edit that file. 
 
 {{% notice warning %}}
-Make sure you are editing the `Jenkinsfile` on your **`development` branch** and **NOT the `main` branch**.
+Make sure you are editing the `Jenkinsfile` on your **`add-jenkinsfile` branch** and **NOT the `main` branch**.
 {{% /notice %}}
-
-![Edit Basic Syntax](github-edit-basic-syntax.png?width=50pc) 
 
 2. Replace the contents of that file with the following Declarative Pipeline:
 
@@ -99,10 +97,10 @@ pipeline {
 ```
 ![Basic Syntax Commit](basic-syntax-commit.png?width=50pc) 
 
-3. Add a commit description and then click the **Commit Changes** button with the default selection of *Commit directly to the `development` branch* selected.
-4. Navigate back to the **insurance-frontend** *development* branch job on your CloudBees CI Managed Controller and the job will complete successfully. Note some things from the log:
+3. Add a commit description and then click the **Commit Changes** button with the default selection of *Commit directly to the `add-jenkinsfile` branch* selected.
+4. Navigate back to the **insurance-frontend** *add-jenkinsfile* branch job on your CloudBees CI Managed Controller and the job will complete successfully. Note some things from the log:
   
-   i. The `Jenkinsfile` is being pulled from the **development** branch of your forked **insurance-frontend** repository.
+   i. The `Jenkinsfile` is being pulled from the **add-jenkinsfile** branch of your forked **insurance-frontend** repository.
    
    ii. The agent is being provisioned from a Kubernetes Pod Template (more on this in the next lesson):
 
@@ -138,7 +136,7 @@ You may have noticed that your Pipeline GitHub repository is being checked out e
 
 ## Next Lesson
 
-Before moving on to the next lesson make sure that your **Jenkinsfile** Pipeline script on the **development** branch of your copy **insurance-frontend** repository matches the one from below.
+Before moving on to the next lesson make sure that your **Jenkinsfile** Pipeline script on the **add-jenkinsfile** branch of your copy **insurance-frontend** repository matches the one from below.
 
 
 ### Finished Jenkinsfile for *Introduction to Declarative Pipelines with CloudBees CI*
