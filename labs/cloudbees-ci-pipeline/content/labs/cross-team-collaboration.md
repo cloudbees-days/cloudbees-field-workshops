@@ -15,9 +15,9 @@ The Cross Team Collaboration feature has a configurable router for routing event
  You should see the following configuration: ![Notification Configuration](notification-config.png?width=50pc)
 
 
-1. To use Cross Team Collaboration we will need to update the `Jenkinsfile` in the `/templates/container-build-push` folder in your copy of the `pipeline-template-catalog` repository, to listen for a notification event to be published by the upstream, or event publishing, job. We will do that by adding a [trigger directive](https://www.jenkins.io/doc/book/pipeline/syntax/#triggers) to then template **Jenkinsfile** Pipeline script.
+1. To use Cross Team Collaboration we will need to update the `Jenkinsfile` in the `/templates/container-build` folder in your copy of the `pipeline-template-catalog` repository, to listen for a notification event to be published by the upstream, or event publishing, job. We will do that by adding a [trigger directive](https://www.jenkins.io/doc/book/pipeline/syntax/#triggers) to then template **Jenkinsfile** Pipeline script.
 2. Navigate to your copy of the `pipeline-template-catalog` repository in your workshop GitHub Organization, click on the **Pull requests** link and click on the **Add Cross Team Collaboration Trigger** pull request. ![PR link](pr-link.png?width=50pc)  
-Open the GitHub editor for the `/templates/container-build-push/Jenkinsfile` file in the **main** branch of your copy of the `pipeline-template-catalog` repository.
+Open the GitHub editor for the `/templates/container-build/Jenkinsfile` file in the **main** branch of your copy of the `pipeline-template-catalog` repository.
 3. Click on the **Files changed** tab to review the requested configuration changes. Note that we have added a `triggers` block with an `eventTrigger` and we have updated the `when` condition to include `triggeredBy 'EventTriggerCause'`: ![PR Files Changed](pr-files-changed.png?width=50pc)
 4. Once you have finished reviewing the changes, click on the **Conversation** tab of the **Add Cross Team Collaboration Trigger** pull request, scroll down and click the green **Merge pull request** button and then click the **Confirm merge** button.
 5. Navigate to the open **PR** job of your **insurance-frontend-build-deploy** project on your Managed Controller and click the **Build Now** link in the left menu. Then view the configuration for that job by clicking the **View Configuration** link.
@@ -56,8 +56,9 @@ pipeline {
 }
 ```
 
-That event will be published **across all Managed Controllers in the Workshop cluster** via the CloudBees CI Cloud Operations Center event router triggering everyone's **insurance-frontend-build-deploy** Pipelines to run. 
+That event will be published **across all Managed Controllers in the Workshop cluster** via the CloudBees CI Cloud Operations Center event router, triggering everyone's **insurance-frontend-build** Pipelines to run. 
 
-8. Now, once that change is committed, and the job with the `publishEvent` runs, everyone will see the open **PR** branch of their **insurance-frontend-build-deploy** job triggered by the `deploy-event` JSON event and if you explore the **Console Output** of that build you will see that the `BASE_IMAGE_TAG` value is coming from the published event payload instead of what is specified in the `Dockerfile` of the `insurance-frontend` repository.
+8. Now, once that change is committed, and the job with the `publishEvent` runs, everyone will see the open **PR** branch of their **insurance-frontend-build** job triggered by the JSON event and if you explore the **Console Output** of that build you will see that the `BASE_IMAGE_TAG` value is coming from the published event payload instead of what is specified in the `Dockerfile` of the `insurance-frontend` repository.
+9. 
 
 

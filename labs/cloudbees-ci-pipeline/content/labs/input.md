@@ -161,6 +161,7 @@ pipeline {
 {{% /expand%}}
 
 5. Navigate to the active **Pull Requests** job of the **insurance-frontend** project on your managed controller and wait a little more than 10 seconds after the **Test** `stage` starts. Your pipeline will be automatically **aborted** 10 seconds after the **Test** `stage` starts. ![Input Timeout](input-timeout.png?width=50pc)
+6. Navigate back to the **Update Jenkinsfile** pull request in your copy of the **insurance-frontend** GitHub repository. Ensure that you are on the **Conversation** tab and scroll down, click the **Merge pull request** button and then the **Confirm merge** button.
 
 {{% notice tip %}}
 [CloudBees Pipeline Policies for CloudBees CI](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/pipeline-policies) allows you to enforce the use of pipeline `timeouts` across all pipeline jobs on a controller.

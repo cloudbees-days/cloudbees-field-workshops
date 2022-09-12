@@ -8,6 +8,8 @@ Up to this point, the `Jenkinsfile` that we have created has grown and provides 
 
 Pipeline Template Catalogs provide version controlled, parameterized templates for Multibranch and stand-alone Pipeline jobs. In this lab we will use a template from a Pipeline Template Catalog to create another Multibranch Pipeline project for your copy of the `insurance-frontend` repository. However, the `Jenkinsfile` will be pulled from your `pipeline-template-catalog` repository instead of from your `insurance-frontend` repository. But the source code that the pipeline template executes upon will still be checked out from your `insurance-frontend` repository. 
 
+## Creating Pipeline Jobs from Pipeline Templates
+
 Creating a new job from a catalog template is as simple as filling in a few template specific parameters or by adding a simple yaml based job configuration to your controller's configuration as code bundle. After that, you will have an organization tested Pipeline for the **insurance-frontend** application with all the same benefits as a non-templatized Multibranch pipeline project. Also, note, that although everyone is using a template from their copy of the `pipeline-template-catalog` repository, we could just as easily have everyone use a template from the same repository. 
 
 1. Navigate to the top-level of your CloudBees CI managed controller and click into the **pipelines** folder, and then click on **New Item** in the left menu. Make sure you are in the **pipelines** folder. ![New Item](new-item.png?width=50pc)
@@ -67,11 +69,54 @@ Some of the highlights include:
     - On **line 29** `checkout scm` is called so the `containerBuildPushGeneric` global variable step will have access to the `Dockerfile` and application code of your `insurance-frontend` repository. We must explicitly call this as we disabled the Declarative Pipeline default checkout in the global `options` block above.
 8. Now we will create a pull request in your copy of the `insurance-frontend` repository. Navigate to the `main` branch of your copy of the `insurance-frontend` repository and click on the `Jenkinsfile`. 
 9. We are going to delete this `Jenkinsfile` since we will now be using the `Jenkinsfile` from the ***Container Build*** catalog template. Click on the trashcan icon at the top of the file, again ensuring that you are on the `main` branch. ![delete Jenkinsfile](delete-jenkinsfile.png?width=60pc)
-10. On the next screen, make sure that ***Create a new branch for this commit and start a pull request.*** is selected with the default provided branch name (yours will begin with your GitHub username) and click the **Propose changes** button. ![propose changes](propose-changes.png?width=60pc)
+10. On the next screen, make sure that ***Create a new branch for this commit and start a pull request.***, name the new branch **delete-jenkinsfile** and click the **Propose changes** button. ![propose changes](propose-changes.png?width=60pc)
 11. On the next screen, click the **Create pull request** button. ![create pr](create-pr.png?width=60pc)
 12. Navigate to the **insurance-frontend-container-build** job on your controller and you will see that there is a new **Pull Requests** job (you may need to refresh the page). ![pr job](pr-job.png?width=60pc)
 13. Click on the **Pull Requests** tab and you should see a ***PR*** job running.
 14. It will take the job a few minutes to complete as it is utilizing a [multistage Docker build](https://docs.docker.com/develop/develop-images/multistage-build/) in the `Dockerfile` that will build the `insurance-frontend` application from the source code checked out from your copy of the `insurance-frontend` repository and then creates a runtime container image that is pushed to a Google Cloud Artifact Registry via the `containerBuildPushGeneric` Pipeline Shared Library global variable step.
-15. Once the ***PR*** job has completed, navigate to the corresponding open pull request in your copy of the `insurance-frontend` repository. Make sure you are on the **Conversation** tab and you should see a deployment block stating, "This branch was successfully deployed". Click on the **Show environments** link in that block and then click on the **View deployment** button for the ***staging*** environment. ![staging deployed](staging-deployed.png?width=60pc)
+
+## Ephemeral Deployment Environments for Pull Requests
+
+In this section we are going to provide a brief overview of [CloudBees Previews](). Although this is not Jenkins pipeline specific, it does allows us to easily provide preview environments for a GitHub pull request without any additional pipeline code. In previous versions of this workshop we used the following Jenkins pipeline shared library step to providing a staging environment for GitHub pull requests:
+
+```groovy
+def call(String name, 
+         String imageTag, 
+         String namespace = "staging",
+         Closure body) {
+  def label = "helm-${UUID.randomUUID().toString()}"
+  def podYaml = libraryResource 'podtemplates/helm.yml'
+  podTemplate(name: 'helm', inheritFrom: 'default-jnlp', label: label, yaml: podYaml, podRetention: never(), activeDeadlineSeconds:1) {
+    node(label) {
+      body()
+      stagingUrl = "https://${name}.${env.DEPLOYMENT_ENV}.workshop.cb-sa.io"
+      gitHubDeploy(REPO_OWNER, REPO_NAME, "", "staging", GITHUB_CREDENTIAL_ID, "true", "false")
+      env.NAME=name
+      env.IMAGE_TAG=imageTag
+      env.NAMESPACE=namespace
+      container('helm') {
+        withCredentials([string(credentialsId: 'fm-key', variable: 'FM_KEY')]) {
+          sh '''
+            helm upgrade --install -f ./chart/values.yaml --set image.tag=$IMAGE_TAG --set fmToken=$FM_KEY --namespace=$NAMESPACE  $NAME ./chart
+          '''
+        }
+      }
+      gitHubDeployStatus(REPO_OWNER, REPO_NAME, stagingUrl, 'success', GITHUB_CREDENTIAL_ID)
+      //only add comment for PRs - CHANGE_ID isn't populated for commits to regular branches
+      if (env.CHANGE_ID) {
+        def config = [message:"${env.DEPLOYMENT_ENV} environment deloyed by CloudBees CI and is available at: ${stagingUrl}"]
+        gitHubComment(config)
+      }
+    }
+  }
+}
+```
+
+In addition to the additional pipeline code, we also had to manage the configuration and cleanup of environments in the Kubernetes cluster we are using for the workshop. CloudBees Previews eliminates the need for both.
+
+1. Once the ***PR*** job has completed, navigate to the corresponding open pull request in your copy of the `insurance-frontend` repository. Make sure you are on the **Conversation** tab, scroll down to the comments, enter ***/preview*** and click the **Comment** button.
+2. you should see a notice that you have requested a deployment under your comment and that it is **In progress**. ![deployment requests](deployment-requested.png?width=60pc)
+3. After a minute or so you should see a message stating: "This branch was successfully deployed". Click on the **Show environments** link in that block and then click on the **View deployment** button. ![environment deployed](env-deployed.png?width=60pc)
+4. After the next lab, we will merge this pull request and we will see that CloudBees Previews automatically destroys the preview environment for this pull request.
 
 
