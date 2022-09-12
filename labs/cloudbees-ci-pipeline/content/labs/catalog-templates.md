@@ -117,6 +117,7 @@ In addition to the additional pipeline code, we also had to manage the configura
 1. Once the ***PR*** job has completed, navigate to the corresponding open pull request in your copy of the `insurance-frontend` repository. Make sure you are on the **Conversation** tab, scroll down to the comments, enter ***/preview*** and click the **Comment** button.
 2. you should see a notice that you have requested a deployment under your comment and that it is **In progress**. ![deployment requests](deployment-requested.png?width=60pc)
 3. After a minute or so you should see a message stating: "This branch was successfully deployed". Click on the **Show environments** link in that block and then click on the **View deployment** button. ![environment deployed](env-deployed.png?width=60pc)
-4. After the next lab, we will merge this pull request and we will see that CloudBees Previews automatically destroys the preview environment for this pull request.
+4. Navigate back to the **Delete Jenkinsfile** pull request in your copy of the **insurance-frontend** GitHub repository. Ensure that you are on the **Conversation** tab and scroll down, click the **Merge pull request** button and then the **Confirm merge** button. Once the merge is complete, you should see the deployment block update to **No deployments**. ![no deployments](no-deployments.png?width=60pc)
+5. Refresh the tab with your pull request preview environment and it should be gone. As soon as a pull request is closed, CloudBees Previews will destroy all environments associated with that pull request.
 
 
