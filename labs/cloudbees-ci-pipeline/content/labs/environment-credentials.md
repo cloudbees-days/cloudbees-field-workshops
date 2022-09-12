@@ -262,9 +262,9 @@ pipeline {
 We were able to remove Groovy String interpolation on the controller by replacing the `echo` step with an `sh` step that executes **echo** on the agent and replacing the double-quotes with single-quotes so there is no Groovy String interpolation - the pipeline environment variable is used as an environment variable on the agent and is therefore not accessible by any Groovy scripting in the Pipeline. We also had to add an `agent` to the **Test** `stage` because the `sh` step requires an agent (it requires a [non flyweight executor also referred to as a heavyweight executor](https://support.cloudbees.com/hc/en-us/articles/360012808951-Pipeline-Difference-between-flyweight-and-heavyweight-Executors)).
 
 7. At the bottom of the screen enter a commit message, leave **Commit directly to the `add-env-vars` branch** selected and click the **Commit new file** button.
-8. Navigate to the active **Pull Requests** job of the **insurance-frontend** project on your managed controller. The job should be running or queued to run. Once it completes, review the logs for the **Test** stage. ![Deploy Stage Logs No Secret Warning](deploy-logs-no-secret-warning.png?width=50pc) 
+8. Navigate to the active **Pull Requests** job of the **insurance-frontend** project on your managed controller. The job should be running or queued to run. Once it completes, review the logs for the **Test** stage. ![Test Stage Logs No Secret Warning](test-logs-no-secret-warning.png?width=50pc) 
 
-There should no longer be a warning regarding *Groovy String interpolation*.
+There should no longer be an error regarding *Groovy String interpolation*.
 
 {{% notice tip %}}
 By default, the use of unsafe Groovy string interpolation in a Jenkins pipeline will result in a warning. However, we have configured your controller with a system property to override the default warning and to fail any job that uses unsafe Groovy interpolation. To configure these warnings set `org.jenkinsci.plugins.workflow.cps.DSL.UNSAFE_GROOVY_INTERPOLATION` to one of the following values: 
