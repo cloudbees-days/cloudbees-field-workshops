@@ -10,7 +10,7 @@ The Declarative Pipeline syntax provides an [environment directive](https://www.
 
 1. We will add a global environment variable that will be accessible by all the `stages` of the Jenkins Pipeline. Navigate to and open the GitHub editor for the `Jenkinsfile` file in the **main** branch of your **insurance-frontend** repository.  ![Edit Jenkinsfile](edit-jenksinfile.png?width=50pc) 
 2. Next, at the global `pipeline` level, add the following `environment` block under the `agent none` directive:
-```
+```groovy
   environment {
     FAVORITE_COLOR = 'RED'
   }
@@ -21,7 +21,7 @@ The Declarative Pipeline syntax provides an [environment directive](https://www.
 ```
 
 5. Next, we will override the `FAVORITE_COLOR` variable for the **Test** stage and add an `echo` step. Replace the entire **Test** stage with the following:
-```
+```groovy
         stage('Test') {
           environment {
             FAVORITE_COLOR = 'BLUE'
@@ -33,7 +33,7 @@ The Declarative Pipeline syntax provides an [environment directive](https://www.
 ```
 
 The updated Pipeline should match the following:
-```
+```groovy
 pipeline {
   agent none
   environment {
@@ -86,12 +86,16 @@ pipeline {
 
 6. At the bottom of the screen enter a commit message, rename the new branch **add-env-var** and click the **Propose changes** button. 
 7. On the next screen, click the **Create pull request** button.
-8. Navigate to the active **Pull Requests** job of the **insurance-frontend** project on your managed controller. The job should be running or queued to run. Once it completes you should see the value for the **FAVORITE_COLOR** variable printed out in the logs twice - one red and one blue.
+8. Navigate to the active **Pull Requests** job of the **insurance-frontend** project on your managed controller. The job should be running or queued to run. Once it completes you should see the value for the **FAVORITE_COLOR** variable printed out in the logs twice - with a value of **red** for the **Build and Push Container Image** `stage` and the with a value of **blue** for the **Test** `stage`.
 
 
 ## Credentials as Environment Variables
 
 In this lab we will use the `environment` directive to inject a username/password credential into your Jenkins Pipeline. We will also explore the enforcement of some best practices around injecting sensitive environmental variables into a Jenkins Pipeline.
+
+{{% notice note %}}
+You may also use the `withCredentials` block directive to inject Jenkins credentials into a pipeline job. It works the same way as the `credentials()` helper we use below, but is much more verbose.
+{{% /notice %}}
 
 1. Navigate to and open the GitHub editor for the `Jenkinsfile` file in the `add-env-vars` branch of your **insurance-frontend** repository and click the pencil icon to edit the file.
 2. We will add another environment variable to the `environment` directive of the **Test** stage, but this time we will use the special helper method `credentials()` to create an environment variable from a username/password credential and we will then update the `echo` step to print out the values of the variable. Replace the entire **Test** stage with the following:
