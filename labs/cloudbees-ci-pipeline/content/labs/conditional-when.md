@@ -71,7 +71,7 @@ A Jenkins Pipeline job was automatically created for the pull request (which is 
 
 In this lab we will learn how you can combine nested `stages` with the `when` directive so that you don't have repeat a `when` condition for every `stage` it applies. We will also add a set of pull request specific stages to include the **Build and Push Container Image** stage that is a required status check for merging pull requests to the `main` branch of you **insurance-frontend** repository.
 
-1. Navigate to and open the GitHub editor for the `Jenkinsfile` file in the **main** branch of your **insurance-frontend** repository.
+1. Navigate to and open the GitHub editor for the `Jenkinsfile` file in the **add-jenkinsfile** branch of your **insurance-frontend** repository.
 
 {{% notice tip %}}
 You may also edit files in GitHub from the **Files changed** tab of the pull request view.
