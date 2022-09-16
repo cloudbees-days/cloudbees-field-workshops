@@ -1,7 +1,7 @@
 ---
 title: "Self-service catalog"
 chapter: false
-weight: 7
+weight: 8
 --- 
 
 Now that you've spent all the time getting your release just right, you aren't going to want to create it from scratch again the next time you need a release.
