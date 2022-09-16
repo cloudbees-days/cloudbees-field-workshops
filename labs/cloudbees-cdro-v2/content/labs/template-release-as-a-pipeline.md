@@ -149,7 +149,7 @@ Now I can use this pipeline to create releases.  Since the deployer tasks are ge
 
 ## Starting a Release from a Pipeline
 
-To start our release based on our new pipeline lets go to the "burger menu" and going to **Release Orchestration > Releases** and creating a new release, by clicking on the ![New Release Button](6.png)
+To start our release based on our new pipeline lets go to the "burger menu" and going to **Release Orchestration > Releases** and creating a new release, by clicking on the **New +** button.
 
 ![Releases](7.png)
 ![New Release Button](6.png)
@@ -178,7 +178,7 @@ We could start this release, but we haven't defined what applications will be de
 
 ## Defining what we want to deploy
 
-To define what we are deploying in the **Deployer** tasks in this release we will fist need to define what applications this release will be deploying.  To do that we will first click on the ![Applications Icon](13.png)
+To define what we are deploying in the **Deployer** tasks in this release we will fist need to define what applications this release will be deploying.  To do that we will first click on the **Applications** button.
 
 ![Application Dialog](14.png)
 
@@ -186,7 +186,7 @@ Now we have our application associated with the release
 
 ![Application selected](15.png)
 
-Now lets define the environments and processes by clicking on ![envs and configs](16.png)
+Now lets define the environments and processes by clicking on **Envs & Configs** button.
 
 ![Application Map1](17.png)
 
@@ -204,7 +204,7 @@ Repeate the process for the next stage.
 
 ![Application Map2](21.png)
 
-OK, now we are ready to run our new release.  Click on the **Run** button ![runbutton](22.png)
+OK, now we are ready to run our new release.  Click on the **Run** button
 
 ![Application Map2](23.png)
 
