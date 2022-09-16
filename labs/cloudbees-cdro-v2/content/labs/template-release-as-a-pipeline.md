@@ -1,5 +1,5 @@
 ---
-title: "Self-service catalog"
+title: "Pipelines and Releases"
 chapter: false
 weight: 7
 --- 
