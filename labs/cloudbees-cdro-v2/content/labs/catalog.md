@@ -4,11 +4,11 @@ chapter: false
 weight: 8
 --- 
 
-Now that you've spent all the time getting your release just right, you aren't going to want to create it from scratch again the next time you need a release.
+Now we have created the release in two ways.  First we started with a basic release from the service catalog, then we created a pipeline and used that to start our release.  The first way was nice because we just used the **Service Catalog** to start the release, but we needed to customized it a lot.  The second way was nice because it gave us a nice way to see what the release pipeline would look like and a easy way to modify it before starting the release.
 
-You started your release from an existing self-service catalog item. In this lab, you're going to create a new self-service catalog item which will instantiate a new release that matches the one you've just worked on.
+Next, lets combine both methods together to give us a nice way to start a release by selecting the pipeline we want to use for the release and automatically add an application.  We have been using DSL more and more through this workshop and here we will use DSL to define our new **Service Catalog** item.
 
-Ordinarily, this is a process that involves some code editing since it requires working with templatizing the DSL. To save you the trouble of having to pull out a text editor, we'll provide you with copyable snippets that you can use.
+Again I have provided some DSL code so you don't need to write it all your self.
 
 ## Getting familiar with the DSL
 
@@ -32,166 +32,126 @@ It is beyond the scope of this workshop, but you can also [sync DSL with a git r
 
 ## Building the template
 
-You can export the DSL using the action button on the right side of the screen.
-![Export DSL](4.png)
-![Export DSL](5.png)
-
-This will output something that looks like this:
+I have already create some DSL you can use for your new catalog item as follows:
 
 ```groovy
-release 'my-username Release', {
-  plannedEndDate = '2022-03-21'
-  plannedStartDate = '2022-03-07'
-  projectName = 'my-username'
+def CurrentUser = getProperty("/myUser/userName").value
 
-  pipeline 'pipeline_Base', {
-    releaseName = 'my-username Release'
+catalog CurrentUser, {
+  iconUrl = null
+  projectName = CurrentUser
 
-    formalParameter 'ec_stagesToRun', {
-      expansionDeferred = '1'
+  catalogItem 'Create Release From Pipeline', {
+    description = '''<xml>
+    <title>
+      Create a new released based on pipeline templates
+    </title>
+
+    <htmlData>
+      <![CDATA[
+        Create a new release from existing pipeline templates
+      ]]>
+    </htmlData>
+  </xml>'''
+    buttonLabel = 'Create'
+    catalogName = CurrentUser
+    dslString = '''def StartDate = (new Date())
+  def StartDateStr = (String) StartDate.format( "yyyy-MM-dd" )
+  def EndDateStr = (String) (StartDate+14).format( "yyyy-MM-dd" )
+
+  release args.releaseName, {
+    projectName = args.targetProject
+
+    plannedStartDate = StartDateStr
+    plannedEndDate = EndDateStr
+    
+    pipelineProjectName = args.templateProject
+    pipelineName = args.templateRelease
+    
+    Release_Name = args.releaseTag
+    String[] tags = args.releaseTag.replaceAll("[.]", "").split(",");
+    for (String tagItem: tags) {
+      tag tagItem
     }
 
-    stage 'Release Readiness', {
-      colorCode = '#289ce1'
-      pipelineName = 'pipeline_Base'
-      gate 'PRE', {
+    deployerApplication 'Workshop App', {
+        processName = 'Deploy Application'
+        deployerConfiguration 'QA', {
+            deployerTaskName = 'Deploy to QA'
+            environmentName = 'QA'
+            processName = 'Deploy Application'
+            stageName = "Quality Assurance"
         }
-
-      gate 'POST', {
-        task 'No Code Smells', {
-          gateCondition = '$[/javascript myStageRuntime.tasks[\'Get latest SonarQube scan results\'].job.getLastSonarMetrics.code_smells != null || myStageRuntime.tasks[\'Get latest SonarQube scan results\'].job.getLastSonarMetrics.code_smells < 1]'
-          gateType = 'POST'
-          subproject = 'my-username'
-          taskType = 'CONDITIONAL'
+        deployerConfiguration 'PROD', {
+            deployerTaskName = 'Deploy to Production'
+            environmentName = 'QA'
+            processName = 'Deploy Application'
+            stageName = "Production"
         }
-      }
-
-      task 'Git changelog', {
-        actualParameter = [
-          'branch': 'main',
-          'commit': '',
-          'config': '/projects/CloudBees/pluginConfigurations/cb-bot',
-          'depth': '',
-          'gitRepoFolder': '/tmp/demo-app',
-          'mirror': 'false',
-          'overwrite': 'true',
-          'pathspecs': '',
-          'referenceFolder': '',
-          'repoUrl': 'https://github.com/cloudbees-days/cdro-workshop-demo-app',
-          'resultPropertySheet': '/myJob/clone',
-          'shallowSubmodules': 'false',
-          'submodules': 'false',
-          'tag': '',
-        ]
-        stageSummaryParameters = '[{"name":"cloneData","label":"cloneData"}]'
-        subpluginKey = 'EC-Git'
-        subprocedure = 'Clone'
-        taskType = 'PLUGIN'
-      }
-
-      task 'Get latest SonarQube scan results', {
-        actualParameter = [
-          'config': '/projects/Default/pluginConfigurations/SonarQube',
-          'resultFormat': 'propertysheet',
-          'resultSonarProperty': '/myJob/getLastSonarMetrics',
-          'sonarMetricsComplexity': 'all',
-          'sonarMetricsDocumentation': 'all',
-          'sonarMetricsDuplications': 'all',
-          'sonarMetricsIssues': 'all',
-          'sonarMetricsMaintainability': 'all',
-          'sonarMetricsMetrics': 'all',
-          'sonarMetricsQualityGates': 'all',
-          'sonarMetricsReliability': 'all',
-          'sonarMetricsSecurity': 'all',
-          'sonarMetricsTests': 'all',
-          'sonarProjectKey': 'demo-app',
-          'sonarProjectName': 'demo-app',
-          'sonarProjectVersion': '',
-          'sonarTaskId': '',
-          'sonarTimeout': '',
-        ]
-        subpluginKey = 'EC-SonarQube'
-        subprocedure = 'Get Last SonarQube Metrics'
-        taskType = 'PLUGIN'
-      }
     }
 
-    stage 'Quality Assurance', {
-      colorCode = '#ff7f0e'
-      pipelineName = 'pipeline_Base'
-      gate 'PRE', {
-        }
 
-      gate 'POST', {
-        }
+  }'''
+    endTargetJson = '''{
+    "source": "parameter",
+    "object": "release",
+    "objectName": "releaseName",
+    "objectProjectName": "targetProject",
+    "objectId": "id"
+  }'''
+    iconUrl = 'icon-pipeline.svg'
+    projectName = CurrentUser
+    useFormalParameter = '1'
 
-      task 'Deploy to QA', {
-        deployerRunType = 'serial'
-        subproject = 'my-username'
-        taskType = 'DEPLOYER'
-      }
+    formalParameter 'templateProject', defaultValue: 'Default', {
+      label = 'Template Project'
+      orderIndex = '1'
+      required = '1'
+      type = 'project'
     }
 
-    stage 'Production', {
-      colorCode = '#2ca02c'
-      pipelineName = 'pipeline_Base'
-      gate 'PRE', {
-        task 'Manual approval', {
-          gateType = 'PRE'
-          instruction = 'Validate that everything is good before deploying into production.'
-          notificationEnabled = '1'
-          notificationTemplate = 'ec_default_gate_task_notification_template'
-          subproject = 'my-username'
-          taskType = 'APPROVAL'
-          approver = [
-            'my-username',
-          ]
-        }
-      }
-
-      gate 'POST', {
-        }
-
-      task 'Deploy to Production', {
-        deployerRunType = 'serial'
-        subproject = 'my-username'
-        taskType = 'DEPLOYER'
-      }
+    formalParameter 'templateRelease', defaultValue: 'pipeline_Base', {
+      label = 'Template Release'
+      orderIndex = '2'
+      projectFormalParameterName = 'templateProject'
+      required = '1'
+      type = 'pipeline'
     }
 
-    // Custom properties
-
-    property 'ec_counters', {
-
-      // Custom properties
-      pipelineCounter = '10'
+    formalParameter 'targetProject', defaultValue: CurrentUser, {
+      label = 'Target Project'
+      orderIndex = '3'
+      required = '1'
+      type = 'project'
     }
+
+    formalParameter 'releaseName', {
+      label = 'Release Name'
+      orderIndex = '4'
+      required = '1'
+      type = 'entry'
+    }
+
+    formalParameter 'releaseTag', {
+      label = 'Release Tags'
+      orderIndex = '5'
+      required = '1'
+      type = 'entry'
+    }
+
+    formalParameter 'applicationName', defaultValue: 'Workshop App', {
+      label = 'Application Name'
+      orderIndex = '6'
+      required = '1'
+      type = 'entry'
+    }
+
   }
 
-  deployerApplication 'Welcome App', {
-    orderIndex = '1'
-    processName = 'Deploy Application'
-
-    deployerConfiguration 'c9691e9b-a3aa-11ec-a32e-16c2f55870f5', {
-      deployerTaskName = 'Deploy to QA'
-      environmentName = 'QA'
-      processName = 'Deploy Application'
-      stageName = 'Quality Assurance'
-    }
-
-    deployerConfiguration 'c979e77e-a3aa-11ec-b6cb-16c2f55870f5', {
-      deployerTaskName = 'Deploy to Production'
-      environmentName = 'Production'
-      processName = 'Deploy Application'
-      stageName = 'Production'
-    }
-  }
 }
 ```
 
-You'll see that this is much more concise than what you saw in the **DSL Editor** as it is suppressing all the null and default values.
-
-Now this DSL is enough to give us the same release.
+Now this DSL can give us a release based on a release pipeline just like we did in the last module, but it also lets us specify an application.  With that information it will have enough to generate a new release just like last time.
 
 If you were to go to the DSL IDE by going to the "burger menu" and going to **DevOps Essential > DSL IDE** you can paste this code and run it. This should run just fine.
 
@@ -204,187 +164,6 @@ The operations here are idempotent, meaning you can run them over and over witho
 In this case, we've just exported the release DSL and then ran the DSL which has a net effect of nothing happening since the state is the same.
 
 This is good though, we have all the pieces we need. Now it is time to templatize this DSL.
-
-## Templatizing the DSL
-First we're going to introduce some variables at the start so that we can start the templatization.
-
-```groovy
-def CurrentUser = getProperty("/myUser/userName").value
-def UserProject = "${CurrentUser}"
-
-def ReleaseName = args.releaseName
-
-def StartDate = (new Date())
-def StartDateStr = (String) StartDate.format("yyyy-MM-dd")
-def EndDateStr = (String) (StartDate + 14).format("yyyy-MM-dd")
-```
-
-Here we're doing 3 main things:
-1. Determining the name of the user and their project based on who is running the catalog item
-2. Grabbing a release name from the input parameters
-3. Grabbing the date range that will serve as the duration of the new release (we're going with 14 days for a normal 2-week sprint)
-
-```groovy
-def CurrentUser = getProperty("/myUser/userName").value
-def UserProject = "${CurrentUser}"
-
-def ReleaseName = args.releaseName
-
-def StartDate = (new Date())
-def StartDateStr = (String) StartDate.format("yyyy-MM-dd")
-def EndDateStr = (String) (StartDate + 14).format("yyyy-MM-dd")
-
-release ReleaseName, {
-  plannedEndDate = EndDateStr
-  plannedStartDate = StartDateStr
-  projectName = UserProject
-
-  pipeline 'pipeline_Base', {
-    releaseName = ReleaseName
-
-    formalParameter 'ec_stagesToRun', {
-      expansionDeferred = '1'
-    }
-
-    stage 'Release Readiness', {
-      colorCode = '#289ce1'
-      pipelineName = 'pipeline_Base'
-      gate 'PRE', {
-        }
-
-      gate 'POST', {
-        task 'No Code Smells', {
-          gateCondition = '$[/javascript myStageRuntime.tasks[\'Get latest SonarQube scan results\'].job.getLastSonarMetrics.code_smells != null || myStageRuntime.tasks[\'Get latest SonarQube scan results\'].job.getLastSonarMetrics.code_smells < 1]'
-          gateType = 'POST'
-          subproject = UserProject
-          taskType = 'CONDITIONAL'
-        }
-      }
-
-      task 'Git changelog', {
-        actualParameter = [
-          'branch': 'main',
-          'commit': '',
-          'config': '/projects/CloudBees/pluginConfigurations/cb-bot',
-          'depth': '',
-          'gitRepoFolder': '/tmp/demo-app',
-          'mirror': 'false',
-          'overwrite': 'true',
-          'pathspecs': '',
-          'referenceFolder': '',
-          'repoUrl': 'https://github.com/cloudbees-days/cdro-workshop-demo-app',
-          'resultPropertySheet': '/myJob/clone',
-          'shallowSubmodules': 'false',
-          'submodules': 'false',
-          'tag': '',
-        ]
-        stageSummaryParameters = '[{"name":"cloneData","label":"cloneData"}]'
-        subpluginKey = 'EC-Git'
-        subprocedure = 'Clone'
-        taskType = 'PLUGIN'
-      }
-
-      task 'Get latest SonarQube scan results', {
-        actualParameter = [
-          'config': '/projects/Default/pluginConfigurations/SonarQube',
-          'resultFormat': 'propertysheet',
-          'resultSonarProperty': '/myJob/getLastSonarMetrics',
-          'sonarMetricsComplexity': 'all',
-          'sonarMetricsDocumentation': 'all',
-          'sonarMetricsDuplications': 'all',
-          'sonarMetricsIssues': 'all',
-          'sonarMetricsMaintainability': 'all',
-          'sonarMetricsMetrics': 'all',
-          'sonarMetricsQualityGates': 'all',
-          'sonarMetricsReliability': 'all',
-          'sonarMetricsSecurity': 'all',
-          'sonarMetricsTests': 'all',
-          'sonarProjectKey': 'demo-app',
-          'sonarProjectName': 'demo-app',
-          'sonarProjectVersion': '',
-          'sonarTaskId': '',
-          'sonarTimeout': '',
-        ]
-        subpluginKey = 'EC-SonarQube'
-        subprocedure = 'Get Last SonarQube Metrics'
-        taskType = 'PLUGIN'
-      }
-    }
-
-    stage 'Quality Assurance', {
-      colorCode = '#ff7f0e'
-      pipelineName = 'pipeline_Base'
-      gate 'PRE', {
-        }
-
-      gate 'POST', {
-        }
-
-      task 'Deploy to QA', {
-        deployerRunType = 'serial'
-        subproject = UserProject
-        taskType = 'DEPLOYER'
-      }
-    }
-
-    stage 'Production', {
-      colorCode = '#2ca02c'
-      pipelineName = 'pipeline_Base'
-      gate 'PRE', {
-        task 'Manual approval', {
-          gateType = 'PRE'
-          instruction = 'Validate that everything is good before deploying into production.'
-          notificationEnabled = '1'
-          notificationTemplate = 'ec_default_gate_task_notification_template'
-          subproject = UserProject
-          taskType = 'APPROVAL'
-          approver = [
-            UserProject,
-          ]
-        }
-      }
-
-      gate 'POST', {
-        }
-
-      task 'Deploy to Production', {
-        deployerRunType = 'serial'
-        subproject = UserProject
-        taskType = 'DEPLOYER'
-      }
-    }
-
-    // Custom properties
-
-    property 'ec_counters', {
-
-      // Custom properties
-      pipelineCounter = '10'
-    }
-  }
-
-  deployerApplication 'Welcome App', {
-    orderIndex = '1'
-    processName = 'Deploy Application'
-
-    deployerConfiguration 'c9691e9b-a3aa-11ec-a32e-16c2f55870f5', {
-      deployerTaskName = 'Deploy to QA'
-      environmentName = 'QA'
-      processName = 'Deploy Application'
-      stageName = 'Quality Assurance'
-    }
-
-    deployerConfiguration 'c979e77e-a3aa-11ec-b6cb-16c2f55870f5', {
-      deployerTaskName = 'Deploy to Production'
-      environmentName = 'Production'
-      processName = 'Deploy Application'
-      stageName = 'Production'
-    }
-  }
-}
-```
-
-Here we've just added those variables at the top and then replaced all the hard-coded values with these new variable references. There were only a few lines that were changed, yet this has the effect that now this template is ready to be re-used over and over. We just need to create the self-service catalog and corresponding item.
 
 ## Creating the self-service catalog
 
