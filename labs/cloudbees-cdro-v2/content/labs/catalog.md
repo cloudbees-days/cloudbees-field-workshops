@@ -30,7 +30,7 @@ An important note is that this is two-way bound. As you make changes in the DSL 
 It is beyond the scope of this workshop, but you can also [sync DSL with a git repository](https://docs.cloudbees.com/docs/cloudbees-cd/latest/configure/source-code-synchronization) to enable a GitOps approach for managing the configuration of your environment. 
 
 
-## Building the template
+## Creating the self-service catalog with DSL
 
 I have already create some DSL you can use for your new catalog item as follows:
 
@@ -140,10 +140,12 @@ catalog CurrentUser, {
     }
 
     formalParameter 'applicationName', defaultValue: 'Workshop App', {
+      expansionDeferred = '0'
       label = 'Application Name'
       orderIndex = '6'
+      projectFormalParameterName = 'targetProject'
       required = '1'
-      type = 'entry'
+      type = 'application'
     }
 
   }
@@ -159,13 +161,9 @@ If you were to go to the DSL IDE by going to the "burger menu" and going to **De
 ![DSL IDE](7.png)
 ![DSL IDE](8.png)
 
-The operations here are idempotent, meaning you can run them over and over without issue. It will make sure that the described state is the state in the system.
-
-In this case, we've just exported the release DSL and then ran the DSL which has a net effect of nothing happening since the state is the same.
-
 This is good though, we have all the pieces we need. Now it is time to templatize this DSL.
 
-## Creating the self-service catalog
+## Creating the self-service catalog in the UI
 
 First you'll need to navigate to the **Service Catalog** by clicking on the item in the top navigation.
 
@@ -353,18 +351,17 @@ release ReleaseName, {
     }
   }
 
-  deployerApplication 'Welcome App', {
-    orderIndex = '1'
+  deployerApplication 'Workshop App', {
     processName = 'Deploy Application'
 
-    deployerConfiguration 'c9691e9b-a3aa-11ec-a32e-16c2f55870f5', {
+    deployerConfiguration 'QA', {
       deployerTaskName = 'Deploy to QA'
       environmentName = 'QA'
       processName = 'Deploy Application'
       stageName = 'Quality Assurance'
     }
 
-    deployerConfiguration 'c979e77e-a3aa-11ec-b6cb-16c2f55870f5', {
+    deployerConfiguration 'PROD', {
       deployerTaskName = 'Deploy to Production'
       environmentName = 'Production'
       processName = 'Deploy Application'
