@@ -6,7 +6,7 @@ weight: 7
 
 Now that you've spent all the time getting your release just right, you aren't going to want to create it from scratch again the next time you need a release.
 
-You started your release from an existing self-service catalog item. In this lab, you're going to look at another way of building the steps in the release.  For this lab we are going to build a *pipeline*.  Pipelines are kind of like releases in that they will allow us to orchestrate several steps over many stages.  We can even have entry and exit gates to the different stages.  Pipelines however do not keep track of planned start and end dates or support the deployer task.  Once we define a release we can use it as the basis for our new releases.
+You started your release from an existing self-service catalog item. In this lab, you're going to look at another way of building the steps in the release.  For this lab we are going to build a *pipeline*.  Pipelines are kind of like releases in that they will allow us to orchestrate several steps over many stages.  We can even have entry and exit gates to the different stages.  Pipelines however do not keep track of planned start and end dates or support the deployer task.  Once we define a pipeline we can use it as the basis for our new releases.
 
 Normally, you could define a pipeline similar to the way we built the stages in our release.  For this lab and to save you the trouble of building the pipeline over by providing the DSL code here for you to use.
 
