@@ -98,7 +98,7 @@ Once you committed the `flags.js` file a job will be triggered on a CloudBees CI
 
 1. In your browser, switch to CloudBees Feature Management dashboard.
 2. On the left-hand side of the dashboard, select the **Audit Logs** view.
-3. You should see both the `title` and `sidebar` flags have been added to the `default` namespace and communicated from the `development` code. This means they are available for remote configuration in the dashboard! There are also some default properties that have been added, but we'll add more in a future lab. ![Audit logs](images/auditLogs.png?width=70pc)
+3. You should see both the `title` and `sidebar` flags have been added to the `default` namespace and communicated from the `development`code. This means they are available for remote configuration in the dashboard! There are also some default properties that have been added, but we'll add more in a future lab. ![Audit logs](images/auditLogs.png?width=70pc)
 4. Finally, click on **Flags overview** in the left menu and you will see the two flags from your `flag.js` file, and an outline of their configurations (though we have none yet) defined across all environments. ![Flags](images/dashboard-flags.png?width=70pc)
 
 ### Setup Completed!
