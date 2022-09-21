@@ -63,16 +63,16 @@ initCloudBees().then(function () {
 {{% /expand%}}
 
 5. Create a commit message (e.g. "Added setCustomBooleanProperty"). **Commit changes** directly to the `development` branch.
-6. Once the commit has finished being built on the open pull request, open the new deployment URL so that the properties can be created to the Feature Management dashboard.
+6. Once the commit has finished being built on the open pull request, open the new deployment URL so that the properties can be created to the Feature Management dashboard. ![Create target group](create-target-group.png?width=50pc)
 
 ### Create a Target Group Based on Custom Properties
 
 1. In the CloudBees Feature Management dashboard, navigate to the **Target Groups** displayed on the left. Select the **Create a New Group** button in the middle of the resulting page.
-2. We are going to create a new Target Group, _useful when defined by 2 or more `customProperties`_. Enter ***BetaUsers*** as the **Name** of the new group, a subset that will be defined by the `isLoggedIn` and `betaAccess` properties.
+2. We are going to create a new Target Group, _useful when defined by 2 or more `customProperties`_. Enter ***BetaUsers*** as the **Name** of the new group, a subset that will be defined by the `isLoggedIn` and `hasBetaAccess` properties.
 3. A microblog user is considered part of the **BetaUsers** group when **both** of the following conditions are met:
    * `isLoggedIn` is **True**
    * `hasBetaAccess` is **True**
-   * Reflect this logic in the **BetaUsers** Target Group Window be defining the first **Condition** as `isLoggedIn` **Is True**. Then, **Add a New Condition**, select the ***Matches All Conditions*** option, and the select the `betaAccess` **Property** as **Is True**.
+   * Reflect this logic in the **BetaUsers** Target Group Window be defining the first **Condition** as `isLoggedIn` **Is True**. Then, **Add new condition**, select the ***Matches All Conditions*** option, and the select the `hasBetaAccess` **Property** as **Is True**.
 
 4. Once your **BetaUsers** New Target Group definition looks similar to screenshot below click **Create Group** button so it can be used in experiments. ![New target group](images/new-target-group.png?width=50pc)
 
@@ -80,9 +80,9 @@ initCloudBees().then(function () {
 ### Using a Target Group in a Configuration
 
 1. Within the CloudBees Feature Management dashboard, navigate to the **Development** environment, and click on the **sidebar** configuration.
-2. Create a new condition by selecting **Add New Condition**. Within the new condition, change the audience selection from **All Users** to **Target Group**. Edit the remainder of the `if` condition block so that _for a Target Group that matches any of BetaUsers, the sidebar flag value is ***True***.
-3. Edit the older condition that became the `else` block such that the sidebar flag value will be **False**. The configuration modifications should match the following screenshot. ![Update sidebar experiment](images/update-sidebar-experiment.png?width=50pc)
-4. Apply the configuration changes by clicking **Save Targeting**.
+2. Create a new condition by selecting **Add new condition**. Within the new condition, change the **property** selection to **target group**. Edit the remainder of the `if` condition block so that for a **target group** that **matches any of** **BetaUsers**, the sidebar flag value is ***true***.
+3. Edit the older condition that became the `else` block such that the sidebar flag value will be **false**. The configuration modifications should match the following screenshot. ![Update sidebar experiment](images/update-sidebar-experiment.png?width=50pc)
+4. Apply the configuration changes by clicking **Save Configuration**.
 5. Navigate to the microblog website to test the configuration logic.
    * Log in with the username `admin` and the password `admin` and then navigate back to the homepage. The sidebar should be hidden!
    * Log out, and sign in with the username `betauser` and `betauser` password. Upon, navigating back to the homepage the sidebar is now displayed (you may need to refresh the browser page), as we configured it to be _only for Beta Users_.

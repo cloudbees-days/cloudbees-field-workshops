@@ -16,7 +16,6 @@ In this lab, you will set up a CloudBees Feature Management account and use it t
 4. After creating a new application in the dashboard, click the **App Settings** panel seen on the left hand menu. From the resulting page, select the **Environments** tab.
 5. Click **Add New Environment** and name it **Development**. Then click **Generate Key**.
 6. **Close** the subsequent **Development Key** pop-up window so that both _Production_ and _Development_ keys are displayed. Leave this CloudBees Feature Management dashboard tab open in the browser. Both keys will be referenced later in this lab.
-![Environment Key](images/CBFMEnvKey.png?width=70pc)
 
 ### API Key Environment Variable
 
