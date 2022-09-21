@@ -97,7 +97,7 @@ export const configurationFetchedHandler = fetcherResults => {
 export const impressionHandler = (reporting, experiment) => {
   if (experiment) {
     console.log('Flag is ' + reporting.name + ', and value is ' + reporting.value)
-    windowgtag('event', reporting.name, {
+    window.gtag('event', reporting.name, {
       'event_category': reporting.name,
       'event_label': reporting.value
     })
