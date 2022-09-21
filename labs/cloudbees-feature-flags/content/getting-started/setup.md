@@ -14,8 +14,9 @@ In this lab, you will set up a CloudBees Feature Management account and use it t
 2. Fill out the form with your name, email, and a created password. After confirming your password, check the box agreeing to CloudBees Feature Management' Terms of Service (which can be viewed [here](https://docs.cloudbees.com/docs/cloudbees-common/latest/subscription-agreement/)), and click **Sign Up**.
 3. After you have successfully created an account, the CloudBees Feature Management dashboard will be displayed. Create a new application by clicking the blue panel in the top left corner of the screen. ![New Application](images/new-application.png?width=70pc)
 4. After creating a new application in the dashboard, click the **App Settings** panel seen on the left hand menu. From the resulting page, select the **Environments** tab.
-5. Click **Add New Environment** and name it **Development**. Then click **Generate Key**.
-6. **Close** the subsequent **Development Key** pop-up window so that both _Production_ and _Development_ keys are displayed. Leave this CloudBees Feature Management dashboard tab open in the browser. Both keys will be referenced later in this lab.
+5. Click **Add New Environment** and name it **Development**. ![Create Development Environment](images/create-dev-env.png?width=70pc)
+6. Next, click **Generate Key**.
+7. **Close** the subsequent **Development Key** pop-up window so that both _Production_ and _Development_ keys are displayed. Leave this CloudBees Feature Management dashboard tab open in the browser. Both keys will be referenced later in this lab.
 
 ### API Key Environment Variable
 

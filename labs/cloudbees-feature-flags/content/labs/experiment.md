@@ -9,14 +9,14 @@ In this lab, you will use the CloudBees Feature Management dashboard to remotely
 ### Creating a CloudBees Feature Management Configuration
 
 1. Switch tabs to bring up the CloudBees Feature Management Dashboard.
-2. On the left-hand side of the screen, click to expand **Flags in environment** then select the **Development** environment to display the configurations available. ![Development Environment flags](images/dev-env-flags.png?width=50pc)
+2. On the left-hand side of the screen, click to expand **Flags in environment** then select the **Development** environment to display the configurations available. ![Development Environment flags](images/dev-env-flags.png?width=60pc)
 3. Select the **default.title** configuration.
 4. Right now, the new title is hidden for all as we can see the targeting is off for this configuration.
-5. Let's change and activate the configuration so the flag's configuration will reflect all users should see a true value, and this new configuration should be enabled. Click on the current **False** behavior value, and from the drop-down menu, choose **True** to edit the `title` flag experiment.
+5. Let's change and activate the configuration so the flag's configuration will reflect that all users should see a value of **true**, and enable the updated flag configuration. Click on the current **false** behavior value, and from the drop-down menu, choose **true** to change the `title` flag configuration.
 6. When changes to a configuration are applied, a new configuration file is written and delivered to the devices when the configuration is activated. Click the arrow next to **Save Configuration** button and select **Save & Activate Configuration** to send the new configuration with its updated `title` flag value. You should see the configuration switch move to the **On** position. ![Title true](images/setTitleTrue.png?width=70pc)
 7. Switch tabs to bring up the Microblog website. Thanks to the `configurationFetchedHandler` implemented in the previous lab, the page refreshes automatically and the new configuration is applied. The new title will appear! ![New title](images/new-title-visible.png?width=50pc)
 8. Navigate back to the CloudBees Feature Management dashboard and navigate to **Development** environment and choose the **default.sidebar** flag to set its configuration.
-9.  Similar to the title flag's configuration, edit the **sidebar** configuration by changing the only condition's **False** behavior value to **True**. Apply the new changes through the **Save & Activate Configuration** button. ![Sidebar experiment](images/sidebar-experiment.png?width=70pc)
+9.  Similar to the title flag's configuration, edit the **sidebar** flag configuration by changing the only condition's **false** behavior value to **true**. Apply the new changes through the **Save & Activate Configuration** button. ![Sidebar experiment](images/sidebar-experiment.png?width=70pc)
 10. Switch back to the Microblog website, and after the auto-refresh, the sidebar will now be displayed! ![Sidebar visible](images/sidebar-visible.png?width=50pc)
 
 ### Flag Override View Interface

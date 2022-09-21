@@ -63,16 +63,16 @@ initCloudBees().then(function () {
 {{% /expand%}}
 
 5. Create a commit message (e.g. "Added setCustomBooleanProperty"). **Commit changes** directly to the `development` branch.
-6. Once the commit has finished being built on the open pull request, open the new deployment URL so that the properties can be created to the Feature Management dashboard. ![Create target group](create-target-group.png?width=50pc)
+6. Once the commit has finished being built on the open pull request, open the new deployment URL and then check the **Audit log** in the Feature Management dashboard to ensure the new properties have been added. ![Audit Log Properties](audit-log-props.png?width=50pc)
 
 ### Create a Target Group Based on Custom Properties
 
-1. In the CloudBees Feature Management dashboard, navigate to the **Target Groups** displayed on the left. Select the **Create a New Group** button in the middle of the resulting page.
+1. In the CloudBees Feature Management dashboard, navigate to the **Target Groups** displayed on the left. Select the **Create a New Group** button in the middle of the resulting page. ![Create target group](create-target-group.png?width=50pc)
 2. We are going to create a new Target Group, _useful when defined by 2 or more `customProperties`_. Enter ***BetaUsers*** as the **Name** of the new group, a subset that will be defined by the `isLoggedIn` and `hasBetaAccess` properties.
 3. A microblog user is considered part of the **BetaUsers** group when **both** of the following conditions are met:
-   * `isLoggedIn` is **True**
-   * `hasBetaAccess` is **True**
-   * Reflect this logic in the **BetaUsers** Target Group Window be defining the first **Condition** as `isLoggedIn` **Is True**. Then, **Add new condition**, select the ***Matches All Conditions*** option, and the select the `hasBetaAccess` **Property** as **Is True**.
+   * `isLoggedIn` is **true**
+   * `hasBetaAccess` is **true**
+   * Reflect this logic in the **BetaUsers** Target Group Window by defining the first **Condition** as `isLoggedIn` **is true**. Then, **Add new condition**, select the ***Matches All Conditions*** option, and the select the `hasBetaAccess` **Property** as **is true**.
 
 4. Once your **BetaUsers** New Target Group definition looks similar to screenshot below click **Create Group** button so it can be used in experiments. ![New target group](images/new-target-group.png?width=50pc)
 
