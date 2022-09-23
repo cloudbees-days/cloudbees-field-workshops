@@ -74,7 +74,7 @@ catalog CurrentUser, {
       tag tagItem
     }
 
-    deployerApplication 'Workshop App', {
+    deployerApplication args.applicationName, {
         processName = 'Deploy Application'
         deployerConfiguration 'QA', {
             deployerTaskName = 'Deploy to QA'
@@ -139,7 +139,7 @@ catalog CurrentUser, {
       type = 'entry'
     }
 
-    formalParameter 'applicationName', defaultValue: 'Workshop App', {
+    formalParameter 'applicationName', defaultValue: 'Some App', {
       expansionDeferred = '0'
       label = 'Application Name'
       orderIndex = '6'
