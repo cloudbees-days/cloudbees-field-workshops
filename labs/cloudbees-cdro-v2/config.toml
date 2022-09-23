@@ -1,0 +1,26 @@
+baseURL = ""
+languageCode = "en-US"
+defaultContentLanguage = "en"
+
+title = "CloudBees CD/RO Workshop"
+theme = "hugo-theme-learn"
+metaDataFormat = "yaml"
+
+[outputs]
+home = [ "HTML", "RSS", "JSON"]
+
+[params]
+  # Change default color scheme with a variant one. Can be "red", "blue", "green".
+  themeVariant = "cloudbees"
+  editURL = "https://github.com/cloudbees-days/cloudbees-field-workshops/edit/main/labs/cloudbees-cdro-v2/content/"
+  # Shows a checkmark for visited pages on the menu
+  showVisitedLinks = true
+  # Set this to true to disable copy-to-clipboard button for inline code.
+  disableInlineCopyToClipBoard = true
+  # If set to false, a Home button will appear below the search bar on the menu.
+  disableLandingPageButton = true
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
