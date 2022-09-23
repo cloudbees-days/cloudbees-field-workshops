@@ -139,7 +139,7 @@ catalog CurrentUser, {
       type = 'entry'
     }
 
-    formalParameter 'applicationName', defaultValue: 'Some App', {
+    formalParameter 'applicationName', defaultValue: 'Workshop App', {
       expansionDeferred = '0'
       label = 'Application Name'
       orderIndex = '6'
