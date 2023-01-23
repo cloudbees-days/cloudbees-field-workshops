@@ -4,7 +4,7 @@ chapter: false
 weight: 3
 --- 
 
-Operations Center provides a CasC for Controllers **storage service** that allows storing bundles in a directory and/or source control repository that is accessible by Operations center. These *external* storage locations, referred to as the **Local folder** and **SCM** retrieval methods, are then synced with an internal storage location (the `/var/jenkins_home/cb-casc-bundles-store` directory) via polling, an SCM webhook and/or manually. Once a bundle is synced to the internal storage location, it becomes available for use by controllers based on the availability pattern of the bundle, and a polling time (defaults to 5 minutes) or CLI/API calls that makes the controller check for an update on demand.
+Operations Center provides two CasC for Controllers **storage services** that allow storing bundles in a directory or a source control repository that is accessible by Operations center. These *external* storage locations, referred to as the **Local folder** and **SCM** retrieval methods, are then synced with an internal storage location (the `/var/jenkins_home/cb-casc-bundles-store` directory) via polling, an SCM webhook and/or manually. Once a bundle is synced to the internal storage location, it becomes available for use by controllers based on the availability pattern of the bundle, and a polling time (defaults to 5 minutes) or CLI/API calls that results in the controller checking for an updated bundle.
 
 {{% notice note %}}
 There are two options available for manually forcing a sync of the bundles from external sources to the internal storage with the first being via the Operations Center UI and the second being via an HTTP API endpoint for Operations Center: `POST /load-casc-bundles/checkout`.
@@ -12,7 +12,7 @@ There are two options available for manually forcing a sync of the bundles from 
 
 ![CasC for Controllers Storage Service](storage-service-diagram.png?width=50pc)
 
-You may configure multiple versions of each retrieval method, but bundle names (the folder the bundle files are in) must be unique across all external bundle sources. The CloudBees CI cluster we are using for this workshop has been configured with both an **SCM** and a **Local folder** external sources. We are using the [SCM source](https://github.com/cloudbees-days/workshop-casc-bundles) to load bundles at the Operations center initial startup to be used as parent bundles and for the workshop Ops controller used to provision workshop environments. We are using a **Local folder** source for all of the provisioned workshop controller bundles since they are all in unique source code repositories.
+You may configure multiple versions of each retrieval method, but bundle names (the folder the bundle files are in) must be unique across all bundle sources. The CloudBees CI cluster we are using for this workshop has been configured with both an **SCM** and a **Local folder** external sources. We are using the [SCM source](https://github.com/cloudbees-days/workshop-casc-bundles) to load bundles at the Operations center initial startup to be used as parent bundles and for the workshop Ops controller used to provision workshop environments. We are using a **Local folder** source for all of the provisioned workshop controller bundles since they are all in unique source code repositories.
 
 {{% notice note %}}
 While Operations Center simplifies the management of bundles, it is possible to configure a controller with a bundle without Operations Center using the `-Dcore.casc.config.bundle=/path/to/casc-bundle` Java system property.
@@ -88,9 +88,9 @@ pipeline {
 6. Scroll down to the **Project Recognizers** section. Under **Custom script**, notice how the **Marker file** is configured. ![Wrong marker file](wrong-marker-file.png?width=50pc)
 7. With the default **project recognizer**, the file you specify (usually `Jenkinsfile`) is used not only as the Pipeline script to run, but also as the **marker file** - that is, the file that indicates which repositories and branches should be processed by the SCM based Pipeline job. However,  with the [CloudBees custom script project recognizer](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/pipeline-as-code#custom-pac-scripts) for Mulitbranch and Org Folder Pipeline jobs, the **marker file** and the **script file** are separated, allowing you to specify an arbitrary file as the **marker file** and subsequently use an embedded Pipeline script or pull in a Pipeline file from a completely different source control repository. But in order for a GitHub `branch` to be *recognized*, the `branch` must contain the **marker file**.
 8. Navigate to the top level of you `ops-controller` repository in your workshop GitHub Organization. Notice that there is no *Jenkinsfile*. ![No Jenkinsfile](no-jenkinsfile.png?width=50pc)
-9. Remember, the **marker file** can be any arbitrary file, and it doesn't have to be the file with the pipeline script. We want this Organization Folder Pipeline job to support CasC automation for other repositories in your GitHub Organization. So we will use the `bundle/bundle.yaml` file as the **marker file**, so that anytime there is a repository with a `bundle/bundle.yaml` file in the GitHub Organization, it will automatically keep its `main` branch in-sync with the CasC bundle for the target controller. But before we update the job on your controller to use `bundle/bundle.yaml` as the marker file, we have to update the `bundle/items.yaml` of the CasC bundle. Otherwise, the job on your controller would be updated to use `Jenkinsfile` when the bundle gets updated - we need to update it in both places only this once, and must update the value in the `bundle/items.yaml` before the job runs for the first time. We have created a Pull Request with the necessary changes.
+9. Remember, the **marker file** can be any arbitrary file, and it doesn't have to be the file with the pipeline script. We want this Organization Folder Pipeline job to support CasC automation for other repositories in your GitHub Organization. Therefore, we will use the `bundle/bundle.yaml` file as the **marker file**, so that anytime there is a repository with a `bundle/bundle.yaml` file in the GitHub Organization, it will automatically keep its `main` branch in-sync with the CasC bundle for the target controller. But before we update the job on your controller to use `bundle/bundle.yaml` as the marker file, we have to update the `bundle/items.yaml` of the CasC bundle itself. Otherwise, the job on your controller would be updated to use `Jenkinsfile` when the bundle gets updated - we need to update it in both places only this once, and must update the value in the `bundle/items.yaml` before the job runs for the first time. We have created a Pull Request with the necessary changes.
 10. Click on the **Pull requests** link, then click on the **Bundle Management** pull request (it is #2) and then click on the **Files changed** tab to review the requested configuration changes. ![items.yaml changes](items-changes.png?width=50pc)
-11. Once you have finished reviewing the changed files, navigate back to the `controller-casc-update` job on your Ops controller and update the **Marker file** to `bundle/bundle.yaml`, and the click the **Save** button. ![Update job config](update-job-config.png?width=50pc)
+11. Once you have finished reviewing the changed files, navigate back to the `controller-casc-update` job on your Ops controller and update the **Marker file** to `bundle/bundle.yaml`, and the click the **Save** button (the rest of the job configuration is correct). ![Update job config](update-job-config.png?width=50pc)
 
 {{% notice note %}}
 Normally **Organization Folder** and **Multibranch Pipeline** jobs are triggered when they are indexed, but we have configured the `suppressFolderAutomaticTriggering` property on the `controller-casc-update` job so it will only be triggered by webhook events and manually. 
@@ -104,25 +104,26 @@ Normally **Organization Folder** and **Multibranch Pipeline** jobs are triggered
 Error from server (Forbidden): pods "cjoc-0" is forbidden: User "system:serviceaccount:controllers:jenkins" cannot get resource "pods" in API group "" in the namespace "cbci"
 ```
 
-16. The reason you get this error is because your **controller** has been provisioned to the `controllers` `namespace` which is a different Kubernetes `namespace` than Operations Center and no agent `pod` in the `controllers` namespace will have the permissions to copy files with `kubectl` (a CLI tool for Kubernetes) to the Operations Center Kubernetes `pod`. To fix this, you must update the `controller-casc-update` pipeline script in your `ops-controller` repository to trigger a job (with the [CloudBees CI Cross Team Collaboration](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/cross-team-collaboration) feature) on another controller that does have permissions to use `kubectl` to copy updated bundle files to Operations Center. 
+15. The reason you get this error is because your **controller** has been provisioned to the `controllers` `namespace` which is a different Kubernetes `namespace` than Operations Center and no agent `pod` in the `controllers` namespace has permissions to copy files with `kubectl` (a CLI tool for Kubernetes) to the Operations Center Kubernetes `pod`. To fix this, you must update the `controller-casc-update` pipeline script in your `ops-controller` repository to trigger a job (with the [CloudBees CI Cross Team Collaboration](https://docs.cloudbees.com/docs/admin-resources/latest/pipelines/cross-team-collaboration) feature) on another controller that does have permissions to use `kubectl` to copy updated bundle files to Operations Center. 
 
 {{% notice note %}}
-Provisioning controllers and agents in a different Kubernetes `namespace` than Operations Center provides additional isolation and more security for Operations Center on Kubernetes. By default, when controllers are created in the same `namespace` as Operations Center and agents, they can provision an agent that can run the `pod` `exec` command against any other `pod` in the `namespace` - including the Operations Center's `pod`.
+Provisioning controllers and agents in a different Kubernetes `namespace` than Operations Center provides additional isolation and security for running Operations Center on Kubernetes. By default, when controllers are created in the same `namespace` as Operations Center and agents, they can provision an agent that can run the `pod` `exec` command against any other `pod` in the `namespace` - including the Operations Center's `pod`.
 {{% /notice %}}
 
-15. Navigate to the **Bundle Update** pull request **Files changed** tab on your `ops-controller` repository in your workshop GitHub Organization and click on the `controller-casc-update` file, and note that we replaced the previous `steps` with the `publishEvent` step (along with the `gitHubParseOriginUrl` pipeline library utility step that will provide the GitHub repository the bundle is being updated from). The `publishEvent` step will send a notification to a message bus on Operations Center and result in the triggering of any job that is configured to listen for that event. The configuration for the job that it triggers [is available here](https://github.com/cloudbees-days/cloudbees-ci-casc-bundle-update/blob/main/Jenkinsfile). ![controller-casc-update updates](controller-casc-update.png?width=50pc)
-16. Once you have finished reviewing the changes, click on the **Conversation** tab of the **Bundle Export** pull request, scroll down and click the green **Merge pull request** button and then click the **Confirm merge** button.
-17. Navigate back to your CloudBees CI ***managed controller*** and then navigate to the ***main*** branch job of your **ops-controller** Multi-branch Project in the **controller-casc-update** Organization Folder project. After the job successfully completes, navigate to the top-level of your ***managed controller***. 
-21. Click on the **Manage Jenkins** link in the left navigation menu and then click on the **CloudBees Configuration as Code export and update** configuration link. ![CloudBees Configuration config](config-bundle-system-config.png?width=50pc)
-22.  On the next screen, click on the **Bundle Update** link and you should see that a new version of the configuration bundle is available. Before you click the **Reload Configuration** button, click on the **See differences** icon. ![See differences link](see-diff-link.png?width=50pc)
-23. The bundle difference visualization will show you the changes between the current and incoming bundle. This is especially useful if the user loading the new bundle in the UI wasn't directly involved in updating the bundle files. Under **Bundle descriptor** you will see that we are adding the `catalog` section. Feel free to explore the rest of the changes and then click on the **Back to Bundle update** link. ![Bundle differences](bundle-diff.png?width=50pc)
-24. Back on the **Bundle update** screen, click the **Reload Configuration** button and on the next screen click the **Yes** button to apply the updated configuration bundle. 
+16. Navigate to the **Bundle Update** pull request **Files changed** tab on your `ops-controller` repository in your workshop GitHub Organization and click on the `controller-casc-update` file, and note that we replaced the previous `steps` with the `publishEvent` step (along with the `gitHubParseOriginUrl` pipeline library utility step that will provide the GitHub repository the bundle is being updated from). The `publishEvent` step will send a notification to a message bus on Operations Center and result in the triggering of any job that is configured to listen for that event. The configuration for the job that it triggers [is available here](https://github.com/cloudbees-days/cloudbees-ci-casc-bundle-update/blob/main/Jenkinsfile). ![controller-casc-update updates](controller-casc-update.png?width=50pc)
+17. Once you have finished reviewing the changes, click on the **Conversation** tab of the **Bundle Export** pull request, scroll down and click the green **Merge pull request** button and then click the **Confirm merge** button.
+18. Navigate back to your CloudBees CI ***managed controller*** and then navigate to the ***main*** branch job of your **ops-controller** Multi-branch Project in the **controller-casc-update** Organization Folder project. After the job successfully completes, navigate to the top-level of your ***managed controller***. 
+19. Click on the **Manage Jenkins** link in the left navigation menu and then click on the **CloudBees Configuration as Code export and update** configuration link. ![CloudBees Configuration config](config-bundle-system-config.png?width=50pc)
+20.  On the next screen, click on the **Bundle Update** link and you should see that a new version of the configuration bundle is available. Before you click the **Reload Configuration** button, click on the **See differences** icon. ![See differences link](see-diff-link.png?width=50pc)
+21. The bundle difference visualization will show you the changes between the current and incoming bundle. This is especially useful if the user loading the new bundle in the UI wasn't directly involved in updating the bundle files. Under **Bundle descriptor** you will see that we are adding the `catalog` section. Feel free to explore the rest of the changes and then click on the **Back to Bundle update** link. ![Bundle differences](bundle-diff.png?width=50pc)
+22. Back on the **Bundle update** screen, click the **Reload Configuration** button and on the next screen click the **Yes** button to apply the updated configuration bundle. 
 
 {{% notice note %}}
 If you don't see the new version available then click the **Check for Updates** button. Also, once you click **Yes** it may take a few minutes for the bundle update to reload.
 {{% /notice %}}
 ![Bundle Update](new-bundle-available.png?width=50pc)
-25. Navigate to the `controller-jobs` folder and click on **New Item** in the left menu and note that the **Freestyle** job type is not available. ![No freestyle job](no-freestyle-job.png?width=50pc)
+23. Navigate to the top level of your **ops-controller** and refresh the page until the CasC bundle has been updated to **v2**. ![bundle at v2](bundle-v2.png?width=50pc)
+24. Next, click on the `controller-jobs` folder and click on **New Item** in the left menu and note that the **Freestyle** job type is not available. ![No freestyle job](no-freestyle-job.png?width=50pc)
 
 
 ## Auto-Updating with the CloudBees CI CasC HTTP API
@@ -153,41 +154,8 @@ The pipeline snippet below is used by the *bundle update* job, triggered by your
 
 So, all you have to do to enable automatic reloading is update the value of the `casc.auto_reload` portion of the event payload to `true`:
 
-1. Navigate to your copy of the `ops-controller` repository in your workshop GitHub Organization and open the `controller-casc-update` pipeline script.
-2. Click the **pencil icon** to open it in the GitHub file editor, then modify `'casc':{'auto_reload':'false'}` to `'casc':{'auto_reload':'true'}` and click on the **Commit changes** button to commit to the `main` branch. The complete updated contents should match the following:
-
-```groovy
-library 'pipeline-library'
-pipeline {
-  agent none
-  options {
-    timeout(time: 10, unit: 'MINUTES')
-    skipDefaultCheckout()
-  }
-  stages {
-    stage('Update Config Bundle') {
-      agent { label 'default' }
-      when {
-        beforeAgent true
-        branch 'main'
-        not { triggeredBy 'UserIdCause' }
-      }
-      environment { CASC_UPDATE_SECRET = credentials('casc-update-secret') }
-      steps {
-        gitHubParseOriginUrl()
-        publishEvent event:jsonEvent("""
-          {
-            'controller':{'name':'${env.GITHUB_ORG}-${GITHUB_REPO}','action':'casc_bundle_update','bundle_id':'${env.GITHUB_ORG}-${GITHUB_REPO}'},
-            'github':{'organization':'${env.GITHUB_ORG}','repository':'${GITHUB_REPO}'},
-            'secret':'${CASC_UPDATE_SECRET}',
-            'casc':{'auto_reload':'true'}
-          }
-        """), verbose: true
-      }
-    }
-  }
-}
-```
-
-3. Now, the next time you update any of the bundle files on the `main` branch of your `ops-controller` repository, the changes will be automatically applied to your controller.
+1. Navigate to your copy of the `ops-controller` repository in your workshop GitHub Organization and click on the **Pull requests** link.
+2. On the next screen, click on the **Bundle Folders** pull request (it is #4) and then click on the **Files changed** tab.
+2. Click the **controller-cas-update** file and note that `'casc':{'auto_reload':'false'}` has been changed to `'casc':{'auto_reload':'true'}`.
+3. Now, once this pull request is merged to the `main` branch of your `ops-controller` repository (which we will do in the next lab), any CasC bundle changes will be automatically applied to your controller.
 
