@@ -58,6 +58,14 @@ async function initRollout() {
         } else {
           errors.innerText = ""
         }
+        var patt = new RegExp("[^A-Z a-z0-9]");
+        var isUsernameOK = ! patt.test(username);
+        if ( ! isUsernameOK ) {
+          errors.innerText = "Special characters are not allowed in the username."
+          return
+        } else {
+          errors.innerText = ""
+        }
         const serverUrl = flags.registrationEndpoint.getValue()
         const resp = await fetch(serverUrl, {
           method: "POST",
