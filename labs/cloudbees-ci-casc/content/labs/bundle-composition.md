@@ -26,7 +26,7 @@ You may have noticed that all the file types except for the **bundle** file are 
 
 In this lab we will explore the configuration bundle assigned to your Ops controller when it was dynamically provisioned.
 
-1. Navigate to your `ops-controller` repository in your workshop GitHub Organization. ![ops-controller repository](ops-controller-repo.png?width=50pc) 
+1. Navigate to the `ops-controller` repository in the GitHub Organization you created for this workshop. ![ops-controller repository](ops-controller-repo.png?width=50pc) 
 2. Open the `bundle` folder and then click on the `bundle.yaml` file. Its contents will mostly match the following (the `id`, `description` and `availabilityPattern` will be unique to each attendee):
 ```yaml
 apiVersion: "1"
@@ -43,7 +43,7 @@ items:
 ``` 
 
 {{% notice note %}}
-It is important that the bundle file is named exactly `bundle.yaml` otherwise the bundle will not be useable.
+It is important that the bundle file is named exactly `bundle.yaml` otherwise the bundle will not be useable. All of the other bundle file types may be names whatever you like as long they are listed correctly in the `bundle.yaml` file.
 {{% /notice %}}
 
 3. Return to the `bundle` folder of your `ops-controller` repository and click on the `jenkins.yaml` file. The name of this file must match the file name listed under `jcasc` in the `bundle.yaml` file. Its contents will match the following:

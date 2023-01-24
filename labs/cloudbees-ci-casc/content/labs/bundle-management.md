@@ -30,7 +30,8 @@ This lab will provide an overview of how configuration bundles are managed via t
 
 ![Operations Center Configuration as Code bundles settings page](ops-center-config-bundle-settings.png?width=70pc)
 
-1. By checking the **Availability pattern** checkbox, any configuration bundle that has an empty **Availability pattern** can be used by any controller.
+1. The **CloudBees Configuration as Code bundles** configuration is broken up into two configurable sections: **General Settings** and **Configuration Bundles**.
+2. By checking the **Availability pattern** checkbox, any configuration bundle that has an empty **Availability pattern** can be used by any controller.
 2. The **Default bundle** drop-down allows you to automatically apply a default configuration bundle to any controller that does not specify a controller specific configuration bundle.
 3. The **cog** icon signifies that the bundle's availability pattern has been defined in the UI, to include overriding availability patterns set in the `bundle.yaml`.
 4. The **bundle** icon signifies that the availability pattern was set in the `bundle.yaml` via the `availabilityPattern` field. Note that setting the **Availability pattern**  with the `availabilityPattern` field allows managing this value with each individual bundle rather than having to specify it in the UI, and that is what we are using for this workshop.
