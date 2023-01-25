@@ -16,7 +16,7 @@ The `items` CasC configuration also supports managing multiple files in folders 
 
 1. Navigate to your `ops-controller` repository in your workshop GitHub Organization, click on the **Pull requests** link and click on the **Bundle Folders** pull request. ![PR link](pr-link.png?width=50pc) 
 2. Click on the **Files changed** tab to review the requested configuration changes. ![PR Files Changed](pr-files-changed.png?width=50pc)
-3. We have updated the `bundle.yaml` file to use all files in the new `jcasc` folder as `jcasc` configuration files, added the `credentials.yaml` file to the new `jcasc` folder and moved an updated version of the `jenkins.yaml` to the new `jcasc` folder.
+3. We have updated the `bundle.yaml` file to use all files in the new `jcasc` folder as `jcasc` configuration files, added the `credentials.yaml` file to the new `jcasc` folder and moved an updated version of the `jenkins.yaml` to the new `jcasc` folder. Now, whenever a new `yaml` file is added to the `jcasc` folder, that file will automatically be included in the configuration bundle.
 4. Once you have finished reviewing the changes, click on the **Conversation** tab of the **Bundle Folders** pull request, scroll down and click the green **Merge pull request** button and then click the **Confirm merge** button.
 5. Navigate to the `main` branch job of the `ops-controller` Multibranch pipeline project on your Ops controller.
 6. After the the `main` branch job has completed successfully, navigate to the top level of your Ops controller and refresh the page until you see the bundle version change in the system message (remember we updated the `controller-casc-update` job to auto-reload the bundle). ![Bundle Version Updated](bundle-version-updated.png?width=50pc) 
@@ -150,7 +150,9 @@ configurations:
 - description: Workshop Additional Plugins
   includePlugins:
     pipeline-utility-steps: 
-      version: 2.13.0
+      version: 2.15.0
+    pipeline-graph-view:
+      version: 144.vf3924feb_7e35
 ```
 7. Now that we have reviewed the `base` bundle, navigate to your `ops-controller` repository in your workshop GitHub Organization, click on the **Pull requests** link and click on the **Bundle Inheritance** pull request. ![Inheritance PR link](inheritance-pr-link.png?width=50pc) 
 8. Next, click on the **Files changed** tab to review the configuration changes. For the `bundle.yaml` note that we added `parent: base` and removed the `catalog` entry. ![Inheritance PR Files Changed](inheritance-pr-files-changed.png?width=50pc)
