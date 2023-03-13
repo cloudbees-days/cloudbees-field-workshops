@@ -154,7 +154,7 @@ The pipeline snippet below is used by the *bundle update* job, triggered by your
 So, all you have to do to enable automatic reloading is update the value of the `casc.auto_reload` portion of the event payload to `true`:
 
 1. Navigate to your copy of the `ops-controller` repository in your workshop GitHub Organization and open the `controller-casc-update` pipeline script.
-2. Click the **pencil icon** to open it in the GitHub file editor, then modify `'casc':{'auto_reload':'false'}` to `'casc':{'auto_reload':'true'}`. Next, scroll to the bottom to reach the "Propose changes" secion. Create a new branch called "auto-reload" or similar. On the next screen leave a relevant comment in the present tense and then click "Create pull request". Then merge your changes. The complete updated contents should match the following:
+2. Click the **pencil icon** to open it in the GitHub file editor, then modify `'casc':{'auto_reload':'false'}` to `'casc':{'auto_reload':'true'}`. Next, scroll to the bottom to reach the "Propose changes" section. Create a new branch called "auto-reload" or similar. On the next screen leave a relevant comment in the present tense and then click "Create pull request". Then merge your changes. The complete updated contents should match the following:
 
 ```groovy
 library 'pipeline-library'
