@@ -105,7 +105,7 @@ Now you're ready to deploy into the production environment. Like before, you can
 
 ![Deploy app into prod](prod-8.png)
 
-This should successfully deploy into the production environment.
+This should fail to deploy into the production environment.
 
 ![Production deploy success](prod-9.png)
 
