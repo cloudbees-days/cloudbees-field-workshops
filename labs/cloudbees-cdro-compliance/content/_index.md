@@ -1,5 +1,5 @@
 ---
-title: "CloudBees CD/RO DevOps World 2023 Workshop"
+title: "CloudBees CD/RO DevOps World 2023 Workshop!"
 chapter: true
 weight: 1
 ---
