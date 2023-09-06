@@ -2,7 +2,7 @@ baseURL = ""
 languageCode = "en-US"
 defaultContentLanguage = "en"
 
-title = "CloudBees CD/RO DevOps World 2023 Workshop"
+title = "CloudBees CD/RO DevOps World 2023 Workshop!"
 theme = "hugo-theme-learn"
 metaDataFormat = "yaml"
 
