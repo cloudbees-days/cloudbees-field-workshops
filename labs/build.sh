@@ -10,5 +10,5 @@ directories=$(ls -d ../*/ | grep -vE "($(echo $excluded_dirs | sed 's/ /|/g'))/"
 # Note: In the DIRECTORY_NAME part, I need to strip any relative path info and just get the actual directory name
 for dir in $directories; do
 	dir_name=$(basename $dir)
-	hugo --minify --config "${dir}/config.toml" --contentDir "${dir}/content/" --destination "../public/${dir_name}"
+	hugo --minify --config "${dir}/config.toml" --contentDir "${dir}/content/" --destination "../public/${dir_name}" --baseURL="/${dir_name}/"
 done
