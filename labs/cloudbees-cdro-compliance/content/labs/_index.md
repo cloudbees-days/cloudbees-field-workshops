@@ -12,8 +12,13 @@ It is also recommended that you read the product features pages in the [CloudBee
 
 Workshop Labs:
 
-- Creating a basic release
-- Deploying a microservice and creating an application model
-- Exploring the environment modeling
-- Adding the deployment to the release
-- Exploring the self-service catalog
+- CloudBees Release Orchestration
+- Configuring and Running Release Pipelines
+- Gathering Release Evidence
+- Audit Ready Pipelines
+- Release Command Center Dashboard
+- CloudBees Compliance
+- Compliance Overview
+- Release Quality Gates
+- Compliance Verification and Remediation
+- Shift Left
