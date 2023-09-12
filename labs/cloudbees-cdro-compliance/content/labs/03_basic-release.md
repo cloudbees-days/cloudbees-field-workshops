@@ -12,7 +12,7 @@ With a release pipeline in place you can be certain that all the operations occu
 
 When you're first logged in you'll see something that looks like this.
 
-![Release screen](1.png)
+![Release screen](03_basic-repease/1.png)
 
 This is where you'll see all the release across everyone's projects. You can filter this down using the set of filters at the top. We'll come back to this in a minute.
 
