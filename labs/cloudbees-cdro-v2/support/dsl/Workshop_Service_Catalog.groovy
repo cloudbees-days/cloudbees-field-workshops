@@ -44,14 +44,14 @@ release args.releaseName, {
     iconUrl = 'icon-pipeline.svg'
     useFormalParameter = '1'
 
-    formalParameter 'releaseName', {
+    formalParameter 'releaseName', defaultValue: '$[/myUser/userName] Release', {
       label = 'Release Name'
       orderIndex = '1'
       required = '1'
       type = 'entry'
     }
 
-    formalParameter 'releaseTag', {
+    formalParameter 'releaseTag', defaultValue: 'PROD', {
       label = 'Release Tags'
       orderIndex = '2'
       required = '1'
