@@ -39,6 +39,9 @@ async function initRollout() {
       <label>Confirm password
         <input type="password" required name="confirm_password" />
       </label>
+      <label>Emmail
+        <input type="text" required name="email" />
+      </label>
       <button type="submit" class="btn btn-default">Register</button>
     </form>
     <div id="errors" ></div>
@@ -51,9 +54,18 @@ async function initRollout() {
         const username = formData.get("username")
         const pw = formData.get("password")
         const pw2 = formData.get("confirm_password")
+        const email = formData.get("email")
         const errors = document.getElementById("errors")
         if (pw !== pw2) {
           errors.innerText = "The passwords you entered do not match. Please try again."
+          return
+        } else {
+          errors.innerText = ""
+        }
+        var patt = new RegExp("[^A-Z a-z0-9]");
+        var isUsernameOK = ! patt.test(username);
+        if ( ! isUsernameOK ) {
+          errors.innerText = "Special characters are not allowed in the username."
           return
         } else {
           errors.innerText = ""
@@ -63,7 +75,8 @@ async function initRollout() {
           method: "POST",
           body: JSON.stringify({
             "username": username,
-            "password": pw
+            "password": pw,
+            "email": email
           }),
           headers: {
             "Content-Type": "application/json"

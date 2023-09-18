@@ -14,9 +14,9 @@ In this lab, you will set up a CloudBees Feature Management account and use it t
 2. Fill out the form with your name, email, and a created password. After confirming your password, check the box agreeing to CloudBees Feature Management' Terms of Service (which can be viewed [here](https://docs.cloudbees.com/docs/cloudbees-common/latest/subscription-agreement/)), and click **Sign Up**.
 3. After you have successfully created an account, the CloudBees Feature Management dashboard will be displayed. Create a new application by clicking the blue panel in the top left corner of the screen. ![New Application](images/new-application.png?width=70pc)
 4. After creating a new application in the dashboard, click the **App Settings** panel seen on the left hand menu. From the resulting page, select the **Environments** tab.
-5. Click **Add New Environment** and name it **Development**. Then click **Generate Key**.
-6. **Close** the subsequent **Development Key** pop-up window so that both _Production_ and _Development_ keys are displayed. Leave this CloudBees Feature Management dashboard tab open in the browser. Both keys will be referenced later in this lab.
-![Environment Key](images/CBFMEnvKey.png?width=70pc)
+5. Click **Add New Environment** and name it **Development**. ![Create Development Environment](images/create-dev-env.png?width=70pc)
+6. Next, click **Generate Key**.
+7. **Close** the subsequent **Development Key** pop-up window so that both _Production_ and _Development_ keys are displayed. Leave this CloudBees Feature Management dashboard tab open in the browser. Both keys will be referenced later in this lab.
 
 ### API Key Environment Variable
 
@@ -99,7 +99,7 @@ Once you committed the `flags.js` file a job will be triggered on a CloudBees CI
 
 1. In your browser, switch to CloudBees Feature Management dashboard.
 2. On the left-hand side of the dashboard, select the **Audit Logs** view.
-3. You should see both the `title` and `sidebar` flags have been added to the `default` namespace and communicated from the `development` code. This means they are available for remote configuration in the dashboard! There are also some default properties that have been added, but we'll add more in a future lab. ![Audit logs](images/auditLogs.png?width=70pc)
+3. You should see both the `title` and `sidebar` flags have been added to the `default` namespace and communicated from the `development`code. This means they are available for remote configuration in the dashboard! There are also some default properties that have been added, but we'll add more in a future lab. ![Audit logs](images/auditLogs.png?width=70pc)
 4. Finally, click on **Flags overview** in the left menu and you will see the two flags from your `flag.js` file, and an outline of their configurations (though we have none yet) defined across all environments. ![Flags](images/dashboard-flags.png?width=70pc)
 
 ### Setup Completed!

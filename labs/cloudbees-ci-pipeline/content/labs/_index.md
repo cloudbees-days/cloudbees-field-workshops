@@ -15,7 +15,8 @@ The labs covered in this workshop are:
 3. Custom Pipeline Pod Templates
 4. Conditional Execution Using the `when` Directive
 5. Environment Variables and Credentials
-6. CloudBees Cross Team Collaboration
-7. Pipelines with Interactive Input
+6. Pipelines with Interactive Input
+7. CloudBees Pipeline Template Catalogs
+8. CloudBees Cross Team Collaboration
 
 

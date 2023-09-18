@@ -50,6 +50,8 @@ We highly recommend creating a new GitHub Organization for the CloudBees CI Work
    - https://github.com/cloudbees-days/pipeline-template-catalog
    - https://github.com/cloudbees-days/simple-java-maven-app ![GitHub App Installed](forked-repos.png?width=50pc)
 
->NOTE: These repositories were created from GitHub template repositories in the [CloudBees Field Workshops GitHub Organization](https://github.com/cloudbees-days).
+{{% notice tip %}}
+These repositories were created from GitHub template repositories in the [CloudBees Field Workshops GitHub Organization](https://github.com/cloudbees-days).
+{{% /notice %}}
 
 **For instructor led workshops please <a href="https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-ci/#core-overview-title">return to the workshop slides</a>**

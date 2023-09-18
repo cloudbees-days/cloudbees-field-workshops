@@ -45,7 +45,7 @@ Even though you have to provide an email for billing, **you will NOT be charged 
    - https://github.com/cloudbees-days/cloudbees-ci-config-bundle
    - https://github.com/cloudbees-days/pipeline-library
    - https://github.com/cloudbees-days/pipeline-template-catalog
-   - https://github.com/cloudbees-days/helloworld-nodejs ![GitHub App Installed](forked-repos.png?width=50pc)
+   - https://github.com/cloudbees-days/insurance-frontend ![GitHub App Installed](forked-repos.png?width=50pc)
 
 {{% notice note %}}
 These repositories were created from GitHub template repositories in the [CloudBees Field Workshops GitHub Organization](https://github.com/cloudbees-days).

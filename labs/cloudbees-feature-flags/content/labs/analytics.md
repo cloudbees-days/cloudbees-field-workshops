@@ -97,7 +97,7 @@ export const configurationFetchedHandler = fetcherResults => {
 export const impressionHandler = (reporting, experiment) => {
   if (experiment) {
     console.log('Flag is ' + reporting.name + ', and value is ' + reporting.value)
-    windowgtag('event', reporting.name, {
+    window.gtag('event', reporting.name, {
       'event_category': reporting.name,
       'event_label': reporting.value
     })
@@ -127,7 +127,7 @@ initCloudBees().then(function () {
 
 1. Navigate to the CloudBees Feature Management dashboard, and bring up the **title** configuration in the **Development** environment.
 2. The premise of this A/B test will be to route 50% of all users to a **True** value and the other 50% to a **False** value. This can be accomplished by changing the **set to** value from **True** to **Split** within the drop down menu. The default split configuration should reflect these weightings to each value.
-3. **Save Targeting** to apply the changes made in this configuration. ![Split](images/split.png?width=50pc)
+3. **Save Targeting** to apply the changes made in this configuration. ![Split](images/split.png?width=70pc)
 
 ### Google Analytics Dashboard
 
