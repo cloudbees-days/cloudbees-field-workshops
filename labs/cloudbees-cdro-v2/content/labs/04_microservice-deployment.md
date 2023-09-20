@@ -89,7 +89,7 @@ As you can see, there are two big components standing out here. There is the mic
 
 First we'll start with the microservice definition on the left. This is where you'll specify the Helm chart you want to deploy as well as any values you need to pass in.
 
-To begin, click the inner, pink "New microservice" button which will bring up the necessary form.
+To begin, click on the blue "Add microservice" button which will bring up the necessary form.
 ![New microservice button](new-microservice-button.png)
 
 
@@ -104,7 +104,7 @@ Next you need to fill out the definition form.
 | Description | *optional* | A field to help understand the context of this application |
 | Definition type | `Helm` | The type of microservice deployment you want to run |
 | Definition source | `Git repository` | The source for where to look for the target Helm chart. It could be a Helm registry, but for this workshop we're using a Git repo. |
-| Configuration Name | `Git Bot` | The credentials to use for the Git connection when pulling the repository. In this case, we'll be using a shared GitHub service account since the repository is public. |
+| Configuration Name | `cb-bot-Workshop` | The credentials to use for the Git connection when pulling the repository. In this case, we'll be using a shared GitHub service account since the repository is public. |
 | Git repository | https://github.com/cloudbees-days/cdro-workshop-demo-app | The target repository where it will look for the Helm chart |
 | Remote branch | `main` | The branch in GitHub it will checkout |
 | Release name | `hello-app` | The name Helm will use to track your app release |
@@ -140,7 +140,7 @@ Now hit "OK" and the microservice component will be created.
 
 Now, before we're able to deploy our newly-defined application, we need to define an environment to deploy it into.
 
-Get started by clicking the "New cluster" button on the right side.
+Get started by clicking the blue "+" button on the right side.
 ![New cluster](new-environment-1.png)
 
 *It should be noted that we aren't creating a new Kubernetes cluster, but rather a new environment definition based on a cluster.*
@@ -155,16 +155,28 @@ Now you'll define the cluster environment.
 | Environment name | `QA` | The name to identify your environment |
 | Project | Select your project | The project inside which this environment will be stored |
 | Environment description | *Optional* | A field to give textual details about this environment |
+| Utility resource name | k8s-agent |
+
+![New cluster - part 3](new-environment-3.png)
+
+Next you'll define the cluster reference.
+
+| Field | Value | Description | 
+| --- | --- | --- |
 | Cluster name | `default` | A name to identify this cluster |
 | Cluster description | *Optional* | A field to give textual details about this cluster |
 | Configuration provider | `Kubernetes (via Helm)` | The type of environment you're defining |
-| Configuration name | `helm` | A reference to a configuration that lets CD/RO know where to use Helm |
+| Configuration name | `k8s-Workshop` | A reference to a configuration that lets CD/RO know where to use Helm |
 | Namespace | `my-username-qa` | The Kubernetes namespace where your application will be deployed. You should update this to be YOUR_USERNAME-qa. |
 | Kubeconfig context |  | This allows you to target a specific cluster if your configuration is pointed at multiple. For this workshop you can leave this blank. |
-| Utility resource name | `k8s-agent` | This is the name to identify the utility resource |
-| Resource | `k8s-agent` | This is the agent which will communicate with the Kubernetes cluster  |
+| Utility resource name | `kubectl` | This is the name to identify the utility resource |
+| Resource | `kubectl` | This is the agent which will communicate with the Kubernetes cluster  |
 
-![New cluster - part 3](new-environment-3.png)
+![New cluster - part 3](new-environment-4.png)
+
+The last step in configuring our microservice application is to map the microservice (hello-app) to your environment (QA).  To do that click on the ![Add mapping](AddMapping.png) button and map your application
+
+| ![mapping](mappingTile.ppng) | ![mapped](mapedApplication.png) |
 
 
 ## Running the deployment
