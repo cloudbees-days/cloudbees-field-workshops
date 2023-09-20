@@ -169,14 +169,15 @@ Next you'll define the cluster reference.
 | Configuration name | `k8s-Workshop` | A reference to a configuration that lets CD/RO know where to use Helm |
 | Namespace | `my-username-qa` | The Kubernetes namespace where your application will be deployed. You should update this to be YOUR_USERNAME-qa. |
 | Kubeconfig context |  | This allows you to target a specific cluster if your configuration is pointed at multiple. For this workshop you can leave this blank. |
-| Utility resource name | `kubectl` | This is the name to identify the utility resource |
-| Resource | `kubectl` | This is the agent which will communicate with the Kubernetes cluster  |
+| Utility resource name | `k8s-agent` | This is the name to identify the utility resource |
+| Resource | `k8s-agent-0` | This is the agent which will communicate with the Kubernetes cluster  |
 
 ![New cluster - part 3](new-environment-4.png)
 
 The last step in configuring our microservice application is to map the microservice (hello-app) to your environment (QA).  To do that click on the ![Add mapping](AddMapping.png) button and map your application
 
-| ![mapping](mappingTile.ppng) | ![mapped](mapedApplication.png) |
+|--------|--------|
+| ![mapping](mappingTile.png) | ![mapped](mapedApplication.png) |
 
 
 ## Running the deployment
@@ -203,7 +204,7 @@ You can click the top list item to see more detail on the overall run and you ca
 
 ### Visiting our application
 
-Now we can visit the application we just deployed by visiting the URL from the values definition of our application. This will be in the form of `https://my-username.cdro-workshop.cb-demos.io`.
+Now we can visit the application we just deployed by visiting the URL from the values definition of our application. This will be in the form of [https://my-username.cdro-workshop.cb-demos.io](https://my-username.cdro-workshop.cb-demos.io).
 
 You should see the name of your username and the environment QA listed. 
 
