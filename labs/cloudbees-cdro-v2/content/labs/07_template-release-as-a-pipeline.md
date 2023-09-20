@@ -42,7 +42,7 @@ pipeline 'pipeline_Base', {
       actualParameter = [
         'branch': 'main',
         'commit': '',
-        'config': '/projects/CloudBees/pluginConfigurations/cb-bot',
+        'config': '/projects/Workshop/pluginConfigurations/cb-bot',
         'depth': '',
         'gitRepoFolder': '/tmp/demo-app',
         'mirror': 'false',
@@ -63,7 +63,7 @@ pipeline 'pipeline_Base', {
 
     task 'Get latest SonarQube scan results', {
       actualParameter = [
-        'config': '/projects/Default/pluginConfigurations/SonarQube',
+        'config': '/projects/Workshop/pluginConfigurations/cb-demos-sonar',
         'resultFormat': 'propertysheet',
         'resultSonarProperty': '/myJob/getLastSonarMetrics',
         'sonarMetricsComplexity': 'all',
@@ -76,9 +76,9 @@ pipeline 'pipeline_Base', {
         'sonarMetricsReliability': 'all',
         'sonarMetricsSecurity': 'all',
         'sonarMetricsTests': 'all',
-        'sonarProjectKey': 'demo-app',
-        'sonarProjectName': 'demo-app',
-        'sonarProjectVersion': '',
+        'sonarProjectKey': 'petclinic',
+        'sonarProjectName': 'petclinic',
+        'sonarProjectVersion': '2.2.0.BUILD-SNAPSHOT',
         'sonarTaskId': '',
         'sonarTimeout': '',
       ]

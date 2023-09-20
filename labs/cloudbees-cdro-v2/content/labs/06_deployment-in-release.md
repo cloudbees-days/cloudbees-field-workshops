@@ -31,17 +31,17 @@ _Alternatively, you can delete tasks by clicking on the "more" menu on the task 
 Which ever way you deleted it, you should now see 0 Tasks in that stage.
 ![Empty stage](7.png)
 
-Now it is time to create a new task. Go ahead and click the **Add** button in the bottom of the stage. Go ahead and call it `Deploy to QA`.
+Now it is time to create a new task. Go ahead and click the **Add task** button in the bottom of the stage. Go ahead and call it `Deploy to QA`.
 
 ![New task](8.png)
 
-Next, click on **Select Task Type** and choose the **Deployer** option from under the **Native** section.
+Next, click on **Define** and choose the **Deployer** option from under the **Native** section.
 ![New task](9.png)
 
 Then, click on **Define** to configure this task.
 ![Configure new task](10.png)
 
-Since we're only working with a single application, we can ignore these settings and just click **OK**. This is where you can change the behavior of how it chooses to deploy multiple applications.
+Since we're only working with a single application, we can ignore these settings and just click **Save changes**. This is where you can change the behavior of how it chooses to deploy multiple applications.
 
 Now we're done with the QA stage.
 
