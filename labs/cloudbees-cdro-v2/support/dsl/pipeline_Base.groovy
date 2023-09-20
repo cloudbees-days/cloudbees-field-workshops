@@ -71,7 +71,7 @@ pipeline 'pipeline_Base', {
     colorCode = '#ff7f0e'
     pipelineName = 'pipeline_Base'
     task 'Deploy to QA', {
-      command = 'echo "Deploy to QA"'
+      command = 'echo "replace me"'
       taskType = 'COMMAND'
     }
   }
@@ -79,21 +79,9 @@ pipeline 'pipeline_Base', {
   stage 'Production', {
     colorCode = '#2ca02c'
     pipelineName = 'pipeline_Base'
-    gate 'PRE', {
-      task 'Manual approval', {
-        gateType = 'PRE'
-        notificationEnabled = '1'
-        notificationTemplate = 'ec_default_gate_task_notification_template'
-        subproject = 'Workshop'
-        taskType = 'APPROVAL'
-        approver = [
-          'rbroker',
-        ]
-      }
-    }
 
     task 'Deploy to Production', {
-      command = 'echo "Deploy to Production"'
+      command = 'echo "replace me"'
       taskType = 'COMMAND'
     }
   }
