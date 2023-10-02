@@ -178,7 +178,7 @@ The last step in configuring our microservice application is to map the microser
 
 | Mapping Tile | Mapped Application |
 |--------|--------|
-| ![mapping](mappingTile.png) | ![mapped](mapedApplication.png) |
+| ![mapping](mappingTile.png) | ![mapped](mappedApplication.png) |
 
 
 ## Running the deployment
