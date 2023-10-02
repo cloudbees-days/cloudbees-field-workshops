@@ -176,6 +176,7 @@ Next you'll define the cluster reference.
 
 The last step in configuring our microservice application is to map the microservice (hello-app) to your environment (QA).  To do that click on the ![Add mapping](AddMapping.png) button and map your application
 
+| Mapping Tile | Mapped Application |
 |--------|--------|
 | ![mapping](mappingTile.png) | ![mapped](mapedApplication.png) |
 
