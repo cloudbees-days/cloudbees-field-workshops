@@ -1,5 +1,5 @@
 ---
-title: "CloudBees CD/RO Labs"
+title: "CloudBees CD/RO with Compliance Labs"
 chapter: true
 weight: 1
 ---
