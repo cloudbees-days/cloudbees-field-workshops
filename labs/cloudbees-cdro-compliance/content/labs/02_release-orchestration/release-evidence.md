@@ -1,7 +1,9 @@
 ---
 title: "Release Evidence"
 chapter: true
-weight: 2
+weight: 4
 ---
 
-# Gathering Release Evidence
+## Runing the Release
+
+### Gathering Release Evidence
