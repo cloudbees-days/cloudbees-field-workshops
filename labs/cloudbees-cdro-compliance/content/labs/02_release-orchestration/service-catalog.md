@@ -1,7 +1,7 @@
 ---
 title: "Creating a Service Catalog Item"
 chapter: false
-weight: 3
+weight: 6
 --- 
 
 Use the CloudBees CD/RO Service Catalog to package up easy-to-use functionality such as:

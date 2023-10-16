@@ -1,7 +1,7 @@
 ---
 title: "Release Pipeline - Quality Gates"
 chapter: true
-weight: 2
+weight: 5
 ---
 
-# What are Quality Gates and how do they work?
+## Quality Gates in Release Pieplines
