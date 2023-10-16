@@ -1,7 +1,7 @@
 ---
 title: "Module 2: Cloudbees Compliance"
 chapter: true
-weight: 2
+weight: 6
 ---
 
 # Module 2: Cloudbees Compliance

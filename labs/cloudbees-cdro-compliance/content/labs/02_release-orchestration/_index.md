@@ -1,7 +1,7 @@
 ---
 title: "Module 1: Cloudbees Release Orchestration"
 chapter: true
-weight: 2
+weight: 3
 ---
 
 # Module 1: Cloudbees Release Orchestration

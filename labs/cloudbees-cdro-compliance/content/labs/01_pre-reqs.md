@@ -1,7 +1,7 @@
 ---
 title: "Pre-requisites"
 chapter: false
-weight: 2
+weight: 1
 --- 
 
 Welcome to the workshop.
