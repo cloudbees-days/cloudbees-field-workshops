@@ -20,4 +20,4 @@ If that is the case you will have to wait until it is **Approved** and **Connect
 
 >NOTE: There are a number of ways to create a ***managed controller***. We take a very opinionated way to provision attendees ***managed controllers*** for this workshop in order to pre-configure the components that you will interact with during the workshop, allowing us to jump into the hands on content more quickly.
 
-**For instructor led workshops please <a href="https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-ci/#cbci-setup-review">return to the workshop slides</a>**
+**For instructor led workshops please <a href="https://cb-workshop-slides-pr-187-uzmvvniitq-ue.a.run.app/cloudbees-ci/#17">return to the workshop slides</a>**
