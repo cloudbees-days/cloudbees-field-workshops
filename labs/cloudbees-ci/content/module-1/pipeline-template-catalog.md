@@ -62,4 +62,4 @@ In this lab you will create a Multibranch Pipeline job from a Pipeline template 
 3. Enter ***config-bundle-ops*** as the **Item Name**, select **CloudBees CI Configuration Bundle** as the item type and then click the **OK** button. ![New Update Bundle](new-bundle-template-job.png?width=50pc)
 4. On the next screen, fill in the **GitHub Organization** template parameter with the name of the GitHub Organization you created for this workshop (all the other default values should be correct) and then click the **Save** button. ![Config Bundle Template Parameters](bundle-template-params.png?width=50pc) 
 
-**For instructor led workshops please <a href="https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-ci/#pipeline-template-catalog-overview">return to the workshop slides</a>**   
+**For instructor led workshops please <a href="https://cb-workshop-slides-pr-187-uzmvvniitq-ue.a.run.app/cloudbees-ci/#22">return to the workshop slides</a>**   
