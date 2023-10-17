@@ -92,4 +92,4 @@ If you don't see the new version available then click the **Check for Updates** 
 
 15. Navigate back to the top-level of your ***managed controller***. Among other configuration changes, you will now see a link for **Pipeline Polices** in the left navigation menu and an updated system message for your CloudBees CI managed controller. ![New CasC applied](casc-update-applied.png?width=50pc)
 
-**For instructor led workshops please <a href="https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-ci/#casc-lab-review">return to the workshop slides</a>**
+**For instructor led workshops please <a href="https://cb-workshop-slides-pr-187-uzmvvniitq-ue.a.run.app/cloudbees-ci/#32">return to the workshop slides</a>**

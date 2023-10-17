@@ -78,4 +78,4 @@ Merging the updated `Jenkinsfile` for that template will trigger a GitHub webhoo
 17.    After the import is complete, navigate back to the **main** branch job in the **config-bundle-ops** Mutlibranch project in the **template-jobs** folder and click the **Build Now** link in the left menu. The build will complete successfully and the logs for that build will show that the Pipeline policy validated successfully. ![Policy Success](pipeline-policy-success.png?width=50pc)
 
 
-**For instructor led workshops please <a href="https://cloudbees-days.github.io/cloudbees-field-workshops/cloudbees-ci/#pipeline-policies-overview">return to the workshop slides</a>**
+**For instructor led workshops please <a href="https://cb-workshop-slides-pr-187-uzmvvniitq-ue.a.run.app/cloudbees-ci/#37">return to the workshop slides</a>**
